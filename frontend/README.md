@@ -13,7 +13,8 @@ Armenia, Azerbaijan, Moldova, and Uzbekistan.
 - `staticwebapp.config.json` configures the planned Azure Static Web Apps
   deployment.
 
-The application lives directly in the repository root and has no build step.
+The application lives in the repository's `frontend` folder and has no build
+step.
 
 ## Local development
 
@@ -32,5 +33,5 @@ overridden before the site scripts load:
 
 ## Deployment
 
-Deploy the repository root as a static website. Do not configure an output or
-build directory. The primary branch is `main`.
+Deploy the `frontend` folder as a static website. Do not configure a separate
+output or build directory. The primary branch is `main`.
