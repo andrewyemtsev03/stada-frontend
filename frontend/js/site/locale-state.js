@@ -63,7 +63,13 @@ function applyLocalizedBackendDomText(lang) {
   });
 }
 
-const STADA_BACKEND_BASE_URL = window.STADA_BACKEND_BASE_URL || 'https://stada-content-backend.onrender.com';
+const STADA_AZURE_BACKEND_BASE_URL = 'https://api.stada.kz';
+const STADA_RENDER_BACKEND_BASE_URL = 'https://stada-content-backend.onrender.com';
+const STADA_BACKEND_HEALTH_PATH = '/health/db';
+const STADA_BACKEND_HEALTH_TIMEOUT_MS = 3000;
+const STADA_BACKEND_SELECTION_CACHE_KEY = 'stada-backend-selection-v1';
+const STADA_BACKEND_SELECTION_CACHE_MS = 2 * 60 * 1000;
+let STADA_BACKEND_BASE_URL = window.STADA_BACKEND_BASE_URL || STADA_RENDER_BACKEND_BASE_URL;
 let STADA_DOMAIN_COUNTRY = '';
 let STADA_CONFIG_COUNTRY = '';
 let STADA_DEFAULT_COUNTRY = 'kz';
@@ -73,6 +79,76 @@ let backendPagePayload = null;
 let backendProductPayload = null;
 const BACKEND_REQUEST_TIMEOUT_MS = 12000;
 const CRITICAL_IMAGE_WAIT_MS = 2500;
+
+function readCachedBackendSelection() {
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(STADA_BACKEND_SELECTION_CACHE_KEY) || 'null');
+    const allowedBases = new Set([STADA_AZURE_BACKEND_BASE_URL, STADA_RENDER_BACKEND_BASE_URL]);
+    if (
+      allowedBases.has(cached?.baseUrl)
+      && Number.isFinite(cached?.checkedAt)
+      && Date.now() - cached.checkedAt < STADA_BACKEND_SELECTION_CACHE_MS
+    ) {
+      return cached.baseUrl;
+    }
+  } catch (error) {
+    // Storage can be unavailable in privacy modes; health selection still works.
+  }
+  return '';
+}
+
+function cacheBackendSelection(baseUrl) {
+  try {
+    sessionStorage.setItem(STADA_BACKEND_SELECTION_CACHE_KEY, JSON.stringify({
+      baseUrl,
+      checkedAt: Date.now(),
+    }));
+  } catch (error) {
+    // Ignore storage failures.
+  }
+}
+
+async function isBackendDatabaseHealthy(baseUrl) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), STADA_BACKEND_HEALTH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(new URL(STADA_BACKEND_HEALTH_PATH, baseUrl), {
+      cache: 'no-store',
+      credentials: 'omit',
+      headers: { Accept: 'application/json' },
+      signal: controller.signal,
+    });
+    if (!response.ok) return false;
+    const payload = await response.json();
+    return payload?.status === 'ok' && payload?.database?.connected === true;
+  } catch (error) {
+    return false;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function selectFrontendBackendBaseUrl() {
+  if (window.STADA_BACKEND_BASE_URL) {
+    STADA_BACKEND_BASE_URL = window.STADA_BACKEND_BASE_URL;
+    window.STADA_ACTIVE_BACKEND_BASE_URL = STADA_BACKEND_BASE_URL;
+    return STADA_BACKEND_BASE_URL;
+  }
+
+  const cachedBaseUrl = readCachedBackendSelection();
+  if (cachedBaseUrl) {
+    STADA_BACKEND_BASE_URL = cachedBaseUrl;
+  } else {
+    STADA_BACKEND_BASE_URL = await isBackendDatabaseHealthy(STADA_AZURE_BACKEND_BASE_URL)
+      ? STADA_AZURE_BACKEND_BASE_URL
+      : STADA_RENDER_BACKEND_BASE_URL;
+    cacheBackendSelection(STADA_BACKEND_BASE_URL);
+  }
+
+  window.STADA_ACTIVE_BACKEND_BASE_URL = STADA_BACKEND_BASE_URL;
+  return STADA_BACKEND_BASE_URL;
+}
 
 async function fetchJsonWithTimeout(url) {
   const controller = new AbortController();

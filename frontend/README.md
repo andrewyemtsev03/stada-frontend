@@ -22,8 +22,12 @@ Serve the repository with any static HTTP server. Opening the HTML files directl
 with `file://` is not supported because the site loads JavaScript modules and API
 content.
 
-The public content API defaults to the current production backend. It can be
-overridden before the site scripts load:
+The site checks `https://api.stada.kz/health/db` and uses the Azure backend when
+both the service and its PostgreSQL connection are healthy. It falls back to the
+current Render backend when that check fails. The result is cached in session
+storage for two minutes to avoid delaying every page navigation.
+
+The backend can be overridden before the site scripts load:
 
 ```html
 <script>

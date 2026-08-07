@@ -229,6 +229,7 @@ function initHistoryTimelineMedia() {
 // Bind event listeners
 document.addEventListener('DOMContentLoaded', async () => {
   try {
+    await selectFrontendBackendBaseUrl();
     await loadFrontendCountryOptions();
     initializeLocaleState();
     renderLanguageOptions(currentCountry);
