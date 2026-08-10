@@ -6,7 +6,7 @@
     <meta name="description" content="About STADA and its work across Eurasia" />
     <title data-i18n-key="about_page_title"></title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=about-page-2" />
+    <link rel="stylesheet" href="css/style.css?v=about-page-3" />
   </head>
   <body class="about-page">
     <nav>
@@ -32,7 +32,7 @@
     <main id="main-content">
       <section class="hero-section stada-home-hero worldwide-hero worldwide-hero--static about-hero" aria-labelledby="about-page-heading">
         <div class="stada-home-hero__media worldwide-hero__media" aria-label="STADA team">
-          <img data-backend-image-id="about_image_002" src="assets/hero/hero-building.png" alt="STADA team" />
+          <img data-backend-image-id="about_image_002" src="assets/hero/about-hero-generated.png" alt="Pharmaceutical professionals collaborating in a modern research workplace" fetchpriority="high" />
         </div>
         <div class="stada-home-hero__copy worldwide-hero__copy">
           <p class="worldwide-hero__kicker" data-i18n-key="site_name"></p>
@@ -41,7 +41,15 @@
         </div>
       </section>
 
-      <section class="about-leadership" aria-labelledby="about-leadership-heading">
+      <div class="about-section-nav" role="navigation" aria-label="About page sections">
+        <div class="about-page-shell about-section-nav__inner">
+          <a href="#leadership"><span>01</span><strong data-i18n-key="about_leadership_heading"></strong></a>
+          <a href="#pharmacovigilance"><span>02</span><strong data-i18n-key="about_pv_heading"></strong></a>
+          <a href="#compliance"><span>03</span><strong data-i18n-key="about_compliance_heading"></strong></a>
+        </div>
+      </div>
+
+      <section class="about-leadership" id="leadership" aria-labelledby="about-leadership-heading">
         <div class="about-page-shell">
           <header class="about-section-heading">
             <p class="about-page-eyebrow" data-i18n-key="about_leadership_eyebrow"></p>
@@ -77,7 +85,7 @@
         </div>
       </section>
 
-      <section class="about-page-pv" aria-labelledby="about-pv-heading">
+      <section class="about-page-pv" id="pharmacovigilance" aria-labelledby="about-pv-heading">
         <div class="about-page-shell about-page-pv__grid">
           <div class="about-page-pv__badge" aria-hidden="true">
             <svg viewBox="0 0 64 64" role="img"><path d="M32 5 54 14v15c0 14-8.8 24.8-22 30C18.8 53.8 10 43 10 29V14L32 5Z" /><path d="M32 19v25M19.5 31.5h25" /></svg>
@@ -94,7 +102,7 @@
         </div>
       </section>
 
-      <section class="about-compliance" aria-labelledby="about-compliance-heading">
+      <section class="about-compliance" id="compliance" aria-labelledby="about-compliance-heading">
         <div class="about-page-shell">
           <div class="about-compliance__intro">
             <div>
