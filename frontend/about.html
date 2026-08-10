@@ -6,7 +6,7 @@
     <meta name="description" content="About STADA and its work across Eurasia" />
     <title data-i18n-key="about_page_title"></title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=about-page-1" />
+    <link rel="stylesheet" href="css/style.css?v=about-page-2" />
   </head>
   <body class="about-page">
     <nav>
@@ -30,39 +30,50 @@
     </nav>
 
     <main id="main-content">
-      <section class="about-page-hero" aria-labelledby="about-page-heading">
-        <div class="about-page-hero__media">
-          <img data-backend-image-id="about_image_002" src="assets/hero/hero-building.png" alt="STADA headquarters" />
+      <section class="hero-section stada-home-hero worldwide-hero worldwide-hero--static about-hero" aria-labelledby="about-page-heading">
+        <div class="stada-home-hero__media worldwide-hero__media" aria-label="STADA team">
+          <img data-backend-image-id="about_image_002" src="assets/hero/hero-building.png" alt="STADA team" />
         </div>
-        <div class="about-page-hero__shade" aria-hidden="true"></div>
-        <div class="about-page-hero__inner">
-          <p class="about-page-eyebrow" data-i18n-key="site_name"></p>
+        <div class="stada-home-hero__copy worldwide-hero__copy">
+          <p class="worldwide-hero__kicker" data-i18n-key="site_name"></p>
           <h1 id="about-page-heading" data-i18n-key="about_page_heading"></h1>
-          <p class="about-page-hero__lead" data-i18n-key="about_page_intro"></p>
+          <p class="worldwide-hero__lead" data-i18n-key="about_page_intro"></p>
         </div>
       </section>
 
-      <section class="about-page-intro" aria-labelledby="about-page-overview-heading">
-        <div class="about-page-shell about-page-intro__grid">
-          <div class="about-page-intro__copy">
-            <p class="about-page-eyebrow" data-i18n-key="about_overview_eyebrow"></p>
-            <h2 id="about-page-overview-heading" data-i18n-key="about_overview_heading"></h2>
-            <p data-i18n-key="about_page_business"></p>
-            <p data-i18n-key="about_page_eurasia"></p>
-            <p data-i18n-key="about_page_hq"></p>
+      <section class="about-leadership" aria-labelledby="about-leadership-heading">
+        <div class="about-page-shell">
+          <header class="about-section-heading">
+            <p class="about-page-eyebrow" data-i18n-key="about_leadership_eyebrow"></p>
+            <h2 id="about-leadership-heading" data-i18n-key="about_leadership_heading"></h2>
+            <p data-i18n-key="about_leadership_intro"></p>
+          </header>
+          <div class="about-leadership__grid">
+            <article class="about-leader-card">
+              <div class="about-leader-card__media">
+                <img data-backend-image-id="about_image_003" src="https://api.stada.kz/storage/about/images/February2026/01KHQRS2ZFWB4HTYTX11NJ3NFK.png" alt="Куаныш Оспанов" loading="lazy" />
+              </div>
+              <div class="about-leader-card__body">
+                <h3 data-i18n-key="about_leader_ospanov_name"></h3>
+                <p data-i18n-key="about_leader_ospanov_role"></p>
+                <a href="https://api.stada.kz/storage/about/biographies/ru/February2026/01KHQRJZQ48V8KXRT5CWAT09GJ.pdf" target="_blank" rel="noopener">
+                  <span data-i18n-key="about_leader_bio_link"></span><span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+            <article class="about-leader-card">
+              <div class="about-leader-card__media">
+                <img data-backend-image-id="about_image_004" src="https://api.stada.kz/storage/about/images/July2024/01J2KCXDAHVG5CSJZMN1YARZXG.png" alt="Наталья Гарипова" loading="lazy" />
+              </div>
+              <div class="about-leader-card__body">
+                <h3 data-i18n-key="about_leader_garipova_name"></h3>
+                <p data-i18n-key="about_leader_garipova_role"></p>
+                <a href="https://api.stada.kz/storage/about/biographies/ru/February2025/01JMC77QZAWE9D97TTX345FGW2.pdf" target="_blank" rel="noopener">
+                  <span data-i18n-key="about_leader_bio_link"></span><span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
           </div>
-          <aside class="about-page-mission" aria-label="STADA mission">
-            <span data-i18n-key="about_mission_label"></span>
-            <blockquote data-i18n-key="about_mission_text"></blockquote>
-          </aside>
-        </div>
-      </section>
-
-      <section class="about-page-facts" aria-label="STADA facts">
-        <div class="about-page-shell about-page-facts__grid">
-          <article><strong>130+</strong><span data-i18n-key="about_fact_years"></span></article>
-          <article><strong>100+</strong><span data-i18n-key="about_fact_countries"></span></article>
-          <article><strong>11 600+</strong><span data-i18n-key="about_fact_employees"></span></article>
         </div>
       </section>
 
@@ -83,15 +94,43 @@
         </div>
       </section>
 
-      <section class="about-page-career" aria-labelledby="about-career-heading">
-        <div class="about-page-career__media">
-          <img data-backend-image-id="about_image_003" src="assets/hero/career_hero.png" alt="STADA employees" loading="lazy" />
-        </div>
-        <div class="about-page-career__copy">
-          <p class="about-page-eyebrow" data-i18n-key="about_career_eyebrow"></p>
-          <h2 id="about-career-heading" data-i18n-key="about_career_heading"></h2>
-          <p data-i18n-key="about_career_text"></p>
-          <a class="hero-btn" href="https://jobs.stada.com" target="_blank" rel="noopener" data-i18n-key="about_career_cta"></a>
+      <section class="about-compliance" aria-labelledby="about-compliance-heading">
+        <div class="about-page-shell">
+          <div class="about-compliance__intro">
+            <div>
+              <p class="about-page-eyebrow" data-i18n-key="about_compliance_eyebrow"></p>
+              <h2 id="about-compliance-heading" data-i18n-key="about_compliance_heading"></h2>
+            </div>
+            <div class="about-compliance__intro-copy">
+              <p data-i18n-key="about_compliance_intro_1"></p>
+              <p data-i18n-key="about_compliance_intro_2"></p>
+            </div>
+          </div>
+
+          <div class="about-compliance__reporting">
+            <div class="about-compliance__reporting-copy">
+              <p class="about-page-eyebrow">Speak Up</p>
+              <h3 data-i18n-key="about_compliance_speakup_heading"></h3>
+              <p data-i18n-key="about_compliance_speakup_text"></p>
+              <p data-i18n-key="about_compliance_tools_text"></p>
+              <ul>
+                <li data-i18n-key="about_compliance_item_fraud"></li>
+                <li data-i18n-key="about_compliance_item_corruption"></li>
+                <li data-i18n-key="about_compliance_item_competition"></li>
+                <li data-i18n-key="about_compliance_item_conflict"></li>
+              </ul>
+            </div>
+            <aside class="about-compliance__contacts" aria-label="Compliance contacts">
+              <h3 data-i18n-key="about_compliance_report_heading"></h3>
+              <a href="mailto:eurasia_compliance@stada.kz">eurasia_compliance@stada.kz</a>
+              <a href="mailto:compliance@stada.de">compliance@stada.de</a>
+              <a class="about-compliance__portal" href="https://www.compliance-reporting-portal.stada.com/" target="_blank" rel="noopener">
+                <span data-i18n-key="about_compliance_portal_link"></span><span aria-hidden="true">↗</span>
+              </a>
+              <p data-i18n-key="about_compliance_confidentiality"></p>
+            </aside>
+          </div>
+          <p class="about-compliance__note" data-i18n-key="about_compliance_questions"></p>
         </div>
       </section>
     </main>
@@ -101,7 +140,7 @@
         <div class="footer-main">
           <div class="footer-brand">
             <a href="index.html" class="footer-logo" aria-label="STADA logo">
-              <img data-backend-image-id="about_image_004" src="assets/logos/stada_logo.png" alt="STADA logo" />
+              <img data-backend-image-id="about_image_005" src="assets/logos/stada_logo.png" alt="STADA logo" />
             </a>
             <p class="footer-eyebrow" data-i18n-key="site_name"></p>
             <p class="footer-text" data-i18n-key="footer_brand_text"></p>
