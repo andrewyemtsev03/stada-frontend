@@ -6,7 +6,7 @@
     <meta name="description" content="About STADA and its work across Eurasia" />
     <title data-i18n-key="about_page_title"></title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=about-page-3" />
+    <link rel="stylesheet" href="css/style.css?v=about-page-4" />
   </head>
   <body class="about-page">
     <nav>
@@ -40,14 +40,6 @@
           <p class="worldwide-hero__lead" data-i18n-key="about_page_intro"></p>
         </div>
       </section>
-
-      <div class="about-section-nav" role="navigation" aria-label="About page sections">
-        <div class="about-page-shell about-section-nav__inner">
-          <a href="#leadership"><span>01</span><strong data-i18n-key="about_leadership_heading"></strong></a>
-          <a href="#pharmacovigilance"><span>02</span><strong data-i18n-key="about_pv_heading"></strong></a>
-          <a href="#compliance"><span>03</span><strong data-i18n-key="about_compliance_heading"></strong></a>
-        </div>
-      </div>
 
       <section class="about-leadership" id="leadership" aria-labelledby="about-leadership-heading">
         <div class="about-page-shell">
@@ -105,7 +97,7 @@
       <section class="about-compliance" id="compliance" aria-labelledby="about-compliance-heading">
         <div class="about-page-shell">
           <div class="about-compliance__intro">
-            <div>
+            <div class="about-compliance__title">
               <p class="about-page-eyebrow" data-i18n-key="about_compliance_eyebrow"></p>
               <h2 id="about-compliance-heading" data-i18n-key="about_compliance_heading"></h2>
             </div>
@@ -115,28 +107,38 @@
             </div>
           </div>
 
-          <div class="about-compliance__reporting">
-            <div class="about-compliance__reporting-copy">
-              <p class="about-page-eyebrow">Speak Up</p>
+          <div class="about-compliance__speakup">
+            <header class="about-compliance__speakup-header">
+              <span>Speak Up</span>
               <h3 data-i18n-key="about_compliance_speakup_heading"></h3>
-              <p data-i18n-key="about_compliance_speakup_text"></p>
-              <p data-i18n-key="about_compliance_tools_text"></p>
-              <ul>
-                <li data-i18n-key="about_compliance_item_fraud"></li>
-                <li data-i18n-key="about_compliance_item_corruption"></li>
-                <li data-i18n-key="about_compliance_item_competition"></li>
-                <li data-i18n-key="about_compliance_item_conflict"></li>
-              </ul>
+            </header>
+
+            <div class="about-compliance__speakup-body">
+              <div class="about-compliance__speakup-copy">
+                <p data-i18n-key="about_compliance_speakup_text"></p>
+                <p data-i18n-key="about_compliance_tools_text"></p>
+              </div>
+              <ol class="about-compliance__topics">
+                <li><span>01</span><strong data-i18n-key="about_compliance_item_fraud"></strong></li>
+                <li><span>02</span><strong data-i18n-key="about_compliance_item_corruption"></strong></li>
+                <li><span>03</span><strong data-i18n-key="about_compliance_item_competition"></strong></li>
+                <li><span>04</span><strong data-i18n-key="about_compliance_item_conflict"></strong></li>
+              </ol>
             </div>
-            <aside class="about-compliance__contacts" aria-label="Compliance contacts">
-              <h3 data-i18n-key="about_compliance_report_heading"></h3>
-              <a href="mailto:eurasia_compliance@stada.kz">eurasia_compliance@stada.kz</a>
-              <a href="mailto:compliance@stada.de">compliance@stada.de</a>
+
+            <div class="about-compliance__action-row">
+              <div class="about-compliance__action-copy">
+                <h3 data-i18n-key="about_compliance_report_heading"></h3>
+                <p data-i18n-key="about_compliance_confidentiality"></p>
+              </div>
+              <div class="about-compliance__emails">
+                <a href="mailto:eurasia_compliance@stada.kz">eurasia_compliance@stada.kz</a>
+                <a href="mailto:compliance@stada.de">compliance@stada.de</a>
+              </div>
               <a class="about-compliance__portal" href="https://www.compliance-reporting-portal.stada.com/" target="_blank" rel="noopener">
                 <span data-i18n-key="about_compliance_portal_link"></span><span aria-hidden="true">↗</span>
               </a>
-              <p data-i18n-key="about_compliance_confidentiality"></p>
-            </aside>
+            </div>
           </div>
           <p class="about-compliance__note" data-i18n-key="about_compliance_questions"></p>
         </div>
