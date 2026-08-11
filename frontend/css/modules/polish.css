@@ -371,6 +371,7 @@ nav :where(a, button):focus-visible,
 /* Shared line-and-label signature for every major section heading. */
 .culture-eyebrow,
 .history-eyebrow,
+.about-page-eyebrow,
 .hero-products-text .hero-label,
 .worldwide-hero--static .worldwide-hero__kicker {
   display: inline-flex;
@@ -388,6 +389,7 @@ nav :where(a, button):focus-visible,
 
 .culture-eyebrow::before,
 .history-eyebrow::before,
+.about-page-eyebrow::before,
 .hero-products-text .hero-label::before,
 .worldwide-hero--static .worldwide-hero__kicker::before {
   content: '';
@@ -409,6 +411,7 @@ nav :where(a, button):focus-visible,
   .section-kicker,
   .culture-eyebrow,
   .history-eyebrow,
+  .about-page-eyebrow,
   .catalog-eyebrow,
   .product-detail-page .product-kicker,
   .hero-products-text .hero-label,
@@ -420,6 +423,7 @@ nav :where(a, button):focus-visible,
   .section-kicker::before,
   .culture-eyebrow::before,
   .history-eyebrow::before,
+  .about-page-eyebrow::before,
   .catalog-eyebrow::before,
   .product-detail-page .product-kicker::before,
   .hero-products-text .hero-label::before,

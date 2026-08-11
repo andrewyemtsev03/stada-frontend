@@ -244,17 +244,6 @@
 
 .about-compliance__title {
   position: relative;
-  padding-top: 22px;
-}
-
-.about-compliance__title::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 58px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--stada-red);
 }
 
 .about-compliance .about-page-eyebrow {
@@ -551,10 +540,6 @@
   .about-leader-card__body {
     min-height: 250px;
     padding: 30px 26px;
-  }
-
-  .about-compliance__title {
-    padding-top: 20px;
   }
 
   .about-compliance__report-card,
