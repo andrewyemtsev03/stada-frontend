@@ -564,7 +564,10 @@ function renderDynamicProductPage(payload) {
     formulaImage.alt = '';
   }
 
-  const badges = page.badges?.length ? page.badges : [product.therapeuticArea, product.shortDescription].filter(Boolean).slice(0, 3);
+  // Only show intentional highlights here. The therapeutic area already appears
+  // in the kicker and the short description is already the hero lead, so using
+  // either as a fallback creates visually heavy duplicate content.
+  const badges = page.badges?.length ? page.badges : [];
   replaceChildrenFromList('[data-product-badges]', badges, text => {
     const item = document.createElement('span');
     item.textContent = text;
