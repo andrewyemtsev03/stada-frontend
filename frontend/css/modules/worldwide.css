@@ -818,7 +818,7 @@
   left: anchor(center);
   translate: calc(-50% + var(--marker-offset-x, 0px)) var(--marker-offset-y, 0px);
   margin-bottom: 8px;
-  transition: opacity 0.8s ease, filter 0.8s ease, translate 0.24s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: opacity 0.8s ease, filter 0.8s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   will-change: opacity, filter;
 }
 
@@ -1204,12 +1204,34 @@
   .worldwide-page .globe-map {
     position: relative;
     left: auto;
-    width: min(122vw, 520px);
+    width: min(138vw, 560px);
     max-width: none;
     margin: -0.25rem 0 -1rem;
     justify-self: center;
     transform: none;
   }
+
+  .worldwide-page .globe-marker-label {
+    min-height: 1.75rem;
+    padding: 0.2rem;
+    margin-bottom: 6px;
+  }
+
+  .worldwide-page .globe-marker-label img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .worldwide-page .globe-marker-label[data-country-id="kazakhstan"] { --marker-offset-y: -8px; }
+  .worldwide-page .globe-marker-label[data-country-id="kyrgyzstan"] { --marker-offset-x: 18px; --marker-offset-y: 4px; }
+  .worldwide-page .globe-marker-label[data-country-id="uzbekistan"] { --marker-offset-x: -14px; --marker-offset-y: 12px; }
+  .worldwide-page .globe-marker-label[data-country-id="germany"] { --marker-offset-x: -8px; --marker-offset-y: -6px; }
+  .worldwide-page .globe-marker-label[data-country-id="ukraine"] { --marker-offset-x: 12px; --marker-offset-y: -12px; }
+  .worldwide-page .globe-marker-label[data-country-id="moldova"] { --marker-offset-x: -20px; --marker-offset-y: 14px; }
+  .worldwide-page .globe-marker-label[data-country-id="georgia"] { --marker-offset-x: -18px; --marker-offset-y: 26px; }
+  .worldwide-page .globe-marker-label[data-country-id="armenia"] { --marker-offset-x: 6px; --marker-offset-y: 30px; }
+  .worldwide-page .globe-marker-label[data-country-id="azerbaijan"] { --marker-offset-x: 24px; --marker-offset-y: 12px; }
+  .worldwide-page .globe-marker-label[data-country-id="united-arab-emirates"] { --marker-offset-y: 8px; }
 
   .worldwide-page .worldwide-country-detail {
     position: relative;
