@@ -1,6 +1,6 @@
 /* Ordered stylesheet entry point. Keep imports in this cascade order. */
 @import url("modules/base.css");
-@import url("modules/products/layout.css?v=product-hero-mobile-order-1");
+@import url("modules/products/layout.css?v=product-filter-dropdown-1");
 @import url("modules/products/themes-1.css");
 @import url("modules/products/themes-2.css");
 @import url("modules/products/themes-3.css");

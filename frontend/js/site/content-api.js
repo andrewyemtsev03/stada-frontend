@@ -487,7 +487,7 @@ function setPharmacyPartnerLinksVisible(isVisible) {
 }
 
 function setProductCatalogChromeVisible(isVisible, payload = backendPagePayload) {
-  document.querySelectorAll('.catalog-filters').forEach(container => {
+  document.querySelectorAll('.catalog-filters, .catalog-filter-select').forEach(container => {
     container.hidden = !isVisible;
   });
 
@@ -508,6 +508,10 @@ function applyProductCatalogFilter(activeFilter = 'all') {
     const isActive = button === targetFilter;
     button.classList.toggle('is-active', isActive);
     button.setAttribute('aria-pressed', String(isActive));
+  });
+
+  document.querySelectorAll('[data-product-filter-select]').forEach(select => {
+    select.value = filterValue;
   });
 
   const cards = Array.from(document.querySelectorAll('[data-product-card]'));

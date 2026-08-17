@@ -481,11 +481,18 @@ function initProductsCarousel() {
 
 function initProductCatalogFilters() {
   const filters = Array.from(document.querySelectorAll('[data-product-filter]'));
-  if (!filters.length) return;
+  const selects = Array.from(document.querySelectorAll('[data-product-filter-select]'));
+  if (!filters.length && !selects.length) return;
 
   filters.forEach(filterButton => {
     filterButton.addEventListener('click', () => {
       applyProductCatalogFilter(filterButton.dataset.productFilter);
+    });
+  });
+
+  selects.forEach(select => {
+    select.addEventListener('change', () => {
+      applyProductCatalogFilter(select.value);
     });
   });
 

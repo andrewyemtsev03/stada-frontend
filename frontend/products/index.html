@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/logos/stada_logo.png">
   <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/style.css?v=product-hero-mobile-order-1" />
+    <link rel="stylesheet" href="../css/style.css?v=product-filter-dropdown-1" />
   </head>
   <body class="products-page">
     <nav>
@@ -71,6 +71,23 @@
           <div class="catalog-section__header">
             <span class="catalog-eyebrow" data-i18n-key="products_catalog_label"></span>
             <h2 id="products-catalog-heading" data-i18n-key="products_heading"></h2>
+          </div>
+
+          <div class="catalog-filter-select">
+            <label for="catalog-category-select" data-i18n-key="nav_categories"></label>
+            <div class="catalog-filter-select__control">
+              <select id="catalog-category-select" data-product-filter-select>
+                <option value="all" data-i18n-key="products_filter_all"></option>
+                <option value="cold" data-i18n-key="products_category_cold"></option>
+                <option value="immunity" data-i18n-key="products_category_immunity"></option>
+                <option value="digestive" data-i18n-key="products_category_digestive"></option>
+                <option value="kids" data-i18n-key="products_category_kids"></option>
+                <option value="cardio" data-i18n-key="products_category_cardio"></option>
+                <option value="allergy" data-i18n-key="products_category_allergy"></option>
+                <option value="urology" data-i18n-key="products_category_urology"></option>
+                <option value="women" data-backend-text-id="products_index_text_005"></option>
+              </select>
+            </div>
           </div>
 
           <div class="catalog-filters" role="group" aria-label="Product categories">
@@ -633,10 +650,10 @@
 
     <script src="../js/site/bootstrap.js?v=product-safety-1"></script>
     <script src="../js/site/locale-state.js?v=site-modules-1"></script>
-    <script src="../js/site/content-api.js?v=site-modules-1"></script>
+    <script src="../js/site/content-api.js?v=product-filter-dropdown-1"></script>
     <script src="../js/site/dynamic-product.js?v=site-modules-1"></script>
     <script src="../js/site/locale-controls.js?v=site-modules-1"></script>
-    <script src="../js/site/homepage.js?v=site-modules-1"></script>
+    <script src="../js/site/homepage.js?v=product-filter-dropdown-1"></script>
     <script src="../js/site/page-reveals.js?v=site-modules-1"></script>
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
