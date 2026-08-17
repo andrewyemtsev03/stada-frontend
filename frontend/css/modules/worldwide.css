@@ -1082,21 +1082,32 @@
   }
 
   .worldwide-hero--static .worldwide-hero__media img {
-    width: 160%;
+    width: 100%;
+    height: 100%;
     max-width: none;
-    object-position: 54% center;
-    transform: translateX(-12%) scale(1.02);
+    object-position: 72% center;
+    transform: none;
+  }
+
+  .about-page .about-hero.worldwide-hero--static .worldwide-hero__media img {
+    object-position: 69% center;
   }
 
   .worldwide-hero--static .worldwide-hero__copy {
-    width: min(360px, calc(100% - 2rem));
-    height: 100%;
+    position: absolute;
+    top: 0.75rem;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: min(calc(100vw - 2rem), 370px);
+    height: 64%;
     margin-left: 1rem;
-    padding: 4rem 0 2rem;
-    justify-content: flex-start;
+    padding-block: 1.25rem 0.75rem;
+    justify-content: center;
   }
 
   .worldwide-hero--static .worldwide-hero__kicker {
+    width: fit-content;
     margin-bottom: 0.75rem;
     padding: 0.38rem 0.62rem;
     border: 1px solid rgba(255, 255, 255, 0.28);
@@ -1108,28 +1119,38 @@
     backdrop-filter: blur(5px);
   }
 
-  .worldwide-page .worldwide-hero--static .worldwide-hero__kicker::before {
+  .worldwide-hero--static .worldwide-hero__kicker::before {
     display: none;
   }
 
   .worldwide-hero--static h1,
   html[lang="kz"] .worldwide-hero--static h1 {
-    max-width: 13ch;
-    margin-bottom: 1rem;
+    max-width: 100%;
+    margin-bottom: 0.8rem;
     color: #fff;
-    font-size: 2.1rem;
-    line-height: 1.16;
+    font-size: clamp(1.72rem, 7.8vw, 2.05rem);
+    line-height: 1.12;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    text-wrap: balance;
   }
 
   .worldwide-hero--static .worldwide-hero__lead {
-    margin-bottom: 1.25rem;
+    max-width: 32ch;
+    margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.98rem;
+    font-size: 0.94rem;
+    line-height: 1.4;
+    text-wrap: pretty;
   }
 
   .worldwide-hero--static .hero-btn {
-    width: min(100%, 16.5rem);
-    min-height: 50px;
+    width: min(100%, 13.2rem);
+    min-height: 40px;
+    padding: 0.52rem 0.82rem;
+    font-size: clamp(0.8rem, 3.45vw, 0.94rem);
+    white-space: nowrap;
   }
 }
 
@@ -1154,7 +1175,14 @@
   }
 
   .worldwide-hero--static .worldwide-hero__copy {
-    padding-top: 3.25rem;
+    width: calc(100vw - 2rem);
+    margin-left: 1rem;
+    padding-block: 1rem 0.65rem;
+  }
+
+  .worldwide-hero--static h1,
+  html[lang="kz"] .worldwide-hero--static h1 {
+    font-size: clamp(1.68rem, 7.6vw, 1.95rem);
   }
 }
 

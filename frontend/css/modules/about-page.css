@@ -525,6 +525,11 @@
 }
 
 @media (max-width: 640px) {
+  .about-leadership,
+  .about-compliance {
+    padding-block: 56px;
+  }
+
   .about-page-shell {
     width: min(100% - 32px, 1160px);
   }

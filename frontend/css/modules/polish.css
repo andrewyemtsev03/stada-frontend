@@ -408,6 +408,16 @@ nav :where(a, button):focus-visible,
 }
 
 @media (max-width: 720px) {
+  body.menu-open {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body.about-page .about-hero.worldwide-hero--static .worldwide-hero__kicker::before,
+  body.worldwide-page .worldwide-hero--static .worldwide-hero__kicker::before {
+    display: none;
+  }
+
   .section-kicker,
   .culture-eyebrow,
   .history-eyebrow,

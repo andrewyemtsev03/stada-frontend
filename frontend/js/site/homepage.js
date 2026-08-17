@@ -6,6 +6,7 @@ function setMenuOpen(isOpen) {
   menu.classList.toggle('open', isOpen);
   hamburger.classList.toggle('active', isOpen);
   hamburger.setAttribute('aria-expanded', String(isOpen));
+  document.body.classList.toggle('menu-open', isOpen);
 }
 
 function toggleMenu() {

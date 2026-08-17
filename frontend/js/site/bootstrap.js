@@ -77,6 +77,7 @@ const FRONTEND_STATIC_TEXT = {
     "nav_news": "Новости и Медиа",
     "nav_products": "Продукты",
     "nav_worldwide": "Наши филиалы",
+    "news_section_label": "Новости",
     "news_section_lead": "Главные новости, медиа и продуктовые обновления STADA в одном динамичном блоке.",
     "product_aqualor_baby_name": "Аквалор Беби",
     "product_aqualor_forte_name": "Аквалор Актив Форте",
@@ -147,6 +148,7 @@ const FRONTEND_STATIC_TEXT = {
     "nav_news": "Жаңалықтар мен медиа",
     "nav_products": "Өнімдер",
     "nav_worldwide": "Біздің филиалдарымыз",
+    "news_section_label": "Жаңалықтар",
     "news_section_lead": "STADA жаңалықтары, медиа материалдары және өнім жаңартулары бір заманауи блокта.",
     "product_aqualor_baby_name": "Аквалор Беби",
     "product_aqualor_forte_name": "Аквалор Актив Форте",
@@ -217,6 +219,7 @@ const FRONTEND_STATIC_TEXT = {
     "nav_news": "Жаңылыктар жана медиа",
     "nav_products": "Продуктылар",
     "nav_worldwide": "Биздин филиалдар",
+    "news_section_label": "Жаңылыктар",
     "news_section_lead": "STADA жаңылыктары, медиа материалдары жана продукт жаңыртуулары бир заманбап блокто.",
     "product_aqualor_baby_name": "Аквалор Беби",
     "product_aqualor_forte_name": "Аквалор Актив Форте",
@@ -285,6 +288,7 @@ FRONTEND_STATIC_TEXT.en = {
   "nav_news": "News and Media",
   "nav_products": "Products",
   "nav_worldwide": "Our locations",
+  "news_section_label": "News",
   "news_section_lead": "STADA news, media stories, and product updates in one dynamic section.",
   "product_aqualor_baby_name": "Aqualor Baby",
   "product_aqualor_forte_name": "Aqualor Active Forte",
@@ -352,7 +356,8 @@ FRONTEND_STATIC_TEXT.ge = {
   "nav_news": "სიახლეები და მედია",
   "nav_products": "პროდუქტები",
   "nav_worldwide": "ჩვენი ოფისები",
-  "news_section_lead": "STADA-ს სიახლეები, მედია მასალები და პროდუქტის განახლებები ერთ დინამიკურ ბლოკში.",
+    "news_section_label": "სიახლეები",
+    "news_section_lead": "STADA-ს სიახლეები, მედია მასალები და პროდუქტის განახლებები ერთ დინამიკურ ბლოკში.",
   "product_aqualor_baby_name": "აკვალორ ბეიბი",
   "product_aqualor_forte_name": "აკვალორ აქტივ ფორტე",
   "product_aqualor_gorlo_name": "აკვალორ ყელი",
@@ -426,7 +431,8 @@ FRONTEND_STATIC_TEXT.az = {
   "nav_news": "Xəbərlər və media",
   "nav_products": "Məhsullar",
   "nav_worldwide": "Filiallarımız",
-  "news_section_lead": "STADA xəbərləri, media materialları və məhsul yenilikləri bir bölmədə.",
+    "news_section_label": "Xəbərlər",
+    "news_section_lead": "STADA xəbərləri, media materialları və məhsul yenilikləri bir bölmədə.",
   "product_aqualor_baby_name": "Aqualor Baby",
   "product_aqualor_forte_name": "Aqualor Active Forte",
   "product_aqualor_gorlo_name": "Aqualor Throat",
@@ -517,7 +523,8 @@ FRONTEND_STATIC_TEXT.hy = {
   "nav_news": "Նորություններ և լրատվամիջոցներ",
   "nav_products": "Ապրանքներ",
   "nav_worldwide": "Մեր մասնաճյուղերը",
-  "news_section_lead": "STADA-ի հիմնական նորությունները, լրատվամիջոցները և արտադրանքի թարմացումները մեկ դինամիկ բլոկում:",
+    "news_section_label": "Նորություններ",
+    "news_section_lead": "STADA-ի հիմնական նորությունները, լրատվամիջոցները և արտադրանքի թարմացումները մեկ դինամիկ բլոկում:",
   "product_aqualor_baby_name": "Aqualor Baby",
   "product_aqualor_forte_name": "Aqualor Active Forte",
   "product_aqualor_gorlo_name": "Aqualor կոկորդ",
@@ -585,6 +592,7 @@ FRONTEND_STATIC_TEXT.ro = {
   nav_news: 'Știri și media',
   nav_products: 'Produse',
   nav_worldwide: 'Rețeaua internațională',
+  news_section_label: 'Știri',
   news_section_lead: 'Știri, articole media și noutăți despre produsele STADA într-o singură secțiune.',
   product_back: 'Înapoi la produse',
   products_browse_catalog: 'Vezi catalogul',
@@ -635,6 +643,7 @@ FRONTEND_STATIC_TEXT.uz = {
   nav_news: 'Yangiliklar va media',
   nav_products: 'Mahsulotlar',
   nav_worldwide: 'Bizning vakolatxonalarimiz',
+  news_section_label: 'Yangiliklar',
   news_section_lead: 'STADA yangiliklari, media materiallari va mahsulot yangilanishlari bitta zamonaviy bo‘limda.',
   product_back: 'Mahsulotlarga qaytish',
   products_browse_catalog: "Katalogni ko‘rish",
@@ -654,6 +663,36 @@ FRONTEND_STATIC_TEXT.uz = {
   site_name: 'STADA Uzbekistan',
   where_to_buy_heading: 'Qayerdan sotib olish mumkin',
 };
+
+Object.assign(FRONTEND_STATIC_TEXT.ru, {
+  history_timeline_eyebrow: 'Путь сквозь время',
+});
+Object.assign(FRONTEND_STATIC_TEXT.kz, {
+  history_timeline_eyebrow: 'Уақыт арқылы саяхат',
+});
+Object.assign(FRONTEND_STATIC_TEXT.kg, {
+  history_timeline_eyebrow: 'Убакыт аркылуу саякат',
+});
+Object.assign(FRONTEND_STATIC_TEXT.en, {
+  history_timeline_eyebrow: 'Journey through time',
+});
+Object.assign(FRONTEND_STATIC_TEXT.ge, {
+  history_timeline_eyebrow: 'მოგზაურობა დროში',
+});
+Object.assign(FRONTEND_STATIC_TEXT.az, {
+  history_timeline_eyebrow: 'Zamana səyahət',
+});
+Object.assign(FRONTEND_STATIC_TEXT.hy, {
+  history_timeline_eyebrow: 'Ճանապարհորդություն ժամանակի միջով',
+});
+Object.assign(FRONTEND_STATIC_TEXT.ro, {
+  history_timeline_eyebrow: 'Călătorie în timp',
+  history_source_note: 'Etapele-cheie se bazează pe cronologia corporativă STADA.',
+});
+Object.assign(FRONTEND_STATIC_TEXT.uz, {
+  history_timeline_eyebrow: 'Vaqt bo‘ylab sayohat',
+  history_source_note: 'Asosiy bosqichlar STADA korporativ xronologiyasiga asoslangan.',
+});
 
 const LOCALIZED_BACKEND_DOM_TEXT = {
   kz: {
