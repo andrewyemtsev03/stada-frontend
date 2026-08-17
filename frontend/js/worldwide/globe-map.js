@@ -1,5 +1,5 @@
 import createGlobe from "https://esm.sh/cobe@2.0.1";
-import { getCountryName } from "./countries-data.js?v=worldwide-35";
+import { getCountryName } from "./countries-data.js?v=worldwide-36";
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
@@ -49,6 +49,8 @@ export class GlobeMap {
     this.framePhi = 0;
     this.frameTheta = 0.22;
     this.labelElements = new Map();
+    this.labelOffsets = new Map();
+    this.lastLabelLayout = 0;
     this.isPaused = false;
     this.isDragging = false;
     this.didMove = false;
@@ -234,6 +236,100 @@ export class GlobeMap {
       baseColor: [1, 1, 1],
       arcColor: [0, 0.36, 0.72],
       markerElevation: 0.02,
+    });
+    this.layoutMarkerLabels();
+  }
+
+  layoutMarkerLabels() {
+    const isCompact = window.matchMedia("(max-width: 720px)").matches;
+    if (!isCompact) {
+      this.labelElements.forEach((label, countryId) => {
+        if (!this.labelOffsets.has(countryId)) return;
+        label.style.removeProperty("--marker-offset-x");
+        label.style.removeProperty("--marker-offset-y");
+      });
+      this.labelOffsets.clear();
+      return;
+    }
+
+    const now = performance.now();
+    if (now - this.lastLabelLayout < 110) return;
+    this.lastLabelLayout = now;
+
+    const rootRect = this.root.getBoundingClientRect();
+    const labels = [];
+
+    this.labelElements.forEach((label, countryId) => {
+      const opacity = Number.parseFloat(getComputedStyle(label).opacity || "0");
+      if (opacity < 0.18) return;
+
+      labels.push({
+        countryId,
+        label,
+        opacity,
+        width: label.offsetWidth,
+        height: label.offsetHeight,
+        left: rootRect.left + label.offsetLeft - label.offsetWidth / 2,
+        top: rootRect.top + label.offsetTop,
+      });
+    });
+
+    labels.sort((first, second) => {
+      const firstSelected = first.countryId === this.selectedId ? 1 : 0;
+      const secondSelected = second.countryId === this.selectedId ? 1 : 0;
+      return secondSelected - firstSelected || second.opacity - first.opacity || first.top - second.top;
+    });
+
+    const candidates = [
+      [0, 0],
+      [-18, -22], [18, -22],
+      [-24, 4], [24, 4],
+      [-16, 28], [16, 28],
+      [0, -38],
+      [-38, -30], [38, -30],
+      [-42, 18], [42, 18],
+      [-30, 42], [30, 42],
+      [0, 48],
+      [-54, -6], [54, -6],
+      [-70, 24], [70, 24],
+      [-66, -38], [66, -38],
+      [-54, 56], [54, 56],
+      [0, 72],
+    ];
+    const placed = [];
+    const padding = 3;
+
+    labels.forEach((item) => {
+      let best = null;
+
+      candidates.forEach(([x, y]) => {
+        const candidate = {
+          left: item.left + x,
+          top: item.top + y,
+          right: item.left + x + item.width,
+          bottom: item.top + y + item.height,
+        };
+        const outside =
+          Math.max(rootRect.left + 4 - candidate.left, 0) +
+          Math.max(candidate.right - rootRect.right - 4, 0) +
+          Math.max(rootRect.top + 4 - candidate.top, 0) +
+          Math.max(candidate.bottom - rootRect.bottom - 4, 0);
+        const overlap = placed.reduce((total, other) => {
+          const overlapWidth = Math.max(0, Math.min(candidate.right + padding, other.right) - Math.max(candidate.left - padding, other.left));
+          const overlapHeight = Math.max(0, Math.min(candidate.bottom + padding, other.bottom) - Math.max(candidate.top - padding, other.top));
+          return total + overlapWidth * overlapHeight;
+        }, 0);
+        const distance = Math.hypot(x, y);
+        const score = overlap * 100 + outside * 1000 + distance;
+
+        if (!best || score < best.score) best = { x, y, score, rect: candidate };
+      });
+
+      if (!best) return;
+      this.labelOffsets.set(item.countryId, { x: best.x, y: best.y });
+      item.label.style.setProperty("--marker-offset-x", `${best.x}px`);
+      item.label.style.setProperty("--marker-offset-y", `${best.y}px`);
+      placed.push(best.rect);
     });
   }
 

@@ -816,9 +816,9 @@
   pointer-events: auto;
   bottom: anchor(top);
   left: anchor(center);
-  translate: -50% 0;
+  translate: calc(-50% + var(--marker-offset-x, 0px)) var(--marker-offset-y, 0px);
   margin-bottom: 8px;
-  transition: opacity 0.8s ease, filter 0.8s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: opacity 0.8s ease, filter 0.8s ease, translate 0.24s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   will-change: opacity, filter;
 }
 
@@ -835,6 +835,7 @@
 .globe-marker-label:hover,
 .globe-marker-label:focus-visible,
 .globe-marker-label.is-selected {
+  z-index: 8;
   border-color: rgba(213, 0, 88, 0.36);
   background: var(--stada-blue);
   color: #ffffff;
@@ -1203,7 +1204,7 @@
   .worldwide-page .globe-map {
     position: relative;
     left: auto;
-    width: min(110vw, 470px);
+    width: min(122vw, 520px);
     max-width: none;
     margin: -0.25rem 0 -1rem;
     justify-self: center;
