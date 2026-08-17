@@ -9,7 +9,7 @@
 @import url("modules/home.css");
 @import url("modules/about-page.css");
 @import url("modules/history.css");
-@import url("modules/worldwide.css");
+@import url("modules/worldwide.css?v=worldwide-mobile-1");
 @import url("modules/culture.css");
 @import url("modules/products/formula-showcase.css");
 @import url("modules/polish.css");
