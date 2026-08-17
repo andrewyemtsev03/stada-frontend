@@ -947,6 +947,41 @@
 }
 
 @media (max-width: 560px) {
+  .catalog-hero__inner {
+    gap: 0;
+  }
+
+  .catalog-hero__content {
+    display: contents;
+  }
+
+  .catalog-hero .catalog-eyebrow {
+    order: 1;
+  }
+
+  .catalog-hero h1 {
+    order: 2;
+  }
+
+  .catalog-hero__lead {
+    order: 3;
+  }
+
+  .catalog-hero__visual {
+    order: 4;
+    margin: 1.25rem auto 0;
+  }
+
+  .catalog-metrics {
+    order: 5;
+    margin-top: 1rem;
+  }
+
+  .catalog-hero__actions {
+    order: 6;
+    margin-top: 1.25rem;
+  }
+
   .catalog-hero h1 {
     font-size: 2rem;
   }
