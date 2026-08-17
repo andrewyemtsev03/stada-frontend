@@ -534,13 +534,13 @@
   }
 
   .about-page-pv__grid {
-    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 72px;
     gap: 0 16px;
     align-items: center;
   }
 
   .about-page-pv__badge {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1 / span 2;
     width: 72px;
     height: 72px;
@@ -557,7 +557,7 @@
   }
 
   .about-page-pv__copy .about-page-eyebrow {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     align-self: end;
     margin-bottom: 6px;
@@ -566,7 +566,7 @@
   }
 
   .about-page-pv__copy h2 {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
     align-self: start;
     margin: 0;
@@ -653,7 +653,7 @@
 
 @media (max-width: 360px) {
   .about-page-pv__grid {
-    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 64px;
     gap: 0 12px;
   }
 
