@@ -1028,38 +1028,64 @@
 
 @media (max-width: 760px) {
   .worldwide-hero--static {
-    height: 460px;
+    height: min(500px, calc(100vh - 74px));
+    min-height: 460px;
     padding: 0;
   }
 
   .worldwide-hero--static::before {
-    top: 42%;
-    left: -108vw;
-    width: 190vw;
-    height: 190vw;
+    top: -137vw;
+    left: -146vw;
+    width: 245vw;
+    height: 245vw;
+    transform: translate3d(0, 0, 0);
   }
 
   .worldwide-hero--static::after {
-    top: 116%;
-    left: -108vw;
-    width: 190vw;
-    height: 190vw;
+    top: -118vw;
+    left: -162vw;
+    width: 245vw;
+    height: 245vw;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .worldwide-hero--static.loaded::before {
+    animation-name: stadaHistoryMobileCirclePrimary;
+  }
+
+  .worldwide-hero--static.loaded::after {
+    animation-name: stadaHistoryMobileCircleSecondary;
   }
 
   .worldwide-hero--static .worldwide-hero__media img {
-    width: 142%;
+    width: 160%;
     max-width: none;
-    object-position: 70% center;
-  }
-
-  .worldwide-hero--static .worldwide-hero__media img {
-    object-position: center center;
+    object-position: 54% center;
+    transform: translateX(-12%) scale(1.02);
   }
 
   .worldwide-hero--static .worldwide-hero__copy {
-    width: min(330px, calc(100% - 2rem));
-    margin-left: 1.25rem;
-    padding-top: 4rem;
+    width: min(360px, calc(100% - 2rem));
+    height: 100%;
+    margin-left: 1rem;
+    padding: 4rem 0 2rem;
+    justify-content: flex-start;
+  }
+
+  .worldwide-hero--static .worldwide-hero__kicker {
+    margin-bottom: 0.75rem;
+    padding: 0.38rem 0.62rem;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(0, 52, 116, 0.2);
+    box-shadow: 0 8px 22px rgba(0, 37, 83, 0.12);
+    font-size: 0.72rem;
+    letter-spacing: 0;
+    backdrop-filter: blur(5px);
+  }
+
+  .worldwide-page .worldwide-hero--static .worldwide-hero__kicker::before {
+    display: none;
   }
 
   .worldwide-hero--static h1,
@@ -1075,6 +1101,36 @@
     margin-bottom: 1.25rem;
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.98rem;
+  }
+
+  .worldwide-hero--static .hero-btn {
+    width: min(100%, 16.5rem);
+    min-height: 50px;
+  }
+}
+
+@media (max-width: 420px) {
+  .worldwide-hero--static {
+    height: min(480px, calc(100vh - 74px));
+    min-height: 440px;
+  }
+
+  .worldwide-hero--static::before {
+    top: -142vw;
+    left: -142vw;
+    width: 268vw;
+    height: 268vw;
+  }
+
+  .worldwide-hero--static::after {
+    top: -115vw;
+    left: -168vw;
+    width: 268vw;
+    height: 268vw;
+  }
+
+  .worldwide-hero--static .worldwide-hero__copy {
+    padding-top: 3.25rem;
   }
 }
 
@@ -1109,6 +1165,7 @@
     display: grid;
     height: auto;
     padding: 0;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto;
     overflow: visible;
     border: 0;
@@ -1144,9 +1201,13 @@
   }
 
   .worldwide-page .globe-map {
+    position: relative;
+    left: auto;
     width: min(110vw, 470px);
     max-width: none;
-    margin: -0.25rem auto -1rem;
+    margin: -0.25rem 0 -1rem;
+    justify-self: center;
+    transform: none;
   }
 
   .worldwide-page .worldwide-country-detail {
@@ -1160,12 +1221,12 @@
     display: block;
     width: 100%;
     height: auto;
-    padding: 1.5rem 0 0;
-    overflow: visible;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    padding: 1.125rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 93, 185, 0.13);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 1.25rem 2.75rem rgba(15, 55, 95, 0.12);
   }
 
   .worldwide-page .worldwide-country-detail .country-info-card__header {
@@ -1175,12 +1236,15 @@
   .worldwide-page .worldwide-country-detail .country-info-card__rows {
     gap: 0;
     margin: 0;
-    border-top: 1px solid rgba(0, 93, 185, 0.16);
   }
 
   .worldwide-page .worldwide-country-detail .country-info-card__row {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(0, 93, 185, 0.12);
+  }
+
+  .worldwide-page .worldwide-country-detail .country-info-card__row:first-child {
+    padding-top: 0;
   }
 
   .worldwide-page .worldwide-country-detail .country-info-card__cta {

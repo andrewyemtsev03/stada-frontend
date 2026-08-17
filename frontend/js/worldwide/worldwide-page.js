@@ -1,6 +1,6 @@
-import { countriesData, defaultCountryId, getCountryName, getCountryRegion, getCountrySearchValues } from "./countries-data.js?v=worldwide-35";
-import { CountryInfoCard } from "./country-info-card.js?v=worldwide-35";
-import { GlobeMap } from "./globe-map.js?v=worldwide-35";
+import { countriesData, defaultCountryId, getCountryName, getCountryRegion, getCountrySearchValues } from "./countries-data.js?v=worldwide-36";
+import { CountryInfoCard } from "./country-info-card.js?v=worldwide-36";
+import { GlobeMap } from "./globe-map.js?v=worldwide-36";
 
 const pageCopy = {
   en: {

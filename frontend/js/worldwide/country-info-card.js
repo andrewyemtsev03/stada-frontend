@@ -1,4 +1,4 @@
-import { getCountryName, getCountryRegion } from "./countries-data.js?v=worldwide-35";
+import { getCountryName, getCountryRegion } from "./countries-data.js?v=worldwide-36";
 
 const localizedCopy = {
   en: {
@@ -147,7 +147,7 @@ export class CountryInfoCard {
   }
 
   appendRows(container, country) {
-    ["address", "email", "phone"].forEach((field) => {
+    ["locationTitle", "address", "email", "phone"].forEach((field) => {
       const value = country[field];
       if (!value) return;
 
