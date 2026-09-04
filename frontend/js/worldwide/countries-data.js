@@ -40,26 +40,26 @@ export const countriesData = [
           "region": "Worldwide / Central Asia"
         },
         "ru": {
-          "name": "Kyrgyzstan",
-          "region": "Worldwide / Central Asia"
+          "name": "Кыргызстан",
+          "region": "Мир / Центральная Азия"
         },
         "kz": {
-          "name": "Kyrgyzstan",
-          "region": "Worldwide / Central Asia"
+          "name": "Қырғызстан",
+          "region": "Әлем / Орталық Азия"
         },
         "kg": {
-          "name": "Kyrgyzstan",
-          "region": "Worldwide / Central Asia"
+          "name": "Кыргызстан",
+          "region": "Дүйнө / Борбордук Азия"
         }
       },
       "lat": 41.2044,
       "lng": 74.7661,
       "locationTitle": "STADA Kyrgyzstan",
-      "address": "",
+      "address": "1a Igemberdiev St., 720005 Bishkek, Kyrgyzstan",
       "website": "https://stada.kg/",
       "websiteLabel": "Visit Website",
-      "email": "",
-      "phone": "",
+      "email": "Bishkek@stada.kg",
+      "phone": "+996 755 111 448",
       "flag": "https://flagcdn.com/w80/kg.png"
     },
     {
@@ -91,7 +91,7 @@ export const countriesData = [
       "lat": 42.3154,
       "lng": 43.3569,
       "locationTitle": "STADA Georgia",
-      "address": "",
+      "address": "12 Merab Aleksidze St., 0193 Tbilisi, Georgia",
       "website": "https://stada.ge/",
       "websiteLabel": "Visit Website",
       "email": "",
@@ -155,10 +155,10 @@ export const countriesData = [
       "lat": 40.0691,
       "lng": 45.0382,
       "locationTitle": "STADA Armenia",
-      "address": "",
+      "address": "Most Business Center, 2nd floor, 38/5 Myasnikyan Ave., 0025 Yerevan, Armenia",
       "website": "https://stada.am/",
       "websiteLabel": "Visit Website",
-      "email": "",
+      "email": "yerevan@stada.am",
       "phone": "",
       "flag": "https://flagcdn.com/w80/am.png"
     },
@@ -187,7 +187,7 @@ export const countriesData = [
       "lat": 47.4116,
       "lng": 28.3699,
       "locationTitle": "STADA Moldova",
-      "address": "",
+      "address": "38 Serghei Lazo St., 1st floor, MD-2004 Chisinau, Moldova",
       "website": "https://new.stada.md/",
       "websiteLabel": "Visit Website",
       "email": "",
@@ -244,8 +244,8 @@ export const countriesData = [
       "lng": 31.1656,
       "locationTitle": "STADA Ukraine",
       "address": "12, Amosova Street, BC Horizon Park, 03038 Kyiv, Ukraine",
-      "website": "",
-      "websiteLabel": "",
+      "website": "https://www.stada.com.ua/",
+      "websiteLabel": "Visit Website",
       "email": "ukraine.office@stada.com",
       "phone": "(+38) 44 459 46 00",
       "flag": "https://07.cdn.stada.com/media/kcrby01u/ukraine.webp"
