@@ -23,7 +23,15 @@ function getFrontendStaticText(lang, key) {
 
   for (const candidateLang of frontendLanguageFallbackOrder(lang)) {
     const value = FRONTEND_STATIC_TEXT[candidateLang]?.[key];
-    if (value) return value;
+    if (value) {
+      if (candidateLang === 'en') {
+        const country = STADA_COUNTRY_BY_CODE[currentCountry];
+        return String(value)
+          .replaceAll('STADA Georgia', country?.siteName || `STADA ${country?.name || 'Georgia'}`)
+          .replaceAll('Georgia', country?.name || 'Georgia');
+      }
+      return value;
+    }
   }
   return '';
 }
@@ -370,15 +378,25 @@ function initializeLocaleState() {
 
 function setToggleActiveIndex(toggle, index) {
   if (!toggle) return;
-  toggle.dataset.activeIndex = String(index);
-  toggle.style.setProperty('--toggle-active-x', index === 0 ? '0%' : 'calc(100% + 4px)');
-  toggle.style.setProperty('--lang-active-x', index === 0 ? '0%' : 'calc(100% + 4px)');
+  const activeIndex = Math.max(0, Number(index) || 0);
+  toggle.dataset.activeIndex = String(activeIndex);
+  toggle.style.setProperty('--toggle-active-x', `${activeIndex * 100}%`);
+  toggle.style.setProperty('--lang-active-x', `${activeIndex * 100}%`);
 }
 
 function renderLanguageOptions(countryCode = currentCountry) {
   const supportedLanguages = getSupportedLanguages(countryCode);
   document.querySelectorAll('.lang-toggle').forEach(toggle => {
     const buttons = Array.from(toggle.querySelectorAll('.lang-option'));
+    while (buttons.length < supportedLanguages.length) {
+      const button = document.createElement('button');
+      button.className = 'lang-option';
+      button.type = 'button';
+      toggle.appendChild(button);
+      buttons.push(button);
+    }
+    toggle.dataset.languageCount = String(supportedLanguages.length);
+    toggle.style.setProperty('--lang-count', String(Math.max(1, supportedLanguages.length)));
     buttons.forEach((button, index) => {
       const lang = supportedLanguages[index];
       if (!lang) {

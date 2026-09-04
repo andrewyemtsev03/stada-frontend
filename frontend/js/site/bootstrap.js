@@ -664,6 +664,76 @@ FRONTEND_STATIC_TEXT.uz = {
   where_to_buy_heading: 'Qayerdan sotib olish mumkin',
 };
 
+const HOMEPAGE_CULTURE_STATIC_TEXT = {
+  ru: {
+    culture_values_eyebrow: 'Наши ценности', culture_values_heading: 'Принципы для ежедневных решений',
+    culture_integrity_title: 'Добросовестность', culture_integrity_tagline: 'Поступать правильно.',
+    culture_entrepreneurship_title: 'Предпринимательство', culture_entrepreneurship_tagline: 'Мыслить смело.',
+    culture_agility_title: 'Гибкость', culture_agility_tagline: 'Расти через изменения.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'Сила одной команды.', culture_values_cta: 'Смотреть ценности',
+  },
+  kz: {
+    culture_values_eyebrow: 'Біздің құндылықтарымыз', culture_values_heading: 'Күнделікті шешімдерге арналған қағидалар',
+    culture_integrity_title: 'Адалдық', culture_integrity_tagline: 'Дұрыс әрекет ету.',
+    culture_entrepreneurship_title: 'Кәсіпкерлік', culture_entrepreneurship_tagline: 'Батыл ойлау.',
+    culture_agility_title: 'Икемділік', culture_agility_tagline: 'Өзгеріс арқылы өсу.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'Бір команданың күші.', culture_values_cta: 'Құндылықтарды қарау',
+  },
+  kg: {
+    culture_values_eyebrow: 'Биздин баалуулуктар', culture_values_heading: 'Күнүмдүк чечимдер үчүн принциптер',
+    culture_integrity_title: 'Ак ниеттүүлүк', culture_integrity_tagline: 'Туура иш кылуу.',
+    culture_entrepreneurship_title: 'Ишкердик', culture_entrepreneurship_tagline: 'Кайраттуу ой жүгүртүү.',
+    culture_agility_title: 'Ийкемдүүлүк', culture_agility_tagline: 'Өзгөрүү аркылуу өсүү.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'Бир команданын күчү.', culture_values_cta: 'Баалуулуктарды көрүү',
+  },
+  en: {
+    culture_values_eyebrow: 'Our values', culture_values_heading: 'Principles for daily decisions',
+    culture_integrity_title: 'Integrity', culture_integrity_tagline: 'Do the right thing.',
+    culture_entrepreneurship_title: 'Entrepreneurship', culture_entrepreneurship_tagline: 'Think boldly.',
+    culture_agility_title: 'Agility', culture_agility_tagline: 'Grow through change.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'The strength of one team.', culture_values_cta: 'View values',
+  },
+  ge: {
+    culture_values_eyebrow: 'ჩვენი ღირებულებები', culture_values_heading: 'პრინციპები ყოველდღიური გადაწყვეტილებებისთვის',
+    culture_integrity_title: 'კეთილსინდისიერება', culture_integrity_tagline: 'ვიქცევით სწორად.',
+    culture_entrepreneurship_title: 'მეწარმეობა', culture_entrepreneurship_tagline: 'ვფიქრობთ თამამად.',
+    culture_agility_title: 'მოქნილობა', culture_agility_tagline: 'ვიზრდებით ცვლილებებით.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'ერთი გუნდის ძალა.', culture_values_cta: 'ღირებულებების ნახვა',
+  },
+  az: {
+    culture_values_eyebrow: 'Dəyərlərimiz', culture_values_heading: 'Gündəlik qərarlar üçün prinsiplər',
+    culture_integrity_title: 'Dürüstlük', culture_integrity_tagline: 'Doğru olanı etmək.',
+    culture_entrepreneurship_title: 'Sahibkarlıq ruhu', culture_entrepreneurship_tagline: 'Cəsarətlə düşünmək.',
+    culture_agility_title: 'Çeviklik', culture_agility_tagline: 'Dəyişikliklə böyümək.',
+    culture_one_title: 'One STADA', culture_one_tagline: 'Bir komandanın gücü.', culture_values_cta: 'Dəyərlərə baxın',
+  },
+  hy: {
+    culture_values_eyebrow: 'Մեր արժեքները', culture_values_heading: 'Սկզբունքներ ամենօրյա որոշումների համար',
+    culture_integrity_title: 'Անարատություն', culture_integrity_tagline: 'Արեք ճիշտը:',
+    culture_entrepreneurship_title: 'Ձեռնարկատիրություն', culture_entrepreneurship_tagline: 'Համարձակ մտածեք.',
+    culture_agility_title: 'Ճկունություն', culture_agility_tagline: 'Աճեք փոփոխության միջոցով:',
+    culture_one_title: 'Մեկ STADA', culture_one_tagline: 'Մեկ թիմի ուժը.', culture_values_cta: 'Դիտել արժեքները',
+  },
+  ro: {
+    culture_values_eyebrow: 'Valorile noastre', culture_values_heading: 'Principii pentru deciziile zilnice',
+    culture_integrity_title: 'Integritate', culture_integrity_tagline: 'Fă ceea ce trebuie.',
+    culture_entrepreneurship_title: 'Antreprenoriat', culture_entrepreneurship_tagline: 'Gândește cu îndrăzneală.',
+    culture_agility_title: 'Agilitate', culture_agility_tagline: 'Creșteți prin schimbare.',
+    culture_one_title: 'O STADA', culture_one_tagline: 'Puterea unei echipe.', culture_values_cta: 'Vedeți valorile',
+  },
+  uz: {
+    culture_values_eyebrow: 'Bizning qadriyatlarimiz', culture_values_heading: 'Kundalik qarorlar qabul qilish tamoyillari',
+    culture_integrity_title: 'Butunlik', culture_integrity_tagline: "To'g'ri ish qiling.",
+    culture_entrepreneurship_title: 'Tadbirkorlik', culture_entrepreneurship_tagline: "Jasorat bilan o'ylang.",
+    culture_agility_title: 'Chaqqonlik', culture_agility_tagline: "O'zgarish orqali o'sing.",
+    culture_one_title: 'Bitta STADA', culture_one_tagline: 'Bir jamoaning kuchi.', culture_values_cta: "Qiymatlarni ko'rish",
+  },
+};
+
+Object.entries(HOMEPAGE_CULTURE_STATIC_TEXT).forEach(([lang, text]) => {
+  Object.assign(FRONTEND_STATIC_TEXT[lang], text);
+});
+
 Object.assign(FRONTEND_STATIC_TEXT.ru, {
   history_timeline_eyebrow: 'Путь сквозь время',
 });

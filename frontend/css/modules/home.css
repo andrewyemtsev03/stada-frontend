@@ -1454,6 +1454,55 @@ header.stada-home-hero.is-changing-in .stada-home-hero__copy {
   margin-top: 2rem;
 }
 
+.home-culture-preview {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.home-culture-preview__header {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.home-culture-preview__header h2 {
+  max-width: 720px;
+  margin: 0.75rem 0 0;
+  color: #0f2f50;
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.home-culture-preview__header .hero-btn {
+  flex: 0 0 auto;
+}
+
+.home-culture-preview__cards {
+  margin-bottom: 0;
+}
+
+.home-culture-preview__cards .culture-icon-stage__item {
+  min-height: 280px;
+}
+
+.home-culture-preview__cards .culture-icon-stage__item img {
+  width: min(100%, 155px);
+  height: 155px;
+}
+
+@media (max-width: 760px) {
+  .home-culture-preview__header {
+    display: grid;
+    align-items: start;
+  }
+
+  .home-culture-preview__header .hero-btn {
+    justify-self: start;
+  }
+}
+
 .values-list li {
   display: grid;
   gap: 0.95rem;
