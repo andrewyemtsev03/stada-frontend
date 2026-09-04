@@ -33,15 +33,6 @@
   margin-bottom: 0.55rem;
 }
 
-.product-detail-page .product-hero-buy__header h2 {
-  max-width: none;
-  margin: 0;
-  color: var(--product-blue-dark);
-  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
-  line-height: 1.12;
-  white-space: nowrap;
-}
-
 .product-detail-page .product-hero-buy .partner-card {
   min-height: 120px;
   background: rgba(255, 255, 255, 0.9);
@@ -190,11 +181,6 @@
     grid-template-columns: 1fr;
     gap: 0.75rem;
     align-items: start;
-  }
-
-  .product-detail-page .product-hero-buy__header h2 {
-    font-size: clamp(1.45rem, 7vw, 1.8rem);
-    white-space: normal;
   }
 
   .product-detail-page .product-kicker {
