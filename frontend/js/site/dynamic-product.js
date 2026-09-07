@@ -93,7 +93,7 @@ function createDynamicProductBenefit(text, index) {
   const item = document.createElement('li');
   item.className = 'vitrum-animate';
   applyRevealStagger(item, index);
-  item.textContent = decodeHtmlEntities(text);
+  item.textContent = decodeHtmlEntities(text).replace(/^\s*[✓✔]\s*/, '');
   return item;
 }
 
@@ -113,6 +113,11 @@ function createDynamicPartnerCard(link, index) {
   const label = document.createElement('p');
   label.textContent = link.label || '';
   card.append(image, label);
+  const external = document.createElement('span');
+  external.className = 'partner-card-external';
+  external.textContent = '↗';
+  external.setAttribute('aria-hidden', 'true');
+  card.appendChild(external);
   return card;
 }
 
@@ -501,12 +506,11 @@ function initFormulaShowcase() {
 
 function createDynamicUsageItem(item, index) {
   const article = document.createElement('article');
-  article.className = item.className || `usage-item vitrum-animate${index === 0 ? ' is-active' : ''}`;
-  if (item.isActive || index === 0) article.classList.add('is-active');
+  article.className = item.className || 'usage-item vitrum-animate';
+  article.classList.remove('is-active');
   if (article.classList.contains('vitrum-animate') && !article.classList.contains('is-visible')) {
     applyRevealStagger(article, index);
   }
-  article.tabIndex = 0;
   const marker = document.createElement('span');
   const content = document.createElement('div');
   const title = document.createElement('h3');
@@ -516,6 +520,39 @@ function createDynamicUsageItem(item, index) {
   content.append(title, text);
   article.append(marker, content);
   return article;
+}
+
+function updateProductSectionNavigation(page) {
+  const hasText = value => Boolean(String(value || '').trim());
+  const sections = [
+    ['formula', page.formulaLabel || page.formulaHeading,
+      Boolean(page.formulaPoints?.length || hasText(page.formulaIntro) || hasText(page.formulaHeading) || hasText(page.formulaImage))],
+    ['benefits', page.overviewLabel || page.overviewHeading || getTranslatedText(currentLang, 'benefits_heading'),
+      Boolean(page.facts?.length || page.benefits?.length || hasText(page.overviewIntro) || hasText(page.overviewHeading) || backendProductPayload?.product?.shortDescription)],
+    ['usage', page.usageLabel || page.usageHeading || page.noteTitle,
+      Boolean(page.usageItems?.length || hasText(page.noteTitle) || hasText(page.noteText))]
+  ];
+  const navigation = document.querySelector('[data-product-section-links]');
+  navigation?.replaceChildren();
+  sections.forEach(([id, label, visible]) => {
+    const section = document.getElementById(id);
+    if (section) section.hidden = !visible;
+    if (!visible || !label || !navigation) return;
+    const link = document.createElement('a');
+    link.href = `#${id}`;
+    link.textContent = decodeHtmlEntities(label);
+    navigation.appendChild(link);
+  });
+  if (navigation) navigation.hidden = !navigation.children.length;
+  const benefitsPanel = document.querySelector('.product-benefits-panel');
+  if (benefitsPanel) benefitsPanel.hidden = !page.benefits?.length;
+  const note = document.querySelector('.product-note');
+  if (note) note.hidden = !hasText(page.noteTitle) && !hasText(page.noteText);
+  document.querySelectorAll('.product-hero-actions a[href="#benefits"]').forEach(link => {
+    link.hidden = !sections[1][2];
+  });
+  const actions = document.querySelector('.product-hero-actions');
+  if (actions) actions.hidden = !Array.from(actions.children).some(link => !link.hidden);
 }
 
 function renderDynamicProductPage(payload) {
@@ -592,20 +629,10 @@ function renderDynamicProductPage(payload) {
   replaceChildrenFromList('[data-product-usage-items]', usageItems, createDynamicUsageItem, { hideEmpty: true });
   replaceChildrenFromList('[data-product-partners]', purchaseLinks, createDynamicPartnerCard, { hideEmpty: true });
   applyLegacyProductLayout(blueprint);
+  updateProductSectionNavigation(page);
 
   document.title = page.title || `STADA - ${product.name || ''}`;
   document.dispatchEvent(new CustomEvent('stada:dynamicproductrender', { detail: { product, lang: currentLang, country: currentCountry } }));
-
-  document.querySelectorAll('[data-vitrum-usage] .usage-item').forEach(item => {
-    item.addEventListener('click', () => {
-      document.querySelectorAll('[data-vitrum-usage] .usage-item').forEach(current => current.classList.toggle('is-active', current === item));
-    });
-    item.addEventListener('keydown', event => {
-      if (event.key !== 'Enter' && event.key !== ' ') return;
-      event.preventDefault();
-      item.click();
-    });
-  });
 
 }
 

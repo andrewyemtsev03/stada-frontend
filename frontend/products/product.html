@@ -8,6 +8,7 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=site-consistency-4" />
+    <link rel="stylesheet" href="../css/modules/products/detail-experience.css?v=1" />
   </head>
   <body class="product-detail-page product-dynamic-page backend-content-pending" data-dynamic-product-page>
     <nav>
@@ -32,12 +33,16 @@
 
     <main>
       <section class="product-hero" aria-labelledby="dynamic-product-heading">
+        <div class="product-breadcrumb">
+          <a href="index.html" data-i18n-key="product_back"></a>
+        </div>
         <div class="product-hero-content">
           <div class="product-hero-text vitrum-animate">
             <span class="product-kicker" data-product-kicker></span>
             <h1 id="dynamic-product-heading" data-product-title></h1>
             <p data-product-lead></p>
             <div class="product-hero-actions">
+              <a href="#pharmacy-partners" class="product-button product-button--primary" data-i18n-key="where_to_buy_heading" hidden></a>
               <a href="#benefits" class="product-button product-button--secondary" data-i18n-key="cta_more"></a>
             </div>
             <div class="product-badges" aria-label="Product highlights" data-product-badges></div>
@@ -61,7 +66,9 @@
         </div>
       </section>
 
-      <section class="product-detail-section product-formula" aria-labelledby="dynamic-product-formula-heading">
+      <div class="product-section-links" role="navigation" aria-labelledby="dynamic-product-heading" data-product-section-links hidden></div>
+
+      <section class="product-detail-section product-formula" id="formula" aria-labelledby="dynamic-product-formula-heading">
         <div class="product-section-inner product-formula-layout">
           <div class="product-section-header vitrum-animate">
             <span class="product-kicker" data-product-formula-label></span>
@@ -98,7 +105,7 @@
         </div>
       </section>
 
-      <section class="product-detail-section product-usage" aria-labelledby="dynamic-product-usage-heading">
+      <section class="product-detail-section product-usage" id="usage" aria-labelledby="dynamic-product-usage-heading">
         <div class="product-section-inner product-usage-layout">
           <div class="product-section-header vitrum-animate">
             <span class="product-kicker" data-product-usage-label></span>
@@ -180,7 +187,7 @@
     <script src="../js/site/bootstrap.js?v=site-modules-1"></script>
     <script src="../js/site/locale-state.js?v=site-modules-1"></script>
     <script src="../js/site/content-api.js?v=site-modules-1"></script>
-    <script src="../js/site/dynamic-product.js?v=site-consistency-2"></script>
+    <script src="../js/site/dynamic-product.js?v=product-experience-1"></script>
     <script src="../js/site/locale-controls.js?v=site-modules-1"></script>
     <script src="../js/site/homepage.js?v=site-consistency-1"></script>
     <script src="../js/site/page-reveals.js?v=site-modules-1"></script>

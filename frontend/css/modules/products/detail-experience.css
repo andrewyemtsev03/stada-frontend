@@ -1,0 +1,134 @@
+/* Product template only; keep catalog and other site pages unchanged. */
+.product-dynamic-page [hidden] {
+  display: none !important;
+}
+
+.product-dynamic-page .product-hero {
+  padding-top: clamp(1.25rem, 3vw, 2.25rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.product-breadcrumb {
+  position: relative;
+  z-index: 1;
+  width: var(--site-shell);
+  max-width: var(--site-content-max);
+  margin: 0 auto clamp(1.25rem, 3vw, 2rem);
+}
+
+.product-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  color: #214d78;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.product-breadcrumb a::before { content: '←'; }
+.product-breadcrumb a:hover { text-decoration: underline; }
+
+.product-dynamic-page .product-hero-image {
+  min-height: 320px;
+  box-shadow: 0 16px 40px rgba(8, 46, 84, 0.08);
+}
+
+.product-dynamic-page .product-hero-image > img {
+  max-height: 320px;
+}
+
+.product-dynamic-page .product-hero-text p { max-width: 56ch; }
+.product-dynamic-page .product-hero-text h1 { overflow-wrap: anywhere; }
+
+.product-dynamic-page .product-button--primary {
+  color: #fff;
+  background: #005db9;
+  border-color: #005db9;
+  box-shadow: 0 6px 16px rgba(0, 93, 185, 0.16);
+}
+
+.product-dynamic-page .product-button--primary:hover {
+  background: #00488f;
+  border-color: #00488f;
+}
+
+.product-section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  width: var(--site-shell);
+  max-width: var(--site-content-max);
+  margin: 0 auto;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid #dce6ef;
+}
+
+.product-section-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid #dce6ef;
+  border-radius: 12px;
+  background: #f7faff;
+  color: #214d78;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.product-section-links a::after { content: '↓'; }
+.product-section-links a:hover { background: #eaf2fc; border-color: #005db9; }
+
+.product-dynamic-page :is(a, button):focus-visible {
+  outline: 3px solid #005db9;
+  outline-offset: 4px;
+}
+
+.product-dynamic-page :is(#formula, #benefits, #usage, #pharmacy-partners) {
+  scroll-margin-top: 112px;
+}
+
+.product-dynamic-page .partner-card { position: relative; }
+.partner-card-external {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.8rem;
+  color: #426180;
+  font-size: 1.15rem;
+}
+
+.product-dynamic-page .usage-item,
+.product-dynamic-page .usage-item:hover {
+  cursor: default;
+  transform: none;
+  background: #fff;
+  border-color: var(--product-card-border);
+  box-shadow: var(--product-card-shadow);
+}
+
+@media (max-width: 720px) {
+  .product-dynamic-page .product-hero-content { gap: 1.5rem; }
+  .product-dynamic-page .product-hero-image { min-height: 235px; }
+  .product-dynamic-page .product-hero-image > img { max-height: 210px; }
+  .product-dynamic-page .product-hero-actions { flex-wrap: wrap; }
+  .product-dynamic-page .product-hero-actions .product-button {
+    flex: 1 1 150px;
+    width: auto;
+    text-align: center;
+  }
+  .product-section-links { gap: 0.5rem; }
+  .product-section-links a { flex: 1 1 auto; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.product-dynamic-page) { scroll-behavior: auto; }
+  .product-dynamic-page *, .product-dynamic-page *::before, .product-dynamic-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .product-dynamic-page .vitrum-animate { opacity: 1; transform: none; }
+}
