@@ -522,7 +522,7 @@ function createDynamicUsageItem(item, index) {
   return article;
 }
 
-function updateProductSectionNavigation(page) {
+function updateProductSectionVisibility(page) {
   const hasText = value => Boolean(String(value || '').trim());
   const sections = [
     ['formula', page.formulaLabel || page.formulaHeading,
@@ -532,18 +532,10 @@ function updateProductSectionNavigation(page) {
     ['usage', page.usageLabel || page.usageHeading || page.noteTitle,
       Boolean(page.usageItems?.length || hasText(page.noteTitle) || hasText(page.noteText))]
   ];
-  const navigation = document.querySelector('[data-product-section-links]');
-  navigation?.replaceChildren();
   sections.forEach(([id, label, visible]) => {
     const section = document.getElementById(id);
     if (section) section.hidden = !visible;
-    if (!visible || !label || !navigation) return;
-    const link = document.createElement('a');
-    link.href = `#${id}`;
-    link.textContent = decodeHtmlEntities(label);
-    navigation.appendChild(link);
   });
-  if (navigation) navigation.hidden = !navigation.children.length;
   const benefitsPanel = document.querySelector('.product-benefits-panel');
   if (benefitsPanel) benefitsPanel.hidden = !page.benefits?.length;
   const note = document.querySelector('.product-note');
@@ -629,7 +621,7 @@ function renderDynamicProductPage(payload) {
   replaceChildrenFromList('[data-product-usage-items]', usageItems, createDynamicUsageItem, { hideEmpty: true });
   replaceChildrenFromList('[data-product-partners]', purchaseLinks, createDynamicPartnerCard, { hideEmpty: true });
   applyLegacyProductLayout(blueprint);
-  updateProductSectionNavigation(page);
+  updateProductSectionVisibility(page);
 
   document.title = page.title || `STADA - ${product.name || ''}`;
   document.dispatchEvent(new CustomEvent('stada:dynamicproductrender', { detail: { product, lang: currentLang, country: currentCountry } }));
