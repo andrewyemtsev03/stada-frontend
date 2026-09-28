@@ -721,7 +721,9 @@ function renderDynamicProductPage(payload) {
       formulaModel.classList.remove('is-ready');
       formulaImage.hidden = false;
       formulaModel.dataset.activeSrc = modelSrc;
-      formulaModel.src = modelSrc;
+      // The custom element may not be defined yet; setting a JS property here
+      // creates an inert expando instead of loading the model on upgrade.
+      formulaModel.setAttribute('src', modelSrc);
     } else if (!modelSrc) {
       formulaModel.classList.remove('is-ready');
       formulaModel.removeAttribute('src');
