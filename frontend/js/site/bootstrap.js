@@ -49,6 +49,9 @@ const STADA_LANGUAGE_LABELS = {
 const FRONTEND_STATIC_TEXT = {
   "ru": {
     "skip_to_content": "Перейти к основному содержанию",
+    "cookie_title": "Cookies",
+    "cookie_notice": "На сайтах STADA могут использоваться некоторые файлы cookie, от которых не зависит работа сайта. Мы делаем это не для того, чтобы отслеживать действия отдельных пользователей или идентифицировать их, а с целью получения полезных сведений о том, как используют сайты. Это поможет нам совершенствовать их работу для пользователей. Знания, которые мы получаем от систем, использующих эти файлы cookie, позволяют нам оказывать соответствующие услуги. Полученная информация об использовании веб-сайта посетителем может быть передана другим компаниям Группы STADA Arzneimittel AG. Информация об удалении файлов cookie или управлении ими доступна на веб-сайте:",
+    "cookie_link_label": "aboutcookies.org",
     "about_heading": "О компании STADA",
     "benefits_heading": "Преимущества",
     "button_products": "Продукты",
@@ -259,6 +262,9 @@ const FRONTEND_STATIC_TEXT = {
 };
 
 FRONTEND_STATIC_TEXT.en = {
+  "cookie_title": "Cookies",
+  "cookie_notice": "STADA websites may use certain cookies that are not essential to the operation of the site. We use them to understand how people use our websites, not to track or identify individual users. These insights help us improve our websites and provide relevant services. Information about a visitor's use of the website may be shared with other companies in the STADA Arzneimittel AG Group. Learn how to delete or manage cookies at:",
+  "cookie_link_label": "aboutcookies.org",
   "skip_to_content": "Skip to main content",
   "about_heading": "About STADA",
   "benefits_heading": "Benefits",
@@ -325,6 +331,22 @@ FRONTEND_STATIC_TEXT.en = {
   "site_name": "STADA Georgia",
   "where_to_buy_heading": "Where to buy",
 };
+
+Object.assign(FRONTEND_STATIC_TEXT.ru, {
+  cookie_title: 'Cookies',
+  cookie_notice: 'На сайтах STADA могут использоваться некоторые файлы cookie, от которых не зависит работа сайта. Мы делаем это не для того, чтобы отслеживать действия отдельных пользователей или идентифицировать их, а с целью получения полезных сведений о том, как используют сайты. Это поможет нам совершенствовать их работу для пользователей. Знания, которые мы получаем от систем, использующих эти файлы cookie, позволяют нам оказывать соответствующие услуги. Полученная информация об использовании веб-сайта посетителем может быть передана другим компаниям Группы STADA Arzneimittel AG. Информация об удалении файлов cookie или управлении ими доступна на веб-сайте:',
+  cookie_link_label: 'aboutcookies.org',
+});
+Object.assign(FRONTEND_STATIC_TEXT.kz, {
+  cookie_title: 'Cookie файлдары',
+  cookie_notice: 'STADA сайттарында сайттың жұмысына әсер етпейтін кейбір cookie файлдары пайдаланылуы мүмкін. Біз оларды жеке пайдаланушылардың әрекеттерін бақылау немесе олардың кім екенін анықтау үшін емес, сайттардың қалай пайдаланылатыны туралы пайдалы мәлімет алу үшін қолданамыз. Бұл сайт жұмысын пайдаланушыларға ыңғайлы етуге көмектеседі. Cookie файлдарын пайдаланатын жүйелерден алынған білім бізге тиісті қызметтерді ұсынуға мүмкіндік береді. Келушінің веб-сайтты пайдалануы туралы ақпарат STADA Arzneimittel AG тобының басқа компанияларына берілуі мүмкін. Cookie файлдарын жою немесе басқару туралы ақпарат мына сайтта қолжетімді:',
+  cookie_link_label: 'aboutcookies.org',
+});
+Object.assign(FRONTEND_STATIC_TEXT.kg, {
+  cookie_title: 'Cookie файлдары',
+  cookie_notice: 'STADA сайттарында сайттын иштешине таасир этпеген айрым cookie файлдары колдонулушу мүмкүн. Биз аларды айрым колдонуучулардын аракеттерин көзөмөлдөө же ким экенин аныктоо үчүн эмес, сайттар кандай колдонулары тууралуу пайдалуу маалымат алуу үчүн колдонобуз. Бул сайттарды колдонуучулар үчүн жакшыртууга жардам берет. Cookie файлдарын колдонгон системалардан алынган маалымат бизге тиешелүү кызматтарды көрсөтүүгө мүмкүндүк берет. Веб-сайтка кирүүчүнүн колдонушу тууралуу маалымат STADA Arzneimittel AG тобундагы башка компанияларга берилиши мүмкүн. Cookie файлдарын жок кылуу же башкаруу тууралуу маалымат бул сайтта жеткиликтүү:',
+  cookie_link_label: 'aboutcookies.org',
+});
 
 FRONTEND_STATIC_TEXT.ge = {
   "skip_to_content": "მთავარ შინაარსზე გადასვლა",
@@ -483,6 +505,17 @@ Object.assign(FRONTEND_STATIC_TEXT.kg, {
 
 Object.assign(FRONTEND_STATIC_TEXT.en, {
   history_source_note: 'Key milestones are based on STADA corporate chronology.'
+});
+
+Object.assign(FRONTEND_STATIC_TEXT.az, {
+  cookie_title: 'Cookies',
+  cookie_notice: 'STADA saytlarında saytın işləməsi üçün vacib olmayan bəzi cookie fayllarından istifadə oluna bilər. Onlardan ayrı-ayrı istifadəçiləri izləmək və ya müəyyən etmək üçün deyil, saytlarımızdan necə istifadə edildiyi barədə faydalı məlumat əldə etmək üçün istifadə edirik. Bu məlumat saytlarımızı təkmilləşdirməyə və uyğun xidmətlər göstərməyə kömək edir. Ziyarətçinin veb-saytdan istifadəsi haqqında məlumat STADA Arzneimittel AG Qrupunun digər şirkətləri ilə paylaşıla bilər. Cookie fayllarını silmək və ya idarə etmək haqqında məlumat burada mövcuddur:',
+  cookie_link_label: 'aboutcookies.org',
+});
+Object.assign(FRONTEND_STATIC_TEXT.ge, {
+  cookie_title: 'Cookies',
+  cookie_notice: 'STADA-ს ვებსაიტებზე შეიძლება გამოიყენებოდეს ზოგიერთი cookie-ფაილი, რომელიც საიტის მუშაობისთვის აუცილებელი არ არის. მათ ვიყენებთ იმის გასაგებად, თუ როგორ იყენებენ ჩვენს საიტებს, და არა ცალკეული მომხმარებლების თვალყურის დევნებისთვის ან იდენტიფიცირებისთვის. ეს ინფორმაცია გვეხმარება საიტების გაუმჯობესებასა და შესაბამისი სერვისების მიწოდებაში. ვიზიტორის მიერ ვებსაიტის გამოყენების შესახებ ინფორმაცია შეიძლება გაეზიაროს STADA Arzneimittel AG ჯგუფის სხვა კომპანიებს. cookie-ფაილების წაშლის ან მართვის შესახებ ინფორმაცია იხილეთ:',
+  cookie_link_label: 'aboutcookies.org',
 });
 
 Object.assign(FRONTEND_STATIC_TEXT.ge, {
