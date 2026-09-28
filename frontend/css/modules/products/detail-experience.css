@@ -82,8 +82,15 @@
 
 .product-dynamic-page .product-hero-buy.is-expanding {
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 24px;
   will-change: height, opacity;
+}
+html.product-partners-expanding,
+html.product-partners-expanding body { overflow-anchor: none; }
+.product-dynamic-page .product-hero-buy.is-expanding .vitrum-animate,
+.product-dynamic-page .product-hero-buy.is-expanding .partner-card {
+  transition: none !important;
 }
 .partner-card-external {
   position: absolute;

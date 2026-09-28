@@ -564,39 +564,65 @@ function updateProductSectionVisibility(page) {
 
 function revealPharmacyPartners(section) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const scrollToPartners = () => section.scrollIntoView({
-    behavior: reducedMotion ? 'instant' : 'smooth', block: 'nearest',
-  });
   if (!section.hidden) {
-    if (!section.classList.contains('is-expanding')) scrollToPartners();
+    if (!section.classList.contains('is-expanding')) section.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'nearest' });
     return;
   }
   section.hidden = false;
   section.querySelectorAll('.vitrum-animate').forEach(item => item.classList.add('is-visible'));
-  if (reducedMotion) { scrollToPartners(); return; }
+  if (reducedMotion) { section.scrollIntoView({ behavior: 'instant', block: 'nearest' }); return; }
 
-  // Animate the measured layout itself, rather than inserting a full-height
-  // section instantly and relying on a brief CSS animation after display:none.
+  // Measure once at the final size. Scrolling uses the expansion's own eased
+  // progress, so it never starts a second movement after the panel opens.
+  const rect = section.getBoundingClientRect();
   const style = getComputedStyle(section);
-  const height = section.getBoundingClientRect().height;
+  const finalSpacing = { marginTop: style.marginTop, paddingTop: style.paddingTop, borderTopWidth: style.borderTopWidth };
+  const startScroll = window.scrollY;
+  const headerBottom = document.querySelector('body > nav')?.getBoundingClientRect().bottom || 0;
+  const topInset = Math.max(24, headerBottom + 24);
+  const scrollDistance = Math.max(0, Math.min(rect.bottom - window.innerHeight + 28, rect.top - topInset));
+  const duration = 620;
   section.classList.add('is-expanding');
+  document.documentElement.classList.add('product-partners-expanding');
   const expansion = section.animate([
     { height: '0px', marginTop: '0px', paddingTop: '0px', borderTopWidth: '0px', opacity: 0 },
-    { height: `${height}px`, marginTop: style.marginTop, paddingTop: style.paddingTop,
-      borderTopWidth: style.borderTopWidth, opacity: 1 },
-  ], { duration: 650, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+    { height: `${rect.height}px`, ...finalSpacing, opacity: 1 },
+  ], { duration, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });
   section.querySelectorAll('.product-hero-buy__header, .partner-card').forEach((item, index) => {
     item.animate([
-      { opacity: 0, transform: 'translateY(22px) scale(0.97)' },
-      { opacity: 1, transform: 'translateY(0) scale(1)' },
-    ], { duration: 500, delay: 140 + index * 85, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' });
+      { opacity: 0, transform: 'translateY(12px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 360, delay: 80 + Math.min(index, 4) * 35, easing: 'cubic-bezier(0.2, 0, 0.2, 1)', fill: 'backwards' });
   });
-  expansion.onfinish = () => {
-    section.classList.remove('is-expanding');
-    scrollToPartners();
+  let frame = 0;
+  let autoScroll = true;
+  const stopScroll = () => { autoScroll = false; };
+  const scrollKeys = event => { if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) stopScroll(); };
+  window.addEventListener('wheel', stopScroll, { passive: true });
+  window.addEventListener('touchstart', stopScroll, { passive: true });
+  window.addEventListener('keydown', scrollKeys);
+  const tick = () => {
+    if (autoScroll && scrollDistance > 0) {
+      const progress = expansion.effect.getComputedTiming().progress || 0;
+      window.scrollTo({ top: startScroll + scrollDistance * progress, behavior: 'instant' });
+    }
+    if (expansion.playState === 'running') frame = requestAnimationFrame(tick);
   };
+  frame = requestAnimationFrame(tick);
+  const cleanup = () => {
+    cancelAnimationFrame(frame);
+    section.classList.remove('is-expanding');
+    document.documentElement.classList.remove('product-partners-expanding');
+    window.removeEventListener('wheel', stopScroll);
+    window.removeEventListener('touchstart', stopScroll);
+    window.removeEventListener('keydown', scrollKeys);
+  };
+  expansion.onfinish = () => {
+    if (autoScroll && scrollDistance > 0) window.scrollTo({ top: startScroll + scrollDistance, behavior: 'instant' });
+    cleanup();
+  };
+  expansion.oncancel = cleanup;
 }
-
 function renderDynamicProductPage(payload) {
   const product = payload?.product || {};
   const page = product.page || {};
