@@ -106,6 +106,11 @@
     node.addEventListener('click', click); node.addEventListener('keydown', keydown);
   }
   function bindPage() {
+    const information = document.querySelector('[data-product-information]');
+    if (information) {
+      document.getElementById('benefits').hidden = false;
+      textBinding(information, 'Product information', value => changed('informationText', value));
+    }
     const scalar = { title: 'name', kicker: 'kicker', lead: 'lead', 'overview-label': 'overviewLabel', 'overview-heading': 'overviewHeading', 'overview-intro': 'overviewIntro', 'formula-label': 'formulaLabel', 'formula-heading': 'formulaHeading', 'formula-intro': 'formulaIntro', 'usage-label': 'usageLabel', 'usage-heading': 'usageHeading', 'note-title': 'noteTitle', 'note-text': 'noteText', 'buy-intro': 'buyIntro' };
     Object.entries(scalar).forEach(([attr, key]) => textBinding(document.querySelector(`[data-product-${attr}]`), key, value => changed(key, value)));
     imageBinding(document.querySelector('[data-product-image]'), 'Product image', value => changed('image', value));

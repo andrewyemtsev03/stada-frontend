@@ -522,13 +522,28 @@ function createDynamicUsageItem(item, index) {
   return article;
 }
 
+function getProductInformationText(product) {
+  const page = product.page || {};
+  if (page.informationText?.trim()) return page.informationText;
+  const text = value => decodeHtmlEntities(String(value || '').trim());
+  const block = values => values.map(text).filter(Boolean).join('\n');
+  return [
+    block([page.overviewLabel, page.overviewHeading, page.overviewIntro || product.shortDescription]),
+    ...(page.facts || []).map(item => block([item.title, item.value, item.text])),
+    page.benefits?.length ? block([getTranslatedText(currentLang, 'benefits_heading'), ...page.benefits.map(item => `• ${text(item)}`)]) : '',
+    block([page.usageLabel, page.usageHeading]),
+    ...(page.usageItems || []).map(item => block([item.title, item.text])),
+    block([page.noteTitle, page.noteText]),
+  ].filter(Boolean).join('\n\n');
+}
+
 function updateProductSectionVisibility(page) {
   const hasText = value => Boolean(String(value || '').trim());
   const sections = [
     ['formula', page.formulaLabel || page.formulaHeading,
       Boolean(page.formulaPoints?.length || hasText(page.formulaIntro) || hasText(page.formulaHeading) || hasText(page.formulaImage))],
     ['benefits', page.overviewLabel || page.overviewHeading || getTranslatedText(currentLang, 'benefits_heading'),
-      Boolean(page.facts?.length || page.benefits?.length || hasText(page.overviewIntro) || hasText(page.overviewHeading) || backendProductPayload?.product?.shortDescription)],
+      Boolean(getProductInformationText(backendProductPayload?.product || {}))],
     ['usage', page.usageLabel || page.usageHeading || page.noteTitle,
       Boolean(page.usageItems?.length || hasText(page.noteTitle) || hasText(page.noteText))]
   ];
@@ -585,6 +600,7 @@ function revealPharmacyPartners(section) {
 function renderDynamicProductPage(payload) {
   const product = payload?.product || {};
   const page = product.page || {};
+  setText('[data-product-information]', getProductInformationText(product));
   const blueprint = getApiProductBlueprint(product, page);
   const body = document.body;
   const accent = product.accent || '#005db9';

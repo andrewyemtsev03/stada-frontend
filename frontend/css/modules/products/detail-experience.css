@@ -65,6 +65,21 @@
 
 .product-dynamic-page .partner-card { position: relative; }
 
+.product-information-box {
+  padding: clamp(24px, 4vw, 52px);
+  border: 1px solid rgba(7, 59, 117, 0.12);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(8, 46, 84, 0.06);
+  color: #334b63;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.85;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.product-information-box[contenteditable="true"] { min-height: 220px; }
+
 .product-dynamic-page .product-hero-buy.is-expanding {
   box-sizing: border-box;
   overflow: hidden;
