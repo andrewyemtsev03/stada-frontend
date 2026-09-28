@@ -600,7 +600,8 @@ function revealPharmacyPartners(section) {
 function renderDynamicProductPage(payload) {
   const product = payload?.product || {};
   const page = product.page || {};
-  setText('[data-product-information]', getProductInformationText(product));
+  const informationBox = document.querySelector('[data-product-information]');
+  if (informationBox) StadaProductText.render(informationBox, getProductInformationText(product));
   const blueprint = getApiProductBlueprint(product, page);
   const body = document.body;
   const accent = product.accent || '#005db9';

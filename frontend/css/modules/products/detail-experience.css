@@ -122,3 +122,19 @@
   }
   .product-dynamic-page .vitrum-animate { opacity: 1; transform: none; }
 }
+
+/* Formatting shared by the product information box and its editor preview. */
+.product-information-box, .product-text-preview { white-space: normal; }
+.product-information-box h2, .product-text-preview h2 { font-size:clamp(25px,3vw,34px);line-height:1.25;color:#003f7d;margin:1.2em 0 .55em;font-weight:700; }
+.product-information-box h3, .product-text-preview h3 { font-size:clamp(20px,2vw,24px);line-height:1.4;color:#003f7d;margin:1.2em 0 .55em;font-weight:700; }
+.product-information-box p, .product-text-preview p { font-size:inherit;line-height:1.85;margin:0 0 1em;white-space:pre-wrap; }
+.product-information-box strong, .product-text-preview strong { font-weight:700;color:#003f7d; }
+.product-information-box > :first-child, .product-text-preview > :first-child { margin-top:0; }
+.product-information-box > :last-child, .product-text-preview > :last-child { margin-bottom:0; }
+.product-text-preview { padding:20px;border:1px solid #d6e2ec;border-radius:12px;background:white;color:#334b63;overflow-wrap:anywhere; }
+.product-text-toolbar { display:flex;flex-wrap:wrap;gap:8px;margin:12px 0; }
+.product-text-toolbar button,.product-text-edit { padding:9px 14px;border:1px solid #b7ccde;border-radius:8px;background:#eff6fc;color:#003f7d;font-family:inherit;font-size:14px;font-weight:700;line-height:1.4;cursor:pointer; }
+.product-text-edit { margin-bottom:16px; }
+.product-editor-dialog:has(textarea) { width:min(94vw,760px); }
+.product-editor-dialog textarea { box-sizing:border-box;width:100%;padding:14px;border:1px solid #9db6c7;border-radius:8px;resize:vertical;font:15px/1.6 monospace; }
+.product-editor-dialog .product-editor-actions { margin-top:20px; }

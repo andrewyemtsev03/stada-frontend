@@ -16,6 +16,7 @@
   document.body.append(dialog);
   let token = '', active = false, busy = false, changes = {}, snapshot = null, bindings = [];
   let scope, refreshNeeded = false;
+  let informationEditCleanup = () => {};
   const hiddenImageAncestors = new Set();
   const status = text => { bar.querySelector('[data-editor-status]').textContent = text; };
   const dirty = () => Object.keys(changes).length > 0;
@@ -109,7 +110,17 @@
     const information = document.querySelector('[data-product-information]');
     if (information) {
       document.getElementById('benefits').hidden = false;
-      textBinding(information, 'Product information', value => changed('informationText', value));
+      const edit = document.createElement('button');
+      edit.type = 'button'; edit.className = 'product-text-edit'; edit.textContent = 'Edit text & formatting';
+      information.before(edit);
+      information.classList.add('product-editor-target');
+      const open = () => { if (!busy) editInformation(information); };
+      edit.onclick = open;
+      information.addEventListener('click', open);
+      informationEditCleanup = () => {
+        edit.remove(); information.classList.remove('product-editor-target');
+        information.removeEventListener('click', open);
+      };
     }
     const scalar = { title: 'name', kicker: 'kicker', lead: 'lead', 'overview-label': 'overviewLabel', 'overview-heading': 'overviewHeading', 'overview-intro': 'overviewIntro', 'formula-label': 'formulaLabel', 'formula-heading': 'formulaHeading', 'formula-intro': 'formulaIntro', 'usage-label': 'usageLabel', 'usage-heading': 'usageHeading', 'note-title': 'noteTitle', 'note-text': 'noteText', 'buy-intro': 'buyIntro' };
     Object.entries(scalar).forEach(([attr, key]) => textBinding(document.querySelector(`[data-product-${attr}]`), key, value => changed(key, value)));
@@ -139,6 +150,7 @@
     });
   }
   function unbindPage() {
+    informationEditCleanup();
     bindings.forEach(binding => {
       const { node, image, input, paste, click, keydown } = binding;
       node.classList.remove('product-editor-target'); delete node.dataset.editorLabel;
@@ -154,6 +166,24 @@
     bindings = [];
     hiddenImageAncestors.forEach(node => node.setAttribute('aria-hidden', 'true'));
     hiddenImageAncestors.clear();
+  }
+  function editInformation(node) {
+    dialog.innerHTML = '<form><h2>Product information</h2><p>Select a line and choose Title, Subtitle or Body. Select words for Bold.</p><label>Text<textarea rows="10" maxlength="20000" required></textarea></label><p>Preview</p><div class="product-text-preview"></div><div class="product-editor-actions"><button type="button" data-cancel>Cancel</button><button type="submit">Apply formatting</button></div></form>';
+    const textarea = dialog.querySelector('textarea');
+    textarea.value = changes.informationText ?? getProductInformationText(snapshot.product);
+    textarea.closest('label').before(StadaProductText.toolbar(textarea));
+    const preview = dialog.querySelector('.product-text-preview');
+    const update = () => StadaProductText.render(preview, textarea.value);
+    textarea.addEventListener('input', update); update();
+    dialog.querySelector('[data-cancel]').onclick = () => dialog.close();
+    dialog.querySelector('form').onsubmit = event => {
+      event.preventDefault();
+      if (!textarea.value.trim()) return;
+      changed('informationText', textarea.value.trim());
+      StadaProductText.render(node, textarea.value.trim());
+      dialog.close();
+    };
+    dialog.showModal();
   }
   function editImage(node, setter) {
     dialog.innerHTML = '<form><h2>Replace image</h2><p>Paste an image URL or upload a PNG, JPEG, or WebP (up to 8 MB). Product images are shared across languages.</p><label>Image URL<input type="url" name="url" required></label><label>Upload image<input type="file" accept="image/png,image/jpeg,image/webp"></label><p role="alert" data-error></p><div class="product-editor-actions"><button type="button" data-cancel>Cancel</button><button type="submit">Use image</button></div></form>';
