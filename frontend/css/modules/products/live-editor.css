@@ -1,0 +1,23 @@
+.product-editor-launch,.product-editor-bar button,.product-editor-dialog button { border:0;border-radius:999px;padding:12px 20px;background:#005db9;color:#fff;font:700 14px/1.3 'Noto Sans',sans-serif;cursor:pointer; }
+.product-editor-launch { position:fixed;right:24px;bottom:24px;z-index:9000;box-shadow:0 6px 30px #003b7650; }
+.product-editor-bar { position:fixed;bottom:0;left:0;right:0;z-index:10001;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 24px;background:#082a47;color:white;box-shadow:0 -4px 28px #005db940;font:14px/1.4 'Noto Sans',sans-serif; }
+.product-editor-bar strong { color:#82f5c7; }
+.product-editor-bar [data-editor-status] { flex:1;min-width:180px; }
+.product-editor-bar [data-editor-exit] { background:#fff;color:#082a47; }
+.product-editor-active { padding-bottom:150px; }
+.product-editor-active::after { content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;border:4px solid #00b889; }
+.product-editor-active .product-editor-target { outline:2px dashed #00a881!important;outline-offset:5px;cursor:text;min-height:1em; }
+.product-editor-active img.product-editor-target { cursor:pointer; }
+.product-editor-active .product-editor-target:focus { outline:3px solid #005db9!important;background-color:#dff8f044; }
+.product-editor-active .vitrum-animate { opacity:1!important;visibility:visible!important; }
+.product-editor-dialog { box-sizing:border-box;width:min(94vw,520px);max-height:90vh;overflow:auto;border:0;border-radius:20px;padding:28px;color:#082a47;box-shadow:0 20px 70px #0004;font:15px/1.5 'Noto Sans',sans-serif; }
+.product-editor-dialog::backdrop { background:#031b36aa;backdrop-filter:blur(4px); }
+.product-editor-dialog h2 { margin:0 0 12px; }
+.product-editor-dialog label { display:block;margin:18px 0;font-weight:700; }
+.product-editor-dialog input { box-sizing:border-box;width:100%;display:block;margin-top:8px;padding:12px;border:1px solid #9db6c7;border-radius:8px;font:inherit; }
+.product-editor-dialog [data-error] { color:#a02634; }
+.product-editor-actions { display:flex;justify-content:flex-end;gap:12px; }
+.product-editor-dialog [data-cancel] { background:#e9eff5;color:#082a47; }
+.product-editor-bar button:disabled,.product-editor-dialog button:disabled { opacity:.55;cursor:wait; }
+.product-editor-launch[hidden],.product-editor-bar[hidden] { display:none!important; }
+@media(max-width:600px) { .product-editor-bar { padding:12px;gap:10px; }.product-editor-bar [data-editor-status] { flex-basis:100%; }.product-editor-launch { bottom:16px;right:16px; } }
