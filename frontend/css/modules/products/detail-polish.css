@@ -129,6 +129,37 @@
   border-radius: 24px;
 }
 
+.formula-showcase--has-model .formula-showcase-pack {
+  min-height: 420px;
+}
+
+.formula-showcase--has-model .formula-showcase-model {
+  position: absolute;
+  z-index: 2;
+  width: min(100%, 440px);
+  height: 420px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 450ms ease;
+  --poster-color: transparent;
+}
+
+.formula-showcase--has-model .formula-showcase-model.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.formula-showcase-model[hidden],
+.formula-showcase-packshot[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formula-showcase--has-model .formula-showcase-model {
+    transition: none;
+  }
+}
+
 .product-detail-page .usage-item {
   min-height: 112px;
 }
@@ -294,6 +325,15 @@
     border-radius: 18px;
   }
 
+  .formula-showcase--has-model .formula-showcase-pack {
+    min-height: 280px;
+  }
+
+  .formula-showcase--has-model .formula-showcase-model {
+    width: min(100%, 320px);
+    height: 280px;
+  }
+
   .product-detail-page .formula-showcase-points {
     gap: 0.75rem;
     padding-left: 20px;
@@ -357,6 +397,14 @@
 }
 
 @media (max-width: 350px) {
+  .formula-showcase--has-model .formula-showcase-pack {
+    min-height: 250px;
+  }
+
+  .formula-showcase--has-model .formula-showcase-model {
+    height: 250px;
+  }
+
   .product-detail-page .partners-grid {
     grid-template-columns: 1fr;
   }

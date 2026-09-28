@@ -94,8 +94,8 @@ export const countriesData = [
       "address": "12 Merab Aleksidze St., 0193 Tbilisi, Georgia",
       "website": "https://stada.ge/",
       "websiteLabel": "Visit Website",
-      "email": "",
-      "phone": "",
+      "email": "ketino.metreveli@stada.ge",
+      "phone": "+995 571 47 44 55",
       "flag": "https://flagcdn.com/w80/ge.png"
     },
     {

@@ -522,6 +522,18 @@ function createDynamicUsageItem(item, index) {
   return article;
 }
 
+function normalizeDynamicProductModelSrc(src) {
+  const value = String(src || '').trim();
+  if (!value || /[\u0000-\u001f\u007f]/.test(value)) return '';
+  try {
+    const url = new URL(value, window.location.href);
+    if (!['http:', 'https:'].includes(url.protocol) || !url.pathname.toLowerCase().endsWith('.glb')) return '';
+    return /^(?:https?:)?\/\//i.test(value) ? url.href : getSiteAssetPath(value.replace(/^(?:\.\/|\.\.\/)+/, ''));
+  } catch (error) {
+    return '';
+  }
+}
+
 function getProductInformationText(product) {
   const page = product.page || {};
   if (page.informationText?.trim()) return page.informationText;
@@ -541,7 +553,7 @@ function updateProductSectionVisibility(page) {
   const hasText = value => Boolean(String(value || '').trim());
   const sections = [
     ['formula', page.formulaLabel || page.formulaHeading,
-      Boolean(page.formulaPoints?.length || hasText(page.formulaIntro) || hasText(page.formulaHeading) || hasText(page.formulaImage))],
+      Boolean(page.formulaPoints?.length || hasText(page.formulaIntro) || hasText(page.formulaHeading) || hasText(page.formulaImage) || hasText(page.formulaModel))],
     ['benefits', page.overviewLabel || page.overviewHeading || getTranslatedText(currentLang, 'benefits_heading'),
       Boolean(getProductInformationText(backendProductPayload?.product || {}))],
     ['usage', page.usageLabel || page.usageHeading || page.noteTitle,
@@ -669,6 +681,59 @@ function renderDynamicProductPage(payload) {
   if (formulaImage) {
     formulaImage.src = blueprint?.formulaImageSrc || normalizeDynamicProductImageSrc(page.formulaImage || product.image?.url || product.image?.src);
     formulaImage.alt = '';
+  }
+  const formulaModel = document.querySelector('[data-product-formula-model]');
+  if (formulaModel && formulaImage) {
+    const modelSrc = normalizeDynamicProductModelSrc(page.formulaModel);
+    const formulaStage = formulaModel.closest('.formula-showcase-stage');
+    const formulaShowcase = formulaModel.closest('.formula-showcase');
+    formulaModel.hidden = !modelSrc;
+    formulaImage.hidden = Boolean(modelSrc && formulaModel.classList.contains('is-ready') && formulaModel.dataset.activeSrc === modelSrc);
+    formulaShowcase?.classList.toggle('formula-showcase--has-model', Boolean(modelSrc));
+    if (formulaStage) formulaStage.setAttribute('aria-hidden', modelSrc ? 'false' : 'true');
+    formulaModel.alt = `${product.name || 'Product'} 3D model`;
+
+    if (!formulaModel.dataset.initialized) {
+      formulaModel.dataset.initialized = 'true';
+      formulaModel.addEventListener('load', () => {
+        formulaModel.classList.add('is-ready');
+        if (!formulaModel.hidden) {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            formulaImage.hidden = true;
+          } else {
+            window.setTimeout(() => {
+              if (!formulaModel.hidden && formulaModel.classList.contains('is-ready')) formulaImage.hidden = true;
+            }, 450);
+          }
+        }
+      });
+      formulaModel.addEventListener('error', () => {
+        formulaModel.classList.remove('is-ready');
+        formulaImage.hidden = false;
+      });
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const updateRotation = () => formulaModel.toggleAttribute('auto-rotate', !reducedMotion.matches);
+      updateRotation();
+      reducedMotion.addEventListener('change', updateRotation);
+    }
+    if (modelSrc && formulaModel.dataset.activeSrc !== modelSrc) {
+      formulaModel.classList.remove('is-ready');
+      formulaImage.hidden = false;
+      formulaModel.dataset.activeSrc = modelSrc;
+      formulaModel.src = modelSrc;
+    } else if (!modelSrc) {
+      formulaModel.classList.remove('is-ready');
+      formulaModel.removeAttribute('src');
+      formulaModel.dataset.activeSrc = '';
+    }
+    if (modelSrc && !document.querySelector('[data-product-model-viewer-script]')) {
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js';
+      script.dataset.productModelViewerScript = '';
+      document.body.appendChild(script);
+    }
   }
 
   // Only show intentional highlights here. The therapeutic area already appears
