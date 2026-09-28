@@ -64,6 +64,17 @@
 }
 
 .product-dynamic-page .partner-card { position: relative; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-dynamic-page .product-hero-buy:not([hidden]) {
+    animation: product-partners-reveal 280ms ease-out;
+  }
+}
+
+@keyframes product-partners-reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .partner-card-external {
   position: absolute;
   top: 0.65rem;

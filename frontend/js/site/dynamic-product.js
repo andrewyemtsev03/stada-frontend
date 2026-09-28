@@ -611,8 +611,25 @@ function renderDynamicProductPage(payload) {
   const purchaseLinks = page.purchaseLinks || [];
   const hasPurchaseLinks = purchaseLinks.length > 0;
   const buySection = document.getElementById('pharmacy-partners');
-  if (buySection) buySection.hidden = !hasPurchaseLinks;
+  if (buySection) buySection.hidden = true;
   setPharmacyPartnerLinksVisible(hasPurchaseLinks);
+  document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => {
+    link.setAttribute('aria-controls', 'pharmacy-partners');
+    link.setAttribute('aria-expanded', 'false');
+    link.onclick = event => {
+      event.preventDefault();
+      if (!buySection || !hasPurchaseLinks) return;
+      buySection.hidden = false;
+      document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(trigger => {
+        trigger.setAttribute('aria-expanded', 'true');
+      });
+      buySection.querySelectorAll('.vitrum-animate').forEach(item => item.classList.add('is-visible'));
+      buySection.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+        block: 'nearest',
+      });
+    };
+  });
 
   replaceChildrenFromList('[data-product-metrics]', metrics, createDynamicProductMetric, { hideEmpty: true });
   replaceChildrenFromList('[data-product-facts]', facts, createDynamicProductFact, { hideEmpty: true });

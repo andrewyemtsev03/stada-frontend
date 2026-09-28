@@ -219,6 +219,7 @@
   document.addEventListener('click', event => {
     if (!active || bar.contains(event.target) || dialog.contains(event.target)) return;
     const navigation = event.target.closest('a, .lang-option, [data-country]');
+    if (navigation?.matches('a[href="#pharmacy-partners"]')) return;
     const editable = event.target.closest('.product-editor-target');
     if (editable) {
       if (navigation) { event.preventDefault(); editable.focus(); }
