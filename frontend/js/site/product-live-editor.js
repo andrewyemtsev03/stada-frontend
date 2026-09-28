@@ -71,6 +71,7 @@
   }
   function textBinding(node, key, setter) {
     if (!node) return;
+    node.hidden = false;
     const input = () => setter(node.innerText.trim());
     const paste = event => {
       event.preventDefault();
@@ -107,6 +108,7 @@
     node.addEventListener('click', click); node.addEventListener('keydown', keydown);
   }
   function bindPage() {
+    const page = prepareBlankProductSlots();
     const information = document.querySelector('[data-product-information]');
     if (information) {
       document.getElementById('benefits').hidden = false;
@@ -126,7 +128,6 @@
     Object.entries(scalar).forEach(([attr, key]) => textBinding(document.querySelector(`[data-product-${attr}]`), key, value => changed(key, value)));
     imageBinding(document.querySelector('[data-product-image]'), 'Product image', value => changed('image', value));
     imageBinding(document.querySelector('[data-product-formula-image]'), 'Formula image', value => changed('formulaImage', value));
-    const page = snapshot.product.page || {};
     const lists = [
       ['badges', 'badges', null], ['benefits', 'benefits', null],
       ['metrics', 'metrics', { strong: 'value', span: 'title' }],
@@ -139,15 +140,58 @@
       const source = key === 'metrics' && !page.metrics?.length ? page.facts?.slice(0, 3) : page[key];
       const values = structuredClone(source || []);
       document.querySelectorAll(`[data-product-${attr}] > *`).forEach((item, index) => {
-        if (!selectors) textBinding(item, key, value => { values[index] = value; changed(key, values); });
+        if (!selectors) textBinding(item, key, value => { values[index] = value; changed(key, values.filter(value => value.trim())); });
         else {
           values[index] ||= {};
-          Object.entries(selectors).forEach(([selector, field]) => textBinding(item.querySelector(selector), `${key} ${field}`, value => { values[index][field] = value; changed(key, values); }));
+          if (key !== 'purchaseLinks') Object.entries(selectors).forEach(([selector, field]) => textBinding(item.querySelector(selector), `${key} ${field}`, value => { values[index][field] = value; changed(key, values); }));
           if (key === 'formulaPoints') imageBinding(item.querySelector('img'), 'Formula point image', value => { values[index].imageSrc = value; changed(key, values); });
-          if (key === 'purchaseLinks') imageBinding(item.querySelector('img'), 'Partner logo', value => { values[index].logoSrc = value; changed(key, values); });
+          if (key === 'purchaseLinks') {
+            const saveLinks = () => changed(key, values.filter(link => link.label || link.url || link.logoSrc));
+            textBinding(item.querySelector('p'), 'Partner name', value => { values[index].label = value; saveLinks(); });
+            textBinding(item.querySelector('[data-editor-partner-url]'), 'https://pharmacy.example/product', value => { values[index].url = value; saveLinks(); });
+            imageBinding(item.querySelector('img'), 'Partner logo', value => { values[index].logoSrc = value; saveLinks(); });
+          }
         }
       });
     });
+  }
+  function prepareBlankProductSlots() {
+    const page = structuredClone(snapshot.product.page || {});
+    const blankImage = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160"><rect width="240" height="160" rx="12" fill="#edf5fa"/><path d="M100 65h40M120 45v40" stroke="#6288a5" stroke-width="3"/><text x="120" y="115" text-anchor="middle" font-family="Arial" font-size="14" fill="#426780">Click to add image</text></svg>');
+    ['formula', 'benefits', 'pharmacy-partners'].forEach(id => { const node = document.getElementById(id); if (node) node.hidden = false; });
+    const fill = (attribute, key, count, create) => {
+      const container = document.querySelector(`[data-product-${attribute}]`);
+      if (!container) return;
+      page[key] ||= [];
+      if (key === 'metrics' && !page[key].length) page[key] = structuredClone(page.facts?.slice(0, 3) || []);
+      while (page[key].length < count) page[key].push(key === 'badges' ? '' : {});
+      while (container.children.length < page[key].length) container.append(create());
+      container.hidden = false;
+    };
+    fill('badges', 'badges', 3, () => document.createElement('span'));
+    fill('metrics', 'metrics', 3, () => { const node = document.createElement('div'); node.className = 'product-hero-metric'; node.innerHTML = '<strong></strong><span></span>'; return node; });
+    fill('formula-points', 'formulaPoints', 3, () => { const node = document.createElement('article'); node.className = 'formula-point'; node.innerHTML = '<div class="formula-point-media"></div>'; return node; });
+    document.querySelectorAll('[data-product-formula-points] > *').forEach(node => {
+      node.classList.remove('formula-point--icon-only');
+      let media = node.querySelector('.formula-point-media');
+      if (!media) { media = document.createElement('div'); media.className = 'formula-point-media'; node.prepend(media); }
+      if (!media.querySelector('img')) { const image = document.createElement('img'); image.src = blankImage; image.alt = ''; media.append(image); }
+      let body = node.querySelector('.formula-point-body');
+      if (!body) { body = document.createElement('div'); body.className = 'formula-point-body'; node.append(body); }
+      if (!body.querySelector('h3')) body.append(document.createElement('h3'));
+      if (!body.querySelector('p')) body.append(document.createElement('p'));
+    });
+    fill('partners', 'purchaseLinks', 4, () => { const node = document.createElement('a'); node.className = 'partner-card'; node.innerHTML = '<img alt=""><p></p>'; return node; });
+    document.querySelectorAll('[data-product-partners] > *').forEach((node, index) => {
+      const image = node.querySelector('img');
+      if (image && !page.purchaseLinks[index]?.logoSrc) image.src = blankImage;
+      const url = document.createElement('span'); url.dataset.editorPartnerUrl = ''; url.textContent = page.purchaseLinks[index]?.url || ''; node.append(url);
+    });
+    document.querySelectorAll('[data-product-image], [data-product-formula-image]').forEach(node => {
+      const source = node.hasAttribute('data-product-image') ? snapshot.product.image?.src : page.formulaImage || snapshot.product.image?.src;
+      if (!source || !node.getAttribute('src')) node.src = blankImage;
+    });
+    return page;
   }
   function unbindPage() {
     informationEditCleanup();

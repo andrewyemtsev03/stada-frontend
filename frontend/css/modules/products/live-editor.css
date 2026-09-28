@@ -21,3 +21,13 @@
 .product-editor-bar button:disabled,.product-editor-dialog button:disabled { opacity:.55;cursor:wait; }
 .product-editor-launch[hidden],.product-editor-bar[hidden] { display:none!important; }
 @media(max-width:600px) { .product-editor-bar { padding:12px;gap:10px; }.product-editor-bar [data-editor-status] { flex-basis:100%; }.product-editor-launch { bottom:16px;right:16px; } }
+
+/* Empty slots exist only while editing; hints are never part of saved text. */
+.product-editor-active [contenteditable="true"]:empty::before { content:attr(data-editor-label);color:#668198;font-size:14px;font-weight:400;pointer-events:none; }
+.product-editor-active [contenteditable="true"]:empty { min-width:90px;min-height:28px;display:block; }
+.product-editor-active [data-product-information]:empty { min-height:180px;cursor:pointer; }
+.product-editor-active [data-product-information]:empty::before { content:'Click to add product information';color:#668198; }
+.product-editor-active [data-product-formula-points] .formula-point-media img { display:block;min-width:70px;min-height:60px;object-fit:contain; }
+.product-editor-active [data-editor-partner-url] { display:block;margin-top:14px;max-width:100%;overflow-wrap:anywhere;font-size:12px; }
+.product-editor-active .partner-card { height:auto;min-height:180px; }
+.product-editor-active .product-hero-packshot,.product-editor-active [data-product-formula-image] { min-width:120px;min-height:120px; }
