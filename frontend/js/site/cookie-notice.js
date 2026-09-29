@@ -31,12 +31,12 @@
     }
     const secure = location.protocol === 'https:' ? '; Secure' : '';
     document.cookie = `${cookieName}=agreed; Max-Age=315360000; Path=/; SameSite=Lax${secure}`;
-    notice.classList.remove('is-visible');
-    notice.setAttribute('aria-hidden', 'true');
+    notice.close();
   });
 
+  // The visitor must make a choice before returning to the page.
+  notice.addEventListener('cancel', event => event.preventDefault());
   document.addEventListener('stada:languagechange', localize);
   localize();
-  notice.classList.add('is-visible');
-  notice.setAttribute('aria-hidden', 'false');
+  notice.showModal();
 })();
