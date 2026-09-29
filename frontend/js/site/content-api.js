@@ -271,6 +271,7 @@ function applyImagesFromBackendPayload(payload) {
         && image.source !== 'override'
         && normalizeImageLookupKey(nextSrc) === normalizeImageLookupKey(img.getAttribute('src') || img.src)
       ) {
+        img.dataset.backendImageApplied = 'true';
         return;
       }
       img.src = withRuntimeImageRefresh(resolveProductAssetImageSrc(nextSrc), image.source === 'override' ? overrideImageCacheKey : '');
