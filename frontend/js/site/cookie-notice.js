@@ -26,6 +26,64 @@
     ro: ['Puteți alege categoriile de cookie-uri. Cele necesare salvează alegerea și ajută site-ul să funcționeze. Puteți modifica setările în subsolul paginii.', 'Aceste cookie-uri sunt necesare pentru funcționarea site-ului și salvarea preferințelor.', 'Această categorie este destinată instrumentelor de publicitate, dacă vor fi adăugate.', 'Această categorie este destinată funcțiilor suplimentare, dacă vor fi adăugate.', 'Această categorie este destinată analizei, dacă va fi adăugată.'],
     uz: ['Cookie toifalarini tanlashingiz mumkin. Zarur cookie fayllari tanlovingizni saqlaydi va sayt ishlashiga yordam beradi. Sozlamalarni sahifa pastidan o‘zgartirishingiz mumkin.', 'Bu cookie fayllari sayt ishlashi va tanlovingizni saqlash uchun zarur.', 'Bu toifa reklama vositalari qo‘shilsa ishlatiladi.', 'Bu toifa qo‘shimcha funksiyalar qo‘shilsa ishlatiladi.', 'Bu toifa tahlil vositalari qo‘shilsa ishlatiladi.'],
   };
+  const descriptionMore = {
+    ru: [
+      'Сейчас на сайте не подключены рекламные и аналитические инструменты. Включение категории сохраняет предпочтение, но само по себе не запускает сбор данных. Вы можете отклонить все необязательные категории, и сайт останется доступен.',
+      'Например, такая запись помогает не показывать уведомление при каждом посещении и помнить, какие категории вы разрешили. Она не предназначена для рекламы. Отключить её в этом окне нельзя; удалить её можно через настройки браузера.',
+      'Если STADA подключит рекламные инструменты, эта категория может использоваться для оценки рекламы и показа более подходящих объявлений, в том числе на других сайтах. Сейчас такие инструменты на сайте не подключены, поэтому включение категории не запускает рекламное отслеживание.',
+      'Такие cookie могут запоминать выбранные настройки или поддерживать дополнительные элементы, например встроенное видео либо чат. Сейчас эти дополнительные функции на сайте не подключены. Отключение категории не мешает пользоваться основными страницами.',
+      'Такие cookie могут помогать считать посещения и понимать, какие страницы удобны посетителям, чтобы улучшать сайт. Сейчас аналитика на сайте не подключена, поэтому включение категории не начинает измерять ваше посещение.',
+    ],
+    kz: [
+      'Қазір сайтта жарнамалық және талдау құралдары қосылмаған. Санатты қосу таңдауыңызды сақтайды, бірақ өздігінен дерек жинауды бастамайды. Міндетті емес санаттардың бәрінен бас тартсаңыз да, сайт қолжетімді болады.',
+      'Мұндай жазба хабарламаны әр кіргенде көрсетпеуге және қай санаттарға рұқсат бергеніңізді есте сақтауға көмектеседі. Ол жарнама үшін арналмаған. Бұл терезеде оны өшіру мүмкін емес; браузер параметрлері арқылы жоюға болады.',
+      'STADA жарнама құралдарын қосса, бұл санат жарнаманың тиімділігін бағалауға және басқа сайттарда да сәйкес хабарландыру көрсетуге қолданылуы мүмкін. Қазір ондай құралдар қосылмаған, сондықтан санатты қосу жарнамалық бақылауды бастамайды.',
+      'Мұндай cookie таңдалған параметрлерді сақтауға немесе кірістірілген бейне мен чат сияқты қосымша мүмкіндіктерге көмектесе алады. Қазір бұл қосымша қызметтер қосылмаған. Санатты өшіру негізгі беттерді пайдалануға кедергі келтірмейді.',
+      'Мұндай cookie келушілер санын және қай беттер пайдалы екенін түсінуге көмектесе алады. Қазір сайтта аналитика қосылмаған, сондықтан санатты қосу сіздің кіруіңізді өлшеуді бастамайды.',
+    ],
+    kg: [
+      'Азыр сайтта жарнама жана талдоо куралдары кошулган эмес. Категорияны иштетүү тандооңузду сактайт, бирок өзү маалымат чогултууну баштабайт. Милдеттүү эмес категориялардан баш тартсаңыз да сайт жеткиликтүү болот.',
+      'Мындай жазуу билдирүүнү ар бир киргенде көрсөтпөөгө жана тандооңузду эстеп калууга жардам берет. Ал жарнама үчүн колдонулбайт. Бул терезеден өчүрө албайсыз; браузердин жөндөөлөрүнөн өчүрсөңүз болот.',
+      'Жарнама куралдары келечекте кошулса, бул категория жарнаманы баалоо жана ылайыктуу жарнамаларды көрсөтүү үчүн колдонулушу мүмкүн. Азыр мындай куралдар кошулган эмес жана тандооңуз жарнамалык көзөмөлдү баштабайт.',
+      'Мындай cookie жөндөөлөрдү сактап же видео жана чат сыяктуу кошумча функцияларды иштете алат. Азыр ал функциялар кошулган эмес. Бул категорияны өчүрүү негизги барактарга тоскоол болбойт.',
+      'Мындай cookie кирүүлөрдүн санын жана кайсы барактар пайдалуу экенин түшүнүүгө жардам берет. Азыр сайтта аналитика кошулган эмес; категорияны иштетүү кирүүңүздү өлчөй баштабайт.',
+    ],
+    ge: [
+      'ამჟამად საიტზე სარეკლამო და ანალიტიკური ხელსაწყოები არ არის ჩართული. კატეგორიის ჩართვა ინახავს თქვენს არჩევანს, მაგრამ თავისთავად არ იწყებს მონაცემების შეგროვებას. არასავალდებულო კატეგორიების უარყოფის შემთხვევაშიც საიტი ხელმისაწვდომია.',
+      'ასეთი ჩანაწერი გვეხმარება, შეტყობინება ყოველი ვიზიტისას არ გაჩვენოთ და თქვენი არჩევანი დავიმახსოვროთ. ის რეკლამისთვის არ გამოიყენება. მისი წაშლა შეგიძლიათ ბრაუზერის პარამეტრებიდან.',
+      'თუ მომავალში სარეკლამო ხელსაწყოები დაემატება, ეს კატეგორია შეიძლება გამოყენებულ იქნას რეკლამის შეფასებისა და შესაბამისი რეკლამის საჩვენებლად. ამჟამად ასეთი ხელსაწყოები ჩართული არ არის.',
+      'ასეთ cookie-ფაილებს შეუძლიათ პარამეტრების დამახსოვრება ან დამატებითი ფუნქციების, მაგალითად ვიდეოს ან ჩატის, მხარდაჭერა. ამჟამად ეს ფუნქციები ჩართული არ არის. ძირითადი გვერდები მათ გარეშეც მუშაობს.',
+      'ასეთ cookie-ფაილებს შეუძლიათ ვიზიტების დათვლა და პოპულარული გვერდების გამოვლენა საიტის გასაუმჯობესებლად. ამჟამად ანალიტიკა ჩართული არ არის და ამ კატეგორიის არჩევა გაზომვას არ იწყებს.',
+    ],
+    az: [
+      'Hazırda saytda reklam və analitika alətləri qoşulmayıb. Kateqoriyanı aktivləşdirmək seçiminizi saxlayır, lakin özlüyündə məlumat toplanmasını başlatmır. İstəyə bağlı kateqoriyaları rədd etsəniz də sayt işləyir.',
+      'Bu qeyd bildirişin hər səfərdə görünməməsinə və seçiminizin yadda saxlanmasına kömək edir. Reklam üçün nəzərdə tutulmayıb. Onu brauzer parametrlərindən silə bilərsiniz.',
+      'Gələcəkdə reklam alətləri qoşularsa, bu kateqoriya reklamların qiymətləndirilməsi və uyğun elanların göstərilməsi üçün istifadə oluna bilər. Hazırda belə alətlər qoşulmayıb və seçiminiz reklam izləməsini başlatmır.',
+      'Bu cookie faylları parametrləri yadda saxlaya və video və ya çat kimi əlavə funksiyaları dəstəkləyə bilər. Hazırda bu funksiyalar qoşulmayıb. Əsas səhifələr bu kateqoriya olmadan da işləyir.',
+      'Bu cookie faylları ziyarət sayını və hansı səhifələrin faydalı olduğunu anlamağa kömək edə bilər. Hazırda analitika qoşulmayıb; kateqoriyanı seçmək ziyarətinizi ölçməyə başlamır.',
+    ],
+    hy: [
+      'Այս պահին կայքում գովազդային և վերլուծական գործիքներ միացված չեն։ Կատեգորիայի ընտրությունը պահպանում է ձեր նախապատվությունը, բայց ինքնուրույն տվյալների հավաքագրում չի սկսում։ Կայքը հասանելի է նաև ոչ պարտադիր կատեգորիաները մերժելու դեպքում։',
+      'Այս գրառումը թույլ է տալիս ամեն այցի ժամանակ կրկին չցուցադրել ծանուցումը և հիշել ձեր ընտրությունը։ Այն գովազդի համար նախատեսված չէ։ Կարող եք այն ջնջել դիտարկչի կարգավորումներում։',
+      'Եթե հետագայում գովազդային գործիքներ ավելացվեն, այս կատեգորիան կարող է օգտագործվել գովազդի արդյունավետությունը գնահատելու և համապատասխան հայտարարություններ ցուցադրելու համար։ Այժմ այդպիսի գործիքներ միացված չեն։',
+      'Այս cookie ֆայլերը կարող են հիշել կարգավորումները կամ աջակցել լրացուցիչ հնարավորություններին, օրինակ՝ տեսանյութին կամ զրույցին։ Այժմ այդ հնարավորությունները միացված չեն։ Հիմնական էջերը աշխատում են նաև առանց դրանց։',
+      'Այս cookie ֆայլերը կարող են օգնել հաշվել այցելությունները և հասկանալ, թե որ էջերն են օգտակար։ Այժմ վերլուծական գործիքներ միացված չեն, ուստի ընտրությունը չի սկսում չափել ձեր այցը։',
+    ],
+    ro: [
+      'În prezent, site-ul nu folosește instrumente de publicitate sau analiză. Activarea unei categorii salvează preferința, dar nu pornește singură colectarea datelor. Site-ul rămâne accesibil dacă respingeți categoriile opționale.',
+      'Această înregistrare împiedică afișarea notificării la fiecare vizită și păstrează alegerea dvs. Nu este destinată publicității. O puteți șterge din setările browserului.',
+      'Dacă vor fi adăugate instrumente de publicitate, categoria poate fi folosită pentru evaluarea reclamelor și afișarea unor anunțuri relevante. În prezent, aceste instrumente nu sunt active, iar alegerea categoriei nu pornește urmărirea publicitară.',
+      'Aceste cookie-uri pot reține setări sau susține funcții suplimentare, precum video sau chat. În prezent, aceste funcții nu sunt active. Paginile principale funcționează și fără această categorie.',
+      'Aceste cookie-uri pot ajuta la numărarea vizitelor și la înțelegerea paginilor utile. În prezent, analiza nu este activă, iar alegerea categoriei nu începe măsurarea vizitei dvs.',
+    ],
+    uz: [
+      'Hozir saytda reklama va tahlil vositalari ulanmagan. Toifani yoqish tanlovingizni saqlaydi, ammo o‘z-o‘zidan maʼlumot yig‘ishni boshlamaydi. Ixtiyoriy toifalarni rad etsangiz ham sayt ishlaydi.',
+      'Bu yozuv bildirishnomani har safar ko‘rsatmaslik va tanlovingizni eslab qolish uchun kerak. U reklama uchun mo‘ljallanmagan. Uni brauzer sozlamalaridan o‘chirishingiz mumkin.',
+      'Kelajakda reklama vositalari qo‘shilsa, bu toifa reklama samaradorligini baholash va mos eʼlonlarni ko‘rsatish uchun ishlatilishi mumkin. Hozir bunday vositalar ulanmagan va tanlov reklamaviy kuzatuvni boshlamaydi.',
+      'Bunday cookie fayllari sozlamalarni eslab qolishi yoki video va chat kabi qo‘shimcha funksiyalarni qo‘llab-quvvatlashi mumkin. Hozir bu funksiyalar ulanmagan. Asosiy sahifalar ularsiz ham ishlaydi.',
+      'Bunday cookie fayllari tashriflar sonini va foydali sahifalarni tushunishga yordam berishi mumkin. Hozir tahlil ulanmagan; toifani tanlash tashrifingizni o‘lchashni boshlamaydi.',
+    ],
+  };
   const categoryOrder = ['privacy', 'necessary', ...categories];
   const preferenceDialog = document.createElement('dialog');
   preferenceDialog.className = 'cookie-preferences';
@@ -109,7 +167,8 @@
     }
     const panel = preferenceDialog.querySelector('.cookie-preferences__panel');
     panel.querySelector('h3').textContent = t[selected];
-    panel.querySelector('p').textContent = details()[categoryOrder.indexOf(selected)];
+    const index = categoryOrder.indexOf(selected);
+    panel.querySelector('p').textContent = `${details()[index]} ${(descriptionMore[currentLang] || descriptionMore.ru)[index]}`;
     const toggle = panel.querySelector('.cookie-preferences__toggle');
     toggle.hidden = selected === 'privacy' || selected === 'necessary';
     const input = toggle.querySelector('input');
