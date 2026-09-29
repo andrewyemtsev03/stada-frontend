@@ -186,8 +186,21 @@ function isStableCloudinaryImageUrl(src) {
   return /^https:\/\/res\.cloudinary\.com\/[^/]+\/image\/upload\/(?!v\d+\/)/i.test(String(src || ''));
 }
 
-function resolveCountryCloudinaryHeroImageSrc(src, countryId = '') {
+const sharedKazakhstanHomeImageIds = new Set([
+  'index_image_002', 'index_image_003', 'index_image_004',
+  'index_image_005', 'index_image_014', 'index_image_015', 'index_image_016',
+]);
+
+function resolveCountryCloudinaryHeroImageSrc(src, countryId = '', imageId = '', source = '') {
   const value = String(src || '');
+  if (getCurrentBackendPagePath() === 'index.html' && sharedKazakhstanHomeImageIds.has(imageId)) {
+    if (source === 'override') return value;
+    // Also correct an older backend response while the backend deploys.
+    return value.replace(
+      /(https:\/\/res\.cloudinary\.com\/[^/]+\/image\/upload\/(?:v\d+\/)?stada\/hero\/)[^/]+(\/index\/index_image_0(?:02|03|04|05|14|15|16)\.[^/?#]+)/i,
+      '$1kazakhstan$2'
+    );
+  }
   const targetCountry = String(countryId || getCountryConfig().backendCountry || '')
     .trim()
     .toLowerCase()
@@ -252,7 +265,7 @@ function applyImagesFromBackendPayload(payload) {
       const rawNextSrc = image.source === 'override'
         ? image.url || image.src || img.src
         : image.src || img.src;
-      const nextSrc = resolveCountryCloudinaryHeroImageSrc(rawNextSrc, payloadCountryId);
+      const nextSrc = resolveCountryCloudinaryHeroImageSrc(rawNextSrc, payloadCountryId, image.id, image.source);
       if (
         img.dataset.optimizedStaticSrc === 'true'
         && image.source !== 'override'
@@ -268,6 +281,9 @@ function applyImagesFromBackendPayload(payload) {
       img.dataset.backendImageApplied = 'true';
     });
   });
+
+  const localTopEmployerBadge = document.querySelector('.career-media img[data-backend-image-id="index_image_014"]');
+  if (localTopEmployerBadge) localTopEmployerBadge.hidden = payloadCountryId !== 'kazakhstan';
 
   const photosBySrc = new Map();
   (payload?.content?.photos || []).forEach(photo => {

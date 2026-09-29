@@ -1861,6 +1861,14 @@ header.stada-home-hero.is-changing-in .stada-home-hero__copy {
   justify-self: end;
 }
 
+.career-media img[hidden] {
+  display: none;
+}
+
+html:not([data-stada-country="kz"]) .career-media img:nth-child(2) {
+  justify-self: center;
+}
+
 .career-media img:first-child {
   justify-self: start;
 }

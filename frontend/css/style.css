@@ -6,7 +6,7 @@
 @import url("modules/products/themes-3.css");
 @import url("modules/products/themes-4.css");
 @import url("modules/products/motion.css");
-@import url("modules/home.css");
+@import url("modules/home.css?v=shared-home-images-1");
 @import url("modules/about-page.css?v=site-consistency-2");
 @import url("modules/history.css");
 @import url("modules/worldwide.css?v=site-consistency-2");
