@@ -306,6 +306,7 @@ function applyImagesFromBackendPayload(payload) {
 function renderManagedNewsCards(payload) {
   const newsCards = payload?.content?.settings?.newsCards;
   const carousel = document.querySelector('[data-news-carousel]');
+  if (carousel?.closest('[hidden]')) return;
   const track = carousel?.querySelector('[data-news-track]');
   if (!track || !Array.isArray(newsCards)) return;
 

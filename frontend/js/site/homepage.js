@@ -325,7 +325,7 @@ function initHeroMetricCounters() {
 
 function initNewsCarousel() {
   const carousel = document.querySelector('[data-news-carousel]');
-  if (!carousel) return;
+  if (!carousel || carousel.closest('[hidden]')) return;
 
   const track = carousel.querySelector('[data-news-track]');
   const getCards = () => Array.from(track?.querySelectorAll('.news-card') || []);
