@@ -1,39 +1,42 @@
 (() => {
-  const storageKey = 'stada-cookie-notice-dismissed-v1';
+  const storageKey = 'stada-cookie-consent-v1';
+  const cookieName = 'stada_cookie_consent';
   const notice = document.querySelector('[data-cookie-notice]');
   if (!notice) return;
 
+  let agreed = document.cookie.split(';').some(part => part.trim() === `${cookieName}=agreed`);
   try {
-    if (localStorage.getItem(storageKey) === 'true') return;
+    agreed ||= localStorage.getItem(storageKey) === 'agreed';
   } catch {
-    // Show the notice when browser storage is unavailable.
+    // The long-lived cookie remains available when local storage is blocked.
   }
+  if (agreed) return;
 
-  const dismissButton = notice.querySelector('[data-cookie-notice-dismiss]');
-  const dismiss = () => {
-    notice.classList.remove('is-visible');
-    notice.setAttribute('aria-hidden', 'true');
-    try {
-      localStorage.setItem(storageKey, 'true');
-    } catch {
-      // Dismiss for this visit even when storage is unavailable.
-    }
-  };
-
-  dismissButton?.addEventListener('click', dismiss);
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && notice.classList.contains('is-visible')) dismiss();
-  });
-  const updateLinkLanguage = event => {
-    const lang = event.detail?.lang || document.documentElement.lang;
+  const acceptButton = notice.querySelector('[data-cookie-notice-accept]');
+  const localize = event => {
+    const lang = event?.detail?.lang || currentLang || document.documentElement.lang || 'ru';
     const link = notice.querySelector('[data-cookie-link]');
     if (link) link.href = `https://${lang === 'ru' ? 'ru' : 'en'}.aboutcookies.org/`;
+    const label = typeof getFrontendStaticText === 'function'
+      ? getFrontendStaticText(lang, 'cookie_accept')
+      : '';
+    if (acceptButton && label) acceptButton.textContent = label;
   };
-  document.addEventListener('stada:languagechange', updateLinkLanguage);
-  updateLinkLanguage({ detail: { lang: document.documentElement.lang } });
 
-  window.setTimeout(() => {
-    notice.classList.add('is-visible');
-    notice.setAttribute('aria-hidden', 'false');
-  }, 900);
+  acceptButton?.addEventListener('click', () => {
+    try {
+      localStorage.setItem(storageKey, 'agreed');
+    } catch {
+      // The cookie below is also used to remember the choice.
+    }
+    const secure = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = `${cookieName}=agreed; Max-Age=315360000; Path=/; SameSite=Lax${secure}`;
+    notice.classList.remove('is-visible');
+    notice.setAttribute('aria-hidden', 'true');
+  });
+
+  document.addEventListener('stada:languagechange', localize);
+  localize();
+  notice.classList.add('is-visible');
+  notice.setAttribute('aria-hidden', 'false');
 })();

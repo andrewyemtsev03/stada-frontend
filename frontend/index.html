@@ -12,7 +12,7 @@
   <!-- Corporate font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=site-consistency-4">
+  <link rel="stylesheet" href="css/style.css?v=approved-copy-ui-1">
 </head>
 <body>
   <a class="skip-link" href="#main-content" data-static-i18n-key="skip_to_content"></a>
@@ -75,11 +75,6 @@
             <p data-i18n-key="about_par1"></p>
             <p data-i18n-key="about_par2"></p>
           </div>
-          <ul class="values-list about-values">
-            <li><span class="value-icon">01</span><span data-i18n-key="about_list1"></span></li>
-            <li><span class="value-icon">02</span><span data-i18n-key="about_list2"></span></li>
-            <li><span class="value-icon">03</span><span data-i18n-key="about_list3"></span></li>
-          </ul>
         </div>
         <div class="about-stats" aria-label="STADA facts">
           <div class="about-visual">
@@ -95,6 +90,17 @@
             <div class="stat"><span class="stat-number">03</span><span data-i18n-key="stats_countries"></span></div>
           </div>
         </div>
+      </div>
+      <div class="home-section__inner about-context">
+        <div class="about-context__heading">
+          <p class="section-kicker" data-static-i18n-key="about_context_label"></p>
+          <h3 data-static-i18n-key="about_context_heading"></h3>
+        </div>
+        <ol class="values-list about-values">
+          <li><span class="value-icon" aria-hidden="true">01</span><span data-i18n-key="about_list1"></span></li>
+          <li><span class="value-icon" aria-hidden="true">02</span><span data-i18n-key="about_list2"></span></li>
+          <li><span class="value-icon" aria-hidden="true">03</span><span data-i18n-key="about_list3"></span></li>
+        </ol>
       </div>
     </section>
 
@@ -400,14 +406,14 @@
   </footer>
 
   <aside class="cookie-notice" data-cookie-notice role="region" aria-labelledby="cookie-notice-title" aria-hidden="true">
-    <button class="cookie-notice__dismiss" type="button" data-cookie-notice-dismiss aria-label="Закрыть уведомление">×</button>
     <h2 id="cookie-notice-title" data-static-i18n-key="cookie_title"></h2>
     <p data-static-i18n-key="cookie_notice"></p>
     <a data-cookie-link href="https://ru.aboutcookies.org/" target="_blank" rel="noopener noreferrer" data-static-i18n-key="cookie_link_label"></a>
+    <button class="cookie-notice__accept" type="button" data-cookie-notice-accept data-static-i18n-key="cookie_accept">Согласен</button>
   </aside>
 
   <!-- Scripts -->
-  <script src="js/site/bootstrap.js?v=site-consistency-2"></script>
+  <script src="js/site/bootstrap.js?v=approved-copy-ui-1"></script>
   <script src="js/site/locale-state.js?v=site-modules-1"></script>
   <script src="js/site/content-api.js?v=site-modules-1"></script>
   <script src="js/site/dynamic-product.js?v=site-modules-1"></script>
@@ -416,6 +422,6 @@
   <script src="js/site/page-reveals.js?v=site-modules-1"></script>
   <script src="js/site/product-animations.js?v=site-modules-1"></script>
   <script src="js/site/shared.js?v=mobile-nav-2"></script>
-  <script src="js/site/cookie-notice.js?v=cookie-notice-1"></script>
+  <script src="js/site/cookie-notice.js?v=cookie-consent-2"></script>
 </body>
 </html>

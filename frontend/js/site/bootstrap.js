@@ -65,7 +65,7 @@ const FRONTEND_STATIC_TEXT = {
     "footer_global_link": "STADA Global",
     "footer_products_title": "Продукты",
     "footer_rights": "Все права защищены.",
-    "footer_trust_countries": "100+ стран",
+    "footer_trust_countries": "120+ стран",
     "footer_trust_years": "130+ лет опыта",
     "footer_warning_text": "Информация на сайте не заменяет консультацию специалиста. Перед применением лекарственных средств ознакомьтесь с инструкцией.",
     "footer_warning_title": "Важно",
@@ -207,7 +207,7 @@ const FRONTEND_STATIC_TEXT = {
     "footer_global_link": "STADA Global",
     "footer_products_title": "Продуктылар",
     "footer_rights": "Бардык укуктар корголгон.",
-    "footer_trust_countries": "100+ өлкө",
+    "footer_trust_countries": "120дан ашуун өлкө",
     "footer_trust_years": "130+ жылдык тажрыйба",
     "footer_warning_text": "Сайттагы маалымат адистин кеңешин алмаштырбайт. Дары каражаттарын колдонор алдында нускама менен таанышыңыз.",
     "footer_warning_title": "Маанилүү",
@@ -279,7 +279,7 @@ FRONTEND_STATIC_TEXT.en = {
   "footer_global_link": "STADA Global",
   "footer_products_title": "Products",
   "footer_rights": "All rights reserved.",
-  "footer_trust_countries": "100+ countries",
+  "footer_trust_countries": "120+ countries",
   "footer_trust_years": "130+ years of experience",
   "footer_warning_text": "The information on this website does not replace professional advice. Read the package leaflet before using medicines.",
   "footer_warning_title": "Important",
@@ -332,6 +332,33 @@ FRONTEND_STATIC_TEXT.en = {
   "where_to_buy_heading": "Where to buy",
 };
 
+// Shared UI labels for the expanded company copy and explicit cookie agreement.
+const STADA_SHARED_UI_TEXT = {
+  ru: { about_context_label: 'В регионе', about_context_heading: 'STADA Евразия', cookie_accept: 'Согласен' },
+  kz: { about_context_label: 'Өңірдегі қызмет', about_context_heading: 'STADA Еуразия', cookie_accept: 'Келісемін' },
+  kg: { about_context_label: 'Аймактагы ишмердик', about_context_heading: 'STADA Евразия', cookie_accept: 'Макулмун' },
+  en: { about_context_label: 'Across the region', about_context_heading: 'STADA Eurasia', cookie_accept: 'I agree' },
+  ge: { about_context_label: 'რეგიონში საქმიანობა', about_context_heading: 'STADA ევრაზია', cookie_accept: 'ვეთანხმები' },
+  az: { about_context_label: 'Regiondakı fəaliyyət', about_context_heading: 'STADA Avrasiya', cookie_accept: 'Razıyam' },
+  hy: {
+    about_context_label: 'Տարածաշրջանային գործունեություն', about_context_heading: 'STADA Եվրասիա', cookie_accept: 'Համաձայն եմ',
+    cookie_title: 'Cookie ֆայլեր',
+    cookie_notice: 'STADA-ի կայքերում կարող են օգտագործվել կայքի աշխատանքի համար ոչ պարտադիր cookie ֆայլեր։ Դրանք օգնում են հասկանալ, թե ինչպես են օգտագործվում կայքերը, և բարելավել ծառայությունները՝ առանց առանձին այցելուներին նույնականացնելու։ Այցելության մասին տեղեկությունը կարող է փոխանցվել STADA Arzneimittel AG խմբի այլ ընկերություններին։ Cookie ֆայլերը ջնջելու կամ կառավարելու մասին տեղեկությունը հասանելի է այստեղ՝',
+    cookie_link_label: 'aboutcookies.org',
+  },
+  ro: {
+    about_context_label: 'Activitatea în regiune', about_context_heading: 'STADA Eurasia', cookie_accept: 'Sunt de acord',
+    cookie_title: 'Cookie-uri',
+    cookie_notice: 'Site-urile STADA pot folosi anumite cookie-uri care nu sunt necesare funcționării lor. Le folosim pentru a înțelege cum sunt utilizate site-urile și pentru a îmbunătăți serviciile, fără a urmări sau identifica utilizatori individuali. Informațiile despre utilizarea site-ului pot fi transmise altor companii din Grupul STADA Arzneimittel AG. Informații despre ștergerea sau gestionarea cookie-urilor sunt disponibile la:',
+    cookie_link_label: 'aboutcookies.org',
+  },
+  uz: {
+    about_context_label: 'Mintaqadagi faoliyat', about_context_heading: 'STADA Yevrosiyo', cookie_accept: 'Roziman',
+    cookie_title: 'Cookie fayllari',
+    cookie_notice: 'STADA saytlarida sayt ishlashi uchun zarur bo‘lmagan ayrim cookie fayllari ishlatilishi mumkin. Ular alohida foydalanuvchilarni kuzatish yoki aniqlash uchun emas, saytlar qanday ishlatilishini tushunish va xizmatlarni yaxshilash uchun xizmat qiladi. Saytdan foydalanish haqidagi maʼlumot STADA Arzneimittel AG guruhining boshqa kompaniyalariga uzatilishi mumkin. Cookie fayllarini o‘chirish yoki boshqarish haqida maʼlumot:',
+    cookie_link_label: 'aboutcookies.org',
+  },
+};
 Object.assign(FRONTEND_STATIC_TEXT.ru, {
   cookie_title: 'Cookies',
   cookie_notice: 'На сайтах STADA могут использоваться некоторые файлы cookie, от которых не зависит работа сайта. Мы делаем это не для того, чтобы отслеживать действия отдельных пользователей или идентифицировать их, а с целью получения полезных сведений о том, как используют сайты. Это поможет нам совершенствовать их работу для пользователей. Знания, которые мы получаем от систем, использующих эти файлы cookie, позволяют нам оказывать соответствующие услуги. Полученная информация об использовании веб-сайта посетителем может быть передана другим компаниям Группы STADA Arzneimittel AG. Информация об удалении файлов cookie или управлении ими доступна на веб-сайте:',
@@ -363,7 +390,7 @@ FRONTEND_STATIC_TEXT.ge = {
   "footer_global_link": "STADA Global",
   "footer_products_title": "პროდუქტები",
   "footer_rights": "ყველა უფლება დაცულია.",
-  "footer_trust_countries": "100+ ქვეყანა",
+  "footer_trust_countries": "120-ზე მეტი ქვეყანა",
   "footer_trust_years": "130+ წლიანი გამოცდილება",
   "footer_warning_text": "საიტზე მოცემული ინფორმაცია არ ცვლის სპეციალისტის კონსულტაციას. მედიკამენტის გამოყენებამდე გაეცანით ინსტრუქციას.",
   "footer_warning_title": "მნიშვნელოვანია",
@@ -437,7 +464,7 @@ FRONTEND_STATIC_TEXT.az = {
   "footer_nav_news": "Xəbərlər və media",
   "footer_nav_career": "Karyera",
   "footer_rights": "Bütün hüquqlar qorunur.",
-  "footer_trust_countries": "100+ ölkə",
+  "footer_trust_countries": "120-dən çox ölkə",
   "footer_trust_years": "130+ il təcrübə",
   "footer_warning_text": "Saytdakı məlumat mütəxəssis məsləhətini əvəz etmir. Dərman vasitələrindən istifadə etməzdən əvvəl təlimatı oxuyun.",
   "footer_warning_title": "Vacibdir",
@@ -541,7 +568,7 @@ FRONTEND_STATIC_TEXT.hy = {
   "footer_global_link": "STADA Global",
   "footer_products_title": "Ապրանքներ",
   "footer_rights": "Բոլոր իրավունքները պաշտպանված են:",
-  "footer_trust_countries": "100+ երկիր",
+  "footer_trust_countries": "Ավելի քան 120 երկիր",
   "footer_trust_years": "130+ տարվա փորձ",
   "footer_warning_text": "Կայքի տեղեկատվությունը չի փոխարինում մասնագետի հետ խորհրդակցությանը: Նախքան դեղամիջոցներ օգտագործելը, կարդացեք հրահանգները:",
   "footer_warning_title": "Կարևոր",
@@ -610,7 +637,7 @@ FRONTEND_STATIC_TEXT.ro = {
   footer_global_link: 'STADA Global',
   footer_products_title: 'Produse',
   footer_rights: 'Toate drepturile rezervate.',
-  footer_trust_countries: '100+ țări',
+  footer_trust_countries: 'Peste 120 de țări',
   footer_trust_years: '130+ ani de experiență',
   footer_warning_text: 'Informațiile de pe acest site nu înlocuiesc sfatul unui specialist. Citiți prospectul înainte de a utiliza medicamente.',
   footer_warning_title: 'Important',
@@ -661,7 +688,7 @@ FRONTEND_STATIC_TEXT.uz = {
   footer_global_link: 'STADA Global',
   footer_products_title: 'Mahsulotlar',
   footer_rights: 'Barcha huquqlar himoyalangan.',
-  footer_trust_countries: '100 dan ortiq mamlakat',
+  footer_trust_countries: '120 dan ortiq mamlakat',
   footer_trust_years: '130+ yillik tajriba',
   footer_warning_text: "Saytdagi ma’lumot mutaxassis maslahatining o‘rnini bosmaydi. Dori vositalarini qo‘llashdan oldin yo‘riqnomani o‘qing.",
   footer_warning_title: 'Muhim',
@@ -762,6 +789,10 @@ const HOMEPAGE_CULTURE_STATIC_TEXT = {
     culture_one_title: 'Bitta STADA', culture_one_tagline: 'Bir jamoaning kuchi.', culture_values_cta: "Qiymatlarni ko'rish",
   },
 };
+
+for (const [lang, labels] of Object.entries(STADA_SHARED_UI_TEXT)) {
+  Object.assign(FRONTEND_STATIC_TEXT[lang], labels);
+}
 
 Object.entries(HOMEPAGE_CULTURE_STATIC_TEXT).forEach(([lang, text]) => {
   Object.assign(FRONTEND_STATIC_TEXT[lang], text);
