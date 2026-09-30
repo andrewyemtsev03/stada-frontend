@@ -4,12 +4,12 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
 const root = path.join(__dirname, '../frontend');
-const template = fs.readFileSync(path.join(root, 'partials/footer.html'), 'utf8').trim();
+const template = fs.readFileSync(path.join(root, 'partials/footer.html'), 'utf8').replaceAll('\r\n', '\n').trim();
 const pages = ['index.html', 'about.html', 'culture.html', 'history.html', 'worldwide.html', 'news.html', 'news-article.html', 'products/index.html', 'products/product.html'];
 
 test('every page uses the shared footer with correct relative company links', () => {
   for (const page of pages) {
-    const html = fs.readFileSync(path.join(root, page), 'utf8');
+    const html = fs.readFileSync(path.join(root, page), 'utf8').replaceAll('\r\n', '\n');
     const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
     const prefix = '../'.repeat(page.split('/').length - 1);
     assert.equal(footer, template.replaceAll('{{root}}', prefix), page);
