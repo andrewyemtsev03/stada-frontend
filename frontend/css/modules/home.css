@@ -1498,6 +1498,36 @@ header.stada-home-hero.is-changing-in .stada-home-hero__copy {
   height: 155px;
 }
 
+.home-culture-preview__cards .culture-icon-stage__item h3 {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+  font-size: clamp(0.85rem, 1.05vw, 1.08rem);
+}
+
+.about-region-copy {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-left: 3px solid var(--stada-red);
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 255, 255, 0.92);
+  color: #536273;
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.about-region-copy p {
+  margin: 0;
+}
+
+.about-region-copy p + p {
+  margin-top: 1rem;
+}
+
+.about-region-copy p[hidden] {
+  display: none;
+}
+
 @media (max-width: 760px) {
   .home-culture-preview__header {
     display: grid;

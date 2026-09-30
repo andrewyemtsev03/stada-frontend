@@ -180,8 +180,8 @@ function getSuppliedText(lang, key) {
 
 function applySuppliedDocumentContent(lang) {
   const supplied = STADA_SUPPLIED_COPY.languages[lang];
-  document.querySelectorAll('.about-values li').forEach(el => {
-    const text = el.querySelector('[data-i18n-key], [data-static-i18n-key]');
+  document.querySelectorAll('.about-values li, .about-region-copy p').forEach(el => {
+    const text = el.matches('p') ? el : el.querySelector('[data-i18n-key], [data-static-i18n-key]');
     const key = text?.dataset.i18nKey || text?.dataset.staticI18nKey;
     el.hidden = getSuppliedText(lang, key) === '';
   });
