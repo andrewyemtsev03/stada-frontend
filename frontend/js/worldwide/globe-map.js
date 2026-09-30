@@ -1,5 +1,5 @@
 import createGlobe from "https://esm.sh/cobe@2.0.1";
-import { getCountryName } from "./countries-data.js?v=worldwide-36";
+import { getCountryName, normalizeSiteLanguage } from "./countries-data.js?v=locale-audit-1";
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
@@ -8,7 +8,12 @@ const selectLabel = {
   en: "Select",
   ru: "Выбрать",
   kz: "Таңдау",
-  ro: "Selecteaza",
+  ro: "Selectează",
+  kg: "Тандоо",
+  ge: "არჩევა",
+  az: "Seç",
+  hy: "Ընտրել",
+  uz: "Tanlash",
 };
 
 function getCountryLocation(country) {
@@ -33,7 +38,7 @@ export class GlobeMap {
     this.fallback = root?.querySelector("[data-globe-fallback]");
     this.countries = countries;
     this.selectedId = options.selectedId || countries[0]?.id;
-    this.lang = options.lang || document.documentElement.lang || "en";
+    this.lang = normalizeSiteLanguage(options.lang || document.documentElement.lang);
     this.onSelect = options.onSelect || (() => {});
     this.globe = null;
     this.resizeObserver = null;
@@ -118,6 +123,7 @@ export class GlobeMap {
   }
 
   setLanguage(lang) {
+    lang = normalizeSiteLanguage(lang);
     this.lang = selectLabel[lang] ? lang : "en";
     this.labelElements.forEach((label, countryId) => {
       const country = this.countries.find((item) => item.id === countryId);

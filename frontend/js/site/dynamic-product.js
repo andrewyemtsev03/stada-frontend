@@ -791,31 +791,56 @@ function renderDynamicProductPage(payload) {
 
 async function updateDynamicProductPage(lang) {
   lang = resolveLanguageForCountry(lang);
+  const requestId = ++localeRequestId;
+  const country = currentCountry;
   currentLang = lang;
+  backendPagePayload = null;
   persistLocaleState();
-  document.documentElement.lang = lang;
+  document.documentElement.lang = getDocumentLanguage(lang);
   document.body.classList.add('backend-content-pending');
   showStadaPageLoader();
   setLanguageToggleState(lang);
   applyFrontendStaticText(lang);
-  const payload = await fetchBackendProduct(lang);
+  let payload;
+  try {
+    payload = await fetchBackendProduct(lang);
+  } catch (error) {
+    delete backendProductCache[`${country}:${lang}:${getDynamicProductSlug()}`];
+    if (!isCurrentLocaleRequest(requestId, country, lang)) return;
+    throw error;
+  }
+  if (!isCurrentLocaleRequest(requestId, country, lang)) return;
   renderDynamicProductPage(payload);
+  applyLocalizedInterface(lang);
+  document.dispatchEvent(new CustomEvent('stada:languagechange', { detail: { lang, country } }));
   await waitForCriticalImages();
+  if (!isCurrentLocaleRequest(requestId, country, lang)) return;
   document.body.classList.remove('backend-content-pending');
   hideStadaPageLoader();
 }
 
 async function updateBackendDrivenPage(lang) {
   lang = resolveLanguageForCountry(lang);
+  const requestId = ++localeRequestId;
+  const country = currentCountry;
   currentLang = lang;
+  backendPagePayload = null;
   persistLocaleState();
-  document.documentElement.lang = lang;
+  document.documentElement.lang = getDocumentLanguage(lang);
   document.body.classList.add('backend-content-pending');
   showStadaPageLoader();
   setLanguageToggleState(lang);
   applyFrontendStaticText(lang);
 
-  const payload = await fetchBackendPage(lang);
+  let payload;
+  try {
+    payload = await fetchBackendPage(lang);
+  } catch (error) {
+    delete backendPageCache[`${country}:${lang}:${getCurrentBackendPagePath()}`];
+    if (!isCurrentLocaleRequest(requestId, country, lang)) return;
+    throw error;
+  }
+  if (!isCurrentLocaleRequest(requestId, country, lang)) return;
   backendPagePayload = payload;
   clearBackendRequiredMessage();
   applyTextFromBackendPayload(payload);
@@ -826,7 +851,9 @@ async function updateBackendDrivenPage(lang) {
   renderHomeProductPreview(payload);
   renderFooterProductLinks(payload);
   applyProductMetrics(payload);
+  applyLocalizedInterface(lang);
   await waitForCriticalImages();
+  if (!isCurrentLocaleRequest(requestId, country, lang)) return;
   document.body.classList.remove('backend-content-pending');
   hideStadaPageLoader();
 

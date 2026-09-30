@@ -80,6 +80,7 @@ async function fetchBackendPage(lang) {
 }
 
 function getBackendPageText(key) {
+  if (backendPagePayload?.language !== currentLang || backendPagePayload?.country?.id !== getCountryConfig().backendCountry) return '';
   if (!backendPagePayload?.content?.text) return '';
   return getBackendTextValue(backendPagePayload.content.text, key);
 }
@@ -104,7 +105,7 @@ function escapeCssIdentifier(value) {
 }
 
 function getTranslatedText(lang, key) {
-  return getBackendPageText(key) || getFrontendStaticText(lang, key);
+  return (lang === currentLang ? getBackendPageText(key) : '') || getFrontendStaticText(lang, key);
 }
 
 function setLanguageToggleState(lang) {
@@ -622,7 +623,13 @@ function showBackendRequiredMessage(error) {
     </section>
   `;
   screen.querySelector('[data-backend-retry]')?.addEventListener('click', () => window.location.reload());
-  document.title = 'STADA - Service unavailable';
+  const copy = STADA_INTERFACE_COPY[currentLang] || STADA_INTERFACE_COPY.en;
+  const paragraphs = screen.querySelectorAll('p');
+  paragraphs[0].textContent = copy[8];
+  screen.querySelector('h1').textContent = copy[9];
+  paragraphs[1].textContent = copy[10];
+  screen.querySelector('[data-backend-retry]').textContent = copy[11];
+  document.title = `STADA - ${copy[8]}`;
   console.warn('Page backend unavailable.', error);
 }
 

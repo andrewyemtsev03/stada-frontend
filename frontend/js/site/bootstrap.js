@@ -828,6 +828,31 @@ Object.assign(FRONTEND_STATIC_TEXT.uz, {
   history_source_note: 'Asosiy bosqichlar STADA korporativ xronologiyasiga asoslangan.',
 });
 
+// UI strings must exist in the selected language rather than falling back to Russian.
+const PATIENT_SAFETY_COPY = {
+  kg: ['БЕЙТАПТАРДЫН КООПСУЗДУГУ', 'Фармакокөзөмөл', 'Адамдардын ден соолугу жана бакубаттуулугу — биздин башкы артыкчылыгыбыз. Эгер сиз бейтап, бейтапка кам көргөн адам же медициналык кызматкер болсоңуз, STADA өнүмдөрүнө байланыштуу жагымсыз көрүнүштөр жөнүндө кабарлаңыз. Бул маалымат өнүмдөрдүн жана бейтаптардын коопсуздугун камсыздоого жардам берет.', 'ЖАГЫМСЫЗ КӨРҮНҮШ ЖӨНҮНДӨ КАБАРЛОО'],
+  ge: ['პაციენტების უსაფრთხოება', 'ფარმაკოზედამხედველობა', 'ადამიანების ჯანმრთელობა და კეთილდღეობა ჩვენი მთავარი პრიორიტეტია. თუ პაციენტი, მომვლელი ან ჯანდაცვის სპეციალისტი ხართ, გთხოვთ, შეგვატყობინოთ STADA-ს პროდუქტებთან დაკავშირებული არასასურველი მოვლენების შესახებ. ეს ინფორმაცია გვეხმარება პროდუქტებისა და პაციენტების უსაფრთხოების უზრუნველყოფაში.', 'არასასურველი მოვლენის შეტყობინება'],
+  en: ['PATIENT SAFETY', 'Pharmacovigilance', 'People’s health and wellbeing are our top priority. If you are a patient, caregiver or healthcare professional, please report adverse events related to STADA products. This information helps us ensure product and patient safety.', 'REPORT AN ADVERSE EVENT'],
+  az: ['PASİYENT TƏHLÜKƏSİZLİYİ', 'Farmakonəzarət', 'İnsanların sağlamlığı və rifahı əsas prioritetimizdir. Pasiyent, ona qulluq edən şəxs və ya tibb işçisisinizsə, STADA məhsulları ilə bağlı arzuolunmaz hadisələr barədə məlumat verin. Bu məlumat məhsulların və pasiyentlərin təhlükəsizliyini təmin etməyə kömək edir.', 'ARZUOLUNMAZ HADİSƏ BARƏDƏ MƏLUMAT VERİN'],
+  hy: ['ՊԱՑԻԵՆՏՆԵՐԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ', 'Դեղազգոնություն', 'Մարդկանց առողջությունն ու բարեկեցությունը մեր գլխավոր առաջնահերթությունն են։ Եթե պացիենտ, խնամող կամ բուժաշխատող եք, խնդրում ենք հաղորդել STADA-ի արտադրանքի հետ կապված անցանկալի երևույթների մասին։ Այս տեղեկատվությունն օգնում է ապահովել արտադրանքի և պացիենտների անվտանգությունը։', 'ՀԱՂՈՐԴԵԼ ԱՆՑԱՆԿԱԼԻ ԵՐԵՎՈՒՅԹԻ ՄԱՍԻՆ'],
+  ro: ['SIGURANȚA PACIENȚILOR', 'Farmacovigilență', 'Sănătatea și bunăstarea oamenilor sunt prioritatea noastră principală. Dacă sunteți pacient, îngrijitor sau profesionist din domeniul sănătății, vă rugăm să raportați reacțiile adverse asociate produselor STADA. Aceste informații ne ajută să asigurăm siguranța produselor și a pacienților.', 'RAPORTEAZĂ O REACȚIE ADVERSĂ'],
+  uz: ['BEMORLAR XAVFSIZLIGI', 'Farmakonazorat', 'Insonlarning salomatligi va farovonligi bizning ustuvor vazifamizdir. Agar siz bemor, bemorga g‘amxo‘rlik qiluvchi yoki tibbiyot xodimi bo‘lsangiz, STADA mahsulotlari bilan bog‘liq nojo‘ya hodisalar haqida xabar bering. Bu ma’lumot mahsulotlar va bemorlar xavfsizligini ta’minlashga yordam beradi.', 'NOJO‘YA HODISA HAQIDA XABAR BERISH'],
+};
+Object.entries(PATIENT_SAFETY_COPY).forEach(([lang, values]) => {
+  ['pharmacovigilance_kicker', 'pharmacovigilance_heading', 'pharmacovigilance_description', 'pharmacovigilance_report_label'].forEach((key, index) => {
+    FRONTEND_STATIC_TEXT[lang][key] = values[index];
+  });
+});
+['ro', 'uz'].forEach(lang => {
+  Object.entries(FRONTEND_STATIC_TEXT.en).forEach(([key, value]) => {
+    if (/^product_.*_name$/.test(key) && !FRONTEND_STATIC_TEXT[lang][key]) FRONTEND_STATIC_TEXT[lang][key] = value;
+  });
+});
+Object.entries({
+  ru: 'Информация о продукте', kz: 'Өнім туралы ақпарат', kg: 'Өнүм тууралуу маалымат', ge: 'ინფორმაცია პროდუქტის შესახებ',
+  en: 'Product information', az: 'Məhsul haqqında məlumat', hy: 'Տեղեկություն արտադրանքի մասին', ro: 'Informații despre produs', uz: 'Mahsulot haqida ma’lumot',
+}).forEach(([lang, label]) => { FRONTEND_STATIC_TEXT[lang].product_information_label = label; });
+
 const LOCALIZED_BACKEND_DOM_TEXT = {
   kz: {
     history_text_001: 'STADA - Компания тарихы',

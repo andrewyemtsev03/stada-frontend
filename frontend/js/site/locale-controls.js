@@ -1,16 +1,14 @@
 function getBackToTopLabel(lang) {
-  if (lang === 'ge') return 'ზემოთ დაბრუნება';
-  if (lang === 'en') return 'Back to top';
-  if (lang === 'kg') return 'Жогору кайтуу';
-  if (lang === 'kz') return 'Жоғарыға қайту';
-  return 'Вернуться наверх';
+  return getFrontendStaticText(lang, 'footer_back_top');
 }
 
 function updateStaticLanguage(lang) {
   lang = resolveLanguageForCountry(lang);
   currentLang = lang;
+  localeRequestId += 1;
+  backendPagePayload = null;
   persistLocaleState();
-  document.documentElement.lang = lang;
+  document.documentElement.lang = getDocumentLanguage(lang);
   applyFrontendStaticText(lang);
 
   document.querySelectorAll('[data-i18n-key]').forEach(el => {
@@ -55,13 +53,13 @@ function updateStaticLanguage(lang) {
 function updateLanguage(lang) {
   lang = resolveLanguageForCountry(lang);
   if (isDynamicProductDetailPage()) {
-    updateDynamicProductPage(lang).catch(error => {
+    return updateDynamicProductPage(lang).catch(error => {
       showBackendRequiredMessage(error);
     });
     return;
   }
   if (isBackendDrivenPage()) {
-    updateBackendDrivenPage(lang).catch(error => {
+    return updateBackendDrivenPage(lang).catch(error => {
       handleBackendPageFailure(error);
     });
     return;

@@ -6,6 +6,7 @@
   const cookieName = 'stada_cookie_preferences';
   const categories = ['targeting', 'functional', 'performance'];
   const copy = {
+    en: ['Privacy preferences', 'Accept all', 'Reject all', 'My choices', 'Save choices', 'Close', 'Cookie settings', 'Your privacy', 'Necessary cookies', 'Advertising cookies', 'Functional cookies', 'Analytics cookies', 'Always active', 'Active', 'Inactive'],
     ru: ['Настройки конфиденциальности', 'Принять все', 'Отклонить все', 'Мой выбор', 'Сохранить выбор', 'Закрыть', 'Настройки cookie', 'Ваша конфиденциальность', 'Обязательные cookie', 'Рекламные cookie', 'Функциональные cookie', 'Аналитические cookie', 'Всегда активны', 'Активны', 'Неактивны'],
     kz: ['Құпиялылық параметрлері', 'Барлығын қабылдау', 'Барлығынан бас тарту', 'Менің таңдауым', 'Таңдауды сақтау', 'Жабу', 'Cookie параметрлері', 'Құпиялылығыңыз', 'Міндетті cookie файлдары', 'Жарнамалық cookie файлдары', 'Функционалдық cookie файлдары', 'Талдау cookie файлдары', 'Әрқашан белсенді', 'Белсенді', 'Белсенді емес'],
     kg: ['Купуялуулук жөндөөлөрү', 'Баарын кабыл алуу', 'Баарынан баш тартуу', 'Менин тандоом', 'Тандоону сактоо', 'Жабуу', 'Cookie жөндөөлөрү', 'Купуялуулугуңуз', 'Милдеттүү cookie файлдары', 'Жарнамалык cookie файлдары', 'Функционалдык cookie файлдары', 'Талдоо cookie файлдары', 'Дайыма активдүү', 'Активдүү', 'Активдүү эмес'],
@@ -17,6 +18,7 @@
   };
   const keys = ['title', 'accept', 'reject', 'choices', 'save', 'close', 'settings', 'privacy', 'necessary', 'targeting', 'functional', 'performance', 'always', 'on', 'off'];
   const description = {
+    en: ['You can choose which cookie categories to allow. Necessary cookies store your choices and help the site work. You can change your preferences in the footer.', 'These cookies are needed for the site to work and to store your choices.', 'This category applies if advertising tools are added.', 'This category applies if additional features are enabled.', 'This category applies if analytics tools are added.'],
     ru: ['Вы можете выбрать категории cookie. Обязательные cookie сохраняют ваш выбор и помогают работе сайта. Настройки можно изменить внизу любой страницы.', 'Эти cookie необходимы для работы сайта и сохранения выбора.', 'Эта категория предназначена для рекламных инструментов, если они будут подключены.', 'Эта категория предназначена для дополнительных функций, если они будут подключены.', 'Эта категория предназначена для аналитики, если она будет подключена.'],
     kz: ['Cookie санаттарын өзіңіз таңдай аласыз. Міндетті cookie таңдауыңызды сақтайды және сайттың жұмысына көмектеседі. Параметрлерді кез келген беттің төменгі жағында өзгерте аласыз.', 'Бұл cookie сайт жұмысы мен таңдауыңызды сақтау үшін қажет.', 'Бұл санат жарнама құралдары қосылған жағдайда соларға арналған.', 'Бұл санат қосымша функциялар қосылған жағдайда соларға арналған.', 'Бұл санат аналитика қосылған жағдайда соларға арналған.'],
     kg: ['Cookie категорияларын тандай аласыз. Милдеттүү cookie тандооңузду сактап, сайттын иштешине жардам берет. Жөндөөлөрдү барактын астынан өзгөртө аласыз.', 'Бул cookie сайттын иштеши жана тандооңузду сактоо үчүн зарыл.', 'Бул категория жарнама куралдары кошулса колдонулат.', 'Бул категория кошумча функциялар кошулса колдонулат.', 'Бул категория аналитика кошулса колдонулат.'],
@@ -27,6 +29,13 @@
     uz: ['Cookie toifalarini tanlashingiz mumkin. Zarur cookie fayllari tanlovingizni saqlaydi va sayt ishlashiga yordam beradi. Sozlamalarni sahifa pastidan o‘zgartirishingiz mumkin.', 'Bu cookie fayllari sayt ishlashi va tanlovingizni saqlash uchun zarur.', 'Bu toifa reklama vositalari qo‘shilsa ishlatiladi.', 'Bu toifa qo‘shimcha funksiyalar qo‘shilsa ishlatiladi.', 'Bu toifa tahlil vositalari qo‘shilsa ishlatiladi.'],
   };
   const descriptionMore = {
+    en: [
+      'Advertising and analytics tools are currently disabled. Enabling a category saves your choice but does not start collecting data. The site remains available if you reject optional categories.',
+      'This record helps us remember your choices and avoid showing the notice on every visit. It is not used for advertising. You can remove it through your browser settings.',
+      'If advertising tools are added, this category may help measure advertising effectiveness and show relevant ads. No such tools are currently enabled, so this choice does not start advertising tracking.',
+      'These cookies can remember preferences or support additional features such as embedded video or chat. Those services are currently disabled. Rejecting this category does not prevent you from using the main pages.',
+      'These cookies can help measure visits and identify useful pages. Analytics are currently disabled, so enabling this category does not start measuring your visit.',
+    ],
     ru: [
       'Сейчас на сайте не подключены рекламные и аналитические инструменты. Включение категории сохраняет предпочтение, но само по себе не запускает сбор данных. Вы можете отклонить все необязательные категории, и сайт останется доступен.',
       'Например, такая запись помогает не показывать уведомление при каждом посещении и помнить, какие категории вы разрешили. Она не предназначена для рекламы. Отключить её в этом окне нельзя; удалить её можно через настройки браузера.',

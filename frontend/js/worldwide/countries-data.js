@@ -18,6 +18,30 @@ export const countriesData = [
         "kz": {
           "name": "Қазақстан",
           "region": "Әлем / Орталық Азия"
+        },
+        "kg": {
+          "name": "Казакстан",
+          "region": "Дүйнө / Борбордук Азия"
+        },
+        "ge": {
+          "name": "ყაზახეთი",
+          "region": "მსოფლიო / ცენტრალური აზია"
+        },
+        "az": {
+          "name": "Qazaxıstan",
+          "region": "Dünya / Mərkəzi Asiya"
+        },
+        "hy": {
+          "name": "Ղազախստան",
+          "region": "Աշխարհ / Կենտրոնական Ասիա"
+        },
+        "ro": {
+          "name": "Kazahstan",
+          "region": "Lume / Asia Centrală"
+        },
+        "uz": {
+          "name": "Qozog‘iston",
+          "region": "Dunyo / Markaziy Osiyo"
         }
       },
       "lat": 48.0196,
@@ -50,6 +74,26 @@ export const countriesData = [
         "kg": {
           "name": "Кыргызстан",
           "region": "Дүйнө / Борбордук Азия"
+        },
+        "ge": {
+          "name": "ყირგიზეთი",
+          "region": "მსოფლიო / ცენტრალური აზია"
+        },
+        "az": {
+          "name": "Qırğızıstan",
+          "region": "Dünya / Mərkəzi Asiya"
+        },
+        "hy": {
+          "name": "Ղրղզստան",
+          "region": "Աշխարհ / Կենտրոնական Ասիա"
+        },
+        "ro": {
+          "name": "Kârgâzstan",
+          "region": "Lume / Asia Centrală"
+        },
+        "uz": {
+          "name": "Qirg‘iziston",
+          "region": "Dunyo / Markaziy Osiyo"
         }
       },
       "lat": 41.2044,
@@ -86,6 +130,22 @@ export const countriesData = [
         "kg": {
           "name": "Грузия",
           "region": "Дүйнө / Кавказ"
+        },
+        "az": {
+          "name": "Gürcüstan",
+          "region": "Dünya / Qafqaz"
+        },
+        "hy": {
+          "name": "Վրաստան",
+          "region": "Աշխարհ / Կովկաս"
+        },
+        "ro": {
+          "name": "Georgia",
+          "region": "Lume / Caucaz"
+        },
+        "uz": {
+          "name": "Gruziya",
+          "region": "Dunyo / Kavkaz"
         }
       },
       "lat": 42.3154,
@@ -122,6 +182,22 @@ export const countriesData = [
         "kg": {
           "name": "Азербайжан",
           "region": "Дүйнө / Кавказ"
+        },
+        "ge": {
+          "name": "აზერბაიჯანი",
+          "region": "მსოფლიო / კავკასია"
+        },
+        "hy": {
+          "name": "Ադրբեջան",
+          "region": "Աշխարհ / Կովկաս"
+        },
+        "ro": {
+          "name": "Azerbaidjan",
+          "region": "Lume / Caucaz"
+        },
+        "uz": {
+          "name": "Ozarbayjon",
+          "region": "Dunyo / Kavkaz"
         }
       },
       "lat": 40.1431,
@@ -150,6 +226,30 @@ export const countriesData = [
         "ru": {
           "name": "Армения",
           "region": "Мир / Кавказ"
+        },
+        "kg": {
+          "name": "Армения",
+          "region": "Дүйнө / Кавказ"
+        },
+        "ge": {
+          "name": "სომხეთი",
+          "region": "მსოფლიო / კავკასია"
+        },
+        "az": {
+          "name": "Ermənistan",
+          "region": "Dünya / Qafqaz"
+        },
+        "ro": {
+          "name": "Armenia",
+          "region": "Lume / Caucaz"
+        },
+        "uz": {
+          "name": "Armaniston",
+          "region": "Dunyo / Kavkaz"
+        },
+        "kz": {
+          "name": "Армения",
+          "region": "Әлем / Кавказ"
         }
       },
       "lat": 40.0691,
@@ -182,6 +282,26 @@ export const countriesData = [
         "kz": {
           "name": "Молдова",
           "region": "Еуропа"
+        },
+        "kg": {
+          "name": "Молдова",
+          "region": "Европа"
+        },
+        "ge": {
+          "name": "მოლდოვა",
+          "region": "ევროპა"
+        },
+        "az": {
+          "name": "Moldova",
+          "region": "Avropa"
+        },
+        "hy": {
+          "name": "Մոլդովա",
+          "region": "Եվրոպա"
+        },
+        "uz": {
+          "name": "Moldova",
+          "region": "Yevropa"
         }
       },
       "lat": 47.4116,
@@ -210,6 +330,30 @@ export const countriesData = [
         "kz": {
           "name": "Германия",
           "region": "Еуропа"
+        },
+        "kg": {
+          "name": "Германия",
+          "region": "Европа"
+        },
+        "ge": {
+          "name": "გერმანია",
+          "region": "ევროპა"
+        },
+        "az": {
+          "name": "Almaniya",
+          "region": "Avropa"
+        },
+        "hy": {
+          "name": "Գերմանիա",
+          "region": "Եվրոպա"
+        },
+        "ro": {
+          "name": "Germania",
+          "region": "Europa"
+        },
+        "uz": {
+          "name": "Germaniya",
+          "region": "Yevropa"
         }
       },
       "lat": 51.1657,
@@ -238,6 +382,30 @@ export const countriesData = [
         "kz": {
           "name": "Украина",
           "region": "Еуропа"
+        },
+        "kg": {
+          "name": "Украина",
+          "region": "Европа"
+        },
+        "ge": {
+          "name": "უკრაინა",
+          "region": "ევროპა"
+        },
+        "az": {
+          "name": "Ukrayna",
+          "region": "Avropa"
+        },
+        "hy": {
+          "name": "Ուկրաինա",
+          "region": "Եվրոպա"
+        },
+        "ro": {
+          "name": "Ucraina",
+          "region": "Europa"
+        },
+        "uz": {
+          "name": "Ukraina",
+          "region": "Yevropa"
         }
       },
       "lat": 48.3794,
@@ -270,6 +438,26 @@ export const countriesData = [
         "kz": {
           "name": "Өзбекстан",
           "region": "Әлем / Орталық Азия"
+        },
+        "kg": {
+          "name": "Өзбекстан",
+          "region": "Дүйнө / Борбордук Азия"
+        },
+        "ge": {
+          "name": "უზბეკეთი",
+          "region": "მსოფლიო / ცენტრალური აზია"
+        },
+        "az": {
+          "name": "Özbəkistan",
+          "region": "Dünya / Mərkəzi Asiya"
+        },
+        "hy": {
+          "name": "Ուզբեկստան",
+          "region": "Աշխարհ / Կենտրոնական Ասիա"
+        },
+        "ro": {
+          "name": "Uzbekistan",
+          "region": "Lume / Asia Centrală"
         }
       },
       "lat": 41.3775,
@@ -298,6 +486,30 @@ export const countriesData = [
         "kz": {
           "name": "Біріккен Араб Әмірліктері",
           "region": "Әлем / Таяу Шығыс"
+        },
+        "kg": {
+          "name": "Бириккен Араб Эмираттары",
+          "region": "Дүйнө / Жакынкы Чыгыш"
+        },
+        "ge": {
+          "name": "არაბთა გაერთიანებული საამიროები",
+          "region": "მსოფლიო / ახლო აღმოსავლეთი"
+        },
+        "az": {
+          "name": "Birləşmiş Ərəb Əmirlikləri",
+          "region": "Dünya / Yaxın Şərq"
+        },
+        "hy": {
+          "name": "Արաբական Միացյալ Էմիրություններ",
+          "region": "Աշխարհ / Մերձավոր Արևելք"
+        },
+        "ro": {
+          "name": "Emiratele Arabe Unite",
+          "region": "Lume / Orientul Mijlociu"
+        },
+        "uz": {
+          "name": "Birlashgan Arab Amirliklari",
+          "region": "Dunyo / Yaqin Sharq"
         }
       },
       "lat": 23.4241,
@@ -326,6 +538,30 @@ export const countriesData = [
         "kz": {
           "name": "Қытай",
           "region": "Әлем / Азия"
+        },
+        "kg": {
+          "name": "Кытай",
+          "region": "Дүйнө / Азия"
+        },
+        "ge": {
+          "name": "ჩინეთი",
+          "region": "მსოფლიო / აზია"
+        },
+        "az": {
+          "name": "Çin",
+          "region": "Dünya / Asiya"
+        },
+        "hy": {
+          "name": "Չինաստան",
+          "region": "Աշխարհ / Ասիա"
+        },
+        "ro": {
+          "name": "China",
+          "region": "Lume / Asia"
+        },
+        "uz": {
+          "name": "Xitoy",
+          "region": "Dunyo / Osiyo"
         }
       },
       "lat": 35.8617,
@@ -354,6 +590,30 @@ export const countriesData = [
         "kz": {
           "name": "Вьетнам",
           "region": "Әлем / Азия"
+        },
+        "kg": {
+          "name": "Вьетнам",
+          "region": "Дүйнө / Азия"
+        },
+        "ge": {
+          "name": "ვიეტნამი",
+          "region": "მსოფლიო / აზია"
+        },
+        "az": {
+          "name": "Vyetnam",
+          "region": "Dünya / Asiya"
+        },
+        "hy": {
+          "name": "Վիետնամ",
+          "region": "Աշխարհ / Ասիա"
+        },
+        "ro": {
+          "name": "Vietnam",
+          "region": "Lume / Asia"
+        },
+        "uz": {
+          "name": "Vyetnam",
+          "region": "Dunyo / Osiyo"
         }
       },
       "lat": 14.0583,
@@ -368,11 +628,17 @@ export const countriesData = [
     }
   ];
 
+export function normalizeSiteLanguage(lang) {
+  return { kk: "kz", ky: "kg", ka: "ge" }[lang] || lang || "en";
+}
+
 export function getCountryName(country, lang = "en") {
+  lang = normalizeSiteLanguage(lang);
   return country?.labels?.[lang]?.name || country?.labels?.en?.name || country?.name || "";
 }
 
 export function getCountryRegion(country, lang = "en") {
+  lang = normalizeSiteLanguage(lang);
   return country?.labels?.[lang]?.region || country?.labels?.en?.region || country?.region || "";
 }
 

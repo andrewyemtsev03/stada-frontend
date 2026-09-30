@@ -1,4 +1,4 @@
-import { getCountryName, getCountryRegion } from "./countries-data.js?v=worldwide-36";
+import { getCountryName, getCountryRegion, normalizeSiteLanguage } from "./countries-data.js?v=locale-audit-1";
 
 const localizedCopy = {
   en: {
@@ -54,17 +54,33 @@ const localizedCopy = {
     },
   },
   ro: {
-    back: "Inapoi la lista tarilor",
+    back: "Înapoi la lista țărilor",
     flag: "drapel",
     viewWebsite: "Vezi site-ul local",
-    visitWebsite: "Viziteaza site-ul",
+    visitWebsite: "Vizitează site-ul",
     rows: {
-      locationTitle: "Locatie",
-      address: "Adresa",
+      locationTitle: "Locație",
+      address: "Adresă",
       website: "Website",
       email: "Email",
       phone: "Telefon",
     },
+  },
+  kg: {
+    back: "Өлкөлөрдүн тизмесине кайтуу", flag: "туусу", viewWebsite: "Жергиликтүү сайтка өтүү", visitWebsite: "Сайтты ачуу",
+    rows: { locationTitle: "Жайгашкан жери", address: "Дарек", website: "Сайт", email: "Электрондук почта", phone: "Телефон" },
+  },
+  ge: {
+    back: "ქვეყნების სიაზე დაბრუნება", flag: "დროშა", viewWebsite: "ადგილობრივ საიტზე გადასვლა", visitWebsite: "საიტის გახსნა",
+    rows: { locationTitle: "მდებარეობა", address: "მისამართი", website: "ვებსაიტი", email: "ელფოსტა", phone: "ტელეფონი" },
+  },
+  hy: {
+    back: "Վերադարձ երկրների ցանկին", flag: "դրոշ", viewWebsite: "Անցնել տեղական կայք", visitWebsite: "Բացել կայքը",
+    rows: { locationTitle: "Գտնվելու վայր", address: "Հասցե", website: "Կայք", email: "Էլեկտրոնային փոստ", phone: "Հեռախոս" },
+  },
+  uz: {
+    back: "Mamlakatlar ro‘yxatiga qaytish", flag: "bayrog‘i", viewWebsite: "Mahalliy saytga o‘tish", visitWebsite: "Saytni ochish",
+    rows: { locationTitle: "Joylashuv", address: "Manzil", website: "Veb-sayt", email: "Elektron pochta", phone: "Telefon" },
   },
 };
 
@@ -95,10 +111,11 @@ function phoneHref(phone) {
 export class CountryInfoCard {
   constructor(root) {
     this.root = root;
-    this.lang = document.documentElement.lang || "en";
+    this.lang = normalizeSiteLanguage(document.documentElement.lang);
   }
 
   setLanguage(lang) {
+    lang = normalizeSiteLanguage(lang);
     this.lang = localizedCopy[lang] ? lang : "en";
   }
 

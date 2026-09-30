@@ -1,6 +1,6 @@
-import { countriesData, defaultCountryId, getCountryName, getCountryRegion, getCountrySearchValues } from "./countries-data.js?v=worldwide-36";
-import { CountryInfoCard } from "./country-info-card.js?v=worldwide-36";
-import { GlobeMap } from "./globe-map.js?v=worldwide-39";
+import { countriesData, defaultCountryId, getCountryName, getCountryRegion, getCountrySearchValues, normalizeSiteLanguage } from "./countries-data.js?v=locale-audit-1";
+import { CountryInfoCard } from "./country-info-card.js?v=locale-audit-1";
+import { GlobeMap } from "./globe-map.js?v=locale-audit-1";
 
 const pageCopy = {
   en: {
@@ -16,8 +16,12 @@ const pageCopy = {
     noMatches: "Ölkə tapılmadı",
   },
   ro: {
-    noMatches: "Nu au fost gasite tari",
+    noMatches: "Nu au fost găsite țări",
   },
+  kg: { noMatches: "Өлкөлөр табылган жок" },
+  ge: { noMatches: "ქვეყნები ვერ მოიძებნა" },
+  hy: { noMatches: "Երկրներ չեն գտնվել" },
+  uz: { noMatches: "Mamlakatlar topilmadi" },
 };
 
 function getInitialCountryId(countries) {
@@ -33,9 +37,10 @@ function getInitialCountryId(countries) {
 export class WorldwidePage {
   constructor(root = document) {
     this.root = root;
-    this.lang = document.documentElement.lang || "en";
+    this.lang = normalizeSiteLanguage(document.documentElement.lang);
     this.countries = countriesData;
-    this.selectedCountry = this.countries.find((country) => country.id === getInitialCountryId(this.countries)) || this.countries[0];
+    this.siteCountryId = getInitialCountryId(this.countries);
+    this.selectedCountry = this.countries.find((country) => country.id === this.siteCountryId) || this.countries[0];
     this.infoCard = new CountryInfoCard(root.querySelector("#country-info-card"));
     this.globe = new GlobeMap(root.querySelector("[data-globe-map]"), this.countries, {
       selectedId: this.selectedCountry.id,
@@ -61,12 +66,18 @@ export class WorldwidePage {
   }
 
   setLanguage(lang) {
+    lang = normalizeSiteLanguage(lang);
     this.lang = pageCopy[lang] ? lang : "en";
     this.infoCard.setLanguage(this.lang);
     this.globe.setLanguage(this.lang);
     this.renderCountryList(this.currentCountries || this.countries);
     this.infoCard.render(this.selectedCountry);
     this.updateSelectedLabel();
+    const siteCountryId = getInitialCountryId(this.countries);
+    if (siteCountryId !== this.siteCountryId) {
+      this.siteCountryId = siteCountryId;
+      this.selectCountry(siteCountryId);
+    }
   }
 
   bindSearch() {
