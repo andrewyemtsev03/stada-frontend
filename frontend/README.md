@@ -5,7 +5,7 @@ Armenia, Azerbaijan, Moldova, and Uzbekistan.
 
 ## Structure
 
-- `index.html`, `culture.html`, `history.html`, and `worldwide.html` are the main
+- `index.html`, `culture.html`, `history.html`, and `contacts.html` are the main
   pages.
 - `products/` contains the product catalogue and product detail page.
 - `css/`, `js/`, and `assets/` contain the site styles, behavior, and media.

@@ -34,5 +34,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/worldwide.html",
+      "destination": "/contacts.html",
+      "permanent": true
+    }
   ]
 }

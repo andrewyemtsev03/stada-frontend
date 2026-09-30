@@ -15,6 +15,8 @@ function getCurrentBackendPagePath() {
   pagePath = pagePath.replace(/^main\//, '');
   if (!pagePath || pagePath.endsWith('/')) pagePath = `${pagePath}index.html`;
   if (pagePath === 'main') pagePath = 'index.html';
+  // Keep the established content endpoint compatible during backend rollout.
+  if (pagePath === 'contacts.html') return 'worldwide.html';
   return pagePath || 'index.html';
 }
 
@@ -96,6 +98,7 @@ const BACKEND_TEXT_KEY_ALIASES = {
 
 function getBackendTextValue(text, key) {
   if (!key) return '';
+  if (typeof STADA_CONTACTS_COPY !== 'undefined' && STADA_CONTACTS_COPY[currentLang]?.[key]) return STADA_CONTACTS_COPY[currentLang][key];
   const suppliedValue = getSuppliedText(currentLang, key);
   if (suppliedValue !== undefined) return suppliedValue;
   return text?.[key] || text?.[BACKEND_TEXT_KEY_ALIASES[key]] || '';

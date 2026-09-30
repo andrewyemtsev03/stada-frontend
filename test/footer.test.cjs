@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const { test } = require('node:test');
 const root = path.join(__dirname, '../frontend');
 const template = fs.readFileSync(path.join(root, 'partials/footer.html'), 'utf8').replaceAll('\r\n', '\n').trim();
-const pages = ['index.html', 'about.html', 'culture.html', 'history.html', 'worldwide.html', 'news.html', 'news-article.html', 'products/index.html', 'products/product.html'];
+const pages = ['index.html', 'about.html', 'culture.html', 'history.html', 'contacts.html', 'news.html', 'news-article.html', 'products/index.html', 'products/product.html'];
 
 test('every page uses the shared footer with correct relative company links', () => {
   for (const page of pages) {
