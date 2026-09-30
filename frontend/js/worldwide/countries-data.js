@@ -307,11 +307,11 @@ export const countriesData = [
       "lat": 47.4116,
       "lng": 28.3699,
       "locationTitle": "STADA Moldova",
-      "address": "38 Serghei Lazo St., 1st floor, MD-2004 Chisinau, Moldova",
+      "address": "R.Moldova , Chisinau, S. Lazo str.38",
       "website": "https://new.stada.md/",
       "websiteLabel": "Visit Website",
       "email": "",
-      "phone": "",
+      "phone": "+373 22 90 30 44",
       "flag": "https://flagcdn.com/w80/md.png"
     },
     {
