@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STADA – Новости компании</title>
+  <link rel="icon" type="image/png" href="assets/logos/stada_logo.png">
+  <link rel="apple-touch-icon" href="assets/logos/stada_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <!-- Corporate font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=supplied-copy-1">
+  <link rel="stylesheet" href="css/modules/company-news.css">
+</head>
+<body class="company-news-page">
+  <a class="skip-link" href="#main-content" data-static-i18n-key="skip_to_content"></a>
+  <!-- Navigation bar -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="STADA logo">
+        <img src="assets/logos/stada_logo.png" alt="STADA logo">
+      </a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="menu">
+        <li><a href="news.html" data-static-i18n-key="nav_news"></a></li>
+        <li><a href="about.html" data-static-i18n-key="nav_about"></a></li>
+        <li><a href="worldwide.html" data-static-i18n-key="nav_worldwide"></a></li>
+        <li><a href="culture.html" data-static-i18n-key="nav_culture"></a></li>
+        <li><a href="history.html" data-static-i18n-key="nav_history"></a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-option" id="lang-ru" data-lang="ru" aria-label="Переключить язык на русский">RU</button>
+        <button class="lang-option" id="lang-kz" data-lang="kz" aria-label="Переключить язык на казахский">KZ</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content" class="company-news-main">
+    <div class="company-news-shell">
+      <header class="company-news-header">
+        <p class="section-kicker" data-static-i18n-key="site_name"></p>
+        <h1 data-static-i18n-key="nav_news"></h1>
+      </header>
+      <div data-company-news-list class="company-news-grid" aria-live="polite"></div>
+    </div>
+  </main>
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container footer-modern">
+<div class="footer-main">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo" aria-label="STADA logo">
+            <img src="assets/logos/stada_logo.png" alt="STADA logo">
+          </a>
+          <p class="footer-eyebrow" data-static-i18n-key="site_name"></p>
+          <p class="footer-text" data-static-i18n-key="footer_brand_text"></p>
+          <div class="footer-trust" aria-label="STADA facts">
+            <span data-static-i18n-key="footer_trust_years"></span>
+            <span data-static-i18n-key="footer_trust_countries"></span>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav__group">
+            <h3 data-static-i18n-key="footer_company_title"></h3>
+            <a href="about.html" data-static-i18n-key="nav_about"></a>
+            <a href="culture.html" data-static-i18n-key="nav_culture"></a>
+            <a href="history.html" data-static-i18n-key="nav_history"></a>
+            <a href="worldwide.html" data-static-i18n-key="nav_worldwide"></a>
+            <a href="index.html#career" data-static-i18n-key="nav_career"></a>
+          </div>
+          <div class="footer-nav__group">
+            <h3 data-static-i18n-key="footer_products_title"></h3>
+            <a href="products/product.html?slug=coldrex" data-static-i18n-key="product_coldrex_name"></a>
+            <a href="products/product.html?slug=enterogermina" data-static-i18n-key="product_enterogermina_name"></a>
+            <a href="products/product.html?slug=cardiomagnil" data-static-i18n-key="product_cardiomagnil_name"></a>
+            <a href="products/product.html?slug=magneb6kids" data-static-i18n-key="product_magneb6kids_name"></a>
+            <a href="products/product.html?slug=aqualor" data-static-i18n-key="product_aqualor_name"></a>
+            <a href="products/product.html?slug=zodak" data-static-i18n-key="product_zodak_name"></a>
+          </div>
+          <div class="footer-nav__group">
+            <h3 data-static-i18n-key="nav_categories"></h3>
+            <a href="products/index.html?category=immunity#products-catalog" data-static-i18n-key="products_category_immunity"></a>
+            <a href="products/index.html?category=digestive#products-catalog" data-static-i18n-key="products_category_digestive"></a>
+            <a href="products/index.html?category=kids#products-catalog" data-static-i18n-key="products_category_kids"></a>
+            <a href="products/index.html?category=cardio#products-catalog" data-static-i18n-key="products_category_cardio"></a>
+            <a href="products/index.html?category=allergy#products-catalog" data-static-i18n-key="products_category_allergy"></a>
+            <a href="products/index.html?category=urology#products-catalog" data-static-i18n-key="products_category_urology"></a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-warning">
+        <strong data-static-i18n-key="footer_warning_title"></strong>
+        <p data-static-i18n-key="footer_warning_text"></p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> STADA. <span data-static-i18n-key="footer_rights"></span></p>
+        <div class="footer-bottom__links">
+          <a href="https://www.stada.com" target="_blank" rel="noopener">stada.com</a>
+          <a href="#" class="footer-top" data-static-i18n-key="footer_back_top" aria-label="Back to top"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="cookie-notice" data-cookie-notice aria-labelledby="cookie-notice-title">
+    <h2 id="cookie-notice-title" data-static-i18n-key="cookie_title"></h2>
+    <p data-static-i18n-key="cookie_notice"></p>
+    <a data-cookie-link href="https://ru.aboutcookies.org/" target="_blank" rel="noopener noreferrer" data-static-i18n-key="cookie_link_label"></a>
+    <button class="cookie-notice__accept" type="button" data-cookie-notice-accept data-static-i18n-key="cookie_accept">Согласен</button>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="js/site/bootstrap.js?v=supplied-copy-1"></script>
+  <script src="js/site/news-labels.js"></script>
+  <script src="js/site/locale-state.js?v=supplied-copy-1"></script>
+  <script src="js/site/content-api.js?v=supplied-copy-1"></script>
+  <script src="js/site/dynamic-product.js?v=locale-audit-1"></script>
+  <script src="js/site/locale-controls.js?v=locale-audit-1"></script>
+  <script src="js/site/homepage.js?v=site-consistency-1"></script>
+  <script src="js/site/page-reveals.js?v=site-modules-1"></script>
+  <script src="js/site/product-animations.js?v=site-modules-1"></script>
+  <script src="js/site/news-data.js"></script>
+  <script src="js/site/company-news.js"></script>
+  <script src="js/site/shared.js?v=mobile-nav-2"></script>
+  <script src="js/site/cookie-notice.js?v=locale-audit-1"></script>
+</body>
+</html>
