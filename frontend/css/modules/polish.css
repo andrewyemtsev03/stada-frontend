@@ -522,6 +522,10 @@ nav :where(a, button):focus-visible,
   display: none;
 }
 
+.site-footer .footer-nav {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .culture-values .culture-values-grid {
   grid-template-columns: minmax(0, 1fr);
 }
