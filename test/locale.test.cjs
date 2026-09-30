@@ -41,6 +41,17 @@ function runtime() {
   return context;
 }
 
+test('English overview paragraphs remain visible as supplied optional text', () => {
+  const context = runtime();
+  vm.runInContext("currentLang = 'en'", context);
+  for (const key of ['about_page_overview_1','about_page_intro_2','about_page_intro_3']) {
+    const text = vm.runInContext(`getSuppliedText('en','${key}')`, context);
+    assert.ok(text && text.length > 100,key);
+    assert.equal(vm.runInContext(`getFrontendStaticText('en','${key}')`,context),text);
+  }
+  assert.equal(vm.runInContext("STADA_SUPPLIED_COPY.languages.en",context),undefined);
+});
+
 for (const method of ['updateBackendDrivenPage', 'updateDynamicProductPage']) {
   test(`${method}: a slow old response cannot overwrite the latest selection`, async () => {
     const context = runtime();
@@ -80,8 +91,9 @@ test('Eurasia facts are translated in every language and keep the full country l
   }
   for (const country of ['kz', 'kg', 'ge', 'az', 'hy', 'md', 'uz']) {
     vm.runInContext(`currentCountry = '${country}'`, context);
-    const text = vm.runInContext(`getFrontendStaticText('en', 'about_list2')`, context);
-    assert.equal(text, 'The region comprises 11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan, and Turkmenistan.');
+    const text = vm.runInContext(`getFrontendStaticText('en', 'about_par2')`, context);
+    assert.match(text, /11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan and Turkmenistan/);
+    assert.equal(vm.runInContext(`getSuppliedText('en','about_list2')`, context), '');
   }
   const html = fs.readFileSync(path.join(__dirname, '../frontend/index.html'), 'utf8');
   for (const key of ['about_list1', 'about_list2']) {

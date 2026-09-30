@@ -175,7 +175,8 @@ function getSuppliedText(lang, key) {
   const country = STADA_COUNTRY_BY_CODE[currentCountry]?.backendCountry;
   const localText = STADA_SUPPLIED_COPY.countries[country]?.[lang]?.text;
   if (localText && Object.hasOwn(localText, key)) return localText[key];
-  return STADA_SUPPLIED_COPY.languages[lang]?.text?.[key];
+  return STADA_SUPPLIED_COPY.languages[lang]?.text?.[key]
+    ?? STADA_SUPPLIED_COPY.translations?.[lang]?.text?.[key];
 }
 
 function applySuppliedDocumentContent(lang) {

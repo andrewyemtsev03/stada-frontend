@@ -2876,5 +2876,20 @@ const STADA_SUPPLIED_COPY = {
       "path": "УЗБ/ТОО Stada.uz перевод на узбекский.docx",
       "sha256": "8ed26c86cc20aad653c966321887695ba96bd57e92d8fe59a5abe9881e2e9191"
     }
-  ]
+  ],
+  "translations": {
+    "en": {
+      "translatedFrom": "РУС/Stada.kz.docx, company overview paragraphs 1–3",
+      "text": {
+        "about_page_overview_1": "STADA is an international pharmaceutical company that has been pursuing its mission for more than 130 years: caring for people's health by building trusting relationships with partners and consumers. STADA's key business areas are Consumer Healthcare (CHC) products, generics and specialty medicines (including biosimilars). STADA products are available in more than 120 countries worldwide.",
+        "about_page_intro_2": "In 2022, the CIS region became an independent business unit and was renamed STADA Eurasia, reporting directly to the headquarters in Germany. The region comprises 11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan and Turkmenistan.",
+        "about_page_intro_3": "STADA Eurasia's head office is located in Almaty, Kazakhstan. The company has also registered STADA Arzneimittel AG legal entities in most countries in the region. Since 1 April 2023, STADA has represented Sanofi's portfolio of over-the-counter medicines in the region.",
+        "about_par1": "STADA is an international pharmaceutical company that has been pursuing its mission for more than 130 years: caring for people's health by building trusting relationships with partners and consumers. STADA's key business areas are Consumer Healthcare (CHC) products, generics and specialty medicines (including biosimilars). STADA products are available in more than 120 countries worldwide.",
+        "about_par2": "In 2022, the CIS region became an independent business unit and was renamed STADA Eurasia, reporting directly to the headquarters in Germany. The region comprises 11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan and Turkmenistan.",
+        "about_list1": "STADA Eurasia's head office is located in Almaty, Kazakhstan. The company has also registered STADA Arzneimittel AG legal entities in most countries in the region. Since 1 April 2023, STADA has represented Sanofi's portfolio of over-the-counter medicines in the region.",
+        "about_list2": "",
+        "about_list3": ""
+      }
+    }
+  }
 };
