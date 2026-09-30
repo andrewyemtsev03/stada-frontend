@@ -12,6 +12,8 @@ function frontendLanguageFallbackOrder(lang) {
 
 function getFrontendStaticText(lang, key) {
   if (!key) return '';
+  const suppliedValue = getSuppliedText(lang, key);
+  if (suppliedValue !== undefined) return suppliedValue;
   if (key === 'footer_brand_text') {
     const value = STADA_COUNTRY_BY_CODE[currentCountry]?.footerText?.[lang];
     if (value) return value;
@@ -28,7 +30,7 @@ function getFrontendStaticText(lang, key) {
   for (const candidateLang of frontendLanguageFallbackOrder(lang)) {
     const value = FRONTEND_STATIC_TEXT[candidateLang]?.[key];
     if (value) {
-      if (candidateLang === 'en') {
+      if (candidateLang === 'en' && key !== 'about_list1' && key !== 'about_list2') {
         const country = STADA_COUNTRY_BY_CODE[currentCountry];
         return String(value)
           .replaceAll('STADA Georgia', country?.siteName || `STADA ${country?.name || 'Georgia'}`)
@@ -156,7 +158,7 @@ function applyLocalizedBackendDomText(lang) {
   const localizedText = frontendLanguageFallbackOrder(lang)
     .map(candidateLang => LOCALIZED_BACKEND_DOM_TEXT[candidateLang])
     .find(Boolean);
-  if (!localizedText) return;
+  if (!localizedText) { applySuppliedDocumentContent(lang); return; }
 
   Object.entries(localizedText).forEach(([id, value]) => {
     if (backendPagePayload?.content?.dom?.text?.some(item => item.id === id && item.source === 'override')) return;
@@ -166,6 +168,45 @@ function applyLocalizedBackendDomText(lang) {
       delete el.dataset.animated;
     });
   });
+  applySuppliedDocumentContent(lang);
+}
+
+function getSuppliedText(lang, key) {
+  const country = STADA_COUNTRY_BY_CODE[currentCountry]?.backendCountry;
+  const localText = STADA_SUPPLIED_COPY.countries[country]?.[lang]?.text;
+  if (localText && Object.hasOwn(localText, key)) return localText[key];
+  return STADA_SUPPLIED_COPY.languages[lang]?.text?.[key];
+}
+
+function applySuppliedDocumentContent(lang) {
+  const supplied = STADA_SUPPLIED_COPY.languages[lang];
+  document.querySelectorAll('.about-values li').forEach(el => {
+    const text = el.querySelector('[data-i18n-key], [data-static-i18n-key]');
+    const key = text?.dataset.i18nKey || text?.dataset.staticI18nKey;
+    el.hidden = getSuppliedText(lang, key) === '';
+  });
+  const country = STADA_COUNTRY_BY_CODE[currentCountry]?.backendCountry;
+  const leader = STADA_SUPPLIED_COPY.countries[country]?.[lang]?.leadership;
+  document.querySelectorAll('[data-supplied-optional]').forEach(el => {
+    el.hidden = getSuppliedText(lang, el.dataset.i18nKey) === undefined;
+  });
+  // Keep the existing English chronology: no English source was supplied.
+  if (document.body.classList.contains('history-page')) {
+    document.querySelectorAll('main > section:not(.history-hero):not([data-supplied-history])').forEach(el => {
+      el.hidden = !!supplied;
+    });
+    document.querySelectorAll('[data-supplied-history]').forEach(el => { el.hidden = !supplied; });
+    if (supplied) {
+      document.querySelector('[data-backend-text-id="history_text_003"]').textContent = supplied.text.supplied_history_heading;
+      document.querySelector('[data-backend-text-id="history_text_004"]').textContent = supplied.text.supplied_history_text_0;
+    }
+    const timelineLink = document.querySelector('.history-hero__actions a');
+    if (timelineLink) timelineLink.href = supplied ? '#supplied-history-timeline' : '#history-timeline';
+  }
+  if (leader) {
+    const link = document.querySelector('.about-leader-card a');
+    if (link) link.href = getSiteAssetPath(leader.href);
+  }
 }
 
 const STADA_AZURE_BACKEND_BASE_URL = 'https://api.stada.kz';

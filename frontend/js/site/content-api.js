@@ -96,6 +96,8 @@ const BACKEND_TEXT_KEY_ALIASES = {
 
 function getBackendTextValue(text, key) {
   if (!key) return '';
+  const suppliedValue = getSuppliedText(currentLang, key);
+  if (suppliedValue !== undefined) return suppliedValue;
   return text?.[key] || text?.[BACKEND_TEXT_KEY_ALIASES[key]] || '';
 }
 
@@ -135,9 +137,9 @@ function applyTextFromBackendPayload(payload) {
   document.querySelectorAll('[data-i18n-key]').forEach(el => {
     const key = el.getAttribute('data-i18n-key');
     const value = dynamicText[key] || getBackendTextValue(text, key) || getFrontendStaticText(currentLang, key);
-    if (value) {
+    if (value || getSuppliedText(currentLang, key) === '') {
       el.textContent = value;
-      el.hidden = false;
+      el.hidden = !value;
     } else if (el.closest('.benefits-list')) {
       el.textContent = '';
       el.hidden = true;

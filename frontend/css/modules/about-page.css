@@ -683,3 +683,19 @@
     transition: none;
   }
 }
+.supplied-overview,
+.supplied-contacts {
+  padding-block: 2rem;
+  color: #526174;
+  line-height: 1.7;
+}
+
+.supplied-contacts p {
+  white-space: pre-line;
+}
+
+.supplied-compliance-copy p,
+.about-compliance__guide > p,
+.about-compliance__emails > p {
+  line-height: 1.7;
+}

@@ -71,6 +71,25 @@ test('backend text from another language cannot be reused by the carousel', () =
   assert.equal(vm.runInContext(`getTranslatedText('ru', 'cta_more')`, context), 'Подробнее');
 });
 
+test('Eurasia facts are translated in every language and keep the full country list', () => {
+  const context = runtime();
+  for (const lang of ['ru', 'kz', 'kg', 'ge', 'en', 'az', 'hy', 'ro', 'uz']) {
+    const values = vm.runInContext(`['about_list1', 'about_list2'].map(key => FRONTEND_STATIC_TEXT['${lang}'][key])`, context);
+    assert.match(values[0], /2022/, lang);
+    assert.match(values[1], /11/, lang);
+  }
+  for (const country of ['kz', 'kg', 'ge', 'az', 'hy', 'md', 'uz']) {
+    vm.runInContext(`currentCountry = '${country}'`, context);
+    const text = vm.runInContext(`getFrontendStaticText('en', 'about_list2')`, context);
+    assert.equal(text, 'The region comprises 11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan, and Turkmenistan.');
+  }
+  const html = fs.readFileSync(path.join(__dirname, '../frontend/index.html'), 'utf8');
+  for (const key of ['about_list1', 'about_list2']) {
+    assert.ok(html.includes(`data-static-i18n-key="${key}"`));
+    assert.ok(!html.includes(`data-i18n-key="${key}"`));
+  }
+});
+
 test('all languages have complete safety and accessible interface copy', () => {
   const context = runtime();
   for (const lang of ['ru', 'kz', 'kg', 'ge', 'en', 'az', 'hy', 'ro', 'uz']) {
