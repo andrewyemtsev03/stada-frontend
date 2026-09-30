@@ -1,3 +1,8 @@
+/* Keep temporarily hidden homepage sections out of the layout. */
+.home-main > .home-section[hidden] {
+  display: none !important;
+}
+
 /* Simple hero slider for static images (replaces Swiper) */
 .hero-section {
   position: relative;
