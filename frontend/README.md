@@ -39,3 +39,16 @@ The backend can be overridden before the site scripts load:
 
 Deploy the `frontend` folder as a static website. Do not configure a separate
 output or build directory. The primary branch is `main`.
+
+## Vercel Web Analytics
+
+All public pages load `js/site/analytics.js`. The loader starts Vercel's
+same-origin tracking script only when the visitor allows the analytics category
+in the existing privacy preferences. Withdrawing that choice blocks subsequent
+events. Localhost is excluded. No package installation or build step is needed.
+
+Enable Web Analytics for the project in Vercel, then redeploy the `frontend`
+folder. Visit the deployed site, accept analytics, and check the Analytics tab.
+Vercel provides `/_vercel/insights/script.js`; do not add that file to the repo.
+This integration requires Vercel hosting and will not collect analytics on the
+planned Azure deployment.
