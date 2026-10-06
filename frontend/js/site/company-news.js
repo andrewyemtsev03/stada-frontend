@@ -39,7 +39,9 @@ function renderCompanyNews() {
     items.forEach(item => {
       const card = newsElement('article', 'company-news-card');
       const link = newsElement('a', 'company-news-card__link');
-      link.href = `news-article.html?id=${encodeURIComponent(item.id)}`;
+      link.href = typeof getStaticNewsHref === 'function'
+        ? getStaticNewsHref(item.id)
+        : `news-article.html?id=${encodeURIComponent(item.id)}`;
       link.append(newsPhoto(item, item.images[0], 0));
       const copy = newsElement('div', 'company-news-card__copy');
       copy.append(newsElement('h2', '', item.copy.title));
@@ -52,7 +54,7 @@ function renderCompanyNews() {
   }
   if (article) {
     article.replaceChildren();
-    const id = new URLSearchParams(location.search).get('id');
+    const id = document.documentElement.dataset.staticNewsId || new URLSearchParams(location.search).get('id');
     const item = items.find(item => item.id === id);
     if (!item) {
       article.append(newsElement('h1', '', label('nav_news')));

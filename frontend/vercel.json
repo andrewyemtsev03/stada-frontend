@@ -6,7 +6,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'wasm-unsafe-eval' https://esm.sh https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob: https://api.stada.kz https://stada-content-backend.onrender.com; frame-src 'none'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'wasm-unsafe-eval' https://esm.sh https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' blob:; frame-src 'none'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
         },
         {
           "key": "X-Content-Type-Options",
@@ -33,6 +33,21 @@
           "value": "none"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "new\\.stada\\..*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -41,5 +56,294 @@
       "destination": "/contacts.html",
       "permanent": true
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kz"
+        }
+      ],
+      "destination": "/sites/kz/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kz"
+        }
+      ],
+      "destination": "/sites/kz/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kz"
+        }
+      ],
+      "destination": "/sites/kz/ru/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kz"
+        }
+      ],
+      "destination": "/sites/kz/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kg"
+        }
+      ],
+      "destination": "/sites/kg/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kg"
+        }
+      ],
+      "destination": "/sites/kg/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kg"
+        }
+      ],
+      "destination": "/sites/kg/ru/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.kg"
+        }
+      ],
+      "destination": "/sites/kg/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.ge"
+        }
+      ],
+      "destination": "/sites/ge/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.ge"
+        }
+      ],
+      "destination": "/sites/ge/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.ge"
+        }
+      ],
+      "destination": "/sites/ge/ge/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.ge"
+        }
+      ],
+      "destination": "/sites/ge/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.az"
+        }
+      ],
+      "destination": "/sites/az/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.az"
+        }
+      ],
+      "destination": "/sites/az/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.az"
+        }
+      ],
+      "destination": "/sites/az/az/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.az"
+        }
+      ],
+      "destination": "/sites/az/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.am"
+        }
+      ],
+      "destination": "/sites/am/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.am"
+        }
+      ],
+      "destination": "/sites/am/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.am"
+        }
+      ],
+      "destination": "/sites/am/hy/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.am"
+        }
+      ],
+      "destination": "/sites/am/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.md"
+        }
+      ],
+      "destination": "/sites/md/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.md"
+        }
+      ],
+      "destination": "/sites/md/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.md"
+        }
+      ],
+      "destination": "/sites/md/ro/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.md"
+        }
+      ],
+      "destination": "/sites/md/index.html"
+    },
+    {
+      "source": "/:lang(ru|kz|kg|ge|en|az|hy|ro|uz)/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.uz"
+        }
+      ],
+      "destination": "/sites/uz/:lang/:page*"
+    },
+    {
+      "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|robots.txt|sitemap.xml)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.uz"
+        }
+      ],
+      "destination": "/sites/uz/:page"
+    },
+    {
+      "source": "/products/:page*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.uz"
+        }
+      ],
+      "destination": "/sites/uz/ru/products/:page*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.|new\\.)?stada\\.uz"
+        }
+      ],
+      "destination": "/sites/uz/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/sites/kz/index.html"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm ci"
 }

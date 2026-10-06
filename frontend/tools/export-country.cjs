@@ -1,0 +1,14 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const countries = JSON.parse(fs.readFileSync(path.join(root, 'content/countries.json')));
+const code = process.argv[2];
+if (!countries.some(country => country.code === code)) throw new Error('Choose a country: kz, kg, ge, am, az, md, uz');
+const source = path.join(root, 'dist/sites', code);
+if (!fs.existsSync(source)) throw new Error('Run npm run build first.');
+const target = path.join(root, 'export', code);
+if (path.dirname(target) !== path.join(root, 'export')) throw new Error('Unsafe export path');
+fs.rmSync(target, { recursive: true, force: true });
+fs.cpSync(source, target, { recursive: true });
+for (const directory of ['assets', 'css', 'js']) fs.cpSync(path.join(root, 'dist', directory), path.join(target, directory), { recursive: true });
+console.log(`Upload the contents of frontend/export/${code} to ${countries.find(country => country.code === code).domain}'s document root.`);

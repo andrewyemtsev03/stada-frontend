@@ -1,0 +1,20 @@
+/* Generated pages are visible immediately, including when JavaScript is off. */
+html[data-static-site] body::before,
+html[data-static-site] body::after {
+  display: none;
+}
+html[data-static-site] .lang-toggle a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+  color: inherit;
+}
+html[data-static-site] .lang-toggle a[aria-current="true"] {
+  color: #fff;
+}

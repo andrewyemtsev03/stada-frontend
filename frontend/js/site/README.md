@@ -13,3 +13,10 @@ The public site remains dependency-free and uses ordered classic browser scripts
 - `shared.js` — scroll spy, shared counters, footer year, history media, and final page initialization.
 
 Keep the script tags in their documented order. New behavior should live with its page or domain instead of growing `shared.js`.
+
+Generated pages insert `static-runtime.js` immediately before `shared.js`. It
+initializes the country and language from page metadata, replaces content API
+startup with local state, and makes language switching navigate to a prebuilt
+page. Homepage carousel text also comes from the page's content snapshot.
+The build uses the existing rendering functions to preserve the shared layout;
+public pages retain their already rendered text when JavaScript is disabled.

@@ -1,0 +1,15 @@
+{
+  "name": "stada-country-websites",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build-static.cjs",
+    "test": "node --test ../test/*.test.cjs",
+    "preview": "node tools/preview-static.cjs",
+    "export:country": "node tools/export-country.cjs",
+    "content:import": "node ../scripts/import-static-content.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}

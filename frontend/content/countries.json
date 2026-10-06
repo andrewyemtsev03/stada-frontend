@@ -1,0 +1,163 @@
+[
+  {
+    "id": "kazakhstan",
+    "code": "kz",
+    "name": "Kazakhstan",
+    "siteName": "STADA Kazakhstan",
+    "domain": "stada.kz",
+    "siteUrl": "https://stada.kz/",
+    "aliases": [
+      "kz",
+      "kazakhstan",
+      "stada.kz",
+      "new.stada.kz"
+    ],
+    "defaultLanguage": "ru",
+    "supportedLanguages": [
+      "ru",
+      "kz"
+    ],
+    "footerText": {
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Казахстан.",
+      "kz": "Біз STADA халықаралық тәжірибесін пациенттерге, мамандарға және серіктестерге жақын болумен ұштастырамыз. Біздің нарық — Қазақстан."
+    }
+  },
+  {
+    "id": "kyrgyzstan",
+    "code": "kg",
+    "name": "Kyrgyzstan",
+    "siteName": "STADA Kyrgyzstan",
+    "domain": "stada.kg",
+    "siteUrl": "https://stada.kg/",
+    "aliases": [
+      "kg",
+      "kyrgyzstan",
+      "stada.kg",
+      "new.stada.kg"
+    ],
+    "defaultLanguage": "ru",
+    "supportedLanguages": [
+      "ru",
+      "kg"
+    ],
+    "footerText": {
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Кыргызстан.",
+      "kg": "Биз STADAнын эл аралык тажрыйбасын бейтаптарга, адистерге жана өнөктөштөргө жакын болуу менен айкалыштырабыз. Биздин рынок — Кыргызстан."
+    }
+  },
+  {
+    "id": "georgia",
+    "code": "ge",
+    "name": "Georgia",
+    "siteName": "STADA Georgia",
+    "domain": "stada.ge",
+    "siteUrl": "https://stada.ge/",
+    "aliases": [
+      "ge",
+      "georgia",
+      "stada.ge",
+      "new.stada.ge"
+    ],
+    "defaultLanguage": "ge",
+    "supportedLanguages": [
+      "ge",
+      "en"
+    ],
+    "footerText": {
+      "ge": "STADA-ს საერთაშორისო გამოცდილებას ვაერთიანებთ პაციენტებთან, სპეციალისტებთან და პარტნიორებთან სიახლოვესთან. ჩვენი ბაზარია საქართველო.",
+      "en": "We combine STADA’s international experience with close connections to patients, professionals and partners. Our market is Georgia."
+    }
+  },
+  {
+    "id": "azerbaijan",
+    "code": "az",
+    "name": "Azerbaijan",
+    "siteName": "STADA Azerbaijan",
+    "domain": "stada.az",
+    "siteUrl": "https://stada.az/",
+    "aliases": [
+      "az",
+      "azerbaijan",
+      "stada.az",
+      "new.stada.az"
+    ],
+    "defaultLanguage": "az",
+    "supportedLanguages": [
+      "az",
+      "ru"
+    ],
+    "footerText": {
+      "az": "STADA-nın beynəlxalq təcrübəsini pasiyentlərə, mütəxəssislərə və tərəfdaşlara yaxınlıqla birləşdiririk. Bazarımız: Azərbaycan.",
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Азербайджан."
+    }
+  },
+  {
+    "id": "armenia",
+    "code": "am",
+    "name": "Armenia",
+    "siteName": "STADA Armenia",
+    "domain": "stada.am",
+    "siteUrl": "https://stada.am/",
+    "aliases": [
+      "am",
+      "armenia",
+      "stada.am",
+      "new.stada.am"
+    ],
+    "defaultLanguage": "hy",
+    "supportedLanguages": [
+      "hy",
+      "ru"
+    ],
+    "footerText": {
+      "hy": "Մենք համատեղում ենք STADA-ի միջազգային փորձը պացիենտների, մասնագետների և գործընկերների հետ սերտ կապերի հետ։ Մեր շուկան՝ Հայաստան։",
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Армения."
+    }
+  },
+  {
+    "id": "moldova",
+    "code": "md",
+    "name": "Moldova",
+    "siteName": "STADA Moldova",
+    "domain": "stada.md",
+    "siteUrl": "https://stada.md/",
+    "aliases": [
+      "md",
+      "moldova",
+      "stada.md",
+      "new.stada.md"
+    ],
+    "defaultLanguage": "ro",
+    "supportedLanguages": [
+      "ro",
+      "ru"
+    ],
+    "footerText": {
+      "ro": "Combinăm experiența internațională STADA cu apropierea de pacienți, specialiști și parteneri. Piața noastră este Moldova.",
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Молдова."
+    }
+  },
+  {
+    "id": "uzbekistan",
+    "code": "uz",
+    "name": "Uzbekistan",
+    "siteName": "STADA Uzbekistan",
+    "domain": "stada.uz",
+    "siteUrl": "https://stada.uz/",
+    "aliases": [
+      "uz",
+      "uzbekistan",
+      "stada.uz",
+      "new.stada.uz"
+    ],
+    "defaultLanguage": "ru",
+    "supportedLanguages": [
+      "ru",
+      "uz"
+    ],
+    "footerText": {
+      "ru": "Мы объединяем международный опыт STADA и близость к пациентам, специалистам и партнерам. Наш рынок — Узбекистан.",
+      "uz": "STADA xalqaro tajribasini bemorlar, mutaxassislar va hamkorlarga yaqinlik bilan birlashtiramiz. Bizning bozorimiz — O‘zbekiston."
+    }
+  }
+]

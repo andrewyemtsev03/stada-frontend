@@ -1,0 +1,12 @@
+html[data-static-site] .home-reveal,
+html[data-static-site] .worldwide-reveal,
+html[data-static-site] .history-reveal,
+html[data-static-site] [data-aos],
+html[data-static-site] .hero-overlay {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+html[data-static-site] .worldwide-globe-panel {
+  display: none;
+}

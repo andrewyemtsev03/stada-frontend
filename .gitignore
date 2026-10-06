@@ -1,2 +1,5 @@
 # Local development server logs
 .localhost-*.log
+frontend/node_modules/
+frontend/dist/
+frontend/export/
