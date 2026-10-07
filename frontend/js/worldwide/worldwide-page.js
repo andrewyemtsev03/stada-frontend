@@ -1,6 +1,6 @@
 import { countriesData, defaultCountryId, getCountryName, getCountryRegion, getCountrySearchValues, normalizeSiteLanguage } from "./countries-data.js?v=locale-audit-1";
 import { CountryInfoCard } from "./country-info-card.js?v=locale-audit-1";
-import { GlobeMap } from "./globe-map.js?v=locale-audit-1";
+import { GlobeMap } from "./globe-map.js?v=mobile-globe-1";
 
 const pageCopy = {
   en: {

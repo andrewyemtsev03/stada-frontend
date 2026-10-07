@@ -244,6 +244,8 @@ export class GlobeMap {
   }
 
   handlePointerDown(event) {
+    // Finger swipes scroll the page; small screens never start globe dragging.
+    if (event.pointerType === "touch" || window.matchMedia("(max-width: 768px)").matches) return;
     this.pointerStart = { x: event.clientX, y: event.clientY };
     this.lastPointer = { x: event.clientX, y: event.clientY, t: Date.now() };
     this.dragOffset = { phi: 0, theta: 0 };
