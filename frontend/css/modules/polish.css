@@ -407,12 +407,14 @@ nav :where(a, button):focus-visible,
   opacity: 0.9;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   body.menu-open {
     overflow: hidden;
     overscroll-behavior: none;
   }
+}
 
+@media (max-width: 720px) {
   body.about-page .about-hero.worldwide-hero--static .worldwide-hero__kicker::before,
   body.worldwide-page .worldwide-hero--static .worldwide-hero__kicker::before {
     display: none;
@@ -570,5 +572,106 @@ nav :where(a, button):focus-visible,
 
   .culture-values .culture-value-card__icon {
     width: 58px;
+  }
+}
+
+/* Mobile refinements live after the page styles so desktop layouts stay intact. */
+@media (max-width: 768px) {
+  .menu.open {
+    max-height: calc(100vh - 6.5rem);
+    max-height: calc(100dvh - 6.5rem - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-culture-preview__cards,
+  .culture-values .culture-icon-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .home-culture-preview__cards .culture-icon-stage__item,
+  .culture-values .culture-icon-stage__item {
+    grid-template-columns: 64px minmax(0, 1fr);
+    min-height: 96px;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .home-culture-preview__cards .culture-icon-stage__item img,
+  .culture-values .culture-icon-stage__item img {
+    width: 64px;
+    height: 64px;
+    grid-row: auto;
+  }
+
+  .home-culture-preview__cards .culture-icon-stage__item h3,
+  .culture-values .culture-icon-stage__item h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: left;
+    text-wrap: wrap;
+    overflow-wrap: anywhere;
+  }
+
+  /* Keep the introduction below its number and icon, with a full reading line. */
+  .culture-values .culture-value-card__top {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .culture-values .culture-value-card__icon {
+    width: 64px;
+    justify-self: start;
+  }
+
+  .culture-values .culture-value-card__top > div:last-child {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .culture-values .culture-value-card h3 {
+    overflow-wrap: anywhere;
+  }
+
+  .career-content .career-fact {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Country search provides an alternative to the closely spaced globe markers. */
+  .worldwide-page .worldwide-layout {
+    grid-template-areas: "overview" "globe" "detail";
+    grid-template-rows: auto;
+    row-gap: 1.5rem;
+  }
+
+  .worldwide-page .worldwide-info-column {
+    display: block;
+    width: var(--site-shell);
+    margin-inline: auto;
+  }
+
+  .worldwide-page .worldwide-info-column .country-picker__list {
+    max-height: 12rem;
+    overscroll-behavior-y: contain;
+  }
+
+  .worldwide-page .country-picker input {
+    font-size: 1rem;
+  }
+
+  .worldwide-page .country-info-card__row dd {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
