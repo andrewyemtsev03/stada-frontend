@@ -24,7 +24,40 @@ test('Moldova news is available in both supplied languages with four photos', ()
 
 test('Moldova news never appears on another country site or in an unsupplied language', () => {
   for (const country of ['kz', 'kg', 'ge', 'az', 'am', 'uz']) {
-    for (const lang of ['ru', 'ro']) assert.equal(context.getCompanyNews(country, lang).length, 0);
+    for (const lang of ['ru', 'ro']) assert.ok(context.getCompanyNews(country, lang).every(item => item.country === country && item.id !== 'ximluci-moldova'));
   }
   assert.equal(context.getCompanyNews('md', 'en').length, 0);
+});
+
+test('Kazakhstan Health Report is complete in Russian and Kazakh and scoped to Kazakhstan', () => {
+  for (const lang of ['ru', 'kz']) {
+    const items = context.getCompanyNews('kz', lang);
+    assert.equal(items.length, 1);
+    const item = items[0];
+    assert.match(item.copy.title, /71%/);
+    assert.equal(item.date, '2026-10-07');
+    assert.equal(item.copy.paragraphs.length, 23);
+    assert.equal(item.copy.headingIndices.length, 5);
+    assert.ok(item.copy.paragraphs.some(text => text.includes('19 514')));
+    assert.ok(item.copy.paragraphs.some(text => text.includes('www.reportstada.net')));
+    assert.ok(fs.existsSync(path.join(__dirname, '../frontend', item.images[0])));
+  }
+  assert.equal(context.getCompanyNews('kz', 'en').length, 0);
+  assert.equal(context.getCompanyNews('md', 'kz').length, 0);
+});
+
+test('Uzbekistan Health Report keeps both complete supplied languages and stays country scoped', () => {
+  for (const lang of ['ru', 'uz']) {
+    const items = context.getCompanyNews('uz', lang);
+    assert.equal(items.length, 1);
+    const item = items[0];
+    assert.match(item.copy.title, /52/);
+    assert.equal(item.copy.paragraphs.length, lang === 'ru' ? 31 : 30);
+    assert.equal(item.copy.headingIndices.length, 7);
+    assert.ok(item.copy.paragraphs.some(text => text.includes('19 514')));
+    assert.ok(item.copy.paragraphs.some(text => text.includes('www.reportstada.net')));
+    assert.ok(fs.existsSync(path.join(__dirname, '../frontend', item.images[0])));
+  }
+  assert.equal(context.getCompanyNews('uz', 'kz').length, 0);
+  assert.ok(context.getCompanyNews('kz', 'ru').every(item => item.country === 'kz'));
 });
