@@ -29,3 +29,11 @@ html[data-static-site] .product-documents a {
   white-space: normal;
   overflow-wrap: anywhere;
 }
+[data-static-site] img[src$="/no-spa-40mg-100.png"] {
+  /* Compensate for transparent padding in the supplied packshot. */
+  scale: 1.8;
+}
+
+[data-static-site] img[src$="/no-spa-forte-80mg-24.png"] {
+  scale: 1.3;
+}

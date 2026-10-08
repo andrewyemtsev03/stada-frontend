@@ -9,12 +9,12 @@ const output = path.join(frontend, 'dist');
 const snapshot = require('../frontend/content/countries/ge.json');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 
-test('Georgia exposes the eight supplied product variants with local images and original leaflets', () => {
+test('Georgia exposes the eleven supplied product variants with local images and original leaflets', () => {
   for (const lang of ['ge', 'en']) {
     const products = snapshot.locales[lang].products;
-    assert.equal(Object.keys(products).length, 8);
+    assert.equal(Object.keys(products).length, 11);
     const catalog = read(`sites/ge/${lang}/products/index.html`);
-    assert.equal(catalog.window.document.querySelectorAll('[data-product-card]').length, 8);
+    assert.equal(catalog.window.document.querySelectorAll('[data-product-card]').length, 11);
     assert.equal(catalog.window.document.querySelector('a[href="#pharmacy-partners"]'), null);
     for (const [slug, { product }] of Object.entries(products)) {
       const href = `/${lang}/products/${slug}.html`;
@@ -70,6 +70,20 @@ test('Enterogermina pages preserve the different concentrations, dosage forms an
   }
   assert.match(products['enterogermina-2-billion'].product.page.informationText, /2–3 vials daily/);
   assert.match(products['enterogermina-4-billion'].product.page.informationText, /lower-concentration product/);
+});
+
+test('No-Spa variants preserve strength, pack size and strength-specific adult tablet counts', () => {
+  const products = snapshot.locales.en.products;
+  for (const [slug, mg, count, lactose] of [['no-spa-40mg-24', 40, 24, 52], ['no-spa-40mg-100', 40, 100, 52], ['no-spa-forte-80mg-24', 80, 24, 104]]) {
+    const { product } = products[slug];
+    assert.match(product.name, new RegExp(`${mg} mg — ${count} tablets`));
+    assert.match(product.page.formulaPoints[0].text, new RegExp(`${mg} mg of drotaverine hydrochloride`));
+    assert.match(product.page.formulaPoints[1].text, new RegExp(`${lactose} mg of lactose`));
+    assert.match(product.page.informationText, /levodopa/);
+    assert.match(product.page.informationText, mg === 80 ? /1½–3 tablets in total per day/ : /3–6 tablets in total per day/);
+    assert.match(product.page.formulaPoints[2].text, count === 100 ? /100 tablets in a polypropylene bottle/ : /24 tablets in a PVC\/aluminium blister/);
+    assert.equal(product.documents[0].href, `/assets/georgia-products/${slug}-instructions-ge.docx`);
+  }
 });
 
 test('enabling Georgia products leaves other country catalogs hidden and their snapshots empty', () => {

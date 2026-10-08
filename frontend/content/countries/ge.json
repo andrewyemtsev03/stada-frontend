@@ -3584,6 +3584,165 @@
               "informationText": "# პროდუქტის შესახებ\n\nენტეროჯერმინა 6 მილიარდი\n\n## გამოყენების ჩვენება\n\nზრდასრულებში გამოიყენება ნაწლავის ბაქტერიული ფლორის ცვლილებით, მათ შორის ხანგრძლივი ანტიბიოტიკოთერაპიით, განპირობებული ნაწლავური დარღვევების პროფილაქტიკისა და მკურნალობისთვის. მოწოდებულ ინსტრუქციაში ჩამოთვლილია ფაღარათი, მუცლის ტკივილი, მეტეორიზმი და ვიტამინების ნაკლებობა.\n\n## მიღების წესი\n\nმოზრდილები: 1 პაკეტი დღეში. ფხვნილი შეიძლება გაიხსნას პირის ღრუში ნერწყვით და გადაიყლაპოს წყლის დალევის გარეშე. ექიმის სხვა დანიშნულების არარსებობისას გამოიყენეთ მხოლოდ მოკლე კურსით. ექიმთან კონსულტაციის გარეშე არ გადააჭარბოთ რეკომენდებულ დოზას და გამოტოვებულის ასანაზღაურებლად არ მიიღოთ ორმაგი დოზა. მხოლოდ პერორალურად მისაღებად; არ გაიკეთოთ ინექცია და არ მიიღოთ სხვა გზით.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\n6 მილიარდი სპორის შემცველი ფხვნილი განკუთვნილია მხოლოდ ზრდასრულებისთვის. არ მიიღოთ Bacillus clausii-ის სპორების ან სხვა ინგრედიენტის მიმართ ალერგიის შემთხვევაში. დასუსტებული იმუნიტეტის ან მძიმე დაავადების დროს მიღებამდე მიმართეთ ექიმს: მოწყვლად პაციენტებში Bacillus clausii შეიძლება მოხვდეს სისხლში და გამოიწვიოს სერიოზული ინფექცია.\n\n## როდის მივმართოთ ექიმს\n\nანტიბიოტიკოთერაპიის დროს მიიღეთ ანტიბიოტიკის დოზებს შორის. მიმართეთ ექიმს, თუ მოკლე კურსის შემდეგ გაუმჯობესება არ არის, სიმპტომები გაუარესდა, განმეორდა ან შეიცვალა. ორსულობისა და ძუძუთი კვების დროს გამოიყენეთ მხოლოდ საჭიროებისას და ექიმის ზედამხედველობით. აცნობეთ ექიმს ან ფარმაცევტს სხვა მედიკამენტების შესახებ.\n\n## შესაძლო გვერდითი მოვლენები\n\nუცნობი სიხშირის შესაძლო რეაქციებია ჰიპერმგრძნობელობა, კანის სიწითლე, ჭინჭრის ციება და ანგიოდემა. სახის, ტუჩების ან ყელის შეშუპების შემთხვევაში დაუყოვნებლივ მიმართეთ ექიმს, რადგან შეიძლება გაძნელდეს ყლაპვა ან სუნთქვა. დასუსტებული იმუნიტეტის ან მძიმე დაავადების დროს შესაძლებელია სისხლის სერიოზული ინფექცია. არასწორმა გზით მიღებამ შეიძლება გამოიწვიოს ანაფილაქსიური შოკი.\n\n## შენახვა\n\nშენახვის განსაკუთრებულ პირობებს არ საჭიროებს. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას. არ გამოიყენოთ შეფუთვაზე მითითებული ვარგისიანობის ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
             }
           }
+        },
+        "no-spa-40mg-24": {
+          "product": {
+            "id": "no-spa-40mg-24",
+            "slug": "no-spa-40mg-24",
+            "name": "ნო-შპა 40 მგ — 24 ტაბლეტი",
+            "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-40mg-24.png",
+              "alt": "ნო-შპა 40 მგ — 24 ტაბლეტი"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-40mg-24-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ნო-შპა 40 მგ — 24 ტაბლეტი",
+              "kicker": "სპაზმოლიზური საშუალება",
+              "lead": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+              "badges": [
+                "40 მგ",
+                "24 ტაბლეტი"
+              ],
+              "metrics": [],
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/no-spa-40mg-24.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი ტაბლეტი შეიცავს 40 მგ დროტავერინის ჰიდროქლორიდს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "მაგნიუმის სტეარატი, ტალკი, პოვიდონი, სიმინდის სახამებელი და ლაქტოზის მონოჰიდრატი. ერთი ტაბლეტი შეიცავს 52 მგ ლაქტოზას."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "24 ტაბლეტი პვქ/ალუმინის ბლისტერში, ინსტრუქციასთან ერთად მუყაოს კოლოფში."
+                }
+              ],
+              "informationText": "# პროდუქტის შესახებ\n\nნო-შპა 40 მგ — 24 ტაბლეტი\n\n## გამოყენების ჩვენება\n\nდროტავერინი სპაზმოლიზური საშუალებაა, რომელიც ადუნებს გლუვ მუსკულატურას. მოწოდებულ ინსტრუქციაში აღწერილია გამოყენება ნაღვლისა და საშარდე გზების დაავადებებთან დაკავშირებული გლუვი მუსკულატურის სპაზმის, კუჭ-ნაწლავის სპაზმის, ტენზიური ტიპის თავის ტკივილისა და მტკივნეული მენსტრუაციის დროს. კონკრეტული მდგომარეობების ჩამონათვალი იხილეთ ორიგინალ დოკუმენტში.\n\n## მიღების წესი\n\nმიიღება პერორალურად. მოწოდებულ ინსტრუქციაში მოზრდილებისთვის მითითებულია დღეში 120–240 მგ, 2–3 მიღებაზე განაწილებით. 40 მგ სიძლიერისთვის ეს შეესაბამება სულ 3–6 ტაბლეტს დღეში; მოზრდილის ერთჯერადი დოზაა 40–80 მგ (1–2 ტაბლეტი). დაიცავით ინსტრუქცია ან ექიმის რეკომენდაცია.\n\n40 მგ-ის ინსტრუქციაში აღწერილია ასაკის შესაბამისი დოზები 6–12 წლის და 12 წელზე უფროსი ასაკის ბავშვებისთვის. 6 წლამდე ასაკში გამოყენების მონაცემები არ არსებობს; ბავშვის დოზირებისთვის მიმართეთ ექიმს.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენოთ დროტავერინის ან სხვა ინგრედიენტის მიმართ ალერგიის, ღვიძლის, თირკმლის ან გულის მძიმე უკმარისობის დროს. დაბალი არტერიული წნევის შემთხვევაში საჭიროა სიფრთხილე. შეიცავს ლაქტოზას: ინსტრუქციის მიხედვით არ გამოიყენება ლაქტაზის დეფიციტის, გალაქტოზემიის ან გლუკოზა/გალაქტოზის შეწოვის დარღვევის დროს. ბავშვებში დროტავერინის გამოყენების კლინიკური კვლევები არ ჩატარებულა; ბავშვებში გამოიყენეთ მხოლოდ სამედიცინო მითითებით.\n\n## ურთიერთქმედებები და სხვა მითითებები\n\nდროტავერინმა შეიძლება შეამციროს ლევოდოპას ანტიპარკინსონული ეფექტი და გააძლიეროს ტრემორი ან რიგიდობა; ერთად მიღებამდე მიმართეთ ექიმს. ორსულობის დროს საჭიროა სიფრთხილე; ძუძუთი კვების პერიოდში მიღება არასაკმარისი კლინიკური მონაცემების გამო რეკომენდებული არ არის. თავბრუსხვევისას თავი შეიკავეთ ტრანსპორტისა და საშიში მექანიზმების მართვისგან. დოზის გადაჭარბებამ შეიძლება გამოიწვიოს გულის რიტმისა და გამტარობის მძიმე დარღვევები, გულის გაჩერების ჩათვლით; დოზის გადაჭარბებისას დაუყოვნებლივ მიიღეთ სამედიცინო დახმარება.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში აღწერილი იშვიათი რეაქციებია გულისრევა, შეკრულობა, თავის ტკივილი, თავბრუსხვევა, უძილობა, გახშირებული გულისცემა, არტერიული წნევის დაქვეითება და ალერგიული რეაქციები — ანგიონევროზული შეშუპება, ჭინჭრის ციება, გამონაყარი ან ქავილი. გვერდითი მოვლენების, მათ შორის ინსტრუქციაში ჩამოუთვლელი რეაქციების, შემთხვევაში შეწყვიტეთ მიღება და მიმართეთ ექიმს.\n\n## შენახვა\n\nშეინახეთ არაუმეტეს 25°C ტემპერატურაზე, სინათლისგან დაცულ და ბავშვებისთვის მიუწვდომელ ადგილას. მოწოდებული ინსტრუქციის მიხედვით ვარგისობის ვადაა 3 წელი. არ გამოიყენოთ შეფუთვაზე მითითებული ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
+            }
+          }
+        },
+        "no-spa-40mg-100": {
+          "product": {
+            "id": "no-spa-40mg-100",
+            "slug": "no-spa-40mg-100",
+            "name": "ნო-შპა 40 მგ — 100 ტაბლეტი",
+            "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-40mg-100.png",
+              "alt": "ნო-შპა 40 მგ — 100 ტაბლეტი"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-40mg-100-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ნო-შპა 40 მგ — 100 ტაბლეტი",
+              "kicker": "სპაზმოლიზური საშუალება",
+              "lead": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+              "badges": [
+                "40 მგ",
+                "100 ტაბლეტი"
+              ],
+              "metrics": [],
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/no-spa-40mg-100.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი ტაბლეტი შეიცავს 40 მგ დროტავერინის ჰიდროქლორიდს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "მაგნიუმის სტეარატი, ტალკი, პოვიდონი, სიმინდის სახამებელი და ლაქტოზის მონოჰიდრატი. ერთი ტაბლეტი შეიცავს 52 მგ ლაქტოზას."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "100 ტაბლეტი პოლიპროპილენის ფლაკონში პოლიეთილენის საცობით; ერთი ფლაკონი და ინსტრუქცია მუყაოს კოლოფში."
+                }
+              ],
+              "informationText": "# პროდუქტის შესახებ\n\nნო-შპა 40 მგ — 100 ტაბლეტი\n\n## გამოყენების ჩვენება\n\nდროტავერინი სპაზმოლიზური საშუალებაა, რომელიც ადუნებს გლუვ მუსკულატურას. მოწოდებულ ინსტრუქციაში აღწერილია გამოყენება ნაღვლისა და საშარდე გზების დაავადებებთან დაკავშირებული გლუვი მუსკულატურის სპაზმის, კუჭ-ნაწლავის სპაზმის, ტენზიური ტიპის თავის ტკივილისა და მტკივნეული მენსტრუაციის დროს. კონკრეტული მდგომარეობების ჩამონათვალი იხილეთ ორიგინალ დოკუმენტში.\n\n## მიღების წესი\n\nმიიღება პერორალურად. მოწოდებულ ინსტრუქციაში მოზრდილებისთვის მითითებულია დღეში 120–240 მგ, 2–3 მიღებაზე განაწილებით. 40 მგ სიძლიერისთვის ეს შეესაბამება სულ 3–6 ტაბლეტს დღეში; მოზრდილის ერთჯერადი დოზაა 40–80 მგ (1–2 ტაბლეტი). დაიცავით ინსტრუქცია ან ექიმის რეკომენდაცია.\n\n40 მგ-ის ინსტრუქციაში აღწერილია ასაკის შესაბამისი დოზები 6–12 წლის და 12 წელზე უფროსი ასაკის ბავშვებისთვის. 6 წლამდე ასაკში გამოყენების მონაცემები არ არსებობს; ბავშვის დოზირებისთვის მიმართეთ ექიმს.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენოთ დროტავერინის ან სხვა ინგრედიენტის მიმართ ალერგიის, ღვიძლის, თირკმლის ან გულის მძიმე უკმარისობის დროს. დაბალი არტერიული წნევის შემთხვევაში საჭიროა სიფრთხილე. შეიცავს ლაქტოზას: ინსტრუქციის მიხედვით არ გამოიყენება ლაქტაზის დეფიციტის, გალაქტოზემიის ან გლუკოზა/გალაქტოზის შეწოვის დარღვევის დროს. ბავშვებში დროტავერინის გამოყენების კლინიკური კვლევები არ ჩატარებულა; ბავშვებში გამოიყენეთ მხოლოდ სამედიცინო მითითებით.\n\n## ურთიერთქმედებები და სხვა მითითებები\n\nდროტავერინმა შეიძლება შეამციროს ლევოდოპას ანტიპარკინსონული ეფექტი და გააძლიეროს ტრემორი ან რიგიდობა; ერთად მიღებამდე მიმართეთ ექიმს. ორსულობის დროს საჭიროა სიფრთხილე; ძუძუთი კვების პერიოდში მიღება არასაკმარისი კლინიკური მონაცემების გამო რეკომენდებული არ არის. თავბრუსხვევისას თავი შეიკავეთ ტრანსპორტისა და საშიში მექანიზმების მართვისგან. დოზის გადაჭარბებამ შეიძლება გამოიწვიოს გულის რიტმისა და გამტარობის მძიმე დარღვევები, გულის გაჩერების ჩათვლით; დოზის გადაჭარბებისას დაუყოვნებლივ მიიღეთ სამედიცინო დახმარება.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში აღწერილი იშვიათი რეაქციებია გულისრევა, შეკრულობა, თავის ტკივილი, თავბრუსხვევა, უძილობა, გახშირებული გულისცემა, არტერიული წნევის დაქვეითება და ალერგიული რეაქციები — ანგიონევროზული შეშუპება, ჭინჭრის ციება, გამონაყარი ან ქავილი. გვერდითი მოვლენების, მათ შორის ინსტრუქციაში ჩამოუთვლელი რეაქციების, შემთხვევაში შეწყვიტეთ მიღება და მიმართეთ ექიმს.\n\n## შენახვა\n\nშეინახეთ არაუმეტეს 25°C ტემპერატურაზე, სინათლისგან დაცულ და ბავშვებისთვის მიუწვდომელ ადგილას. მოწოდებული ინსტრუქციის მიხედვით ვარგისობის ვადაა 3 წელი. არ გამოიყენოთ შეფუთვაზე მითითებული ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
+            }
+          }
+        },
+        "no-spa-forte-80mg-24": {
+          "product": {
+            "id": "no-spa-forte-80mg-24",
+            "slug": "no-spa-forte-80mg-24",
+            "name": "ნო-შპა ფორტე 80 მგ — 24 ტაბლეტი",
+            "shortDescription": "დროტავერინის ჰიდროქლორიდი 80 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-forte-80mg-24.png",
+              "alt": "ნო-შპა ფორტე 80 მგ — 24 ტაბლეტი"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-forte-80mg-24-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ნო-შპა ფორტე 80 მგ — 24 ტაბლეტი",
+              "kicker": "სპაზმოლიზური საშუალება",
+              "lead": "დროტავერინის ჰიდროქლორიდი 80 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
+              "badges": [
+                "80 მგ",
+                "24 ტაბლეტი"
+              ],
+              "metrics": [],
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/no-spa-forte-80mg-24.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი ტაბლეტი შეიცავს 80 მგ დროტავერინის ჰიდროქლორიდს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "მაგნიუმის სტეარატი, ტალკი, პოვიდონი, სიმინდის სახამებელი და ლაქტოზის მონოჰიდრატი. ერთი ტაბლეტი შეიცავს 104 მგ ლაქტოზას."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "24 ტაბლეტი პვქ/ალუმინის ბლისტერში, ინსტრუქციასთან ერთად მუყაოს კოლოფში. მოგრძო ტაბლეტს აქვს გამყოფი ხაზი."
+                }
+              ],
+              "informationText": "# პროდუქტის შესახებ\n\nნო-შპა ფორტე 80 მგ — 24 ტაბლეტი\n\n## გამოყენების ჩვენება\n\nდროტავერინი სპაზმოლიზური საშუალებაა, რომელიც ადუნებს გლუვ მუსკულატურას. მოწოდებულ ინსტრუქციაში აღწერილია გამოყენება ნაღვლისა და საშარდე გზების დაავადებებთან დაკავშირებული გლუვი მუსკულატურის სპაზმის, კუჭ-ნაწლავის სპაზმის, ტენზიური ტიპის თავის ტკივილისა და მტკივნეული მენსტრუაციის დროს. კონკრეტული მდგომარეობების ჩამონათვალი იხილეთ ორიგინალ დოკუმენტში.\n\n## მიღების წესი\n\nმიიღება პერორალურად. მოწოდებულ ინსტრუქციაში მოზრდილებისთვის მითითებულია დღეში 120–240 მგ, 2–3 მიღებაზე განაწილებით. 80 მგ სიძლიერისთვის ეს შეესაბამება სულ 1½–3 ტაბლეტს დღეში; მოზრდილის ერთჯერადი დოზაა 40–80 მგ (½–1 ტაბლეტი). დაიცავით ინსტრუქცია ან ექიმის რეკომენდაცია.\n\nფორტეს ინსტრუქციაში აუცილებლობის შემთხვევაში აღწერილია გამოყენება 12 წელზე უფროსი ასაკის ბავშვებში; შესაბამისი დოზა უნდა განსაზღვროს ექიმმა.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენოთ დროტავერინის ან სხვა ინგრედიენტის მიმართ ალერგიის, ღვიძლის, თირკმლის ან გულის მძიმე უკმარისობის დროს. დაბალი არტერიული წნევის შემთხვევაში საჭიროა სიფრთხილე. შეიცავს ლაქტოზას: ინსტრუქციის მიხედვით არ გამოიყენება ლაქტაზის დეფიციტის, გალაქტოზემიის ან გლუკოზა/გალაქტოზის შეწოვის დარღვევის დროს. ბავშვებში დროტავერინის გამოყენების კლინიკური კვლევები არ ჩატარებულა; ბავშვებში გამოიყენეთ მხოლოდ სამედიცინო მითითებით.\n\n## ურთიერთქმედებები და სხვა მითითებები\n\nდროტავერინმა შეიძლება შეამციროს ლევოდოპას ანტიპარკინსონული ეფექტი და გააძლიეროს ტრემორი ან რიგიდობა; ერთად მიღებამდე მიმართეთ ექიმს. ორსულობის დროს საჭიროა სიფრთხილე; ძუძუთი კვების პერიოდში მიღება არასაკმარისი კლინიკური მონაცემების გამო რეკომენდებული არ არის. თავბრუსხვევისას თავი შეიკავეთ ტრანსპორტისა და საშიში მექანიზმების მართვისგან. დოზის გადაჭარბებამ შეიძლება გამოიწვიოს გულის რიტმისა და გამტარობის მძიმე დარღვევები, გულის გაჩერების ჩათვლით; დოზის გადაჭარბებისას დაუყოვნებლივ მიიღეთ სამედიცინო დახმარება.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში აღწერილი იშვიათი რეაქციებია გულისრევა, შეკრულობა, თავის ტკივილი, თავბრუსხვევა, უძილობა, გახშირებული გულისცემა, არტერიული წნევის დაქვეითება და ალერგიული რეაქციები — ანგიონევროზული შეშუპება, ჭინჭრის ციება, გამონაყარი ან ქავილი. გვერდითი მოვლენების, მათ შორის ინსტრუქციაში ჩამოუთვლელი რეაქციების, შემთხვევაში შეწყვიტეთ მიღება და მიმართეთ ექიმს.\n\n## შენახვა\n\nშეინახეთ არაუმეტეს 25°C ტემპერატურაზე, სინათლისგან დაცულ და ბავშვებისთვის მიუწვდომელ ადგილას. მოწოდებული ინსტრუქციის მიხედვით ვარგისობის ვადაა 3 წელი. არ გამოიყენოთ შეფუთვაზე მითითებული ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
+            }
+          }
         }
       },
       "text": {
@@ -7342,6 +7501,165 @@
                 }
               ],
               "informationText": "# About the product\n\nEnterogermina 6 billion\n\n## What it is used for\n\nFor adults: prevention and treatment of intestinal disorders caused by changes in intestinal bacterial flora, including changes associated with prolonged antibiotic treatment. The supplied leaflet lists diarrhoea, abdominal pain, flatulence and vitamin deficiency among these disorders.\n\n## How to take it\n\nAdults: 1 sachet daily. The powder can be dissolved in saliva in the mouth and swallowed without drinking water. Use only for short courses unless a doctor advises otherwise. Do not exceed the recommended dose without medical advice, and do not double a dose to make up for one you missed. For oral use only; never inject or administer by another route.\n\n## Contraindications and precautions\n\nThis 6 billion powder is for adults only. Do not take if allergic to Bacillus clausii spores or another ingredient. Consult a doctor before use if your immune system is weakened or you have a serious illness: Bacillus clausii can enter the bloodstream and cause serious infection in vulnerable patients.\n\n## When to seek advice\n\nTake between antibiotic doses during antibiotic treatment. Consult a doctor if symptoms do not improve after a short course, worsen, recur or change. During pregnancy and breastfeeding, use only when needed and under medical supervision. Tell your doctor or pharmacist about other medicines.\n\n## Possible side effects\n\nPossible reactions of unknown frequency include hypersensitivity, skin redness, hives and angioedema. Seek immediate medical advice for swelling of the face, lips or throat, which may affect swallowing or breathing. Serious bloodstream infection can occur in patients with weakened defences or serious illness. Incorrect administration may cause anaphylactic shock.\n\n## Storage\n\nNo special storage conditions are required. Keep out of the reach of children. Do not use after the expiry date on the packaging.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
+            }
+          }
+        },
+        "no-spa-40mg-24": {
+          "product": {
+            "id": "no-spa-40mg-24",
+            "slug": "no-spa-40mg-24",
+            "name": "No-Spa 40 mg — 24 tablets",
+            "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-40mg-24.png",
+              "alt": "No-Spa 40 mg — 24 tablets"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-40mg-24-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — No-Spa 40 mg — 24 tablets",
+              "kicker": "Antispasmodic",
+              "lead": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
+              "badges": [
+                "40 mg",
+                "24 tablets"
+              ],
+              "metrics": [],
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/no-spa-40mg-24.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each tablet contains 40 mg of drotaverine hydrochloride."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Magnesium stearate, talc, povidone, maize starch and lactose monohydrate. Each tablet contains 52 mg of lactose."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "24 tablets in a PVC/aluminium blister, with the instructions in a carton."
+                }
+              ],
+              "informationText": "# About the product\n\nNo-Spa 40 mg — 24 tablets\n\n## What it is used for\n\nDrotaverine is an antispasmodic that relaxes smooth muscle. The supplied instructions describe use for smooth-muscle spasms associated with biliary tract and urinary tract disorders, gastrointestinal spasms, tension-type headache and painful menstruation. Read the original document for the specific conditions listed.\n\n## How to take it\n\nFor oral use. The supplied instructions specify an adult daily dose of 120–240 mg, divided into 2–3 doses. For this 40 mg strength, that equals 3–6 tablets in total per day; the adult single dose is 40–80 mg (1–2 tablets). Follow the instructions or your doctor’s recommendation.\n\nThe 40 mg instructions describe age-specific doses for children aged 6–12 and over 12 years. There are no data for children under 6; consult a doctor for paediatric dosing.\n\n## Contraindications and precautions\n\nDo not use if allergic to drotaverine or another ingredient, or if you have severe liver, kidney or heart failure. Use cautiously with low blood pressure. Contains lactose: the instructions exclude use in patients with lactase deficiency, galactosaemia or impaired glucose/galactose absorption. Clinical studies of drotaverine use in children have not been conducted; use in children must follow medical advice.\n\n## Interactions and other advice\n\nDrotaverine may reduce the antiparkinsonian effect of levodopa and increase tremor or rigidity; consult a doctor before combining them. Use in pregnancy requires caution, and use while breastfeeding is not recommended because clinical data are insufficient. Avoid driving or operating dangerous machinery if you become dizzy. Overdose can cause serious disturbances of heart rhythm and conduction, including cardiac arrest; seek urgent medical attention after an overdose.\n\n## Possible side effects\n\nRare reactions listed in the instructions include nausea, constipation, headache, dizziness, insomnia, palpitations, low blood pressure and allergic reactions such as angioedema, hives, rash or itching. Stop taking the medicine and consult a doctor if side effects occur, including effects not listed in the instructions.\n\n## Storage\n\nStore at no more than 25°C, protected from light and out of the reach of children. The supplied instructions give a shelf life of 3 years. Do not use after the expiry date on the packaging.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
+            }
+          }
+        },
+        "no-spa-40mg-100": {
+          "product": {
+            "id": "no-spa-40mg-100",
+            "slug": "no-spa-40mg-100",
+            "name": "No-Spa 40 mg — 100 tablets",
+            "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-40mg-100.png",
+              "alt": "No-Spa 40 mg — 100 tablets"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-40mg-100-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — No-Spa 40 mg — 100 tablets",
+              "kicker": "Antispasmodic",
+              "lead": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
+              "badges": [
+                "40 mg",
+                "100 tablets"
+              ],
+              "metrics": [],
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/no-spa-40mg-100.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each tablet contains 40 mg of drotaverine hydrochloride."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Magnesium stearate, talc, povidone, maize starch and lactose monohydrate. Each tablet contains 52 mg of lactose."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "100 tablets in a polypropylene bottle with a polyethylene stopper; one bottle and the instructions in a carton."
+                }
+              ],
+              "informationText": "# About the product\n\nNo-Spa 40 mg — 100 tablets\n\n## What it is used for\n\nDrotaverine is an antispasmodic that relaxes smooth muscle. The supplied instructions describe use for smooth-muscle spasms associated with biliary tract and urinary tract disorders, gastrointestinal spasms, tension-type headache and painful menstruation. Read the original document for the specific conditions listed.\n\n## How to take it\n\nFor oral use. The supplied instructions specify an adult daily dose of 120–240 mg, divided into 2–3 doses. For this 40 mg strength, that equals 3–6 tablets in total per day; the adult single dose is 40–80 mg (1–2 tablets). Follow the instructions or your doctor’s recommendation.\n\nThe 40 mg instructions describe age-specific doses for children aged 6–12 and over 12 years. There are no data for children under 6; consult a doctor for paediatric dosing.\n\n## Contraindications and precautions\n\nDo not use if allergic to drotaverine or another ingredient, or if you have severe liver, kidney or heart failure. Use cautiously with low blood pressure. Contains lactose: the instructions exclude use in patients with lactase deficiency, galactosaemia or impaired glucose/galactose absorption. Clinical studies of drotaverine use in children have not been conducted; use in children must follow medical advice.\n\n## Interactions and other advice\n\nDrotaverine may reduce the antiparkinsonian effect of levodopa and increase tremor or rigidity; consult a doctor before combining them. Use in pregnancy requires caution, and use while breastfeeding is not recommended because clinical data are insufficient. Avoid driving or operating dangerous machinery if you become dizzy. Overdose can cause serious disturbances of heart rhythm and conduction, including cardiac arrest; seek urgent medical attention after an overdose.\n\n## Possible side effects\n\nRare reactions listed in the instructions include nausea, constipation, headache, dizziness, insomnia, palpitations, low blood pressure and allergic reactions such as angioedema, hives, rash or itching. Stop taking the medicine and consult a doctor if side effects occur, including effects not listed in the instructions.\n\n## Storage\n\nStore at no more than 25°C, protected from light and out of the reach of children. The supplied instructions give a shelf life of 3 years. Do not use after the expiry date on the packaging.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
+            }
+          }
+        },
+        "no-spa-forte-80mg-24": {
+          "product": {
+            "id": "no-spa-forte-80mg-24",
+            "slug": "no-spa-forte-80mg-24",
+            "name": "No-Spa Forte 80 mg — 24 tablets",
+            "shortDescription": "Drotaverine hydrochloride 80 mg. Oral antispasmodic tablets.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#e0008b",
+            "image": {
+              "src": "/assets/georgia-products/no-spa-forte-80mg-24.png",
+              "alt": "No-Spa Forte 80 mg — 24 tablets"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/no-spa-forte-80mg-24-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — No-Spa Forte 80 mg — 24 tablets",
+              "kicker": "Antispasmodic",
+              "lead": "Drotaverine hydrochloride 80 mg. Oral antispasmodic tablets.",
+              "badges": [
+                "80 mg",
+                "24 tablets"
+              ],
+              "metrics": [],
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/no-spa-forte-80mg-24.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each tablet contains 80 mg of drotaverine hydrochloride."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Magnesium stearate, talc, povidone, maize starch and lactose monohydrate. Each tablet contains 104 mg of lactose."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "24 tablets in a PVC/aluminium blister, with the instructions in a carton. The oblong tablets have a dividing line."
+                }
+              ],
+              "informationText": "# About the product\n\nNo-Spa Forte 80 mg — 24 tablets\n\n## What it is used for\n\nDrotaverine is an antispasmodic that relaxes smooth muscle. The supplied instructions describe use for smooth-muscle spasms associated with biliary tract and urinary tract disorders, gastrointestinal spasms, tension-type headache and painful menstruation. Read the original document for the specific conditions listed.\n\n## How to take it\n\nFor oral use. The supplied instructions specify an adult daily dose of 120–240 mg, divided into 2–3 doses. For this 80 mg strength, that equals 1½–3 tablets in total per day; the adult single dose is 40–80 mg (½–1 tablet). Follow the instructions or your doctor’s recommendation.\n\nThe Forte instructions describe use in children over 12 years when necessary; a doctor should determine the appropriate dose.\n\n## Contraindications and precautions\n\nDo not use if allergic to drotaverine or another ingredient, or if you have severe liver, kidney or heart failure. Use cautiously with low blood pressure. Contains lactose: the instructions exclude use in patients with lactase deficiency, galactosaemia or impaired glucose/galactose absorption. Clinical studies of drotaverine use in children have not been conducted; use in children must follow medical advice.\n\n## Interactions and other advice\n\nDrotaverine may reduce the antiparkinsonian effect of levodopa and increase tremor or rigidity; consult a doctor before combining them. Use in pregnancy requires caution, and use while breastfeeding is not recommended because clinical data are insufficient. Avoid driving or operating dangerous machinery if you become dizzy. Overdose can cause serious disturbances of heart rhythm and conduction, including cardiac arrest; seek urgent medical attention after an overdose.\n\n## Possible side effects\n\nRare reactions listed in the instructions include nausea, constipation, headache, dizziness, insomnia, palpitations, low blood pressure and allergic reactions such as angioedema, hives, rash or itching. Stop taking the medicine and consult a doctor if side effects occur, including effects not listed in the instructions.\n\n## Storage\n\nStore at no more than 25°C, protected from light and out of the reach of children. The supplied instructions give a shelf life of 3 years. Do not use after the expiry date on the packaging.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
             }
           }
         }
