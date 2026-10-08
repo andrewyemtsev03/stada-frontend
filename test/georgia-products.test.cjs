@@ -23,6 +23,12 @@ test('Georgia exposes only the five supplied product variants with local images 
       const document = page.window.document;
       assert.equal(document.querySelector('h1').textContent, product.name);
       assert.ok(document.querySelector('[data-product-information]').textContent.length > 100);
+      const formula = document.querySelector('#formula');
+      assert.equal(formula.hidden, false, `${lang}/${slug} composition must be visible without JavaScript`);
+      assert.equal(formula.querySelectorAll('.formula-point').length, 3);
+      assert.equal(formula.querySelector('[data-product-formula-heading]').textContent, product.page.formulaHeading);
+      assert.ok(document.querySelector('[data-product-information]').textContent.length > 1500);
+      assert.equal(document.querySelector('[data-product-information]').querySelectorAll('h3').length, 7);
       assert.equal(document.querySelector('[data-product-image]').getAttribute('src'), product.image.src);
       assert.ok(fs.existsSync(path.join(output, product.image.src)));
       const leaflet = document.querySelector('a[download]');

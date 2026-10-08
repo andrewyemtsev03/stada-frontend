@@ -3189,7 +3189,28 @@
                 "300 მგ"
               ],
               "metrics": [],
-              "informationText": "# პროდუქტის შესახებ\n\nესენციალე ფორტე 300 მგ\n\nსოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.\n\n## სამკურნალწამლო ფორმა\n\nკაფსულები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+              "informationText": "# პროდუქტის შესახებ\n\nესენციალე ფორტე 300 მგ\n\n## გამოყენების ჩვენება\n\nმოწოდებული ინსტრუქციის მიხედვით გამოიყენება ისეთი სიმპტომების შესამსუბუქებლად, როგორიცაა მადის დაქვეითება და სიმძიმის შეგრძნება მუცლის ზედა მარჯვენა მხარეს, რომლებიც დაკავშირებულია ღვიძლის ტოქსიკურ დაზიანებასთან, არასწორ კვებასთან ან ღვიძლის ქრონიკულ ანთებასთან (ჰეპატიტთან).\n\n## მიღების წესი\n\nმოზრდილებისთვის, მოზარდებისა და 12 წელზე უფროსი ასაკის ბავშვებისთვის (დაახლოებით 43 კგ) ინსტრუქციაში მითითებულია 2 კაფსულა დღეში 3-ჯერ. კაფსულები მიიღება მთლიანად, დაუღეჭავად, ჭამის დროს, საკმარისი სითხის მიყოლებით, სასურველია 200 მლ წყლით. დაიცავით ექიმის მითითებები.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ მიიღოთ სოიოს, არაქისის ან რომელიმე ინგრედიენტის მიმართ ალერგიის შემთხვევაში. არ გამოიყენება 12 წლამდე ასაკის ბავშვებში. არასაკმარისი კლინიკური მონაცემების გამო ორსულობისა და ლაქტაციის პერიოდში მიღება არ არის რეკომენდებული. აცნობეთ ექიმს, თუ იღებთ ანტიკოაგულანტებს — შესაძლოა საჭირო გახდეს დოზის შეცვლა.\n\n## როდის მივმართოთ ექიმს\n\nმკურნალობა არ ცვლის ღვიძლის დამაზიანებელი ნივთიერებებისგან, მათ შორის ალკოჰოლისგან, თავის არიდებას. სიმპტომების გაუარესების, ახალი სიმპტომების ან 30 დღის შემდეგ გაუმჯობესების არარსებობის შემთხვევაში მიმართეთ ექიმს.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში აღწერილია კუჭ-ნაწლავის დარღვევები, მათ შორის თხიერი განავალი ან დიარეა, და ალერგიული რეაქციები. ალერგიული რეაქციის შემთხვევაში შეწყვიტეთ მიღება და მიმართეთ ექიმს. სრული ჩამონათვალი იხილეთ ინსტრუქციაში.\n\n## შენახვა\n\nშეინახეთ ორიგინალ შეფუთვაში, 25°C-ზე დაბალ ტემპერატურაზე, ბავშვებისთვის მიუწვდომელ და უხილავ ადგილას. არ გამოიყენოთ ვარგისიანობის ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/essentiale-forte.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი კაფსულა შეიცავს სოიოს მარცვლებიდან ექსტრაგირებულ 300 მგ ესენციალურ ფოსფოლიპიდებს, რომლებიც შეიცავს 76% (3-sn-ფოსფატიდილ) ქოლინს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "შეიცავს სოიოს ზეთს, ეთანოლს და ჰიდროგენიზებულ აბუსალათინის ზეთს. ინგრედიენტების სრული სია იხილეთ ინსტრუქციაში."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "მყარი კაფსულები; შეფუთვაში 30 კაფსულა — სამი ბლისტერი, თითოეულში 10 კაფსულა."
+                }
+              ]
             }
           }
         },
@@ -3221,7 +3242,28 @@
                 "600 მგ"
               ],
               "metrics": [],
-              "informationText": "# პროდუქტის შესახებ\n\nესენციალე მაქსი 600 მგ\n\nსოიოს მარცვლების ფოსფოლიპიდები.\n\n## სამკურნალწამლო ფორმა\n\nმყარი კაფსულები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+              "informationText": "# პროდუქტის შესახებ\n\nესენციალე მაქსი 600 მგ\n\n## გამოყენების ჩვენება\n\nმოწოდებული ინსტრუქციის მიხედვით გამოიყენება ღვიძლის დაზიანებასთან დაკავშირებული სუბიექტური ჩივილების გასაუმჯობესებლად, როგორიცაა მადის დაქვეითება ან სიმძიმის შეგრძნება მარჯვენა ფერდქვეშა მიდამოში.\n\n## მიღების წესი\n\nმოზრდილებისა და 12 წელზე უფროსი ასაკის ბავშვებისთვის ინსტრუქციაში მითითებულია 1 კაფსულა დღეში 3-ჯერ. მიიღება ჭამის დროს, მთლიანად, დაუღეჭავად, საკმარისი სითხის (ჭიქა წყლის) მიყოლებით. დაიცავით ინსტრუქცია ან ექიმის მითითებები.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ მიიღოთ სოიოს, არაქისის, აქტიური ნივთიერების ან რომელიმე სხვა ინგრედიენტის მიმართ ალერგიის შემთხვევაში. არ გამოიყენება 12 წლამდე ასაკის ბავშვებში. ორსულობისა და ძუძუთი კვების პერიოდში მიღება არ არის რეკომენდებული. ანტიკოაგულანტებთან ერთად მიღებამდე მიმართეთ ექიმს.\n\n## როდის მივმართოთ ექიმს\n\nპრეპარატის მიღება არ ცვლის ღვიძლის დამაზიანებელი ნივთიერებებისგან, მაგალითად ალკოჰოლისგან, თავის არიდებას. მიმართეთ ექიმს, თუ 7 დღის შემდეგ თავს უკეთ არ გრძნობთ, მდგომარეობა გაუარესდა ან გამოვლინდა სხვა გაურკვეველი სიმპტომები.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში ჩამოთვლილია გულისრევა, ღებინება, თხიერი განავალი, დიარეა, მუცლის დისკომფორტი, თავბრუსხვევა, გულისცემის გაძლიერება, არტერიული წნევის მომატება და კანის ალერგიული რეაქციები. არასასურველი რეაქციის, განსაკუთრებით ალერგიის შემთხვევაში, შეწყვიტეთ მიღება და მიმართეთ ექიმს.\n\n## შენახვა\n\nშეინახეთ 25°C-ზე დაბალ ტემპერატურაზე, ბავშვებისთვის მიუწვდომელ ადგილას. არ გამოიყენოთ კოლოფზე მითითებული ვარგისიანობის ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/essentiale-max.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი მყარი კაფსულა შეიცავს სოიოს მარცვლების 600 მგ ფოსფოლიპიდებს, რომლებიც შეიცავს 76% (3-sn-ფოსფატიდილ) ქოლინს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "შეიცავს რაფინირებულ სოიოს ზეთს და ეთანოლს (20 მგ ერთ კაფსულაში). სრული სია, კაფსულის გარსის ინგრედიენტების ჩათვლით, იხილეთ ინსტრუქციაში."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "მყარი კაფსულები, რომლებიც შეიცავს ყვითლიდან ყავისფერამდე, თაფლის მსგავსი კონსისტენციის პასტას."
+                }
+              ]
             }
           }
         },
@@ -3253,7 +3295,28 @@
                 "15 მლ"
               ],
               "metrics": [],
-              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 15 მლ\n\nნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.\n\n## სამკურნალწამლო ფორმა\n\nპერორალურად მისაღები წვეთები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 15 მლ\n\n## გამოყენების ჩვენება\n\nგამოიყენება შეკრულობის დროს და დეფეკაციის გაადვილების აუცილებლობის შემთხვევაში. ნატრიუმის პიკოსულფატი კონტაქტური მოქმედების სასაქმებელი საშუალებაა.\n\n## მიღების წესი\n\nმიიღება პერორალურად, სასურველია საღამოს, სითხის მიყოლებით ან მის გარეშე. მოქმედება ჩვეულებრივ იწყება 6–12 საათში. გამოიყენეთ ყველაზე დაბალი ეფექტური დოზა და დაიცავით მოწოდებული ინსტრუქცია ან ექიმის მითითება. არ გამოიყენოთ 7 დღეზე მეტხანს ან უწყვეტად, შეკრულობის მიზეზის დადგენის გარეშე.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენება 4 წლამდე ასაკის ბავშვებში, ნაწლავური გაუვალობის, მძიმე გაუწყლოების, კუჭ-ნაწლავის მწვავე ანთებითი დაავადებების, ძლიერი მუცლის ტკივილისას ცხელებით, გულისრევით ან ღებინებით, ასევე ფრუქტოზის მემკვიდრეობითი აუტანლობის დროს. სხვა უკუჩვენებები იხილეთ ინსტრუქციაში. თირკმლის პრობლემების ან წყალ-ელექტროლიტური დისბალანსის დროს საჭიროა ექიმის დაკვირვება.\n\n## როდის მივმართოთ ექიმს\n\nხანგრძლივი ან განმეორებითი შეკრულობა საჭიროებს სამედიცინო შეფასებას. ხანგრძლივმა გამოყენებამ შეიძლება გამოიწვიოს წყალ-ელექტროლიტური ბალანსის დარღვევა, მათ შორის კალიუმის დაკარგვა. აცნობეთ ექიმს ან ფარმაცევტს სხვა მედიკამენტების შესახებ.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში ჩამოთვლილია დიარეა, მუცლის დისკომფორტი, სპაზმები და ტკივილი, გულისრევა, ღებინება, თავბრუსხვევა, გულის წასვლა და ჰიპერმგრძნობელობის რეაქციები. სიხშირე და უსაფრთხოების სრული ინფორმაცია იხილეთ ინსტრუქციაში.\n\n## შენახვა\n\nფლაკონი შეინახეთ მჭიდროდ დახურულ მდგომარეობაში, 30°C-ზე დაბალ ტემპერატურაზე. ინსტრუქციის მიხედვით პირველი გახსნის შემდეგ ვარგისობის ვადაა 12 თვე, შეფუთვაზე მითითებული ვადის ფარგლებში. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/guttalax.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "1 მლ შეიცავს 7.5 მგ ნატრიუმის პიკოსულფატს. მოწოდებული ინსტრუქციის მიხედვით 1 მლ შეესაბამება დაახლოებით 14 წვეთს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "1 მლ შეიცავს დაახლოებით 450 მგ სორბიტოლს. სხვა დამხმარე ნივთიერებებია ნატრიუმის ბენზოატი, ნატრიუმის ციტრატ-დიჰიდრატი, ლიმონმჟავას მონოჰიდრატი და გასუფთავებული წყალი."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "პერორალურად მისაღები წვეთები ფლაკონში, საცობი-საწვეთურით და ხრახნიანი თავსახურით. ფლაკონის მოცულობა: 15 მლ."
+                }
+              ]
             }
           }
         },
@@ -3285,7 +3348,28 @@
                 "30 მლ"
               ],
               "metrics": [],
-              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 30 მლ\n\nნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.\n\n## სამკურნალწამლო ფორმა\n\nპერორალურად მისაღები წვეთები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 30 მლ\n\n## გამოყენების ჩვენება\n\nგამოიყენება შეკრულობის დროს და დეფეკაციის გაადვილების აუცილებლობის შემთხვევაში. ნატრიუმის პიკოსულფატი კონტაქტური მოქმედების სასაქმებელი საშუალებაა.\n\n## მიღების წესი\n\nმიიღება პერორალურად, სასურველია საღამოს, სითხის მიყოლებით ან მის გარეშე. მოქმედება ჩვეულებრივ იწყება 6–12 საათში. გამოიყენეთ ყველაზე დაბალი ეფექტური დოზა და დაიცავით მოწოდებული ინსტრუქცია ან ექიმის მითითება. არ გამოიყენოთ 7 დღეზე მეტხანს ან უწყვეტად, შეკრულობის მიზეზის დადგენის გარეშე.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენება 4 წლამდე ასაკის ბავშვებში, ნაწლავური გაუვალობის, მძიმე გაუწყლოების, კუჭ-ნაწლავის მწვავე ანთებითი დაავადებების, ძლიერი მუცლის ტკივილისას ცხელებით, გულისრევით ან ღებინებით, ასევე ფრუქტოზის მემკვიდრეობითი აუტანლობის დროს. სხვა უკუჩვენებები იხილეთ ინსტრუქციაში. თირკმლის პრობლემების ან წყალ-ელექტროლიტური დისბალანსის დროს საჭიროა ექიმის დაკვირვება.\n\n## როდის მივმართოთ ექიმს\n\nხანგრძლივი ან განმეორებითი შეკრულობა საჭიროებს სამედიცინო შეფასებას. ხანგრძლივმა გამოყენებამ შეიძლება გამოიწვიოს წყალ-ელექტროლიტური ბალანსის დარღვევა, მათ შორის კალიუმის დაკარგვა. აცნობეთ ექიმს ან ფარმაცევტს სხვა მედიკამენტების შესახებ.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში ჩამოთვლილია დიარეა, მუცლის დისკომფორტი, სპაზმები და ტკივილი, გულისრევა, ღებინება, თავბრუსხვევა, გულის წასვლა და ჰიპერმგრძნობელობის რეაქციები. სიხშირე და უსაფრთხოების სრული ინფორმაცია იხილეთ ინსტრუქციაში.\n\n## შენახვა\n\nფლაკონი შეინახეთ მჭიდროდ დახურულ მდგომარეობაში, 30°C-ზე დაბალ ტემპერატურაზე. ინსტრუქციის მიხედვით პირველი გახსნის შემდეგ ვარგისობის ვადაა 12 თვე, შეფუთვაზე მითითებული ვადის ფარგლებში. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/guttalax.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "1 მლ შეიცავს 7.5 მგ ნატრიუმის პიკოსულფატს. მოწოდებული ინსტრუქციის მიხედვით 1 მლ შეესაბამება დაახლოებით 14 წვეთს."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "1 მლ შეიცავს დაახლოებით 450 მგ სორბიტოლს. სხვა დამხმარე ნივთიერებებია ნატრიუმის ბენზოატი, ნატრიუმის ციტრატ-დიჰიდრატი, ლიმონმჟავას მონოჰიდრატი და გასუფთავებული წყალი."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "პერორალურად მისაღები წვეთები ფლაკონში, საცობი-საწვეთურით და ხრახნიანი თავსახურით. ფლაკონის მოცულობა: 30 მლ."
+                }
+              ]
             }
           }
         },
@@ -3317,7 +3401,28 @@
                 "პაკეტი"
               ],
               "metrics": [],
-              "informationText": "# პროდუქტის შესახებ\n\nფოსფალუგელი\n\nალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.\n\n## სამკურნალწამლო ფორმა\n\nპერორალური სუსპენზია პაკეტში\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+              "informationText": "# პროდუქტის შესახებ\n\nფოსფალუგელი\n\n## გამოყენების ჩვენება\n\nანტაციდური საშუალება, რომელიც ამცირებს კუჭის მჟავიანობას. მოწოდებული ანოტაციის მიხედვით რეკომენდებულია კუჭის ან საყლაპავის ტკივილის, წვის ან მაღალი მჟავიანობის დროს.\n\n## მიღების წესი\n\nმიიღება პერორალურად, ტკივილის დროს ან ექიმის დანიშნულებისამებრ. ანოტაციაში მითითებულია 1–2 პაკეტი დღეში 2–3-ჯერ, არაუმეტეს 6 პაკეტისა დღეში. დაიცავით ექიმის დანიშნული დოზა და მიმართეთ მას, თუ ის საკმარისი არ არის. გამოტოვებული დოზის ასანაზღაურებლად არ მიიღოთ ორმაგი დოზა.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ მიიღოთ აქტიური ნივთიერების ან სხვა ინგრედიენტის მიმართ ალერგიის შემთხვევაში. სორბიტოლმა შეიძლება გამოიწვიოს კუჭ-ნაწლავის დისკომფორტი და მსუბუქი დიარეა. შაქრების აუტანლობის ან ფრუქტოზის მემკვიდრეობითი აუტანლობის შემთხვევაში მიმართეთ ექიმს. ორსულობისა და ლაქტაციის დროს მიღებამდე გაიარეთ კონსულტაცია.\n\n## როდის მივმართოთ ექიმს\n\nანტაციდებმა შეიძლება შეამცირონ სხვა მედიკამენტების მოქმედება. არ მიიღოთ სხვა მედიკამენტებთან ერთდროულად; ანოტაციაში მაგალითად მითითებულია 2-საათიანი შუალედი. თქვენი მედიკამენტისთვის შესაბამისი შუალედი გადაამოწმეთ ფარმაცევტთან. თუ სიმპტომები 7 დღე გრძელდება, მიმართეთ ექიმს; ტკივილთან ერთად ცხელების ან ღებინების შემთხვევაში დაუყოვნებლივ მიმართეთ ექიმს.\n\n## შესაძლო გვერდითი მოვლენები\n\nსხვა მედიკამენტების მსგავსად, შესაძლებელია გვერდითი მოვლენები. სორბიტოლმა შეიძლება გამოიწვიოს კუჭ-ნაწლავის დისკომფორტი და მსუბუქი დიარეა. ჭარბმა დოზამ შეიძლება გამოიწვიოს შეკრულობა ან ნაწლავთა გაუვალობა, განსაკუთრებით თირკმლის ფუნქციის დარღვევისას; დოზის გადაჭარბების შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.\n\n## შენახვა\n\nარ საჭიროებს შენახვის განსაკუთრებულ პირობებს. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას და არ გამოიყენოთ ეტიკეტზე მითითებული ვარგისიანობის ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "formulaLabel": "ფორმულა",
+              "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
+              "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
+              "formulaImage": "/assets/georgia-products/phosphalugel-sachets.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "აქტიური ნივთიერება",
+                  "text": "ერთი პაკეტი შეიცავს 12.380 გ კოლოიდური ალუმინის ფოსფატის 20%-იან გელს. ეს არის გელის რაოდენობა და არა 12.380 გ სუფთა ალუმინის ფოსფატი."
+                },
+                {
+                  "value": "02",
+                  "title": "დამხმარე ნივთიერებები",
+                  "text": "ერთი პაკეტი შეიცავს 4.3 გ სორბიტოლს. სხვა ინგრედიენტებია კალციუმის სულფატის დიჰიდრატი, პექტინი, აგარ-აგარი 800, ფორთოხლის არომატი, კალიუმის სორბატი და გამოხდილი წყალი."
+                },
+                {
+                  "value": "03",
+                  "title": "ფორმა და შეფუთვა",
+                  "text": "პერორალური სუსპენზია 20 გ პაკეტებში; კოლოფში 26 პაკეტი."
+                }
+              ]
             }
           }
         }
@@ -6685,7 +6790,28 @@
                 "300 mg"
               ],
               "metrics": [],
-              "informationText": "# About the product\n\nEssentiale Forte 300 mg\n\nEssential phospholipids derived from soya beans.\n\n## Pharmaceutical form\n\nCapsules\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+              "informationText": "# About the product\n\nEssentiale Forte 300 mg\n\n## What it is used for\n\nThe supplied leaflet describes use to relieve symptoms such as loss of appetite and heaviness in the upper right abdomen associated with toxic liver damage, poor nutrition or chronic liver inflammation (hepatitis).\n\n## How to take it\n\nFor adults, adolescents and children over 12 years (approximately 43 kg), the leaflet specifies 2 capsules three times daily. Swallow whole with a meal and sufficient liquid, preferably 200 ml of water. Follow your doctor’s instructions.\n\n## Contraindications and precautions\n\nDo not take if you are allergic to soya, peanuts or any ingredient. Not for children under 12. Use during pregnancy or breastfeeding is not recommended because clinical data are insufficient. Tell your doctor if you take anticoagulants; a dose adjustment may be needed.\n\n## When to seek advice\n\nTreatment does not replace avoiding substances that damage the liver, including alcohol. Consult a doctor if symptoms worsen, new symptoms appear or there is no improvement after 30 days.\n\n## Possible side effects\n\nThe leaflet lists gastrointestinal disturbances, including soft stools or diarrhoea, and allergic reactions. Stop taking the medicine and seek medical advice if an allergic reaction occurs. Consult the leaflet for the full list.\n\n## Storage\n\nStore in the original packaging below 25°C, out of the sight and reach of children. Do not use after the expiry date.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist.",
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/essentiale-forte.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each capsule contains 300 mg of essential phospholipids extracted from soya beans, containing 76% (3-sn-phosphatidyl)choline."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Contains soya oil, ethanol and hydrogenated castor oil. See the leaflet for the complete list of ingredients."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "Hard capsules; 30 capsules in three blisters of 10."
+                }
+              ]
             }
           }
         },
@@ -6717,7 +6843,28 @@
                 "600 mg"
               ],
               "metrics": [],
-              "informationText": "# About the product\n\nEssentiale Max 600 mg\n\nPhospholipids from soya beans.\n\n## Pharmaceutical form\n\nHard capsules\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+              "informationText": "# About the product\n\nEssentiale Max 600 mg\n\n## What it is used for\n\nThe supplied leaflet describes use to improve subjective complaints associated with liver damage, such as loss of appetite or heaviness in the right upper abdomen.\n\n## How to take it\n\nFor adults and children over 12 years, the leaflet specifies 1 capsule three times daily. Swallow whole, without chewing, with a meal and sufficient liquid (a glass of water). Follow the leaflet or your doctor’s instructions.\n\n## Contraindications and precautions\n\nDo not take if you are allergic to soya, peanuts, the active ingredient or any other ingredient. Not for children under 12. Use during pregnancy and breastfeeding is not recommended. Consult your doctor before taking with anticoagulants.\n\n## When to seek advice\n\nTaking this medicine does not replace avoiding liver-damaging substances such as alcohol. Consult a doctor if you do not feel better after 7 days, feel worse or develop other unexplained symptoms.\n\n## Possible side effects\n\nReported reactions listed in the leaflet include nausea, vomiting, loose stools, diarrhoea, abdominal discomfort, dizziness, palpitations, increased blood pressure and allergic skin reactions. Stop treatment and contact a doctor if adverse reactions occur, particularly allergy.\n\n## Storage\n\nStore below 25°C, out of the reach of children. Do not use after the expiry date on the carton.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist.",
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/essentiale-max.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each hard capsule contains 600 mg of soya-bean phospholipids, containing 76% (3-sn-phosphatidyl)choline."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Contains refined soya oil and ethanol (20 mg per capsule). See the leaflet for the full list, including capsule-shell ingredients."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "Hard capsules containing a yellow-to-brown paste with a honey-like consistency."
+                }
+              ]
             }
           }
         },
@@ -6749,7 +6896,28 @@
                 "15 ml"
               ],
               "metrics": [],
-              "informationText": "# About the product\n\nGuttalax 15 ml\n\nSodium picosulfate, oral drops 7.5 mg/ml.\n\n## Pharmaceutical form\n\nOral drops\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+              "informationText": "# About the product\n\nGuttalax 15 ml\n\n## What it is used for\n\nFor constipation and situations in which easier defecation is required. Sodium picosulfate is a contact laxative.\n\n## How to take it\n\nTaken by mouth, preferably in the evening, with or without liquid. The effect usually occurs after 6–12 hours. Use the lowest effective dose and follow the dose instructions in the supplied leaflet or your doctor’s advice. Do not use for more than 7 days or continuously without investigating the cause of constipation.\n\n## Contraindications and precautions\n\nNot for children under 4. Do not use with intestinal obstruction, severe dehydration, acute inflammatory gastrointestinal disease, severe abdominal pain with fever, nausea or vomiting, or hereditary fructose intolerance. The leaflet lists further contraindications. Kidney problems or fluid and electrolyte imbalance require medical supervision.\n\n## When to seek advice\n\nPersistent or recurrent constipation needs medical assessment. Prolonged use can disturb fluid and electrolyte balance, including loss of potassium. Tell your doctor or pharmacist about other medicines.\n\n## Possible side effects\n\nThe leaflet lists diarrhoea, abdominal discomfort, cramps and pain, nausea, vomiting, dizziness, fainting and hypersensitivity reactions. Read the full instructions for frequencies and further safety information.\n\n## Storage\n\nKeep the bottle tightly closed below 30°C. The leaflet gives a shelf life of 12 months after first opening; do not exceed the printed expiry date. Keep out of the reach of children.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist.",
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/guttalax.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each 1 ml contains 7.5 mg of sodium picosulfate. The supplied instructions describe 1 ml as approximately 14 drops."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Contains approximately 450 mg of sorbitol per ml. Other excipients are sodium benzoate, sodium citrate dihydrate, citric acid monohydrate and purified water."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "Oral drops in a bottle with a dropper and screw cap. Bottle volume: 15 ml."
+                }
+              ]
             }
           }
         },
@@ -6781,7 +6949,28 @@
                 "30 ml"
               ],
               "metrics": [],
-              "informationText": "# About the product\n\nGuttalax 30 ml\n\nSodium picosulfate, oral drops 7.5 mg/ml.\n\n## Pharmaceutical form\n\nOral drops\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+              "informationText": "# About the product\n\nGuttalax 30 ml\n\n## What it is used for\n\nFor constipation and situations in which easier defecation is required. Sodium picosulfate is a contact laxative.\n\n## How to take it\n\nTaken by mouth, preferably in the evening, with or without liquid. The effect usually occurs after 6–12 hours. Use the lowest effective dose and follow the dose instructions in the supplied leaflet or your doctor’s advice. Do not use for more than 7 days or continuously without investigating the cause of constipation.\n\n## Contraindications and precautions\n\nNot for children under 4. Do not use with intestinal obstruction, severe dehydration, acute inflammatory gastrointestinal disease, severe abdominal pain with fever, nausea or vomiting, or hereditary fructose intolerance. The leaflet lists further contraindications. Kidney problems or fluid and electrolyte imbalance require medical supervision.\n\n## When to seek advice\n\nPersistent or recurrent constipation needs medical assessment. Prolonged use can disturb fluid and electrolyte balance, including loss of potassium. Tell your doctor or pharmacist about other medicines.\n\n## Possible side effects\n\nThe leaflet lists diarrhoea, abdominal discomfort, cramps and pain, nausea, vomiting, dizziness, fainting and hypersensitivity reactions. Read the full instructions for frequencies and further safety information.\n\n## Storage\n\nKeep the bottle tightly closed below 30°C. The leaflet gives a shelf life of 12 months after first opening; do not exceed the printed expiry date. Keep out of the reach of children.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist.",
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/guttalax.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each 1 ml contains 7.5 mg of sodium picosulfate. The supplied instructions describe 1 ml as approximately 14 drops."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Contains approximately 450 mg of sorbitol per ml. Other excipients are sodium benzoate, sodium citrate dihydrate, citric acid monohydrate and purified water."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "Oral drops in a bottle with a dropper and screw cap. Bottle volume: 30 ml."
+                }
+              ]
             }
           }
         },
@@ -6813,7 +7002,28 @@
                 "Sachet"
               ],
               "metrics": [],
-              "informationText": "# About the product\n\nPhosphalugel\n\nAluminium phosphate. Oral suspension in sachets.\n\n## Pharmaceutical form\n\nOral suspension in sachets\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+              "informationText": "# About the product\n\nPhosphalugel\n\n## What it is used for\n\nAn antacid that reduces stomach acidity. The supplied leaflet recommends it for pain, burning or high acidity in the stomach or oesophagus.\n\n## How to take it\n\nTaken by mouth when pain occurs or as directed by a doctor. The leaflet describes 1–2 sachets, two or three times daily, with a maximum of 6 sachets per day. Follow your doctor’s prescribed dose and ask for advice if it is not sufficient. Do not double a dose to make up for a missed dose.\n\n## Contraindications and precautions\n\nDo not take if allergic to the active substance or another ingredient. Sorbitol may cause gastrointestinal discomfort and mild diarrhoea; consult a doctor if you have sugar intolerance or hereditary fructose intolerance. Ask for advice before use during pregnancy or breastfeeding.\n\n## When to seek advice\n\nAntacids can reduce the effect of other medicines. Do not take simultaneously with other medicines; the leaflet gives a two-hour interval as an example. Ask your pharmacist about the interval appropriate for your medicine. Consult a doctor if symptoms persist for 7 days; seek prompt medical advice if pain is accompanied by fever or vomiting.\n\n## Possible side effects\n\nLike other medicines, this product can cause side effects. Sorbitol can cause gastrointestinal discomfort and mild diarrhoea. Overdose may cause constipation or intestinal obstruction, particularly in people with kidney impairment; contact a doctor or pharmacist after an overdose.\n\n## Storage\n\nNo special storage conditions are required. Keep out of the reach of children and do not use after the expiry date on the label.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist.",
+              "formulaLabel": "Formula",
+              "formulaHeading": "Composition and presentation",
+              "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
+              "formulaImage": "/assets/georgia-products/phosphalugel-sachets.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Active ingredient",
+                  "text": "Each sachet contains 12.380 g of colloidal aluminium phosphate gel at 20%. This is the gel amount, not 12.380 g of pure aluminium phosphate."
+                },
+                {
+                  "value": "02",
+                  "title": "Other ingredients",
+                  "text": "Each sachet contains 4.3 g of sorbitol. Other ingredients include calcium sulfate dihydrate, pectin, agar-agar 800, orange flavour, potassium sorbate and distilled water."
+                },
+                {
+                  "value": "03",
+                  "title": "Form and packaging",
+                  "text": "Oral suspension in 20 g sachets; 26 sachets per carton."
+                }
+              ]
             }
           }
         }
