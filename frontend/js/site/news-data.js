@@ -46,7 +46,8 @@ const STADA_COMPANY_NEWS = [
           "STADA Health Report 2026 natijalari Oʻzbekiston aholisining oʻz sogʻligʻiga munosabati qanday oʻzgarayotganini koʻrsatadi. Tizimga va uning raqamli imkoniyatlariga berilgan yuqori baho yangi texnologiyalarni faol oʻzlashtirish va odamlarning oʻz sogʻligʻini mustaqil boshqarish qobiliyatiga boʻlgan yuqori ishonchi bilan uygʻunlashadi. Shu bilan birga, tibbiyot mutaxassislari va yaqin kishilar eng muhim moʻljal boʻlib qolmoqda, tizimdan kutilayotgan asosiy natijalar orasida esa tibbiy yordam qulayligi va profilaktikani rivojlantirish turadi.",
           "STADA Health Report 2026 haqida",
           "STADA Health Report oʻn uchinchi yil ketma-ket oʻtkazilib, odamlarning salomatligiga va sogʻliqni saqlash sohasidagi asosiy oʻzgarishlarga munosabatini oʻrganadi. Oʻzbekiston tadqiqotda toʻrtinchi marta qatnashmoqda.",
-          "STADA Health Report 2026 tadqiqoti Human8 xalqaro tadqiqot kompaniyasi tomonidan 2026-yilning fevral-mart oylarida onlayn soʻrov usulida oʻtkazildi. Soʻrovda 20 davlatdan 18 yoshdan 99 yoshgacha boʻlgan 19 514 respondent qatnashdi. Har bir davlatda yosh, jins va yashash hududi hisobga olingan reprezentativ tanlanma shakllantirildi. Ishtirokchilar 40 dan ortiq savolga javob berdi. Hisobotning 2026-yilgi elektron versiyasi, shuningdek 2022-2025-yillardagi hisobotlar www.reportstada.net saytida mavjud."
+          "STADA Health Report 2026 tadqiqoti Human8 xalqaro tadqiqot kompaniyasi tomonidan 2026-yilning fevral-mart oylarida onlayn soʻrov usulida oʻtkazildi. Soʻrovda 20 davlatdan 18 yoshdan 99 yoshgacha boʻlgan 19 514 respondent qatnashdi. Har bir davlatda yosh, jins va yashash hududi hisobga olingan reprezentativ tanlanma shakllantirildi. Ishtirokchilar 40 dan ortiq savolga javob berdi. Hisobotning 2026-yilgi elektron versiyasi, shuningdek 2022-2025-yillardagi hisobotlar www.reportstada.net saytida mavjud.",
+          "Matbuot uchun aloqa: press@stada.kz"
         ],
         "headingIndices": [
           6,
@@ -95,7 +96,8 @@ const STADA_COMPANY_NEWS = [
           "О STADA Health Report 2026",
           "STADA Health Report проводится тринадцатый год подряд и изучает отношение людей к здоровью и ключевым изменениям в сфере здравоохранения. Узбекистан принимает участие в исследовании в четвертый раз.",
           "Исследование STADA Health Report 2026 проведено международной исследовательской компанией Human8 методом онлайн-опроса в феврале-марте 2026 года. В опросе приняли участие 19 514 респондентов в возрасте от 18 до 99 лет из 20 стран. В каждой стране была сформирована репрезентативная выборка с учетом возраста, пола и региона проживания. Участники ответили более чем на 40 вопросов.",
-          "Электронная версия отчета за 2026 г., а также отчеты за 2022-25 гг. доступны на www.reportstada.net"
+          "Электронная версия отчета за 2026 г., а также отчеты за 2022-25 гг. доступны на www.reportstada.net",
+          "Контакты для СМИ: press@stada.kz"
         ],
         "headingIndices": [
           6,
@@ -151,7 +153,7 @@ const STADA_COMPANY_NEWS = [
           "STADA Health Report қатарынан он үшінші жыл өткізіліп жатыр және адамдардың денсаулыққа деген көзқарасын, сондай-ақ денсаулық сақтау саласындағы негізгі өзгерістерді зерттейді. Қазақстан зерттеуге 2022 жылдан бері қатысып келеді — 2026 жылы бесінші рет қатысты.",
           "STADA Health Report 2026 зерттеуін Human8 халықаралық зерттеу компаниясы 2026 жылғы ақпан-наурыз айларында онлайн сауалнама әдісімен жүргізді. Сауалнамаға 20 елден 18 бен 99 жас аралығындағы 19 514 респондент қатысты. Әр елде жас, жыныс және тұратын өңір ескеріліп, репрезентатив іріктеме жасалды. Қатысушылар 40-тан астам сұраққа жауап берді.",
           "2026 жылғы есептің электронды нұсқасын, сондай-ақ 2022–2025 жылдардағы есептерді www.reportstada.net сайтынан оқи аласыздар.",
-          "БАҚ өкілдеріне арналған байланыс деректері: +7 701 222 7871"
+          "БАҚ өкілдеріне арналған байланыс деректері: press@stada.kz"
         ],
         "headingIndices": [
           5,
@@ -189,7 +191,7 @@ const STADA_COMPANY_NEWS = [
           "STADA Health Report проводится тринадцатый год подряд и изучает отношение людей к здоровью и ключевым изменениям в сфере здравоохранения. Казахстан принимает участие в исследовании с 2022 года – в 2026 году в пятый раз.",
           "Исследование STADA Health Report 2026 проведено международной исследовательской компанией Human8 методом онлайн-опроса в феврале-марте 2026 года. В опросе приняли участие 19 514 респондентов в возрасте от 18 до 99 лет из 20 стран. В каждой стране была сформирована репрезентативная выборка с учетом возраста, пола и региона проживания. Участники ответили более чем на 40 вопросов.",
           "Электронная версия отчета за 2026 г., а также отчеты за 2022-25 гг. доступны на www.reportstada.net",
-          "Контакты для СМИ: +7 701 222 7871"
+          "Контакты для СМИ: press@stada.kz"
         ],
         "headingIndices": [
           5,
