@@ -8,18 +8,17 @@ Both Vercel projects connect to `andrewyemtsev03/stada-frontend`.
 | Production branch | `main` | `dev` |
 | Root directory | `frontend` | `frontend` |
 | Framework preset | Other | Other |
-| Build command | None (current main) | `npm run build` |
-| Output directory | Root directory (current main) | `dist` |
+| Build command | `npm run build` | `npm run build` |
+| Output directory | `dist` | `dist` |
 | Custom domains | `stada.xx` | `new.stada.xx` |
 
 The country domains are `stada.kz`, `stada.kg`, `stada.ge`, `stada.az`, `stada.am`, `stada.md`, and `stada.uz`. Development has six domains: `new.stada.kg`, `new.stada.ge`, `new.stada.az`, `new.stada.am`, `new.stada.md`, and `new.stada.uz`. `new.stada.kz` is intentionally excluded. The site selects the country from the hostname.
 
 Push new work to `dev`. Review it on the development domains, then merge `dev` into `main` to release it. Do not push unfinished work to `main`. DNS changes should follow the exact values shown by Vercel for each domain.
 
-The `dev` frontend now builds complete pages from checked-in public content snapshots.
-It does not use the backend or database to serve content. Current `main` remains
-unchanged and still uses the configured Azure/Render APIs. The backend repository
-and its services have not been deleted or stopped.
+Both branches build complete pages from checked-in public content snapshots.
+The public sites do not use the backend or database to serve content. The backend
+repository and its services have not been deleted or stopped.
 
 The existing development project's root remains `frontend`. The repository's
 `vercel.json` defines the install/build commands, output directory, and host

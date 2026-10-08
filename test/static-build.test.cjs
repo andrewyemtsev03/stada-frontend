@@ -32,6 +32,9 @@ test('all countries and languages deliver meaningful text without executing Java
         assert.ok(document.querySelector('meta[name="description"]').content.trim());
         assert.ok(!document.body.classList.contains('backend-content-pending'));
         assert.ok(!document.querySelector('script[src*="product-live-editor"]'));
+        const analytics = document.querySelectorAll('script[src*="/site/analytics.js"]');
+        assert.equal(analytics.length, 1, `${file}: missing or duplicate analytics loader`);
+        assert.ok(fs.existsSync(path.join(output, analytics[0].getAttribute('src').split('?')[0])));
         dom.window.close();
       }
     }
@@ -65,7 +68,31 @@ test('country sitemaps reference only existing localized pages and preserve coun
   assert.ok(links.length);
   for (const link of links) assert.ok(fs.existsSync(path.join(output, 'sites/md', link.getAttribute('href'))));
   moldova.window.close();
-  assert.ok(!fs.readFileSync(path.join(output, 'sites/kz/ru/news.html'), 'utf8').includes('company-news-card__link'));
+  const newsContext = vm.createContext({});
+  vm.runInContext(fs.readFileSync(path.join(frontend, 'js/site/news-data.js'), 'utf8'), newsContext);
+  const news = vm.runInContext('STADA_COMPANY_NEWS', newsContext);
+  for (const country of countries) {
+    for (const lang of country.supportedLanguages) {
+      const list = new JSDOM(fs.readFileSync(path.join(output, 'sites', country.code, lang, 'news.html'), 'utf8'));
+      const expected = news.filter(item => item.country === country.code && item.translations[lang]);
+      const links = [...list.window.document.querySelectorAll('.company-news-card__link')];
+      assert.equal(links.length, expected.length, `${country.code}/${lang}`);
+      for (const item of expected) {
+        const href = `/${lang}/news/${item.id}.html`;
+        assert.ok(links.some(link => link.getAttribute('href') === href), href);
+        const article = new JSDOM(fs.readFileSync(path.join(output, 'sites', country.code, href), 'utf8'));
+        assert.equal(article.window.document.querySelector('h1').textContent, item.translations[lang].title);
+        assert.equal(article.window.document.querySelector('.company-news-article__copy').children.length, item.translations[lang].paragraphs.length);
+        if (item.heroImage) {
+          const image = article.window.document.querySelector('.company-news-hero img');
+          assert.ok(fs.existsSync(path.join(output, image.getAttribute('src'))));
+          assert.equal(article.window.document.querySelector('time').dateTime, item.date);
+        }
+        article.window.close();
+      }
+      list.window.close();
+    }
+  }
 });
 
 test('static browser startup cannot request the content API or override the URL language', async () => {

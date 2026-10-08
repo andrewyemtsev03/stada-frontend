@@ -797,7 +797,7 @@
   border-radius: 50%;
   cursor: grab;
   opacity: 0;
-  touch-action: none;
+  touch-action: pan-y pinch-zoom;
   transition: opacity 1s ease;
 }
 

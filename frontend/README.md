@@ -61,7 +61,7 @@ backend repository and omits database edits and products.
 For Vercel, keep the project root at `frontend`. `vercel.json` configures
 `npm ci`, `npm run build`, output `dist`, and host-based routing to the seven
 generated sites. Development domains have `X-Robots-Tag: noindex, nofollow`.
-Only the `dev` branch should be used to review this migration.
+Review updates on `dev`, then merge into `main` to publish the production sites.
 
 For PS.kz or another static host, run:
 
@@ -80,3 +80,15 @@ hosts that do not read `vercel.json`.
 Generated pages include per-language canonical URLs, language alternatives,
 descriptions, structured page data, and country sitemaps. Generated folders,
 dependencies, and exports are ignored by Git.
+## Vercel Web Analytics
+
+All public pages load `js/site/analytics.js`. The loader starts Vercel's
+same-origin tracking script only when the visitor allows the analytics category
+in the existing privacy preferences. Withdrawing that choice blocks subsequent
+events. Localhost is excluded. The loader is included in the generated pages.
+
+Enable Web Analytics for the project in Vercel, then redeploy the `frontend`
+folder. Visit the deployed site, accept analytics, and check the Analytics tab.
+Vercel provides `/_vercel/insights/script.js`; do not add that file to the repo.
+This integration requires Vercel hosting and will not collect analytics on the
+planned Azure deployment.
