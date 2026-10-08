@@ -50,7 +50,8 @@ output, not the raw source folder.
   enables that country's products navigation, homepage section, catalog, and
   individual static pages. Countries without products keep the section hidden.
 - Georgia includes Essentiale Forte 300 mg, Essentiale Max 600 mg, Guttalax
-  15 ml and 30 ml, and Phosphalugel in Georgian and English. Supplied packshots
+  15 ml and 30 ml, Phosphalugel, Enterogermina 2 billion and Forte 4 billion
+  suspensions, and Enterogermina 6 billion oral powder in Georgian and English. Supplied packshots
   and unchanged Georgian leaflets live in `assets/georgia-products/`; both
   languages link to the original Georgian instructions. The packaging approval
   PDF and multi-side reference photo are not published as patient leaflets.

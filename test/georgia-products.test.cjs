@@ -9,12 +9,12 @@ const output = path.join(frontend, 'dist');
 const snapshot = require('../frontend/content/countries/ge.json');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 
-test('Georgia exposes only the five supplied product variants with local images and original leaflets', () => {
+test('Georgia exposes the eight supplied product variants with local images and original leaflets', () => {
   for (const lang of ['ge', 'en']) {
     const products = snapshot.locales[lang].products;
-    assert.equal(Object.keys(products).length, 5);
+    assert.equal(Object.keys(products).length, 8);
     const catalog = read(`sites/ge/${lang}/products/index.html`);
-    assert.equal(catalog.window.document.querySelectorAll('[data-product-card]').length, 5);
+    assert.equal(catalog.window.document.querySelectorAll('[data-product-card]').length, 8);
     assert.equal(catalog.window.document.querySelector('a[href="#pharmacy-partners"]'), null);
     for (const [slug, { product }] of Object.entries(products)) {
       const href = `/${lang}/products/${slug}.html`;
@@ -46,6 +46,30 @@ test('Georgia exposes only the five supplied product variants with local images 
     assert.ok(home.window.document.querySelector(`.menu a[href="/${lang}/products/index.html"]`));
     home.window.close(); catalog.window.close();
   }
+});
+
+test('Enterogermina pages preserve the different concentrations, dosage forms and adult-only powder', () => {
+  const products = snapshot.locales.en.products;
+  for (const n of [2, 4, 6]) {
+    const { product } = products[`enterogermina-${n}-billion`];
+    assert.match(product.page.formulaPoints[0].text, new RegExp(`${n} billion`));
+    assert.match(product.page.informationText, /oral use only/i);
+    assert.match(product.page.informationText, /bloodstream infection/i);
+    assert.match(product.page.informationText, /antibiotic/);
+    assert.equal(product.documents[0].href, `/assets/georgia-products/enterogermina-${n}-billion-instructions-ge.docx`);
+    if (n === 6) {
+      assert.match(product.page.informationText, /adults only/i);
+      assert.match(product.page.informationText, /1 sachet daily/);
+      assert.match(product.page.formulaPoints[0].text, /2 g sachet/);
+      assert.doesNotMatch(product.page.informationText, /Shake the vial/);
+    } else {
+      assert.match(product.page.formulaPoints[0].text, /5 ml vial/);
+      assert.match(product.page.informationText, /Shake the vial/);
+      assert.match(product.page.informationText, /no more than 30°C/);
+    }
+  }
+  assert.match(products['enterogermina-2-billion'].product.page.informationText, /2–3 vials daily/);
+  assert.match(products['enterogermina-4-billion'].product.page.informationText, /lower-concentration product/);
 });
 
 test('enabling Georgia products leaves other country catalogs hidden and their snapshots empty', () => {
