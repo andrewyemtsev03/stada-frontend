@@ -3160,7 +3160,168 @@
           }
         }
       },
-      "products": {},
+      "products": {
+        "essentiale-forte": {
+          "product": {
+            "id": "essentiale-forte",
+            "slug": "essentiale-forte",
+            "name": "ესენციალე ფორტე 300 მგ",
+            "shortDescription": "სოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#c76b13",
+            "image": {
+              "src": "/assets/georgia-products/essentiale-forte.png",
+              "alt": "ესენციალე ფორტე 300 მგ"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/essentiale-forte-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ესენციალე ფორტე 300 მგ",
+              "kicker": "საჭმლის მონელება",
+              "lead": "სოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.",
+              "badges": [
+                "კაფსულები",
+                "300 მგ"
+              ],
+              "metrics": [],
+              "informationText": "# პროდუქტის შესახებ\n\nესენციალე ფორტე 300 მგ\n\nსოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.\n\n## სამკურნალწამლო ფორმა\n\nკაფსულები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+            }
+          }
+        },
+        "essentiale-max": {
+          "product": {
+            "id": "essentiale-max",
+            "slug": "essentiale-max",
+            "name": "ესენციალე მაქსი 600 მგ",
+            "shortDescription": "სოიოს მარცვლების ფოსფოლიპიდები.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#963d24",
+            "image": {
+              "src": "/assets/georgia-products/essentiale-max.png",
+              "alt": "ესენციალე მაქსი 600 მგ"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/essentiale-max-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ესენციალე მაქსი 600 მგ",
+              "kicker": "საჭმლის მონელება",
+              "lead": "სოიოს მარცვლების ფოსფოლიპიდები.",
+              "badges": [
+                "მყარი კაფსულები",
+                "600 მგ"
+              ],
+              "metrics": [],
+              "informationText": "# პროდუქტის შესახებ\n\nესენციალე მაქსი 600 მგ\n\nსოიოს მარცვლების ფოსფოლიპიდები.\n\n## სამკურნალწამლო ფორმა\n\nმყარი კაფსულები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+            }
+          }
+        },
+        "guttalax-15ml": {
+          "product": {
+            "id": "guttalax-15ml",
+            "slug": "guttalax-15ml",
+            "name": "გუტალაქსი 15 მლ",
+            "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#328151",
+            "image": {
+              "src": "/assets/georgia-products/guttalax.png",
+              "alt": "გუტალაქსი 15 მლ"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/guttalax-15ml-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — გუტალაქსი 15 მლ",
+              "kicker": "საჭმლის მონელება",
+              "lead": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
+              "badges": [
+                "პერორალურად მისაღები წვეთები",
+                "15 მლ"
+              ],
+              "metrics": [],
+              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 15 მლ\n\nნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.\n\n## სამკურნალწამლო ფორმა\n\nპერორალურად მისაღები წვეთები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+            }
+          }
+        },
+        "guttalax-30ml": {
+          "product": {
+            "id": "guttalax-30ml",
+            "slug": "guttalax-30ml",
+            "name": "გუტალაქსი 30 მლ",
+            "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#328151",
+            "image": {
+              "src": "/assets/georgia-products/guttalax.png",
+              "alt": "გუტალაქსი 30 მლ"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/guttalax-30ml-instructions-ge.docx",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — გუტალაქსი 30 მლ",
+              "kicker": "საჭმლის მონელება",
+              "lead": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
+              "badges": [
+                "პერორალურად მისაღები წვეთები",
+                "30 მლ"
+              ],
+              "metrics": [],
+              "informationText": "# პროდუქტის შესახებ\n\nგუტალაქსი 30 მლ\n\nნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.\n\n## სამკურნალწამლო ფორმა\n\nპერორალურად მისაღები წვეთები\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+            }
+          }
+        },
+        "phosphalugel": {
+          "product": {
+            "id": "phosphalugel",
+            "slug": "phosphalugel",
+            "name": "ფოსფალუგელი",
+            "shortDescription": "ალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.",
+            "category": "digestive",
+            "therapeuticArea": "საჭმლის მონელება",
+            "accent": "#ac8a00",
+            "image": {
+              "src": "/assets/georgia-products/phosphalugel.png",
+              "alt": "ფოსფალუგელი"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/phosphalugel-instructions-ge.doc",
+                "label": "გამოყენების ინსტრუქცია — ქართული (DOC)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — ფოსფალუგელი",
+              "kicker": "საჭმლის მონელება",
+              "lead": "ალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.",
+              "badges": [
+                "პერორალური სუსპენზია პაკეტში",
+                "პაკეტი"
+              ],
+              "metrics": [],
+              "informationText": "# პროდუქტის შესახებ\n\nფოსფალუგელი\n\nალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.\n\n## სამკურნალწამლო ფორმა\n\nპერორალური სუსპენზია პაკეტში\n\n## ინფორმაცია გამოყენების შესახებ\n\nგამოყენებამდე გაეცანით ქართულ ინსტრუქციას. დოზირების, უკუჩვენებების, გაფრთხილებებისა და შესაძლო გვერდითი მოვლენების შესახებ სრული ინფორმაცია მოცემულია ინსტრუქციაში."
+            }
+          }
+        }
+      },
       "text": {
         "skip_to_content": "მთავარ შინაარსზე გადასვლა",
         "about_heading": "STADA-ს შესახებ",
@@ -3305,8 +3466,8 @@
         "career_fact3": "თანამშრომელი მსოფლიოში",
         "career_fact4": "ეროვნება ჩვენს გუნდში",
         "career_fact5": "ფარმაცევტული კომპანიების მოწინავე ნაწილი Sustainalytics ESG 2023 რეიტინგში",
-        "hero_products_heading": "ხარისხიანი მედიკამენტები უკეთესი ცხოვრებისთვის",
-        "hero_products_description": "ვთავაზობთ მაღალი ხარისხის გენერიკებისა და მომხმარებლის ჯანმრთელობის პროდუქტების ფართო ასორტიმენტს სხვადასხვა თერაპიულ მიმართულებაში.",
+        "hero_products_heading": "ჩვენი პროდუქტები საქართველოში",
+        "hero_products_description": "გაეცანით პროდუქტებს და ჩამოტვირთეთ გამოყენების ინსტრუქციები ქართულ ენაზე.",
         "about_page_intro": "იზრუნეთ ადამიანების ჯანმრთელობაზე, როგორც საიმედო პარტნიორმა",
         "about_page_overview_1": "STADA – არის საერთაშორისო ფარმაცევტული კომპანია, რომელიც 130 წელზე მეტია ასრულებს თავის მისიას - „ზრუნვა ადამიანების ჯანმრთელობაზე პარტნიორებთან და მომხმარებლებთან სანდო ურთიერთობის დამყარებით“. STADA-ს ძირითადი მიმართულებებია  Consumer Healthcare-ს სეგმენტის პროდუქტები (CHC), ჯენერიკები და სპეციალიზებული მედიკამენტები (ბიოსიმილარების ჩათვლით). STADA-ს პროდუქტები წარმოდგენილია მსოფლიოს 100 ქვეყანაში.",
         "about_page_intro_2": "2022 წელს დსთ-ს რეგიონი გახდა დამოუკიდებელი ბიზნეს ერთეული და დაერქვა STADA ევრაზია, რომელიც უშუალოდ ექვემდებარება შტაბ-ბინას გერმანიაში. რეგიონში 11 ქვეყანაა წარმოდგენილი: ყაზახეთი, უზბეკეთი, ბელორუსია, აზერბაიჯანი, საქართველო, მოლდოვა, ყირგიზეთი, სომხეთი, მონღოლეთი, ტაჯიკეთი, თურქმენეთი.",
@@ -3362,7 +3523,8 @@
         "supplied_history_heading": "ისტორია:",
         "about_leader_ospanov_role": "GAM ქვეკლასტერის ხელმძღვანელი (საქართველო, სომხეთი, მოლდოვა)",
         "supplied_contacts_heading": "კონტაქტები.",
-        "supplied_contacts_text": "კაპაროვა, 408\nმედეუს რაიონი, ალმათი, 050044\nalmaty@stada.kz"
+        "supplied_contacts_text": "კაპაროვა, 408\nმედეუს რაიონი, ალმათი, 050044\nalmaty@stada.kz",
+        "products_catalog_intro": "გაეცანით STADA-ს პროდუქტებს საქართველოში."
       }
     },
     "en": {
@@ -6494,7 +6656,168 @@
           }
         }
       },
-      "products": {},
+      "products": {
+        "essentiale-forte": {
+          "product": {
+            "id": "essentiale-forte",
+            "slug": "essentiale-forte",
+            "name": "Essentiale Forte 300 mg",
+            "shortDescription": "Essential phospholipids derived from soya beans.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#c76b13",
+            "image": {
+              "src": "/assets/georgia-products/essentiale-forte.png",
+              "alt": "Essentiale Forte 300 mg"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/essentiale-forte-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — Essentiale Forte 300 mg",
+              "kicker": "Digestive health",
+              "lead": "Essential phospholipids derived from soya beans.",
+              "badges": [
+                "Capsules",
+                "300 mg"
+              ],
+              "metrics": [],
+              "informationText": "# About the product\n\nEssentiale Forte 300 mg\n\nEssential phospholipids derived from soya beans.\n\n## Pharmaceutical form\n\nCapsules\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+            }
+          }
+        },
+        "essentiale-max": {
+          "product": {
+            "id": "essentiale-max",
+            "slug": "essentiale-max",
+            "name": "Essentiale Max 600 mg",
+            "shortDescription": "Phospholipids from soya beans.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#963d24",
+            "image": {
+              "src": "/assets/georgia-products/essentiale-max.png",
+              "alt": "Essentiale Max 600 mg"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/essentiale-max-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — Essentiale Max 600 mg",
+              "kicker": "Digestive health",
+              "lead": "Phospholipids from soya beans.",
+              "badges": [
+                "Hard capsules",
+                "600 mg"
+              ],
+              "metrics": [],
+              "informationText": "# About the product\n\nEssentiale Max 600 mg\n\nPhospholipids from soya beans.\n\n## Pharmaceutical form\n\nHard capsules\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+            }
+          }
+        },
+        "guttalax-15ml": {
+          "product": {
+            "id": "guttalax-15ml",
+            "slug": "guttalax-15ml",
+            "name": "Guttalax 15 ml",
+            "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#328151",
+            "image": {
+              "src": "/assets/georgia-products/guttalax.png",
+              "alt": "Guttalax 15 ml"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/guttalax-15ml-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — Guttalax 15 ml",
+              "kicker": "Digestive health",
+              "lead": "Sodium picosulfate, oral drops 7.5 mg/ml.",
+              "badges": [
+                "Oral drops",
+                "15 ml"
+              ],
+              "metrics": [],
+              "informationText": "# About the product\n\nGuttalax 15 ml\n\nSodium picosulfate, oral drops 7.5 mg/ml.\n\n## Pharmaceutical form\n\nOral drops\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+            }
+          }
+        },
+        "guttalax-30ml": {
+          "product": {
+            "id": "guttalax-30ml",
+            "slug": "guttalax-30ml",
+            "name": "Guttalax 30 ml",
+            "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#328151",
+            "image": {
+              "src": "/assets/georgia-products/guttalax.png",
+              "alt": "Guttalax 30 ml"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/guttalax-30ml-instructions-ge.docx",
+                "label": "Patient information — Georgian (DOCX)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — Guttalax 30 ml",
+              "kicker": "Digestive health",
+              "lead": "Sodium picosulfate, oral drops 7.5 mg/ml.",
+              "badges": [
+                "Oral drops",
+                "30 ml"
+              ],
+              "metrics": [],
+              "informationText": "# About the product\n\nGuttalax 30 ml\n\nSodium picosulfate, oral drops 7.5 mg/ml.\n\n## Pharmaceutical form\n\nOral drops\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+            }
+          }
+        },
+        "phosphalugel": {
+          "product": {
+            "id": "phosphalugel",
+            "slug": "phosphalugel",
+            "name": "Phosphalugel",
+            "shortDescription": "Aluminium phosphate. Oral suspension in sachets.",
+            "category": "digestive",
+            "therapeuticArea": "Digestive health",
+            "accent": "#ac8a00",
+            "image": {
+              "src": "/assets/georgia-products/phosphalugel.png",
+              "alt": "Phosphalugel"
+            },
+            "documents": [
+              {
+                "href": "/assets/georgia-products/phosphalugel-instructions-ge.doc",
+                "label": "Patient information — Georgian (DOC)"
+              }
+            ],
+            "page": {
+              "title": "STADA Georgia — Phosphalugel",
+              "kicker": "Digestive health",
+              "lead": "Aluminium phosphate. Oral suspension in sachets.",
+              "badges": [
+                "Oral suspension in sachets",
+                "Sachet"
+              ],
+              "metrics": [],
+              "informationText": "# About the product\n\nPhosphalugel\n\nAluminium phosphate. Oral suspension in sachets.\n\n## Pharmaceutical form\n\nOral suspension in sachets\n\n## Information about use\n\nRead the Georgian leaflet before use. Refer to it for the full information on dosage, contraindications, warnings and possible side effects."
+            }
+          }
+        }
+      },
       "text": {
         "cookie_title": "Cookies",
         "cookie_notice": "STADA websites may use certain cookies that are not essential to the operation of the site. We use them to understand how people use our websites, not to track or identify individual users. These insights help us improve our websites and provide relevant services. Information about a visitor's use of the website may be shared with other companies in the STADA Arzneimittel AG Group. Learn how to delete or manage cookies at:",
@@ -6639,11 +6962,12 @@
         "career_fact3": "employees worldwide",
         "career_fact4": "nationalities in our team",
         "career_fact5": "top pharmaceutical companies in the Sustainalytics ESG 2023 rating",
-        "hero_products_heading": "Quality medicines for a better life",
-        "hero_products_description": "We offer a broad range of high-quality generics and consumer health products across different therapeutic areas.",
+        "hero_products_heading": "Our products in Georgia",
+        "hero_products_description": "Explore the products and download their Georgian patient information leaflets.",
         "about_page_overview_1": "STADA is an international pharmaceutical company that has been pursuing its mission for more than 130 years: caring for people's health by building trusting relationships with partners and consumers. STADA's key business areas are Consumer Healthcare (CHC) products, generics and specialty medicines (including biosimilars). STADA products are available in more than 120 countries worldwide.",
         "about_page_intro_2": "In 2022, the CIS region became an independent business unit and was renamed STADA Eurasia, reporting directly to the headquarters in Germany. The region comprises 11 countries: Kazakhstan, Uzbekistan, Belarus, Azerbaijan, Georgia, Moldova, Kyrgyzstan, Armenia, Mongolia, Tajikistan and Turkmenistan.",
-        "about_page_intro_3": "STADA Eurasia's head office is located in Almaty, Kazakhstan. The company has also registered STADA Arzneimittel AG legal entities in most countries in the region. Since 1 April 2023, STADA has represented Sanofi's portfolio of over-the-counter medicines in the region."
+        "about_page_intro_3": "STADA Eurasia's head office is located in Almaty, Kazakhstan. The company has also registered STADA Arzneimittel AG legal entities in most countries in the region. Since 1 April 2023, STADA has represented Sanofi's portfolio of over-the-counter medicines in the region.",
+        "products_catalog_intro": "Explore STADA products in Georgia."
       }
     }
   }

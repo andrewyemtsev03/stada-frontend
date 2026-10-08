@@ -46,9 +46,14 @@ output, not the raw source folder.
 - Country/domain/language configuration lives in `content/countries.json`.
 - Company news is in `js/site/news-data.js`; contact data used by the interactive
   globe and static contact card is in `js/worldwide/countries-data.js`.
-- The current snapshot preserves public API copy and image overrides. All
-  products were unpublished in that snapshot; legacy sample cards are not
-  republished. Published product payloads can be kept in `locales.<language>.products`.
+- Product payloads live in `locales.<language>.products`. A nonempty collection
+  enables that country's products navigation, homepage section, catalog, and
+  individual static pages. Countries without products keep the section hidden.
+- Georgia includes Essentiale Forte 300 mg, Essentiale Max 600 mg, Guttalax
+  15 ml and 30 ml, and Phosphalugel in Georgian and English. Supplied packshots
+  and unchanged Georgian leaflets live in `assets/georgia-products/`; both
+  languages link to the original Georgian instructions. The packaging approval
+  PDF and multi-side reference photo are not published as patient leaflets.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API

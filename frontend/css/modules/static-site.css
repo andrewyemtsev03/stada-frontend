@@ -18,3 +18,14 @@ html[data-static-site] .lang-toggle a {
 html[data-static-site] .lang-toggle a[aria-current="true"] {
   color: #fff;
 }
+html[data-static-site] .product-documents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+html[data-static-site] .product-documents a {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

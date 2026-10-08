@@ -9,7 +9,7 @@ const output = path.join(source, 'dist');
 const countries = JSON.parse(fs.readFileSync(path.join(source, 'content/countries.json')));
 const languageTag = lang => ({ kz: 'kk', kg: 'ky', ge: 'ka' }[lang] || lang);
 const pageTemplates = ['index.html', 'about.html', 'culture.html', 'history.html', 'contacts.html', 'news.html', 'news-article.html', 'products/index.html'];
-const scripts = ['bootstrap', 'news-labels', 'locale-state', 'content-api', 'dynamic-product', 'locale-controls', 'homepage', 'page-reveals', 'product-animations', 'news-data', 'company-news', 'shared'];
+const scripts = ['bootstrap', 'news-labels', 'locale-state', 'content-api', 'product-text', 'dynamic-product', 'locale-controls', 'homepage', 'page-reveals', 'product-animations', 'news-data', 'company-news', 'shared'];
 const scriptSources = scripts.map(name => {
   let code = fs.readFileSync(path.join(source, `js/site/${name}.js`), 'utf8');
   if (name === 'shared') code = code.slice(0, code.indexOf("document.addEventListener('DOMContentLoaded'"));
@@ -26,6 +26,7 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
   const window = dom.window;
   window.matchMedia = () => ({ matches: true, addEventListener() {}, removeEventListener() {} });
   window.requestAnimationFrame = () => 0;
+  window.Element.prototype.getAnimations = () => [];
   window.fetch = () => { throw new Error('The static build must never fetch runtime content.'); };
   for (const script of scriptSources) vm.runInContext(script.code, dom.getInternalVMContext(), { filename: script.name });
   window.__countries = countries;
@@ -70,6 +71,43 @@ function addContactDetails(document, lang) {
 
 function finalize(dom, country, lang, template, page, text, newsId) {
   const document = dom.window.document;
+  const products = dom.window.__payload.content.productCatalog || [];
+  if (products.length) {
+    if (country.code !== 'kz') document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => link.remove());
+    const label = text.nav_products;
+    const menu = document.querySelector('.menu');
+    if (menu) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '/products/index.html'; link.textContent = label;
+      item.append(link); menu.append(item);
+    }
+    const footer = document.querySelector('.footer-nav');
+    if (footer) {
+      const group = document.createElement('div'); group.className = 'footer-nav__group';
+      const heading = document.createElement('h3'); heading.textContent = text.footer_products_title;
+      group.append(heading);
+      for (const product of products) {
+        const link = document.createElement('a');
+        link.href = `/products/product.html?slug=${product.slug}`; link.textContent = product.name;
+        group.append(link);
+      }
+      footer.append(group);
+    }
+    const section = document.getElementById('products');
+    if (section) section.hidden = false;
+    const categories = new Set(products.flatMap(product => product.category.split(' ')));
+    document.querySelectorAll('[data-product-filter], [data-product-filter-select] option').forEach(control => {
+      const category = control.dataset.productFilter || control.value;
+      if (category !== 'all' && !categories.has(category)) control.remove();
+    });
+    document.querySelectorAll('.products-highlight:nth-child(2) strong, [data-backend-text-id="products_index_text_003"]').forEach(node => {
+      node.textContent = String(categories.size);
+    });
+    document.querySelectorAll('#products .products-stage img, .catalog-hero__podium').forEach(image => {
+      image.src = products[0].image.src; image.alt = products[0].name;
+    });
+  }
   document.documentElement.lang = languageTag(lang);
   document.documentElement.setAttribute('data-static-site', '');
   if (newsId) document.documentElement.dataset.staticNewsId = newsId;
@@ -178,14 +216,28 @@ function build() {
       if (!locale) throw new Error(`Missing content: ${country.code}/${lang}`);
       const render = (template, page, query = '', newsId, productPayload) => {
         const basePayload = locale.pages[template] || locale.pages['products/index.html'];
+        const catalog = Object.values(locale.products || {}).map(payload => payload.product);
+        const homeProducts = catalog.filter((product, index) => catalog.findIndex(item => item.image.src === product.image.src) === index);
         const payload = { ...basePayload, country, content: { ...basePayload.content,
           text: { ...locale.text, ...basePayload.content.text },
+          ...(catalog.length ? { productCatalog: catalog, homeProducts } : {}),
         } };
         const dom = prepareRuntime(fs.readFileSync(path.join(source, template), 'utf8'), country, lang, template, payload, query);
         if (template === 'contacts.html') addContactDetails(dom.window.document, lang);
         if (productPayload) {
           dom.window.__product = productPayload;
           vm.runInContext('renderDynamicProductPage(window.__product)', dom.getInternalVMContext());
+          const documents = productPayload.product.documents || [];
+          if (documents.length) {
+            const section = dom.window.document.querySelector('[data-product-information]').parentElement;
+            const links = dom.window.document.createElement('div'); links.className = 'product-documents';
+            for (const file of documents) {
+              const link = dom.window.document.createElement('a');
+              link.href = file.href; link.textContent = file.label; link.setAttribute('download', '');
+              link.className = 'product-button product-button--secondary'; links.append(link);
+            }
+            section.append(links);
+          }
         }
         const html = finalize(dom, country, lang, template, page, payload.content.text, newsId);
         write(path.join(siteRoot, lang, page), html);
