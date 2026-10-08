@@ -3436,7 +3436,7 @@
             "therapeuticArea": "საჭმლის მონელება",
             "accent": "#0075bc",
             "image": {
-              "src": "/assets/georgia-products/enterogermina-2-billion.jpg",
+              "src": "/assets/georgia-products/enterogermina-2-billion.png",
               "alt": "ენტეროჯერმინა 2 მილიარდი"
             },
             "documents": [
@@ -3457,7 +3457,7 @@
               "formulaLabel": "ფორმულა",
               "formulaHeading": "შემადგენლობა და გამოშვების ფორმა",
               "formulaIntro": "ინფორმაცია შემადგენლობისა და შეფუთვის შესახებ მოწოდებული ქართული ინსტრუქციიდან.",
-              "formulaImage": "/assets/georgia-products/enterogermina-2-billion.jpg",
+              "formulaImage": "/assets/georgia-products/enterogermina-2-billion.png",
               "formulaPoints": [
                 {
                   "value": "01",
@@ -7196,7 +7196,7 @@
             "therapeuticArea": "Digestive health",
             "accent": "#0075bc",
             "image": {
-              "src": "/assets/georgia-products/enterogermina-2-billion.jpg",
+              "src": "/assets/georgia-products/enterogermina-2-billion.png",
               "alt": "Enterogermina 2 billion"
             },
             "documents": [
@@ -7217,7 +7217,7 @@
               "formulaLabel": "Formula",
               "formulaHeading": "Composition and presentation",
               "formulaIntro": "Ingredient and pack details from the supplied Georgian instructions.",
-              "formulaImage": "/assets/georgia-products/enterogermina-2-billion.jpg",
+              "formulaImage": "/assets/georgia-products/enterogermina-2-billion.png",
               "formulaPoints": [
                 {
                   "value": "01",
