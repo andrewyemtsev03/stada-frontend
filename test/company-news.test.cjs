@@ -52,7 +52,7 @@ test('Uzbekistan Health Report keeps both complete supplied languages and stays 
     assert.equal(items.length, 1);
     const item = items[0];
     assert.match(item.copy.title, /52/);
-    assert.equal(item.copy.paragraphs.length, lang === 'ru' ? 31 : 30);
+    assert.equal(item.copy.paragraphs.length, lang === 'ru' ? 32 : 31);
     assert.equal(item.copy.headingIndices.length, 7);
     assert.ok(item.copy.paragraphs.some(text => text.includes('19 514')));
     assert.ok(item.copy.paragraphs.some(text => text.includes('www.reportstada.net')));

@@ -114,3 +114,23 @@ test('static browser startup cannot request the content API or override the URL 
   window.updateLanguage('en');
   dom.window.close();
 });
+
+
+test('history timeline photographs are present without JavaScript for every country and language', () => {
+  for (const country of countries) for (const lang of country.supportedLanguages) {
+    const file = path.join(output, 'sites', country.code, lang, 'history.html');
+    const dom = new JSDOM(fs.readFileSync(file, 'utf8'));
+    const document = dom.window.document;
+    const timeline = [...document.querySelectorAll('.history-timeline')].find(section => !section.hidden);
+    assert.ok(timeline, file);
+    const events = [...timeline.querySelectorAll('.history-event')];
+    assert.ok(events.length >= 12, file);
+    for (const event of events) {
+      const image = event.querySelector('.history-event__media img');
+      assert.ok(image, file + ': missing chronology photo');
+      assert.ok(image.alt.trim(), file + ': missing photo description');
+      assert.ok(fs.existsSync(path.join(output, image.getAttribute('src'))), file + ': missing image asset');
+    }
+    dom.window.close();
+  }
+});

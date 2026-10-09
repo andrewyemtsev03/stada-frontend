@@ -213,9 +213,20 @@ function initHistoryTimelineMedia() {
     header.insertBefore(figure, header.firstElementChild);
   });
 
+  // Supplied translations place the year in the period header instead of a time element.
+  const suppliedEventImages = [
+    '1895.jpg', '1935.jpg', '1954.jpg', '1961.jpg', '1970.jpg', '1975.jpg',
+    '1986.png', 'period-1993-2000.jpg', 'period-2005-2010.jpg',
+    'period-2010-2015.jpg', '2019.jpg', '2022.png'
+  ];
+
   document.querySelectorAll('.history-event').forEach(event => {
-    const year = event.querySelector('time')?.textContent.trim();
-    const src = eventImages[year];
+    const suppliedKey = event.querySelector('[data-i18n-key^="supplied_history_text_"]')?.dataset.i18nKey;
+    const suppliedIndex = suppliedKey ? Number(suppliedKey.replace('supplied_history_text_', '')) : -1;
+    const year = event.querySelector('time')?.textContent.trim()
+      || event.closest('.history-period')?.querySelector('h3')?.textContent.trim();
+    const src = suppliedEventImages[suppliedIndex]
+      ? `assets/history/${suppliedEventImages[suppliedIndex]}` : eventImages[year];
     if (!src || event.querySelector('.history-event__media')) return;
 
     const title = event.querySelector('h4')?.textContent.trim() || `STADA ${year}`;
