@@ -433,6 +433,25 @@
   line-height: 1.62;
 }
 
+/* The translated chronology already shows the date outside the event card. */
+[data-supplied-history] .history-event {
+  grid-template-columns: minmax(132px, 0.35fr) minmax(0, 1fr);
+  grid-template-rows: auto;
+}
+
+[data-supplied-history] .history-event__media {
+  grid-row: auto;
+}
+
+[data-supplied-history] .history-event p {
+  grid-column: 2;
+}
+
+@media (max-width: 720px) {
+  [data-supplied-history] .history-event { grid-template-columns: 1fr; }
+  [data-supplied-history] .history-event p { grid-column: auto; }
+}
+
 @media (max-width: 1080px) {
   .history-hero__inner,
   .history-period {

@@ -48,6 +48,7 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
     renderFooterProductLinks(backendPagePayload);
     applyProductMetrics(backendPagePayload);
     applySuppliedDocumentContent(currentLang);
+    initHistoryTimelineMedia();
     applyLocalizedInterface(currentLang);
     updateDocumentTitle(currentLang);
     renderCompanyNews();
