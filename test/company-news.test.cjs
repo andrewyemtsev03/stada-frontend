@@ -203,3 +203,15 @@ test('Church & Dwight agreement appears in every supplied language, newest first
     }
   }
 });
+
+test('news photos resolve from the site root when the list re-renders under /<lang>/', () => {
+  const { JSDOM } = require(require.resolve('jsdom', { paths: [path.join(__dirname, '../frontend')] }));
+  const dom = new JSDOM('<!doctype html><body></body>', { url: 'https://stada.kz/ru/news.html', runScripts: 'outside-only' });
+  const window = dom.window;
+  // Same helper the generated pages get from static-runtime.js.
+  window.eval("function getSiteAssetPath(relativePath) { return '/' + String(relativePath || '').replace(/^\\/+/, ''); }");
+  for (const file of ['news-data.js', 'company-news.js']) window.eval(fs.readFileSync(path.join(__dirname, '../frontend/js/site', file), 'utf8'));
+  const image = window.newsPhoto({ copy: { title: 'Test' } }, 'assets/news/stada-laboratory-01.jpg', 0);
+  assert.equal(image.src, 'https://stada.kz/assets/news/stada-laboratory-01.jpg');
+  dom.window.close();
+});
