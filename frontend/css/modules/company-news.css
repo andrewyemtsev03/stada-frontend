@@ -37,7 +37,8 @@
   line-height: 1.25;
   text-wrap: balance;
 }
-.company-news-article__copy p { margin: 0 0 1.5rem; font-size: 1.1rem; line-height: 1.85; }
+.company-news-article__copy p { margin: 0 0 1.5rem; font-size: 1.1rem; line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere; }
+.company-news-article__copy a { color: #005db9; }
 .company-news-article__copy p:first-child { color: #173352; font-size: 1.16rem; }
 .company-news-article__copy h2 { color: #0f2f50; font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.4; margin: 2.5rem 0 1rem; }
 .company-news-date { display: block; margin-top: 1rem; color: #536273; }
@@ -49,9 +50,23 @@
 .company-news-empty { padding: 2rem; border-left: 3px solid #e50058; background: white; color: #536273; line-height: 1.6; }
 .company-news-card__link:focus-visible { outline: 3px solid #005db9; outline-offset: -3px; }
 .company-news-card__link:hover h2 { color: #005db9; }
+.media-mentions { margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid #dbe7f1; }
+.media-mentions[hidden] { display: none; }
+.media-mentions__title { color: #0f2f50; font-size: clamp(1.6rem, 2.8vw, 2.25rem); line-height: 1.25; margin: 0 0 1.5rem; }
+.media-mentions__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+.media-mention { display: flex; border: 1px solid #dbe7f1; border-radius: 12px; background: white; box-shadow: 0 16px 40px rgba(0, 49, 99, 0.06); }
+.media-mention__link { display: flex; flex-direction: column; width: 100%; padding: clamp(1.25rem, 2.5vw, 1.75rem); color: inherit; text-decoration: none; border-radius: inherit; }
+.media-mention__meta { margin: 0 0 0.75rem; color: #536273; font-size: 0.9rem; }
+.media-mention__source { color: #005db9; font-weight: 700; }
+.media-mention h3 { color: #0f2f50; font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.4; margin: 0 0 0.75rem; overflow-wrap: anywhere; }
+.media-mention p:not(.media-mention__meta) { margin: 0 0 0.75rem; color: #536273; font-size: 1rem; line-height: 1.7; }
+.media-mention .company-news-read { margin-top: auto; padding-top: 0.5rem; }
+.media-mention__link:hover h3 { color: #005db9; }
+.media-mention__link:focus-visible { outline: 3px solid #005db9; outline-offset: -3px; }
 @media (max-width: 768px) {
   .company-news-card__link { grid-template-columns: minmax(0, 1fr); }
   .company-news-card__link > img { height: auto; max-height: 300px; object-fit: cover; }
+  .media-mentions__list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (min-width: 1000px) {
   .company-news-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
