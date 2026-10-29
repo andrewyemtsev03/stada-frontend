@@ -62,10 +62,11 @@ test('Uzbekistan Health Report keeps both complete supplied languages and stays 
 });
 
 test('Kazakhstan site lists its 2026 releases newest first, in Russian and Kazakh', () => {
+  assert.ok(ids('kz', 'kz').includes('church-dwight-agreement-eurasia-2026'));
   for (const lang of ['ru', 'kz']) {
-    assert.deepEqual(plain(ids('kz', lang)), [
-      'health-report-2026-ai-kazakhstan', 'annual-results-2025', 'leadership-change-eurasia-2026',
-      'iqvia-otc-leader-2025-kazakhstan', 'top-employer-2026-kazakhstan',
+    assert.deepEqual(plain(ids('kz', lang).filter(id => id !== 'church-dwight-agreement-eurasia-2026')), [
+      'health-report-2026-ai-kazakhstan', 'capvest-completes-acquisition-2026', 'annual-results-2025',
+      'leadership-change-eurasia-2026', 'iqvia-otc-leader-2025-kazakhstan', 'top-employer-2026-kazakhstan',
     ]);
   }
   for (const country of ['kg', 'ge', 'az', 'am', 'md', 'uz']) {
@@ -98,7 +99,8 @@ test('IQVIA awards are published only on their own country site', () => {
     assert.ok(item.copy.paragraphs.join(' ').includes('Leading Retail OTC Corporation'));
   }
   for (const lang of ['az', 'ru']) {
-    assert.deepEqual(plain(ids('az', lang)), ['annual-results-2025', 'leadership-change-eurasia-2026', 'iqvia-otc-leader-2025-azerbaijan']);
+    assert.deepEqual(plain(ids('az', lang).filter(id => !['church-dwight-agreement-eurasia-2026', 'capvest-completes-acquisition-2026'].includes(id))),
+      ['annual-results-2025', 'leadership-change-eurasia-2026', 'iqvia-otc-leader-2025-azerbaijan']);
     const items = context.getCompanyNews('az', lang).filter(item => item.id === 'iqvia-otc-leader-2025-azerbaijan');
     assert.equal(items[0].date, '2026-01-20');
     assert.equal(items[0].copy.paragraphs.length, 5);
@@ -164,5 +166,40 @@ test('Media mentions are country scoped, untranslated, dated and link to https s
     assert.equal(new URL(item.url).hostname.replace(/^www\./, ''), item.source);
     assert.ok(item.title && item.text.length);
     assert.ok(!/Читать далее|\[1\]/.test([item.title, ...item.text].join(' ')));
+  }
+});
+
+test('CapVest acquisition appears on every site in every site language', () => {
+  for (const [country, langs] of Object.entries(siteLanguages)) {
+    for (const lang of langs) {
+      const item = context.getCompanyNews(country, lang).find(entry => entry.id === 'capvest-completes-acquisition-2026');
+      assert.ok(item, `${country}/${lang}`);
+      assert.equal(item.date, '2026-03-31');
+      assert.match(item.copy.title, /CapVest/);
+      assert.match(item.copy.excerpt, /2026/);
+      assert.ok(item.copy.paragraphs.join(' ').includes('596/2014'), `${country}/${lang}: legal notice`);
+      assert.ok(item.copy.headingIndices.length >= 3, `${country}/${lang}`);
+      for (const index of item.copy.headingIndices) assert.ok(item.copy.paragraphs[index].length <= 70);
+    }
+  }
+});
+
+test('Church & Dwight agreement appears in every supplied language, newest first', () => {
+  for (const [country, langs] of Object.entries(siteLanguages)) {
+    for (const lang of langs) {
+      const item = context.getCompanyNews(country, lang).find(entry => entry.id === 'church-dwight-agreement-eurasia-2026');
+      if (lang === 'ru') {
+        assert.equal(item, undefined, 'the Russian version has not been supplied yet');
+        continue;
+      }
+      assert.ok(item, `${country}/${lang}`);
+      assert.equal(ids(country, lang)[0] === 'church-dwight-agreement-eurasia-2026' || country === 'kz' || country === 'uz', true);
+      assert.equal(item.date, '2026-04-20');
+      assert.match(item.copy.title, /Church & Dwight/);
+      assert.ok(item.copy.paragraphs.join(' ').includes('Batiste'));
+      assert.equal(item.copy.headingIndices.length, 2, `${country}/${lang}: About STADA, About Church & Dwight`);
+      const footnote = item.copy.paragraphs.find(text => text.startsWith('¹'));
+      if (footnote) assert.ok(item.copy.paragraphs.indexOf(footnote) === item.copy.headingIndices[0] - 1);
+    }
   }
 });

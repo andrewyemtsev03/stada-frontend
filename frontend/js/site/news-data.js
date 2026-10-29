@@ -206,6 +206,536 @@ const STADA_COMPANY_NEWS = [
     }
   },
   {
+    "id": "church-dwight-agreement-eurasia-2026",
+    "countries": [
+      "kz",
+      "kg",
+      "ge",
+      "az",
+      "am",
+      "md",
+      "uz"
+    ],
+    "date": "2026-04-20",
+    "source": "CD_Press_Release_Final (ENG, arm, aze, geo, krg, rom, uzb, KZ).docx — Russian version not yet supplied",
+    "images": [
+      "assets/news/stada-historic-pharmacy.jpg"
+    ],
+    "translations": {
+      "kz": {
+        "title": "STADA және Church & Dwight компаниялары Еуразия елдерінде тұтынушылық денсаулық сақтау тауарларының брендтерін іске қосу туралы келісімге қол қойды",
+        "dateLabel": "2026 жылғы 20 сәуір",
+        "excerpt": "Алматы, 2026 жылғы 20 сәуір – STADA компаниясы бүкіләлемдік деңгейде танымал брендтер портфолиосының иесі – Church & Dwight (C&D) компаниясымен стратегиялық келісім жасасу арқылы Еуразиядағы өз позициясын нығайтуда. Келісім аясында STADA Еуразия өңірінің тоғыз елінде C&D компаниясының бірқатар танымал тұтынушылық брендтерін іске қосу, қолдау және тарату міндеттемелерін өз мойнына алады. STADA компаниясы C&D өнімдерін алғашқы болып Грузия нарығына ұсынды. Келісімде қамтылған өзге елдерде C&D өнімдері 2026 жылдың ішінде сатылымға шығады.",
+        "paragraphs": [
+          "STADA компаниясы Еуразия өңірінің тоғыз елінде Church & Dwight компаниясының CHC және FMCG брендтерін ұсынады. Өңірдегі алғашқы ел Грузия болды, онда HERO және TROJAN өнімдері 2026 жылдың 1 сәуірінен бастап сатылымға шықты.",
+          "Өзінің сенімді серіктес болу миссиясын басшылыққа ала отырып, STADA Еуразия аймағындағы тұтынушылық денсаулық сақтау брендтерінің портфолиосын Hero, Trojan және Batiste сияқты көпшілікке танымал әрі сенімге ие болған брендтермен айтарлықтай нығайтуда.",
+          "Қуаныш Оспанов, STADA компаниясының Еуразия өңірі бойынша вице-президенті: «Church & Dwight-пен жасалған келісім – STADA Eurasia-ның таңдаулы серіктес бола алатынының тағы бір дәлелі. Біз Еуразия нарығына сенеміз және CHC бағытының одан әрі өсуі үшін зор әлеуетті көріп отырмыз».",
+          "Алматы, 2026 жылғы 20 сәуір – STADA компаниясы бүкіләлемдік деңгейде танымал брендтер портфолиосының иесі – Church & Dwight (C&D) компаниясымен стратегиялық келісім жасасу арқылы Еуразиядағы өз позициясын нығайтуда. Келісім аясында STADA Еуразия өңірінің тоғыз елінде C&D компаниясының бірқатар танымал тұтынушылық брендтерін іске қосу, қолдау және тарату міндеттемелерін өз мойнына алады. STADA компаниясы C&D өнімдерін алғашқы болып Грузия нарығына ұсынды. Келісімде қамтылған өзге елдерде C&D өнімдері 2026 жылдың ішінде сатылымға шығады.",
+          "Келісім өзін жақсы жағынан ұсынған алты брендті қамтиды. Олардың ішіндегі негізгілері: Batiste (құрғақ сусабын), Hero (безеуге қарсы патчтар) және Trojan (мүшеқаптар). Бұл танымал брендтер STADA компаниясының CHC жергілікті портфолиосын тамаша толықтырып, оның тұтынушылық денсаулық сақтау сегментіндегі ұсынысын нығайта түспек.",
+          "STADA-ның жауапкершілік аймағына дәстүрлі дәріханалар, бөлшек сауда және онлайн сату арналары арқылы өнімдерді жергілікті маркетингтеу және ілгерілету кіреді.",
+          "«Church & Dwight компаниясымен жасалған келісім – STADA Eurasia-ның таңдаулы серіктес екенінің кезекті дәлелі. Біздің Еуразиядағы бөлімшеміздің STADA нарықтарының ішінде C&D брендтерін бірінші болып ұсынуы мені ерекше мақтанышқа бөлейді. Біз еуразиялық нарықтардың әлеуетіне сенеміз және CHC сегментін одан әрі дамыту үшін үлкен мүмкіндіктер көріп отырмыз», – деп атап өтті STADA компаниясының Еуразия аймағы бойынша вице-президенті Қуаныш Оспанов.",
+          "Church & Dwight компаниясының өңірлік директоры Кристос Гьюрас былай деп атап өтті:",
+          "«Біз STADA компаниясымен серіктестік арқылы Еуразия елдеріндегі жаңа тұтынушыларға өзіміздің танымал брендтерімізді қуана ұсынамыз. STADA компаниясы біздің жетекші брендтерімізді осы перспективалы әрі серпінді нарыққа сәтті шығаратынына сенімдіміз».",
+          "Сондай-ақ болашақта келісім C&D компаниясының басқа да қолданыстағы және жаңа брендтерімен толықтырылуы мүмкін деп жоспарлануда.",
+          "STADA компаниясы туралы",
+          "Германияның Бад-Фильбель қаласында орталық кеңсесі орналасқан STADA Arzneimittel AG компаниясы үш басты бағытқа негізделген стратегияны іске асырады: Consumer Healthcare өнімдері, дженериктер және арнайы фармацевтикалық препараттар. Компания өнімдері әлемнің 100-ден астам елінде сатылады. 2025 қаржы жылында STADA компаниясы түзетілген топтық кірісті 4,3 миллиард еуроға және тұрақты валютадағы пайыздар, салықтар, тозу және амортизация шегерілгенге дейінгі түзетілген пайданы (adj. cc EBITDA) 961 миллион еуроға жеткізді. 2025 жылғы 31 желтоқсандағы жағдай бойынша компанияның дүниежүзі бойынша қызметкерлер саны 11 749 адамды құрады.",
+          "Church & Dwight компаниясы туралы",
+          "1846 жылы негізі қаланған және орталық кеңсесі Нью-Джерси штаты, Юинг қаласында орналасқан Church & Dwight Co., Inc. (NYSE: CHD) компаниясы — сату көлемі 6,1 миллиард АҚШ долларын құрайтын және S&P 500 индексіне енетін ірі компания. Компания ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® және HERO® сияқты танымал брендтермен әйгілі жеке гигиена, тұрмыстық химия және мамандандырылған өнімдердің кең спектрін өндіріп, сатады."
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "kg": {
+        "title": "STADA жана Church & Dwight Евразия өлкөлөрүндө керектөөчүлүк саламаттык сактоо товарларынын бренддерин ишке киргизүү боюнча келишим түзүштү",
+        "dateLabel": "2026-жылдын 20-апрели",
+        "excerpt": "Алматы, 2026-жылдын 20-апрели – STADA дүйнөгө белгилүү бренддердин портфелине ээлик кылган Church & Dwight (C&D) компаниясы менен стратегиялык келишим түзүү аркылуу Евразиядагы өзүнүн катышуусун бекемдейт. Келишимдин алкагында STADA Евразия чөлкөмүнүн тогуз өлкөсүндө C&D компаниясынын бир катар белгилүү керектөөчүлүк бренддерин ишке киргизүү, колдоо жана дистрибуциялоо боюнча милдеттенмелерди өзүнө алат. Грузия STADA компаниясы C&D продуктуларын сунуштаган чөлкөмдөгү биринчи өлкө болуп калды. Келишим камтыган башка өлкөлөрдө C&D продукциясы 2026-жылдын ичинде сатыкка чыгат.",
+        "paragraphs": [
+          "STADA евразиялык чөлкөмдүн тогуз өлкөсүндө Church & Dwight компаниясынын CHC (керектөөчүлүк саламаттык сактоо) жана FMCG (күнүмдүк керектелүүчү товарлар) бренддерин сунуштайт. Аймактагы биринчи өлкө Грузия болду, анда HERO жана TROJAN продуктулары 2026-жылдын 1-апрелинен баштап коммерциялык түрдө сатыкка чыкты.",
+          "Ишенимдүү өнөктөш болуу максатына таянуу менен, STADA компаниясы Евразия чөлкөмүндөгү керектөөчүлүк саламаттык сактоо бренддеринин портфелин Hero, Trojan жана Batiste сыяктуу жакшы таанылган бренддер менен кыйла бекемдейт.",
+          "Куаныш Оспанов, STADA компаниясынын Евразия чөлкөмү боюнча вице-президенти: «Church & Dwight менен түзүлгөн келишим – бул STADA Eurasia компаниясынын тандалган өнөктөш болууга жөндөмдүү экендигинин дагы бир далили. «Биз Евразия рынокторуна ишенебиз жана CHC (керектөөчүлүк саламаттык сактоо) багытынын андан ары өсүшү үчүн зор потенциалды көрүп жатабыз».",
+          "Алматы, 2026-жылдын 20-апрели – STADA дүйнөгө белгилүү бренддердин портфелине ээлик кылган Church & Dwight (C&D) компаниясы менен стратегиялык келишим түзүү аркылуу Евразиядагы өзүнүн катышуусун бекемдейт. Келишимдин алкагында STADA Евразия чөлкөмүнүн тогуз өлкөсүндө C&D компаниясынын бир катар белгилүү керектөөчүлүк бренддерин ишке киргизүү, колдоо жана дистрибуциялоо боюнча милдеттенмелерди өзүнө алат. Грузия STADA компаниясы C&D продуктуларын сунуштаган чөлкөмдөгү биринчи өлкө болуп калды. Келишим камтыган башка өлкөлөрдө C&D продукциясы 2026-жылдын ичинде сатыкка чыгат.",
+          "Келишим өзүн жакшы көрсөткөн алты брендди камтыйт. Алардын негизгилери: Batiste (кургак шампунь), Hero (акнеге каршы патчтар) жана Trojan (презервативдер). Бул популярдуу бренддер STADA компаниясынын CHC тармагындагы жергиликтүү портфелин эң сонун толуктайт жана анын керектөөчүлүк саламаттык сактоо сегментиндеги сунуштарын күчөтөт.",
+          "STADA компаниясынын жоопкерчилик чөйрөсүнө жергиликтүү маркетинг жана продукцияны салттуу дарыканалар, ритейл (чекене соода) жана онлайн сатуу каналдары аркылуу илгерилетүү кирет.",
+          "«Church & Dwight менен түзүлгөн келишим – бул STADA Eurasia компаниясынын тандалган өнөктөш экенинин кезектеги далили. Мен Евразиядагы биздин бөлүм STADA’нын бардык рынокторунун ичинен биринчи болуп C&D бренддерин сунуштап жатканына өзгөчө сыймыктанам. Биз Евразия рынокторунун потенциалына ишенебиз жана CHC сегментин андан ары өнүктүрүү үчүн чоң мүмкүнчүлүктөрдү көрүп жатабыз», – деп белгиледи STADA компаниясынын Евразия чөлкөмү боюнча вице-президенти Куаныш Оспанов.",
+          "Кристос Гьюрас, Church & Dwight компаниясынын аймактык директору, мындай деп белгиледи:",
+          "«Биз STADA компаниясы менен болгон өнөктөштүктүн аркасында Евразия өлкөлөрүндөгү жаңы керектөөчүлөргө өзүбүздүн культтук бренддерибизди сунуштап жатканыбызга кубанычтабыз. Биз STADA бул келечектүү жана динамикалуу рынокко биздин алдыңкы бренддерибизди ийгиликтүү алып чыгарына ишенебиз».",
+          "Ошондой эле, келечекте келишим C&D компаниясынын башка колдонуудагы жана жаңы бренддери менен толукталышы мүмкүн экени пландалууда.",
+          "STADA компаниясы жөнүндө",
+          "STADA Arzneimittel AG компаниясынын борбордук кеңсеси Германиянын Бад-Фильбель шаарында жайгашкан жана ал үч негизги багытка негизделген стратегияны ишке ашырат: Consumer Healthcare (керектөөчүлүк саламаттык сактоо) продуктулары, дженериктер жана адистештирилген фармацевтикалык препараттар. Компаниянын продукциясы дүйнөнүн 100дөн ашык өлкөсүндө сатылат. 2025-финансылык жылы STADA компаниясы топтун 4,3 млрд евро өлчөмүндөгү корректировкаланган кирешесине жана туруктуу валютадагы пайыздарды, салыктарды, эскирүүнү жана амортизацияны эсепке албагандагы 961 млн евро өлчөмүндөгү корректировкаланган пайдасына (adj. cc EBITDA) жетишти. 2025-жылдын 31-декабрына карата компаниянын кызматкерлеринин саны бүткүл дүйнө жүзү боюнча 11 749 адамды түздү.",
+          "Church & Dwight компаниясы жөнүндө",
+          "Church & Dwight Co., Inc. (NYSE: CHD), 1846-жылы негизделген, борбордук кеңсеси Юинг шаарында (Нью-Джерси штаты) жайгашкан, сатуу көлөмү 6,1 млрд АКШ долларын түзгөн компания болуп саналат жана S&P 500 индексине кирет. Компания жеке багуу, турмуш-тиричилик химиясы жана адистештирилген продукциялардын кеңири спектрин ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® жана HERO® сыяктуу белгилүү бренддер астында чыгарат жана сатат."
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "az": {
+        "title": "STADA və Church & Dwight şirkətləri Avrasiyanın Ermənistan, Azərbaycan, Gürcüstan, Qazaxıstan, Qırğızıstan, Tacikistan, Türkmənistan, Özbəkistan və Moldova",
+        "dateLabel": "20 aprel 2026-cı il",
+        "excerpt": "Almatı, 20 aprel 2026-cı il – STADA şirkəti dünyaca məşhur brendlər portfelinin sahibi olan Church & Dwight (C&D) şirkəti ilə strateji razılaşma imzalayaraq Avrasiyadakı mövqeyini möhkəmləndirir. Razılaşma çərçivəsində STADA şirkəti Avrasiya regionunun doqquz ölkəsində C&D şirkətinin bir sıra populyar istehlakçı brendlərinin bazara çıxarılması, dəstəklənməsi və distribyusiyası öhdəliyini öz üzərinə götürür. Gürcüstan STADA şirkətinin C&D-nin məhsullarını təqdim etdiyi ilk ölkə oldu. Razılaşmanın əhatə etdiyi digər ölkələrdə C&D-nin məhsulları 2026-cı il ərzində satışa çıxarılacaqdır.",
+        "paragraphs": [
+          "STADA şirkəti Avrasiya regionunun doqquz ölkəsində Church & Dwight şirkətinin “CHC” və “FMCG” brendlərini təmsil edir. “HERO” və “TROJAN” məhsullarını 1 aprel 2026-cı il tarixindən etibarən satışa təqdim edən regionun ilk ölkəsi Gürcüstan olmuşdur.",
+          "Etibarlı tərəfdaş olmaq missiyasına sadiq qalan STADA şirkəti “Hero”, “Trojan” və “Batiste” kimi özünü doğrultmuş brendlərlə Avrasiya regionundakı öz istehlakçı sağlamlığı portfelini əhəmiyyətli dərəcədə gücləndirir.",
+          "STADA şirkətinin Avrasiya regionu üzrə vitse-prezidenti Kuanış Ospanov çıxışında: “Church & Dwight şirkəti ilə bağladığımız razılaşma “STADA Eurasia”nın üstünlük verilən tərəfdaş olduğunun növbəti sübutudur. Biz Avrasiya bazarlarına inanırıq və CHC istiqamətinin gələcək inkişafı üçün böyük potensial görürük”.",
+          "Almatı, 20 aprel 2026-cı il – STADA şirkəti dünyaca məşhur brendlər portfelinin sahibi olan Church & Dwight (C&D) şirkəti ilə strateji razılaşma imzalayaraq Avrasiyadakı mövqeyini möhkəmləndirir. Razılaşma çərçivəsində STADA şirkəti Avrasiya regionunun doqquz ölkəsində C&D şirkətinin bir sıra populyar istehlakçı brendlərinin bazara çıxarılması, dəstəklənməsi və distribyusiyası öhdəliyini öz üzərinə götürür. Gürcüstan STADA şirkətinin C&D-nin məhsullarını təqdim etdiyi ilk ölkə oldu. Razılaşmanın əhatə etdiyi digər ölkələrdə C&D-nin məhsulları 2026-cı il ərzində satışa çıxarılacaqdır.",
+          "Razılaşmaya özünü doğrultmuş altı brend daxildir. Bunlardan əsasları: Batiste (quru şampun), Hero (akne əleyhinə patçlar) və Trojan (qoruyucular) markalarıdır. Bu məşhur brendlər STADA şirkətinin yerli CHC portfelini mükəmməl şəkildə tamamlayacaq və istehlakçı sağlamlığı seqmentindəki təkliflərini gücləndirəcəkdir.",
+          "STADA şirkətinin məsuliyyət sahəsinə məhsulların yerli marketinqi, habelə onların ənənəvi apteklər, pərakəndə satış şəbəkələri və onlayn satış kanalları vasitəsilə təşviqi daxildir.",
+          "“Church & Dwight şirkəti ilə bağladığımız razılaşma “STADA Eurasia”nın üstünlük verilən tərəfdaş olduğunun növbəti sübutudur. Fəxr edirəm ki, STADA şirkətinin bütün bazarları arasında C&D brendlərini təqdim edən ilk bölmə məhz bizim Avrasiya bölməmizdir. Biz Avrasiya bazarlarının potensialına inanırıq və CHC seqmentinin gələcək inkişafı üçün böyük imkanlar görürük”, – deyə STADA şirkətinin Avrasiya regionu üzrə vitse-prezidenti Kuanış Ospanov qeyd edib.",
+          "Church & Dwight şirkətinin regional direktoru Kristos Gyuras çıxışında:",
+          "“STADA şirkəti ilə tərəfdaşlığımız sayəsində möhtəşəm brendlərimizi Avrasiya ölkələrindəki yeni istehlakçılara təqdim etməkdən məmnunuq. Əminik ki, STADA şirkəti aparıcı brendlərimizin bu perspektivli və dinamik bazara çıxarılmasının öhdəsindən uğurla gələcəkdir”.",
+          "Həmçinin gələcəkdə razılaşmaya C&D şirkətinin digər mövcud və yeni brendlərinin əlavə edilməsi planlaşdırılır.",
+          "STADA şirkəti haqqında",
+          "Mərkəzi ofisi Almaniyanın Bad Vilbel şəhərində yerləşən STADA Arzneimittel AG şirkəti üç əsas istiqamətə əsaslanan strategiyanı reallaşdırmaqdadır: istehlakçı sağlamlığı (consumer healthcare), ceneriklər və xüsusi əczaçılıq preparatları. Şirkətin məhsulları dünyanın 100-dən çox ölkəsində təqdim olunur. 2025-ci maliyyə ilində STADA şirkətinin Qrup üzrə düzəliş edilmiş mənfəəti 4,3 milyard avro, sabit valyutada faizlər, vergilər, köhnəlmə və amortizasiya çıxılmadan əvvəlki düzəliş edilmiş mənfəəti (adj. cc EBITDA) isə 961 milyon avro təşkil etmişdir. 31 dekabr 2025-ci il tarixinə şirkətdə bütün dünya üzrə 11749 əməkdaş çalışmaqdadır.",
+          "Church & Dwight şirkəti haqqında",
+          "Church & Dwight Co., Inc. (NYSE: CHD) şirkəti 1846-cı ildə təsis edilmişdir, mərkəzi ofisi Nyu-Cersi ştatının Yuinq şəhərində yerləşir, 6,1 milyard ABŞ dolları satış həcminə malikdir və S&P 500 indeksinə daxildir. Şirkət ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® və HERO® kimi tanınmış brendlər altında geniş çeşiddə fərdi qulluq, məişət kimyası və xüsusi məhsulların istehsalı və satışı ilə məşğuldur."
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "hy": {
+        "title": "STADA-ն և Church & Dwight-ը համաձայնագիր են ստորագրել Եվրասիայի երկրներում առողջապահական սպառողական ապրանքանիշերի թողարկման վերաբերյալ",
+        "dateLabel": "20 ապրիլի 2026 թ.",
+        "excerpt": "Ալմաթի, 20 ապրիլի, 2026 թվական – STADA-ն ամրապնդում է իր ներկայությունը Եվրասիայում՝ ռազմավարական համաձայնագիր կնքելով Church & Dwight (C&D) ընկերության հետ, որը հանդիսանում է համաշխարհային ճանաչում ունեցող ապրանքանիշերի պորտֆելի սեփականատերը: Համաձայնագրի շրջանակներում STADA-ն ստանձնում է C&D-ի մի շարք հանրահայտ սպառողական բրենդների թողարկման, աջակցման և բաշխման պարտավորությունները Եվրասիական տարածաշրջանի ինը երկրներում։ Առաջին երկիրը, որտեղ STADA-ն ներկայացրել է C&D-ի արտադրանքը, դարձավ Վրաստանը: Համաձայնագրի մեջ ներառված մյուս երկրներում C&D արտադրանքը կհայտնվի 2026 թվականի ընթացքում:",
+        "paragraphs": [
+          "STADA-ն ներկայացնում է Church & Dwight ընկերության CHC և FMCG բրենդները եվրասիական տարածաշրջանի ինը երկրներում։ Տարածաշրջանի առաջին երկիրը դարձավ Վրաստանը, որտեղ HERO և TROJAN ապրանքատեսակները վաճառքում հասանելի են 2026 թվականի ապրիլի 1-ից։",
+          "Հավատարիմ մնալով հուսալի գործընկեր լինելու իր կոչմանը՝ STADA-ն զգալիորեն ամրապնդում է սպառողական առողջապահական ապրանքանիշերի իր պորտֆելը Եվրասիական տարածաշրջանում այնպիսի հայտնի բրենդներով, ինչպիսիք են Hero-ն, Trojan-ը և Batiste-ը:",
+          "Կուանիշ Օսպանով, STADA-ի Եվրասիական տարածաշրջանի փոխնախագահ. «Church & Dwight-ի հետ համաձայնագիրը ևս մեկ ապացույց է, որ STADA Eurasia-ն նախընտրելի գործընկեր է: Մենք հավատում ենք Եվրասիայի շուկաներին և տեսնում ենք հսկայական ներուժ CHC ուղղության հետագա աճի համար»:.",
+          "Ալմաթի, 20 ապրիլի, 2026 թվական – STADA-ն ամրապնդում է իր ներկայությունը Եվրասիայում՝ ռազմավարական համաձայնագիր կնքելով Church & Dwight (C&D) ընկերության հետ, որը հանդիսանում է համաշխարհային ճանաչում ունեցող ապրանքանիշերի պորտֆելի սեփականատերը: Համաձայնագրի շրջանակներում STADA-ն ստանձնում է C&D-ի մի շարք հանրահայտ սպառողական բրենդների թողարկման, աջակցման և բաշխման պարտավորությունները Եվրասիական տարածաշրջանի ինը երկրներում։ Առաջին երկիրը, որտեղ STADA-ն ներկայացրել է C&D-ի արտադրանքը, դարձավ Վրաստանը: Համաձայնագրի մեջ ներառված մյուս երկրներում C&D արտադրանքը կհայտնվի 2026 թվականի ընթացքում:",
+          "Համաձայնագիրը ներառում է վեց հայտնի բրենդներ: Դրանցից հիմնականներն են՝ Batiste-ը (չոր շամպուն), Hero-ն (ակնեի դեմ պայքարի կպչուն պատչեր) և Trojan-ը (պահպանակներ): Այս հանրահայտ ապրանքանիշերը հիանալիորեն կլրացնեն STADA ընկերության CHC տեղական պորտֆելը և կուժեղացնեն դրա առաջարկը սպառողական առողջապահության ոլորտում:",
+          "STADA-ի պատասխանատվության գոտին ներառում է տեղական մարքեթինգը և արտադրանքի առաջմղումը ավանդական դեղատների, ռիթեյլի և վաճառքի առցանց ուղիների միջոցով:",
+          "«Church & Dwight-ի հետ համաձայնագիրը ևս մեկ ապացույց է այն բանի, որ STADA Eurasia-ն հանդիսանում է նախընտրելի գործընկեր: Ես հատկապես հպարտ եմ, որ հենց Եվրասիայի մեր ստորաբաժանումն է STADA-ի բոլոր շուկաների շարքում առաջինը ներկայացնում C&D բրենդները: Մենք հավատում ենք եվրասիական շուկաների ներուժին և մեծ հնարավորություններ ենք տեսնում CHC սեգմենտի հետագա զարգացման համար»,- նշել է STADA ընկերության Եվրասիա տարաշածրջանի փոխնախագահ Կուանիշ Օսպանովը:",
+          "Church & Dwight-ի տարածաշրջանային տնօրեն Քրիստոս Գյուրասը նշել է.",
+          "«Մենք ուրախ ենք ներկայացնել մեր պաշտամունքային բրենդները Եվրասիայի երկրների նոր սպառողներին՝ STADA ընկերության հետ գործընկերության շնորհիվ: Մենք վստահ ենք, որ STADA-ն հաջողությամբ կիրականացնի մեր առաջատար ապրանքանիշերի մուտքն այս հեռանկարային և դինամիկ շուկա»:",
+          "Նախատեսվում է նաև, որ ապագայում համաձայնագիրը կարող է համալրվել Church & Dwight-ի այլ գոյություն ունեցող և նոր բրենդներով:",
+          "STADA ընկերության մասին",
+          "STADA Arzneimittel AG-ն, որի գլխամասային գրասենյակը գտնվում է Գերմանիայի Բադ Վիլբել քաղաքում, իրականացնում է ռազմավարություն՝ հիմնված երեք հիմնական ուղղությունների վրա՝ սպառողական առողջապահության ապրանքներ (Consumer Healthcare), ջեներիկներ և մասնագիտացված դեղագործական պատրաստուկներ: Ընկերության արտադրանքը վաճառվում է աշխարհի ավելի քան 100 երկրներում: 2025 ֆինանսական տարում STADA-ն հասել է 4,3 միլիարդ եվրո խմբային ճշգրտված հասույթի և 961 միլիոն եվրո հաստատուն արժույթով ճշգրտված շահույթի՝ նախքան տոկոսների, հարկերի, մաշվածության և ամորտիզացիայի հաշվարկումը (adj. cc EBITDA): 2025 թվականի դեկտեմբերի 31-ի դրությամբ ընկերության աշխատակիցների թիվն ամբողջ աշխարհում կազմել է 11 749 մարդ:",
+          "Church & Dwight ընկերության մասին",
+          "Church & Dwight Co., Inc.-ը (NYSE: CHD), որը հիմնադրվել է 1846 թվականին և որի գլխամասային գրասենյակը գտնվում է Նյու Ջերսի նահանգի Յուինգ քաղաքում, հանդիսանում է 6,1 միլիարդ ԱՄՆ դոլարի վաճառքի ծավալ ունեցող ընկերություն և ընդգրկված է S&P 500 ինդեքսում: Ընկերությունն արտադրում և վաճառում է անձնական խնամքի միջոցների, կենցաղային քիմիայի և մասնագիտացված արտադրանքի լայն տեսականի այնպիսի ճանաչված ապրանքանիշերի ներքո, ինչպիսիք են՝ ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® և HERO®:"
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "ro": {
+        "title": "STADA și Church & Dwight au semnat un acord privind lansarea mărcilor din domeniul sănătății consumatorilor în țările Eurasiei",
+        "dateLabel": "20 aprilie 2026",
+        "excerpt": "Almatî, 20 aprilie 2026 – STADA își consolidează prezența în Eurasia prin semnarea unui acord strategic cu compania Church & Dwight (C&D), deținătoarea unui portofoliu de mărci recunoscute la nivel mondial. În cadrul acordului, STADA își asumă obligațiile de lansare, promovare și distribuție a unei serii de mărci populare de consum C&D în nouă țări ale regiunii Eurasia. Prima țară în care STADA a lansat produsele C&D este Georgia. În celelalte țări vizate de acord, produsele C&D vor deveni disponibile în decursul anului 2026.",
+        "paragraphs": [
+          "STADA reprezintă mărcile CHC și FMCG ale companiei Church & Dwight în nouă țări din regiunea Eurasia. Prima țară din regiune este Georgia, unde produsele HERO și TROJAN sunt disponibile pentru comerț începând cu 1 aprilie 2026.",
+          "Urmându-și misiunea de a fi un partener de încredere, STADA își consolidează semnificativ portofoliul de branduri din domeniul sănătății consumatorilor în regiunea Eurasia, prin mărci consacrate precum Hero, Trojan și Batiste.",
+          "Kuanîș Ospanov, Vicepreședinte pentru Regiunea Eurasia, STADA: „Acordul cu Church & Dwight reprezintă încă o dovadă a capacității STADA Eurasia de a fi partenerul potrivit. Avem încredere în piețele din Eurasia și vedem un potențial uriaș pentru dezvoltarea în continuare a segmentului CHC.\"",
+          "Almatî, 20 aprilie 2026 – STADA își consolidează prezența în Eurasia prin semnarea unui acord strategic cu compania Church & Dwight (C&D), deținătoarea unui portofoliu de mărci recunoscute la nivel mondial. În cadrul acordului, STADA își asumă obligațiile de lansare, promovare și distribuție a unei serii de mărci populare de consum C&D în nouă țări ale regiunii Eurasia. Prima țară în care STADA a lansat produsele C&D este Georgia. În celelalte țări vizate de acord, produsele C&D vor deveni disponibile în decursul anului 2026.",
+          "Acordul include șase mărci consacrate. Principalele dintre acestea sunt: Batiste (șampon uscat), Hero (plasturi pentru combaterea acneei) și Trojan (prezervative). Aceste mărci populare vor completa în mod optim portofoliul local de sănătate a consumatorilor al STADA și vor consolida oferta companiei în acest segment.",
+          "În aria de responsabilitate a STADA se înscriu marketingul local și promovarea produselor prin farmacii tradiționale, retail și canale de vânzare online.",
+          "„Acordul cu Church & Dwight reprezintă o nouă dovadă că STADA Eurasia este partenerul potrivit. Sunt deosebit de mândru că tocmai filiala noastră din Eurasia este prima dintre toate piețele STADA care lansează mărcile C&D. Avem încredere în potențialul piețelor din Eurasia și vedem oportunități semnificative pentru dezvoltarea în continuare a segmentului CHC\", — a declarat Kuanîș Ospanov, Vicepreședinte pentru Regiunea Eurasia al STADA.",
+          "Christos Giouras, Director Regional Church & Dwight, a menționat:",
+          "„Suntem încântați să prezentăm mărcile noastre remarcabile noilor consumatori din țările Eurasiei, datorită parteneriatului cu compania STADA. Suntem convinși că STADA va gestiona cu succes lansarea mărcilor noastre de top pe această piață promițătoare și dinamică.\"",
+          "De asemenea, se preconizează că, în viitor, acordul poate fi extins cu alte mărci C&D existente și noi.",
+          "Despre compania STADA",
+          "STADA Arzneimittel AG, cu sediul în Bad Vilbel, Germania, își desfășoară activitatea pe baza unei strategii axate pe trei direcții: produse Consumer Healthcare, medicamente generice și produse farmaceutice specializate. La nivel mondial, produsele companiei sunt prezente în peste 100 de țări. În anul financiar 2025, STADA a înregistrat venituri ajustate ale grupului în valoare de 4,3 miliarde de euro și un profit ajustat înainte de dobânzi, impozite, depreciere și amortizare la curs valutar constant (adj. cc EBITDA) în valoare de 961 de milioane de euro. La 31 decembrie 2025, compania număra 11 749 de angajați în întreaga lume.",
+          "Despre compania Church & Dwight",
+          "Church & Dwight Co., Inc. (NYSE: CHD), înființată în anul 1846, cu sediul în Ewing, statul New Jersey, este o companie cu un volum de vânzări de 6,1 miliarde de dolari SUA, inclusă în indicele S&P 500. Compania produce și comercializează o gamă largă de produse de îngrijire personală, produse de uz casnic și produse specializate sub mărci recunoscute, precum ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® și HERO®."
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "uz": {
+        "title": "STADA va Church & Dwight Yevrosiyo mamlakatlarida iste’molchi sog‘lig‘ini saqlash tovarlari brendlarini ishga tushirish bo‘yicha kelishuv tuzdilar",
+        "dateLabel": "2026-yil 20-aprel",
+        "excerpt": "OlmaOta, 2026-yil 20-aprel – STADA dunyoga mashhur brendlar portfeli egasi bo‘lgan Church & Dwight (C&D) kompaniyasi bilan strategik kelishuv tuzib, Yevrosiyodagi ishtirokini mustahkamlamoqda. Bitim doirasida STADA Yevrosiyo mintaqasining to‘qqizta mamlakatida C&D kompaniyasining bir qator mashhur iste’molchi brendlarini ishga tushirish, qo‘llab-quvvatlash va distributsiya qilish bo‘yicha majburiyatlarni o‘z zimmasiga oladi. C&D mahsulotlari STADA tomonidan taqdim etilgan mintaqadagi birinchi mamlakat Gruziya bo‘ldi. Kelishuv qamrab olgan boshqa mamlakatlarda C&D mahsulotlari 2026-yil davomida sotuvga chiqariladi.",
+        "paragraphs": [
+          "STADA Yevrosiyo mintaqasining to‘qqizta mamlakatida Church & Dwight kompaniyasining CHC va FMCG brendlarini taqdim etadi. Mintaqadagi birinchi mamlakat Gruziya bo‘ldi, unda HERO va TROJAN mahsulotlari 2026-yil 1-apreldan boshlab sotuvga chiqarildi.",
+          "O‘zining ishonchli hamkor bo‘lish haqidagi intilishiga amal qilgan holda, STADA kompaniyasi Yevrosiyo mintaqasidagi iste’molchi sog‘lig‘ini saqlash brendlari portfelini Hero, Trojan va Batiste kabi yaxshi nom qozongan brendlar bilan sezilarli darajada mustahkamlamoqda.",
+          "Quanish Ospanov, STADA’ning Yevrosiyo mintaqasi bo‘yicha vitse-prezidenti: ’’Church & Dwight bilan tuzilgan kelishuv – bu STADA Eurasia’ning tanlov hamkori bo‘lish qobiliyatining yana bir isbotidir. Biz Yevrosiyo bozorlariga ishonamiz va CHC yo‘nalishining yanada o‘sishi uchun ulkan salohiyatni ko‘rmoqdamiz’’.",
+          "OlmaOta, 2026-yil 20-aprel – STADA dunyoga mashhur brendlar portfeli egasi bo‘lgan Church & Dwight (C&D) kompaniyasi bilan strategik kelishuv tuzib, Yevrosiyodagi ishtirokini mustahkamlamoqda. Bitim doirasida STADA Yevrosiyo mintaqasining to‘qqizta mamlakatida C&D kompaniyasining bir qator mashhur iste’molchi brendlarini ishga tushirish, qo‘llab-quvvatlash va distributsiya qilish bo‘yicha majburiyatlarni o‘z zimmasiga oladi. C&D mahsulotlari STADA tomonidan taqdim etilgan mintaqadagi birinchi mamlakat Gruziya bo‘ldi. Kelishuv qamrab olgan boshqa mamlakatlarda C&D mahsulotlari 2026-yil davomida sotuvga chiqariladi.",
+          "Bitim yaxshi nom qozongan oltita brendni o‘z ichiga oladi. Asosiy brendlar: Batiste (quruq shampun), Hero (aknega qarshi patchlar) va Trojan (prezervativlar). Ushbu ommabop brendlar STADA kompaniyasining CHC yo‘nalishidagi mahalliy portfelini mukammal tarzda to‘ldiradi va uning iste’molchi sog‘lig‘ini saqlash segmentidagi takliflarini yanada kuchaytiradi.",
+          "STADA’ning mas’uliyat doirasiga mahalliy marketing hamda mahsulotlarni an’anaviy dorixonalar, riteyl va onlayn savdo kanallari orqali ilgari surish kiradi.",
+          "’’Church & Dwight bilan tuzilgan kelishuv – STADA Eurasia tanlov hamkori ekanligining yana bir isbotidir. Men aynan bizning Yevrosiyodagi bo‘linmamiz STADA’ning barcha bozorlari orasida birinchi bo‘lib C&D brendlarini taqdim etayotganidan ayniqsa faxrlanaman. Biz Yevrosiyo bozorlarining salohiyatiga ishonamiz va CHC segmentini yanada rivojlantirish uchun katta imkoniyatlarni ko‘rmoqdamiz’’, – deya ta’kidladi STADA kompaniyasining Yevrosiyo mintaqasi bo‘yicha vitse-prezidenti Quanish Ospanov.",
+          "Kristos Gyuras, Church & Dwight mintaqaviy direktori shunday ta’kidladi:",
+          "’’Biz STADA kompaniyasi bilan hamkorlik orqali o‘zimizning mashhur brendlarimizni Yevrosiyo mamlakatlaridagi yangi iste’molchilarga taqdim etayotganimizdan mamnunmiz. Ishonchimiz komilki, STADA bizning yetakchi brendlarimizni ushbu istiqbolli va jadal rivojlanayotgan bozorga olib kirish vazifasini muvaffaqiyatli uddalaydi’’.",
+          "Kelishuv kelgusida C&D’ning boshqa mavjud va yangi brendlari bilan to‘ldirilishi ham rejalashtirilgan.",
+          "STADA kompaniyasi haqida",
+          "STADA Arzneimittel AG (shtab-kvartirasi Bad-Filbel shahri, Germaniya) uchta asosiy yo‘nalishga asoslangan strategiyani amalga oshiradi: Consumer Healthcare mahsulotlari, djeneryriklar va ixtisoslashtirilgan farmatsevtika preparatlari. Kompaniya mahsulotlari dunyoning 100 dan ortiq mamlakatlarida sotiladi. 2025-moliya yilida STADA guruhning tuzatilgan tushumi 4,3 mlrd yevroga, doimiy valyutadagi foizlar, soliqlar va amortizatsiya hisoblangunga qadar tuzatilgan foydasi (adj. cc EBITDA) esa 961 mln yevroga yetdi. 2025-yil 31-dekabr holatiga ko‘ra, butun dunyo bo‘ylab kompaniya xodimlari soni 11 749 kishini tashkil etdi.",
+          "Church & Dwight kompaniyasi haqida",
+          "1846-yilda asos solingan, shtab-kvartirasi Nyu-Jersi shtatining Yuing shahrida joylashgan Church & Dwight Co., Inc. (NYSE: CHD) kompaniyasi savdo hajmi 6,1 mlrd AQSh dollarini tashkil etuvchi kompaniya hisoblanadi va S&P 500 indeksiga kiradi. Kompaniya ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® va HERO® kabi tanib olingan brendlar ostida shaxsiy parvarishlash tovarlari, maishiy kimyo va ixtisoslashtirilgan mahsulotlarning keng assortimentini ishlab chiqaradi va sotadi."
+        ],
+        "headingIndices": [
+          10,
+          12
+        ]
+      },
+      "ge": {
+        "title": "STADA-მ და Church & Dwight-მა დადეს ხელშეკრულება ევრაზიის ქვეყნებში სამომხმარებლო ჯანდაცვის ბრენდული საქონლის გამოშვების შესახებ",
+        "dateLabel": "2026 წლის 20 აპრილი",
+        "excerpt": "ალმათი, 2026 წლის 20 აპრილი – STADA აძლიერებს თავის თანდასწრებას ევრაზიაში მსოფლიოში ცნობილი ბრენდების პორტფოლიოს მფლობელთან, კომპანია Church & Dwight (C&D)-თან, სტრატეგიული შეთანხმების დადებით. შეთანხმების ფარგლებში, STADA ღებულობს ვალდებულებას აამუშაოს, მხარი დაუჭიროს და განახორციელოს C&D–ს რიგი პოპულარული სამომხმარებლო ბრენდის დისტრიბუცია ევრაზიის რეგიონის ცხრა ქვეყანაში. პირველ ქვეყნად, სადაც STADA-მ C&D–ის პროდუქტები წარადგინა, გახდა საქართველო. დანარჩენ ქვეყნებში, რომლებიც შეთანხმებით არიან გაერთიანებულნი, C&D–ის პროდუქტები ხელმისაწვდომი იქნება 2026 წლის განმავლობაში.",
+        "paragraphs": [
+          "STADA წარმოადგენს კომპანია Church & Dwight-ის CHC და FMCG ბრენდებს ევრაზიის რეგიონის ცხრა¹ ქვეყანაში. პირველი ქვეყანა რეგიონში არის საქართველო, სადაც HERO-სა და TROJAN-ის პროდუქცია კომერციულად ხელმისაწვდომი გახდა 2026 წლის 1 აპრილიდან.",
+          "თავის მოწოდების შესაბამისად, რომ იყოს საიმედო პარტნიორი, STADA მნიშვნელოვნად აძლიერებს თავის მომხმარებელთა ჯანმრთელობის ბრენდების პორტფელს ევრაზიის რეგიონში ისეთი კარგად დამკვიდრებული ბრენდებით, როგორიცაა Hero, Trojan და Batiste.",
+          "კუანიშ ოსპანოვი, STADA–ს ევრაზიის რეგიონის ვიცე-პრეზიდენტი: «შეთანხმება Church & Dwight-თან არის კიდევ ერთი მტკიცებულება STADA Eurasia-ს შესაძლებლობისა, იყოს არჩევანის პარტნიორი. ჩვენ დარწმუნებული ვართ ევრაზიის ბაზრებში და ვხედავთ უდიდეს პოტენციალს CHC მიმართულების შემდგომი ზრდისთვის».",
+          "ალმათი, 2026 წლის 20 აპრილი – STADA აძლიერებს თავის თანდასწრებას ევრაზიაში მსოფლიოში ცნობილი ბრენდების პორტფოლიოს მფლობელთან, კომპანია Church & Dwight (C&D)-თან, სტრატეგიული შეთანხმების დადებით. შეთანხმების ფარგლებში, STADA ღებულობს ვალდებულებას აამუშაოს, მხარი დაუჭიროს და განახორციელოს C&D–ს რიგი პოპულარული სამომხმარებლო ბრენდის დისტრიბუცია ევრაზიის რეგიონის ცხრა ქვეყანაში. პირველ ქვეყნად, სადაც STADA-მ C&D–ის პროდუქტები წარადგინა, გახდა საქართველო. დანარჩენ ქვეყნებში, რომლებიც შეთანხმებით არიან გაერთიანებულნი, C&D–ის პროდუქტები ხელმისაწვდომი იქნება 2026 წლის განმავლობაში.",
+          "შეთანხმება ექვს ბრენდს მოიცავს, რომლებმაც კარგი სახელი მოიპოვა. მათგან ძირითადი ბრენდებია: Batiste (მშრალი შამპუნი), Hero (აკნეს საწინააღმდეგო პატჩები) და Trojan (პრეზერვატივები).",
+          "ეს პოპულარული ბრენდები იდეალურად შეავსებენ კომპანია STADA-ს CHC–ის ლოკალურ პორტფოლიოს და გააძლიერებენ მის შეთავაზებას სამომხმარებლო ჯანდაცვის სეგმენტში.",
+          "STADA-ს პასუხისმგებლობის ზონაში შედის ლოკალური მარკეტინგი და პროდუქციის წინ წაწევა ტრადიციული აფთიაქების, რითეილის და ონლაინ გაყიდვების არხების მეშვეობით.",
+          "„Church & Dwight-თან შეთანხმება – ეს არის კიდევ ერთი დასტური იმისა, რომ STADA Eurasia არის არჩევანის პარტნიორი. მე განსაკუთრებით ვამაყობ, რომ სწორედ ჩვენი ქვედანაყოფი ევრაზიაში არის პირველი STADA-ს ყველა ბაზარზე, რომელიც C&D–ს ბრენდებს წარადგენს. ჩვენ გვჯერა ევრაზიული ბაზრების პოტენციალისა და ვხედავთ დიდ შესაძლებლობებს CHC–ის სეგმენტის შემდგომი განვითარებისთვის“, - აღნიშნა კომპანია STADA-ს ევრაზიის რეგიონის ვიცე-პრეზიდენტმა, კუანიშ ოსპანოვმა.",
+          "„Church & Dwight“-ის რეგიონულმა დირექტორმა, ქრისტოს გიურასმა, აღნიშნა:",
+          "„კომპანია STADA-სთან პარტნიორობის შემწეობით ჩვენ მოხარული ვართ წარვუდგინოთ საკულტო ბრენდები ევრაზიის ქვეყნების ახალ მომხმარებლებს. ჩვენ დარწმუნებულები ვართ, რომ STADA წარმატებით დასძლევს ჩვენი წამყვანი ბრენდების გაყვანას ამ პერსპექტიულ და დინამიურ ბაზარზე“.",
+          "ასევე დაგეგმილია, რომ მომავალში შეთანხმება შესაძლოა გაფართოვდეს და მოიცავდეს სხვა არსებულ და ახალ C&D ბრენდებს.",
+          "¹ სომხეთი, აზერბაიჯანი, საქართველო, ყაზახეთი, ყირგიზეთი, ტაჯიკეთი, თურქმენეთი, უზბეკეთი და მოლდოვა. შენიშვნა: შეთანხმებაში ჩართული არა ყველა ბრენდი იქნება ხელმისაწვდომი ცალკეულ ბაზრებზე.",
+          "კომპანია STADA-ს შესახებ",
+          "STADA Arzneimittel AG, რომლის ცენტრალური ოფისი გერმანიაში, ბად-ვილბელში მდებარეობს, ახორციელებს სამ საკვანძო მიმართულებაზე დაფუძნებულ სტრატეგიას: Consumer Healthcare–ს პროდუქტები, ჯენერიკები და სპეციალიზებული ფარმაცევტული პრეპარატები. კომპანიის პროდუქცია მსოფლიოს 100-ზე მეტ ქვეყანაში იყიდება. 2025 საფინანსო წელს STADA-მ მიაღწია ჯგუფის კორექტირებულ შემოსავალს 4,3 მილიარდი ევროს ოდენობით და 961 მილიონი ევროს ოდენობით კორექტირებულ მოგებას პროცენტის, გადასახადების, ცვეთისა და ამორტიზაციის გადახდამდე მუდმივი ვალუტით (adj. cc EBITDA). 2025 წლის 31 დეკემბრის მდგომარეობით, კომპანიის თანამშრომელთა რაოდენობა მსოფლიოს მასშტაბით 11 749 ადამიანს შეადგენდა.",
+          "კომპანია Church & Dwight–ის შესახებ",
+          "Church & Dwight Co., Inc. (NYSE: CHD), რომელიც დაარსდა 1846 წელს, და რომლის ცენტრალური ოფისი მდებარეობს ნიუ ჯერსის შტატის ქალაქ იუინგში, წარმოადგენს 6.1 მილიარდი დოლარის გაყიდვების მოცულობის მქონე კომპანიას და შედის S&P 500–ის ინდექსში. კომპანია აწარმოებს და ყიდის პირადი მოვლის, საყოფაცხოვრებო ქიმიის და სპეციალიზირებული პროდუქტების ფართო ასორტიმენტს ისეთი აღიარებული ბრენდების სახით, როგორიცაა ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO® და HERO®."
+        ],
+        "headingIndices": [
+          12,
+          14
+        ]
+      },
+      "en": {
+        "title": "STADA and Church & Dwight Enter into an Agreement to Launch Consumer Healthcare Brands in Eurasia",
+        "dateLabel": "20 April 2026",
+        "excerpt": "Almaty, April 20, 2026 — STADA is strengthening its presence in Eurasia by entering into a strategic agreement with Church & Dwight (C&D), the owner of a portfolio of globally recognized brands. Under the agreement, STADA will undertake the launch, promotion, and distribution of a number of C&D’s popular consumer brands across nine countries in the Eurasian region.",
+        "paragraphs": [
+          "STADA is introducing Church & Dwight’s CHC and FMCG brands in nine¹ countries across the Eurasian region. Georgia is the first market in the region, where HERO and TROJAN products have been commercially available since April 1, 2026.",
+          "In line with its commitment to being a trusted partner, STADA is significantly strengthening its consumer healthcare portfolio in the Eurasian region with well-established brands such as Hero, Trojan, and Batiste.",
+          "Kuanish Ospanov, Vice President, Eurasia Region, STADA: “The agreement with Church & Dwight is further proof of STADA Eurasia’s ability to be a partner of choice. We believe in the Eurasian markets and see significant potential for further growth in the CHC segment.”",
+          "Almaty, April 20, 2026 — STADA is strengthening its presence in Eurasia by entering into a strategic agreement with Church & Dwight (C&D), the owner of a portfolio of globally recognized brands. Under the agreement, STADA will undertake the launch, promotion, and distribution of a number of C&D’s popular consumer brands across nine countries in the Eurasian region.",
+          "Georgia is the first country where STADA has introduced C&D products. In the remaining countries covered by the agreement, C&D products will be launched throughout 2026.",
+          "The agreement includes six well-established brands. The key brands are Batiste (dry shampoo), Hero (acne treatment patches), and Trojan (condoms). These popular brands will effectively complement STADA’s local CHC portfolio and strengthen its offering in the consumer healthcare segment.",
+          "STADA is responsible for local marketing and the promotion of products through traditional pharmacies, retail, and online sales channels.",
+          "“The agreement with Church & Dwight is further proof that STADA Eurasia is a partner of choice. I am particularly proud that our Eurasia division is the first among all STADA markets to introduce C&D brands. We believe in the potential of the Eurasian markets and see significant opportunities for further development of the CHC segment,” said Kuanish Ospanov, Vice President, Eurasia Region, STADA.",
+          "Christos Gyouras, Regional Director, Church & Dwight, said:",
+          "“We are pleased to introduce our iconic brands to new consumers across the Eurasian countries through our partnership with STADA. We are confident that STADA will successfully bring our leading brands to this promising and dynamic market.”",
+          "It is also expected that, in the future, the agreement may be expanded to include additional existing and new C&D brands.",
+          "¹ Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan, and Moldova.\nNote: Not all brands included in the transaction will be represented in individual markets.",
+          "About STADA",
+          "STADA Arzneimittel AG, headquartered in Bad Vilbel, Germany, pursues a strategy based on three core segments: Consumer Healthcare products, generics, and specialty pharmaceuticals. The company’s products are sold in more than 100 countries worldwide.",
+          "In the 2025 financial year, STADA achieved adjusted group revenue of €4.3 billion and adjusted earnings before interest, taxes, depreciation, and amortization (adj. cc EBITDA) of €961 million. As of December 31, 2025, the company employed 11,749 people worldwide.",
+          "About Church & Dwight",
+          "Church & Dwight Co., Inc. (NYSE: CHD), founded in 1846 and headquartered in Ewing, New Jersey, is a company with approximately $6.1 billion in sales and is a member of the S&P 500 index.",
+          "The company manufactures and markets a broad range of personal care, household, and specialty products under well-known brands such as ARM & HAMMER®, TROJAN®, OXICLEAN®, FIRST RESPONSE®, NAIR®, ORAJEL®, BATISTE®, WATERPIK®, ZICAM®, THERABREATH/THE BREATH CO®, and HERO®."
+        ],
+        "headingIndices": [
+          12,
+          15
+        ]
+      }
+    }
+  },
+  {
+    "id": "capvest-completes-acquisition-2026",
+    "countries": [
+      "kz",
+      "kg",
+      "ge",
+      "az",
+      "am",
+      "md",
+      "uz"
+    ],
+    "date": "2026-03-31",
+    "source": "CapVest_Completes_Majority_Acquisition_of_STADA (RUS, ENG, arm, aze, geo, kyr, rom, uzb, KZ).docx",
+    "images": [
+      "assets/news/stada-production-01.jpg"
+    ],
+    "translations": {
+      "ru": {
+        "title": "CapVest завершила приобретение контрольного пакета акций STADA Arzneimittel AG",
+        "dateLabel": "31 марта 2026 г.",
+        "excerpt": "Бад-Вильбель, Германия / Лондон, Великобритания — 31 марта 2026 года. CapVest Partners LLP («CapVest»), ведущая международная инвестиционная компания, объявляет о завершении сделки по приобретению контрольного пакета акций STADA Arzneimittel AG («STADA» или «Компания») — одной из ведущих компаний в сфере здравоохранения и фармацевтики, специализирующейся на потребительских товарах для здоровья (Consumer Healthcare), генерических препаратах (Generics) и специализированных фармацевтических препаратах (Specialty Pharmaceuticals).",
+        "paragraphs": [
+          "Бад-Вильбель, Германия / Лондон, Великобритания — 31 марта 2026 года. CapVest Partners LLP («CapVest»), ведущая международная инвестиционная компания, объявляет о завершении сделки по приобретению контрольного пакета акций STADA Arzneimittel AG («STADA» или «Компания») — одной из ведущих компаний в сфере здравоохранения и фармацевтики, специализирующейся на потребительских товарах для здоровья (Consumer Healthcare), генерических препаратах (Generics) и специализированных фармацевтических препаратах (Specialty Pharmaceuticals).",
+          "Опираясь на высокие результаты 2025 года, завершение сделки позволит командам CapVest и STADA совместно реализовать амбициозные планы по ускорению глобального роста компании, направляя капитал на органическое развитие бизнеса и новые стратегические приобретения.",
+          "Сегодня в STADA работает около 12 000 сотрудников по всему миру. Компания представляет собой ведущую международную диверсифицированную платформу в сфере здравоохранения со стратегическим фокусом на потребительские товары для здоровья, генерические препараты и специализированную фармацевтику. Недавно компания объявила о рекордной выручке в размере 4,3 млрд евро, что на 6% превышает показатель предыдущего года, а также о рекордном скорректированном показателе EBITDA в размере 961 млн евро за финансовый год.",
+          "Питер Гольдшмидт (Peter Goldschmidt), генеральный директор STADA, прокомментировал:",
+          "«Мы рады, что сделка успешно завершена. Глубокая экспертиза CapVest в сфере здравоохранения, обширный опыт компании, а также её приверженность поддержке наших амбиций по дальнейшему росту станут значительным преимуществом в реализации наших перспективных планов развития бизнеса».",
+          "Мэтт Фарги (Matt Fargie), партнёр CapVest, отметил:",
+          "«Пока мы работали над завершением этой сделки, команда STADA продолжала демонстрировать уверенный рост в ключевых регионах, а также в направлениях потребительских товаров для здоровья, генерических препаратов, биоаналогов и инновационных лекарственных средств. Мы рады, что теперь можем активно сотрудничать с командой STADA для реализации наших общих амбициозных планов развития бизнеса».",
+          "Сделка была завершена после получения всех необходимых разрешений регулирующих органов и выполнения прочих стандартных условий закрытия.",
+          "Информация, содержащаяся в настоящем пресс-релизе, не является и не должна рассматриваться как прогноз или оценка прибыли за какой-либо период, а также не должна использоваться в качестве ориентира для оценки будущих результатов деятельности STADA.",
+          "Настоящий пресс-релиз может содержать заявления прогнозного характера, сопряжённые со значительными рисками и неопределённостью. Все заявления, за исключением сведений об исторических фактах, включая, помимо прочего, заявления о будущем финансовом положении STADA, рисках и неопределённостях, связанных с её деятельностью, стратегии, капитальных затратах, прогнозируемых расходах, а также планах и целях STADA в отношении будущей деятельности, могут считаться заявлениями прогнозного характера.",
+          "Такие заявления могут содержать слова «считает», «ожидает», «предполагает», «может», «планирует», «намеревается», «будет», «должен», «оценивает», «риск» и аналогичные выражения, а также их отрицательные формы. По своей природе заявления прогнозного характера сопряжены с известными и неизвестными рисками и неопределённостью, поскольку относятся к событиям и зависят от обстоятельств, которые могут как наступить, так и не наступить в будущем. Такие заявления не являются гарантией будущих результатов деятельности. Не следует придавать им чрезмерное значение. STADA не принимает на себя обязательств по обновлению заявлений прогнозного характера в связи с появлением новой информации, будущими событиями или по иным причинам. Компания не даёт никаких заверений или гарантий относительно достижимости или обоснованности каких-либо прогнозов, целевых показателей, оценок или расчётов.",
+          "Настоящий пресс-релиз и содержащаяся в нём информация предназначены исключительно для информационных целей и не являются проспектом ценных бумаг, предложением о продаже или приглашением к покупке либо подписке на ценные бумаги в какой-либо юрисдикции. Содержание веб-сайта STADA, равно как и любых веб-сайтов, доступных по гиперссылкам с сайта STADA, не включено в настоящий пресс-релиз и не является его частью.",
+          "Распространение настоящего пресс-релиза может быть ограничено законодательством. Лица, получившие настоящий пресс-релиз, должны самостоятельно ознакомиться с соответствующими ограничениями и соблюдать их. Несоблюдение таких ограничений может представлять собой нарушение законодательства о ценных бумагах соответствующей юрисдикции. Никакие денежные средства, ценные бумаги или иное вознаграждение не запрашиваются; любые средства, ценные бумаги или иное вознаграждение, направленные в ответ на содержащуюся здесь информацию, не будут приняты.",
+          "Настоящий пресс-релиз содержит информацию, которая до её раскрытия могла считаться инсайдерской информацией в соответствии с Регламентом (ЕС) № 596/2014 от 16 апреля 2014 года.",
+          "О компании CapVest",
+          "CapVest — ведущая международная инвестиционная компания в сфере прямых инвестиций, которая сотрудничает с амбициозными компаниями, поставляющими товары и услуги первой необходимости, помогая им трансформировать свой бизнес.",
+          "Как активный инвестор, ориентированный на долгосрочную перспективу, CapVest имеет успешный опыт обеспечения привлекательной доходности за счёт тесного взаимодействия с руководством компаний портфеля и масштабирования их бизнеса посредством органического роста и приобретений.",
+          "CapVest инвестирует в устойчивые к внешним воздействиям отрасли, в которых спрос на продукты или услуги не зависит от потребительских предпочтений и не носит дискреционного характера. Ключевые направления инвестирования компании включают здравоохранение, товары повседневного спроса и жизненно важные услуги.",
+          "О компании STADA Arzneimittel AG",
+          "Штаб-квартира STADA Arzneimittel AG находится в Бад-Вильбеле, Германия. Компания реализует стратегию, основанную на трёх ключевых направлениях: потребительские товары для здоровья, генерические препараты и специализированная фармацевтика.",
+          "STADA Arzneimittel AG продаёт свою продукцию более чем в 100 странах мира.",
+          "По итогам 2025 финансового года консолидированная выручка STADA составила 4 296 млн евро, а скорректированный показатель EBITDA с поправкой на валютные колебания (скорректированная EBITDA в постоянных валютах) — 960 млн евро.",
+          "По состоянию на 31 декабря 2025 года в компании работало 11 670 сотрудников по всему миру.",
+          "Контакты для СМИ",
+          "Пресс-служба CapVest\nБен Валдимарссон (Ben Valdimarsson) — Reputation Inc.\nТелефон: +44 (0) 7889 805 930",
+          "Информация для журналистов о STADA",
+          "STADA Arzneimittel AG — отдел по связям со СМИ (Media Relations)\nStadastrasse 2–18, 61118 Бад-Вильбель, Германия\nТелефон: +49 (0) 6101 603-165\nЭлектронная почта: press@stada.com",
+          "Дополнительная информация для участников рынка капитала",
+          "STADA Arzneimittel AG — отдел по связям с инвесторами и кредиторами (Investor & Creditor Relations)\nStadastrasse 2–18, 61118 Бад-Вильбель, Германия\nТелефон: +49 (0) 6101 603-4689\nФакс: +49 (0) 6101 603-215\nЭлектронная почта: ir@stada.de"
+        ],
+        "headingIndices": [
+          14,
+          18,
+          23,
+          25,
+          27
+        ]
+      },
+      "kz": {
+        "title": "«CapVest» компаниясы «STADA» акцияларының бақылау пакетін сатып алуды аяқтады",
+        "dateLabel": "2026 жылғы 31 наурыз",
+        "excerpt": "Бад-Фильбель, Германия / Лондон, Ұлыбритания — 2026 жылғы 31 наурыз — CapVest Partners LLP («CapVest») инвестициялық компаниясы тұтынушылық денсаулық сақтау, дженериктер және мамандандырылған дәрілік препараттар саласына бағытталған денсаулық сақтау мен фармацевтика саласындағы жетекші халықаралық компаниялардың бірі — STADA Arzneimittel AG («STADA» немесе «Компания») акцияларының бақылау пакетін сатып алу бойынша мәміленің аяқталғанын жариялады.",
+        "paragraphs": [
+          "Бад-Фильбель, Германия / Лондон, Ұлыбритания — 2026 жылғы 31 наурыз — CapVest Partners LLP («CapVest») инвестициялық компаниясы тұтынушылық денсаулық сақтау, дженериктер және мамандандырылған дәрілік препараттар саласына бағытталған денсаулық сақтау мен фармацевтика саласындағы жетекші халықаралық компаниялардың бірі — STADA Arzneimittel AG («STADA» немесе «Компания») акцияларының бақылау пакетін сатып алу бойынша мәміленің аяқталғанын жариялады.",
+          "2025 жылғы айтарлықтай нәтижелерге сүйене отырып, мәміленің аяқталуы CapVest пен STADA командаларына компанияның жаһандық өсімін жеделдету бойынша өршіл жоспарларды бірлесіп жүзеге асыруға, сондай-ақ капиталды ішкі өсімді дамыту мен жаңа стратегиялық сатып алуларға бағыттауға мүмкіндік береді.",
+          "Бүгінгі таңда STADA компаниясында бүкіл әлем бойынша 12 000-ға жуық қызметкер жұмыс істейді. Компания тұтынушылық денсаулық сақтау, дженериктер және мамандандырылған препараттарға стратегиялық басымдық беретін денсаулық сақтау саласындағы жетекші әртараптандырылған жаһандық платформалардың бірі болып табылады.",
+          "Жақында STADA компаниясы қаржы жылының қорытындысы бойынша рекордтық табыс — 4,3 млрд еуро (өткен жылмен салыстырғанда 6%-ға өсім) және түзетілген EBITDA-ның тарихи максимумы — 961 млн еуро болғаны туралы хабарлады.",
+          "STADA-ның бас директоры Питер Гольдшмидт былай деп атап өтті: «Біз мәміленің аяқталғанына қуаныштымыз. CapVest компаниясының денсаулық сақтау саласындағы терең сараптамасы, сондай-ақ біздің өршіл өсу жоспарларымызды қолдауға деген ұмтылысы стратегиялық міндеттерімізді іске асыру жолында маңызды артықшылық болады».",
+          "CapVest серіктесі Мэтт Фарджи былай деп толықтырды: «Біз мәмілені аяқтау жұмысының барысында, STADA командасы негізгі аймақтар мен бағыттарда — тұтынушылық денсаулық сақтау, дженериктер, биосимилярлар және инновациялық препараттар бойынша тұрақты өсім көрсетуді жалғастырды. Енді біз бірлескен амбициялық жоспарларымызды жүзеге асыру үшін белсенді түрде бірге жұмыс істей алатынымызға қуаныштымыз». Мәміле барлық қажетті реттеуші рұқсаттар алынғаннан кейін және жабудың стандартты шарттары орындалған соң аяқталды.",
+          "Маңызды ақпарат",
+          "Осы хабарламада қамтылған ақпарат қандай да бір кезеңдегі пайданың болжамы немесе бағасы емес және солай деп қарастырылмауы тиіс, сондай-ақ STADA қызметінің болашақтағы нәтижелерін бағалау үшін бағдар ретінде пайдаланылмауы керек. Осы хабарламада айтарлықтай тәуекелдер мен белгісіздіктерге байланысты болжамды сипаттағы мәлімдемелер болуы мүмкін. Нақты фактілерді қоспағанда, барлық мәлімдемелер, соның ішінде STADA-ның болашақтағы қаржылық позициясы, тәуекелдер мен белгісіздіктер, стратегия, күрделі шығындар, болжамды шығыстар, компанияның жоспарлары мен мақсаттары туралы мәлімдемелер болжамды сипаттағы мәлімдемелер болып саналуы мүмкін.",
+          "Мұндай мәлімдемелерге сілтеме жасау үшін «санау», «күту», «болжау», «мүмкін», «жоспарлау», «ниеттену», «болады», «керек», «бағалау», «тәуекел» және ұқсас тіркестер сияқты сөздер қолданылады. Табиғаты бойынша олар белгілі және белгісіз тәуекелдермен және белгісіздіктермен байланысты, өйткені олар болашақ оқиғаларға сілтеме жасайды және болуы, ия болмауы да мүмкін жағдайларға байланысты.",
+          "Болжамдық мәлімдемелер болашақ нәтижелердің кепілі болып табылмайды және оларға шектен тыс сенім артпау керек. STADA жаңа ақпараттың пайда болуына, болашақ оқиғаларға немесе өзге де жағдайларға байланысты мұндай мәлімдемелерді жаңарту міндеттемесін өзіне алмайды. Болжамдардың, мақсатты көрсеткіштер мен бағалаулардың орындалуына немесе негізділігіне қатысты ешқандай кепілдік берілмейді.",
+          "Осы хабарлама тек ақпараттық сипатқа ие және қандайда болсын юрисдикциядағы бағалы қағаздар эмиссиясының проспектісі, бұл оларды сату туралы ұсыныс немесе сатып алуға шақыру емес. STADA сайтының және кез келген байланысты сайттардың мазмұны осы хабарламаның бөлігі емес. Осы хабарламаны тарату заңнамамен шектелуі мүмкін;",
+          "Оған қол жеткізген тұлғалар мұндай шектеулермен өз бетінше танысуға және оларды сақтауға міндетті. Оларды сақтамау бағалы қағаздар туралы заңнаманы бұзу ретінде қарастырылуы мүмкін. Осы хабарлама аясында ақшалай қаражат немесе өзге де активтер сұралмайды және қабылданбайды.",
+          "Осы хабарламада 2014 жылғы 16 сәуірдегі № 596/2014 Регламентке (ЕО) сәйкес жария етілгенге дейін инсайдерлік деп саналуы мүмкін ақпарат берілген.",
+          "CapVest туралы",
+          "CapVest Partners LLP — өз бизнесін трансформациялау үшін негізгі тауарлар мен қызметтерді ұсынатын амбициялық компаниялармен ынтымақтасатын private equity саласындағы жетекші халықаралық инвестициялық компания. Компания белсенді және ұзақ мерзімді инвестициялайды, менеджментпен тығыз өзара әрекеттесу және органикалық өсу және M&A мәмілелері арқылы портфельдік компанияларды масштабтау арқылы тұрақты нәтижелерді көрсетеді.",
+          "Негізгі салалар — денсаулық сақтау, күнделікті тұтыну тауарлары және өмірлік маңызды қызметтер.",
+          "STADA Arzneimittel AG туралы",
+          "STADA Arzneimittel AG — штаб-пәтері Бад-Фильбельде (Германия) орналасқан, тұтынушылық денсаулық сақтау, дженериктер және мамандандырылған препараттар — үш бағытты стратегияны жүзеге асыратын фармацевтикалық компания. Компанияның өнімдері әлемнің 100-ден астам елінде ұсынылған. 2025 қаржы жылының қорытындысы бойынша топтың түсімі 4 296 млн еуроны, ал түзетілген EBITDA көрсеткіші (тұрақты валютада) — 960 млн еуроны құрады. 2025 жылғы 31 желтоқсандағы жағдай бойынша компанияда бүкіл әлем бойынша 11 670 қызметкер жұмыс істеді."
+        ],
+        "headingIndices": [
+          6,
+          13,
+          16
+        ]
+      },
+      "kg": {
+        "title": "CapVest STADA’нын контролдук акциялар пакетин сатып алууну аяктады",
+        "dateLabel": "2026-жылдын 31-марты",
+        "excerpt": "Бад-Фильбель, Германия / Лондон, Улуу Британия — 2026-жылдын 31-марты — CapVest Partners LLP («CapVest») инвестициялык компаниясы саламаттык сактоо жана фармацевтика тармагындагы алдыңкы эл аралык компаниялардын бири болгон STADA Arzneimittel AG («STADA» же «Компания») акцияларынын контролдук пакетин сатып алуу боюнча келишим аяктаганын жарыялады. STADA керектөөчүлүк саламаттык сактоо, дженериктер жана адистештирилген дары-дармек каражаттарына адистешкен.",
+        "paragraphs": [
+          "Бад-Фильбель, Германия / Лондон, Улуу Британия — 2026-жылдын 31-марты — CapVest Partners LLP («CapVest») инвестициялык компаниясы саламаттык сактоо жана фармацевтика тармагындагы алдыңкы эл аралык компаниялардын бири болгон STADA Arzneimittel AG («STADA» же «Компания») акцияларынын контролдук пакетин сатып алуу боюнча келишим аяктаганын жарыялады. STADA керектөөчүлүк саламаттык сактоо, дженериктер жана адистештирилген дары-дармек каражаттарына адистешкен.",
+          "2025-жылдын күчтүү жыйынтыктарына таянуу менен, келишимдин аякташы CapVest жана STADA командаларына компаниянын глобалдык өсүшүн тездетүү боюнча амбициялуу пландарды биргелешип ишке ашырууга, ошондой эле капиталды органикалык өсүштү өнүктүрүүгө жана жаңы стратегиялык сатып алууларга багыттоого мүмкүндүк берет.",
+          "Бүгүнкү күндө бүткүл дүйнө жүзү боюнча STADA компаниясында 12 000ге жакын кызматкер эмгектенет. Компания керектөөчүлүк саламаттык сактоо, дженериктер жана адистештирилген препараттарга стратегиялык басым жасаган, саламаттык сактоо тармагындагы алдыңкы диверсификацияланган глобалдык платформалардын бири болуп саналат. Жакында эле STADA финансылык жыл үчүн рекорддук кирешени — 4,3 млрд евро (мурунку жылга салыштырмалуу 6% өсүш) жана корректировкаланган EBITDA'нын тарыхый максимумун — 961 млн еврону түзгөнүн билдирди.",
+          "STADA компаниясынын башкы директору Питер Гольдшмидт мындай деп белгиледи:\n«Биз келишимдин аяктаганына кубанычтабыз. CapVest компаниясынын саламаттык сактоо тармагындагы терең экспертизасы, ошондой эле биздин өсүш боюнча амбициялуу пландарыбызды колдоого болгон берилгендиги стратегиялык милдеттерибизди ишке ашыруу жолунда маанилүү артыкчылык болот».",
+          "CapVest өнөктөшү Мэтт Фарджи мындай деп кошумчалады:\n«Биз келишимди аяктоонун үстүндө иштеп жаткан учурда, STADA командасы негизги аймактарда жана багыттарда — керектөөчүлүк саламаттык сактоо, дженериктер, биосимилярлар жана инновациялык препараттар тармагында ишенимдүү өсүштү көрсөтүүнү улантты. Биргелешкен амбициялуу пландарыбызды ишке ашыруунун үстүндө эми жигердүү түрдө бирге иштеше алганыбызга кубанычтабыз».",
+          "Келишим бардык зарыл болгон жөнгө салуучу уруксаттарды алгандан кийин жана жабуунун стандарттык шарттары аткарылгандан кийин аяктады.",
+          "Маанилүү маалымат",
+          "Бул билдирүүдө камтылган маалымат кандайдыр бир мезгил үчүн пайданын болжолу же баасы болуп саналбайт жана андай катары каралбашы керек, ошондой эле STADA компаниясынын келечектеги ишмердүүлүгүнүн жыйынтыктарын баалоо үчүн багыт катары колдонулбашы зарыл. Бул билдирүү олуттуу тобокелдиктерге жана белгисиздиктерге байланышкан болжолдоо мүнөзүндөгү билдирүүлөрдү камтышы мүмкүн. Чыныгы фактылардан тышкары бардык билдирүүлөр, анын ичинде STADA компаниясынын келечектеги финансылык абалы, тобокелдиктер жана белгисиздиктер, стратегия, капиталдык чыгымдар, болжолдонгон чыгашалар, пландар жана максаттар жөнүндөгү билдирүүлөр, бирок алар менен эле чектелбестен, болжолдоо мүнөзүндөгү билдирүүлөр катары каралышы мүмкүн.",
+          "«Эсептөө», «күтүү», «болжолдоо», «мүмкүн», «пландаштыруу», «ниеттенүү», «болот», «керек», «баалоо», «тобокелдик» сыяктуу сөздөр жана ушул сыяктуу туюндурмалар мындай билдирүүлөрдү белгилөө үчүн колдонулат. Өзүнүн табияты боюнча, алар белгилүү жана белгисиз тобокелдиктерге жана белгисиздиктерге байланыштуу, анткени алар келечектеги окуяларга тиешелүү жана болушу да, болбой калышы да мүмкүн болгон жагдайлардан көз каранды.",
+          "Болжолдоо мүнөзүндөгү билдирүүлөр келечектеги жыйынтыктардын кепилдиги болуп саналбайт жана аларга ашыкча ишенүүгө болбойт. STADA жаңы маалыматтын пайда болушуна, келечектеги окуяларга же башка жагдайларга байланыштуу мындай билдирүүлөрдү жаңыртуу боюнча милдеттенмелерди өзүнө албайт. Болжолдордун, максаттуу көрсөткүчтөрдүн жана баалоолордун ишке ашышына же негиздүүлүгүнө карата эч кандай кепилдик берилбейт.",
+          "Бул билдирүү өзгөчө маалымдоо мүнөзүнө ээ жана кайсы бир юрисдикцияда баалуу кагаздардын эмиссиясынын проспектиси, сатуу сунушу же сатып алууга чакыруу болуп саналбайт. STADA сайтынын жана ага байланыштуу кандайдыр бир сайттардын мазмуну бул билдирүүнүн бөлүгү болуп саналбайт. Бул билдирүүнү жайылтуу мыйзам тарабынан чектелиши мүмкүн; ага кирүү мүмкүнчүлүгүн алган адамдар мындай чектөөлөр менен өз алдынча таанышууга жана аларды сактоого милдеттүү. Мындай чектөөлөрдү сактабоо баалуу кагаздар жөнүндөгү мыйзамдарды бузуу катары каралышы мүмкүн. Бул билдирүүнүн алкагында акча каражаттары же башка активдер суралбайт жана кабыл алынбайт.",
+          "Бул билдирүүдө ачыкталганга чейин 2014-жылдын 16-апрелиндеги № 596/2014 Регламентине (ЕБ) ылайык инсайдердик маалымат катары каралышы мүмкүн болгон маалыматтар камтылган.",
+          "CapVest жөнүндө",
+          "CapVest Partners LLP — трансформациялоо үчүн негизги товарларды жана кызматтарды көрсөткөн амбициялуу компаниялар менен кызматташкан жеке капитал чөйрөсүндөгү алдыңкы эл аралык инвестициялык компания. Компания менеджмент менен тыгыз өз ара аракеттенүү жана портфелдик компанияларды органикалык өсүш жана M&A келишимдери аркылуу масштабдоо аркылуу туруктуу натыйжаларды көрсөтүү менен жигердүү жана узак мөөнөттүү инвестиция салат. Негизги тармактары — саламаттык сактоо, күнүмдүк керектелүүчү товарлар жана турмуштук маанилүү кызматтар.",
+          "STADA Arzneimittel AG жөнүндө",
+          "STADA Arzneimittel AG — штаб-квартирасы Бад-Фильбельде (Германия) жайгашкан фармацевтикалык компания, ал үч багыттуу стратегияны ишке ашырат: керектөөчүлүк саламаттык сактоо, дженериктер жана адистештирилген препараттар. Компаниянын продукциясы дүйнөнүн 100дөн ашык өлкөсүндө сунушталган.",
+          "2025-финансылык жылдын жыйынтыгы боюнча топтун кирешеси 4 296 млн еврону, ал эми корректировкаланган EBITDA (туруктуу валютада) — 960 млн еврону түздү. 2025-жылдын 31-декабрына карата компанияда бүткүл дүйнө жүзү боюнча 11 670 кызматкер иштеген."
+        ],
+        "headingIndices": [
+          6,
+          12,
+          14
+        ]
+      },
+      "az": {
+        "title": "CapVest şirkəti STADA-nın nəzarət səhm paketinin əldə edilməsini tamamladı",
+        "dateLabel": "31 mart 2026-cı il",
+        "excerpt": "Bad Vilbel, Almaniya / London, Böyük Britaniya — 31 mart 2026-cı il — “CapVest Partners LLP” (“CapVest”) investisiya şirkəti istehlakçı sağlamlığı, ceneriklər və xüsusi dərman preparatları üzrə ixtisaslaşmış aparıcı beynəlxalq sağlamlıq və əczaçılıq şirkəti olan “STADA Arzneimittel AG” şirkətinin (“STADA” və ya “Şirkət”) nəzarət səhm paketinin əldə edilməsi üzrə razılaşmanın əldə olunmasını elan etdi.",
+        "paragraphs": [
+          "Bad Vilbel, Almaniya / London, Böyük Britaniya — 31 mart 2026-cı il — “CapVest Partners LLP” (“CapVest”) investisiya şirkəti istehlakçı sağlamlığı, ceneriklər və xüsusi dərman preparatları üzrə ixtisaslaşmış aparıcı beynəlxalq sağlamlıq və əczaçılıq şirkəti olan “STADA Arzneimittel AG” şirkətinin (“STADA” və ya “Şirkət”) nəzarət səhm paketinin əldə edilməsi üzrə razılaşmanın əldə olunmasını elan etdi.",
+          "2025-ci ilin təsirli nəticələrinə əsaslanaraq, razılaşmanın əldə olunması CapVest və STADA şirkətlərinin komandalarına şirkətin qlobal miqyasda inkişafını sürətləndirmək üçün iddialı planları birgə həyata keçirməyə, eləcə də kapitalı üzvi istiqamətdə böyümənin inkişafına və yeni strateji satınalmalara yönəltməyə şərait yaradacaqdır.",
+          "Hazırda STADA şirkətində dünyanın müxtəlif ölkələrindən olan təxminən 12000 əməkdaş çalışır. Şirkət istehlakçı sağlamlığı, ceneriklər və xüsusi preparatlara strateji olaraq istiqamətlənmiş səhiyyə sahəsində aparıcı diversifikasiya olunmuş qlobal platformalardan biridir. Bu yaxınlarda STADA şirkəti maliyyə ili üçün 4,3 milyard avro məbləğində rekord gəlir (əvvəlki illə müqayisədə 6% artım) və 961 milyon avroya bərabər düzəliş edilmiş EBITDA göstəricisinin tarixi maksimumunu elan etmişdir.",
+          "STADA şirkətinin Baş icraçı direktoru Peter Qoldşmidt qeyd etmişdir:",
+          "“Biz razılaşmanın əldə olunmasına şadıq. CapVest şirkətinin səhiyyə sahəsindəki dərin ekspertizası, eləcə də onların bizim iddialı inkişaf planlarımızı dəstəkləməyə sadiqliyi strateji hədəflərimizin həyata keçirilməsi istiqamətində mühüm üstünlüyümüzə çevriləcəkdir”.",
+          "CapVest şirkətinin tərəfdaşı Mettyu Farji əlavə olaraq qeyd etmişdir:",
+          "“Razılaşmanı əldə etdiyimiz müddətdə STADA şirkətinin komandası əsas regionlarda, eləcə də istehlakçı sağlamlığı, ceneriklər, bioanaloqlar və innovativ preparatlar kimi istiqamətlərdə inamlı inkişaf nümayiş etdirməyə davam etmişdir. Artıq müştərək iddialı planlarımızın həyata keçirilməsi üzərində fəal şəkildə birgə çalışa biləcəyimizə şadıq”.",
+          "Razılaşma bütün zəruri tənzimləyici icazələr alındıqdan və onun əldə olunması üçün standart şərtlər yerinə yetirildikdən sonra tamamlanmışdır.",
+          "Vacib məlumat",
+          "Hazırkı məlumatlandırmadakı informasiya hər hansı dövr üçün mənfəətin proqnozlaşdırılması və ya qiymətləndirilməsi deyildir və bu cür hesab edilməməli, həmçinin STADA şirkətinin gələcək fəaliyyət nəticələrinin qiymətləndirilməsi üçün istinad kimi istifadə olunmamalıdır. Hazırkı məlumatlandırma əhəmiyyətli risklərlə və qeyri-müəyyənliklərlə bağlı proqnoz xarakterli bəyanatlardan ibarət ola bilər. Faktiki məlumatlar istisna olmaqla, STADA şirkətinin gələcək maliyyə vəziyyəti, riskləri və qeyri-müəyyənlikləri, strategiyası, kapital xərcləri, proqnozlaşdırılan xərcləri, şirkətin planları və məqsədlər haqqındakı bütün bəyanatlar, lakin bunlarla məhdudlaşmayaraq, proqnoz xarakterli bəyanatlar kimi hesab edilə bilər.",
+          "Bu cür bəyanatları ifadə etmək üçün “hesab etmək”, “gözləmək”, “ehtimal etmək”, “ola bilər”, “planlaşdırmaq”, “niyyətində olmaq”, “olacaqdır”, “olmalıdır”, “qiymətləndirmək”, “risk” və buna bənzər ifadələrdən istifadə olunur. Bu cür ifadələr gələcək hadisələrə aid olmaları, eləcə də baş verə biləcək və ya verməyəcək hallardan asılı olduqları üçün öz mahiyyəti etibarilə məlum və naməlum risklər və qeyri-müəyyənliklərlə bağlıdır.",
+          "Proqnozlaşdırılan bəyanatlar gələcək nəticələrin zəmanəti deyildir və onlara həddindən artıq etibar edilməməlidir. STADA şirkəti yeni məlumatların ortaya çıxması, gələcək hadisələr və ya digər hallar ilə əlaqədar olaraq bu cür bəyanatları yeniləmək öhdəliyini öz üzərinə götürmür. Proqnozların, hədəf göstəricilərinin və qiymətləndirmələrin əldə olunmasına və ya əsaslılığına münasibətdə heç bir zəmanət verilmir.",
+          "Hazırkı məlumatlandırma müstəsna olaraq məlumat xarakteri daşıyır və hər hansı yurisdiksiya çərçivəsində emissiya prospekti, qiymətli kağızların satışına dair təklif və ya onların satın alınması üçün dəvət deyildir. STADA şirkətinin internet saytının və onunla əlaqəli istənilən saytların məzmunu bu məlumatlandırmanın bir hissəsi deyildir. Bu məlumatlandırmanın açıqlanması qanunvericiliklə məhdudlaşdırıla bilər; bu məlumatlandırmaya giriş əldə etmiş şəxslər bu cür məhdudiyyətlərlə müstəqil şəkildə tanış olmalı və onlara riayət etməlidirlər. Onlara riayət olunmaması qiymətli kağızlar haqqında qanunvericiliyin tələblərinin pozulması kimi qiymətləndirilə bilər. Hazırkı məlumatlandırma çərçivəsindəki pul vəsaitləri və ya digər aktivlər tələb edilmir və qəbul olunmur.",
+          "Hazırkı məlumatlandırma açıqlanana qədər 16 aprel 2014-cü il tarixli (Aİ) 596/2014 №-li Reqlamentinə uyğun olaraq insayder informasiyası hesab edilə bilən məlumatlardan ibarətdir.",
+          "“CapVest” haqqında",
+          "“CapVest Partners LLP” — bizneslərin transformasiyası üçün əsas mal və xidmətlər təqdim etməkdə olan iddialı şirkətlərlə əməkdaşlıq edən və “private equity” sahəsində aparıcı yer tutan beynəlxalq investisiya şirkətidir. Şirkət rəhbərliklə sıx qarşılıqlı əlaqə, eləcə də üzvi böyümə və M&A razılaşmaları vasitəsilə portfel şirkətlərinin genişləndirilməsi hesabına dayanıqlı nəticələr nümayiş etdirərək aktiv və uzunmüddətli investisiyalar yatırmaqdadır. Əsas sahələri səhiyyə, gündəlik tələbat malları və həyati əhəmiyyətli xidmətlərdir.",
+          "“STADA Arzneimittel AG” haqqında",
+          "“STADA Arzneimittel AG” — baş qərargahı Bad Vilbeldə (Almaniya) yerləşən, eləcə də istehlakçı sağlamlığı, ceneriklər və xüsusi preparatlar) kimi üç istiqamətli strategiyanı həyata keçirən əczaçılıq şirkətidir. Şirkətin məhsulları dünyanın 100-dən çox ölkəsində təqdim olunur.",
+          "2025-ci maliyyə ilinin yekunlarına görə qrupun gəliri 4296 milyon avro, düzəliş edilmiş EBITDA isə (sabit valyutada) 960 milyon avro təşkil etmişdir. 31 dekabr 2025-ci il tarixinə şirkətdə dünyanın müxtəlif ölkələrindən olan 11670 əməkdaş çalışmışdır."
+        ],
+        "headingIndices": [
+          8,
+          14,
+          16
+        ]
+      },
+      "hy": {
+        "title": "CapVest-ը ավարտել է STADA-ի բաժնետոմսերի վերահսկիչ փաթեթի ձեռքբերումը",
+        "dateLabel": "31 մարտի 2026 թ.",
+        "excerpt": "Բադ-Ֆիլբել, Գերմանիա / Լոնդոն, Մեծ Բրիտանիա — 31 մարտի 2026 թվական — CapVest Partners LLP («CapVest») ներդրումային ընկերությունը հայտարարել է STADA Arzneimittel AG-ի («STADA» կամ «Ընկերություն»)՝ առողջապահության և դեղագործության ոլորտի և առաջատար միջազգային ընկերություններից մեկի, որը մասնագիտացած է սպառողական առողջապահության, ջեներիկների և մասնագիտացված դեղամիջոցների ոլորտներում, բաժնետոմսերի վերահսկիչ փաթեթի ձեռքբերման գործարքի ավարտի մասին։",
+        "paragraphs": [
+          "Բադ-Ֆիլբել, Գերմանիա / Լոնդոն, Մեծ Բրիտանիա — 31 մարտի 2026 թվական — CapVest Partners LLP («CapVest») ներդրումային ընկերությունը հայտարարել է STADA Arzneimittel AG-ի («STADA» կամ «Ընկերություն»)՝ առողջապահության և դեղագործության ոլորտի և առաջատար միջազգային ընկերություններից մեկի, որը մասնագիտացած է սպառողական առողջապահության, ջեներիկների և մասնագիտացված դեղամիջոցների ոլորտներում, բաժնետոմսերի վերահսկիչ փաթեթի ձեռքբերման գործարքի ավարտի մասին։",
+          "Հիմնվելով 2025 թվականի ուժեղ արդյունքների վրա՝ գործարքի ավարտը թույլ կտա CapVest-ի և STADA-ի թիմերին համատեղ իրականացնել ընկերության գլոբալ աճի արագացման հավակնոտ ծրագրերը, ինչպես նաև կապիտալն ուղղել օրգանական աճի զարգացմանը և նոր ռազմավարական ձեռքբերումներին:",
+          "Ներկայումս STADA-ում աշխատում է շուրջ 12,000 աշխատակից ամբողջ աշխարհում: Ընկերությունն իրենից ներկայացնում է առողջապահության ոլորտի առաջատար դիվերսիֆիկացված գլոբալ հարթակներից մեկը, որի ռազմավարական ուղղվածությունն է սպառողական առողջապահությունը, ջեներիկները և մասնագիտացված դեղամիջոցները: Վերջերս STADA-ն հայտնել է 4,3 միլիարդ եվրոյի չափով ռեկորդային հասույթի (նախորդ տարվա համեմատ 6% աճ) և ճշգրտված EBITDA-ի պատմական առավելագույն ցուցանիշի՝ ֆինանսական տարվա համար 961 միլիոն եվրոյի մասին:",
+          "STADA-ի գլխավոր տնօրեն Փիթեր Գոլդշմիդտը նշել է.",
+          "«Մենք ուրախ ենք գործարքի ավարտի համար: Առողջապահության ոլորտում CapVest-ի խորը փորձառությունը, ինչպես նաև մեր աճի հավակնոտ ծրագրերին աջակցելու նրանց հանձնառությունը կարևոր առավելություն կդառնան մեր ռազմավարական խնդիրների իրականացման ճանապարհին»:",
+          "CapVest-ի գործընկեր Մեթ Ֆարջին հավելել է.",
+          "«Մինչ մենք աշխատում էինք գործարքի ավարտի ուղղությամբ, STADA-ի թիմը շարունակում էր վստահ աճ ցուցադրել հիմնական տարածաշրջաններում և ուղղություններում՝ սպառողական առողջապահության, ջեներիկների, բիոսիմիլյարների և նորարարական դեղամիջոցների ոլորտներում: Մենք ուրախ ենք, որ այժմ կարող ենք ակտիվորեն համատեղ աշխատել մեր համատեղ հավակնոտ ծրագրերի իրականացման շուրջ»:",
+          "Գործարքն ավարտվել է բոլոր անհրաժեշտ կարգավորող թույլտվությունները ստանալուց և ստանդարտ փակման պայմանները կատարելուց հետո:",
+          "Կարևոր տեղեկություն",
+          "Սույն հաղորդագրության մեջ պարունակվող տեղեկատվությունը չի հանդիսանում և չպետք է դիտարկվի որպես շահույթի կանխատեսում կամ գնահատական որևէ ժամանակաշրջանի համար, ինչպես նաև չպետք է օգտագործվի որպես ուղեցույց STADA-ի ապագա գործունեության արդյունքների գնահատման համար: Սույն հաղորդագրությունը կարող է պարունակել կանխատեսող բնույթի հայտարարություններ, որոնք կապված են զգալի ռիսկերի և անորոշությունների հետ: Բոլոր հայտարարությունները, բացառությամբ փաստացի տվյալների, ներառյալ, ի թիվս այլոց, հայտարարությունները STADA-ի ապագա ֆինանսական դրության, ռիսկերի և անորոշությունների, ռազմավարության, կապիտալ ծախսերի, կանխատեսվող ծախսերի, ընկերության ծրագրերի և նպատակների վերաբերյալ, կարող են համարվել կանխատեսող բնույթի հայտարարություններ:",
+          "«Համարել», «ակնկալել», «ենթադրել», «կարող է», «ծրագրել», «մտադիր լինել», «կլինի», «պետք է», «գնահատել», «ռիսկ» և նմանատիպ այլ արտահայտություններն օգտագործվում են նման հայտարարությունները մատնանշելու համար: Իրենց բնույթով դրանք կապված են հայտնի և անհայտ ռիսկերի ու անորոշությունների հետ, քանի որ վերաբերում են ապագա իրադարձություններին և կախված են հանգամանքներից, որոնք կարող են տեղի ունենալ կամ չունենալ:",
+          "Կանխատեսող բնույթի հայտարարությունները չեն հանդիսանում ապագա արդյունքների երաշխիք, և դրանց վրա չպետք է չափազանց հույս դնել: STADA-ն պարտավորություն չի ստանձնում թարմացնել նման հայտարարությունները նոր տեղեկատվության ի հայտ գալու, ապագա իրադարձությունների կամ այլ հանգամանքների հետ կապված: Ոչ մի երաշխիք չի տրվում կանխատեսումների, թիրախային ցուցանիշների և գնահատականների իրականացման կամ հիմնավորվածության վերաբերյալ:",
+          "Սույն հաղորդագրությունը կրում է բացառապես տեղեկատվական բնույթ և չի հանդիսանում արժեթղթերի թողարկման ազդագիր, վաճառքի առաջարկ կամ որևէ իրավասության մեջ արժեթղթեր գնելու հրավեր: STADA-ի կայքի և ցանկացած կապակցված կայքերի բովանդակությունը սույն հաղորդագրության մաս չի կազմում:",
+          "Սույն հաղորդագրության տարածումը կարող է սահմանափակված լինել օրենսդրությամբ. դրա նկատամամբ մուտքի հասանելիություն ստացած անձինք պարտավոր են ինքնուրույն ծանոթանալ նման սահմանափակումներին և պահպանել դրանք: Չպահպանումը կարող է դիտարկվել որպես արժեթղթերի մասին օրենսդրության խախտում: Սույն հաղորդագրության շրջանակներում դրամական միջոցներ կամ այլ ակտիվներ չեն պահանջվում և չեն ընդունվում:",
+          "Սույն հաղորդագրությունը պարունակում է տեղեկատվություն, որը մինչև դրա բացահայտումը կարող էր համարվել ինսայդերական՝ համաձայն 2014 թվականի ապրիլի 16-ի (ԵՄ) № 596/2014 Կանոնակարգի:",
+          "CapVest-ի մասին",
+          "CapVest Partners LLP-ն մասնավոր կապիտալի (private equity) ոլորտի առաջատար միջազգային ներդրումային ընկերություն է, որը համագործակցում է հիմնական ապրանքներ և ծառայություններ մատուցող հավակնոտ ընկերությունների հետ՝ նրանց բիզնեսի վերափոխման նպատակով:",
+          "Ընկերությունն իրականացնում է ակտիվ և երկարաժամկետ ներդրումներ՝ ցուցադրելով կայուն արդյունքներ ղեկավարության հետ սերտ փոխգործակցության, ինչպես նաև օրգանական աճի և M&A (միաձուլումների և կլանումների) գործարքների միջոցով պորտֆելային ընկերությունների մասշտաբավորման շնորհիվ: Հիմնական ոլորտներն են՝ առողջապահությունը, լայն սպառման ապրանքները և կենսականորեն կարևոր ծառայությունները:",
+          "STADA Arzneimittel AG-ի մասին",
+          "«STADA Arzneimittel AG»-ն դեղագործական ընկերություն է, որի գլխամասային գրասենյակը գտնվում է Բադ Ֆիլբելում (Գերմանիա): Այն իրականացնում է երեք ուղղություններով ռազմավարություն՝ սպառողական առողջապահություն, ջեներիկներ և մասնագիտացված դեղամիջոցներ: Ընկերության արտադրանքը ներկայացված է աշխարհի ավելի քան 100 երկրներում:",
+          "2025 ֆինանսական տարվա արդյունքներով խմբի հասույթը կազմել է 4,296 միլիոն եվրո, իսկ ճշգրտված EBITDA-ն (հաստատուն արժույթով)՝ 960 միլիոն եվրո: 2025 թվականի դեկտեմբերի 31-ի դրությամբ ընկերությունն ամբողջ աշխարհում ունեցել է 11,670 աշխատակից:"
+        ],
+        "headingIndices": [
+          8,
+          15,
+          18
+        ]
+      },
+      "ro": {
+        "title": "CapVest a finalizat achiziția pachetului majoritar de acțiuni al STADA",
+        "dateLabel": "31 martie 2026",
+        "excerpt": "Bad Vilbel, Germania / Londra, Marea Britanie — 31 martie 2026 — compania de investiții CapVest Partners LLP (“CapVest”) a anunțat finalizarea tranzacției de achiziție a pachetului majoritar de acțiuni al STADA Arzneimittel AG (“STADA” sau “Compania”) — una dintre companiile farmaceutice internaționale de top din domeniul sănătății, specializate în produse pentru sănătatea consumatorilor, medicamente generice și tratamente specializate.",
+        "paragraphs": [
+          "Bad Vilbel, Germania / Londra, Marea Britanie — 31 martie 2026 — compania de investiții CapVest Partners LLP (“CapVest”) a anunțat finalizarea tranzacției de achiziție a pachetului majoritar de acțiuni al STADA Arzneimittel AG (“STADA” sau “Compania”) — una dintre companiile farmaceutice internaționale de top din domeniul sănătății, specializate în produse pentru sănătatea consumatorilor, medicamente generice și tratamente specializate.",
+          "Pe baza rezultatelor solide din 2025, finalizarea tranzacției va permite echipelor CapVest și STADA să implementeze împreună planurile ambițioase de accelerare a creșterii globale a companiei, precum și să aloce capital pentru dezvoltarea creșterii organice și noi achiziții strategice.",
+          "În prezent, STADA numără aproximativ 12 000 de angajați în întreaga lume. Compania reprezintă una dintre principalele platforme globale diversificate din domeniul sănătății, cu un accent strategic pe sănătatea consumatorilor, medicamente generice și produse farmaceutice specializate. Recent, STADA a raportat venituri record de 4,3 miliarde de euro (o creștere de 6% față de anul precedent) și un nivel record al EBITDA ajustat de 961 milioane de euro pentru exercițiul financiar.",
+          "Peter Goldschmidt, Director General (CEO) al STADA, a declarat:\n“Suntem încântați de finalizarea tranzacției. Expertiza aprofundată a CapVest în domeniul sănătății, precum și angajamentul față de susținerea planurilor noastre ambițioase de creștere vor reprezenta un avantaj important pe parcursul realizării obiectivelor noastre strategice.”",
+          "Matt Fargie, Partener CapVest, a adăugat:\n“În timp ce lucram la finalizarea tranzacției, echipa STADA a continuat să demonstreze o creștere susținută în regiunile și segmentele-cheie — sănătatea consumatorilor, medicamente generice, biosimilare și medicamente inovatoare. Suntem bucuroși că acum putem lucra activ împreună la realizarea planurilor noastre ambițioase comune.”",
+          "Tranzacția a fost finalizată după obținerea tuturor autorizațiilor de reglementare necesare și îndeplinirea condițiilor standard de finalizare.",
+          "Informații importante",
+          "Informațiile cuprinse în prezentul comunicat nu constituie și nu trebuie interpretate ca o prognoză sau evaluare a profitului pentru nicio perioadă și nici nu trebuie utilizate ca referință pentru estimarea rezultatelor viitoare ale STADA. Prezentul comunicat poate conține declarații cu caracter prospectiv, asociate unor riscuri și incertitudini semnificative. Toate declarațiile care nu se referă la fapte, inclusiv, fără a se limita la cele privind poziția financiară viitoare a STADA, riscurile și incertitudinile, strategia, cheltuielile de capital, costurile estimate, precum și planurile și obiectivele companiei, pot fi considerate declarații cu privire la perspectivele viitoare.",
+          "Cuvinte precum “a considera”, “a anticipa”, “a presupune”, “poate”, “a planifica”, “a intenționa”, “va”, “ar trebui”, “a estima”, “risc” și expresii similare sunt utilizate pentru a indica astfel de declarații. Prin natura lor, acestea implică riscuri și incertitudini, atât cunoscute, cât și necunoscute, întrucât se referă la evenimente viitoare și depind de circumstanțe care pot să apară sau nu.",
+          "Declarațiile cu caracter prospectiv nu reprezintă o garanție a rezultatelor viitoare și nu trebuie să li se acorde o încredere excesivă. STADA nu își asumă obligația de a actualiza astfel de declarații în legătură cu apariția unor noi informații, evenimente viitoare sau alte circumstanțe. Nu se oferă nicio garanție cu privire la realizarea sau temeinicia prognozelor, a obiectivelor și a estimărilor.",
+          "Prezentul comunicat are caracter exclusiv informativ și nu constituie un prospect de emisiune, o ofertă de vânzare sau o invitație de achiziționare a valorilor mobiliare în nicio jurisdicție. Conținutul site-ului STADA și al oricăror site-uri conexe nu face parte din prezentul comunicat. Distribuirea acestui comunicat poate fi restricționată de legislația în vigoare; persoanele care au acces la acesta sunt obligate să se informeze cu privire la astfel de restricții și să le respecte. Nerespectarea acestora poate fi considerată o încălcare a legislației privind valorile mobiliare. În cadrul prezentului comunicat nu se solicită și nu se acceptă fonduri bănești sau alte active.",
+          "Prezentul comunicat conține informații care, anterior divulgării, puteau fi considerate informații privilegiate în conformitate cu Regulamentul (UE) nr. 596/2014 din 16 aprilie 2014.",
+          "Despre CapVest",
+          "CapVest Partners LLP este o companie de investiții internațională de top în domeniul private equity, care colaborează cu companii ambițioase ce furnizează bunuri și servicii esențiale în vederea transformării afacerilor acestora. Compania investește activ și pe termen lung, obținând rezultate sustenabile prin colaborarea strânsă cu echipele de management și dezvoltarea companiilor din portofoliu prin creștere organică și tranzacții de fuziuni și achiziții. Principalele sectoare de activitate sunt sănătatea, bunurile de larg consum și serviciile esențiale.",
+          "Despre STADA Arzneimittel AG",
+          "STADA Arzneimittel AG este o companie farmaceutică cu sediul în Bad Vilbel, Germania, care își desfășoară activitatea pe baza unei strategii axate pe trei direcții: sănătatea consumatorilor, medicamentele generice și medicamentele specializate. La nivel mondial, produsele companiei sunt prezente în peste 100 de țări.",
+          "Conform exercițiului financiar pentru anul 2025, veniturile grupului au fost de 4 296 milioane de euro, iar EBITDA ajustat (la curs valutar constant) a fost de 960 de milioane de euro. La 31 decembrie 2025, compania avea 11 670 de angajați în întreaga lume."
+        ],
+        "headingIndices": [
+          6,
+          12,
+          14
+        ]
+      },
+      "uz": {
+        "title": "CapVest STADA kompaniyasining nazorat aksiyalar paketini sotib olishni yakunladi",
+        "dateLabel": "2026-yil 31-mart",
+        "excerpt": "Bad-Filbel, Germaniya / London, Buyuk Britaniya — 2026-yil 31-mart — CapVest Partners LLP (’’CapVest’’) investitsiya kompaniyasi iste’mol sog‘liqni saqlash, djerneriklar va ixtisoslashtirilgan dori vositalariga ixtisoslashgan sog‘liqni saqlash hamda farmatsevtika sohasidagi yetakchi xalqaro kompaniyalardan biri bo‘lgan STADA Arzneimittel AG (’’STADA’’ yoki ’’Kompaniya’’) nazorat aksiyalar paketini sotib olish bo‘yicha bitim yakunlanganini e’lon qildi.",
+        "paragraphs": [
+          "Bad-Filbel, Germaniya / London, Buyuk Britaniya — 2026-yil 31-mart — CapVest Partners LLP (’’CapVest’’) investitsiya kompaniyasi iste’mol sog‘liqni saqlash, djerneriklar va ixtisoslashtirilgan dori vositalariga ixtisoslashgan sog‘liqni saqlash hamda farmatsevtika sohasidagi yetakchi xalqaro kompaniyalardan biri bo‘lgan STADA Arzneimittel AG (’’STADA’’ yoki ’’Kompaniya’’) nazorat aksiyalar paketini sotib olish bo‘yicha bitim yakunlanganini e’lon qildi.",
+          "2025-yilning yuqori natijalariga tayanib, bitimning yakunlanishi CapVest va STADA jamoalariga kompaniyaning global o‘sishini jadallashtirish bo‘yicha ulkan rejalarni birgalikda amalga oshirish, shuningdek, kapitalni organik o‘sishni rivojlantirish va yangi strategik xaridlar (sotib olishlar)ga yo‘naltirish imkonini beradi.",
+          "Bugungi kunda STADA butun dunyo bo‘ylab 12 000 ga yaqin xodimga ega. Kompaniya iste’mol sog‘liqni saqlash, djeneriklar va ixtisoslashtirilgan dori vositalariga strategik e’tibor qaratgan holda, sog‘liqni saqlash sohasidagi yetakchi diversifikatsiyalangan global platformalardan biri hisoblanadi. Yaqinda STADA moliyaviy yil yakunlari bo‘yicha 4,3 mlrd yevro miqdorida rekord darajadagi tushum (o‘tgan yilga nisbatan 6% o‘sish) va tuzatilgan EBITDA bo‘yicha 961 mln yevrolik tarixiy maksimal ko‘rsatkich haqida xabar berdi.",
+          "STADA bosh ijrochi direktori Piter Goldshmidt shunday ta’kidladi:\n’’Biz bitim yakunlanganidan mamnunmiz. CapVest’ning sog‘liqni saqlash sohasidagi chuqur ekspertizasi hamda bizning ulkan o‘sish rejalarimizni qo‘llab-quvvatlashga sodiqligi strategik vazifalarimizni amalga oshirish yo‘lida muhim ustunlikka aylanadi’’.",
+          "CapVest hamkori Mett Fardji shunday qo‘shimcha qildi:\n’’Biz bitimni yakunlash ustida ishlayotgan vaqtimizda, STADA jamoasi asosiy hududlar va yo‘nalishlar — iste’mol sog‘liqni saqlash, djeneriklar, biosimilyarlar va innovatsion dori vositalari bo‘yicha ishonchli o‘sishni namoyish etishda davom etdi. Biz endilikda birgalikdagi ulkan rejalarimizni amalga oshirish yo‘lida faol hamkorlik qila olishimizdan mamnunmiz’’.",
+          "Bitim barcha zarur regulyator ruxsatnomalari olinganidan va yopilishning standart shartlari bajarilganidan so‘ng yakunlandi.",
+          "Muhim ma’lumot",
+          "Ushbu xabarda ko‘rsatilgan ma’lumotlar biron-bir davr uchun foyda prognozi yoki baholanishi hisoblanmaydi va shunday deb talqin qilinmasligi kerak, shuningdek, STADA faoliyatining kelajakdagi natijalarini baholash uchun mo‘ljallangan yo‘riqnoma sifatida foydalanilmasligi lozim. Ushbu xabar sezilarli darajadagi xatar va noaniqliklar bilan bog‘liq bo‘lgan prognoz xarakteridagi bayonotlarni o‘z ichiga olishi mumkin. Faktik ma’lumotlardan tashqari barcha bayonotlar, jumladan, cheklanmagan holda, STADA’ning kelajakdagi moliyaviy holati, xatar va noaniqliklar, strategiyasi, kapital xarajatlari, prognoz qilinayotgan xarajatlar, kompaniyaning reja va maqsadlari to‘g‘risidagi bayonotlar prognoz xarakteridagi bayonotlar deb hisoblanishi mumkin.",
+          "„Hisoblamoq“, „kutmoq“, „taxmin qilmoq“, „mumkin“, „rejalashtirmoq“, „niyat qilmoq“, „bo‘ladi“, „lozim“, „baholamoq“, „xatar“ kabi so‘zlar va shunga o‘xshash iboralar bunday bayonotlarni belgilash uchun qo‘llaniladi. O‘z tabiatiga ko‘ra, ular ma’lum va noma’lum xatarlar hamda noaniqliklar bilan bog‘liqdir, chunki ular kelajakdagi voqealarga daxldor bo‘lib, yuz berishi yoki yuz bermasligi mumkin bo‘lgan holatlarga bog‘liqdir.",
+          "Prognoz xarakteridagi bayonotlar kelajakdagi natijalar kafolati hisoblanmaydi va ularga haddan tashqari tayanmaslik lozim. STADA yangi ma’lumotlar paydo bo‘lishi, kelajakdagi voqealar yoki boshqa holatlar munosabati bilan bunday bayonotlarni yangilash majburiyatini o‘z zimmasiga olmaydi. Prognozlar, maqsadli ko‘rsatkichlar va baholarga erishish yoki ularning asosliligi yuzasidan hech qanday kafolatlar berilmaydi.",
+          "Ushbu xabar faqat ma’lumot berish xarakteriga ega bo‘lib, u emissiya prospekti, biron-bir yurisdiksiyada qimmatli qog‘ozlarni sotish to‘g‘risidagi taklif yoki ularni sotib olish bo‘yicha taklifnoma hisoblanmaydi. STADA sayti va unga bog‘liq har qanday saytlarning mazmuni ushbu xabarning tarkibiy qismi hisoblanmaydi. Ushbu xabarning tarqatilishi qonunchilik bilan cheklangan bo‘lishi mumkin; unga kirish imkoniyatiga ega bo‘lgan shaxslar bunday cheklovlar bilan mustaqil ravishda tanishishlari va ularga rioya qilishlari shart. Riyo etmaslik qimmatli qog‘ozlar to‘g‘risidagi qonunchilikning buzilishi sifatida ko‘rib chiqilishi mumkin. Ushbu xabar doirasida pul mablag‘lari yoki boshqa aktivlar so‘ralmaydi va qabul qilinmaydi.",
+          "Ushbu xabar oshkor qilinguniga qadar 2014-yil 16-apreldagi 596/2014-sonli Reglamentga (YeI) muvofiq insayderlik ma’lumoti deb hisoblanishi mumkin bo‘lgan axborotni o‘z ichiga oladi.",
+          "CapVest haqida",
+          "CapVest Partners LLP — sog‘liqni saqlash va iste’mol tovarlari kabi muhim sohalarda faoliyat yurituvchi ulkan kompaniyalar bilan ularning biznesini transformatsiya qilish maqsadida hamkorlik qiluvchi yetakchi xalqaro xususiy investitsiya kompaniyasidir. Kompaniya faol va uzoq muddatli investitsiyalarni amalga oshirib, menejment bilan yaqin hamkorlik hamda portfel kompaniyalarini organik o‘sish va M&A bitimlari orqali kengaytirish hisobiga barqaror natijalarni namoyish etmoqda. Asosiy tarmoqlar — sog‘liqni saqlash, kundalik iste’mol tovarlari va hayotiy muhim xizmatlardir.",
+          "STADA Arzneimittel AG haqida",
+          "STADA Arzneimittel AG — shtab-kvartirasi Bad-Filbelda (Germaniya) joylashgan farmatsevtika kompaniyasi bo‘lib, u uchta yo‘nalish strategiyasini amalga oshiradi: iste’mol sog‘liqni saqlash, djeneriklar va ixtisoslashtirilgan preparatlar. Kompaniya mahsulotlari dunyoning 100 dan ortiq mamlakatlarida taqdim etilgan.",
+          "2025-moliya yili yakunlariga ko‘ra, guruh tushumi 4 296 mln yevroni, doimiy valyutadagi tuzatilgan EBITDA esa 960 mln yevroni tashkil etdi. 2025-yil 31-dekabr holatiga ko‘ra, kompaniyada butun dunyo bo‘ylab 11 670 nafar xodim faoliyat yuritgan."
+        ],
+        "headingIndices": [
+          6,
+          12,
+          14
+        ]
+      },
+      "ge": {
+        "title": "CapVest-მა დაასრულა STADA-ს აქციების საკონტროლო პაკეტის შეძენა",
+        "dateLabel": "2026 წლის 31 მარტი",
+        "excerpt": "ბად-ფილბელი, გერმანია / ლონდონი, დიდი ბრიტანეთი — 2026 წლის 31 მარტს — საინვესტიციო კომპანია CapVest Partners LLP («CapVest») განაცხადა STADA Arzneimittel AG («STADA» ან «კომპანია»)-ს აქციების საკონტროლო პაკეტის შეძენის თაობაზე გარიგების დასრულების შესახებ — ჯანდაცვისა და ფარმაცევტიკის სფეროში ერთ-ერთ წამყვანი საერთაშორისო კომპანიის, რომელიც სპეციალიზებულია სამომხმარებლო ჯანდაცვაზე, ჯენერიკებზე და სპეციალიზებულ სამკურნალო პრეპარატებზე.",
+        "paragraphs": [
+          "ბად-ფილბელი, გერმანია / ლონდონი, დიდი ბრიტანეთი — 2026 წლის 31 მარტს — საინვესტიციო კომპანია CapVest Partners LLP («CapVest») განაცხადა STADA Arzneimittel AG («STADA» ან «კომპანია»)-ს აქციების საკონტროლო პაკეტის შეძენის თაობაზე გარიგების დასრულების შესახებ — ჯანდაცვისა და ფარმაცევტიკის სფეროში ერთ-ერთ წამყვანი საერთაშორისო კომპანიის, რომელიც სპეციალიზებულია სამომხმარებლო ჯანდაცვაზე, ჯენერიკებზე და სპეციალიზებულ სამკურნალო პრეპარატებზე.",
+          "2025 წლის მნიშვნელოვან შედეგებზე დაყრდნობით, გარიგების დასრულება CapVest და STADA-ს გუნდებს კომპანიის გლობალური ზრდის აჩქარების თაობაზე ამბიციური გეგმების ერთობლივად რეალიზაციის და ასევე კაპიტალის ორგანული ზრდისა და ახალი სტრატეგიული შენაძენების განვითარებისკენ მიმართვის შესაძლებლობას მისცემს.",
+          "დღესდღეობით STADA-ში მუშაობს მთელ მსოფლიოში დაახლოებით 12 000 თანამშრომელი. კომპანია წარმოადგენს წამყვან დივერსიფიცირებულ გლობალურ პლატფორმას ჯანდაცვის სფეროში, რომელიც სტრატეგიულად ფოკუსირებულია სამომხმარებლო ჯანდაცვაზე, ჯენერიკებსა და სპეციალიზებულ პრეპარატებზე. STADA-მ ცოტა ხნის წინ გამოაქვეყნა რეკორდული შემოსავალი - 4.3 მილიარდი ევრო (წინა წლის მაჩვენებელთან შედარებით 6%-ით ზრდა) ოდენობის და კორექტირებული EBITDA ისტორიული მაქსიმუმის — 961 მილიონი ევროს ოდენობით ფინანსური წლის მაჩვენებელი.",
+          "STADA-ს გენერალურმა დირექტორმა პიტერ გოლდშმიდტმა აღნიშნა:\n«ჩვენ მოხარულნი ვართ, რომ გარიგება დავასრულეთ. ჯანდაცვის სექტორში CapVest-ის ღრმა ექსპერტიზა, და ასევე მათი ერთგულება ჩვენი ამბიციური ზრდის გეგმების მხარდაჭერის მიმართ, მომავალში მნიშვნელოვან უპირატესობას წარმოადგენს ჩვენი სტრატეგიული მიზნების რეალიზაციის გზაზე».",
+          "CapVest-ის პარტნიორმა მეტტ ფარჯიმ დაამატა:\n«სანამ ჩვენ გარიგების დასრულებაზე ვმუშაობდით, STADA-ს გუნდმა განაგრძო მყარი ზრდის დემონსტრირებას ძირითად რეგიონებსა და მიმართულებებში — სამომხმარებლო ჯანდაცვაში, ჯენერიკებში, ბიოსიმილარებსა და ინოვაციურ პრეპარატებში. ჩვენ მოხარულნი ვართ, რომ ახლა შეგვიძლია აქტიურად ვიმუშაოთ ერთად ჩვენი ერთობლივი ამბიციური გეგმების განსახორციელებლად».",
+          "გარიგება დასრულდა ყველა საჭირო სარეგულატორო ნებართვის მიღების და დასრულების სტანდარტული პირობების შესრულების შემდეგ.",
+          "მნიშვნელოვანი ინფორმაცია",
+          "წინამდებარე შეტყობინებაში მოცემული ინფორმაცია არ წარმოადგენს და არ უნდა იყოს განხილული როგორც ნებისმიერი პერიოდის შემოსავლის პროგნოზი ან შეფასება, და არ უნდა იქნას გამოყენებული STADA-ს საქმიანობის მომავალი შედეგების შეფასების ორიენტირად. წინამდებარე შეტყობინება შესაძლოა შეიცავდეს მნიშვნელოვან რისკებთან ან გაურკვევლობებთან დაკავშირებული პროგნოზული ხასიათის განცხადებებს. ყველა განცხადება, ფაქტების დამადასტურებელი განცხადებების გარდა, მათ შორის, შეზღუდვის გარეშე, STADA-ს მომავალი ფინანსური მდგომარეობის, რისკებისა და გაურკვევლობების, სტრატეგიის, კაპიტალური ხარჯების, პროგნოზირებული ხარჯების, გეგმებისა და კომპანიის მიზნების შესახებ განცხადებები, შეიძლება ჩაითვალოს პროგნოზირებული ხასიათის განცხადებებად.",
+          "ასეთი სიტყვები, როგორიცაა „ჩაითვალოს“, „მოლოდინი“, „ვარაუდი“, „შეიძლება“, „დაგეგმვა“, „აპირებს“, „იქნება“, „უნდა“, „შეფასება“, „რისკი“ და ანალოგიური გამოთქმები გამოიყენება ასეთი განცხადებების აღსანიშნავად. თავიანთი ბუნებით ისინი დაკავშირებულნი არიან ცნობილ ან უცნობ რისკებთან და გაურკვევლობებთან, რადგან ეკუთვნის მომავალ მოვლენებს და დამოკიდებულია იმ გარემოებებზე, რომლებიც შეიძლება როგორც მოხდეს, ასევე არ მოხდეს მომავალში.",
+          "პროგნოზული განცხადებები არ წარმოადგენენ მომავალი შედეგების გარანტიას, და მათზე ზედმეტად დაყრდნობას არ გირჩევთ. STADA საკუთარ თავზე არ იღებს ვალდებულებას განაახლოს ასეთი განცხადებები ახალი ინფორმაციის, მომავალი მოვლენების ან სხვა გარემოებების გამო. არ იძლევა არანაირ გარანტიას პროგნოზების, მიზნობრივ მაჩვენებლებისა და შეფასებების მიღწევის ან სანდოობის შესახებ.",
+          "წინამდებარე შეტყობინებას აქვს მხოლოდ საინფორმაციო ხასიათი, და იგი არ წარმოადგენს ემისიის პროსპექტს, გაყიდვის შეთავაზებას ან ნებისმიერ იურისდიქციაში ფასიანი ქაღალდების შეძენის შეთავაზების მოწვევას. STADA-ს ვებსაიტისა და მასთან დაკავშირებული ნებისმიერი ვებსაიტის შინაარსი არ წარმოადგენს წინამდებარე შეტყობინების ნაწილს. წინამდებარე შეტყობინების გავრცელება შესაძლოა კანონით შეიზღუდოს; პირები, რომლებსაც აქვთ მასზე წვდომა, ვალდებულნი არიან, თავად მიიღონ ინფორმაცია ასეთი შეზღუდვების შესახებ და დაიცვან ისინი. შეუსრულებლობა შეიძლება განხილული იყოს, როგორც ფასიანი ქაღალდების შესახებ კანონმდებლობის დარღვევა. ამ შეტყობინების ფარგლებში ფულადი სახსრები ან სხვა აქტივები არ არის მოთხოვნილი და არ მიიღება.",
+          "წინამდებარე შეტყობინება შეიცავს ინფორმაციას, რომელიც მის გამოცხადებამდე შეიძლება ინსაიდერად ჩაითვალოს ევროკავშირის (ЕС) 2014 წლის 16 აპრილის № 596/2014 რეგლამენტის შესაბამისად.",
+          "CapVest-ის შესახებ",
+          "CapVest Partners LLP — არის private equity-ის სფეროში წამყვანი საერთაშორისო საინვესტიციო კომპანია, რომელიც ამბიციურ კომპანიებთან თანამშრომლობს, რომლებიც საბაზო საქონლის მიწოდებას და მათი ბიზნესის ტრანსფორმაციის მომსახურებას ეწევიან. კომპანია აქტიურად და გრძელვადიანად ინვესტირებს, მდგრადი შედეგების დემონსტრაციით მენეჯმენტთან მჭიდრო თანამშრომლობისა და პორტფელის კომპანიების მასშტაბური ზრდის გამო ორგანული ზრდისა და M&A გარიგებების მეშვეობით. ძირითადი დარგებია — ჯანდაცვა, ყოველდღიური სამომხმარებლო საქონელი და სასიცოცხლოდ მნიშვნელოვანი მომსახურება.",
+          "STADA Arzneimittel AG-ის შესახებ",
+          "STADA Arzneimittel AG — ეს არის ფარმაცევტული კომპანია შტაბ-ბინით ბად-ფილბელში (გერმანია), რომელიც ახორციელებს სამ მიმართულებით სტრატეგიის რეალიზაციას: სამომხმარებლო ჯანდაცვა, ჯენერიკები და სპეციალიზებული პრეპარატები. კომპანიის პროდუქცია მსოფლიოს 100-ზე მეტ ქვეყანაშია წარმოდგენილი.",
+          "2025 საფინანსო წლის შედეგებით გუნდის შემოსავალმა შეადგინა 4 296 მილიონი ევრო, ხოლო კორექტირებული EBITDA (მუდმივ ვალუტაში) — 960 მილიონი ევრო. 2025 წლის 31 დეკემბრის მდგომარეობით კომპანიაში მთელი მსოფლიოს ფარგლებში ირიცხებოდა 11 670 თანამშრომელი."
+        ],
+        "headingIndices": [
+          6,
+          12,
+          14
+        ]
+      },
+      "en": {
+        "title": "CapVest Completes Majority Acquisition of STADA",
+        "dateLabel": "31 March 2026",
+        "excerpt": "Bad Vilbel, Germany/London, UK – 31 March 2026 – CapVest Partners LLP (“CapVest”), a leading global investment firm, today announces the completion of its acquisition of the majority stake in STADA Arzneimittel AG (“STADA” or the “Company”), a leading healthcare and pharmaceuticals company specializing in Consumer Healthcare, Generics and Specialty Pharmaceuticals.",
+        "paragraphs": [
+          "Bad Vilbel, Germany/London, UK – 31 March 2026 – CapVest Partners LLP (“CapVest”), a leading global investment firm, today announces the completion of its acquisition of the majority stake in STADA Arzneimittel AG (“STADA” or the “Company”), a leading healthcare and pharmaceuticals company specializing in Consumer Healthcare, Generics and Specialty Pharmaceuticals.",
+          "Building on strong 2025 results, the completion of the transaction will allow the CapVest and STADA teams to jointly progress their ambitious plans to accelerate the growth of the company globally and deploying capital towards pursuing organic growth and new strategic acquisitions.",
+          "Currently employing close to 12,000 people worldwide, STADA is a leading, diversiﬁed global healthcare platform with a strategic focus on Consumer Healthcare, Generics and Specialty Pharmaceuticals. The Company recently announced record revenues of €4.3 billion, a 6% increase on the previous year, and all-time high adjusted EBITDA of €961 million in the financial year.",
+          "Peter Goldschmidt, Chief Executive Officer of STADA, commented: “We are delighted the transaction has now completed. CapVest’s deep knowledge and experience in healthcare, as well as their commitment to supporting our continued growth ambitions, will be a great asset as we look to realise our exciting plans for the business.”",
+          "Matt Fargie, Partner at CapVest, said: “While we have worked to complete this transaction, the STADA team has continued to demonstrate strong growth across key regions and consumer healthcare, generics, biosimilars and innovative medicines. We are excited to now be in a position to work actively with the team to deliver our ambitious shared plans for the business.”",
+          "The transaction was completed having satisfied all regulatory approvals and other customary closing conditions.",
+          "The information contained herein does not constitute, and should not be construed as, a profit forecast or estimate for any period, nor should it be relied upon as a guide to STADA’s future performance. This release may contain forward-looking statements that involve substantial risks and uncertainties. All statements other than statements of historical facts included in this release including, without limitation, statements regarding STADA’s future financial position, risks and uncertainties related to its business, strategy, capital expenditures, projected costs and STADA’s plans and objectives for future operations, may be deemed to be forward-looking statements. Words such as “believe,” “expect,” “anticipate,” “may,” “assume,” “plan,” “intend,” “will,” “should,” “estimate,” “risk,” and similar expressions or the negatives of these expressions are intended to identify forward-looking statements. By their nature, forward-looking statements involve known and unknown risks and uncertainties because they relate to events and depend on circumstances that may or may not occur in the future. Forward-looking statements are not guarantees of future performance. You should not place undue reliance on these forward-looking statements. STADA does not assume any obligation to update any forward-looking statements, whether as a result of new information, future events or otherwise. No representation or warranty is made as to the achievement or reasonableness of any projections, targets, estimates, or forecasts.",
+          "This release and the information contained herein are for information purposes only and do not constitute a prospectus or an offer to sell, or a solicitation of an offer to buy or subscribe for, any securities in any jurisdiction. Neither the content of STADA’s website nor any website accessible by hyperlinks on STADA’s website is incorporated in, or forms part of, this announcement. The distribution of this announcement may be restricted by law. Persons into whose possession this announcement comes should inform themselves about and observe any such restrictions. Any failure to comply with these restrictions may constitute a violation of the securities laws of any such jurisdiction. No money, securities or other consideration is being solicited, and, if sent in response to the information contained herein, will not be accepted.",
+          "This release contains information that prior to its disclosure may have constituted inside information under Regulation (EU) 596/2014 (16 April 2014).",
+          "About CapVest",
+          "CapVest is a leading international private equity investor that partners with ambitious companies supplying essential goods and services to transform their businesses. As an active and patient investor, CapVest has established a strong record of success in delivering attractive returns by working closely with management in transforming the size and scale of its portfolio companies through a combination of organic and acquisition led growth. CapVest seeks to invest in highly resilient industries where the demand driver for the product or service is non-discretionary. Its core sectors include healthcare, consumer staples and essential services.",
+          "About STADA Arzneimittel AG",
+          "STADA Arzneimittel AG is headquartered in Bad Vilbel, Germany. The company focuses on a three-pillar strategy consisting of consumer healthcare products, generics and specialty pharma. Worldwide, STADA Arzneimittel AG sells its products in over 100 countries. In financial year 2025, STADA achieved group sales of € 4,296 million and adjusted constant-currency earnings before interest, taxes, depreciation and amortization (adj. cc EBITDA) of € 960 million. As of 31 December 2025, STADA employed 11,670 people worldwide.",
+          "CapVest Media Contact",
+          "Ben Valdimarsson – Reputation Inc\nPhone: +44 (0) 7889 805 930",
+          "STADA information for journalists",
+          "STADA Arzneimittel AG - Media Relations\nStadastrasse 2-18, 61118 Bad Vilbel - Germany\nPhone: +49 (0) 6101 603-165\nE-Mail: press@stada.com",
+          "Additional information for capital market participants",
+          "STADA Arzneimittel AG - Investor & Creditor Relations\nStadastrasse 2-18, 61118 Bad Vilbel – Germany\nPhone: +49 (0) 6101 603-4689\nFax: +49 (0) 6101 603-215\nE-mail: ir@stada.de"
+        ],
+        "headingIndices": [
+          9,
+          11,
+          13,
+          15,
+          17
+        ]
+      }
+    }
+  },
+  {
     "id": "annual-results-2025",
     "countries": [
       "kz",

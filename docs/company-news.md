@@ -36,3 +36,7 @@ An item can be published on several sites with `countries: ["kz", "kg", …]` in
 - `leadership-change-eurasia-2026` (16 February 2026) — Kuanysh Ospanov appointed Vice President of STADA Eurasia, on every site except Georgia (no Georgian or English text was supplied), in both languages of each site. One missing full stop in the Uzbek lead was added.
 
 No photos were supplied; the articles use the existing `stada-laboratory-01.jpg` and `stada-headquarters-02.jpg`.
+- `capvest-completes-acquisition-2026` (31 March 2026) — CapVest completes majority acquisition of STADA, on all seven sites in all nine languages, with the legal notice, "About CapVest", "About STADA" and, where supplied (Russian, English), the media and investor contacts.
+- `church-dwight-agreement-eurasia-2026` (20 April 2026, the date in the release) — STADA and Church & Dwight agreement, on all seven sites. No Russian version was supplied, so Russian pages do not show it yet; add a `ru` translation when it arrives. The footnote listing the nine countries (English and Georgian only) is shown at the end of the main text. The Azerbaijani title is incomplete in the source file and is published as supplied.
+
+Photos: `stada-production-01.jpg` (CapVest) and `stada-historic-pharmacy.jpg` (Church & Dwight) until real images are supplied.
