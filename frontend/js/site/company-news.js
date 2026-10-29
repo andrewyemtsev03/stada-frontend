@@ -1,8 +1,14 @@
-// News is scoped to the active site country. Never reuse another country's items.
+// The sites an item is published on: one `country`, or a `countries` list for group-wide releases.
+function getNewsCountries(item) {
+  return item.countries || [item.country];
+}
+
+// News is scoped to the active site country and language, newest first. Never reuse another country's items.
 function getCompanyNews(country, lang) {
-  return STADA_COMPANY_NEWS.filter(item => item.country === country)
-    .map(item => ({ ...item, copy: item.translations[lang] }))
-    .filter(item => item.copy);
+  return STADA_COMPANY_NEWS.filter(item => getNewsCountries(item).includes(country))
+    .map(item => ({ ...item, country, copy: item.translations[lang] }))
+    .filter(item => item.copy)
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 }
 
 function newsElement(tag, className, text) {
