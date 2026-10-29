@@ -8,10 +8,13 @@ const context = vm.createContext({ document: { addEventListener() {} }, URL });
 for (const file of ['news-data.js', 'company-news.js']) {
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../frontend/js/site', file), 'utf8'), context);
 }
+const ids = (country, lang) => context.getCompanyNews(country, lang).map(item => item.id);
+// Values created inside the VM sandbox belong to another realm; compare plain copies.
+const plain = value => JSON.parse(JSON.stringify(value));
 
 test('Moldova news is available in both supplied languages with four photos', () => {
   for (const lang of ['ru', 'ro']) {
-    const items = context.getCompanyNews('md', lang);
+    const items = context.getCompanyNews('md', lang).filter(item => item.id === 'ximluci-moldova');
     assert.equal(items.length, 1);
     assert.equal(items[0].copy.paragraphs.length, 3);
     assert.equal(items[0].images.length, 4);
@@ -26,7 +29,7 @@ test('Moldova news never appears on another country site or in an unsupplied lan
   for (const country of ['kz', 'kg', 'ge', 'az', 'am', 'uz']) {
     for (const lang of ['ru', 'ro']) assert.ok(context.getCompanyNews(country, lang).every(item => item.country === country && item.id !== 'ximluci-moldova'));
   }
-  assert.equal(context.getCompanyNews('md', 'en').length, 0);
+  assert.ok(!ids('md', 'en').includes('ximluci-moldova'));
 });
 
 test('Kazakhstan Health Report is complete in Russian and Kazakh and scoped to Kazakhstan', () => {
@@ -40,8 +43,8 @@ test('Kazakhstan Health Report is complete in Russian and Kazakh and scoped to K
     assert.ok(item.copy.paragraphs.some(text => text.includes('www.reportstada.net')));
     assert.ok(fs.existsSync(path.join(__dirname, '../frontend', item.images[0])));
   }
-  assert.equal(context.getCompanyNews('kz', 'en').length, 0);
-  assert.equal(context.getCompanyNews('md', 'kz').length, 0);
+  assert.ok(!ids('kz', 'en').includes('health-report-2026-ai-kazakhstan'));
+  assert.ok(!ids('md', 'kz').includes('health-report-2026-ai-kazakhstan'));
 });
 
 test('Uzbekistan Health Report keeps both complete supplied languages and stays country scoped', () => {
@@ -54,17 +57,16 @@ test('Uzbekistan Health Report keeps both complete supplied languages and stays 
     assert.ok(item.copy.paragraphs.some(text => text.includes('www.reportstada.net')));
     assert.ok(fs.existsSync(path.join(__dirname, '../frontend', item.images[0])));
   }
-  assert.equal(context.getCompanyNews('uz', 'kz').length, 0);
+  assert.ok(!ids('uz', 'kz').includes('health-report-2026-digital-uzbekistan'));
   assert.ok(context.getCompanyNews('kz', 'ru').every(item => item.country === 'kz'));
 });
 
-// Values created inside the VM sandbox belong to another realm; compare plain copies.
-const plain = value => JSON.parse(JSON.stringify(value));
-
-test('Kazakhstan site lists its January 2026 releases newest first, in Russian and Kazakh only', () => {
+test('Kazakhstan site lists its 2026 releases newest first, in Russian and Kazakh', () => {
   for (const lang of ['ru', 'kz']) {
-    const ids = context.getCompanyNews('kz', lang).map(item => item.id);
-    assert.deepEqual(plain(ids), ['health-report-2026-ai-kazakhstan', 'iqvia-otc-leader-2025-kazakhstan', 'top-employer-2026-kazakhstan']);
+    assert.deepEqual(plain(ids('kz', lang)), [
+      'health-report-2026-ai-kazakhstan', 'annual-results-2025', 'leadership-change-eurasia-2026',
+      'iqvia-otc-leader-2025-kazakhstan', 'top-employer-2026-kazakhstan',
+    ]);
   }
   for (const country of ['kg', 'ge', 'az', 'am', 'md', 'uz']) {
     for (const lang of ['ru', 'kz', 'az']) {
@@ -96,14 +98,54 @@ test('IQVIA awards are published only on their own country site', () => {
     assert.ok(item.copy.paragraphs.join(' ').includes('Leading Retail OTC Corporation'));
   }
   for (const lang of ['az', 'ru']) {
-    const items = context.getCompanyNews('az', lang);
-    assert.deepEqual(plain(items.map(item => item.id)), ['iqvia-otc-leader-2025-azerbaijan']);
+    assert.deepEqual(plain(ids('az', lang)), ['annual-results-2025', 'leadership-change-eurasia-2026', 'iqvia-otc-leader-2025-azerbaijan']);
+    const items = context.getCompanyNews('az', lang).filter(item => item.id === 'iqvia-otc-leader-2025-azerbaijan');
     assert.equal(items[0].date, '2026-01-20');
     assert.equal(items[0].copy.paragraphs.length, 5);
     assert.match(items[0].copy.paragraphs[1], /Kardiomaqnil|Кардиомагнил/);
     assert.ok(fs.existsSync(path.join(__dirname, '../frontend', items[0].images[0])));
   }
-  assert.equal(context.getCompanyNews('az', 'kz').length, 0);
+  assert.ok(!ids('az', 'kz').includes('iqvia-otc-leader-2025-azerbaijan'));
+});
+
+const siteLanguages = { kz: ['ru', 'kz'], kg: ['ru', 'kg'], ge: ['ge', 'en'], az: ['az', 'ru'], am: ['hy', 'ru'], md: ['ro', 'ru'], uz: ['ru', 'uz'] };
+
+test('2025 annual results appear on every site in every site language', () => {
+  for (const [country, langs] of Object.entries(siteLanguages)) {
+    for (const lang of langs) {
+      const item = context.getCompanyNews(country, lang).find(entry => entry.id === 'annual-results-2025');
+      assert.ok(item, `${country}/${lang}`);
+      assert.equal(item.date, '2026-03-18');
+      const { paragraphs, headingIndices, title } = item.copy;
+      assert.match(title, /2025/);
+      // Same outline in every language: 3 highlights, dateline, 6 section headings, About, 2 contact blocks.
+      assert.equal(headingIndices.length, 9, `${country}/${lang}`);
+      assert.equal(paragraphs.length, lang === 'kz' ? 34 : 33, `${country}/${lang}`);
+      assert.match(paragraphs[3], /2026/);
+      assert.ok(paragraphs.some(text => text.includes('press@stada.de')), `${country}/${lang}`);
+      assert.ok(paragraphs.some(text => text.includes('ir@stada.de')), `${country}/${lang}`);
+      assert.ok(paragraphs.join(' ').includes('961'), `${country}/${lang}`);
+      for (const index of headingIndices) assert.ok(paragraphs[index].length < 200 && !paragraphs[index].includes('\n'));
+    }
+  }
+  assert.ok(fs.existsSync(path.join(__dirname, '../frontend', vm.runInContext('STADA_COMPANY_NEWS', context).find(item => item.id === 'annual-results-2025').images[0])));
+});
+
+test('Leadership change is on every site except Georgia, in both languages of each site', () => {
+  for (const [country, langs] of Object.entries(siteLanguages)) {
+    for (const lang of langs) {
+      const item = context.getCompanyNews(country, lang).find(entry => entry.id === 'leadership-change-eurasia-2026');
+      if (country === 'ge') {
+        assert.equal(item, undefined, 'no Georgian or English text was supplied');
+        continue;
+      }
+      assert.ok(item, `${country}/${lang}`);
+      assert.equal(item.date, '2026-02-16');
+      assert.equal(item.copy.paragraphs.length, lang === 'kz' ? 9 : 7, `${country}/${lang}`);
+      assert.ok(item.copy.paragraphs.join(' ').includes('Sanofi'));
+      assert.ok(item.copy.paragraphs.join(' ').includes('Haleon'));
+    }
+  }
 });
 
 test('Media mentions are country scoped, untranslated, dated and link to https sources', () => {

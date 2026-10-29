@@ -252,7 +252,7 @@ function build() {
       const newsContext = vm.createContext({});
       vm.runInContext(fs.readFileSync(path.join(source, 'js/site/news-data.js'), 'utf8'), newsContext);
       const news = vm.runInContext('STADA_COMPANY_NEWS', newsContext);
-      for (const item of news.filter(item => item.country === country.code && item.translations[lang])) {
+      for (const item of news.filter(item => (item.countries || [item.country]).includes(country.code) && item.translations[lang])) {
         render('news-article.html', `news/${item.id}.html`, `?id=${encodeURIComponent(item.id)}`, item.id);
       }
       for (const [slug, product] of Object.entries(locale.products || {})) {
