@@ -14,7 +14,7 @@ Both Vercel projects connect to `andrewyemtsev03/stada-frontend`.
 
 The country domains are `stada.kz`, `stada.kg`, `stada.ge`, `stada.az`, `stada.am`, `stada.md`, and `stada.uz`. Development has six domains: `new.stada.kg`, `new.stada.ge`, `new.stada.az`, `new.stada.am`, `new.stada.md`, and `new.stada.uz`. `new.stada.kz` is intentionally excluded. The site selects the country from the hostname.
 
-Push new work to `dev`. Review it on the development domains, then merge `dev` into `main` to release it. Do not push unfinished work to `main`. DNS changes should follow the exact values shown by Vercel for each domain.
+Work happens on its own branch started from `main`. Merge that branch into `dev` to review it on the development domains, then open a pull request from the same branch into `main` to release it. `dev` is never merged into `main` as a whole, so unfinished work there cannot block or leak into a release. See `CONTRIBUTING.md` for the full workflow. DNS changes should follow the exact values shown by Vercel for each domain.
 
 Both branches build complete pages from checked-in public content snapshots.
 The public sites do not use the backend or database to serve content. The backend
