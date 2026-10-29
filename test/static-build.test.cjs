@@ -74,7 +74,7 @@ test('country sitemaps reference only existing localized pages and preserve coun
   for (const country of countries) {
     for (const lang of country.supportedLanguages) {
       const list = new JSDOM(fs.readFileSync(path.join(output, 'sites', country.code, lang, 'news.html'), 'utf8'));
-      const expected = news.filter(item => item.country === country.code && item.translations[lang]);
+      const expected = news.filter(item => (item.countries || [item.country]).includes(country.code) && item.translations[lang]);
       const links = [...list.window.document.querySelectorAll('.company-news-card__link')];
       assert.equal(links.length, expected.length, `${country.code}/${lang}`);
       for (const item of expected) {
