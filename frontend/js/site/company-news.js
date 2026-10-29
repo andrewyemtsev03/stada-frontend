@@ -20,7 +20,8 @@ function newsElement(tag, className, text) {
 
 function newsPhoto(item, src, index) {
   const image = newsElement('img');
-  image.src = src;
+  // Generated pages live under /<lang>/, so a bare "assets/…" path would break when the list re-renders in the browser.
+  image.src = typeof getSiteAssetPath === 'function' ? getSiteAssetPath(src) : src;
   image.alt = item.copy.imageAlt || `${item.copy.title} — ${index + 1}`;
   image.width = 333;
   image.height = 250;
