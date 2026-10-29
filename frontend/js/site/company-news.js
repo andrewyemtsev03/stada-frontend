@@ -23,6 +23,72 @@ function newsPhoto(item, src, index) {
   return image;
 }
 
+// Third-party coverage ("Мы в СМИ") is country scoped but shown on every language of that site.
+function getMediaMentions(country) {
+  if (typeof STADA_MEDIA_MENTIONS === 'undefined') return [];
+  return STADA_MEDIA_MENTIONS.filter(item => item.country === country);
+}
+
+// Turns e-mail addresses, web addresses and named phrases (copy.links) into links.
+function appendLinkedText(element, text, links = []) {
+  const named = links.map(link => link.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const pattern = new RegExp([...named, '[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+', '(?:https?:\\/\\/|www\\.)[^\\s,;«»"]+[^\\s,;.:!?«»")]'].join('|'), 'g');
+  let last = 0;
+  for (const match of text.matchAll(pattern)) {
+    const value = match[0];
+    const link = newsElement('a', '', value);
+    const namedLink = links.find(item => item.text === value);
+    if (namedLink) link.href = namedLink.href;
+    else if (value.includes('@') && !/^(https?:|www\.)/.test(value)) link.href = `mailto:${value}`;
+    else {
+      const url = new URL(value.startsWith('www.') ? `https://${value}` : value);
+      link.href = url.href;
+    }
+    if (!link.href.startsWith('mailto:')) link.rel = 'noopener';
+    element.append(document.createTextNode(text.slice(last, match.index)), link);
+    last = match.index + value.length;
+  }
+  if (last === 0) return;
+  element.append(document.createTextNode(text.slice(last)));
+}
+
+function formatNewsNumericDate(isoDate) {
+  const [year, month, day] = isoDate.split('-');
+  return `${day}.${month}.${year}`;
+}
+
+function renderMediaMentions(section, label) {
+  if (!section) return;
+  const items = getMediaMentions(currentCountry);
+  section.replaceChildren();
+  section.hidden = !items.length;
+  if (!items.length) return;
+  const title = newsElement('h2', 'media-mentions__title', label('media_title'));
+  title.id = 'media-mentions-title';
+  section.setAttribute('aria-labelledby', title.id);
+  const list = newsElement('ul', 'media-mentions__list');
+  items.forEach(item => {
+    const entry = newsElement('li', 'media-mention');
+    entry.lang = item.lang;
+    const link = newsElement('a', 'media-mention__link');
+    link.href = item.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    const meta = newsElement('p', 'media-mention__meta');
+    const date = newsElement('time', '', formatNewsNumericDate(item.date));
+    date.dateTime = item.date;
+    meta.append(date, document.createTextNode(' · '), newsElement('span', 'media-mention__source', item.source));
+    link.append(meta, newsElement('h3', '', item.title));
+    item.text.forEach(text => link.append(newsElement('p', '', text)));
+    const read = newsElement('span', 'company-news-read', `${label('media_read')} ↗`);
+    read.lang = { kz: 'kk', kg: 'ky', ge: 'ka' }[currentLang] || currentLang;
+    link.append(read);
+    entry.append(link);
+    list.append(entry);
+  });
+  section.append(title, list);
+}
+
 function renderCompanyNews() {
   if (!document.body.classList.contains('company-news-page')) return;
   const items = getCompanyNews(currentCountry, currentLang);
@@ -52,6 +118,7 @@ function renderCompanyNews() {
       list.append(card);
     });
   }
+  renderMediaMentions(document.querySelector('[data-media-mentions]'), label);
   if (article) {
     article.replaceChildren();
     const id = document.documentElement.dataset.staticNewsId || new URLSearchParams(location.search).get('id');
@@ -74,11 +141,10 @@ function renderCompanyNews() {
     item.copy.paragraphs.forEach((text, index) => {
       const tag = item.copy.headingIndices?.includes(index) ? 'h2' : 'p';
       const paragraph = newsElement(tag, '', text);
-      if (tag === 'p' && text.includes('www.reportstada.net')) {
-        const [before, after] = text.split('www.reportstada.net');
-        const link = newsElement('a', '', 'www.reportstada.net');
-        link.href = 'https://www.reportstada.net/';
-        paragraph.replaceChildren(document.createTextNode(before), link, document.createTextNode(after));
+      if (tag === 'p') {
+        const linked = newsElement('p');
+        appendLinkedText(linked, text, item.copy.links);
+        if (linked.childNodes.length) paragraph.replaceChildren(...linked.childNodes);
       }
       body.append(paragraph);
     });

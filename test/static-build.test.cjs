@@ -134,3 +134,42 @@ test('history timeline photographs are present without JavaScript for every coun
     dom.window.close();
   }
 });
+
+test('generated news pages show "Мы в СМИ" only for the matching country, in every site language', () => {
+  const context = vm.createContext({});
+  vm.runInContext(fs.readFileSync(path.join(frontend, 'js/site/news-data.js'), 'utf8'), context);
+  const mentions = JSON.parse(vm.runInContext('JSON.stringify(STADA_MEDIA_MENTIONS)', context));
+  for (const country of countries) {
+    const expected = mentions.filter(item => item.country === country.code);
+    for (const lang of country.supportedLanguages) {
+      const dom = new JSDOM(fs.readFileSync(path.join(output, 'sites', country.code, lang, 'news.html'), 'utf8'));
+      const document = dom.window.document;
+      const section = document.querySelector('[data-media-mentions]');
+      assert.equal(section.hidden, !expected.length, `${country.code}/${lang}`);
+      const links = [...section.querySelectorAll('.media-mention__link')];
+      assert.deepEqual(links.map(link => link.href), expected.map(item => item.url), `${country.code}/${lang}`);
+      for (const link of links) assert.equal(link.rel, 'noopener noreferrer');
+      if (expected.length) {
+        assert.ok(section.querySelector('h2').textContent.trim(), `${country.code}/${lang}: missing heading`);
+        assert.ok(section.querySelector('.company-news-read').textContent.trim().length > 2);
+        assert.equal(section.querySelector('h3').textContent, expected[0].title);
+      }
+      dom.window.close();
+    }
+  }
+});
+
+test('article contact details become working links', () => {
+  for (const lang of ['ru', 'kz']) {
+    const dom = new JSDOM(fs.readFileSync(path.join(output, 'sites/kz', lang, 'news/top-employer-2026-kazakhstan.html'), 'utf8'));
+    const hrefs = [...dom.window.document.querySelectorAll('.company-news-article__copy a')].map(link => link.href);
+    assert.ok(hrefs.includes('mailto:press@stada.kz'));
+    assert.ok(hrefs.includes('mailto:ir@stada.de'));
+    assert.ok(hrefs.includes('https://www.stada.com/investor-relations'));
+    assert.ok(hrefs.includes('https://www.linkedin.com/company/stada-eurasia/'));
+    dom.window.close();
+  }
+  const report = new JSDOM(fs.readFileSync(path.join(output, 'sites/kz/ru/news/health-report-2026-ai-kazakhstan.html'), 'utf8'));
+  assert.ok([...report.window.document.querySelectorAll('.company-news-article__copy a')].some(link => link.href === 'https://www.reportstada.net/'));
+  report.window.close();
+});
