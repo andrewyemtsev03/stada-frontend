@@ -75,7 +75,7 @@ test('3D assets ship with the site and showcase copy rejects unexpected markup',
   for (const file of ['js/vendor/three/three.module.min.js', 'js/vendor/three/RoomEnvironment.js', 'js/vendor/three/LICENSE',
     'js/vendor/three/GLTFLoader.js', 'js/vendor/three/BufferGeometryUtils.js', 'assets/kazakhstan-products/magne-b6-kids/panda.glb',
     'assets/kazakhstan-products/magne-b6-kids/watermelon-slice.glb',
-    'assets/kazakhstan-products/magne-b6-kids/label-4096.webp', 'assets/kazakhstan-products/magne-b6-kids/label-2048.webp']) {
+    'assets/kazakhstan-products/magne-b6-kids/jar.glb']) {
     assert.ok(fs.existsSync(path.join(output, file)), file);
   }
   const dom = new JSDOM('<h2 data-sc="title"></h2>');
