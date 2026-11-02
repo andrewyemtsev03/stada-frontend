@@ -126,22 +126,34 @@ body.mg-page { overflow-x: visible; }
 .mg-kids:hover span:nth-child(odd) { transform: translateY(-.12em) rotate(-7deg); }
 .mg-kids:hover span:nth-child(even) { transform: translateY(-.06em) rotate(7deg); }
 
+/* ---------- loading screen ---------- */
+.mg-splash {
+  position: fixed; z-index: 3000; inset: 0; display: grid; place-items: center;
+  background: linear-gradient(180deg, #f5f9fe 0%, #e8f2fc 100%);
+  transition: opacity .7s var(--mg-ease), visibility 0s linear .7s;
+}
+.mg-splash img { width: clamp(140px, 16vw, 210px); height: auto; animation: mg-breathe 2.4s ease-in-out infinite; }
+@keyframes mg-breathe { 0%, 100% { opacity: .55; scale: .94; } 50% { opacity: 1; scale: 1.04; } }
+.mg-loaded .mg-splash { opacity: 0; visibility: hidden; }
+.mg-loaded .mg-splash img { animation-play-state: paused; }
+html:not(.mg-loaded) body.mg-page { overflow: hidden; }
+
 /* ---------- reveal & entrance ---------- */
 .mg-ready .mg-reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--mg-ease), transform .9s var(--mg-ease); }
 .mg-ready .mg-reveal.is-in { opacity: 1; transform: none; }
-.mg-ready .mg-rise { animation: mg-rise .95s var(--mg-ease) both; }
+.mg-loaded .mg-rise { animation: mg-rise .95s var(--mg-ease) both; }
 .mg-hero__copy > :nth-child(2) { animation-delay: .1s; }
 .mg-hero__copy > :nth-child(3) { animation-delay: .18s; }
 .mg-hero__copy > :nth-child(4) { animation-delay: .26s; }
-.mg-ready .mg-hero__spec { animation-delay: .7s; }
+.mg-loaded .mg-hero__spec { animation-delay: .7s; }
 @keyframes mg-rise { from { opacity: 0; transform: translateY(26px); } }
 /* Fill backwards only: once the pop-in ends, the hover transition owns the transform instead of the
    finished animation holding it (which made the letters snap and jitter on hover). */
-.mg-ready .mg-hero .mg-kids span { animation: mg-pop .8s var(--mg-spring) backwards; }
-.mg-ready .mg-hero .mg-kids span:nth-child(1) { animation-delay: .35s; }
-.mg-ready .mg-hero .mg-kids span:nth-child(2) { animation-delay: .43s; }
-.mg-ready .mg-hero .mg-kids span:nth-child(3) { animation-delay: .51s; }
-.mg-ready .mg-hero .mg-kids span:nth-child(4) { animation-delay: .59s; }
+.mg-loaded .mg-hero .mg-kids span { animation: mg-pop .8s var(--mg-spring) backwards; }
+.mg-loaded .mg-hero .mg-kids span:nth-child(1) { animation-delay: .35s; }
+.mg-loaded .mg-hero .mg-kids span:nth-child(2) { animation-delay: .43s; }
+.mg-loaded .mg-hero .mg-kids span:nth-child(3) { animation-delay: .51s; }
+.mg-loaded .mg-hero .mg-kids span:nth-child(4) { animation-delay: .59s; }
 @keyframes mg-pop { from { opacity: 0; transform: translateY(.5em) scale(.4) rotate(-20deg); } }
 
 /* =====================================================================
@@ -215,14 +227,11 @@ body.mg-page { overflow-x: visible; }
   display: block; pointer-events: none; opacity: 0; transition: opacity .6s ease;
 }
 
-/* Loading: the visual shows only the 3D loader until the scene's first frame is drawn, then the flower
-   blooms in and the pieces settle. No photo stands in for the 3D. */
-.mg-hero .mg-loading { color: var(--mg-muted); }
-.mg-hero .mg-loading i { border-color: rgba(38, 44, 142, .14); border-top-color: var(--mg-navy); }
+/* The loading screen covers the page until the scene's first frame is drawn; then the flower blooms in
+   and the pieces settle. No photo stands in for the 3D. */
 .mg-ready .mg-hero__bloom { opacity: 0; scale: .72; transition: opacity 1s ease, scale 1.5s var(--mg-ease); }
 .mg-hero--live .mg-hero__gl,
 .mg-ready .mg-hero--live .mg-hero__bloom, .mg-ready .mg-hero--nogl .mg-hero__bloom { opacity: 1; scale: 1; }
-.mg-hero--live .mg-loading, .mg-hero--nogl .mg-loading { opacity: 0; }
 html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 
 /* Grab the jar to turn it. Vertical swipes still scroll the page on touch screens. */
@@ -805,4 +814,5 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
 @media (prefers-reduced-motion: reduce) {
   .mg-page *, .mg-page *::before, .mg-page *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .mg-film__stage { --t: 0 !important; }
+  .mg-splash img { animation: none !important; opacity: 1; }
 }
