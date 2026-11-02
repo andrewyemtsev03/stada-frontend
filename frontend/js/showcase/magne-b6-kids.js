@@ -600,9 +600,11 @@ function burstSparks(stage, x, y) {
    B  …the panda tablet. It turns once with the scroll, wobbles like a
       jelly when the page moves fast, and calls out all 30 tablets of
       the jar as a halo around itself.
-   ↓  The halo scatters and a whole watermelon drops in behind it,
-   C  splits open in a burst of juice and seeds, slices float in, and
-      the tablet sits in front of the open fruit.
+   ↓  The tablet crouches and leaps out of frame with its halo.
+   C  A whole watermelon drops in and bounces, a blade of light cuts it,
+      and the halves burst open in juice, seeds and pink mist; slices
+      rise behind, fresh chunks tumble in front and drops of juice hang
+      in the air while the camera slowly leans in.
    Everything is driven by the chapter's scroll progress, so scrolling
    back plays it in reverse; idle motion stops for reduced motion.
    ===================================================================== */
@@ -616,12 +618,16 @@ const T = {
   pop: [.288, .362],
   turn: [.31, .445],
   halo: [.4, .555],
-  scatter: [.59, .665],
-  settle: [.6, .68],
-  drop: [.635, .705],
-  split: [.705, .785],
-  juice: [.7, .87],
-  wedges: [.735, .87],
+  scatter: [.585, .66],
+  leap: [.585, .655],
+  drop: [.62, .69],
+  slash: [.686, .71],
+  split: [.705, .79],
+  juice: [.703, .87],
+  bloom: [.7, .745, .9],
+  wedges: [.748, .87],
+  chunks: [.772, .89],
+  hover: [.8, .9],
 };
 const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 const easeInCubic = t => t * t * t;
@@ -1049,23 +1055,38 @@ function fleshTexture(THREE) {
   return texture;
 }
 
-const MELON_R = 1.05;
+const MELON_R = 1.2;
 const MELON_SQUASH = .92;
-const MELON_Z = -.3;
+const MELON_Z = 0;
 function buildMelon(THREE) {
-  const rind = saturate(new THREE.MeshPhysicalMaterial({ map: rindTexture(THREE), roughness: .4, clearcoat: .7, clearcoatRoughness: .28 }), 1.1);
+  const rindMap = rindTexture(THREE);
+  const rind = saturate(new THREE.MeshPhysicalMaterial({ map: rindMap, bumpMap: rindMap, bumpScale: .8, roughness: .38, clearcoat: .8, clearcoatRoughness: .22 }), 1.12);
   const fleshMap = fleshTexture(THREE);
   const flesh = saturate(new THREE.MeshPhysicalMaterial({
-    map: fleshMap, roughness: .34, clearcoat: 1, clearcoatRoughness: .16, bumpMap: fleshMap, bumpScale: 1.6,
-    emissive: 0xffffff, emissiveMap: fleshMap, emissiveIntensity: .12,
-  }), 1.2);
+    map: fleshMap, roughness: .3, clearcoat: 1, clearcoatRoughness: .1, bumpMap: fleshMap, bumpScale: 2.2,
+    emissive: 0xffffff, emissiveMap: fleshMap, emissiveIntensity: .14,
+  }), 1.22);
+  // The cut face bulges a little and is faintly uneven, so the wet highlight breaks up like real flesh.
+  const random = seeded(41);
+  const capGeometry = new THREE.RingGeometry(0, MELON_R * .997, 128, 28);
+  const position = capGeometry.attributes.position;
+  const bumps = Array.from({ length: 9 }, () => [random() * 6.3, 2 + random() * 5, random() * 6.3]);
+  for (let i = 0; i < position.count; i += 1) {
+    const x = position.getX(i);
+    const y = position.getY(i);
+    const r = Math.hypot(x, y) / MELON_R;
+    const a = Math.atan2(y, x);
+    const ripple = bumps.reduce((sum, [pa, f, pr]) => sum + Math.sin(a * f + pa) * Math.sin(r * f * 1.3 + pr), 0) / bumps.length;
+    position.setZ(i, MELON_R * (1 - r * r) * (.055 + ripple * .012));
+  }
+  capGeometry.scale(1, MELON_SQUASH, 1);
+  capGeometry.computeVertexNormals();
   const half = sign => {
     const group = new THREE.Group();
     const shellGeometry = new THREE.SphereGeometry(MELON_R, 72, 48, sign > 0 ? Math.PI / 2 : -Math.PI / 2, Math.PI);
     shellGeometry.scale(1, MELON_SQUASH, 1);
-    const capGeometry = new THREE.CircleGeometry(MELON_R * .997, 96);
-    capGeometry.scale(1, MELON_SQUASH, 1);
     const cap = new THREE.Mesh(capGeometry, flesh);
+    cap.renderOrder = 1;
     cap.rotation.y = sign > 0 ? -Math.PI / 2 : Math.PI / 2;
     group.add(new THREE.Mesh(shellGeometry, rind), cap);
     group.userData.cap = cap;
@@ -1076,6 +1097,86 @@ function buildMelon(THREE) {
   const group = new THREE.Group();
   group.add(left, right);
   return { group, left, right, caps: [left.userData.cap, right.userData.cap] };
+}
+
+// A rounded cube (the box's vertices pushed out onto rounded corners) for the fresh chunks.
+function roundedBox(THREE, size, radius) {
+  const geometry = new THREE.BoxGeometry(size, size, size, 6, 6, 6);
+  const position = geometry.attributes.position;
+  const inner = size / 2 - radius;
+  const core = new THREE.Vector3();
+  const point = new THREE.Vector3();
+  for (let i = 0; i < position.count; i += 1) {
+    point.fromBufferAttribute(position, i);
+    core.set(clamp(point.x, -inner, inner), clamp(point.y, -inner, inner), clamp(point.z, -inner, inner));
+    point.sub(core).normalize().multiplyScalar(radius).add(core);
+    position.setXYZ(i, point.x, point.y, point.z);
+  }
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+function chunkTexture(THREE) {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  const random = seeded(57);
+  const base = ctx.createLinearGradient(0, 0, 256, 256);
+  base.addColorStop(0, '#f2253c');
+  base.addColorStop(1, '#e3112c');
+  ctx.fillStyle = base;
+  ctx.fillRect(0, 0, 256, 256);
+  for (let i = 0; i < 900; i += 1) {
+    const light = random() < .45;
+    const s = 1.5 + random() * 4;
+    ctx.fillStyle = light ? `rgba(255, ${(150 + random() * 80) | 0}, ${(150 + random() * 70) | 0}, ${.12 + random() * .22})` : `rgba(${(160 + random() * 50) | 0}, 0, 22, ${.1 + random() * .14})`;
+    ctx.beginPath();
+    ctx.ellipse(random() * 256, random() * 256, s, s * (.6 + random() * .5), random() * 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  // One seed, half sunk into the face.
+  ctx.save();
+  ctx.translate(170, 92);
+  ctx.rotate(.5);
+  ctx.fillStyle = 'rgba(255, 190, 186, .35)';
+  ctx.beginPath();
+  ctx.ellipse(0, 3, 15, 24, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#1a0d09';
+  ctx.beginPath();
+  ctx.moveTo(0, -16);
+  ctx.bezierCurveTo(12, -6, 11, 14, 0, 14);
+  ctx.bezierCurveTo(-11, 14, -12, -6, 0, -16);
+  ctx.fill();
+  ctx.restore();
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
+// The blade of light that cuts the melon: a tapered streak with a soft glow.
+function slashTexture(THREE) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  const blade = (h, fill, blur) => {
+    ctx.save();
+    ctx.shadowColor = 'rgba(255, 255, 255, .95)';
+    ctx.shadowBlur = blur;
+    ctx.fillStyle = fill;
+    ctx.beginPath();
+    ctx.moveTo(4, 32);
+    ctx.quadraticCurveTo(300, 32 - h, 508, 32);
+    ctx.quadraticCurveTo(300, 32 + h, 4, 32);
+    ctx.fill();
+    ctx.restore();
+  };
+  blade(26, 'rgba(255, 255, 255, .35)', 18);
+  blade(9, '#ffffff', 10);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }
 
 function seedGeometry(THREE) {
@@ -1145,7 +1246,6 @@ async function initStory() {
 
   /* B — the tablet, its glitter and the halo of thirty */
   const S_B = 1.55;
-  const S_C = .8;
   const hero = new THREE.Group();
   const jelly = new THREE.Group();
   hero.add(jelly);
@@ -1167,41 +1267,64 @@ async function initStory() {
     return holder;
   });
 
-  /* C — the watermelon, its juice and seeds, floating slices, ground shadows */
+  /* C — the watermelon, the blade, juice, seeds and mist, slices, chunks and hanging drops */
   const melon = buildMelon(THREE);
   spin.add(melon.group);
-  const shadows = {
-    left: softShadow(THREE, 2.3, 1.7, .5, .35),
-    right: softShadow(THREE, 2.3, 1.7, .5, .35),
-    panda: softShadow(THREE, .9, .5, .6, .3),
-  };
-  Object.values(shadows).forEach(mesh => { mesh.position.y = GROUND + .003; spin.add(mesh); });
-  const juiceCount = 96;
-  const juice = new THREE.InstancedMesh(
-    new THREE.SphereGeometry(1, 16, 12),
-    new THREE.MeshPhysicalMaterial({ color: 0xe8001f, roughness: .08, clearcoat: 1, clearcoatRoughness: .05, emissive: 0xd4001c, emissiveIntensity: .55, envMapIntensity: .45, transparent: true, opacity: .9 }),
-    juiceCount,
-  );
-  const seedCount = 22;
-  const seeds = new THREE.InstancedMesh(seedGeometry(THREE), new THREE.MeshPhysicalMaterial({ color: 0x24140e, roughness: .25, clearcoat: 1, clearcoatRoughness: .1 }), seedCount);
   const melonCentre = GROUND + MELON_R * MELON_SQUASH;
+  const shadows = { left: softShadow(THREE, 2.6, 1.9, .5, .35), right: softShadow(THREE, 2.6, 1.9, .5, .35) };
+  Object.values(shadows).forEach(mesh => { mesh.position.y = GROUND + .003; spin.add(mesh); });
+  // A ripple on the ground where the melon first lands.
+  const ripple = new THREE.Mesh(new THREE.RingGeometry(.9, 1, 96), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, depthWrite: false, side: THREE.DoubleSide }));
+  ripple.rotation.x = -Math.PI / 2;
+  ripple.position.set(0, GROUND + .01, MELON_Z);
+  spin.add(ripple);
+  const slash = new THREE.Mesh(new THREE.PlaneGeometry(1, 1).translate(.5, 0, 0), new THREE.MeshBasicMaterial({
+    map: slashTexture(THREE), transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
+  }));
+  slash.renderOrder = 5;
+  spin.add(slash);
+  // Warm pink light blooming behind the fruit as it opens.
+  const bloom = new THREE.Sprite(new THREE.SpriteMaterial({ map: glow, color: 0xff7d93, transparent: true, depthWrite: false }));
+  bloom.position.set(0, melonCentre + .3, MELON_Z - 1.6);
+  bloom.scale.setScalar(7.5);
+  spin.add(bloom);
+  const juiceMaterial = new THREE.MeshPhysicalMaterial({ color: 0xe8001f, roughness: .06, clearcoat: 1, clearcoatRoughness: .04, emissive: 0xd4001c, emissiveIntensity: .55, envMapIntensity: .5, transparent: true, opacity: .9 });
+  const dropGeometry = new THREE.SphereGeometry(1, 18, 14);
+  const juiceCount = 120;
+  const juice = new THREE.InstancedMesh(dropGeometry, juiceMaterial, juiceCount);
+  const seedCount = 26;
+  const seeds = new THREE.InstancedMesh(seedGeometry(THREE), new THREE.MeshPhysicalMaterial({ color: 0x24140e, roughness: .25, clearcoat: 1, clearcoatRoughness: .1 }), seedCount);
   const fling = (count, spread) => Array.from({ length: count }, (_, i) => {
     const side = i % 2 ? 1 : -1;
     return {
       from: new THREE.Vector3((random() - .5) * .16, melonCentre + (random() - .4) * MELON_R * .9, MELON_Z + (random() - .3) * MELON_R * .8),
-      velocity: new THREE.Vector3(side * (.5 + random() * spread), 1.4 + random() * 3.4, -.3 + random() * 2),
+      velocity: new THREE.Vector3(side * (.5 + random() * spread), 1.6 + random() * 3.6, -.2 + random() * 2.2),
       delay: random() * .03,
-      r: .022 + random() * .045,
+      r: .022 + random() * .05,
       spin: new THREE.Vector3(random() * 9, random() * 9, random() * 9),
     };
   });
-  const drops = fling(juiceCount, 2.6);
-  const pips = fling(seedCount, 2.1);
+  const drops = fling(juiceCount, 2.8);
+  const pips = fling(seedCount, 2.2);
   spin.add(juice, seeds);
+  const mist = softPoints(THREE, 80, 0xff6a84, THREE.NormalBlending);
+  const puffs = Array.from({ length: 80 }, () => ({
+    dir: new THREE.Vector3((random() - .5) * 2.4, random() * 1.6 + .1, (random() - .2) * 1.4).normalize().multiplyScalar(1.2 + random() * 2.4),
+    size: .14 + random() * .3,
+  }));
+  spin.add(mist);
+  // Drops that stay hanging in the air once the splash has settled.
+  const HANGING = Array.from({ length: 18 }, (_, i) => {
+    const a = (i / 18) * Math.PI * 2 + random() * .3;
+    const r = 1.7 + random() * 1;
+    return { at: new THREE.Vector3(Math.cos(a) * r, melonCentre + .5 + Math.sin(a) * r * .55 + random() * .4, MELON_Z + .4 + random() * 1.6), r: .04 + random() * .07, phase: random() * 6.3, delay: random() * .4 };
+  });
+  const hanging = new THREE.InstancedMesh(dropGeometry, juiceMaterial, HANGING.length);
+  spin.add(hanging);
   const WEDGES = [
-    { x: -1.75, y: 1.45, z: -1.1, rx: .5, ry: .9, rz: .45, s: 1.15 },
-    { x: 2.35, y: 1.2, z: -1.1, rx: .3, ry: -.9, rz: -.5, s: 1.15 },
-    { x: -2.2, y: -.9, z: 1.3, rx: -.15, ry: 2.3, rz: -.2, s: .85 },
+    { x: -1.5, y: 1.5, z: -1.1, rx: .45, ry: .9, rz: .45, s: 1.2 },
+    { x: 1.6, y: 1.45, z: -1.2, rx: .3, ry: -.9, rz: -.5, s: 1.15 },
+    { x: .15, y: 1.95, z: -2.2, rx: .2, ry: .2, rz: -.1, s: 1 },
   ];
   const wedges = WEDGES.map(() => {
     const holder = new THREE.Group();
@@ -1209,6 +1332,25 @@ async function initStory() {
     holder.visible = false;
     spin.add(holder);
     return holder;
+  });
+  const CHUNK = .36;
+  const CHUNKS = [
+    { x: -.42, y: GROUND + CHUNK / 2, z: 1.75, rx: 0, ry: .5, rz: 0, ground: true },
+    { x: .5, y: GROUND + CHUNK / 2, z: 1.45, rx: 0, ry: -.35, rz: 0, ground: true },
+    { x: -2.15, y: -.05, z: 1.1, rx: .6, ry: .4, rz: .5 },
+    { x: 2.2, y: .4, z: 1, rx: -.4, ry: .8, rz: .3 },
+    { x: -.05, y: .95, z: 1.25, rx: .9, ry: -.3, rz: .7 },
+  ];
+  const chunks = new THREE.InstancedMesh(roundedBox(THREE, CHUNK, .07), saturate(new THREE.MeshPhysicalMaterial({
+    map: chunkTexture(THREE), roughness: .3, clearcoat: 1, clearcoatRoughness: .12, emissive: 0xffffff, emissiveIntensity: .08,
+  }), 1.2), CHUNKS.length);
+  chunks.material.emissiveMap = chunks.material.map;
+  spin.add(chunks);
+  const chunkShadows = CHUNKS.filter(chunk => chunk.ground).map(chunk => {
+    const mesh = softShadow(THREE, .7, .5, .55, .3);
+    mesh.position.set(chunk.x, GROUND + .004, chunk.z);
+    spin.add(mesh);
+    return mesh;
   });
 
   /* ambient dust: slow motes of light across the whole chapter */
@@ -1225,9 +1367,11 @@ async function initStory() {
   let lift = 0;
   // Phones pull the halo and the floating slices in so they stay on screen.
   let spread = 1;
+  let fruit = 1;
   keepSized(renderer, camera, canvas, (width, height) => {
     const narrow = width < 900;
     spread = narrow ? clamp(width / height / .62, .72, .9) : 1;
+    fruit = narrow ? .86 : 1;
     const aspect = width / height;
     distance = Math.max(4.9 / ((narrow ? .54 : .8) * 2 * tanHalf), 5 / ((narrow ? .96 : .5) * 2 * tanHalf * aspect));
     shift = narrow ? 0 : distance * tanHalf * aspect * .27;
@@ -1355,19 +1499,26 @@ async function initStory() {
 
     /* ---- B: the tablet ---- */
     const pop = span(T.pop, p);
-    const settle = easeInOut(span(T.settle, p));
-    hero.visible = p > T.pop[0];
+    const leap = span(T.leap, p);
+    hero.visible = p > T.pop[0] && leap < 1;
     if (hero.visible) {
-      const landing = clamp((p - (T.drop[1] - .012)) / .02);
-      const hop = Math.sin(landing * Math.PI) * .32;
-      const bob = still ? 0 : Math.sin(time * 1.1) * .08 * (1 - settle * .6);
-      hero.position.set(0, lerp(.05, GROUND + (PANDA_HEIGHT * S_C) / 2 + .02, settle) + bob + hop, lerp(0, 1.6, settle));
-      hero.scale.setScalar(Math.max(.001, lerp(S_B, S_C, settle) * (pop < 1 ? easeOutBack(pop) : 1)));
+      // Leaving: a crouch, then a spring up and out of frame with a spin.
+      const crouch = smooth(0, .3, leap) * (1 - smooth(.3, .42, leap));
+      const air = clamp((leap - .3) / .7);
+      const rise = 1 - Math.pow(1 - air, 2);
+      const bob = still ? 0 : Math.sin(time * 1.1) * .08 * (1 - leap);
+      hero.position.set(0, .05 + bob - crouch * .22 + rise * 6.5, air * 1.2);
+      hero.scale.setScalar(Math.max(.001, S_B * (pop < 1 ? easeOutBack(pop) : 1) * (1 - air * .35)));
       // One full turn as it arrives, then it faces the camera while the halo of thirty forms.
       const turn = easeInOut(span(T.turn, p));
-      hero.rotation.set(.05 + (still ? 0 : Math.sin(time * .7) * .07), lerp(-.5 + turn * (Math.PI * 2 + .5), Math.PI * 2 - .3, settle) + (still ? 0 : Math.sin(time * .6) * .1), still ? 0 : Math.sin(time * .5) * .05);
+      hero.rotation.set(
+        .05 + (still ? 0 : Math.sin(time * .7) * .07) - air * .5,
+        -.5 + turn * (Math.PI * 2 + .5) + air * air * 7 + (still ? 0 : Math.sin(time * .6) * .1),
+        (still ? 0 : Math.sin(time * .5) * .05) + air * .4,
+      );
       const j = state.jelly;
-      jelly.scale.set(1 - j * .1, 1 + j * .18, 1 - j * .1);
+      const stretch = air > 0 ? (1 - air) * .3 : 0;
+      jelly.scale.set(1 - j * .1 + crouch * .14 - stretch * .3, 1 + j * .18 - crouch * .24 + stretch, 1 - j * .1 + crouch * .14 - stretch * .3);
     }
     const sparkle = smooth(.31, .38, p) * (1 - smooth(.6, .66, p));
     glitter.visible = sparkle > .01;
@@ -1398,9 +1549,9 @@ async function initStory() {
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
       holder.position.set(
-        hero.position.x + cos * r,
-        hero.position.y - .1 - sin * r * .26 + cos * r * .14 + scatter * scatter * 2.4 + (still ? 0 : Math.sin(time * 1.2 + data.phase) * .05),
-        hero.position.z + sin * r * .85,
+        cos * r,
+        -.05 - sin * r * .26 + cos * r * .14 + scatter * scatter * 2.4 + (still ? 0 : Math.sin(time * 1.2 + data.phase) * .05),
+        sin * r * .85,
       );
       holder.scale.setScalar(Math.max(.001, .27 * Math.min(out, 1.12) * (1 - scatter * .85)));
       holder.rotation.set(Math.sin(time * .8 + data.phase) * .3, Math.sin(time * .5 + data.phase) * .6 - cos * .35, Math.sin(time * .6 + data.phase) * .3 + scatter * (i % 2 ? 5 : -5));
@@ -1408,31 +1559,48 @@ async function initStory() {
 
     /* ---- C: the watermelon ---- */
     const drop = span(T.drop, p);
-    melon.group.visible = p > T.drop[0];
     const split = span(T.split, p);
+    melon.group.visible = p > T.drop[0];
+    shadows.left.visible = shadows.right.visible = melon.group.visible;
     if (melon.group.visible) {
-      const fall = (1 - easeOutBounce(drop)) * 7;
-      melon.group.position.set(0, melonCentre + fall, MELON_Z);
+      const fall = (1 - easeOutBounce(drop)) * 7.5;
+      // A heavy fruit: it squashes on every bounce, its bottom staying on the ground.
+      const squash = drop < 1 ? [[.3636, 1], [.7273, .45], [.9091, .2]].reduce((sum, [at, k]) => sum + k * Math.exp(-(((drop - at) / .045) ** 2)), 0) : 0;
+      melon.group.scale.set(fruit * (1 + squash * .07), fruit * (1 - squash * .13), fruit * (1 + squash * .07));
+      melon.group.position.set(0, melonCentre + fall - MELON_R * MELON_SQUASH * (1 - fruit * (1 - squash * .13)), MELON_Z);
       melon.group.rotation.set(0, (1 - easeOutCubic(drop)) * 2.4, Math.pow(1 - drop, 2) * .8);
+      // The halves pop apart in a little jump and land open, so both the dome of rind and the cut face read.
       const open = split > 0 ? easeOutBack(split) : 0;
+      const jump = Math.sin(clamp(split * 1.3) * Math.PI);
       const rock = still ? 0 : Math.sin(time * .9) * .025 * open;
-      // Halves open to three-quarters, so both the dome of rind and the cut face read.
-      melon.right.position.x = open * 1.12;
-      melon.right.rotation.set(-.3 * open, open * .62, rock);
-      melon.left.position.x = -open * 1.12;
-      melon.left.rotation.set(-.3 * open, -open * .62, -rock);
+      melon.right.position.set(open * 1.06 * spread / fruit, jump * .4, 0);
+      melon.right.rotation.set(-.3 * open, open * .62, rock - jump * .16);
+      melon.left.position.set(-open * 1.06 * spread / fruit, jump * .4, 0);
+      melon.left.rotation.set(-.3 * open, -open * .62, -rock + jump * .16);
       melon.caps.forEach(cap => { cap.visible = split > 0; });
-      const grounded = clamp(1 - fall / 4);
-      shadows.left.visible = shadows.right.visible = true;
-      shadows.left.position.set(-open * 1.15, GROUND + .003, MELON_Z);
-      shadows.right.position.set(open * 1.15, GROUND + .003, MELON_Z);
+      const grounded = clamp(1 - fall / 4) * (1 - jump * .5);
+      shadows.left.position.set(-open * 1.1 * spread, GROUND + .003, MELON_Z);
+      shadows.right.position.set(open * 1.1 * spread, GROUND + .003, MELON_Z);
+      shadows.left.scale.setScalar(fruit);
+      shadows.right.scale.setScalar(fruit);
       shadows.left.material.opacity = shadows.right.material.opacity = .5 * grounded;
-    } else {
-      shadows.left.visible = shadows.right.visible = false;
     }
-    shadows.panda.visible = settle > 0;
-    shadows.panda.position.set(hero.position.x, GROUND + .004, hero.position.z);
-    shadows.panda.material.opacity = .6 * settle * clamp(1 - (hero.position.y - (GROUND + (PANDA_HEIGHT * S_C) / 2)) / .8);
+    const impact = clamp((drop - .3636) / .3);
+    ripple.visible = drop > .3636 && impact < 1;
+    ripple.scale.setScalar(MELON_R * (.9 + easeOutCubic(impact) * 2.4));
+    ripple.material.opacity = Math.pow(1 - impact, 2) * .7;
+    const cut = span(T.slash, p);
+    slash.visible = cut > 0 && cut < 1;
+    if (slash.visible) {
+      const height = MELON_R * MELON_SQUASH;
+      slash.position.set(.08, melonCentre + height + .5, MELON_Z + MELON_R + .15);
+      slash.rotation.set(0, 0, -Math.PI / 2 - .07);
+      slash.scale.set(Math.max(.001, (height * 2 + 1) * easeOutCubic(clamp(cut / .5))), .55, 1);
+      slash.material.opacity = 1 - smooth(.55, 1, cut);
+    }
+    bloom.visible = p > T.bloom[0] && p < T.bloom[2];
+    bloom.material.opacity = bell(T.bloom, p) * .5;
+
     const fly = (mesh, list, scale, stretchy) => {
       list.forEach((item, i) => {
         const j = clamp((p - T.juice[0] - item.delay) / (T.juice[1] - T.juice[0] - .03));
@@ -1463,17 +1631,80 @@ async function initStory() {
       fly(juice, drops, 1, true);
       fly(seeds, pips, 2.2, false);
     }
+    const puff = span([T.split[0], T.split[0] + .12], p);
+    mist.visible = puff > 0 && puff < 1;
+    if (mist.visible) {
+      const position = mist.geometry.attributes.position;
+      const size = mist.geometry.attributes.size;
+      const alpha = mist.geometry.attributes.alpha;
+      const reach = easeOutCubic(puff);
+      puffs.forEach((puffy, i) => {
+        position.setXYZ(i, puffy.dir.x * reach, melonCentre + .25 + puffy.dir.y * reach, MELON_Z + .3 + puffy.dir.z * reach);
+        size.setX(i, puffy.size * (1 + puff * 1.6));
+        alpha.setX(i, Math.pow(1 - puff, 1.5) * .42);
+      });
+      position.needsUpdate = true;
+      size.needsUpdate = true;
+      alpha.needsUpdate = true;
+    }
+    const hang = span(T.hover, p);
+    hanging.visible = hang > 0;
+    if (hanging.visible) {
+      HANGING.forEach((drip, i) => {
+        const k = clamp((hang - drip.delay) / .6);
+        const r = k > 0 ? drip.r * easeOutBack(k) : 0;
+        const wobble = still ? 0 : Math.sin(time * 2.2 + drip.phase) * .07;
+        dummy.position.set(drip.at.x * spread, drip.at.y + (still ? 0 : Math.sin(time * .9 + drip.phase) * .07), drip.at.z);
+        dummy.rotation.set(drip.phase, time * .3 + drip.phase, 0);
+        dummy.scale.set(r * (1 + wobble), r * (1 - wobble), r * (1 + wobble));
+        dummy.updateMatrix();
+        hanging.setMatrixAt(i, dummy.matrix);
+      });
+      hanging.instanceMatrix.needsUpdate = true;
+    }
     wedges.forEach((holder, i) => {
       const spot = WEDGES[i];
-      const k = clamp((p - T.wedges[0] - i * .035) / .09);
+      const k = clamp((p - T.wedges[0] - i * .03) / .09);
       holder.visible = k > 0;
       if (!holder.visible) return;
+      // Slices rise from behind the open fruit into a loose crown.
       const e = easeOutBack(k);
       const float = still ? 0 : Math.sin(time * .8 + i * 2) * .08;
-      holder.position.set(lerp(spot.x * 1.4, spot.x, e) * spread, lerp(spot.y + 5, spot.y, e) + float, lerp(spot.z - 1, spot.z, e));
-      holder.rotation.set(spot.rx + (1 - e) * 2 + (still ? 0 : Math.sin(time * .5 + i) * .08), spot.ry + (1 - e) * 3 + (still ? 0 : time * .15), spot.rz + (1 - e));
+      holder.position.set(lerp(spot.x * .3, spot.x, e) * spread, lerp(melonCentre, spot.y, e) + float, lerp(spot.z - .6, spot.z, e));
+      holder.rotation.set(spot.rx + (1 - e) * 1.5 + (still ? 0 : Math.sin(time * .5 + i) * .08), spot.ry + (1 - e) * 2.5 + (still ? 0 : time * .15), spot.rz + (1 - e) * .8);
       holder.scale.setScalar(spot.s * Math.max(.001, Math.min(e, 1.1)));
     });
+    const chunkIn = span(T.chunks, p);
+    chunks.visible = chunkIn > 0;
+    if (chunks.visible) {
+      let shadowIndex = 0;
+      CHUNKS.forEach((chunk, i) => {
+        const k = clamp((chunkIn - i * .1) / .5);
+        let y;
+        let tumble;
+        if (chunk.ground) {
+          // Tumbles down and bounces to rest on a flat face.
+          y = lerp(chunk.y + 4.2, chunk.y, easeOutBounce(k));
+          tumble = 1 - easeOutCubic(clamp(k * 1.25));
+          const shade = chunkShadows[shadowIndex];
+          shadowIndex += 1;
+          shade.visible = k > 0;
+          shade.material.opacity = .55 * clamp(1 - (y - chunk.y) / 1.6);
+        } else {
+          y = lerp(chunk.y + 2.6, chunk.y, easeOutBack(k)) + (still ? 0 : Math.sin(time * .8 + i) * .07);
+          tumble = 1 - easeOutCubic(k);
+        }
+        const idle = chunk.ground || still ? 0 : time * .25 + i;
+        dummy.position.set(chunk.x * (chunk.ground ? 1 : spread), y, chunk.z);
+        dummy.rotation.set(chunk.rx + tumble * 4 + idle * .5, chunk.ry + tumble * 3 + idle, chunk.rz + tumble * 2);
+        dummy.scale.setScalar(k > 0 ? 1 : 0);
+        dummy.updateMatrix();
+        chunks.setMatrixAt(i, dummy.matrix);
+      });
+      chunks.instanceMatrix.needsUpdate = true;
+    } else {
+      chunkShadows.forEach(shade => { shade.visible = false; });
+    }
 
     /* ---- dust and camera ---- */
     const position = dust.geometry.attributes.position;
@@ -1489,11 +1720,12 @@ async function initStory() {
     size.needsUpdate = true;
     alpha.needsUpdate = true;
 
-    const dolly = 1 - .05 * bell([.3, .46, .62], p) + .03 * smooth(.62, .74, p);
+    // A slow lean in while the open fruit holds the frame.
+    const dolly = 1 - .05 * bell([.3, .46, .62], p) + .04 * smooth(.62, .72, p) - .045 * smooth(.8, 1, p);
     camera.position.set(0, .45 + lift, distance * dolly);
     camera.lookAt(0, lift, 0);
     const pointScale = renderer.domElement.height / (2 * tanHalf);
-    [dust, sparks, glitter, ...atom.shells.map(shell => shell.tail)].forEach(points => { points.material.uniforms.uScale.value = pointScale; });
+    [dust, sparks, glitter, mist, ...atom.shells.map(shell => shell.tail)].forEach(points => { points.material.uniforms.uScale.value = pointScale; });
 
     /* ---- the DOM overlays that follow the scene ---- */
     scene.updateMatrixWorld();
