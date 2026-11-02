@@ -67,7 +67,7 @@ test('every public HTML page references the loader through a valid relative path
     assert.equal(path.resolve(root, path.dirname(file), matches[0][1]), path.join(root, 'js/site/analytics.js'));
     count++;
   }
-  assert.equal(count, 9);
+  assert.equal(count, 10);
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
   const policy = config.headers[0].headers.find(header => header.key === 'Content-Security-Policy').value;
   assert.match(policy, /script-src 'self'/);

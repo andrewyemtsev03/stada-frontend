@@ -57,6 +57,46 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
   return dom;
 }
 
+// Showcase product pages are hand-designed templates whose copy comes from the
+// product payload. Inline markup is limited to a few presentational tags.
+const showcaseMarkup = /<(?!\/?(?:b|i|em|strong|br|small|sup)\s*\/?>)[^>]*>/i;
+function renderShowcase(document, { product }) {
+  const copy = product.showcase;
+  if (!copy) throw new Error(`Missing showcase copy: ${product.slug}`);
+  const text = key => {
+    const value = copy[key];
+    if (value === undefined) throw new Error(`Missing showcase text "${key}" for ${product.slug}`);
+    if (typeof value === 'string' && showcaseMarkup.test(value)) throw new Error(`Unsupported markup in "${key}" for ${product.slug}`);
+    return value;
+  };
+  document.querySelectorAll('[data-sc]').forEach(node => {
+    node.innerHTML = text(node.dataset.sc);
+    node.removeAttribute('data-sc');
+  });
+  document.querySelectorAll('[data-sc-list]').forEach(node => {
+    const items = text(node.dataset.scList);
+    if (!Array.isArray(items)) throw new Error(`Showcase list "${node.dataset.scList}" must be an array`);
+    node.replaceChildren(...items.map(item => Object.assign(document.createElement('span'), { textContent: item })));
+    node.removeAttribute('data-sc-list');
+  });
+  document.querySelectorAll('[data-sc-attr]').forEach(node => {
+    for (const pair of node.dataset.scAttr.split(';')) {
+      const [attribute, key] = pair.split(':');
+      node.setAttribute(attribute, text(key).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+    }
+    node.removeAttribute('data-sc-attr');
+  });
+  document.title = product.page?.title || `STADA - ${product.name}`;
+}
+
+function productTemplate(product) {
+  const template = product.template || 'products/product.html';
+  if (!/^products\/[a-z0-9-]+\.html$/.test(template) || template === 'products/index.html' || !fs.existsSync(path.join(source, template))) {
+    throw new Error(`Invalid product template for ${product.slug}: ${template}`);
+  }
+  return template;
+}
+
 function addContactDetails(document, lang) {
   // Use the same locally bundled module as the interactive globe; no separate copy.
   const dataCode = fs.readFileSync(path.join(source, 'js/worldwide/countries-data.js'), 'utf8').replace(/export /g, '');
@@ -178,7 +218,7 @@ function finalize(dom, country, lang, template, page, text, newsId) {
   });
   const description = document.createElement('meta');
   description.name = 'description';
-  description.content = (document.querySelector('main p:not(:empty)')?.textContent || text.about_par1 || country.siteName)
+  description.content = ((document.querySelector('[data-page-description]') || document.querySelector('main p:not(:empty)'))?.textContent || text.about_par1 || country.siteName)
     .replace(/\s+/g, ' ').trim().slice(0, 180);
   document.head.append(description);
   if (page === 'news-article.html' || page === 'products/product.html') {
@@ -225,7 +265,9 @@ function build() {
         } };
         const dom = prepareRuntime(fs.readFileSync(path.join(source, template), 'utf8'), country, lang, template, payload, query);
         if (template === 'contacts.html') addContactDetails(dom.window.document, lang);
-        if (productPayload) {
+        if (productPayload && template !== 'products/product.html') {
+          renderShowcase(dom.window.document, productPayload);
+        } else if (productPayload) {
           dom.window.__product = productPayload;
           vm.runInContext('renderDynamicProductPage(window.__product)', dom.getInternalVMContext());
           const documents = productPayload.product.documents || [];
@@ -257,7 +299,7 @@ function build() {
       }
       for (const [slug, product] of Object.entries(locale.products || {})) {
         if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`Invalid product slug: ${slug}`);
-        render('products/product.html', `products/${slug}.html`, `?slug=${slug}`, undefined, product);
+        render(productTemplate(product.product), `products/${slug}.html`, `?slug=${slug}`, undefined, product);
       }
     }
     write(path.join(siteRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `<url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`);
@@ -282,4 +324,4 @@ function build() {
   console.log(`Built ${pageCount} complete pages across ${countries.length} country sites. Output: frontend/dist`);
 }
 if (require.main === module) build();
-module.exports = { build, output, source, countries };
+module.exports = { build, output, source, countries, renderShowcase };
