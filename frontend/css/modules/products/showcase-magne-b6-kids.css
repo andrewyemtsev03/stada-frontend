@@ -261,7 +261,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
    One sticky 3D scene in three stages on the sky-blue taste ground.
    ===================================================================== */
 .mg-scene { position: relative; z-index: 2; margin-top: -28px; }
-.mg-story { height: 640vh; --glow: 255 255 255; --at: 63.5%; }
+.mg-story { height: 820vh; --glow: 255 255 255; --at: 63.5%; }
 .mg-story[data-stage="b"] { --glow: 255 176 214; --at: 36.5%; }
 .mg-story[data-stage="c"] { --glow: 255 150 150; }
 .mg-sticky {
@@ -743,7 +743,7 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-buy__inner { grid-template-columns: 1fr; }
 
   /* Story: the caption sits on top, the 3D composition under it. */
-  .mg-story { height: 560vh; --at: 50%; }
+  .mg-story { height: 720vh; --at: 50%; }
   .mg-story[data-stage="b"] { --at: 50%; }
   .mg-story__bg { left: -50%; background: radial-gradient(55% 70% at 50% 62%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%); }
   .mg-story[data-stage="b"] .mg-story__bg { transform: none; }

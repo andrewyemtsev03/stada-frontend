@@ -71,7 +71,8 @@ output, not the raw source folder.
   into the panda tablet (`panda.glb`), which calls out the jar's 30 tablets and
   leaps out of frame; a procedurally painted watermelon then drops in, is cut by
   a blade of light and bursts open with juice, seeds and mist, joined by
-  `watermelon-slice.glb` wedges, fresh chunks and hanging drops of juice. Without WebGL each stage
+  floating fresh chunks and hanging drops of juice. That last stage gets a
+  larger share of the chapter's scroll, so it plays more slowly. Without WebGL each stage
   shows a photo; without JavaScript the three captions read as plain sections. All copy and facts
   come from that label; the page reads fully without JavaScript. The commercial
   plays in place through YouTube's privacy-enhanced player, created only after
