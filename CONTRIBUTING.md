@@ -2,43 +2,36 @@
 
 ## Branches
 
-| Branch | What it is | Deployed to |
+The repository has exactly these five branches. Do not create others unless the
+site owner explicitly asks.
+
+| Branch | What goes on it | Deployed to |
 | --- | --- | --- |
-| `main` | What is live. Only changes merged through a pull request. | `stada.xx` (Vercel project `project-s`) |
-| `dev` | Staging. A preview of `main` plus work under review. Nobody works on it directly. | `new.stada.xx` (Vercel project `stada-dev`) |
-| `feature/products` | All product work: catalog, product pages, showcases and their fixes. | Vercel preview URL only |
-| `feature/…`, `content/…`, `fix/…` | One branch per piece of work, started from `main`. | Vercel preview URL only |
+| `main` | What is live. Changes arrive only through pull requests. | `stada.xx` (Vercel project `project-s`) |
+| `dev` | Staging, for the site owner to review. Never committed to directly; branches are merged into it. | `new.stada.xx` (Vercel project `stada-dev`) |
+| `feature/products` | Everything about products: catalog, product pages, showcases, and their fixes. | Vercel preview URL only |
+| `feature/news` | Company news and press content. | Vercel preview URL only |
+| `smallfix` | Small fixes anywhere else: typos, styling, bugs, docs. | Vercel preview URL only |
 
 ## Rules for everyone (people and AI assistants)
 
-- **Products → `feature/products`.** Anything to do with products, including
-  fixes to a product page, is committed straight to `feature/products`. Never
-  create a new `fix/…` or other branch for it.
-- **Never create a new branch unless the site owner explicitly asks for one.**
-  If the right branch is unclear, ask instead of inventing one.
-- Never commit to `dev` or `main` directly. To show work, merge its branch into
-  `dev`. Only the site owner merges into `main`.
-- Start from the latest remote state of the branch (`git pull`) and never
-  `cherry-pick` between branches.
-
-The rule that makes this work: **release features, not branches.** Each piece of
-work goes to `main` on its own branch, so unfinished work in `dev` never blocks a
-finished one.
+- Pick the branch from the table above. Product work, including fixes to a
+  product page, always goes on `feature/products`.
+- **Never create a new branch.** If it is unclear which branch fits, ask.
+- Never commit to `dev` or `main` directly.
+- Pull the latest version of the branch before committing (`git pull`), and never
+  `cherry-pick` between branches; merging keeps one history.
 
 ## Everyday flow
 
-1. Start from the latest `main`:
+1. Switch to the right branch and bring it up to date:
 
    ```sh
-   git checkout main
+   git checkout feature/products
    git pull
-   git checkout -b content/press-releases-2026
    ```
 
-   Name branches by purpose: `feature/products`, `content/media-mentions`,
-   `fix/cookie-banner`.
-
-2. Commit your work, then build and test locally from `frontend`:
+2. Commit your work, then build and test from `frontend`:
 
    ```sh
    npm ci
@@ -46,44 +39,34 @@ finished one.
    npm test
    ```
 
-3. Push the branch. Preview it on staging by merging it into `dev`:
+3. Push, then merge the branch into `dev` so the site owner can see it on staging:
 
    ```sh
-   git push -u origin content/press-releases-2026
+   git push
    git checkout dev
    git pull
-   git merge content/press-releases-2026
+   git merge feature/products
    git push
    ```
 
-   Check it on `new.stada.xx`. If something needs fixing, fix it **on your
-   branch** and merge the branch into `dev` again.
+   If something needs changing, change it **on the same branch** and merge it
+   into `dev` again.
 
-4. Release: open a pull request from **your branch** into `main` (not from `dev`).
-   The "Build and test" check must be green and someone else should review it.
-   Merging the pull request publishes it to `stada.xx`.
+4. Release (site owner): open a pull request from the branch into `main`. The
+   "Build and test" check must be green. Merging the pull request publishes it.
 
-5. After a release, bring staging up to date: merge `main` into `dev`.
+5. After a release, merge `main` back into `dev` and into the other working
+   branches so they stay close to what is live:
 
-## Urgent changes
-
-Same flow, just quicker: branch from `main`, pull request into `main`, then merge
-`main` into `dev`. Do not copy commits between branches by hand
-(`cherry-pick`); merging keeps one history and avoids duplicate commits.
-
-## Long-running work (for example `feature/products`)
-
-- Keep it on its own branch and commit every change for that area to it (no
-  side branches). Merge it into `dev` whenever you want to show it on staging.
-- Every week or so, merge `main` into the feature branch so it does not drift
-  far from what is live.
-- When it is finished, open a pull request from the feature branch into `main`.
+   ```sh
+   git checkout dev && git pull && git merge origin/main && git push
+   git checkout smallfix && git pull && git merge origin/main && git push
+   ```
 
 ## Resetting staging
 
 `dev` is disposable. If it collects abandoned experiments, rebuild it from `main`
-and re-merge the branches that are still under review. Agree this with the team
-first, because it rewrites `dev` for everyone:
+and re-merge the branches still under review. This rewrites `dev` for everyone:
 
 ```sh
 git checkout dev
