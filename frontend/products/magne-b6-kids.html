@@ -9,10 +9,15 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
-    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=4" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=5" />
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <body class="mg-page" data-product-showcase="magne-b6-kids">
+    <!-- Loading screen: covers the page with the breathing STADA logo until the hero's 3D scene is ready.
+         The showcase module lifts it (html.mg-loaded); the timer is a safety net if the module never runs. -->
+    <div class="mg-splash" aria-hidden="true"><img src="../assets/logos/stada_logo.png" alt="" width="770" height="450" /></div>
+    <script>setTimeout(function () { document.documentElement.classList.add('mg-loaded'); }, 12000);</script>
+    <noscript><style>.mg-splash { display: none; }</style></noscript>
     <nav>
       <div class="nav-container">
         <a href="../index.html" class="logo" aria-label="STADA logo">
@@ -120,7 +125,6 @@
             <!-- The pack's petal flower, at full size behind the jar: the one bold shape in the hero. -->
             <svg class="mg-flower mg-hero__bloom" aria-hidden="true"><use href="#mg-flower-bloom" /></svg>
             <canvas class="mg-hero__gl" data-hero-canvas aria-hidden="true"></canvas>
-            <div class="mg-loading mg-loading--light" aria-hidden="true"><i></i><span data-sc="jar_loading"></span></div>
             <!-- Photo fallback: shown only without JavaScript, without WebGL or in data-saver mode. -->
             <div class="mg-hero__poster">
               <img class="mg-hero__melon" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" width="326" height="904" aria-hidden="true" loading="lazy" />
@@ -491,6 +495,6 @@
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
   <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
-    <script type="module" src="../js/showcase/magne-b6-kids.js?v=4"></script>
+    <script type="module" src="../js/showcase/magne-b6-kids.js?v=5"></script>
   </body>
 </html>
