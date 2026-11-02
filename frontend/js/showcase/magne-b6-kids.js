@@ -944,6 +944,12 @@ async function initHero() {
   };
 
   const { jar } = buildJar(THREE, jarGltf);
+  // A shade darker than in the jar chapter, so the white pack doesn't glare against the light hero.
+  jar.traverse(node => {
+    if (!node.isMesh) return;
+    node.material.color.multiplyScalar(.76);
+    node.material.envMapIntensity = .62;
+  });
   const jarGroup = new THREE.Group();
   jarGroup.add(jar);
   // Wide soft falloff plus a tight contact core right under the base. Neither turns with the jar.
@@ -958,12 +964,27 @@ async function initHero() {
   // The wedge model already stands on its rind with the tip up.
   // A prop next to the jar, not a second hero: the wedge stays under two thirds of the jar's height.
   const melon = new THREE.Group();
-  melon.add(melonWedge(THREE, melonGltf));
-  melon.scale.setScalar(1.35);
+  const wedge = melonWedge(THREE, melonGltf);
+  // Juicy: the model's self-lit (emissive) look is swapped for a wet, glossy flesh lit by the scene,
+  // a little deeper in colour. Hero only; the taste chapter keeps its own wedges.
+  wedge.traverse(node => {
+    if (!node.isMesh) return;
+    const source = node.material;
+    node.material = new THREE.MeshPhysicalMaterial({
+      map: source.map, normalMap: source.normalMap, roughnessMap: source.roughnessMap,
+      color: new THREE.Color(.9, .62, .6), roughness: .55, metalness: 0, envMapIntensity: .35,
+      clearcoat: .55, clearcoatRoughness: .06,
+      emissiveMap: source.emissiveMap, emissive: new THREE.Color(.95, .5, .5), emissiveIntensity: .42,
+      side: THREE.DoubleSide,
+    });
+  });
+  melon.add(wedge);
+  melon.scale.setScalar(2);
   // The wedge stands on its rind, so its shadow is a long thin ellipse along the rind.
-  const melonShadow = softShadow(THREE, 1.25, .48, .6, .3);
-  // Seated on the same ground line as the jar, front-left and clear of it, rind flat, cut face to the camera.
-  const melonPose = { x: -1.76, y: 0, z: .55, rx: 0, ry: .32, rz: 0 };
+  const melonShadow = softShadow(THREE, 1.6, .6, .6, .3);
+  // Seated on the ground behind the jar's left edge, so the pack covers its tip a little; rind flat,
+  // cut face to the camera.
+  const melonPose = { x: -1.66, y: 0, z: -.45, rx: 0, ry: .3, rz: 0 };
   melon.rotation.set(melonPose.rx, melonPose.ry, melonPose.rz);
   melonPose.y = -new THREE.Box3().setFromObject(melon).min.y;
   melon.rotation.set(0, 0, 0);
