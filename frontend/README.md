@@ -56,6 +56,17 @@ output, not the raw source folder.
   and unchanged Georgian leaflets live in `assets/georgia-products/`; both
   languages link to the original Georgian instructions. The packaging approval
   PDF and multi-side reference photo are not published as patient leaflets.
+- Kazakhstan includes Магне B6 Кидс in Russian and Kazakh. Its page is a
+  presentation-style showcase rather than the generic product layout: a product
+  payload may name its own `template` under `products/`, and the build fills that
+  template's `data-sc`, `data-sc-list` and `data-sc-attr` slots from the
+  payload's `showcase` copy (only `b`, `i`, `em`, `strong`, `br`, `small` and
+  `sup` markup is allowed). The page uses `css/modules/products/showcase-magne-b6-kids.css`
+  and the `js/showcase/magne-b6-kids.js` module, which loads the vendored
+  three.js r160 (`js/vendor/three/`) only when its 3D chapters approach. The 3D
+  jar wraps the real label artwork (`assets/kazakhstan-products/magne-b6-kids/label-*.webp`,
+  rendered from the supplied print PDF without the die line). All copy and facts
+  come from that label; the page reads fully without JavaScript.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API
