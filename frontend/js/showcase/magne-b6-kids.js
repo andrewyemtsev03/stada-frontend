@@ -370,99 +370,37 @@ function runWhileVisible(element, renderer, tick) {
   }, { rootMargin: '10% 0px' }).observe(element);
 }
 
-/* ---------- the panda tablet: an extruded silhouette with a sugared, debossed face ---------- */
-function pandaShape(THREE) {
-  const s = new THREE.Shape();
-  s.moveTo(-.34, -.66);
-  s.lineTo(.34, -.66);
-  s.quadraticCurveTo(.5, -.66, .5, -.5);
-  s.lineTo(.5, -.04);
-  s.quadraticCurveTo(.5, .06, .45, .1);
-  s.quadraticCurveTo(.53, .16, .53, .3);
-  s.lineTo(.53, .42);
-  s.quadraticCurveTo(.53, .5, .48, .53);
-  s.quadraticCurveTo(.52, .68, .38, .68);
-  s.quadraticCurveTo(.29, .68, .26, .6);
-  s.quadraticCurveTo(0, .65, -.26, .6);
-  s.quadraticCurveTo(-.29, .68, -.38, .68);
-  s.quadraticCurveTo(-.52, .68, -.48, .53);
-  s.quadraticCurveTo(-.53, .5, -.53, .42);
-  s.lineTo(-.53, .3);
-  s.quadraticCurveTo(-.53, .16, -.45, .1);
-  s.quadraticCurveTo(-.5, .06, -.5, -.04);
-  s.lineTo(-.5, -.5);
-  s.quadraticCurveTo(-.5, -.66, -.34, -.66);
-  return s;
+/* ---------- the panda tablet: sculpted sugar-coated gummy (panda.glb: mesh + colour/normal/roughness maps) ---------- */
+const PANDA_HEIGHT = 1.5;
+let pandaPromise;
+function loadPanda(THREE) {
+  pandaPromise ||= import('../vendor/three/GLTFLoader.js')
+    .then(({ GLTFLoader }) => new GLTFLoader().loadAsync(asset('panda.glb')))
+    .then(gltf => {
+      const model = gltf.scene;
+      model.traverse(node => {
+        if (!node.isMesh) return;
+        node.material.side = THREE.FrontSide;
+        // A touch of warmth so the candy stays pink under ACES and the blue rim light.
+        node.material.color.setRGB(1, .86, .88);
+        node.material.envMapIntensity = 1;
+      });
+      // Normalise: centred on the origin, PANDA_HEIGHT tall, facing +Z.
+      const box = new THREE.Box3().setFromObject(model);
+      const size = box.getSize(new THREE.Vector3());
+      const centre = box.getCenter(new THREE.Vector3());
+      const scale = PANDA_HEIGHT / size.y;
+      model.scale.multiplyScalar(scale);
+      model.position.sub(centre.multiplyScalar(scale));
+      return model;
+    });
+  return pandaPromise;
 }
-
-function sugarCanvas(width, height, draw) {
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#ee9db8';
-  ctx.fillRect(0, 0, width, height);
-  for (let i = 0; i < width * height / 26; i += 1) {
-    const light = Math.random() > .42;
-    ctx.fillStyle = light ? `rgba(255, 226, 236, ${.2 + Math.random() * .5})` : `rgba(206, 104, 140, ${.14 + Math.random() * .3})`;
-    ctx.beginPath();
-    ctx.arc(Math.random() * width, Math.random() * height, .5 + Math.random() * 1.7, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  draw?.(ctx);
-  return canvas;
-}
-
-function pandaMaterials(THREE, renderer) {
-  // Face texture maps shape coordinates x ∈ [-0.6, 0.6], y ∈ [-0.75, 0.75].
-  const W = 512;
-  const H = 640;
-  const face = sugarCanvas(W, H, ctx => {
-    const X = x => (x + .6) / 1.2 * W;
-    const Y = y => (.75 - y) / 1.5 * H;
-    const S = v => v / 1.2 * W;
-    const outline = path => {
-      ctx.lineCap = 'round';
-      ctx.strokeStyle = 'rgba(178, 70, 110, .6)';
-      ctx.lineWidth = 8;
-      path(); ctx.stroke();
-      ctx.save(); ctx.translate(-1.8, -1.8);
-      ctx.strokeStyle = 'rgba(255, 232, 240, .7)';
-      ctx.lineWidth = 2.6;
-      path(); ctx.stroke();
-      ctx.restore();
-    };
-    const ellipse = (x, y, rx, ry, rotation) => () => { ctx.beginPath(); ctx.ellipse(X(x), Y(y), S(rx), S(ry), rotation, 0, Math.PI * 2); };
-    [[-.19, .34, .12, .085, .55], [.19, .34, .12, .085, -.55],
-      [-.22, -.07, .12, .155, .1], [.22, -.07, .12, .155, -.1],
-      [-.25, -.43, .13, .165, 0], [.25, -.43, .13, .165, 0],
-      [-.38, .58, .055, .05, 0], [.38, .58, .055, .05, 0]].forEach(args => outline(ellipse(...args)));
-    outline(() => { ctx.beginPath(); ctx.moveTo(X(-.035), Y(.235)); ctx.quadraticCurveTo(X(0), Y(.19), X(.035), Y(.235)); ctx.closePath(); });
-    outline(() => { ctx.beginPath(); ctx.moveTo(X(-.08), Y(.17)); ctx.quadraticCurveTo(X(-.04), Y(.12), X(0), Y(.165)); ctx.quadraticCurveTo(X(.04), Y(.12), X(.08), Y(.17)); });
-  });
-  const side = sugarCanvas(256, 256);
-  const faceTexture = new THREE.CanvasTexture(face);
-  faceTexture.colorSpace = THREE.SRGBColorSpace;
-  faceTexture.repeat.set(1 / 1.2, 1 / 1.5);
-  faceTexture.offset.set(.5, .5);
-  faceTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-  const sideTexture = new THREE.CanvasTexture(side);
-  sideTexture.colorSpace = THREE.SRGBColorSpace;
-  sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping;
-  sideTexture.repeat.set(2.5, 2.5);
-  const common = { color: 0xffffff, roughness: .86, sheen: .7, sheenRoughness: .55, sheenColor: new THREE.Color(0xffd3e1), bumpScale: 2.2 };
-  return [
-    new THREE.MeshPhysicalMaterial({ ...common, map: faceTexture, bumpMap: faceTexture }),
-    new THREE.MeshPhysicalMaterial({ ...common, map: sideTexture, bumpMap: sideTexture }),
-  ];
-}
-
-function pandaGeometry(THREE) {
-  const geometry = new THREE.ExtrudeGeometry(pandaShape(THREE), {
-    depth: .24, bevelEnabled: true, bevelThickness: .1, bevelSize: .075, bevelSegments: 6, curveSegments: 20,
-  });
-  geometry.center();
-  return geometry;
+// Each tablet is a cheap clone: geometry, textures and material are shared.
+function makePanda(THREE, model) {
+  const holder = new THREE.Group();
+  holder.add(model.clone());
+  return holder;
 }
 
 /* ---------- the jar: lathe body + real label artwork + two-tier cap ---------- */
@@ -603,10 +541,9 @@ async function initJar() {
   rig.add(jar, contactShadow(THREE));
   scene.add(rig);
 
-  const geometry = pandaGeometry(THREE);
-  const materials = pandaMaterials(THREE, renderer);
-  const tablets = Array.from({ length: 14 }, (_, i) => {
-    const mesh = new THREE.Mesh(geometry, materials);
+  const pandaModel = await loadPanda(THREE).catch(() => null);
+  const tablets = Array.from({ length: pandaModel ? 14 : 0 }, (_, i) => {
+    const mesh = makePanda(THREE, pandaModel);
     mesh.visible = false;
     mesh.userData = {
       angle: i * 2.39996,
@@ -732,7 +669,14 @@ async function initPanda() {
   const camera = new THREE.PerspectiveCamera(30, 1, .1, 50);
   camera.position.set(0, 0, 6.2);
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
-  const panda = new THREE.Mesh(pandaGeometry(THREE), pandaMaterials(THREE, renderer));
+  let pandaModel;
+  try {
+    pandaModel = await loadPanda(THREE);
+  } catch {
+    renderer.dispose();
+    return;
+  }
+  const panda = makePanda(THREE, pandaModel);
   const holder = new THREE.Group();
   holder.add(panda);
   scene.add(holder);
