@@ -885,6 +885,7 @@ function burstSparks(stage, x, y) {
    photographs are kept for no WebGL and data-saver mode only.
    ===================================================================== */
 const JAR_HEIGHT = 2.7;
+const MELON_TONE = { color: .7, glow: .6, reflect: .2 };
 // Soft ground shadow, tinted with the hero's navy. `core` keeps it dark out to that fraction of its radius,
 // so the darkest part reaches the object's edge (where the camera can see it) and then fades out quickly.
 function softShadow(THREE, width, depth, opacity, core = 0) {
@@ -965,12 +966,21 @@ async function initHero() {
   // A prop next to the jar, not a second hero: the wedge stays under two thirds of the jar's height.
   const melon = new THREE.Group();
   const wedge = melonWedge(THREE, melonGltf);
+  // Same model and look as the taste chapter's wedges. Here the front key light hits the cut face square on
+  // and bleaches it, so the hero copy takes a little less light and self-glow to keep that deep red.
+  wedge.traverse(node => {
+    if (!node.isMesh) return;
+    node.material = node.material.clone();
+    node.material.color.multiplyScalar(MELON_TONE.color);
+    node.material.emissiveIntensity = MELON_TONE.glow;
+    node.material.envMapIntensity = MELON_TONE.reflect;
+  });
   melon.add(wedge);
-  melon.scale.setScalar(2);
+  melon.scale.setScalar(2.5);
   // The wedge stands on its rind, so its shadow is a long thin ellipse along the rind.
-  const melonShadow = softShadow(THREE, 1.6, .6, .6, .3);
+  const melonShadow = softShadow(THREE, 2, .75, .6, .3);
   // Seated on the ground behind the jar, about half of it hidden by the pack; rind flat, cut face to the camera.
-  const melonPose = { x: -1.12, y: 0, z: -.9, rx: 0, ry: .3, rz: 0 };
+  const melonPose = { x: -1.3, y: 0, z: -1.05, rx: 0, ry: .3, rz: 0 };
   melon.rotation.set(melonPose.rx, melonPose.ry, melonPose.rz);
   melonPose.y = -new THREE.Box3().setFromObject(melon).min.y;
   melon.rotation.set(0, 0, 0);
@@ -1074,7 +1084,9 @@ async function initHero() {
         ry += drag.offset;
       } else if (piece.kind === 'melon') {
         x += lerp(.9, 0, k);
-        rz += lerp(.5, 0, k);
+        // A gentle rock on its rind, the same rhythm as the panda tablet in front.
+        rz += lerp(.5, 0, k) + Math.sin(time * .95 + 1.3) * .035;
+        ry += Math.sin(time * .5 + 2) * .07;
       } else if (piece.kind === 'panda') {
         y += lerp(1.8, 0, k);
         rz += lerp(-.5, 0, k) + Math.sin(time * 1.05) * .06;
