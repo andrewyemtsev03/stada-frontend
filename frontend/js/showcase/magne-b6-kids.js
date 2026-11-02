@@ -372,10 +372,13 @@ function runWhileVisible(element, renderer, tick) {
 
 /* ---------- the panda tablet: sculpted sugar-coated gummy (panda.glb: mesh + colour/normal/roughness maps) ---------- */
 const PANDA_HEIGHT = 1.5;
+let gltfLoaderPromise;
+const loadGltf = name => (gltfLoaderPromise ||= import('../vendor/three/GLTFLoader.js').then(({ GLTFLoader }) => new GLTFLoader()))
+  .then(loader => loader.loadAsync(asset(name)));
+
 let pandaPromise;
 function loadPanda(THREE) {
-  pandaPromise ||= import('../vendor/three/GLTFLoader.js')
-    .then(({ GLTFLoader }) => new GLTFLoader().loadAsync(asset('panda.glb')))
+  pandaPromise ||= loadGltf('panda.glb')
     .then(gltf => {
       const model = gltf.scene;
       model.traverse(node => {
@@ -720,6 +723,82 @@ async function initPanda() {
   runWhileVisible(stage, renderer, tick);
 }
 
+/* ---------- watermelon slices: 3D wedges that take over from the two flat images in the taste section ---------- */
+async function initMelons() {
+  const canvas = $('[data-melon-canvas]', tasteSection);
+  const anchors = $$('.mg-taste__melon', tasteSection);
+  if (!canvas || !anchors.length) return;
+  let THREE;
+  let RoomEnvironment;
+  let gltf;
+  try {
+    ({ THREE, RoomEnvironment } = await loadThree());
+    gltf = await loadGltf('watermelon-slice.glb');
+  } catch { return; }
+  const renderer = createRenderer(THREE, canvas);
+  if (!renderer) return;
+  renderer.toneMappingExposure = 1;
+  const scene = new THREE.Scene();
+  addEnvironment(THREE, RoomEnvironment, renderer, scene);
+
+  // Normalise the wedge: centred, longest side = 1.
+  const model = gltf.scene;
+  const box = new THREE.Box3().setFromObject(model);
+  const size = box.getSize(new THREE.Vector3());
+  const unit = 1 / Math.max(size.x, size.y, size.z);
+  model.scale.multiplyScalar(unit);
+  model.position.sub(box.getCenter(new THREE.Vector3()).multiplyScalar(unit));
+
+  // Pixel-space orthographic camera over the whole section, so each slice can sit exactly on its image.
+  const camera = new THREE.OrthographicCamera(0, 1, 0, -1, 1, 4000);
+  camera.position.z = 2000;
+  keepSized(renderer, camera, canvas, (width, height) => {
+    camera.left = 0; camera.right = width; camera.top = 0; camera.bottom = -height;
+    camera.updateProjectionMatrix();
+  });
+  const slices = anchors.map((img, i) => {
+    const holder = new THREE.Group();
+    holder.add(model.clone());
+    scene.add(holder);
+    return { img, holder, phase: i * 2.1, tilt: i ? -.32 : .28, flip: i ? 1 : -1 };
+  });
+
+  const clock = new THREE.Clock();
+  const still = reduceMotion || renderer.userData.lite;
+  let lastKey = '';
+  const tick = () => {
+    const time = still ? 0 : clock.getElapsedTime();
+    const base = canvas.getBoundingClientRect();
+    let key = '';
+    slices.forEach(slice => {
+      const rect = slice.img.getBoundingClientRect();
+      slice.holder.visible = rect.width > 0 && rect.height > 0;
+      if (!slice.holder.visible) return;
+      const cx = rect.left + rect.width / 2 - base.left;
+      const cy = rect.top + rect.height / 2 - base.top;
+      // The flat images are tall wedges; the 3D one fills about the same height.
+      const px = Math.max(rect.width, rect.height) * .72;
+      slice.holder.position.set(cx, -cy, 0);
+      slice.holder.scale.setScalar(px);
+      slice.holder.rotation.set(
+        .35 + Math.sin(time * .7 + slice.phase) * .12,
+        slice.flip * .5 + time * .35 * slice.flip + slice.phase,
+        slice.tilt + Math.sin(time * .5 + slice.phase) * .06,
+      );
+      key += `${cx.toFixed(1)},${cy.toFixed(1)},${px.toFixed(1)}|`;
+    });
+    if (still) {
+      key += `${canvas.width}x${canvas.height}`;
+      if (key === lastKey) return;
+      lastKey = key;
+    }
+    renderer.render(scene, camera);
+    Q(renderer);
+    if (!tasteSection.classList.contains('mg-melons-ready')) tasteSection.classList.add('mg-melons-ready');
+  };
+  runWhileVisible(tasteSection, renderer, tick);
+}
+
 function burstSparks(stage, x, y) {
   if (reduceMotion) return;
   const rect = stage.getBoundingClientRect();
@@ -746,3 +825,4 @@ function burstSparks(stage, x, y) {
 
 if (jarScene) whenNear(jarScene.section, initJar);
 if (tasteSection) whenNear(tasteSection, initPanda);
+if (tasteSection) whenNear(tasteSection, initMelons);
