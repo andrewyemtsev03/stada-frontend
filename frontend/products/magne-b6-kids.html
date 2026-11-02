@@ -9,8 +9,7 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
-    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=3" />
-    <link rel="preload" as="image" href="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=4" />
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <body class="mg-page" data-product-showcase="magne-b6-kids">
@@ -121,20 +120,14 @@
             <!-- The pack's petal flower, at full size behind the jar: the one bold shape in the hero. -->
             <svg class="mg-flower mg-hero__bloom" aria-hidden="true"><use href="#mg-flower-bloom" /></svg>
             <canvas class="mg-hero__gl" data-hero-canvas aria-hidden="true"></canvas>
-            <div class="mg-hero__layer" style="--d:-0.5" aria-hidden="true">
-              <img class="mg-hero__melon" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" width="326" height="904" />
+            <div class="mg-loading mg-loading--light" aria-hidden="true"><i></i><span data-sc="jar_loading"></span></div>
+            <!-- Photo fallback: shown only without JavaScript, without WebGL or in data-saver mode. -->
+            <div class="mg-hero__poster">
+              <img class="mg-hero__melon" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" width="326" height="904" aria-hidden="true" loading="lazy" />
+              <img class="mg-hero__jar" src="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" alt="" data-sc-attr="alt:hero_jar_alt" width="803" height="1051" loading="lazy" />
+              <img class="mg-hero__panda" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" width="350" height="470" aria-hidden="true" loading="lazy" />
             </div>
-            <div class="mg-hero__layer mg-hero__layer--jar" style="--d:0.35">
-              <img class="mg-hero__jar" src="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" alt="" data-sc-attr="alt:hero_jar_alt" width="803" height="1051" fetchpriority="high" decoding="async" />
-              <span class="mg-hero__shadow" aria-hidden="true"></span>
-            </div>
-            <div class="mg-hero__layer" style="--d:1.2" aria-hidden="true">
-              <img class="mg-hero__panda" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" width="350" height="470" />
-            </div>
-            <div class="mg-hero__layer mg-hero__bokeh" style="--d:2.2" aria-hidden="true">
-              <img class="mg-float mg-float--a" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" />
-              <img class="mg-float mg-float--b" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" />
-            </div>
+            <div class="mg-drag mg-drag--light mg-hero__drag" aria-hidden="true"><span class="mg-drag__hand"></span><span data-sc="jar_drag"></span></div>
           </div>
 
           <!-- Label facts, set like the badges on the pack. -->
@@ -498,6 +491,6 @@
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
   <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
-    <script type="module" src="../js/showcase/magne-b6-kids.js?v=3"></script>
+    <script type="module" src="../js/showcase/magne-b6-kids.js?v=4"></script>
   </body>
 </html>

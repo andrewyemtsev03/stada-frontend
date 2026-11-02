@@ -49,24 +49,9 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '0px 0px -12% 0px' });
 $$('.mg-reveal').forEach(node => revealObserver.observe(node));
 
-/* ------------------------------------------------------------------ hero parallax */
+/* ------------------------------------------------------------------ hero */
+// The hero doesn't follow the cursor; the jar turns only when it is grabbed (see initHero).
 const heroVisual = $('[data-hero-visual]');
-const heroPointer = { x: 0, y: 0 };
-if (heroVisual && finePointer && !reduceMotion) {
-  hero.addEventListener('pointermove', event => {
-    const rect = hero.getBoundingClientRect();
-    heroPointer.x = (event.clientX - rect.left) / rect.width * 2 - 1;
-    heroPointer.y = (event.clientY - rect.top) / rect.height * 2 - 1;
-    heroVisual.style.setProperty('--mx', heroPointer.x.toFixed(3));
-    heroVisual.style.setProperty('--my', heroPointer.y.toFixed(3));
-  });
-  hero.addEventListener('pointerleave', () => {
-    heroPointer.x = 0;
-    heroPointer.y = 0;
-    heroVisual.style.setProperty('--mx', '0');
-    heroVisual.style.setProperty('--my', '0');
-  });
-}
 
 /* ------------------------------------------------------------------ jar scene (captions, HUD) */
 const jarSection = $('#mg-jar');
@@ -139,9 +124,6 @@ function updatePassEffects() {
     const rect = film.getBoundingClientRect();
     const t = reduceMotion ? 0 : 1 - clamp((innerHeight - rect.top) / (innerHeight * .75));
     film.style.setProperty('--t', t.toFixed(3));
-  }
-  if (heroVisual) {
-    heroVisual.style.setProperty('--hs', clamp(-hero.getBoundingClientRect().top / hero.offsetHeight).toFixed(3));
   }
 }
 
@@ -888,14 +870,39 @@ function burstSparks(stage, x, y) {
    further down, composed as one live 3D scene in front of the pack's petal
    flower (an SVG behind the canvas, centred where the jar is framed). Props
    stay at believable sizes next to the jar and move calmly: they settle in,
-   breathe, follow the pointer with depth parallax and drift apart on scroll.
-   The photographs stay in the markup as the instant poster and the no-WebGL
-   fallback; the canvas fades in over them once its first frame is drawn.
+   breathe and drift apart on scroll. Nothing follows the cursor; the jar
+   turns when it is grabbed and settles back to its front afterwards.
+   Until the first frame is drawn the visual shows only the 3D loader. The
+   photographs are kept for no WebGL and data-saver mode only.
    ===================================================================== */
 const JAR_HEIGHT = 2.7;
+// Soft ground shadow, tinted with the hero's navy. `core` keeps it dark out to that fraction of its radius,
+// so the darkest part reaches the object's edge (where the camera can see it) and then fades out quickly.
+function softShadow(THREE, width, depth, opacity, core = 0) {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+  const at = t => core + (1 - core) * t;
+  gradient.addColorStop(0, 'rgba(18, 26, 86, .62)');
+  if (core) gradient.addColorStop(core, 'rgba(18, 26, 86, .62)');
+  gradient.addColorStop(at(.22), 'rgba(18, 26, 86, .36)');
+  gradient.addColorStop(at(.55), 'rgba(18, 26, 86, .1)');
+  gradient.addColorStop(1, 'rgba(18, 26, 86, 0)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 256, 256);
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, depthWrite: false, opacity }));
+  mesh.rotation.x = -Math.PI / 2;
+  mesh.position.y = .003;
+  mesh.userData.opacity = opacity;
+  return mesh;
+}
+
 async function initHero() {
   const canvas = $('[data-hero-canvas]');
-  if (!canvas || !heroVisual || navigator.connection?.saveData) return;
+  if (!canvas || !heroVisual) return;
+  const fallback = () => heroVisual.classList.add('mg-hero--nogl');
+  if (navigator.connection?.saveData) { fallback(); return; }
   let THREE;
   let RoomEnvironment;
   let jarGltf;
@@ -904,9 +911,9 @@ async function initHero() {
   try {
     ({ THREE, RoomEnvironment } = await loadThree());
     [jarGltf, melonGltf, pandaModel] = await Promise.all([loadGltf('jar.glb'), loadGltf('watermelon-slice.glb'), loadPanda(THREE)]);
-  } catch { return; }
+  } catch { fallback(); return; }
   const renderer = createRenderer(THREE, canvas);
-  if (!renderer) return;
+  if (!renderer) { fallback(); return; }
   if (!renderer.userData.lite) renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier === 2 ? 1.75 : 1.25));
   renderer.toneMappingExposure = 1.02;
 
@@ -929,8 +936,13 @@ async function initHero() {
 
   const { jar } = buildJar(THREE, jarGltf);
   const jarGroup = new THREE.Group();
-  const jarShadow = contactShadow(THREE, .85);
-  jarGroup.add(jar, jarShadow);
+  jarGroup.add(jar);
+  // Wide soft falloff plus a tight contact core right under the base. Neither turns with the jar.
+  const jarShadow = softShadow(THREE, 3.8, 3.4, .45, .45);
+  const jarContact = softShadow(THREE, 2.5, 2.5, .9, .78);
+  jarShadow.position.z = -.08;
+  jarContact.position.y = .004;
+  rig.add(jarShadow, jarContact);
   const jarPiece = add(jarGroup, { x: 0, y: 0, z: 0, ry: -.18 }, .35, { kind: 'jar' });
 
   // The wedge model already stands on its rind with the tip up.
@@ -938,8 +950,9 @@ async function initHero() {
   const melon = new THREE.Group();
   melon.add(melonWedge(THREE, melonGltf));
   melon.scale.setScalar(1.5);
-  const melonShadow = contactShadow(THREE, .45);
-  melonShadow.scale.setScalar(.26);
+  // The wedge stands on its rind, so its shadow is a long thin ellipse along the rind.
+  const melonShadow = softShadow(THREE, 1.35, .5, .6, .3);
+  melonShadow.rotation.z = .55;
   const melonPiece = add(melon, { x: -1.42, y: .48, z: -.35, rx: 0, ry: .55, rz: -.12 }, -.5, { kind: 'melon', delay: .2 });
   melonShadow.position.set(-1.42, .004, -.35);
   rig.add(melonShadow);
@@ -947,8 +960,8 @@ async function initHero() {
   // One tablet in front, about a quarter of the jar's height.
   const pandaHero = makePanda(THREE, pandaModel);
   pandaHero.scale.setScalar(.42);
-  const pandaShadow = contactShadow(THREE, .55);
-  pandaShadow.scale.setScalar(.19);
+  const pandaShadow = softShadow(THREE, .78, .42, .75, .3);
+  pandaShadow.rotation.z = -.38;
   const pandaPiece = add(pandaHero, { x: 1.16, y: .32, z: 1, rx: -.04, ry: -.38, rz: .08 }, 1.2, { kind: 'panda', delay: .38 });
   pandaShadow.position.set(1.16, .004, 1);
   rig.add(pandaShadow);
@@ -990,7 +1003,11 @@ async function initHero() {
   const lite = renderer.userData.lite;
   const still = reduceMotion || lite;
   const clock = new THREE.Clock();
-  const pointer = { x: 0, y: 0 };
+  // Grab and turn the jar; it keeps spinning a little after release, then settles back to its front.
+  const hint = $('.mg-hero__drag', heroVisual);
+  const drag = makeDrag(heroVisual, () => hint?.classList.add('is-hidden'));
+  heroVisual.addEventListener('pointerdown', () => heroVisual.classList.add('is-grabbing'));
+  ['pointerup', 'pointercancel'].forEach(type => heroVisual.addEventListener(type, () => heroVisual.classList.remove('is-grabbing')));
   let startedAt = 0;
   let lastKey = '';
   let shown = false;
@@ -999,40 +1016,44 @@ async function initHero() {
     const time = still ? 0 : clock.getElapsedTime();
     if (!startedAt) startedAt = performance.now();
     const intro = still ? 1 : clamp((performance.now() - startedAt) / 1400);
-    pointer.x += (heroPointer.x - pointer.x) * (still ? 1 : .06);
-    pointer.y += (heroPointer.y - pointer.y) * (still ? 1 : .06);
     const scrolled = clamp(-hero.getBoundingClientRect().top / hero.offsetHeight);
+    if (!drag.dragging) {
+      drag.offset += drag.velocity;
+      drag.velocity *= .93;
+      if (Math.abs(drag.velocity) < 1e-4) drag.velocity = 0;
+      if (performance.now() - drag.releasedAt > 1400) {
+        // Back to the nearest front view, without unwinding the turns it was given.
+        const front = Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2;
+        drag.offset += (front - drag.offset) * (still ? 1 : .05);
+        if (Math.abs(front - drag.offset) < 1e-4) drag.offset = front;
+      }
+    }
 
     if (still) {
-      const key = `${pointer.x.toFixed(3)}|${pointer.y.toFixed(3)}|${scrolled.toFixed(3)}|${canvas.width}x${canvas.height}`;
+      const key = `${drag.offset.toFixed(4)}|${drag.dragging}|${scrolled.toFixed(3)}|${canvas.width}x${canvas.height}`;
       if (key === lastKey && shown) return;
       lastKey = key;
     }
-
-    rig.rotation.y = pointer.x * .12;
-    rig.rotation.x = pointer.y * .04;
 
     pieces.forEach(piece => {
       const { holder, base, depth } = piece;
       const local = clamp((intro - (piece.delay || 0)) / (1 - (piece.delay || 0)));
       const k = still ? 1 : easeOutBack(local);
       const settle = still ? 1 : 1 - Math.pow(1 - local, 3);
-      const px = pointer.x * depth * .1;
-      const py = -pointer.y * depth * .07 + scrolled * depth * 1.1;
-      let x = base.x * spread + px;
-      let y = base.y + py;
+      let x = base.x * spread;
+      let y = base.y + scrolled * depth * 1.1;
       let rx = base.rx || 0;
       let ry = base.ry || 0;
       let rz = base.rz || 0;
       let scale = 1;
       if (piece.kind === 'jar') {
-        y += lerp(-.25, 0, settle) + Math.sin(time * .9) * .025;
+        // Stands on the ground (no bob), so the contact shadow stays under it.
+        y += lerp(-.25, 0, settle);
         scale = lerp(.92, 1, settle);
-        ry += Math.sin(time * .45) * .07 + scrolled * .9;
+        ry += drag.offset + (drag.dragging ? 0 : Math.sin(time * .45) * .05) + scrolled * .9;
       } else if (piece.kind === 'melon') {
         x += lerp(.9, 0, k);
-        rz += lerp(.5, 0, k) + Math.sin(time * .7) * .025;
-        y += Math.sin(time * .8 + 1) * .03;
+        rz += lerp(.5, 0, k) + Math.sin(time * .7) * .02;
       } else if (piece.kind === 'panda') {
         y += lerp(1.8, 0, k);
         rz += lerp(-.5, 0, k) + Math.sin(time * 1.05) * .06;
@@ -1052,9 +1073,13 @@ async function initHero() {
     // Ground shadows follow their piece sideways and fade as it lifts away.
     melonShadow.position.x = melonPiece.holder.position.x;
     pandaShadow.position.x = pandaPiece.holder.position.x;
-    pandaShadow.material.opacity = .55 * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / 1.2);
-    melonShadow.material.opacity = .45 * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x) / .9);
-    jarShadow.material.opacity = .85 * clamp(1 - scrolled * 1.4);
+    pandaShadow.material.opacity = pandaShadow.userData.opacity * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / .6);
+    melonShadow.material.opacity = melonShadow.userData.opacity * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x * spread) / .6);
+    const grounded = clamp(1 - scrolled * 1.4) * (1 - Math.pow(1 - intro, 3));
+    jarShadow.material.opacity = jarShadow.userData.opacity * grounded;
+    jarContact.material.opacity = jarContact.userData.opacity * grounded;
+    jarContact.position.x = jarPiece.holder.position.x;
+    jarShadow.position.x = jarContact.position.x - .06;
 
     renderer.render(scene, camera);
     Q(renderer);
