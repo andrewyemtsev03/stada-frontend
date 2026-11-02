@@ -39,7 +39,7 @@ test('the showcase page is complete without JavaScript in both languages', () =>
     for (const fact of ['70 мг', '0,6 мг', '140 мг', '1,2 мг', '1700 мг', '46 г', 'AM.01.48.01.003.R.000147.05.25', 'BIOFARMA S.r.l.', notMedicine, tagline]) {
       assert.ok(text.includes(fact), `${lang}: ${fact}`);
     }
-    assert.equal(document.querySelectorAll('.mg-cap').length, 5);
+    assert.equal(document.querySelectorAll('.mg-cap').length, 3);
     assert.equal(document.querySelectorAll('[role="tab"]').length, 4);
     assert.equal(document.querySelectorAll('.lang-toggle a').length, 2);
     assert.equal(document.querySelector('link[rel="canonical"]').href, `https://stada.kz/${lang}/products/${slug}.html`);

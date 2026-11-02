@@ -66,7 +66,11 @@ output, not the raw source folder.
   three.js r160 (`js/vendor/three/`) only when its 3D chapters approach. The 3D
   jar wraps the real label artwork (`assets/kazakhstan-products/magne-b6-kids/label-*.webp`,
   rendered from the supplied print PDF without the die line). All copy and facts
-  come from that label; the page reads fully without JavaScript.
+  come from that label; the page reads fully without JavaScript. The commercial
+  plays in place through YouTube's privacy-enhanced player, created only after
+  the visitor presses play, so `frame-src` in `vercel.json` and
+  `staticwebapp.config.json` allows `https://www.youtube-nocookie.com` and
+  nothing else.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API
