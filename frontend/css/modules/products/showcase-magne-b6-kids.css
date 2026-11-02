@@ -286,10 +286,10 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
   font-weight: 700; font-size: clamp(130px, 22vw, 360px); line-height: .8; letter-spacing: -.055em;
   color: transparent; -webkit-text-stroke: 2px rgba(255, 255, 255, .45);
   transform: translate3d(0, -50%, 0); will-change: transform;
-  opacity: 0; transition: opacity .7s ease;
+  opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s;
 }
 .mg-bigword em { font-style: normal; color: rgba(255, 255, 255, .22); -webkit-text-stroke: 0; }
-.mg-story[data-stage="a"] [data-word="a"], .mg-story[data-stage="b"] [data-word="b"], .mg-story[data-stage="c"] [data-word="c"] { opacity: 1; }
+.mg-story[data-stage="a"] [data-word="a"], .mg-story[data-stage="b"] [data-word="b"], .mg-story[data-stage="c"] [data-word="c"] { opacity: 1; visibility: visible; transition: opacity .7s ease, visibility 0s; }
 
 .mg-gl { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
 .mg-gl:active { cursor: grabbing; }
@@ -324,8 +324,8 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-tag {
   position: absolute; z-index: 4; left: 0; top: 0; display: inline-flex; align-items: center; gap: 10px;
   padding: 6px 14px 6px 6px; border-radius: 99px; white-space: nowrap; pointer-events: none; opacity: 0;
-  background: rgba(255, 255, 255, .86); box-shadow: 0 14px 30px -14px rgba(0, 50, 120, .5), inset 0 0 0 1px rgba(255, 255, 255, .9);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); will-change: transform, opacity;
+  background: rgba(255, 255, 255, .93); box-shadow: 0 14px 30px -14px rgba(0, 50, 120, .5), inset 0 0 0 1px rgba(255, 255, 255, .9);
+  will-change: transform, opacity;
 }
 .mg-tag i {
   display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; flex: none;
@@ -366,7 +366,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
   position: absolute; z-index: 7; left: 50%; bottom: clamp(70px, 11vh, 104px); translate: -50% 0;
   display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 10px; border-radius: 99px;
   font-size: 12.5px; font-weight: 600; color: #fff; background: rgba(255, 255, 255, .08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16);
   pointer-events: none; white-space: nowrap; transition: opacity .5s, translate .5s var(--mg-ease);
 }
 .mg-drag.is-hidden { opacity: 0; translate: -50% 10px; }
@@ -375,7 +375,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-drag__hand::before { left: 2px; right: 2px; margin-top: -1px; opacity: .45; }
 .mg-drag__hand::after { left: 9px; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: #fff; animation: mg-swipe 1.8s ease-in-out infinite; }
 @keyframes mg-swipe { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
-.mg-drag--light { color: var(--mg-navy); background: rgba(255, 255, 255, .78); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .14), 0 10px 30px -14px rgba(0, 60, 120, .5); }
+.mg-drag--light { color: var(--mg-navy); background: rgba(255, 255, 255, .9); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .14), 0 10px 30px -14px rgba(0, 60, 120, .5); }
 .mg-drag--light .mg-drag__hand::after { background: var(--mg-k2); }
 /* In the story the hint belongs to the tablet stage. */
 .mg-story .mg-drag { left: 36.5%; opacity: 0; }
@@ -390,8 +390,8 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-steps button {
   display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; border: 0; border-radius: 99px; cursor: pointer;
   font: 700 11.5px/1 "Noto Sans", system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--mg-ink);
-  background: rgba(255, 255, 255, .45); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background-color .3s, color .3s, box-shadow .3s;
+  background: rgba(255, 255, 255, .55); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .75);
+  transition: background-color .3s, color .3s, box-shadow .3s;
 }
 .mg-steps button b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 10px; background: rgba(255, 255, 255, .8); color: var(--mg-navy); transition: background-color .3s, color .3s; }
 .mg-steps button:hover { background: rgba(255, 255, 255, .75); }
@@ -402,8 +402,8 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-track i { position: absolute; inset: 0; border-radius: inherit; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--mg-k1), var(--mg-k2), var(--mg-k3), var(--mg-k4)); }
 .mg-skip {
   display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px 9px 16px; border-radius: 99px;
-  color: var(--mg-navy); text-decoration: none; white-space: nowrap; background: rgba(255, 255, 255, .6);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  color: var(--mg-navy); text-decoration: none; white-space: nowrap; background: rgba(255, 255, 255, .72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9);
   transition: background-color .25s, box-shadow .25s;
 }
 .mg-skip:hover { background: #fff; }
@@ -438,7 +438,6 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-dose__panel {
   position: relative; padding: clamp(20px, 2.8vw, 36px); border-radius: 32px; background: rgba(255, 255, 255, .9);
   box-shadow: 0 40px 80px -40px rgba(20, 40, 110, .35), inset 0 0 0 1px rgba(38, 44, 142, .07);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
 }
 .mg-dose__ask { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px; padding-bottom: 22px; border-bottom: 1px dashed rgba(38, 44, 142, .16); }
 .mg-dose__asklabel { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mg-muted); }
@@ -548,8 +547,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-film__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .25), transparent 25%, transparent 55%, rgba(0, 0, 0, .55)); }
 .mg-film__tag {
   position: absolute; left: 18px; top: 16px; display: flex; align-items: center; gap: 8px; padding: 6px 10px 6px 8px; border-radius: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(0, 0, 0, .42);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(0, 0, 0, .5);
 }
 .mg-film__tag i { width: 8px; height: 8px; border-radius: 50%; background: #ff3b6b; box-shadow: 0 0 0 3px rgba(255, 59, 107, .25); animation: mg-rec 1.4s ease-in-out infinite; }
 @keyframes mg-rec { 50% { opacity: .35; } }
@@ -562,7 +560,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-film__screen:hover .mg-film__play { transform: scale(1.1); }
 .mg-film__label {
   position: absolute; left: 50%; bottom: clamp(16px, 3vw, 28px); translate: -50% 0; padding: 8px 16px; border-radius: 99px; white-space: nowrap;
-  font-size: 13.5px; font-weight: 700; color: #fff; background: rgba(0, 0, 0, .38); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 13.5px; font-weight: 700; color: #fff; background: rgba(0, 0, 0, .48);
 }
 @keyframes mg-pulse { 0% { box-shadow: 0 14px 40px rgba(0, 0, 0, .4), 0 0 0 0 rgba(255, 255, 255, .45); } 100% { box-shadow: 0 14px 40px rgba(0, 0, 0, .4), 0 0 0 26px rgba(255, 255, 255, 0); } }
 .mg-film__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -685,8 +683,8 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
 .mg-rail b {
   display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
   font-size: 10.5px; font-weight: 700; letter-spacing: .02em;
-  background: rgba(255, 255, 255, .72); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .15);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: background-color .3s, color .3s, transform .3s var(--mg-spring);
+  background: rgba(255, 255, 255, .85); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .15);
+  transition: background-color .3s, color .3s, transform .3s var(--mg-spring);
 }
 .mg-rail span {
   order: -1; padding: 5px 10px; border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
@@ -779,7 +777,7 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-ready .mg-bar {
     position: fixed; z-index: 950; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     display: flex; align-items: center; gap: 10px; padding: 7px 7px 7px 10px; border-radius: 22px;
-    background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, .97);
     box-shadow: 0 18px 40px -16px rgba(10, 20, 80, .5), inset 0 0 0 1px rgba(38, 44, 142, .1);
     font-family: "Noto Sans", system-ui, sans-serif;
     transform: translateY(calc(100% + 30px)); visibility: hidden; transition: transform .45s var(--mg-ease), visibility 0s linear .45s;

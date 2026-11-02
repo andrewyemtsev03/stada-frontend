@@ -73,7 +73,15 @@ output, not the raw source folder.
   a blade of light and bursts open with juice, seeds and mist, joined by
   floating fresh chunks and hanging drops of juice. That last stage gets a
   larger share of the chapter's scroll, so it plays more slowly. Without WebGL each stage
-  shows a photo; without JavaScript the three captions read as plain sections. All copy and facts
+  shows a photo; without JavaScript the three captions read as plain sections.
+  Performance: phones, tablets, machines with 4 cores or 4 GB or less, and
+  data-saver visitors get a light profile (pixel ratio capped at 1.5, a pixel
+  budget per canvas, standard instead of clearcoat materials, about 60% of the
+  particles, lighter sphere geometry, idle motion at 30 fps); every device caps
+  canvas pixels and adapts resolution to its frame rate in both directions. The
+  small panda copies (the halo of 29, drawn in one instanced call, and the hero's
+  floating tablets) use `panda-lite.glb`, simplified from `panda.glb` with
+  glTF-Transform (about 12% of the triangles, 768 px maps). All copy and facts
   come from that label; the page reads fully without JavaScript. The commercial
   plays in place through YouTube's privacy-enhanced player, created only after
   the visitor presses play, so `frame-src` in `vercel.json` and
