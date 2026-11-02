@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
-    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=5" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=6" />
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <body class="mg-page" data-product-showcase="magne-b6-kids">
@@ -147,44 +147,60 @@
         </div>
       </section>
 
-      <!-- 01 · Jar 360° (scroll-driven 3D, three beats) -->
-      <section class="mg-scene mg-jar" id="mg-jar" aria-labelledby="mg-jar-title" data-scene="jar" data-theme="dark">
+      <!-- 01 · One scroll-driven 3D scene in three stages: magnesium + B6 come together, become the chewable
+           panda tablet, and the tablet meets the watermelon it tastes of. -->
+      <section class="mg-scene mg-story" id="mg-story" aria-labelledby="mg-story-title" data-theme="light" data-stage="a">
         <div class="mg-sticky">
-          <div class="mg-jar__bg" aria-hidden="true"></div>
-          <svg class="mg-flower mg-jar__flower" aria-hidden="true"><use href="#mg-flower-shape" /></svg>
-          <div class="mg-bigword" aria-hidden="true" data-sc="jar_bigword" data-marquee></div>
-          <div class="mg-glow" aria-hidden="true"></div>
-          <div class="mg-scrim" aria-hidden="true"></div>
-          <canvas class="mg-gl" data-jar-canvas aria-hidden="true"></canvas>
-          <img class="mg-jar__fallback" src="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" alt="" loading="lazy" />
-          <div class="mg-loading" aria-hidden="true"><i></i><span data-sc="jar_loading"></span></div>
+          <div class="mg-story__bg" aria-hidden="true"></div>
+          <div class="mg-story__glow" aria-hidden="true"></div>
+          <div class="mg-story__words" aria-hidden="true">
+            <div class="mg-bigword" data-word="a" data-sc="story_a_word" data-marquee></div>
+            <div class="mg-bigword" data-word="b" data-sc="story_b_word" data-marquee></div>
+            <div class="mg-bigword" data-word="c" data-sc="story_c_word" data-marquee></div>
+          </div>
+          <canvas class="mg-gl" data-story-canvas aria-hidden="true"></canvas>
+          <!-- Without WebGL each stage keeps a photo. -->
+          <div class="mg-story__fallback" aria-hidden="true">
+            <img data-for="a" src="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" alt="" width="803" height="1051" loading="lazy" />
+            <img data-for="b" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" data-sc-attr="alt:story_tablet_alt" width="350" height="470" loading="lazy" />
+            <img data-for="c" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" width="326" height="904" loading="lazy" />
+          </div>
+          <div class="mg-loading" aria-hidden="true"><i></i><span data-sc="story_loading"></span></div>
+          <div class="mg-flash" aria-hidden="true"></div>
 
-          <div class="mg-cap" data-in="0" data-out=".3">
-            <div class="mg-eyebrow" data-sc="jar_a_eyebrow"></div>
-            <h2 id="mg-jar-title" data-sc="jar_a_title"></h2>
-            <p data-sc="jar_a_text"></p>
-            <div class="mg-chips" data-sc-list="jar_a_chips"></div>
+          <!-- Labels pinned to the 3D magnesium atom and the vitamin B6 molecule. -->
+          <div class="mg-tag" data-tag="mg" aria-hidden="true"><i>Mg</i><span><b data-sc="dose_magnesium"></b><small data-sc="fact_mg_value"></small></span></div>
+          <div class="mg-tag mg-tag--b6" data-tag="b6" aria-hidden="true"><i>B<sub>6</sub></i><span><b data-sc="dose_b6"></b><small data-sc="fact_b6_value"></small></span></div>
+
+          <div class="mg-cap" data-in="0" data-out=".25">
+            <div class="mg-eyebrow" data-sc="story_a_eyebrow"></div>
+            <h2 id="mg-story-title" data-sc="story_a_title"></h2>
+            <p data-sc="story_a_text"></p>
+            <div class="mg-chips" data-sc-list="story_a_chips"></div>
           </div>
-          <div class="mg-cap mg-cap--right" data-in=".36" data-out=".62" data-tone="green">
-            <div class="mg-eyebrow" data-sc="jar_b_eyebrow"></div>
-            <h3 data-sc="jar_b_title"></h3>
-            <p data-sc="jar_b_text"></p>
+          <div class="mg-cap mg-cap--right" data-in=".34" data-out=".6">
+            <div class="mg-eyebrow" data-sc="story_b_eyebrow"></div>
+            <h3 data-sc="story_b_title"></h3>
+            <p data-sc="story_b_text"></p>
+            <div class="mg-count"><b data-count>30</b><span data-sc="fact_count_label"></span></div>
           </div>
-          <div class="mg-cap" data-in=".68" data-out="1.01" data-tone="pink">
-            <div class="mg-eyebrow" data-sc="jar_c_eyebrow"></div>
-            <h3 data-sc="jar_c_title"></h3>
-            <p data-sc="jar_c_text"></p>
-            <div class="mg-chips" data-sc-list="jar_c_chips"></div>
+          <div class="mg-cap" data-in=".7" data-out="1.01">
+            <div class="mg-eyebrow" data-sc="story_c_eyebrow"></div>
+            <h3 data-sc="story_c_title"></h3>
+            <p data-sc="story_c_text"></p>
+            <div class="mg-chips" data-sc-list="story_c_chips"></div>
           </div>
 
-          <div class="mg-drag" aria-hidden="true"><span class="mg-drag__hand"></span><span data-sc="jar_drag"></span></div>
+          <div class="mg-drag mg-drag--light" aria-hidden="true"><span class="mg-drag__hand"></span><span data-sc="story_hint"></span></div>
           <div class="mg-hud">
-            <span class="mg-hud__title" aria-hidden="true"><b>01</b> / <span data-sc="ch_jar"></span></span>
-            <div class="mg-track" aria-hidden="true"><i></i><s style="--at:.33"></s><s style="--at:.66"></s></div>
-            <a class="mg-skip" href="#mg-dose" data-go="mg-dose"><span data-sc="jar_skip"></span><i aria-hidden="true"></i></a>
+            <div class="mg-steps">
+              <button type="button" data-step="0"><b>01</b><span data-sc="story_step_a"></span></button>
+              <button type="button" data-step="1"><b>02</b><span data-sc="story_step_b"></span></button>
+              <button type="button" data-step="2"><b>03</b><span data-sc="story_step_c"></span></button>
+            </div>
+            <div class="mg-track" aria-hidden="true"><i></i></div>
+            <a class="mg-skip" href="#mg-dose" data-go="mg-dose"><span data-sc="story_skip"></span><i aria-hidden="true"></i></a>
           </div>
-          <div class="mg-vignette" aria-hidden="true"></div>
-          <div class="mg-grain" aria-hidden="true"></div>
         </div>
       </section>
 
@@ -264,29 +280,7 @@
         </div>
       </section>
 
-      <!-- 03 · Taste -->
-      <section class="mg-taste mg-sheet" id="mg-taste" aria-labelledby="mg-taste-title" data-theme="light">
-        <div class="mg-bigword mg-bigword--taste" aria-hidden="true" data-sc="taste_bigword" data-marquee></div>
-        <img class="mg-taste__melon mg-taste__melon--a" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" loading="lazy" aria-hidden="true" />
-        <img class="mg-taste__melon mg-taste__melon--b" src="../assets/kazakhstan-products/magne-b6-kids/watermelon.webp" alt="" loading="lazy" aria-hidden="true" />
-        <canvas class="mg-taste__melons" data-melon-canvas aria-hidden="true"></canvas>
-        <div class="mg-taste__inner">
-          <div class="mg-taste__copy mg-reveal">
-            <div class="mg-eyebrow" data-sc="taste_eyebrow"></div>
-            <h2 id="mg-taste-title" data-sc="taste_title"></h2>
-            <p data-sc="taste_text"></p>
-            <div class="mg-chips" data-sc-list="taste_chips"></div>
-          </div>
-          <div class="mg-taste__stage" data-taste-stage>
-            <div class="mg-taste__ring" aria-hidden="true"></div>
-            <canvas class="mg-gl" data-panda-canvas aria-hidden="true"></canvas>
-            <img class="mg-taste__fallback" src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" data-sc-attr="alt:taste_tablet_alt" loading="lazy" />
-            <div class="mg-drag mg-drag--light" aria-hidden="true"><span class="mg-drag__hand"></span><span data-sc="taste_hint"></span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 04 · Commercial (plays in place; YouTube loads only after the visitor presses play) -->
+      <!-- 03 · Commercial (plays in place; YouTube loads only after the visitor presses play) -->
       <section class="mg-film mg-sheet" id="mg-film" aria-labelledby="mg-film-title" data-theme="dark">
         <div class="mg-film__beam" aria-hidden="true"></div>
         <div class="mg-film__dust" aria-hidden="true"></div>
@@ -312,7 +306,7 @@
         </div>
       </section>
 
-      <!-- 05 · Composition & facts -->
+      <!-- 04 · Composition & facts -->
       <section class="mg-spec mg-sheet" id="mg-facts" aria-labelledby="mg-facts-title" data-theme="light">
         <div class="mg-orbs mg-orbs--soft mg-orbs--left" aria-hidden="true"><i></i><i></i></div>
         <div class="mg-spec__inner">
@@ -392,7 +386,7 @@
         </div>
       </section>
 
-      <!-- 06 · Where to buy -->
+      <!-- 05 · Where to buy -->
       <section class="mg-buy mg-sheet" id="mg-buy" aria-labelledby="mg-buy-title" data-theme="dark">
         <svg class="mg-flower mg-buy__flower" aria-hidden="true"><use href="#mg-flower-shape" /></svg>
         <div class="mg-buy__inner">
@@ -421,12 +415,11 @@
     </main>
 
     <div class="mg-rail" role="navigation" data-sc-attr="aria-label:chapters_label">
-      <a href="#mg-jar" data-go="mg-jar"><b>01</b><span data-sc="ch_jar"></span></a>
+      <a href="#mg-story" data-go="mg-story"><b>01</b><span data-sc="ch_story"></span></a>
       <a href="#mg-dose" data-go="mg-dose"><b>02</b><span data-sc="ch_dose"></span></a>
-      <a href="#mg-taste" data-go="mg-taste"><b>03</b><span data-sc="ch_taste"></span></a>
-      <a href="#mg-film" data-go="mg-film"><b>04</b><span data-sc="ch_film"></span></a>
-      <a href="#mg-facts" data-go="mg-facts"><b>05</b><span data-sc="ch_facts"></span></a>
-      <a href="#mg-buy" data-go="mg-buy"><b>06</b><span data-sc="ch_buy"></span></a>
+      <a href="#mg-film" data-go="mg-film"><b>03</b><span data-sc="ch_film"></span></a>
+      <a href="#mg-facts" data-go="mg-facts"><b>04</b><span data-sc="ch_facts"></span></a>
+      <a href="#mg-buy" data-go="mg-buy"><b>05</b><span data-sc="ch_buy"></span></a>
     </div>
 
     <div class="mg-bar" data-buy-bar>
@@ -495,6 +488,6 @@
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
   <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
-    <script type="module" src="../js/showcase/magne-b6-kids.js?v=5"></script>
+    <script type="module" src="../js/showcase/magne-b6-kids.js?v=6"></script>
   </body>
 </html>

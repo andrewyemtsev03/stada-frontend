@@ -65,7 +65,13 @@ output, not the raw source folder.
   and the `js/showcase/magne-b6-kids.js` module, which loads the vendored
   three.js r160 (`js/vendor/three/`) only when its 3D chapters approach. The 3D
   jar wraps the real label artwork (`assets/kazakhstan-products/magne-b6-kids/label-*.webp`,
-  rendered from the supplied print PDF without the die line). All copy and facts
+  rendered from the supplied print PDF without the die line). Chapter 01 is one
+  sticky, scroll-scrubbed 3D scene in three stages on the sky-blue taste ground:
+  a magnesium atom and a vitamin B6 (pyridoxine) molecule built in code merge
+  into the panda tablet (`panda.glb`), which calls out the jar's 30 tablets, and
+  a procedurally painted watermelon then drops in, splits open with juice and
+  seeds, and is joined by `watermelon-slice.glb` wedges. Without WebGL each stage
+  shows a photo; without JavaScript the three captions read as plain sections. All copy and facts
   come from that label; the page reads fully without JavaScript. The commercial
   plays in place through YouTube's privacy-enhanced player, created only after
   the visitor presses play, so `frame-src` in `vercel.json` and
