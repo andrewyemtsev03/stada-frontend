@@ -976,26 +976,34 @@ async function initHero() {
     node.material.envMapIntensity = MELON_TONE.reflect;
   });
   melon.add(wedge);
-  melon.scale.setScalar(2.5);
-  // The wedge stands on its rind, so its shadow is a long thin ellipse along the rind.
-  const melonShadow = softShadow(THREE, 2, .75, .6, .3);
-  // Seated on the ground behind the jar, about half of it hidden by the pack; rind flat, cut face to the camera.
-  const melonPose = { x: -1.3, y: 0, z: -1.05, rx: 0, ry: .3, rz: 0 };
-  melon.rotation.set(melonPose.rx, melonPose.ry, melonPose.rz);
-  melonPose.y = -new THREE.Box3().setFromObject(melon).min.y;
-  melon.rotation.set(0, 0, 0);
+  // Packshot composition (as on the pack's key visual): a tall, narrow slice standing upright on its rind to
+  // the left of the jar, its inner part tucked behind the pack. The model's wedge is wide, so it is scaled to
+  // the slice's proportions: about 80% of the jar's height, a third as wide as tall.
+  const wedgeSize = new THREE.Box3().setFromObject(wedge).getSize(new THREE.Vector3());
+  melon.scale.set(1.05 / wedgeSize.x, 2.15 / wedgeSize.y, .5 / wedgeSize.z);
+  const melonShadow = softShadow(THREE, 1.1, .5, .6, .3);
+  const melonPose = { x: -1.32, y: 0, z: -.45, rx: 0, ry: 0, rz: 0 };
+  // Rest the rind on the ground whatever the pose.
+  const seat = (object, pose) => {
+    object.rotation.set(pose.rx, pose.ry, pose.rz);
+    pose.y = -new THREE.Box3().setFromObject(object).min.y;
+    object.rotation.set(0, 0, 0);
+  };
+  seat(melon, melonPose);
   const melonPiece = add(melon, melonPose, -.5, { kind: 'melon', delay: .2 });
   melonShadow.position.set(melonPose.x, .004, melonPose.z);
   melonShadow.rotation.z = melonPose.ry;
   rig.add(melonShadow);
 
-  // One tablet in front, about a quarter of the jar's height.
+  // A big panda gummy in front of the jar's lower right, turned three-quarters so its thickness shows.
   const pandaHero = makePanda(THREE, pandaModel);
-  pandaHero.scale.setScalar(.42);
-  const pandaShadow = softShadow(THREE, .78, .42, .75, .3);
-  pandaShadow.rotation.z = -.38;
-  const pandaPiece = add(pandaHero, { x: 1.16, y: .32, z: 1, rx: -.04, ry: -.38, rz: .08 }, 1.2, { kind: 'panda', delay: .38 });
-  pandaShadow.position.set(1.16, .004, 1);
+  pandaHero.scale.setScalar(.8);
+  const pandaShadow = softShadow(THREE, 1.25, .6, .75, .3);
+  pandaShadow.rotation.z = -.7;
+  const pandaPose = { x: .95, y: 0, z: 1.15, rx: 0, ry: .7, rz: .04 };
+  seat(pandaHero, pandaPose);
+  const pandaPiece = add(pandaHero, pandaPose, 1.2, { kind: 'panda', delay: .38 });
+  pandaShadow.position.set(pandaPose.x, .004, pandaPose.z);
   rig.add(pandaShadow);
 
   // Three small tablets hanging on the flower's ring, close enough to stay sharp.
@@ -1012,7 +1020,7 @@ async function initHero() {
   // Frame the jar where the poster photo sits: centred on the flower in the visual.
   const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
   let distance = 10;
-  // Phones pull the side props in so the melon and tablets stay on screen.
+  // Phones pull the floating tablets in so they stay on screen.
   let spread = 1;
   const fit = (width, height) => {
     const box = canvas.getBoundingClientRect();
@@ -1071,7 +1079,8 @@ async function initHero() {
       const local = clamp((intro - (piece.delay || 0)) / (1 - (piece.delay || 0)));
       const k = still ? 1 : easeOutBack(local);
       const settle = still ? 1 : 1 - Math.pow(1 - local, 3);
-      let x = base.x * spread;
+      // Only the floating tablets pull in on phones; the jar, slice and panda keep the packshot arrangement.
+      let x = base.x * (piece.kind === 'float' ? spread : 1);
       let y = base.y;
       let rx = base.rx || 0;
       let ry = base.ry || 0;
@@ -1107,7 +1116,7 @@ async function initHero() {
     melonShadow.position.x = melonPiece.holder.position.x;
     pandaShadow.position.x = pandaPiece.holder.position.x;
     pandaShadow.material.opacity = pandaShadow.userData.opacity * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / .6);
-    melonShadow.material.opacity = melonShadow.userData.opacity * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x * spread) / .6);
+    melonShadow.material.opacity = melonShadow.userData.opacity * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x) / .6);
     const grounded = 1 - Math.pow(1 - intro, 3);
     jarShadow.material.opacity = jarShadow.userData.opacity * grounded;
     jarContact.material.opacity = jarContact.userData.opacity * grounded;
