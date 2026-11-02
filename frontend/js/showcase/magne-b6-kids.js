@@ -82,6 +82,12 @@ const story = storySection && {
   stage: 'a',
 };
 
+// The watermelon stage gets a larger share of the chapter's scroll than its share of the timeline:
+// the first 56% of the scroll plays stages A and B (timeline 0–.66), the last 44% plays stage C.
+const SCROLL_KNOT = [.56, .66];
+const toTimeline = raw => (raw < SCROLL_KNOT[0] ? (raw / SCROLL_KNOT[0]) * SCROLL_KNOT[1] : SCROLL_KNOT[1] + ((raw - SCROLL_KNOT[0]) / (1 - SCROLL_KNOT[0])) * (1 - SCROLL_KNOT[1]));
+const toScroll = t => (t < SCROLL_KNOT[1] ? (t / SCROLL_KNOT[1]) * SCROLL_KNOT[0] : SCROLL_KNOT[0] + ((t - SCROLL_KNOT[1]) / (1 - SCROLL_KNOT[1])) * (1 - SCROLL_KNOT[0]));
+
 function sectionProgress(section) {
   const rect = section.getBoundingClientRect();
   const total = rect.height - innerHeight;
@@ -91,7 +97,7 @@ function sectionProgress(section) {
 function updateStory() {
   if (!story) return;
   const rect = story.section.getBoundingClientRect();
-  const p = sectionProgress(story.section);
+  const p = toTimeline(sectionProgress(story.section));
   story.target = p;
   // 0 while the chapter is still below the fold, 1 once it is pinned: the atom forms as the chapter slides in.
   story.enter = clamp(1 - rect.top / innerHeight);
@@ -127,7 +133,7 @@ if (story) {
   story.steps.forEach(step => step.addEventListener('click', () => {
     const rect = story.section.getBoundingClientRect();
     const total = rect.height - innerHeight;
-    const top = rect.top + scrollY + total * STAGES[Number(step.dataset.step)].at;
+    const top = rect.top + scrollY + total * toScroll(STAGES[Number(step.dataset.step)].at);
     scrollTo({ top, behavior: reduceMotion ? 'instant' : 'smooth' });
   }));
 }
@@ -602,8 +608,8 @@ function burstSparks(stage, x, y) {
       the jar as a halo around itself.
    ↓  The tablet crouches and leaps out of frame with its halo.
    C  A whole watermelon drops in and bounces, a blade of light cuts it,
-      and the halves burst open in juice, seeds and pink mist; slices
-      rise behind, fresh chunks tumble in front and drops of juice hang
+      and the halves burst open in juice, seeds and pink mist; fresh
+      chunks tumble in and keep floating, and drops of juice hang
       in the air while the camera slowly leans in.
    Everything is driven by the chapter's scroll progress, so scrolling
    back plays it in reverse; idle motion stops for reduced motion.
@@ -625,7 +631,6 @@ const T = {
   split: [.705, .79],
   juice: [.703, .87],
   bloom: [.7, .745, .9],
-  wedges: [.748, .87],
   chunks: [.772, .89],
   hover: [.8, .9],
 };
@@ -1186,16 +1191,6 @@ function seedGeometry(THREE) {
   return geometry;
 }
 
-function tuneMelon(model, tone) {
-  model.traverse(node => {
-    if (!node.isMesh) return;
-    node.material = node.material.clone();
-    node.material.color.multiplyScalar(tone.light);
-    node.material.envMapIntensity = tone.reflect;
-    saturate(node.material, tone.saturation);
-  });
-  return model;
-}
 
 async function initStory() {
   const canvas = $('[data-story-canvas]');
@@ -1203,10 +1198,9 @@ async function initStory() {
   let THREE;
   let RoomEnvironment;
   let pandaModel;
-  let melonGltf;
   try {
     ({ THREE, RoomEnvironment } = await loadThree());
-    [pandaModel, melonGltf] = await Promise.all([loadPanda(THREE), loadGltf('watermelon-slice.glb')]);
+    pandaModel = await loadPanda(THREE);
   } catch {
     section.classList.add('mg-nogl');
     return;
@@ -1314,25 +1308,13 @@ async function initStory() {
   }));
   spin.add(mist);
   // Drops that stay hanging in the air once the splash has settled.
-  const HANGING = Array.from({ length: 18 }, (_, i) => {
-    const a = (i / 18) * Math.PI * 2 + random() * .3;
+  const HANGING = Array.from({ length: 26 }, (_, i) => {
+    const a = (i / 26) * Math.PI * 2 + random() * .3;
     const r = 1.7 + random() * 1;
     return { at: new THREE.Vector3(Math.cos(a) * r, melonCentre + .5 + Math.sin(a) * r * .55 + random() * .4, MELON_Z + .4 + random() * 1.6), r: .04 + random() * .07, phase: random() * 6.3, delay: random() * .4 };
   });
   const hanging = new THREE.InstancedMesh(dropGeometry, juiceMaterial, HANGING.length);
   spin.add(hanging);
-  const WEDGES = [
-    { x: -1.5, y: 1.5, z: -1.1, rx: .45, ry: .9, rz: .45, s: 1.2 },
-    { x: 1.6, y: 1.45, z: -1.2, rx: .3, ry: -.9, rz: -.5, s: 1.15 },
-    { x: .15, y: 1.95, z: -2.2, rx: .2, ry: .2, rz: -.1, s: 1 },
-  ];
-  const wedges = WEDGES.map(() => {
-    const holder = new THREE.Group();
-    holder.add(tuneMelon(melonWedge(THREE, melonGltf), { light: .9, saturation: 1.3, reflect: .2 }));
-    holder.visible = false;
-    spin.add(holder);
-    return holder;
-  });
   const CHUNK = .36;
   const CHUNKS = [
     { x: -.42, y: GROUND + CHUNK / 2, z: 1.75, rx: 0, ry: .5, rz: 0, ground: true },
@@ -1340,7 +1322,9 @@ async function initStory() {
     { x: -2.15, y: -.05, z: 1.1, rx: .6, ry: .4, rz: .5 },
     { x: 2.2, y: .4, z: 1, rx: -.4, ry: .8, rz: .3 },
     { x: -.05, y: .95, z: 1.25, rx: .9, ry: -.3, rz: .7 },
-  ];
+    { x: -1.45, y: 1.55, z: -.5, rx: .3, ry: 1.1, rz: -.4 },
+    { x: 1.55, y: 1.5, z: -.6, rx: -.7, ry: .2, rz: .5 },
+  ].map((chunk, i) => ({ ...chunk, speed: .5 + ((i * 37) % 10) / 20, phase: i * 1.7 }));
   const chunks = new THREE.InstancedMesh(roundedBox(THREE, CHUNK, .07), saturate(new THREE.MeshPhysicalMaterial({
     map: chunkTexture(THREE), roughness: .3, clearcoat: 1, clearcoatRoughness: .12, emissive: 0xffffff, emissiveIntensity: .08,
   }), 1.2), CHUNKS.length);
@@ -1662,41 +1646,35 @@ async function initStory() {
       });
       hanging.instanceMatrix.needsUpdate = true;
     }
-    wedges.forEach((holder, i) => {
-      const spot = WEDGES[i];
-      const k = clamp((p - T.wedges[0] - i * .03) / .09);
-      holder.visible = k > 0;
-      if (!holder.visible) return;
-      // Slices rise from behind the open fruit into a loose crown.
-      const e = easeOutBack(k);
-      const float = still ? 0 : Math.sin(time * .8 + i * 2) * .08;
-      holder.position.set(lerp(spot.x * .3, spot.x, e) * spread, lerp(melonCentre, spot.y, e) + float, lerp(spot.z - .6, spot.z, e));
-      holder.rotation.set(spot.rx + (1 - e) * 1.5 + (still ? 0 : Math.sin(time * .5 + i) * .08), spot.ry + (1 - e) * 2.5 + (still ? 0 : time * .15), spot.rz + (1 - e) * .8);
-      holder.scale.setScalar(spot.s * Math.max(.001, Math.min(e, 1.1)));
-    });
     const chunkIn = span(T.chunks, p);
     chunks.visible = chunkIn > 0;
     if (chunks.visible) {
       let shadowIndex = 0;
       CHUNKS.forEach((chunk, i) => {
         const k = clamp((chunkIn - i * .1) / .5);
+        // Every chunk keeps moving: the two in front bounce down, then lift into a low hover; the rest float.
+        const t = still ? 0 : time * chunk.speed + chunk.phase;
         let y;
         let tumble;
+        let hover;
         if (chunk.ground) {
-          // Tumbles down and bounces to rest on a flat face.
           y = lerp(chunk.y + 4.2, chunk.y, easeOutBounce(k));
           tumble = 1 - easeOutCubic(clamp(k * 1.25));
+          hover = smooth(.85, 1, k);
+          y += hover * (.16 + Math.sin(t) * .07);
           const shade = chunkShadows[shadowIndex];
           shadowIndex += 1;
           shade.visible = k > 0;
           shade.material.opacity = .55 * clamp(1 - (y - chunk.y) / 1.6);
+          shade.scale.setScalar(1 - hover * .15 - Math.sin(t) * .04 * hover);
         } else {
-          y = lerp(chunk.y + 2.6, chunk.y, easeOutBack(k)) + (still ? 0 : Math.sin(time * .8 + i) * .07);
+          y = lerp(chunk.y + 2.6, chunk.y, easeOutBack(k)) + Math.sin(t) * .1;
           tumble = 1 - easeOutCubic(k);
+          hover = 1;
         }
-        const idle = chunk.ground || still ? 0 : time * .25 + i;
-        dummy.position.set(chunk.x * (chunk.ground ? 1 : spread), y, chunk.z);
-        dummy.rotation.set(chunk.rx + tumble * 4 + idle * .5, chunk.ry + tumble * 3 + idle, chunk.rz + tumble * 2);
+        const drift = hover * (chunk.ground ? .35 : 1);
+        dummy.position.set(chunk.x * (chunk.ground ? 1 : spread) + Math.sin(t * .7) * .06 * drift, y, chunk.z + Math.cos(t * .6) * .06 * drift);
+        dummy.rotation.set(chunk.rx + tumble * 4 + Math.sin(t * .8) * .25 * drift, chunk.ry + tumble * 3 + t * .35 * drift, chunk.rz + tumble * 2 + Math.cos(t * .7) * .2 * drift);
         dummy.scale.setScalar(k > 0 ? 1 : 0);
         dummy.updateMatrix();
         chunks.setMatrixAt(i, dummy.matrix);
