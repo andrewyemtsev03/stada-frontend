@@ -406,59 +406,61 @@ function makePanda(THREE, model) {
   return holder;
 }
 
-/* ---------- the jar: lathe body + real label artwork + two-tier cap ---------- */
-function buildJar(THREE, labelTexture) {
+/* ---------- the jar: jar.glb (body + label + cap), scaled to radius 1 with its base at y = 0 ---------- */
+function buildJar(THREE, gltf) {
   const jar = new THREE.Group();
   const body = new THREE.Group();
   jar.add(body);
-  const plastic = new THREE.MeshPhysicalMaterial({ color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28, side: THREE.DoubleSide });
+  const nodes = {};
+  gltf.scene.traverse(node => { if (node.isMesh) nodes[node.name] = node; });
+  const shell = nodes.body;
+  const label = nodes.label;
+  const lid = nodes.cap;
 
-  const profile = [];
-  const point = (x, y) => profile.push(new THREE.Vector2(x, y));
-  point(0, .005);
-  point(.8, .005);
-  for (let i = 0; i <= 10; i += 1) {
-    const a = -Math.PI / 2 + (i / 10) * Math.PI / 2;
-    point(.86 + .14 * Math.cos(a), .14 + .14 * Math.sin(a));
-  }
-  point(1, 1.9);
-  for (let i = 1; i <= 8; i += 1) { const t = i / 8; point(1 - .07 * t * t, 1.9 + .1 * t); }
-  point(.86, 2.04);
-  point(.86, 2.3);
-  point(.84, 2.33);
-  point(.77, 2.33);
-  point(.77, 2.05);
-  point(0, 2.02);
-  body.add(new THREE.Mesh(new THREE.LatheGeometry(profile, 160), plastic));
+  const box = new THREE.Box3().setFromObject(shell);
+  const scale = 1 / ((box.max.x - box.min.x) / 2);
+  const lift = -box.min.y;
+  const place = mesh => {
+    mesh.removeFromParent();
+    mesh.scale.multiplyScalar(scale);
+    mesh.position.multiplyScalar(scale);
+    mesh.position.y += lift * scale;
+    return mesh;
+  };
+  const plastic = new THREE.MeshPhysicalMaterial({ color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28 });
+  shell.material = plastic;
+  label.material = new THREE.MeshPhysicalMaterial({ map: label.material.map, roughness: .38, clearcoat: .7, clearcoatRoughness: .18, side: THREE.DoubleSide });
+  label.material.map.anisotropy = 8;
+  body.add(place(shell), place(label));
 
-  const labelHeight = 2 * Math.PI * 1.006 * (39.8 / 150);
-  const label = new THREE.Mesh(
-    new THREE.CylinderGeometry(1.006, 1.006, labelHeight, 220, 1, true, -Math.PI, Math.PI * 2),
-    new THREE.MeshPhysicalMaterial({ map: labelTexture, roughness: .38, clearcoat: .7, clearcoatRoughness: .18 }),
-  );
-  label.position.y = .17 + labelHeight / 2;
-  body.add(label);
+  // Where the cap sits on the shoulder ledge, in jar units.
+  const capBox = new THREE.Box3().setFromObject(lid);
+  const capBase = (capBox.min.y + lift) * scale;
+  const capRadius = ((capBox.max.x - capBox.min.x) / 2) * scale;
 
-  const capProfile = [];
-  const capPoint = (x, y) => capProfile.push(new THREE.Vector2(x, y));
-  capPoint(.87, 0);
-  capPoint(.915, 0);
-  capPoint(.93, .02);
-  capPoint(.93, .24);
-  capPoint(.905, .265);
-  capPoint(.905, .285);
-  capPoint(.918, .3);
-  capPoint(.918, .6);
-  for (let i = 1; i <= 8; i += 1) { const a = (i / 8) * Math.PI / 2; capPoint(.868 + .05 * Math.cos(a), .6 + .05 * Math.sin(a)); }
-  capPoint(.4, .662);
-  capPoint(0, .668);
-  const cap = new THREE.Mesh(
-    new THREE.LatheGeometry(capProfile, 160),
-    new THREE.MeshPhysicalMaterial({ color: 0xf8f9fd, roughness: .5, clearcoat: .3, clearcoatRoughness: .5, side: THREE.DoubleSide }),
-  );
-  cap.position.y = 2.0;
+  // The open neck under the cap (only seen once the cap lifts).
+  const neck = [];
+  const n = (x, y) => neck.push(new THREE.Vector2(x, capBase + y));
+  n(capRadius + .01, -.004);
+  n(.8, -.004);
+  n(.8, .24);
+  n(.78, .26);
+  n(.72, .26);
+  n(.72, .03);
+  n(0, .01);
+  body.add(new THREE.Mesh(new THREE.LatheGeometry(neck, 120), new THREE.MeshPhysicalMaterial({ color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28, side: THREE.DoubleSide })));
+
+  // Cap pivots around its own base so the existing open animation still works.
+  const cap = new THREE.Group();
+  lid.material = new THREE.MeshPhysicalMaterial({ color: 0xf8f9fd, roughness: .5, clearcoat: .3, clearcoatRoughness: .5 });
+  place(lid).position.y -= capBase;
+  const underside = new THREE.Mesh(new THREE.CircleGeometry(capRadius * .98, 96), new THREE.MeshStandardMaterial({ color: 0xe4e7ef, roughness: .7 }));
+  underside.rotation.x = Math.PI / 2;
+  underside.position.y = .004;
+  cap.add(lid, underside);
+  cap.position.y = capBase;
   jar.add(cap);
-  return { jar, body, cap };
+  return { jar, body, cap, capBase };
 }
 
 function contactShadow(THREE) {
@@ -528,18 +530,15 @@ async function initJar() {
   const camera = new THREE.PerspectiveCamera(28, 1, .1, 100);
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
 
-  let labelTexture;
+  let jarModel;
   try {
-    labelTexture = await new THREE.TextureLoader().loadAsync(asset(tier === 2 && innerWidth > 700 ? 'label-4096.webp' : 'label-2048.webp'));
+    jarModel = await loadGltf('jar.glb');
   } catch {
     renderer.dispose();
     section.classList.add('mg-nogl');
     return;
   }
-  labelTexture.colorSpace = THREE.SRGBColorSpace;
-  labelTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-
-  const { jar, body, cap } = buildJar(THREE, labelTexture);
+  const { jar, body, cap, capBase } = buildJar(THREE, jarModel);
   const rig = new THREE.Group();
   rig.add(jar, contactShadow(THREE));
   scene.add(rig);
@@ -612,7 +611,7 @@ async function initJar() {
     rig.position.y = lerp(-.5, 0, enter) + (still ? 0 : Math.sin(time * .9) * .035) - open * .25;
     rig.scale.setScalar(lerp(.9, 1, enter));
 
-    cap.position.set(open * .9, 2.0 + open * 1.55, -open * .2);
+    cap.position.set(open * .9, capBase + open * 1.55, -open * .2);
     cap.rotation.set(-open * .35, open * 2.6, -open * .45);
 
     tablets.forEach(mesh => {
