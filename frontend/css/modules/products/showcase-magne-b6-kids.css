@@ -4,9 +4,9 @@
    product's own palette (reflex-blue logo, sky petals, the multicolour
    "Кидс", watermelon and panda pink).
 
-   Reading order follows a parent's questions: what is it → what's in it
-   (3-beat 3D jar) → how much for my child → will they like it → the
-   commercial → full label facts → where to buy.
+   Reading order follows a parent's questions: what is it → what's in it,
+   what it is like and what it tastes of (one 3-stage 3D scene) → how much
+   for my child → the commercial → full label facts → where to buy.
    ===================================================================== */
 
 .mg-page {
@@ -257,56 +257,85 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 }
 
 /* =====================================================================
-   01 — Jar 360° (sticky 3D scene, three beats)
+   01 — Formula · chewable form · watermelon taste
+   One sticky 3D scene in three stages on the sky-blue taste ground.
    ===================================================================== */
 .mg-scene { position: relative; z-index: 2; margin-top: -28px; }
-.mg-jar { height: 400vh; --glow: 110 170 255; --tone: #8fc3ff; }
-.mg-jar[data-tone="green"] { --glow: 60 210 140; --tone: #6fe3a8; }
-.mg-jar[data-tone="pink"] { --glow: 255 110 170; --tone: #ff8fc2; }
+.mg-story { height: 640vh; --glow: 255 255 255; --at: 63.5%; }
+.mg-story[data-stage="b"] { --glow: 255 176 214; --at: 36.5%; }
+.mg-story[data-stage="c"] { --glow: 255 150 150; }
 .mg-sticky {
   position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate;
-  border-radius: 28px 28px 0 0; color: #eef3ff; background: var(--mg-night);
+  border-radius: 28px 28px 0 0; color: var(--mg-ink); background: #2fbcef;
 }
-.mg-jar__bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(90vmax 70vmax at 50% 68%, #3542bd 0%, #1b2287 36%, #0b0f4a 70%, #05071f 100%); }
-.mg-jar__flower {
-  position: absolute; z-index: 0; left: 50%; top: 58%; width: 130vmin; height: 130vmin; translate: -50% -50%; opacity: .08;
-  animation: mg-spin 180s linear infinite reverse;
+/* The taste ground, twice as wide so its bright centre can slide behind whichever side holds the 3D. */
+.mg-story__bg {
+  position: absolute; z-index: 0; top: 0; bottom: 0; left: -50%; width: 200%;
+  background: radial-gradient(55% 90% at 61% 44%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%);
+  transition: transform 1.4s var(--mg-ease);
 }
+.mg-story[data-stage="b"] .mg-story__bg { transform: translateX(-22%); }
+.mg-story__glow {
+  position: absolute; z-index: 1; left: var(--at); top: 50%; width: 80vmin; height: 80vmin; translate: -50% -50%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(var(--glow) / .55), rgb(var(--glow) / 0));
+  transition: left 1.2s var(--mg-ease), background .9s ease; pointer-events: none;
+}
+.mg-story__words { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .mg-bigword {
-  position: absolute; z-index: 1; left: 0; top: 78%; white-space: nowrap; pointer-events: none;
+  position: absolute; left: 0; top: 80%; white-space: nowrap; pointer-events: none;
   font-weight: 700; font-size: clamp(130px, 22vw, 360px); line-height: .8; letter-spacing: -.055em;
-  color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .09);
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 255, 255, .45);
   transform: translate3d(0, -50%, 0); will-change: transform;
+  opacity: 0; transition: opacity .7s ease;
 }
-.mg-bigword em { font-style: normal; color: rgba(255, 255, 255, .04); -webkit-text-stroke: 0; }
-.mg-glow {
-  position: absolute; z-index: 1; left: 50%; top: 56%; width: 72vmax; height: 72vmax; margin: -36vmax 0 0 -36vmax; border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(var(--glow) / .34), rgb(var(--glow) / 0));
-  transition: background .8s ease; pointer-events: none;
-}
-/* Keeps caption copy legible over the glow and the turning jar. */
-.mg-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.mg-scrim::before, .mg-scrim::after { content: ""; position: absolute; inset: 0; transition: opacity .7s ease; }
-.mg-scrim::before { background: linear-gradient(90deg, rgba(5, 7, 31, .62) 0%, rgba(5, 7, 31, .3) 30%, rgba(5, 7, 31, 0) 52%); }
-.mg-scrim::after { background: linear-gradient(270deg, rgba(5, 7, 31, .62) 0%, rgba(5, 7, 31, .3) 30%, rgba(5, 7, 31, 0) 52%); opacity: 0; }
-.mg-jar[data-side="right"] .mg-scrim::before { opacity: 0; }
-.mg-jar[data-side="right"] .mg-scrim::after { opacity: 1; }
+.mg-bigword em { font-style: normal; color: rgba(255, 255, 255, .22); -webkit-text-stroke: 0; }
+.mg-story[data-stage="a"] [data-word="a"], .mg-story[data-stage="b"] [data-word="b"], .mg-story[data-stage="c"] [data-word="c"] { opacity: 1; }
+
 .mg-gl { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
 .mg-gl:active { cursor: grabbing; }
-.mg-jar__fallback {
-  position: absolute; z-index: 3; left: 50%; top: 54%; height: min(62vh, 560px); width: auto; translate: -50% -50%;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .45)); display: none;
+
+/* Photos per stage, shown only when WebGL is unavailable. */
+.mg-story__fallback { position: absolute; z-index: 3; inset: 0; display: none; pointer-events: none; }
+.mg-story__fallback img {
+  position: absolute; left: var(--at); top: 54%; height: min(56vh, 520px); width: auto; translate: -50% -50%;
+  filter: drop-shadow(0 30px 40px rgba(0, 40, 110, .3)); opacity: 0; transition: opacity .6s, left 1.2s var(--mg-ease);
 }
-.mg-nogl .mg-jar__fallback { display: block; }
-.mg-nogl .mg-gl, .mg-nogl .mg-drag { display: none; }
+.mg-story__fallback img[data-for="b"] { height: min(40vh, 360px); }
+.mg-story[data-stage="a"] .mg-story__fallback [data-for="a"], .mg-story[data-stage="b"] .mg-story__fallback [data-for="b"], .mg-story[data-stage="c"] .mg-story__fallback [data-for="c"] { opacity: 1; }
+.mg-nogl .mg-story__fallback { display: block; }
+.mg-nogl .mg-gl, .mg-nogl .mg-drag, .mg-nogl .mg-tag, .mg-nogl .mg-flash { display: none; }
+
 .mg-loading {
   position: absolute; z-index: 2; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px;
-  font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .55);
+  font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(13, 47, 108, .6);
   transition: opacity .6s; pointer-events: none;
 }
-.mg-loading i { width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .15); border-top-color: #fff; animation: mg-spin-fast .9s linear infinite; }
+.mg-loading i { width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(13, 47, 108, .15); border-top-color: var(--mg-navy); animation: mg-spin-fast .9s linear infinite; }
 @keyframes mg-spin-fast { to { transform: rotate(360deg); } }
 .mg-gl-ready .mg-loading, .mg-nogl .mg-loading { opacity: 0; }
+
+/* Where magnesium and B6 meet: a white flash (opacity driven by the scene). */
+.mg-flash {
+  position: absolute; z-index: 5; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(70vmax 70vmax at var(--at) 50%, #ffffff 0%, rgba(255, 255, 255, .92) 35%, rgba(255, 255, 255, .55) 70%, rgba(255, 255, 255, .3) 100%);
+}
+
+/* Labels pinned to the atom and the molecule (positioned by the scene). */
+.mg-tag {
+  position: absolute; z-index: 4; left: 0; top: 0; display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 14px 6px 6px; border-radius: 99px; white-space: nowrap; pointer-events: none; opacity: 0;
+  background: rgba(255, 255, 255, .86); box-shadow: 0 14px 30px -14px rgba(0, 50, 120, .5), inset 0 0 0 1px rgba(255, 255, 255, .9);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); will-change: transform, opacity;
+}
+.mg-tag i {
+  display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; flex: none;
+  font: 700 15px/1 "Noto Sans", system-ui, sans-serif; font-style: normal; color: #fff; background: var(--mg-k2);
+}
+.mg-tag--b6 i { background: var(--mg-navy); }
+.mg-tag i sub { font-size: .62em; line-height: 1; margin: .45em 0 0 .04em; }
+.mg-tag span { display: grid; gap: 1px; }
+.mg-tag b { font-size: 13px; font-weight: 700; color: var(--mg-ink); }
+.mg-tag small { font-size: 12px; font-weight: 600; color: var(--mg-text); }
 
 .mg-cap {
   position: absolute; z-index: 6; left: var(--mg-pad); top: clamp(80px, 14vh, 150px);
@@ -317,11 +346,21 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-cap--right { left: auto; right: clamp(70px, 8vw, 130px); text-align: right; }
 .mg-cap--right .mg-eyebrow, .mg-cap--right .mg-chips { justify-content: flex-end; }
 .mg-cap--right p { margin-left: auto; }
-.mg-cap .mg-eyebrow { color: var(--tone); transition: color .6s; }
-.mg-cap h2, .mg-cap h3 { margin: 14px 0 16px; font-size: clamp(36px, 4vw, 64px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: #fff; }
+.mg-cap .mg-eyebrow { color: var(--mg-navy); }
+.mg-cap h2, .mg-cap h3 { margin: 14px 0 16px; font-size: clamp(38px, 4.2vw, 68px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--mg-ink); }
 .mg-cap h2 b, .mg-cap h3 b { font-weight: 700; }
-.mg-cap p { max-width: 400px; font-size: 16.5px; line-height: 1.6; color: #c8d1f5; }
-.mg-cap .mg-chips span { color: #e9edff; border-color: rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .07); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.mg-story .mg-cap:last-of-type h3 b {
+  text-decoration: underline; text-decoration-color: var(--mg-melon); text-decoration-thickness: .085em; text-underline-offset: .14em; text-decoration-skip-ink: none;
+}
+.mg-cap p { max-width: 410px; font-size: 17px; line-height: 1.6; color: #0d2f6c; }
+.mg-cap .mg-chips span { color: var(--mg-ink); background: rgba(255, 255, 255, .7); border-color: rgba(255, 255, 255, .9); }
+/* The tablet counter: counts up as the halo of thirty fills in. */
+.mg-count { display: flex; align-items: baseline; justify-content: flex-end; gap: 12px; margin-top: 10px; }
+.mg-count b {
+  font-size: clamp(76px, 8vw, 132px); font-weight: 700; line-height: .9; letter-spacing: -.05em; color: #fff;
+  font-variant-numeric: tabular-nums; text-shadow: 0 18px 40px rgba(0, 60, 140, .28);
+}
+.mg-count span { max-width: 8em; font-size: 15px; font-weight: 700; line-height: 1.25; color: var(--mg-ink); text-align: left; }
 
 .mg-drag {
   position: absolute; z-index: 7; left: 50%; bottom: clamp(70px, 11vh, 104px); translate: -50% 0;
@@ -338,32 +377,39 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 @keyframes mg-swipe { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 .mg-drag--light { color: var(--mg-navy); background: rgba(255, 255, 255, .78); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .14), 0 10px 30px -14px rgba(0, 60, 120, .5); }
 .mg-drag--light .mg-drag__hand::after { background: var(--mg-k2); }
+/* In the story the hint belongs to the tablet stage. */
+.mg-story .mg-drag { left: 36.5%; opacity: 0; }
+.mg-story[data-stage="b"] .mg-drag:not(.is-hidden) { opacity: 1; }
 
 .mg-hud {
   position: absolute; z-index: 8; left: var(--mg-pad); right: max(var(--mg-pad), 92px); bottom: clamp(18px, 3.6vh, 32px);
   display: flex; align-items: center; gap: 18px;
-  font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9aa6d3; pointer-events: none;
+  font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mg-ink);
 }
-.mg-hud b { color: #fff; font-weight: 600; }
-.mg-hud__title { white-space: nowrap; }
-.mg-track { position: relative; flex: 1; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .14); }
+.mg-steps { display: flex; gap: 6px; }
+.mg-steps button {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; border: 0; border-radius: 99px; cursor: pointer;
+  font: 700 11.5px/1 "Noto Sans", system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--mg-ink);
+  background: rgba(255, 255, 255, .45); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background-color .3s, color .3s, box-shadow .3s;
+}
+.mg-steps button b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 10px; background: rgba(255, 255, 255, .8); color: var(--mg-navy); transition: background-color .3s, color .3s; }
+.mg-steps button:hover { background: rgba(255, 255, 255, .75); }
+.mg-steps button[aria-current="true"] { background: var(--mg-navy); color: #fff; box-shadow: 0 10px 24px -12px rgba(20, 26, 82, .7); }
+.mg-steps button[aria-current="true"] b { background: #fff; color: var(--mg-navy); }
+.mg-steps button:focus-visible { outline: 3px solid var(--mg-k2); outline-offset: 3px; }
+.mg-track { position: relative; flex: 1; height: 3px; border-radius: 3px; background: rgba(13, 47, 108, .14); }
 .mg-track i { position: absolute; inset: 0; border-radius: inherit; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--mg-k1), var(--mg-k2), var(--mg-k3), var(--mg-k4)); }
-.mg-track s { position: absolute; top: 50%; left: calc(var(--at) * 100%); width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: #3b4592; box-shadow: 0 0 0 2px #0b0f4a; }
 .mg-skip {
-  pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px 9px 16px; border-radius: 99px;
-  color: #fff; text-decoration: none; white-space: nowrap; background: rgba(255, 255, 255, .08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px 9px 16px; border-radius: 99px;
+  color: var(--mg-navy); text-decoration: none; white-space: nowrap; background: rgba(255, 255, 255, .6);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   transition: background-color .25s, box-shadow .25s;
 }
-.mg-skip:hover { background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); }
+.mg-skip:hover { background: #fff; }
 .mg-skip i { width: 8px; height: 8px; margin-top: -4px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
-.mg-vignette { position: absolute; inset: 0; z-index: 5; pointer-events: none; background: radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0, 0, 0, .55) 100%); }
-.mg-grain {
-  position: absolute; inset: -10%; z-index: 6; pointer-events: none; opacity: .06; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation: mg-grain 1s steps(6) infinite;
-}
-@keyframes mg-grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-5%, 3%); } 40% { transform: translate(3%, -5%); } 60% { transform: translate(-3%, -2%); } 80% { transform: translate(5%, 5%); } 100% { transform: translate(0, 0); } }
+.mg-spark { position: absolute; z-index: 7; pointer-events: none; width: 16px; height: 22px; }
+.mg-spark--dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px #fff; }
 
 /* =====================================================================
    Sheets: each chapter slides over the previous one with rounded corners
@@ -465,47 +511,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-notes li:nth-child(2)::before { border-color: var(--mg-k1); }
 
 /* =====================================================================
-   03 — Taste
-   ===================================================================== */
-.mg-taste {
-  min-height: min(100svh, 900px); display: flex; align-items: center; padding: clamp(84px, 12vh, 140px) var(--mg-pad) clamp(110px, 16vh, 170px);
-  background: radial-gradient(110% 90% at 72% 44%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%);
-  color: var(--mg-ink);
-}
-.mg-bigword--taste { top: auto; bottom: -.12em; transform: translate3d(0, 0, 0); -webkit-text-stroke: 2px rgba(255, 255, 255, .6); z-index: 0; font-size: clamp(120px, 20vw, 320px); }
-.mg-bigword--taste em { color: rgba(255, 255, 255, .25); }
-.mg-taste__inner { position: relative; z-index: 2; width: 100%; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(20px, 4vw, 60px); align-items: center; }
-.mg-taste .mg-eyebrow { color: var(--mg-navy); }
-.mg-taste h2 { color: var(--mg-ink); }
-.mg-taste h2 b {
-  text-decoration: underline; text-decoration-color: var(--mg-melon); text-decoration-thickness: .085em; text-underline-offset: .14em; text-decoration-skip-ink: none;
-}
-.mg-taste p { max-width: 420px; font-size: 17px; line-height: 1.6; color: #0d2f6c; }
-.mg-taste .mg-chips span { color: var(--mg-ink); background: rgba(255, 255, 255, .7); border-color: rgba(255, 255, 255, .9); }
-.mg-taste__stage { position: relative; height: min(66vh, 600px); min-height: 380px; }
-.mg-taste__ring {
-  position: absolute; left: 50%; top: 50%; width: min(86%, 540px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, .75), rgba(255, 255, 255, .28) 62%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .55);
-}
-.mg-taste__ring::after { content: ""; position: absolute; inset: -9%; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, .6); animation: mg-spin 60s linear infinite; }
-.mg-taste .mg-gl { z-index: 2; }
-.mg-taste__fallback { position: absolute; z-index: 1; left: 50%; top: 50%; height: 62%; width: auto; translate: -50% -50%; filter: drop-shadow(0 30px 30px rgba(160, 40, 90, .3)); transition: opacity .6s; }
-.mg-taste.mg-gl-ready .mg-taste__fallback { opacity: 0; }
-.mg-taste .mg-drag { bottom: 0; }
-.mg-taste__melon { position: absolute; z-index: 1; width: auto; filter: drop-shadow(0 26px 24px rgba(0, 40, 110, .3)); pointer-events: none; }
-.mg-taste__melon--a { height: clamp(220px, 34vh, 380px); left: -24px; bottom: 10%; transform: translateY(calc(var(--tp, 0) * -140px)) scaleX(-1) rotate(-8deg); }
-.mg-taste__melon--b { height: clamp(170px, 26vh, 280px); right: -18px; top: 8%; transform: translateY(calc(var(--tp, 0) * 160px)) rotate(10deg); }
-.mg-taste__melons { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; filter: drop-shadow(0 26px 24px rgba(0, 40, 110, .3)); }
-/* The flat slices stay as layout anchors and the no-WebGL fallback; the 3D wedges replace them once drawn. */
-.mg-taste__melon { transition: opacity .6s; }
-.mg-taste.mg-melons-ready .mg-taste__melon { opacity: 0; }
-html:not(.mg-ready) .mg-taste__melons { display: none; }
-.mg-spark { position: absolute; z-index: 5; pointer-events: none; width: 16px; height: 22px; }
-.mg-spark--dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px #fff; }
-
-/* =====================================================================
-   04 — Commercial
+   03 — Commercial
    ===================================================================== */
 .mg-film {
   padding: clamp(80px, 11vh, 124px) var(--mg-pad) clamp(80px, 11vh, 120px);
@@ -572,7 +578,7 @@ html:not(.mg-ready) .mg-taste__melons { display: none; }
 .mg-textlink svg { width: 13px; height: 13px; }
 
 /* =====================================================================
-   05 — Composition & facts
+   04 — Composition & facts
    ===================================================================== */
 .mg-spec { padding: clamp(84px, 12vh, 140px) var(--mg-pad); background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%); }
 .mg-spec__inner { position: relative; z-index: 2; max-width: 1300px; margin: 0 auto; }
@@ -629,7 +635,7 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
 .mg-dl--compact dd { color: #fff; font-size: 14px; word-break: break-word; }
 
 /* =====================================================================
-   06 — Where to buy & close
+   05 — Where to buy & close
    ===================================================================== */
 .mg-buy {
   padding: clamp(84px, 12vh, 140px) var(--mg-pad) 0; color: #fff;
@@ -699,14 +705,16 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
 .mg-veil.is-on { opacity: 1; }
 
 /* ---------- without JavaScript every chapter is a readable static section ---------- */
-html:not(.mg-ready) .mg-jar { height: auto; }
+html:not(.mg-ready) .mg-story { height: auto; }
 html:not(.mg-ready) .mg-sticky { position: relative; height: auto; display: grid; gap: 40px; padding: 110px var(--mg-pad) 140px; }
 html:not(.mg-ready) .mg-cap { position: relative; inset: auto; text-align: left; max-width: 640px; }
-html:not(.mg-ready) .mg-cap .mg-eyebrow, html:not(.mg-ready) .mg-cap .mg-chips { justify-content: flex-start; }
+html:not(.mg-ready) .mg-cap .mg-eyebrow, html:not(.mg-ready) .mg-cap .mg-chips, html:not(.mg-ready) .mg-count { justify-content: flex-start; }
 html:not(.mg-ready) .mg-cap p { margin-left: 0; }
-html:not(.mg-ready) .mg-gl, html:not(.mg-ready) .mg-loading, html:not(.mg-ready) .mg-drag, html:not(.mg-ready) .mg-hud, html:not(.mg-ready) .mg-bigword, html:not(.mg-ready) .mg-scrim { display: none; }
-html:not(.mg-ready) .mg-jar__fallback { display: block; position: relative; left: auto; top: auto; translate: none; height: 420px; justify-self: center; }
-html:not(.mg-ready) .mg-taste .mg-gl { display: none; }
+html:not(.mg-ready) .mg-gl, html:not(.mg-ready) .mg-loading, html:not(.mg-ready) .mg-drag, html:not(.mg-ready) .mg-hud,
+html:not(.mg-ready) .mg-story__words, html:not(.mg-ready) .mg-tag, html:not(.mg-ready) .mg-flash, html:not(.mg-ready) .mg-story__glow { display: none; }
+html:not(.mg-ready) .mg-story__fallback { position: relative; inset: auto; display: flex; justify-content: center; align-items: flex-end; gap: 6vw; order: 9; }
+html:not(.mg-ready) .mg-story__fallback img { position: static; translate: none; opacity: 1; height: 300px; }
+html:not(.mg-ready) .mg-story__fallback img[data-for="b"] { height: 200px; }
 html:not(.mg-ready) .mg-film__stage { --t: 0; }
 
 /* =====================================================================
@@ -732,24 +740,36 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-hero__spec { order: 9; margin-top: 30px; padding: 20px 0 52px; }
 
   .mg-dose__inner { grid-template-columns: 1fr; grid-template-areas: "copy" "panel" "notes"; }
-  .mg-taste__inner, .mg-buy__inner { grid-template-columns: 1fr; }
-  .mg-taste { min-height: 0; }
-  .mg-taste__stage { height: 52vh; min-height: 320px; }
+  .mg-buy__inner { grid-template-columns: 1fr; }
 
-  .mg-jar { height: 360vh; }
+  /* Story: the caption sits on top, the 3D composition under it. */
+  .mg-story { height: 560vh; --at: 50%; }
+  .mg-story[data-stage="b"] { --at: 50%; }
+  .mg-story__bg { left: -50%; background: radial-gradient(55% 70% at 50% 62%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%); }
+  .mg-story[data-stage="b"] .mg-story__bg { transform: none; }
+  .mg-story__glow { top: 64%; width: 110vmin; height: 110vmin; }
+  .mg-story__fallback img { top: 66%; height: min(40vh, 360px); }
+  .mg-story__fallback img[data-for="b"] { height: min(28vh, 240px); }
   .mg-cap, .mg-cap--right { left: 18px; right: 18px; top: clamp(70px, 10vh, 100px); text-align: left; max-width: none; }
-  .mg-cap--right .mg-eyebrow, .mg-cap--right .mg-chips { justify-content: flex-start; }
+  .mg-cap--right .mg-eyebrow, .mg-cap--right .mg-chips, .mg-count { justify-content: flex-start; }
   .mg-cap--right p { margin-left: 0; }
   .mg-cap h2, .mg-cap h3 { font-size: clamp(32px, 9vw, 52px); margin: 10px 0 10px; }
   .mg-cap p { font-size: 14.5px; max-width: 520px; }
   .mg-cap .mg-chips { margin-top: 12px; gap: 6px; }
   .mg-cap .mg-chips span { font-size: 11.5px; padding: 6px 10px; }
-  .mg-scrim::before, .mg-jar[data-side="right"] .mg-scrim::before { opacity: 1; background: linear-gradient(180deg, rgba(5, 7, 31, .7) 0%, rgba(5, 7, 31, .35) 32%, rgba(5, 7, 31, 0) 52%); }
-  .mg-scrim::after, .mg-jar[data-side="right"] .mg-scrim::after { opacity: 0; }
-  .mg-bigword { top: 84%; }
-  .mg-hud { right: 18px; left: 18px; gap: 12px; }
-  .mg-hud__title { display: none; }
-  .mg-jar .mg-drag { bottom: 74px; }
+  .mg-count { margin-top: 4px; }
+  .mg-count b { font-size: clamp(56px, 16vw, 84px); }
+  .mg-count span { font-size: 13px; }
+  .mg-bigword { top: 88%; font-size: clamp(110px, 30vw, 200px); }
+  .mg-tag { gap: 8px; padding: 4px 11px 4px 4px; }
+  .mg-tag i { width: 30px; height: 30px; font-size: 12.5px; }
+  .mg-tag b { font-size: 11.5px; }
+  .mg-tag small { font-size: 11px; }
+  .mg-story .mg-drag { left: 50%; bottom: 72px; }
+  .mg-hud { right: 18px; left: 18px; gap: 10px; }
+  .mg-steps button { padding: 5px; }
+  .mg-steps button span { display: none; }
+  .mg-skip { padding: 8px 12px; }
   .mg-rail { display: none; }
 
   .mg-spec__head { grid-template-columns: 1fr; }
@@ -804,7 +824,6 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-dl > div { grid-template-columns: 1fr; gap: 4px; }
   .mg-partners { grid-template-columns: 1fr; }
   .mg-partner { min-height: 72px; }
-  .mg-taste__melon--b { display: none; }
   .mg-sheet h2 { font-size: clamp(36px, 10.4vw, 52px); }
   .mg-film__tag { left: 10px; top: 10px; font-size: 10px; }
   .mg-film__label { display: none; }
