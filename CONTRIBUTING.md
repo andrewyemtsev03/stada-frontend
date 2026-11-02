@@ -6,7 +6,20 @@
 | --- | --- | --- |
 | `main` | What is live. Only changes merged through a pull request. | `stada.xx` (Vercel project `project-s`) |
 | `dev` | Staging. A preview of `main` plus work under review. Nobody works on it directly. | `new.stada.xx` (Vercel project `stada-dev`) |
+| `feature/products` | All product work: catalog, product pages, showcases and their fixes. | Vercel preview URL only |
 | `feature/…`, `content/…`, `fix/…` | One branch per piece of work, started from `main`. | Vercel preview URL only |
+
+## Rules for everyone (people and AI assistants)
+
+- **Products → `feature/products`.** Anything to do with products, including
+  fixes to a product page, is committed straight to `feature/products`. Never
+  create a new `fix/…` or other branch for it.
+- **Never create a new branch unless the site owner explicitly asks for one.**
+  If the right branch is unclear, ask instead of inventing one.
+- Never commit to `dev` or `main` directly. To show work, merge its branch into
+  `dev`. Only the site owner merges into `main`.
+- Start from the latest remote state of the branch (`git pull`) and never
+  `cherry-pick` between branches.
 
 The rule that makes this work: **release features, not branches.** Each piece of
 work goes to `main` on its own branch, so unfinished work in `dev` never blocks a
@@ -60,8 +73,8 @@ Same flow, just quicker: branch from `main`, pull request into `main`, then merg
 
 ## Long-running work (for example `feature/products`)
 
-- Keep it on its own branch. Merge it into `dev` whenever you want to show it on
-  staging.
+- Keep it on its own branch and commit every change for that area to it (no
+  side branches). Merge it into `dev` whenever you want to show it on staging.
 - Every week or so, merge `main` into the feature branch so it does not drift
   far from what is live.
 - When it is finished, open a pull request from the feature branch into `main`.
