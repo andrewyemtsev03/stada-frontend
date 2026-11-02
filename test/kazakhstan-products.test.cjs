@@ -40,6 +40,8 @@ test('the showcase page is complete without JavaScript in both languages', () =>
       assert.ok(text.includes(fact), `${lang}: ${fact}`);
     }
     assert.equal(document.querySelectorAll('.mg-cap').length, 3);
+    assert.ok(document.querySelector('.mg-hero__visual [data-hero-canvas]'), 'hero 3D canvas');
+    assert.ok(document.querySelector('.mg-hero__jar'), 'hero poster photo for the first paint and no-WebGL fallback');
     assert.equal(document.querySelectorAll('[role="tab"]').length, 4);
     assert.equal(document.querySelectorAll('.lang-toggle a').length, 2);
     assert.equal(document.querySelector('link[rel="canonical"]').href, `https://stada.kz/${lang}/products/${slug}.html`);

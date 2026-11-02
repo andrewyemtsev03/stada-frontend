@@ -199,6 +199,15 @@ body.mg-page { overflow-x: visible; }
   position: absolute; left: 50%; top: 52%; width: min(92%, 640px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
   background: radial-gradient(closest-side, #ffffff 0%, rgba(255, 255, 255, .85) 45%, rgba(167, 210, 245, .32) 72%, rgba(167, 210, 245, 0) 100%);
 }
+/* Live 3D still life: wider than the visual so the floating tablets can drift into the margins.
+   The photo layers below are the poster and the no-WebGL fallback; they fade out once the canvas draws. */
+.mg-hero__gl {
+  position: absolute; z-index: 1; left: -42%; top: -9%; width: 172%; height: 116%;
+  display: block; pointer-events: none; opacity: 0; transition: opacity .9s ease;
+}
+.mg-hero__visual.mg-hero--live .mg-hero__gl { opacity: 1; }
+.mg-hero__visual.mg-hero--live .mg-hero__layer { opacity: 0; animation: none; transition: opacity .45s ease; }
+html:not(.mg-ready) .mg-hero__gl { display: none; }
 .mg-hero__layer {
   position: absolute; left: 50%; bottom: 7%; height: 82%; aspect-ratio: 803 / 1051;
   translate: -50% calc(var(--hs) * -60px * var(--d, 1));
@@ -721,6 +730,7 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-hero .mg-eyebrow { order: 2; }
   .mg-hero .mg-lockup { order: 3; margin-bottom: 0; }
   .mg-hero__visual { order: 4; height: min(46vh, 400px); min-height: 300px; margin: -8px 0 6px; }
+  .mg-hero__gl { left: -12%; top: 0; width: 124%; height: 100%; }
   .mg-tagline { order: 5; }
   .mg-lead { order: 6; }
   .mg-hero__actions { order: 7; }
