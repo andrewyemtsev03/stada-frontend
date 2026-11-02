@@ -1,5 +1,6 @@
 // Магне B6 Кидс showcase: scroll choreography, the 3D jar with its real label,
-// the interactive dose calculator and the spinnable 3D panda tablet.
+// the interactive dose calculator, the spinnable 3D panda tablet, the in-page
+// commercial and the phone "where to buy" bar.
 // Loaded as an ES module only on products/magne-b6-kids.html.
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -68,7 +69,6 @@ const jarScene = jarSection && {
   section: jarSection,
   caps: $$('.mg-cap', jarSection),
   track: $('.mg-track i', jarSection),
-  label: $('.mg-hud__label', jarSection),
   bigword: $('.mg-bigword', jarSection),
   target: 0,
   tone: '',
@@ -100,14 +100,14 @@ function updateJarScene() {
     if (opacity > best) { best = opacity; active = cap; }
   });
   jarScene.side = active?.classList.contains('mg-cap--right') ? -1 : 1;
+  const sideName = jarScene.side < 0 ? 'right' : 'left';
+  if (jarScene.section.dataset.side !== sideName) jarScene.section.dataset.side = sideName;
   const tone = active?.dataset.tone || '';
   if (tone !== jarScene.tone) {
     jarScene.tone = tone;
     if (tone) jarScene.section.dataset.tone = tone; else delete jarScene.section.dataset.tone;
   }
   if (jarScene.track) jarScene.track.style.transform = `scaleX(${p.toFixed(4)})`;
-  const eyebrow = $('.mg-eyebrow', active)?.textContent.replace(/^\d+\s*—\s*/, '') || '';
-  if (jarScene.label && jarScene.label.textContent !== eyebrow) jarScene.label.textContent = eyebrow;
   if (jarScene.bigword && !reduceMotion) {
     const travel = Math.max(0, jarScene.bigword.scrollWidth - innerWidth * 1.2);
     jarScene.bigword.style.transform = `translate3d(${(-p * travel * .5).toFixed(1)}px, -50%, 0)`;
@@ -130,7 +130,7 @@ function updatePassEffects() {
     tasteSection.style.setProperty('--tp', (q - .5).toFixed(3));
     if (tasteWord && !reduceMotion) tasteWord.style.transform = `translate3d(${(-q * Math.max(0, tasteWord.scrollWidth - innerWidth) * .55).toFixed(1)}px, -50%, 0)`;
   }
-  if (film) {
+  if (film && !film.classList.contains('is-playing')) {
     const rect = film.getBoundingClientRect();
     const t = reduceMotion ? 0 : 1 - clamp((innerHeight - rect.top) / (innerHeight * .75));
     film.style.setProperty('--t', t.toFixed(3));
@@ -140,10 +140,25 @@ function updatePassEffects() {
   }
 }
 
-/* ------------------------------------------------------------------ nav auto-hide + chapter rail */
+/* ------------------------------------------------------------------ nav auto-hide, chapter rail, buy bar */
 const rail = $('.mg-rail');
 const chapters = $$('[data-theme]', $('#mg-top'));
+const buyBar = $('[data-buy-bar]');
+const heroActions = $('.mg-hero__actions');
+const buySection = $('#mg-buy');
 let lastScroll = scrollY;
+let barOn = null;
+function updateBuyBar(current) {
+  if (!buyBar) return;
+  // Shown once the hero buttons are gone, kept out of the immersive jar scene and away from the partner list itself.
+  const on = heroActions.getBoundingClientRect().bottom < 0
+    && current?.id !== 'mg-jar'
+    && buySection.getBoundingClientRect().top > innerHeight * .9;
+  if (on === barOn) return;
+  barOn = on;
+  buyBar.classList.toggle('is-on', on);
+  buyBar.inert = !on;
+}
 function updateChrome() {
   const y = scrollY;
   const pastHero = hero.getBoundingClientRect().bottom < innerHeight * .35;
@@ -153,14 +168,15 @@ function updateChrome() {
     else if (y > lastScroll + 6) siteNav.classList.add('mg-nav-off');
   }
   lastScroll = y;
-  if (!rail) return;
-  rail.classList.toggle('is-on', pastHero);
   const middle = innerHeight / 2;
   let current = null;
   chapters.forEach(section => {
     const rect = section.getBoundingClientRect();
     if (rect.top <= middle && rect.bottom > middle) current = section;
   });
+  updateBuyBar(current);
+  if (!rail) return;
+  rail.classList.toggle('is-on', pastHero && Boolean(current));
   rail.classList.toggle('is-dark', current?.dataset.theme === 'dark');
   $$('a', rail).forEach(link => link.setAttribute('aria-current', String(current?.id === link.dataset.go)));
 }
@@ -193,6 +209,11 @@ document.addEventListener('click', event => {
     const top = target.getBoundingClientRect().top + scrollY + (target.classList.contains('mg-sheet') || target.classList.contains('mg-scene') ? 28 : 0);
     scrollTo({ top, behavior: 'instant' });
     history.replaceState(null, '', `#${target.id}`);
+    const heading = $('h2', target);
+    if (heading && event.detail === 0) {
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
   };
   if (reduceMotion || !veil) { go(); return; }
   jumping = true;
@@ -201,7 +222,7 @@ document.addEventListener('click', event => {
   setTimeout(() => {
     go();
     requestAnimationFrame(() => requestAnimationFrame(() => { veil.classList.remove('is-on'); jumping = false; }));
-  }, 300);
+  }, 260);
 });
 
 /* ------------------------------------------------------------------ dose calculator */
@@ -270,6 +291,28 @@ if (dose && doseSwitch) {
     observer.disconnect();
     apply('young', true);
   }, { threshold: .35 }).observe(dose);
+}
+
+/* ------------------------------------------------------------------ commercial: plays in place */
+// The YouTube player (privacy-enhanced domain) is created only after the visitor presses play;
+// without JavaScript, or with a modifier key, the link opens YouTube as before.
+const filmScreen = $('[data-video]');
+if (filmScreen && film) {
+  filmScreen.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    const frame = filmScreen.parentElement;
+    const player = document.createElement('iframe');
+    const params = new URLSearchParams({ autoplay: '1', rel: '0', playsinline: '1', modestbranding: '1' });
+    player.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(filmScreen.dataset.video)}?${params}`;
+    player.title = filmScreen.getAttribute('aria-label') || 'YouTube';
+    player.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    player.allowFullscreen = true;
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    film.classList.add('is-playing');
+    filmScreen.replaceWith(player);
+    player.focus();
+  });
 }
 
 /* ------------------------------------------------------------------ facts tabs */
@@ -478,9 +521,9 @@ function contactShadow(THREE) {
   return mesh;
 }
 
-// Jar yaw keyframes (in turns of π) — bring each label panel to the front in turn:
-// front logo (u .5), usage panel (u .2), gluten/lactose icons (u .86), front again.
-const yawKeys = [[0, -.75], [.13, 0], [.2, 0], [.29, .6], [.39, .6], [.48, 1.34], [.59, 1.34], [.7, 2], [1, 2]];
+// Jar yaw keyframes (in turns of π), one hold per caption beat:
+// front logo for the formula, the gluten/lactose icon panel, then front again as the cap pops.
+const yawKeys = [[0, -.75], [.12, 0], [.27, 0], [.42, 1.34], [.6, 1.34], [.7, 2], [1, 2]];
 function keyframe(keys, p) {
   for (let i = 1; i < keys.length; i += 1) {
     const [p1, v1] = keys[i];
@@ -587,8 +630,8 @@ async function initJar() {
     const time = still ? 0 : clock.getElapsedTime();
     p += (jarScene.target - p) * (still ? 1 : .085);
     const enter = smooth(0, .12, p);
-    const burst = smooth(.79, .97, p);
-    const open = smooth(.75, .86, p);
+    const burst = smooth(.74, .95, p);
+    const open = smooth(.7, .81, p);
 
     if (!drag.dragging) {
       drag.offset += drag.velocity;
@@ -606,7 +649,8 @@ async function initJar() {
     jar.rotation.y = keyframe(yawKeys, p) * Math.PI + drag.offset + sway;
     jar.rotation.x = .06 + open * .12;
     jar.rotation.z = Math.sin(time * .5) * .012;
-    side += ((jarScene.side * (1 - burst * .55)) - side) * (still ? 1 : .05);
+    // The jar stays beside the caption while it bursts, so the flying tablets never cover the copy.
+    side += ((jarScene.side * (1 - burst * .08)) - side) * (still ? 1 : .05);
     rig.position.x = side * shift;
     rig.position.y = lerp(-.5, 0, enter) + (still ? 0 : Math.sin(time * .9) * .035) - open * .25;
     rig.scale.setScalar(lerp(.9, 1, enter));
