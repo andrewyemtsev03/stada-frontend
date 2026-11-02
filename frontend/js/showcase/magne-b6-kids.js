@@ -15,7 +15,20 @@ const root = document.documentElement;
 root.classList.add('mg-ready');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
-const tier = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 ? 1 : 2;
+// Quality profile. Phones and tablets (coarse pointer), machines with 4 cores or 4 GB or less, and visitors asking
+// to save data get the light profile: fewer pixels, matching non-clearcoat materials, lighter particle counts and
+// geometry, and idle motion at 30 fps. The choreography, models and composition are the same on every device.
+const coarsePointer = matchMedia('(pointer: coarse)').matches;
+const lowEnd = coarsePointer || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || Boolean(navigator.connection?.saveData);
+const QUALITY = {
+  dprCap: lowEnd ? 1.5 : 2,
+  // Most pixels a full-size 3D canvas may draw; big or high-density screens render a little softer instead of slower.
+  pixelBudget: lowEnd ? 1.1e6 : 3e6,
+  particles: lowEnd ? .6 : 1,
+  segments: lowEnd ? .7 : 1,
+};
+const amount = n => Math.max(1, Math.round(n * QUALITY.particles));
+const segs = n => Math.max(8, Math.round(n * QUALITY.segments));
 const assetBase = new URL('.', $('.mg-hero__jar')?.src || location.href).href;
 const asset = name => new URL(name, assetBase).href;
 
@@ -31,7 +44,7 @@ measureNav();
 $$('[data-marquee]').forEach(node => {
   const word = node.textContent.trim();
   node.textContent = '';
-  for (let i = 0; i < 6; i += 1) {
+  for (let i = 0; i < 4; i += 1) {
     node.append(word);
     const dot = document.createElement('em');
     dot.textContent = ' · ';
@@ -94,9 +107,21 @@ function sectionProgress(section) {
   return total > 0 ? clamp(-rect.top / total) : 0;
 }
 
+// Writes a style or attribute only when its value changes, so scrolling doesn't restyle what is already right.
+const written = new WeakMap();
+function write(node, key, value, attribute = false) {
+  let values = written.get(node);
+  if (!values) { values = {}; written.set(node, values); }
+  if (values[key] === value) return;
+  values[key] = value;
+  if (attribute) node.setAttribute(key, value); else node.style[key] = value;
+}
+
 function updateStory() {
   if (!story) return;
   const rect = story.section.getBoundingClientRect();
+  // Off screen (above or below): nothing to update.
+  if (rect.bottom < -innerHeight || rect.top > innerHeight * 2) return;
   const p = toTimeline(sectionProgress(story.section));
   story.target = p;
   // 0 while the chapter is still below the fold, 1 once it is pinned: the atom forms as the chapter slides in.
@@ -108,8 +133,8 @@ function updateStory() {
     const fadeIn = start <= 0 ? 1 : smooth(start, start + fade, p);
     const fadeOut = end >= 1 ? 1 : 1 - smooth(end - fade, end, p);
     const opacity = fadeIn * fadeOut;
-    cap.style.opacity = opacity.toFixed(3);
-    cap.style.transform = `translate3d(0, ${((1 - opacity) * (p < start + fade ? 26 : -18)).toFixed(1)}px, 0)`;
+    write(cap, 'opacity', opacity.toFixed(3));
+    write(cap, 'transform', `translate3d(0, ${((1 - opacity) * (p < start + fade ? 26 : -18)).toFixed(1)}px, 0)`);
     cap.classList.toggle('is-live', opacity > .5);
   });
   let stage = STAGES[0];
@@ -118,12 +143,14 @@ function updateStory() {
     story.stage = stage.id;
     story.section.dataset.stage = stage.id;
   }
-  story.steps.forEach(step => step.setAttribute('aria-current', String(STAGES[Number(step.dataset.step)].id === stage.id)));
-  if (story.track) story.track.style.transform = `scaleX(${p.toFixed(4)})`;
+  story.steps.forEach(step => write(step, 'aria-current', String(STAGES[Number(step.dataset.step)].id === stage.id), true));
+  if (story.track) write(story.track, 'transform', `scaleX(${p.toFixed(4)})`);
   if (!reduceMotion) {
+    // Only the stage's own word is visible, so only it moves (its width is measured once).
     story.words.forEach(word => {
-      const travel = Math.max(0, word.scrollWidth - innerWidth * 1.2);
-      word.style.transform = `translate3d(${(-p * travel * .6).toFixed(1)}px, -50%, 0)`;
+      if (word.dataset.word !== stage.id) return;
+      word.travel ??= Math.max(0, word.scrollWidth - innerWidth * 1.2);
+      write(word, 'transform', `translate3d(${(-p * word.travel * .6).toFixed(1)}px, -50%, 0)`);
     });
   }
 }
@@ -168,6 +195,7 @@ function updateBuyBar(current) {
   buyBar.classList.toggle('is-on', on);
   buyBar.inert = !on;
 }
+const railLinks = rail ? $$('a', rail) : [];
 function updateChrome() {
   const y = scrollY;
   const pastHero = hero.getBoundingClientRect().bottom < innerHeight * .35;
@@ -187,7 +215,7 @@ function updateChrome() {
   if (!rail) return;
   rail.classList.toggle('is-on', pastHero && Boolean(current));
   rail.classList.toggle('is-dark', current?.dataset.theme === 'dark');
-  $$('a', rail).forEach(link => link.setAttribute('aria-current', String(current?.id === link.dataset.go)));
+  railLinks.forEach(link => write(link, 'aria-current', String(current?.id === link.dataset.go), true));
 }
 
 /* ------------------------------------------------------------------ scroll loop */
@@ -200,7 +228,7 @@ function frame() {
 }
 const requestFrame = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
 addEventListener('scroll', requestFrame, { passive: true });
-addEventListener('resize', () => { measureNav(); requestFrame(); });
+addEventListener('resize', () => { measureNav(); story?.words.forEach(word => { word.travel = undefined; }); requestFrame(); });
 frame();
 
 /* ------------------------------------------------------------------ chapter jumps */
@@ -378,7 +406,6 @@ function createRenderer(THREE, canvas) {
   } catch {
     return null;
   }
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier === 2 ? 2 : 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
@@ -386,9 +413,26 @@ function createRenderer(THREE, canvas) {
   const gl = renderer.getContext();
   const info = gl.getExtension('WEBGL_debug_renderer_info');
   const name = String((info && gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) || gl.getParameter(gl.RENDERER) || '');
-  renderer.userData = { lite: /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name) };
-  if (renderer.userData.lite) renderer.setPixelRatio(.75);
+  renderer.userData = { lite: /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name), level: 1, idle: false };
+  renderer.setPixelRatio(pixelRatioFor(renderer, canvas.clientWidth, canvas.clientHeight));
   return renderer;
+}
+
+// Device pixels per CSS pixel: the screen's density, capped by the profile and by the pixel budget, times the
+// adaptive level that drops when frames run slow and recovers when they are quick again.
+function pixelRatioFor(renderer, width, height) {
+  if (renderer.userData.lite) return .75;
+  const byBudget = Math.sqrt(QUALITY.pixelBudget / Math.max(1, width * height));
+  return Math.max(.6, Math.min(devicePixelRatio || 1, QUALITY.dprCap, byBudget) * renderer.userData.level);
+}
+
+// Glossy surfaces: physical clearcoat on capable machines; on the light profile a standard material whose
+// roughness sits between the base and the coat, so the highlight reads much the same for less shading work.
+function glossy(THREE, params) {
+  if (!lowEnd) return new THREE.MeshPhysicalMaterial(params);
+  const { clearcoat = 0, clearcoatRoughness = 0, ...rest } = params;
+  if (clearcoat) rest.roughness = lerp(rest.roughness ?? 1, clearcoatRoughness, clearcoat * .55);
+  return new THREE.MeshStandardMaterial(rest);
 }
 
 function addEnvironment(THREE, RoomEnvironment, renderer, scene) {
@@ -407,6 +451,8 @@ function keepSized(renderer, camera, canvas, onResize) {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     if (!width || !height) return;
+    renderer.userData.size = [width, height];
+    renderer.setPixelRatio(pixelRatioFor(renderer, width, height));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
@@ -435,9 +481,10 @@ const loadGltf = name => {
   return gltfCache.get(name);
 };
 
-let pandaPromise;
-function loadPanda(THREE) {
-  pandaPromise ||= loadGltf('panda.glb')
+// panda.glb for close-ups; panda-lite.glb (about an eighth of the triangles, smaller maps) for the small copies.
+const pandaPromises = new Map();
+function loadPanda(THREE, name = 'panda.glb') {
+  if (!pandaPromises.has(name)) pandaPromises.set(name, loadGltf(name)
     .then(gltf => {
       const model = gltf.scene;
       model.traverse(node => {
@@ -455,8 +502,32 @@ function loadPanda(THREE) {
       model.scale.multiplyScalar(scale);
       model.position.sub(centre.multiplyScalar(scale));
       return model;
-    });
-  return pandaPromise;
+    }));
+  return pandaPromises.get(name);
+}
+// Many identical tablets in one draw call: the model's mesh, baked into the normalised pose.
+function pandaInstances(THREE, model, count) {
+  model.updateMatrixWorld(true);
+  let mesh;
+  model.traverse(node => { if (node.isMesh && !mesh) mesh = node; });
+  const source = mesh.geometry;
+  const geometry = new THREE.BufferGeometry();
+  ['position', 'normal', 'uv'].forEach(key => {
+    const attribute = source.attributes[key];
+    if (!attribute) return;
+    const values = new Float32Array(attribute.count * attribute.itemSize);
+    // getX/getY/getZ work for plain and interleaved attributes alike, and undo the quantisation.
+    const read = [attribute.getX, attribute.getY, attribute.getZ].slice(0, attribute.itemSize);
+    for (let i = 0; i < attribute.count; i += 1) {
+      read.forEach((get, c) => { values[i * attribute.itemSize + c] = get.call(attribute, i); });
+    }
+    geometry.setAttribute(key, new THREE.BufferAttribute(values, attribute.itemSize));
+  });
+  if (source.index) geometry.setIndex(source.index.clone());
+  geometry.applyMatrix4(mesh.matrixWorld);
+  const instances = new THREE.InstancedMesh(geometry, mesh.material, count);
+  instances.frustumCulled = false;
+  return instances;
 }
 // Each tablet is a cheap clone: geometry, textures and material are shared.
 function makePanda(THREE, model) {
@@ -486,9 +557,9 @@ function buildJar(THREE, gltf) {
     mesh.position.y += lift * scale;
     return mesh;
   };
-  const plastic = new THREE.MeshPhysicalMaterial({ color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28 });
+  const plastic = glossy(THREE, { color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28 });
   shell.material = plastic;
-  label.material = new THREE.MeshPhysicalMaterial({ map: label.material.map, roughness: .38, clearcoat: .7, clearcoatRoughness: .18, side: THREE.DoubleSide });
+  label.material = glossy(THREE, { map: label.material.map, roughness: .38, clearcoat: .7, clearcoatRoughness: .18, side: THREE.DoubleSide });
   label.material.map.anisotropy = 8;
   body.add(place(shell), place(label));
 
@@ -507,11 +578,11 @@ function buildJar(THREE, gltf) {
   n(.72, .26);
   n(.72, .03);
   n(0, .01);
-  body.add(new THREE.Mesh(new THREE.LatheGeometry(neck, 120), new THREE.MeshPhysicalMaterial({ color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28, side: THREE.DoubleSide })));
+  body.add(new THREE.Mesh(new THREE.LatheGeometry(neck, 120), glossy(THREE, { color: 0xf5f7fc, roughness: .3, clearcoat: .6, clearcoatRoughness: .28, side: THREE.DoubleSide })));
 
   // Cap pivots around its own base so the existing open animation still works.
   const cap = new THREE.Group();
-  lid.material = new THREE.MeshPhysicalMaterial({ color: 0xf8f9fd, roughness: .5, clearcoat: .3, clearcoatRoughness: .5 });
+  lid.material = glossy(THREE, { color: 0xf8f9fd, roughness: .5, clearcoat: .3, clearcoatRoughness: .5 });
   place(lid).position.y -= capBase;
   const underside = new THREE.Mesh(new THREE.CircleGeometry(capRadius * .98, 96), new THREE.MeshStandardMaterial({ color: 0xe4e7ef, roughness: .7 }));
   underside.rotation.x = Math.PI / 2;
@@ -544,22 +615,28 @@ function makeDrag(element, onFirst) {
   return state;
 }
 
-/* Adaptive resolution: if frames get slow, render fewer pixels (never more than the start). */
+/* Adaptive resolution: slow frames lower the pixel level step by step, quick frames win it back (never above the
+   profile's own ratio). Warm-up frames (shader compiles, texture uploads) and throttled idle frames don't count. */
 function Q(renderer) {
-  const state = renderer.__q || (renderer.__q = { last: performance.now(), samples: [], level: 1, base: renderer.getPixelRatio() });
+  const data = renderer.userData;
+  const state = data.q || (data.q = { last: performance.now(), samples: [], warmup: 30 });
   const now = performance.now();
   const delta = now - state.last;
   state.last = now;
+  if (data.idle || data.lite) return;
   if (delta > 250) { state.samples.length = 0; return; }
+  if (state.warmup > 0) { state.warmup -= 1; return; }
   state.samples.push(delta);
-  if (state.samples.length < 45) return;
-  const sorted = state.samples.sort((a, b) => a - b);
-  const median = sorted[Math.floor(sorted.length / 2)];
+  if (state.samples.length < 40) return;
+  const median = state.samples.sort((a, b) => a - b)[20];
   state.samples = [];
-  if (median > 24 && state.level > .55) {
-    state.level = Math.max(.55, state.level * .8);
-    renderer.setPixelRatio(Math.max(.75, state.base * state.level));
-  }
+  let level = data.level;
+  if (median > 22) level = Math.max(.5, level * .82);
+  else if (median < 13 && level < 1) level = Math.min(1, level * 1.12);
+  if (level === data.level) return;
+  data.level = level;
+  const [width, height] = data.size || [renderer.domElement.clientWidth, renderer.domElement.clientHeight];
+  renderer.setPixelRatio(pixelRatioFor(renderer, width, height));
 }
 
 /* ---------- watermelon wedge: a normalised clone, centred with its longest side = 1 ---------- */
@@ -724,8 +801,8 @@ function buildAtom(THREE, glow) {
   shell(6, .14, 0);
   shell(18, .32, .7);
   const nucleons = new THREE.InstancedMesh(
-    new THREE.SphereGeometry(.16, 28, 18),
-    new THREE.MeshPhysicalMaterial({ roughness: .26, clearcoat: 1, clearcoatRoughness: .12 }),
+    new THREE.SphereGeometry(.16, segs(28), segs(18)),
+    glossy(THREE, { roughness: .26, clearcoat: 1, clearcoatRoughness: .12 }),
     spots.length,
   );
   const proton = new THREE.Color('#ff2b86');
@@ -749,7 +826,7 @@ function buildAtom(THREE, glow) {
   const electronGeometry = new THREE.SphereGeometry(.06, 16, 12);
   const electronMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
   const electronGlow = new THREE.SpriteMaterial({ map: glow, color: 0xa8ecff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: .85 });
-  const trail = 18;
+  const trail = lowEnd ? 12 : 18;
   const shells = [
     { r: .74, n: 2, tilt: [1.2, .35, .15], speed: 1.7 },
     { r: 1.14, n: 8, tilt: [1.42, -.6, -.45], speed: 1.05 },
@@ -872,8 +949,8 @@ function buildMolecule(THREE) {
   const random = seeded(6);
   const group = new THREE.Group();
   const balls = new THREE.InstancedMesh(
-    new THREE.SphereGeometry(1, 28, 18),
-    new THREE.MeshPhysicalMaterial({ roughness: .2, clearcoat: 1, clearcoatRoughness: .08 }),
+    new THREE.SphereGeometry(1, segs(28), segs(18)),
+    glossy(THREE, { roughness: .2, clearcoat: 1, clearcoatRoughness: .08 }),
     atoms.length,
   );
   atoms.forEach((atom, i) => balls.setColorAt(i, new THREE.Color(ELEMENTS[atom.el].color)));
@@ -884,7 +961,7 @@ function buildMolecule(THREE) {
   });
   const rods = new THREE.InstancedMesh(
     new THREE.CylinderGeometry(1, 1, 1, 14, 1),
-    new THREE.MeshPhysicalMaterial({ color: 0xf4f7ff, roughness: .3, clearcoat: .8 }),
+    glossy(THREE, { color: 0xf4f7ff, roughness: .3, clearcoat: .8 }),
     sticks.length,
   );
   group.add(balls, rods);
@@ -1065,15 +1142,15 @@ const MELON_SQUASH = .92;
 const MELON_Z = 0;
 function buildMelon(THREE) {
   const rindMap = rindTexture(THREE);
-  const rind = saturate(new THREE.MeshPhysicalMaterial({ map: rindMap, bumpMap: rindMap, bumpScale: .8, roughness: .38, clearcoat: .8, clearcoatRoughness: .22 }), 1.12);
+  const rind = saturate(glossy(THREE, { map: rindMap, bumpMap: rindMap, bumpScale: .8, roughness: .38, clearcoat: .8, clearcoatRoughness: .22 }), 1.12);
   const fleshMap = fleshTexture(THREE);
-  const flesh = saturate(new THREE.MeshPhysicalMaterial({
+  const flesh = saturate(glossy(THREE, {
     map: fleshMap, roughness: .3, clearcoat: 1, clearcoatRoughness: .1, bumpMap: fleshMap, bumpScale: 2.2,
     emissive: 0xffffff, emissiveMap: fleshMap, emissiveIntensity: .14,
   }), 1.22);
   // The cut face bulges a little and is faintly uneven, so the wet highlight breaks up like real flesh.
   const random = seeded(41);
-  const capGeometry = new THREE.RingGeometry(0, MELON_R * .997, 128, 28);
+  const capGeometry = new THREE.RingGeometry(0, MELON_R * .997, segs(128), segs(28));
   const position = capGeometry.attributes.position;
   const bumps = Array.from({ length: 9 }, () => [random() * 6.3, 2 + random() * 5, random() * 6.3]);
   for (let i = 0; i < position.count; i += 1) {
@@ -1088,7 +1165,7 @@ function buildMelon(THREE) {
   capGeometry.computeVertexNormals();
   const half = sign => {
     const group = new THREE.Group();
-    const shellGeometry = new THREE.SphereGeometry(MELON_R, 72, 48, sign > 0 ? Math.PI / 2 : -Math.PI / 2, Math.PI);
+    const shellGeometry = new THREE.SphereGeometry(MELON_R, segs(72), segs(48), sign > 0 ? Math.PI / 2 : -Math.PI / 2, Math.PI);
     shellGeometry.scale(1, MELON_SQUASH, 1);
     const cap = new THREE.Mesh(capGeometry, flesh);
     cap.renderOrder = 1;
@@ -1198,9 +1275,10 @@ async function initStory() {
   let THREE;
   let RoomEnvironment;
   let pandaModel;
+  let pandaLite;
   try {
     ({ THREE, RoomEnvironment } = await loadThree());
-    pandaModel = await loadPanda(THREE);
+    [pandaModel, pandaLite] = await Promise.all([loadPanda(THREE), loadPanda(THREE, 'panda-lite.glb')]);
   } catch {
     section.classList.add('mg-nogl');
     return;
@@ -1210,6 +1288,8 @@ async function initStory() {
   renderer.toneMappingExposure = 1.06;
 
   const scene = new THREE.Scene();
+  // Matrices are updated once per frame by hand (the labels need them before the render does).
+  scene.matrixWorldAutoUpdate = false;
   const camera = new THREE.PerspectiveCamera(30, 1, .1, 200);
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
   const glow = glowTexture(THREE);
@@ -1234,8 +1314,9 @@ async function initStory() {
 
   // The flash where they meet: a ring of light and a spray of sparks.
   const wave = new THREE.Mesh(new THREE.RingGeometry(.985, 1, 160), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide }));
-  const sparks = softPoints(THREE, 110, 0xffffff);
-  const sparkDirs = Array.from({ length: 110 }, () => new THREE.Vector3(random() - .5, random() - .5, random() - .5).normalize().multiplyScalar(2 + random() * 3.2));
+  const sparkCount = amount(110);
+  const sparks = softPoints(THREE, sparkCount, 0xffffff);
+  const sparkDirs = Array.from({ length: sparkCount }, () => new THREE.Vector3(random() - .5, random() - .5, random() - .5).normalize().multiplyScalar(2 + random() * 3.2));
   world.add(wave, sparks);
 
   /* B — the tablet, its glitter and the halo of thirty */
@@ -1245,21 +1326,20 @@ async function initStory() {
   hero.add(jelly);
   jelly.add(makePanda(THREE, pandaModel));
   spin.add(hero);
-  const glitter = softPoints(THREE, 36, 0xffffff);
-  const glitterSpots = Array.from({ length: 36 }, () => ({
+  const glitterCount = amount(36);
+  const glitter = softPoints(THREE, glitterCount, 0xffffff);
+  const glitterSpots = Array.from({ length: glitterCount }, () => ({
     at: new THREE.Vector3(random() - .5, random() - .5, random() - .5).normalize().multiplyScalar(1.5 + random() * 1.1),
     speed: 1.5 + random() * 3,
     phase: random() * 6.3,
     size: .05 + random() * .07,
   }));
   spin.add(glitter);
-  const halo = Array.from({ length: 29 }, (_, i) => {
-    const holder = makePanda(THREE, pandaModel);
-    holder.visible = false;
-    holder.userData = { phase: random() * 6.3, delay: (i / 29) * .55, angle: (i / 29) * Math.PI * 2 };
-    spin.add(holder);
-    return holder;
-  });
+  // The other 29 tablets are small on screen: the light model, all in a single draw call.
+  const halo = Array.from({ length: 29 }, (_, i) => ({ phase: random() * 6.3, delay: (i / 29) * .55, angle: (i / 29) * Math.PI * 2 }));
+  const haloMesh = pandaInstances(THREE, pandaLite, halo.length);
+  haloMesh.visible = false;
+  spin.add(haloMesh);
 
   /* C — the watermelon, the blade, juice, seeds and mist, slices, chunks and hanging drops */
   const melon = buildMelon(THREE);
@@ -1282,12 +1362,12 @@ async function initStory() {
   bloom.position.set(0, melonCentre + .3, MELON_Z - 1.6);
   bloom.scale.setScalar(7.5);
   spin.add(bloom);
-  const juiceMaterial = new THREE.MeshPhysicalMaterial({ color: 0xe8001f, roughness: .06, clearcoat: 1, clearcoatRoughness: .04, emissive: 0xd4001c, emissiveIntensity: .55, envMapIntensity: .5, transparent: true, opacity: .9 });
-  const dropGeometry = new THREE.SphereGeometry(1, 18, 14);
-  const juiceCount = 120;
+  const juiceMaterial = glossy(THREE, { color: 0xe8001f, roughness: .06, clearcoat: 1, clearcoatRoughness: .04, emissive: 0xd4001c, emissiveIntensity: .55, envMapIntensity: .5, transparent: true, opacity: .9 });
+  const dropGeometry = new THREE.SphereGeometry(1, segs(18), segs(14));
+  const juiceCount = amount(120);
   const juice = new THREE.InstancedMesh(dropGeometry, juiceMaterial, juiceCount);
-  const seedCount = 26;
-  const seeds = new THREE.InstancedMesh(seedGeometry(THREE), new THREE.MeshPhysicalMaterial({ color: 0x24140e, roughness: .25, clearcoat: 1, clearcoatRoughness: .1 }), seedCount);
+  const seedCount = amount(26);
+  const seeds = new THREE.InstancedMesh(seedGeometry(THREE), glossy(THREE, { color: 0x24140e, roughness: .25, clearcoat: 1, clearcoatRoughness: .1 }), seedCount);
   const fling = (count, spread) => Array.from({ length: count }, (_, i) => {
     const side = i % 2 ? 1 : -1;
     return {
@@ -1301,15 +1381,17 @@ async function initStory() {
   const drops = fling(juiceCount, 2.8);
   const pips = fling(seedCount, 2.2);
   spin.add(juice, seeds);
-  const mist = softPoints(THREE, 80, 0xff6a84, THREE.NormalBlending);
-  const puffs = Array.from({ length: 80 }, () => ({
+  const mistCount = amount(80);
+  const mist = softPoints(THREE, mistCount, 0xff6a84, THREE.NormalBlending);
+  const puffs = Array.from({ length: mistCount }, () => ({
     dir: new THREE.Vector3((random() - .5) * 2.4, random() * 1.6 + .1, (random() - .2) * 1.4).normalize().multiplyScalar(1.2 + random() * 2.4),
     size: .14 + random() * .3,
   }));
   spin.add(mist);
   // Drops that stay hanging in the air once the splash has settled.
-  const HANGING = Array.from({ length: 26 }, (_, i) => {
-    const a = (i / 26) * Math.PI * 2 + random() * .3;
+  const hangingCount = lowEnd ? 18 : 26;
+  const HANGING = Array.from({ length: hangingCount }, (_, i) => {
+    const a = (i / hangingCount) * Math.PI * 2 + random() * .3;
     const r = 1.7 + random() * 1;
     return { at: new THREE.Vector3(Math.cos(a) * r, melonCentre + .5 + Math.sin(a) * r * .55 + random() * .4, MELON_Z + .4 + random() * 1.6), r: .04 + random() * .07, phase: random() * 6.3, delay: random() * .4 };
   });
@@ -1325,7 +1407,7 @@ async function initStory() {
     { x: -1.45, y: 1.55, z: -.5, rx: .3, ry: 1.1, rz: -.4 },
     { x: 1.55, y: 1.5, z: -.6, rx: -.7, ry: .2, rz: .5 },
   ].map((chunk, i) => ({ ...chunk, speed: .5 + ((i * 37) % 10) / 20, phase: i * 1.7 }));
-  const chunks = new THREE.InstancedMesh(roundedBox(THREE, CHUNK, .07), saturate(new THREE.MeshPhysicalMaterial({
+  const chunks = new THREE.InstancedMesh(roundedBox(THREE, CHUNK, .07), saturate(glossy(THREE, {
     map: chunkTexture(THREE), roughness: .3, clearcoat: 1, clearcoatRoughness: .12, emissive: 0xffffff, emissiveIntensity: .08,
   }), 1.2), CHUNKS.length);
   chunks.material.emissiveMap = chunks.material.map;
@@ -1338,8 +1420,9 @@ async function initStory() {
   });
 
   /* ambient dust: slow motes of light across the whole chapter */
-  const dust = softPoints(THREE, 150, 0xffffff);
-  const motes = Array.from({ length: 150 }, () => ({
+  const dustCount = amount(150);
+  const dust = softPoints(THREE, dustCount, 0xffffff);
+  const motes = Array.from({ length: dustCount }, () => ({
     x: (random() - .5) * 18, y: (random() - .5) * 10, z: -7 + random() * 8, size: .03 + random() * .06, a: .18 + random() * .34, speed: .04 + random() * .08,
   }));
   scene.add(dust);
@@ -1363,6 +1446,7 @@ async function initStory() {
   });
 
   // Everything is built: compile every material now so nothing stalls mid-scroll when it first appears.
+  scene.updateMatrixWorld();
   try { await renderer.compileAsync(scene, camera); } catch { renderer.compile(scene, camera); }
 
   const tags = { mg: $('[data-tag="mg"]', section), b6: $('[data-tag="b6"]', section) };
@@ -1390,13 +1474,23 @@ async function initStory() {
   const tagOffset = new THREE.Vector3();
   let lastKey = '';
   let firstFrame = true;
+  let frameCount = 0;
+  const shown = new Map();
+  // Style writes only when a value actually changes.
+  const setStyle = (element, key, value) => {
+    const id = element.dataset.tag || element.className || key;
+    const cacheKey = `${id}|${key}`;
+    if (shown.get(cacheKey) === value) return;
+    shown.set(cacheKey, value);
+    element.style[key] = value;
+  };
   const place = (element, point, opacity, ax = -50, ay = -100) => {
     if (!element) return;
-    if (opacity < .01) { element.style.opacity = '0'; return; }
+    if (opacity < .01) { setStyle(element, 'opacity', '0'); return; }
     anchor.copy(point).project(camera);
     const x = (anchor.x * .5 + .5) * canvas.clientWidth;
     const y = (-anchor.y * .5 + .5) * canvas.clientHeight;
-    element.style.opacity = opacity.toFixed(3);
+    setStyle(element, 'opacity', opacity.toFixed(3));
     element.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(${ax}%, ${ay}%) scale(${(.85 + opacity * .15).toFixed(3)})`;
   };
 
@@ -1425,6 +1519,11 @@ async function initStory() {
     state.jellyV += ((push - state.jelly) * 90 - state.jellyV * 8) * dt;
     state.jelly += state.jellyV * dt;
     if (still) { state.jelly = 0; state.jellyV = 0; }
+    // Light profile: while nothing is scrolling or being dragged, idle motion draws every other frame (30 fps).
+    const idle = lowEnd && !still && Math.abs(story.target - state.p) < 4e-4 && !drag.dragging && Math.abs(drag.velocity) < 1e-3 && Math.abs(state.jellyV) < .05;
+    renderer.userData.idle = idle;
+    frameCount += 1;
+    if (idle && frameCount % 2) return;
 
     if (lite) {
       const key = `${p.toFixed(4)}|${state.enter.toFixed(3)}|${drag.offset.toFixed(4)}|${canvas.width}x${canvas.height}`;
@@ -1521,25 +1620,28 @@ async function initStory() {
     }
     const ringOut = span(T.halo, p);
     const scatter = span(T.scatter, p);
-    halo.forEach((holder, i) => {
-      const data = holder.userData;
-      const k = clamp((ringOut - data.delay) / .45);
-      holder.visible = k > 0 && scatter < 1;
-      if (!holder.visible) return;
-      const out = easeOutBack(k);
-      const angle = data.angle + time * .22 + p * 7;
-      // A tilted orbit around the tablet: the back half passes behind it, the front half in front of its feet.
-      const r = lerp(.2, 2.65 * spread, out) * (1 + easeInCubic(scatter) * 2.6);
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
-      holder.position.set(
-        cos * r,
-        -.05 - sin * r * .26 + cos * r * .14 + scatter * scatter * 2.4 + (still ? 0 : Math.sin(time * 1.2 + data.phase) * .05),
-        sin * r * .85,
-      );
-      holder.scale.setScalar(Math.max(.001, .27 * Math.min(out, 1.12) * (1 - scatter * .85)));
-      holder.rotation.set(Math.sin(time * .8 + data.phase) * .3, Math.sin(time * .5 + data.phase) * .6 - cos * .35, Math.sin(time * .6 + data.phase) * .3 + scatter * (i % 2 ? 5 : -5));
-    });
+    haloMesh.visible = ringOut > 0 && scatter < 1;
+    if (haloMesh.visible) {
+      halo.forEach((data, i) => {
+        const k = clamp((ringOut - data.delay) / .45);
+        if (k <= 0) {
+          dummy.scale.setScalar(0);
+        } else {
+          const out = easeOutBack(k);
+          const angle = data.angle + time * .22 + p * 7;
+          // A tilted orbit around the tablet: the back half passes behind it, the front half in front of its feet.
+          const r = lerp(.2, 2.65 * spread, out) * (1 + easeInCubic(scatter) * 2.6);
+          const cos = Math.cos(angle);
+          const sin = Math.sin(angle);
+          dummy.position.set(cos * r, -.05 - sin * r * .26 + cos * r * .14 + scatter * scatter * 2.4 + (still ? 0 : Math.sin(time * 1.2 + data.phase) * .05), sin * r * .85);
+          dummy.scale.setScalar(Math.max(.001, .27 * Math.min(out, 1.12) * (1 - scatter * .85)));
+          dummy.rotation.set(Math.sin(time * .8 + data.phase) * .3, Math.sin(time * .5 + data.phase) * .6 - cos * .35, Math.sin(time * .6 + data.phase) * .3 + scatter * (i % 2 ? 5 : -5));
+        }
+        dummy.updateMatrix();
+        haloMesh.setMatrixAt(i, dummy.matrix);
+      });
+      haloMesh.instanceMatrix.needsUpdate = true;
+    }
 
     /* ---- C: the watermelon ---- */
     const drop = span(T.drop, p);
@@ -1702,6 +1804,7 @@ async function initStory() {
     const dolly = 1 - .05 * bell([.3, .46, .62], p) + .04 * smooth(.62, .72, p) - .045 * smooth(.8, 1, p);
     camera.position.set(0, .45 + lift, distance * dolly);
     camera.lookAt(0, lift, 0);
+    camera.updateMatrixWorld();
     const pointScale = renderer.domElement.height / (2 * tanHalf);
     [dust, sparks, glitter, mist, ...atom.shells.map(shell => shell.tail)].forEach(points => { points.material.uniforms.uScale.value = pointScale; });
 
@@ -1711,11 +1814,11 @@ async function initStory() {
     const scale = atom.group.scale.x;
     place(tags.mg, atom.group.getWorldPosition(anchor).add(tagOffset.set(1.15 * scale, 1.35 * scale, 0)).clone(), smooth(.6, .95, state.enter) * tagsOut, 0, -100);
     place(tags.b6, mol.group.getWorldPosition(anchor).add(tagOffset.set(-1.1, -.55, 0)).clone(), smooth(T.tags[0], T.tags[1], p) * tagsOut, -100, -50);
-    if (flash) flash.style.opacity = bell(T.flash, p).toFixed(3);
+    if (flash) setStyle(flash, 'opacity', bell(T.flash, p).toFixed(3));
     if (counter) {
       const count = 1 + Math.round(clamp(ringOut / .98) * 29);
       if (count !== shownCount) { shownCount = count; counter.textContent = String(count); }
-      counterBox.style.opacity = smooth(0, .06, ringOut).toFixed(3);
+      setStyle(counterBox, 'opacity', smooth(0, .06, ringOut).toFixed(3));
     }
 
     renderer.render(scene, camera);
@@ -1769,13 +1872,13 @@ async function initHero() {
   let jarGltf;
   let melonGltf;
   let pandaModel;
+  let pandaLite;
   try {
     ({ THREE, RoomEnvironment } = await loadThree());
-    [jarGltf, melonGltf, pandaModel] = await Promise.all([loadGltf('jar.glb'), loadGltf('watermelon-slice.glb'), loadPanda(THREE)]);
+    [jarGltf, melonGltf, pandaModel, pandaLite] = await Promise.all([loadGltf('jar.glb'), loadGltf('watermelon-slice.glb'), loadPanda(THREE, lowEnd ? 'panda-lite.glb' : 'panda.glb'), loadPanda(THREE, 'panda-lite.glb')]);
   } catch { fallback(); return; }
   const renderer = createRenderer(THREE, canvas);
   if (!renderer) { fallback(); return; }
-  if (!renderer.userData.lite) renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier === 2 ? 1.75 : 1.25));
   renderer.toneMappingExposure = 1.02;
 
   const scene = new THREE.Scene();
@@ -1862,7 +1965,7 @@ async function initHero() {
     { x: 1.78, y: 2.5, z: -.45, s: .34, ry: -.6, rz: .26 },
     { x: -2.05, y: 2.1, z: .3, s: .22, ry: .85, rz: .4 },
   ].forEach((spot, i) => {
-    const tablet = makePanda(THREE, pandaModel);
+    const tablet = makePanda(THREE, pandaLite);
     tablet.scale.setScalar(spot.s);
     add(tablet, { x: spot.x, y: spot.y, z: spot.z, rx: .1, ry: spot.ry, rz: spot.rz }, 2, { kind: 'float', delay: .5 + i * .1, phase: i * 2.1 });
   });
@@ -1901,6 +2004,7 @@ async function initHero() {
   let startedAt = 0;
   let lastKey = '';
   let shown = false;
+  let heroFrames = 0;
 
   const tick = () => {
     const time = still ? 0 : clock.getElapsedTime();
@@ -1917,6 +2021,12 @@ async function initHero() {
         if (Math.abs(front - drag.offset) < 1e-4) drag.offset = front;
       }
     }
+
+    // Light profile: once it has settled and nobody is turning the jar, idle motion draws at 30 fps.
+    const idle = lowEnd && !still && intro >= 1 && !drag.dragging && Math.abs(drag.velocity) < 1e-3;
+    renderer.userData.idle = idle;
+    heroFrames += 1;
+    if (idle && heroFrames % 2) return;
 
     if (still) {
       const key = `${drag.offset.toFixed(4)}|${drag.dragging}|${canvas.width}x${canvas.height}`;
