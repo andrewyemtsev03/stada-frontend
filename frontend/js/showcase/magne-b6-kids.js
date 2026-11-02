@@ -885,9 +885,12 @@ function burstSparks(stage, x, y) {
 
 /* =====================================================================
    Hero still life — the same jar, watermelon wedge and panda tablets used
-   further down, composed as one live 3D scene. The photographs stay in the
-   markup as the instant poster and the no-WebGL fallback; the canvas fades in
-   over them once its first frame is drawn.
+   further down, composed as one live 3D scene in front of the pack's petal
+   flower (an SVG behind the canvas, centred where the jar is framed). Props
+   stay at believable sizes next to the jar and move calmly: they settle in,
+   breathe, follow the pointer with depth parallax and drift apart on scroll.
+   The photographs stay in the markup as the instant poster and the no-WebGL
+   fallback; the canvas fades in over them once its first frame is drawn.
    ===================================================================== */
 const JAR_HEIGHT = 2.7;
 async function initHero() {
@@ -910,8 +913,6 @@ async function initHero() {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(24, 1, .1, 100);
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
-  // Distant pieces fade toward the hero background instead of a depth-of-field blur.
-  scene.fog = new THREE.Fog(0xeaf3fd, 10, 16);
 
   const rig = new THREE.Group();
   scene.add(rig);
@@ -933,52 +934,55 @@ async function initHero() {
   const jarPiece = add(jarGroup, { x: 0, y: 0, z: 0, ry: -.18 }, .35, { kind: 'jar' });
 
   // The wedge model already stands on its rind with the tip up.
+  // A prop next to the jar, not a second hero: the wedge stays under two thirds of the jar's height.
   const melon = new THREE.Group();
   melon.add(melonWedge(THREE, melonGltf));
-  melon.scale.setScalar(2);
-  const melonShadow = contactShadow(THREE, .5);
-  melonShadow.scale.setScalar(.32);
-  const melonPiece = add(melon, { x: -1.5, y: .64, z: -.5, rx: 0, ry: .5, rz: -.16 }, -.5, { kind: 'melon', delay: .2 });
-  melonShadow.position.set(-1.5, .004, -.5);
+  melon.scale.setScalar(1.5);
+  const melonShadow = contactShadow(THREE, .45);
+  melonShadow.scale.setScalar(.26);
+  const melonPiece = add(melon, { x: -1.42, y: .48, z: -.35, rx: 0, ry: .55, rz: -.12 }, -.5, { kind: 'melon', delay: .2 });
+  melonShadow.position.set(-1.42, .004, -.35);
   rig.add(melonShadow);
 
+  // One tablet in front, about a quarter of the jar's height.
   const pandaHero = makePanda(THREE, pandaModel);
-  pandaHero.scale.setScalar(.7);
-  const pandaShadow = contactShadow(THREE, .6);
-  pandaShadow.scale.setScalar(.3);
-  const pandaPiece = add(pandaHero, { x: 1.25, y: .53, z: .8, rx: -.04, ry: -.42, rz: .07 }, 1.2, { kind: 'panda', delay: .38 });
-  pandaShadow.position.set(1.25, .004, .8);
+  pandaHero.scale.setScalar(.42);
+  const pandaShadow = contactShadow(THREE, .55);
+  pandaShadow.scale.setScalar(.19);
+  const pandaPiece = add(pandaHero, { x: 1.16, y: .32, z: 1, rx: -.04, ry: -.38, rz: .08 }, 1.2, { kind: 'panda', delay: .38 });
+  pandaShadow.position.set(1.16, .004, 1);
   rig.add(pandaShadow);
 
-  // Floating tablets around the jar, smaller and further back.
+  // Three small tablets hanging on the flower's ring, close enough to stay sharp.
   [
-    { x: -2.2, y: 2.8, z: -1.6, s: .36, ry: .5, rz: -.35 },
-    { x: 2.1, y: 2.45, z: -1.3, s: .44, ry: -.6, rz: .3 },
-    { x: -2.15, y: 1.55, z: .7, s: .24, ry: .9, rz: .5 },
-    { x: .85, y: 3.3, z: -2.2, s: .24, ry: -.2, rz: -.6 },
+    { x: -1.6, y: 2.95, z: -.7, s: .3, ry: .55, rz: -.3 },
+    { x: 1.78, y: 2.5, z: -.45, s: .34, ry: -.6, rz: .26 },
+    { x: -2.05, y: 2.1, z: .3, s: .22, ry: .85, rz: .4 },
   ].forEach((spot, i) => {
     const tablet = makePanda(THREE, pandaModel);
     tablet.scale.setScalar(spot.s);
-    add(tablet, { x: spot.x, y: spot.y, z: spot.z, rx: .1, ry: spot.ry, rz: spot.rz }, 2.2, { kind: 'float', delay: .5 + i * .09, phase: i * 1.7 });
+    add(tablet, { x: spot.x, y: spot.y, z: spot.z, rx: .1, ry: spot.ry, rz: spot.rz }, 2, { kind: 'float', delay: .5 + i * .1, phase: i * 2.1 });
   });
 
-  // Frame the jar where the poster photo sits: centred in the visual, about three quarters of its height.
+  // Frame the jar where the poster photo sits: centred on the flower in the visual.
   const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
   let distance = 10;
+  // Phones pull the side props in so the melon and tablets stay on screen.
+  let spread = 1;
   const fit = (width, height) => {
     const box = canvas.getBoundingClientRect();
     const area = heroVisual.getBoundingClientRect();
     if (!area.height) return;
     const narrow = innerWidth <= 900;
-    const jarPx = area.height * (narrow ? .7 : .74);
+    spread = narrow ? clamp(area.width / (area.height * 1.05), .78, 1) : 1;
+    // The flower fills the visual's height; the jar takes 60% of it so the petals frame it.
+    const jarPx = area.height * .6;
     distance = height * JAR_HEIGHT / (2 * tanHalf * jarPx);
     camera.position.set(0, JAR_HEIGHT / 2 + distance * .09, distance);
     camera.lookAt(0, JAR_HEIGHT / 2, 0);
     const targetX = area.left + area.width / 2 - box.left;
     const targetY = area.top + area.height * (narrow ? .5 : .53) - box.top;
     camera.setViewOffset(width, height, width / 2 - targetX, height / 2 - targetY, width, height);
-    scene.fog.near = distance + .8;
-    scene.fog.far = distance + 7;
   };
   keepSized(renderer, camera, canvas, fit);
   addEventListener('resize', () => fit(canvas.clientWidth, canvas.clientHeight));
@@ -1005,7 +1009,7 @@ async function initHero() {
       lastKey = key;
     }
 
-    rig.rotation.y = pointer.x * .16;
+    rig.rotation.y = pointer.x * .12;
     rig.rotation.x = pointer.y * .04;
 
     pieces.forEach(piece => {
@@ -1015,7 +1019,7 @@ async function initHero() {
       const settle = still ? 1 : 1 - Math.pow(1 - local, 3);
       const px = pointer.x * depth * .1;
       const py = -pointer.y * depth * .07 + scrolled * depth * 1.1;
-      let x = base.x + px;
+      let x = base.x * spread + px;
       let y = base.y + py;
       let rx = base.rx || 0;
       let ry = base.ry || 0;
@@ -1024,7 +1028,7 @@ async function initHero() {
       if (piece.kind === 'jar') {
         y += lerp(-.25, 0, settle) + Math.sin(time * .9) * .025;
         scale = lerp(.92, 1, settle);
-        ry += Math.sin(time * .45) * .1 + scrolled * .9;
+        ry += Math.sin(time * .45) * .07 + scrolled * .9;
       } else if (piece.kind === 'melon') {
         x += lerp(.9, 0, k);
         rz += lerp(.5, 0, k) + Math.sin(time * .7) * .025;
@@ -1034,11 +1038,12 @@ async function initHero() {
         rz += lerp(-.5, 0, k) + Math.sin(time * 1.05) * .06;
         ry += Math.sin(time * .5) * .08;
       } else {
+        // Bob and sway; no perpetual spin.
         scale = still ? 1 : clamp(k, 0, 1.2);
-        y += Math.sin(time * .9 + piece.phase) * .12;
-        rx += Math.sin(time * .6 + piece.phase) * .35;
-        ry += time * .35 + piece.phase;
-        rz += Math.sin(time * .5 + piece.phase) * .2;
+        y += Math.sin(time * .8 + piece.phase) * .08;
+        rx += Math.sin(time * .5 + piece.phase) * .18;
+        ry += Math.sin(time * .35 + piece.phase) * .45;
+        rz += Math.sin(time * .45 + piece.phase) * .12;
       }
       holder.position.set(x, y, base.z);
       holder.rotation.set(rx, ry, rz);
@@ -1047,8 +1052,8 @@ async function initHero() {
     // Ground shadows follow their piece sideways and fade as it lifts away.
     melonShadow.position.x = melonPiece.holder.position.x;
     pandaShadow.position.x = pandaPiece.holder.position.x;
-    pandaShadow.material.opacity = .6 * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / 1.2);
-    melonShadow.material.opacity = .5 * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x) / .9);
+    pandaShadow.material.opacity = .55 * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / 1.2);
+    melonShadow.material.opacity = .45 * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x) / .9);
     jarShadow.material.opacity = .85 * clamp(1 - scrolled * 1.4);
 
     renderer.render(scene, camera);
