@@ -126,13 +126,10 @@ body.mg-page { overflow-x: visible; }
 .mg-ready .mg-reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--mg-ease), transform .9s var(--mg-ease); }
 .mg-ready .mg-reveal.is-in { opacity: 1; transform: none; }
 .mg-ready .mg-rise { animation: mg-rise .95s var(--mg-ease) both; }
-.mg-hero__copy > :nth-child(2) { animation-delay: .05s; }
-.mg-hero__copy > :nth-child(3) { animation-delay: .12s; }
-.mg-hero__copy > :nth-child(4) { animation-delay: .2s; }
-.mg-hero__copy > :nth-child(5) { animation-delay: .27s; }
-.mg-hero__copy > :nth-child(6) { animation-delay: .34s; }
-.mg-hero__copy > :nth-child(7) { animation-delay: .4s; }
-.mg-hero__copy > :nth-child(8) { animation-delay: .46s; }
+.mg-hero__copy > :nth-child(2) { animation-delay: .1s; }
+.mg-hero__copy > :nth-child(3) { animation-delay: .18s; }
+.mg-hero__copy > :nth-child(4) { animation-delay: .26s; }
+.mg-ready .mg-hero__spec { animation-delay: .7s; }
 @keyframes mg-rise { from { opacity: 0; transform: translateY(26px); } }
 .mg-ready .mg-hero .mg-kids span { animation: mg-pop .8s var(--mg-spring) both; }
 .mg-ready .mg-hero .mg-kids span:nth-child(1) { animation-delay: .35s; }
@@ -143,73 +140,83 @@ body.mg-page { overflow-x: visible; }
 
 /* =====================================================================
    00 — Hero
+   One bold shape: the pack's petal flower, full size and sharp, with the
+   jar standing in front of it. Everything around it stays quiet: a short
+   copy column, product props at believable sizes, and the label facts as
+   a strip along the bottom.
    ===================================================================== */
 .mg-hero {
-  --hero-h: max(660px, calc(100svh - var(--nav-h)));
+  --hero-h: max(640px, calc(100svh - var(--nav-h)));
   position: relative; isolation: isolate; overflow: hidden;
-  min-height: var(--hero-h); padding-bottom: 72px;
-  background: radial-gradient(70vmax 55vmax at 72% 36%, #ffffff 0%, #f2f8fe 55%, #e2eefb 100%);
+  min-height: var(--hero-h);
+  background:
+    radial-gradient(44% 62% at 71% 46%, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #f5f9fe 0%, #e8f2fc 100%);
 }
-.mg-hero__flower {
-  position: absolute; z-index: 0; width: min(118vmin, 1120px); height: min(118vmin, 1120px);
-  right: max(-26vmin, -260px); top: 50%; translate: 0 -50%; opacity: .5;
-  animation: mg-spin 140s linear infinite;
-}
-@keyframes mg-spin { to { rotate: 360deg; } }
 .mg-hero__inner {
-  position: relative; z-index: 3; max-width: 1480px; margin: 0 auto;
-  min-height: calc(var(--hero-h) - 72px);
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center;
-  gap: clamp(12px, 3vw, 48px); padding: clamp(20px, 3.5vh, 48px) var(--mg-pad) 0;
+  position: relative; z-index: 3; max-width: 1400px; margin: 0 auto;
+  min-height: var(--hero-h);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: clamp(16px, 3vw, 56px); padding: clamp(14px, 2.6vh, 34px) var(--mg-pad) 0;
 }
-.mg-hero__copy { position: relative; z-index: 2; max-width: 620px; }
+.mg-hero__copy { position: relative; z-index: 2; align-self: center; max-width: 560px; padding: 44px 0 28px; }
+/* The way back sits at the top like a breadcrumb; the copy itself is centred against the jar. */
+.mg-hero .mg-back { position: absolute; z-index: 4; top: clamp(16px, 3vh, 36px); left: var(--mg-pad); margin: 0; }
 .mg-back {
-  display: inline-flex; align-items: center; gap: 8px; margin-bottom: clamp(16px, 2.6vh, 28px);
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: clamp(18px, 3.4vh, 36px);
   font-size: 13px; font-weight: 600; color: var(--mg-muted); text-decoration: none; transition: color .2s;
 }
 .mg-back::before { content: "←"; transition: transform .25s var(--mg-ease); }
 .mg-back:hover { color: var(--mg-navy); }
 .mg-back:hover::before { transform: translateX(-4px); }
-.mg-tagline { max-width: 520px; font-size: clamp(20px, 1.75vw, 26px); font-weight: 500; line-height: 1.25; letter-spacing: -.01em; color: var(--mg-navy); }
-.mg-lead { margin-top: 12px; max-width: 500px; font-size: clamp(15px, 1.08vw, 17px); line-height: 1.62; color: var(--mg-text); }
-.mg-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-.mg-note {
-  display: inline-flex; align-items: center; gap: 9px; margin-top: 16px;
-  font-size: 12.5px; font-weight: 600; line-height: 1.3; color: var(--mg-text);
+.mg-hero .mg-lockup { margin: 0 0 clamp(20px, 3vh, 30px); }
+.mg-hero .mg-lockup__magne { font-size: clamp(48px, 5.1vw, 88px); }
+.mg-hero .mg-kids { font-size: clamp(44px, 4.4vw, 76px); }
+.mg-tagline { max-width: 470px; font-size: clamp(21px, 1.65vw, 28px); font-weight: 500; line-height: 1.22; letter-spacing: -.015em; color: var(--mg-navy); }
+.mg-lead { margin-top: 14px; max-width: 460px; font-size: clamp(15px, 1.05vw, 17px); line-height: 1.6; color: var(--mg-text); }
+.mg-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 3.4vh, 34px); }
+
+/* Label facts: one strip under both columns, each value in a badge tinted with its "Кидс" letter colour. */
+.mg-hero__spec {
+  grid-column: 1 / -1; position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px;
+  padding: 20px 0 56px; border-top: 1px solid rgba(38, 44, 142, .1);
 }
+.mg-facts { display: flex; flex-wrap: wrap; gap: 14px clamp(22px, 3vw, 48px); }
+.mg-facts > div { display: flex; align-items: center; gap: 11px; min-width: 0; --c: #b84300; --t: #feeadf; }
+.mg-facts > div:nth-child(2) { --c: #b8006a; --t: #fde6f1; }
+.mg-facts > div:nth-child(3) { --c: #007a43; --t: #e2f5ea; }
+.mg-facts > div:nth-child(4) { --c: #6b2c91; --t: #efe6f6; }
+.mg-facts dt {
+  flex: none; padding: 7px 11px 6px; border-radius: 10px; background: var(--t); color: var(--c);
+  font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.mg-facts dd { max-width: 10.5em; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--mg-muted); }
+.mg-note { display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; line-height: 1.3; color: var(--mg-text); }
 .mg-note__i { display: grid; place-items: center; width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--mg-navy); color: #fff; font: 700 11px/1 Georgia, serif; }
 
-.mg-facts {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 600px; margin-top: clamp(24px, 3.6vh, 38px);
-  border-radius: 22px; background: rgba(255, 255, 255, .74);
-  box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .08), 0 26px 50px -34px rgba(20, 40, 110, .5);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+.mg-hero__visual { position: relative; z-index: 1; align-self: stretch; min-height: 460px; --mx: 0; --my: 0; --hs: 0; }
+/* Centred on the jar (the 3D camera frames the jar's middle at 53% of this box), clear of the fact strip. */
+.mg-hero__bloom {
+  position: absolute; z-index: 0; left: 50%; top: 51%; height: 96%; max-height: 880px; aspect-ratio: 1; width: auto;
+  translate: -50% -50%;
+  animation: mg-spin 160s linear infinite;
 }
-.mg-facts > div { position: relative; padding: 18px 16px 16px; min-width: 0; }
-.mg-facts > div + div { box-shadow: inset 1px 0 0 rgba(38, 44, 142, .08); }
-.mg-facts > div::before { content: ""; position: absolute; left: 16px; top: 0; width: 22px; height: 3px; border-radius: 0 0 3px 3px; background: var(--mg-k1); }
-.mg-facts > div:nth-child(2)::before { background: var(--mg-k2); }
-.mg-facts > div:nth-child(3)::before { background: var(--mg-k3); }
-.mg-facts > div:nth-child(4)::before { background: var(--mg-k4); }
-.mg-facts dt { font-size: clamp(22px, 1.9vw, 29px); font-weight: 600; line-height: 1.05; letter-spacing: -.025em; color: var(--mg-navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.mg-facts dd { margin-top: 6px; font-size: 12px; font-weight: 500; line-height: 1.35; color: var(--mg-muted); }
-
-.mg-hero__visual { position: relative; height: min(74vh, 700px); min-height: 440px; --mx: 0; --my: 0; --hs: 0; }
-.mg-hero__halo {
-  position: absolute; left: 50%; top: 52%; width: min(92%, 640px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
-  background: radial-gradient(closest-side, #ffffff 0%, rgba(255, 255, 255, .85) 45%, rgba(167, 210, 245, .32) 72%, rgba(167, 210, 245, 0) 100%);
-}
-/* Live 3D still life: wider than the visual so the floating tablets can drift into the margins.
+.mg-ready .mg-hero__bloom { animation: mg-bloom 1.6s var(--mg-ease) both, mg-spin 160s linear infinite; }
+@keyframes mg-bloom { from { opacity: 0; scale: .72; } }
+@keyframes mg-spin { to { rotate: 360deg; } }
+/* Live 3D still life, a little wider than the visual so the floating tablets have room around the flower.
    The photo layers below are the poster and the no-WebGL fallback; they fade out once the canvas draws. */
 .mg-hero__gl {
-  position: absolute; z-index: 1; left: -42%; top: -9%; width: 172%; height: 116%;
-  display: block; pointer-events: none; opacity: 0; transition: opacity .9s ease;
+  position: absolute; z-index: 1; left: -22%; top: -6%; width: 144%; height: 112%;
+  display: block; pointer-events: none; opacity: 0; transition: opacity .5s ease;
 }
 .mg-hero__visual.mg-hero--live .mg-hero__gl { opacity: 1; }
-.mg-hero__visual.mg-hero--live .mg-hero__layer { opacity: 0; animation: none; transition: opacity .45s ease; }
+/* The poster leaves only once the canvas under it is nearly opaque, so the jar never turns see-through. */
+.mg-hero__visual.mg-hero--live .mg-hero__layer { opacity: 0; animation: none; transition: opacity .4s ease .4s; }
 html:not(.mg-ready) .mg-hero__gl { display: none; }
 .mg-hero__layer {
-  position: absolute; left: 50%; bottom: 7%; height: 82%; aspect-ratio: 803 / 1051;
+  position: absolute; z-index: 2; left: 50%; bottom: 15%; height: 63%; aspect-ratio: 803 / 1051;
   translate: -50% calc(var(--hs) * -60px * var(--d, 1));
   transform: translate3d(calc(var(--mx) * var(--d, 1) * 16px), calc(var(--my) * var(--d, 1) * 12px), 0);
   transition: transform .5s cubic-bezier(.2, .7, .2, 1);
@@ -227,12 +234,12 @@ html:not(.mg-ready) .mg-hero__gl { display: none; }
   background: radial-gradient(closest-side, rgba(26, 40, 110, .32), rgba(26, 40, 110, 0));
 }
 .mg-hero__melon {
-  position: absolute; left: -21%; bottom: 7%; height: 60%; width: auto; transform-origin: 80% 90%;
-  transform: rotate(-12deg); filter: drop-shadow(0 18px 18px rgba(120, 20, 30, .22));
+  position: absolute; left: -24%; bottom: 4%; height: 44%; width: auto; transform-origin: 80% 90%;
+  transform: rotate(-10deg); filter: drop-shadow(0 18px 18px rgba(120, 20, 30, .22));
 }
 .mg-hero__panda {
-  position: absolute; right: -15%; bottom: -4%; height: 37%; width: auto; transform-origin: 50% 90%;
-  filter: drop-shadow(0 22px 22px rgba(160, 40, 90, .28));
+  position: absolute; right: -12%; bottom: -3%; height: 23%; width: auto; transform-origin: 50% 90%;
+  filter: drop-shadow(0 16px 16px rgba(160, 40, 90, .28));
   animation: mg-wobble 6s ease-in-out infinite;
 }
 .mg-ready .mg-hero__melon { animation: mg-slide-melon 1.2s var(--mg-spring) both .55s; }
@@ -241,24 +248,10 @@ html:not(.mg-ready) .mg-hero__gl { display: none; }
 @keyframes mg-drop { from { opacity: 0; transform: translateY(-80%) rotate(-24deg) scale(.7); } }
 @keyframes mg-wobble { 0%, 100% { transform: rotate(4deg); } 50% { transform: rotate(-2deg) translateY(-6px); } }
 .mg-hero__bokeh { pointer-events: none; }
-.mg-float { position: absolute; width: auto; animation: mg-float 7s ease-in-out infinite; }
-.mg-float--a { height: 15%; left: -42%; top: 4%; filter: blur(3px); opacity: .85; --r1: -18deg; --r2: -8deg; }
-.mg-float--b { height: 22%; right: -46%; top: 10%; filter: blur(6px); opacity: .75; --r1: 16deg; --r2: 26deg; animation-duration: 9s; }
-.mg-float--seed1 { width: 22px; height: 30px; left: -8%; top: -4%; --r1: 20deg; --r2: 40deg; animation-duration: 6s; }
-.mg-float--seed2 { width: 16px; height: 22px; right: -10%; top: 38%; --r1: -30deg; --r2: -10deg; animation-duration: 8s; filter: blur(1.5px); }
-.mg-float--seed3 { width: 30px; height: 40px; left: -30%; bottom: -8%; --r1: 60deg; --r2: 80deg; animation-duration: 10s; filter: blur(4px); opacity: .7; }
-@keyframes mg-float { 0%, 100% { transform: translateY(0) rotate(var(--r1, 0deg)); } 50% { transform: translateY(-18px) rotate(var(--r2, 10deg)); } }
-
-.mg-scroll {
-  position: absolute; z-index: 4; left: 50%; bottom: 46px; translate: -50% 0;
-  display: inline-flex; flex-direction: column; align-items: center; gap: 9px;
-  font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--mg-navy);
-  opacity: .8; transition: opacity .2s;
-}
-.mg-scroll:hover { opacity: 1; }
-.mg-scroll i { position: relative; display: block; width: 22px; height: 34px; border-radius: 12px; box-shadow: inset 0 0 0 1.5px currentColor; }
-.mg-scroll i::after { content: ""; position: absolute; left: 50%; top: 7px; width: 4px; height: 7px; margin-left: -2px; border-radius: 2px; background: var(--mg-k2); animation: mg-wheel 1.8s var(--mg-ease) infinite; }
-@keyframes mg-wheel { 0% { opacity: 0; transform: translateY(-3px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
+.mg-float { position: absolute; width: auto; animation: mg-float 8s ease-in-out infinite; }
+.mg-float--a { height: 10%; left: -30%; top: 6%; opacity: .9; --r1: -18deg; --r2: -10deg; }
+.mg-float--b { height: 12%; right: -34%; top: 16%; opacity: .9; --r1: 16deg; --r2: 24deg; animation-duration: 10s; }
+@keyframes mg-float { 0%, 100% { transform: translateY(0) rotate(var(--r1, 0deg)); } 50% { transform: translateY(-14px) rotate(var(--r2, 10deg)); } }
 
 /* =====================================================================
    01 — Jar 360° (sticky 3D scene, three beats)
@@ -719,25 +712,21 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
 @media (max-width: 1100px) {
   .mg-spec__grid { grid-template-columns: 1fr; }
   .mg-passport { position: relative; top: auto; }
-  .mg-facts dt { font-size: clamp(20px, 2.4vw, 26px); }
 }
 @media (max-width: 900px) {
   /* Hero: on phones the product sits right under the name, before the copy. */
-  .mg-hero { padding-bottom: 28px; min-height: 0; }
+  .mg-hero { min-height: 0; }
   .mg-hero__inner { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-top: 18px; }
   .mg-hero__copy { display: contents; }
-  .mg-back { order: 1; align-self: flex-start; }
-  .mg-hero .mg-eyebrow { order: 2; }
+  .mg-hero .mg-back { position: static; order: 1; align-self: flex-start; margin-bottom: 18px; }
   .mg-hero .mg-lockup { order: 3; margin-bottom: 0; }
-  .mg-hero__visual { order: 4; height: min(46vh, 400px); min-height: 300px; margin: -8px 0 6px; }
-  .mg-hero__gl { left: -12%; top: 0; width: 124%; height: 100%; }
+  .mg-hero__visual { order: 4; height: min(50vh, 420px); min-height: 310px; margin: 4px 0 10px; }
+  .mg-hero__bloom { top: 50%; height: 96%; }
+  .mg-hero__gl { left: -10%; top: -2%; width: 120%; height: 104%; }
   .mg-tagline { order: 5; }
   .mg-lead { order: 6; }
   .mg-hero__actions { order: 7; }
-  .mg-note { order: 8; }
-  .mg-facts { order: 9; max-width: none; }
-  .mg-hero__flower { right: -40vmin; top: 46%; opacity: .4; }
-  .mg-scroll { display: none; }
+  .mg-hero__spec { order: 9; margin-top: 30px; padding: 20px 0 52px; }
 
   .mg-dose__inner { grid-template-columns: 1fr; grid-template-areas: "copy" "panel" "notes"; }
   .mg-taste__inner, .mg-buy__inner { grid-template-columns: 1fr; }
@@ -782,11 +771,10 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-page .site-footer { padding-bottom: 84px; }
 }
 @media (max-width: 600px) {
-  .mg-lockup__magne { font-size: clamp(46px, 15vw, 70px); }
-  .mg-kids { font-size: clamp(42px, 13vw, 62px); }
-  .mg-facts { grid-template-columns: 1fr 1fr; }
-  .mg-facts > div:nth-child(3) { box-shadow: inset 0 1px 0 rgba(38, 44, 142, .08); }
-  .mg-facts > div:nth-child(4) { box-shadow: inset 1px 0 0 rgba(38, 44, 142, .08), inset 0 1px 0 rgba(38, 44, 142, .08); }
+  .mg-hero .mg-lockup__magne, .mg-lockup__magne { font-size: clamp(46px, 15vw, 70px); }
+  .mg-hero .mg-kids, .mg-kids { font-size: clamp(42px, 13vw, 62px); }
+  .mg-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; width: 100%; }
+  .mg-facts > div { flex-direction: column; align-items: flex-start; gap: 7px; }
   .mg-hero__actions .mg-btn { flex: 1 1 auto; }
   .mg-dose__ask { display: grid; }
   .mg-switch { display: grid; width: 100%; }
