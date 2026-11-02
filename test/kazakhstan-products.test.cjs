@@ -73,6 +73,7 @@ test('the dosage calculator matches the label for both age groups', () => {
 
 test('3D assets ship with the site and showcase copy rejects unexpected markup', () => {
   for (const file of ['js/vendor/three/three.module.min.js', 'js/vendor/three/RoomEnvironment.js', 'js/vendor/three/LICENSE',
+    'js/vendor/three/GLTFLoader.js', 'js/vendor/three/BufferGeometryUtils.js', 'assets/kazakhstan-products/magne-b6-kids/panda.glb',
     'assets/kazakhstan-products/magne-b6-kids/label-4096.webp', 'assets/kazakhstan-products/magne-b6-kids/label-2048.webp']) {
     assert.ok(fs.existsSync(path.join(output, file)), file);
   }
