@@ -947,8 +947,8 @@ async function initHero() {
   // A shade darker than in the jar chapter, so the white pack doesn't glare against the light hero.
   jar.traverse(node => {
     if (!node.isMesh) return;
-    node.material.color.multiplyScalar(.76);
-    node.material.envMapIntensity = .62;
+    node.material.color.multiplyScalar(.8);
+    node.material.envMapIntensity = .66;
   });
   const jarGroup = new THREE.Group();
   jarGroup.add(jar);
@@ -965,26 +965,12 @@ async function initHero() {
   // A prop next to the jar, not a second hero: the wedge stays under two thirds of the jar's height.
   const melon = new THREE.Group();
   const wedge = melonWedge(THREE, melonGltf);
-  // Juicy: the model's self-lit (emissive) look is swapped for a wet, glossy flesh lit by the scene,
-  // a little deeper in colour. Hero only; the taste chapter keeps its own wedges.
-  wedge.traverse(node => {
-    if (!node.isMesh) return;
-    const source = node.material;
-    node.material = new THREE.MeshPhysicalMaterial({
-      map: source.map, normalMap: source.normalMap, roughnessMap: source.roughnessMap,
-      color: new THREE.Color(.9, .62, .6), roughness: .55, metalness: 0, envMapIntensity: .35,
-      clearcoat: .55, clearcoatRoughness: .06,
-      emissiveMap: source.emissiveMap, emissive: new THREE.Color(.95, .5, .5), emissiveIntensity: .42,
-      side: THREE.DoubleSide,
-    });
-  });
   melon.add(wedge);
   melon.scale.setScalar(2);
   // The wedge stands on its rind, so its shadow is a long thin ellipse along the rind.
   const melonShadow = softShadow(THREE, 1.6, .6, .6, .3);
-  // Seated on the ground behind the jar's left edge, so the pack covers its tip a little; rind flat,
-  // cut face to the camera.
-  const melonPose = { x: -1.66, y: 0, z: -.45, rx: 0, ry: .3, rz: 0 };
+  // Seated on the ground behind the jar, about half of it hidden by the pack; rind flat, cut face to the camera.
+  const melonPose = { x: -1.12, y: 0, z: -.9, rx: 0, ry: .3, rz: 0 };
   melon.rotation.set(melonPose.rx, melonPose.ry, melonPose.rz);
   melonPose.y = -new THREE.Box3().setFromObject(melon).min.y;
   melon.rotation.set(0, 0, 0);
