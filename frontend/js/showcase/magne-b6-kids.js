@@ -1,6 +1,6 @@
-// Магне B6 Кидс showcase: scroll choreography, the 3D jar with its real label,
-// the interactive dose calculator, the spinnable 3D panda tablet, the in-page
-// commercial and the phone "where to buy" bar.
+// Магне B6 Кидс showcase: the live 3D hero still life, scroll choreography, the
+// 3D jar with its real label, the interactive dose calculator, the spinnable 3D
+// panda tablet, the in-page commercial and the phone "where to buy" bar.
 // Loaded as an ES module only on products/magne-b6-kids.html.
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -51,13 +51,18 @@ $$('.mg-reveal').forEach(node => revealObserver.observe(node));
 
 /* ------------------------------------------------------------------ hero parallax */
 const heroVisual = $('[data-hero-visual]');
+const heroPointer = { x: 0, y: 0 };
 if (heroVisual && finePointer && !reduceMotion) {
   hero.addEventListener('pointermove', event => {
     const rect = hero.getBoundingClientRect();
-    heroVisual.style.setProperty('--mx', ((event.clientX - rect.left) / rect.width * 2 - 1).toFixed(3));
-    heroVisual.style.setProperty('--my', ((event.clientY - rect.top) / rect.height * 2 - 1).toFixed(3));
+    heroPointer.x = (event.clientX - rect.left) / rect.width * 2 - 1;
+    heroPointer.y = (event.clientY - rect.top) / rect.height * 2 - 1;
+    heroVisual.style.setProperty('--mx', heroPointer.x.toFixed(3));
+    heroVisual.style.setProperty('--my', heroPointer.y.toFixed(3));
   });
   hero.addEventListener('pointerleave', () => {
+    heroPointer.x = 0;
+    heroPointer.y = 0;
     heroVisual.style.setProperty('--mx', '0');
     heroVisual.style.setProperty('--my', '0');
   });
@@ -416,8 +421,15 @@ function runWhileVisible(element, renderer, tick) {
 /* ---------- the panda tablet: sculpted sugar-coated gummy (panda.glb: mesh + colour/normal/roughness maps) ---------- */
 const PANDA_HEIGHT = 1.5;
 let gltfLoaderPromise;
-const loadGltf = name => (gltfLoaderPromise ||= import('../vendor/three/GLTFLoader.js').then(({ GLTFLoader }) => new GLTFLoader()))
-  .then(loader => loader.loadAsync(asset(name)));
+// Each model is fetched and parsed once; scenes that get rearranged are cloned (geometry and textures stay shared).
+const gltfCache = new Map();
+const loadGltf = name => {
+  if (!gltfCache.has(name)) {
+    gltfCache.set(name, (gltfLoaderPromise ||= import('../vendor/three/GLTFLoader.js').then(({ GLTFLoader }) => new GLTFLoader()))
+      .then(loader => loader.loadAsync(asset(name))));
+  }
+  return gltfCache.get(name);
+};
 
 let pandaPromise;
 function loadPanda(THREE) {
@@ -455,7 +467,7 @@ function buildJar(THREE, gltf) {
   const body = new THREE.Group();
   jar.add(body);
   const nodes = {};
-  gltf.scene.traverse(node => { if (node.isMesh) nodes[node.name] = node; });
+  gltf.scene.clone(true).traverse(node => { if (node.isMesh) nodes[node.name] = node; });
   const shell = nodes.body;
   const label = nodes.label;
   const lid = nodes.cap;
@@ -506,7 +518,7 @@ function buildJar(THREE, gltf) {
   return { jar, body, cap, capBase };
 }
 
-function contactShadow(THREE) {
+function contactShadow(THREE, strength = 1) {
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = 256;
   const ctx = canvas.getContext('2d');
@@ -515,7 +527,7 @@ function contactShadow(THREE) {
   gradient.addColorStop(1, 'rgba(0, 0, 20, 0)');
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, 256, 256);
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 3.6), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, depthWrite: false }));
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 3.6), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, depthWrite: false, opacity: strength }));
   mesh.rotation.x = -Math.PI / 2;
   mesh.position.y = .002;
   return mesh;
@@ -766,6 +778,17 @@ async function initPanda() {
   runWhileVisible(stage, renderer, tick);
 }
 
+/* ---------- watermelon wedge: a normalised clone, centred with its longest side = 1 ---------- */
+function melonWedge(THREE, gltf) {
+  const model = gltf.scene.clone(true);
+  const box = new THREE.Box3().setFromObject(model);
+  const size = box.getSize(new THREE.Vector3());
+  const unit = 1 / Math.max(size.x, size.y, size.z);
+  model.scale.multiplyScalar(unit);
+  model.position.sub(box.getCenter(new THREE.Vector3()).multiplyScalar(unit));
+  return model;
+}
+
 /* ---------- watermelon slices: 3D wedges that take over from the two flat images in the taste section ---------- */
 async function initMelons() {
   const canvas = $('[data-melon-canvas]', tasteSection);
@@ -784,13 +807,7 @@ async function initMelons() {
   const scene = new THREE.Scene();
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
 
-  // Normalise the wedge: centred, longest side = 1.
-  const model = gltf.scene;
-  const box = new THREE.Box3().setFromObject(model);
-  const size = box.getSize(new THREE.Vector3());
-  const unit = 1 / Math.max(size.x, size.y, size.z);
-  model.scale.multiplyScalar(unit);
-  model.position.sub(box.getCenter(new THREE.Vector3()).multiplyScalar(unit));
+  const model = melonWedge(THREE, gltf);
 
   // Pixel-space orthographic camera over the whole section, so each slice can sit exactly on its image.
   const camera = new THREE.OrthographicCamera(0, 1, 0, -1, 1, 4000);
@@ -866,6 +883,182 @@ function burstSparks(stage, x, y) {
   }
 }
 
+/* =====================================================================
+   Hero still life — the same jar, watermelon wedge and panda tablets used
+   further down, composed as one live 3D scene. The photographs stay in the
+   markup as the instant poster and the no-WebGL fallback; the canvas fades in
+   over them once its first frame is drawn.
+   ===================================================================== */
+const JAR_HEIGHT = 2.7;
+async function initHero() {
+  const canvas = $('[data-hero-canvas]');
+  if (!canvas || !heroVisual || navigator.connection?.saveData) return;
+  let THREE;
+  let RoomEnvironment;
+  let jarGltf;
+  let melonGltf;
+  let pandaModel;
+  try {
+    ({ THREE, RoomEnvironment } = await loadThree());
+    [jarGltf, melonGltf, pandaModel] = await Promise.all([loadGltf('jar.glb'), loadGltf('watermelon-slice.glb'), loadPanda(THREE)]);
+  } catch { return; }
+  const renderer = createRenderer(THREE, canvas);
+  if (!renderer) return;
+  if (!renderer.userData.lite) renderer.setPixelRatio(Math.min(devicePixelRatio || 1, tier === 2 ? 1.75 : 1.25));
+  renderer.toneMappingExposure = 1.02;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(24, 1, .1, 100);
+  addEnvironment(THREE, RoomEnvironment, renderer, scene);
+  // Distant pieces fade toward the hero background instead of a depth-of-field blur.
+  scene.fog = new THREE.Fog(0xeaf3fd, 10, 16);
+
+  const rig = new THREE.Group();
+  scene.add(rig);
+  // Every piece: a base pose (jar units, jar base at the origin) and a depth used for parallax.
+  const pieces = [];
+  const add = (object, base, depth, extra = {}) => {
+    const holder = new THREE.Group();
+    holder.add(object);
+    rig.add(holder);
+    const piece = { holder, object, base, depth, ...extra };
+    pieces.push(piece);
+    return piece;
+  };
+
+  const { jar } = buildJar(THREE, jarGltf);
+  const jarGroup = new THREE.Group();
+  const jarShadow = contactShadow(THREE, .85);
+  jarGroup.add(jar, jarShadow);
+  const jarPiece = add(jarGroup, { x: 0, y: 0, z: 0, ry: -.18 }, .35, { kind: 'jar' });
+
+  // The wedge model already stands on its rind with the tip up.
+  const melon = new THREE.Group();
+  melon.add(melonWedge(THREE, melonGltf));
+  melon.scale.setScalar(2);
+  const melonShadow = contactShadow(THREE, .5);
+  melonShadow.scale.setScalar(.32);
+  const melonPiece = add(melon, { x: -1.5, y: .64, z: -.5, rx: 0, ry: .5, rz: -.16 }, -.5, { kind: 'melon', delay: .2 });
+  melonShadow.position.set(-1.5, .004, -.5);
+  rig.add(melonShadow);
+
+  const pandaHero = makePanda(THREE, pandaModel);
+  pandaHero.scale.setScalar(.7);
+  const pandaShadow = contactShadow(THREE, .6);
+  pandaShadow.scale.setScalar(.3);
+  const pandaPiece = add(pandaHero, { x: 1.25, y: .53, z: .8, rx: -.04, ry: -.42, rz: .07 }, 1.2, { kind: 'panda', delay: .38 });
+  pandaShadow.position.set(1.25, .004, .8);
+  rig.add(pandaShadow);
+
+  // Floating tablets around the jar, smaller and further back.
+  [
+    { x: -2.2, y: 2.8, z: -1.6, s: .36, ry: .5, rz: -.35 },
+    { x: 2.1, y: 2.45, z: -1.3, s: .44, ry: -.6, rz: .3 },
+    { x: -2.15, y: 1.55, z: .7, s: .24, ry: .9, rz: .5 },
+    { x: .85, y: 3.3, z: -2.2, s: .24, ry: -.2, rz: -.6 },
+  ].forEach((spot, i) => {
+    const tablet = makePanda(THREE, pandaModel);
+    tablet.scale.setScalar(spot.s);
+    add(tablet, { x: spot.x, y: spot.y, z: spot.z, rx: .1, ry: spot.ry, rz: spot.rz }, 2.2, { kind: 'float', delay: .5 + i * .09, phase: i * 1.7 });
+  });
+
+  // Frame the jar where the poster photo sits: centred in the visual, about three quarters of its height.
+  const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  let distance = 10;
+  const fit = (width, height) => {
+    const box = canvas.getBoundingClientRect();
+    const area = heroVisual.getBoundingClientRect();
+    if (!area.height) return;
+    const narrow = innerWidth <= 900;
+    const jarPx = area.height * (narrow ? .7 : .74);
+    distance = height * JAR_HEIGHT / (2 * tanHalf * jarPx);
+    camera.position.set(0, JAR_HEIGHT / 2 + distance * .09, distance);
+    camera.lookAt(0, JAR_HEIGHT / 2, 0);
+    const targetX = area.left + area.width / 2 - box.left;
+    const targetY = area.top + area.height * (narrow ? .5 : .53) - box.top;
+    camera.setViewOffset(width, height, width / 2 - targetX, height / 2 - targetY, width, height);
+    scene.fog.near = distance + .8;
+    scene.fog.far = distance + 7;
+  };
+  keepSized(renderer, camera, canvas, fit);
+  addEventListener('resize', () => fit(canvas.clientWidth, canvas.clientHeight));
+
+  const lite = renderer.userData.lite;
+  const still = reduceMotion || lite;
+  const clock = new THREE.Clock();
+  const pointer = { x: 0, y: 0 };
+  let startedAt = 0;
+  let lastKey = '';
+  let shown = false;
+
+  const tick = () => {
+    const time = still ? 0 : clock.getElapsedTime();
+    if (!startedAt) startedAt = performance.now();
+    const intro = still ? 1 : clamp((performance.now() - startedAt) / 1400);
+    pointer.x += (heroPointer.x - pointer.x) * (still ? 1 : .06);
+    pointer.y += (heroPointer.y - pointer.y) * (still ? 1 : .06);
+    const scrolled = clamp(-hero.getBoundingClientRect().top / hero.offsetHeight);
+
+    if (still) {
+      const key = `${pointer.x.toFixed(3)}|${pointer.y.toFixed(3)}|${scrolled.toFixed(3)}|${canvas.width}x${canvas.height}`;
+      if (key === lastKey && shown) return;
+      lastKey = key;
+    }
+
+    rig.rotation.y = pointer.x * .16;
+    rig.rotation.x = pointer.y * .04;
+
+    pieces.forEach(piece => {
+      const { holder, base, depth } = piece;
+      const local = clamp((intro - (piece.delay || 0)) / (1 - (piece.delay || 0)));
+      const k = still ? 1 : easeOutBack(local);
+      const settle = still ? 1 : 1 - Math.pow(1 - local, 3);
+      const px = pointer.x * depth * .1;
+      const py = -pointer.y * depth * .07 + scrolled * depth * 1.1;
+      let x = base.x + px;
+      let y = base.y + py;
+      let rx = base.rx || 0;
+      let ry = base.ry || 0;
+      let rz = base.rz || 0;
+      let scale = 1;
+      if (piece.kind === 'jar') {
+        y += lerp(-.25, 0, settle) + Math.sin(time * .9) * .025;
+        scale = lerp(.92, 1, settle);
+        ry += Math.sin(time * .45) * .1 + scrolled * .9;
+      } else if (piece.kind === 'melon') {
+        x += lerp(.9, 0, k);
+        rz += lerp(.5, 0, k) + Math.sin(time * .7) * .025;
+        y += Math.sin(time * .8 + 1) * .03;
+      } else if (piece.kind === 'panda') {
+        y += lerp(1.8, 0, k);
+        rz += lerp(-.5, 0, k) + Math.sin(time * 1.05) * .06;
+        ry += Math.sin(time * .5) * .08;
+      } else {
+        scale = still ? 1 : clamp(k, 0, 1.2);
+        y += Math.sin(time * .9 + piece.phase) * .12;
+        rx += Math.sin(time * .6 + piece.phase) * .35;
+        ry += time * .35 + piece.phase;
+        rz += Math.sin(time * .5 + piece.phase) * .2;
+      }
+      holder.position.set(x, y, base.z);
+      holder.rotation.set(rx, ry, rz);
+      holder.scale.setScalar(Math.max(scale, .001));
+    });
+    // Ground shadows follow their piece sideways and fade as it lifts away.
+    melonShadow.position.x = melonPiece.holder.position.x;
+    pandaShadow.position.x = pandaPiece.holder.position.x;
+    pandaShadow.material.opacity = .6 * clamp(1 - (pandaPiece.holder.position.y - pandaPiece.base.y) / 1.2);
+    melonShadow.material.opacity = .5 * clamp(1 - Math.abs(melonPiece.holder.position.x - melonPiece.base.x) / .9);
+    jarShadow.material.opacity = .85 * clamp(1 - scrolled * 1.4);
+
+    renderer.render(scene, camera);
+    Q(renderer);
+    if (!shown) { shown = true; heroVisual.classList.add('mg-hero--live'); }
+  };
+  runWhileVisible(hero, renderer, tick);
+}
+
+if (heroVisual) initHero();
 if (jarScene) whenNear(jarScene.section, initJar);
 if (tasteSection) whenNear(tasteSection, initPanda);
 if (tasteSection) whenNear(tasteSection, initMelons);

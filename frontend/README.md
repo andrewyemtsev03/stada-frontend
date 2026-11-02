@@ -70,7 +70,10 @@ output, not the raw source folder.
   plays in place through YouTube's privacy-enhanced player, created only after
   the visitor presses play, so `frame-src` in `vercel.json` and
   `staticwebapp.config.json` allows `https://www.youtube-nocookie.com` and
-  nothing else.
+  nothing else. The hero is a live 3D still life built from the same
+  `jar.glb`, `watermelon-slice.glb` and `panda.glb` models; the packshot and
+  flat images stay in the markup as the first paint and the no-WebGL fallback,
+  and devices asking to save data keep them.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API
