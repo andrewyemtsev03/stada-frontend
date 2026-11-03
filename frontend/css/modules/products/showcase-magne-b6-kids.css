@@ -293,8 +293,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-bigword em { font-style: normal; color: rgba(255, 255, 255, .22); -webkit-text-stroke: 0; }
 .mg-story[data-stage="a"] [data-word="a"], .mg-story[data-stage="b"] [data-word="b"], .mg-story[data-stage="c"] [data-word="c"] { opacity: 1; visibility: visible; transition: opacity .7s ease, visibility 0s; }
 
-.mg-gl { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
-.mg-gl:active { cursor: grabbing; }
+.mg-gl { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; touch-action: pan-y; }
 
 /* Photos per stage, shown only when WebGL is unavailable. */
 .mg-story__fallback { position: absolute; z-index: 3; inset: 0; display: none; pointer-events: none; }
@@ -383,8 +382,6 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-drag--light { color: var(--mg-navy); background: rgba(255, 255, 255, .9); box-shadow: inset 0 0 0 1px rgba(38, 44, 142, .14), 0 10px 30px -14px rgba(0, 60, 120, .5); }
 .mg-drag--light .mg-drag__hand::after { background: var(--mg-k2); }
 /* In the story the hint belongs to the tablet stage. */
-.mg-story .mg-drag { left: 36.5%; opacity: 0; }
-.mg-story[data-stage="b"] .mg-drag:not(.is-hidden) { opacity: 1; }
 
 .mg-hud {
   position: absolute; z-index: 8; left: var(--edge, var(--mg-pad)); right: max(var(--mg-pad), 92px, var(--edge, 0px)); bottom: clamp(18px, 3.6vh, 32px);
@@ -804,7 +801,6 @@ html:not(.mg-ready) .mg-film__stage { --t: 0; }
   .mg-tag i { width: 30px; height: 30px; font-size: 12.5px; }
   .mg-tag b { font-size: 11.5px; }
   .mg-tag small { font-size: 11px; }
-  .mg-story .mg-drag { left: 50%; bottom: 72px; }
   .mg-hud { right: 18px; left: 18px; gap: 10px; }
   .mg-steps button { padding: 5px; }
   .mg-steps button span { display: none; }

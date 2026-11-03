@@ -1356,7 +1356,7 @@ async function initStory() {
   const vectors = { dir: new THREE.Vector3(), side: new THREE.Vector3(), up: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
   const random = seeded(7);
 
-  // world: slides sideways so the composition sits opposite the caption; spin: turned by dragging.
+  // world: slides sideways so the composition sits opposite the caption; spin: holds the scene's objects (not draggable).
   const world = new THREE.Group();
   const spin = new THREE.Group();
   world.add(spin);
@@ -1512,10 +1512,9 @@ async function initStory() {
   const flash = $('.mg-flash', section);
   const counter = $('[data-count]', section);
   const counterBox = counter?.parentElement;
-  const hint = $('.mg-drag', section);
   let shownCount = -1;
 
-  const drag = makeDrag(canvas, () => hint?.classList.add('is-hidden'));
+  // The objects can't be turned by dragging; a tap on the tablet only makes it wobble.
   let pressX = 0;
   let pressY = 0;
   canvas.addEventListener('pointerdown', event => { pressX = event.clientX; pressY = event.clientY; });
@@ -1560,17 +1559,6 @@ async function initStory() {
     state.enter += (story.enter - state.enter) * (still ? 1 : .09);
     const p = state.p;
 
-    // Grab to turn; after letting go it keeps turning a little, then settles back to the front.
-    if (!drag.dragging) {
-      drag.offset += drag.velocity;
-      drag.velocity *= .93;
-      if (Math.abs(drag.velocity) < 1e-4) drag.velocity = 0;
-      if (performance.now() - drag.releasedAt > 1400) {
-        const front = Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2;
-        drag.offset += (front - drag.offset) * (still ? 1 : .05);
-        if (Math.abs(front - drag.offset) < 1e-4) drag.offset = front;
-      }
-    }
     // Jelly: a spring pushed by scroll speed and by taps on the tablet.
     const speed = dt > 0 ? (p - state.last) / dt : 0;
     state.last = p;
@@ -1578,14 +1566,14 @@ async function initStory() {
     state.jellyV += ((push - state.jelly) * 90 - state.jellyV * 8) * dt;
     state.jelly += state.jellyV * dt;
     if (still) { state.jelly = 0; state.jellyV = 0; }
-    // Light profile: while nothing is scrolling or being dragged, idle motion draws every other frame (30 fps).
-    const idle = lowEnd && !still && Math.abs(story.target - state.p) < 4e-4 && !drag.dragging && Math.abs(drag.velocity) < 1e-3 && Math.abs(state.jellyV) < .05;
+    // Light profile: while nothing is scrolling, idle motion draws every other frame (30 fps).
+    const idle = lowEnd && !still && Math.abs(story.target - state.p) < 4e-4 && Math.abs(state.jellyV) < .05;
     renderer.userData.idle = idle;
     frameCount += 1;
     if (idle && frameCount % 2) return;
 
     if (lite) {
-      const key = `${p.toFixed(4)}|${state.enter.toFixed(3)}|${drag.offset.toFixed(4)}|${canvas.width}x${canvas.height}`;
+      const key = `${p.toFixed(4)}|${state.enter.toFixed(3)}|${canvas.width}x${canvas.height}`;
       if (key === lastKey && !firstFrame) return;
       lastKey = key;
     }
@@ -1593,7 +1581,6 @@ async function initStory() {
     const sideTarget = p < .262 ? 1 : p < .628 ? -1 : 1;
     state.side += (sideTarget - state.side) * (still ? 1 : .055);
     world.position.x = state.side * shift;
-    spin.rotation.y = drag.offset;
 
     /* ---- A: atom + molecule, then the merge ---- */
     const merge = span(T.merge, p);
