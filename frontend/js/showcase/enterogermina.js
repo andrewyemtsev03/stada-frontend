@@ -1,6 +1,6 @@
-// Enterogermina showcase (shared by the 2, 4 and 6 billion pages): the live 3D hero (vials among the pack's
-// spore bubbles), the three-stage scroll story (spores fill the vial → between antibiotic doses → shake, open,
-// drink), the dosage switch and the instructions tabs. Every word and number on the page comes from the
+// Enterogermina showcase (shared by the 2, 4 and 6 billion pages): the live 3D hero (vials and carton, with the
+// pack's spore bubbles rising behind them and popping on hover), the three-stage scroll story (spores fill the
+// vial → between antibiotic doses → shake, open, drink), the dosage switch and the instructions tabs. Every word and number on the page comes from the
 // product copy; this module only animates what the build rendered. Loaded only on products/enterogermina.html.
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -45,27 +45,243 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '0px 0px -12% 0px' });
 $$('.eg-reveal').forEach(node => revealObserver.observe(node));
 
-/* ------------------------------------------------------------------ hero: the bubble loop behind the product */
-{
-  const group = $('[data-loop-dots]');
-  const colors = ['#9fd4f1', '#5db4e6', '#7fd3bd', '#bfe4f7', '#3fbf9f', '#ffffff', '#f6a8cb'];
-  $$('.eg-loop__line').forEach((path, line) => {
-    const length = path.getTotalLength();
-    const count = line ? 14 : 22;
-    for (let i = 0; i < count; i += 1) {
-      const at = path.getPointAtLength(((i + .5) / count) * length);
-      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      const seed = Math.sin((i + 1) * (line + 3) * 12.9898) * 43758.5453;
-      const r = 5 + (seed - Math.floor(seed)) * (line ? 13 : 19);
-      circle.setAttribute('cx', (at.x + Math.sin(i * 1.7) * 18).toFixed(1));
-      circle.setAttribute('cy', (at.y + Math.cos(i * 2.3) * 18).toFixed(1));
-      circle.setAttribute('r', r.toFixed(1));
-      circle.setAttribute('fill', colors[(i + line * 3) % colors.length]);
-      circle.setAttribute('opacity', (.45 + (i % 3) * .15).toFixed(2));
-      circle.style.animationDelay = `${-(i * .7).toFixed(1)}s`;
-      group.append(circle);
-    }
+// Keep a number with its unit ("5 ml", "5 მლ") on one line in the hero's short lines.
+$$('.eg-tagline, .eg-lockup__dose').forEach(node => {
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+  for (let text = walker.nextNode(); text; text = walker.nextNode()) text.data = text.data.replace(/(\d) (?=\S)/g, '$1 ');
+});
+
+/* ------------------------------------------------------------------ hero: spore bubbles that rise and pop */
+// The pack's spore: a glossy coloured core inside a frosted white shell. Bubbles drift up through the hero at
+// three depths; a mouse passing over one (or a tap on it) pops it: the shell bursts into a ring, the core
+// scatters into droplets, and a new bubble rises from below a moment later. Bubbles behind the text dim so
+// the words stay readable. Plain 2D canvas with pre-drawn sprites, so it runs everywhere, WebGL or not.
+function initBubbles() {
+  const canvas = $('[data-bubbles]');
+  if (!canvas || !hero) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const copy = $('.eg-hero__copy');
+  const backLink = $('.eg-back', hero);
+  const SPRITE = 192;
+  const TINTS = [
+    { weight: 45, stops: ['#a6f6f6', '#3ccbe9', '#178bd2'], drop: '#3ccbe9' },
+    { weight: 22, stops: ['#b7d3ff', '#5a8fe4', '#1d4fa0'], drop: '#5a8fe4' },
+    { weight: 22, stops: ['#c2f5e2', '#4fd0a7', '#16977a'], drop: '#4fd0a7' },
+    { weight: 11, stops: ['#ffd0e4', '#f2609f', '#cf007a'], drop: '#f2609f' },
+  ];
+  const sprite = draw => {
+    const c = document.createElement('canvas');
+    c.width = c.height = SPRITE;
+    draw(c.getContext('2d'), SPRITE / 2);
+    return c;
+  };
+  // Shell: frosted, slightly blue-white disc with a bright rim, a soft glow and a crescent of light top right.
+  const shell = sprite((g, R) => {
+    const r = R * .86;
+    g.save();
+    g.shadowColor = 'rgba(255, 255, 255, .95)'; g.shadowBlur = R * .16;
+    const fill = g.createRadialGradient(R, R, r * .45, R, R, r);
+    fill.addColorStop(0, 'rgba(228, 241, 251, .62)');
+    fill.addColorStop(.82, 'rgba(240, 248, 254, .78)');
+    fill.addColorStop(1, 'rgba(255, 255, 255, .9)');
+    g.fillStyle = fill; g.beginPath(); g.arc(R, R, r, 0, Math.PI * 2); g.fill();
+    g.restore();
+    // A faint blue edge and under-shadow so the white shell still reads on the pale sky.
+    g.save();
+    g.shadowColor = 'rgba(29, 79, 160, .16)'; g.shadowBlur = R * .1; g.shadowOffsetY = R * .03;
+    g.lineWidth = R * .03; g.strokeStyle = 'rgba(160, 196, 228, .55)'; g.stroke();
+    g.restore();
+    g.lineWidth = R * .02; g.strokeStyle = 'rgba(255, 255, 255, .95)';
+    g.beginPath(); g.arc(R, R, r - R * .02, 0, Math.PI * 2); g.stroke();
+    g.lineWidth = R * .05; g.lineCap = 'round'; g.strokeStyle = 'rgba(255, 255, 255, .85)';
+    g.beginPath(); g.arc(R, R, r * .9, -1.25, -.45); g.stroke();
   });
+  // Core: the coloured sphere, lit from the upper left, with the dotted bands printed on the pack's spores.
+  const cores = TINTS.map(({ stops }) => sprite((g, R) => {
+    const r = R * .54;
+    g.save();
+    g.shadowColor = 'rgba(13, 58, 133, .22)'; g.shadowBlur = R * .14; g.shadowOffsetY = R * .05;
+    const fill = g.createRadialGradient(R - r * .32, R - r * .38, r * .08, R, R, r);
+    fill.addColorStop(0, stops[0]); fill.addColorStop(.55, stops[1]); fill.addColorStop(1, stops[2]);
+    g.fillStyle = fill; g.beginPath(); g.arc(R, R, r, 0, Math.PI * 2); g.fill();
+    g.restore();
+    g.save();
+    g.beginPath(); g.arc(R, R, r, 0, Math.PI * 2); g.clip();
+    g.translate(R, R); g.rotate(-.55);
+    g.fillStyle = 'rgba(255, 255, 255, .5)';
+    for (let row = -2; row <= 2; row += 1) {
+      const y = row * r * .2 - r * .1;
+      for (let x = -r; x <= r; x += r * .075) g.fillRect(x, y, r * .035, r * .035);
+    }
+    g.restore();
+    const shine = g.createRadialGradient(R + r * .38, R - r * .48, 0, R + r * .38, R - r * .48, r * .4);
+    shine.addColorStop(0, 'rgba(255, 255, 255, .85)'); shine.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    g.fillStyle = shine; g.beginPath(); g.arc(R, R, r, 0, Math.PI * 2); g.fill();
+  }));
+
+  const random = rand(11);
+  const pickTint = () => {
+    let roll = random() * 100;
+    return TINTS.findIndex(({ weight }) => (roll -= weight) < 0);
+  };
+  const motion = !reduceMotion;
+  const dpr = Math.min(devicePixelRatio || 1, lowEnd ? 1.5 : 2);
+  let width = 0;
+  let height = 0;
+  let scale = 1;
+  let quiet = [];
+  const bubbles = [];
+  const sparks = [];
+
+  const place = (bubble, rising) => {
+    bubble.depth = Math.pow(random(), 1.4);
+    bubble.tint = pickTint();
+    bubble.size = lerp(14, 68, bubble.depth) * scale;
+    bubble.speed = lerp(9, 24, bubble.depth) * (.8 + random() * .4);
+    bubble.sway = 6 + random() * 16;
+    bubble.swayRate = .25 + random() * .35;
+    bubble.phase = random() * Math.PI * 2;
+    bubble.baseX = random() * width;
+    bubble.y = rising ? height + bubble.size + random() * height * .3 : random() * height;
+    bubble.state = 'float';
+    bubble.born = performance.now() + (rising ? 0 : 150 + random() * 900);
+    bubble.wobble = 0;
+    bubble.dim = 1;
+  };
+  const resize = () => {
+    const rect = hero.getBoundingClientRect();
+    width = rect.width; height = rect.height;
+    canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+    scale = clamp(width / 1440, .7, 1.15);
+    const target = Math.round(clamp((width * height) / 30000, 12, 36) * (lowEnd ? .7 : 1));
+    while (bubbles.length < target) { const bubble = {}; place(bubble, false); bubbles.push(bubble); }
+    bubbles.length = target;
+    bubbles.sort((a, b) => a.depth - b.depth);
+    measureQuiet();
+  };
+  // The text blocks' boxes, in hero coordinates; bubbles drifting behind any of them fade back.
+  function measureQuiet() {
+    if (!copy) return;
+    const h = hero.getBoundingClientRect();
+    quiet = [backLink, ...copy.children].filter(node => node && !node.hidden).map(node => {
+      const box = node.getBoundingClientRect();
+      return { left: box.left - h.left, right: box.right - h.left, top: box.top - h.top, bottom: box.bottom - h.top };
+    });
+  }
+  const behindCopy = (x, y, r) => quiet.some(box => x + r * .5 > box.left && x - r * .5 < box.right && y + r * .5 > box.top && y - r * .5 < box.bottom);
+  const xOf = (bubble, time) => bubble.baseX + (motion ? Math.sin(time * bubble.swayRate + bubble.phase) * bubble.sway : 0);
+
+  const pop = bubble => {
+    bubble.state = 'pop';
+    bubble.at = performance.now();
+    bubble.px = xOf(bubble, bubble.at / 1000);
+    if (!motion) return;
+    const count = 7 + Math.round(bubble.depth * 5);
+    for (let i = 0; i < count; i += 1) {
+      const angle = (i / count) * Math.PI * 2 + random() * .5;
+      sparks.push({
+        x: bubble.px, y: bubble.y, vx: Math.cos(angle), vy: Math.sin(angle),
+        reach: bubble.size * (1.1 + random() * .9), r: bubble.size * (.07 + random() * .07),
+        color: TINTS[bubble.tint].drop, at: bubble.at, life: 520 + random() * 220,
+      });
+    }
+  };
+  // Pops whatever bubble sits under the point (front-most first). Returns whether one popped.
+  const popAt = (clientX, clientY) => {
+    const h = hero.getBoundingClientRect();
+    const x = clientX - h.left;
+    const y = clientY - h.top;
+    const time = performance.now() / 1000;
+    for (let i = bubbles.length - 1; i >= 0; i -= 1) {
+      const bubble = bubbles[i];
+      if (bubble.state !== 'float' || performance.now() < bubble.born) continue;
+      const dx = x - xOf(bubble, time);
+      const dy = y - bubble.y;
+      const d = Math.hypot(dx, dy);
+      if (d < bubble.size * .82) { pop(bubble); return true; }
+      if (d < bubble.size * 1.7) bubble.wobble = Math.max(bubble.wobble, 1 - d / (bubble.size * 1.7));
+    }
+    return false;
+  };
+  hero.addEventListener('pointermove', event => { if (event.pointerType === 'mouse') popAt(event.clientX, event.clientY); }, { passive: true });
+  hero.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse' && !event.target.closest('a, button')) popAt(event.clientX, event.clientY);
+  }, { passive: true });
+
+  const drawSprite = (image, x, y, size, alpha) => {
+    if (alpha <= .002 || size <= .5) return;
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(image, x - size, y - size, size * 2, size * 2);
+  };
+  let last = performance.now();
+  let running = false;
+  const tick = now => {
+    if (!running) return;
+    requestAnimationFrame(tick);
+    const dt = Math.min(.05, (now - last) / 1000);
+    last = now;
+    const time = now / 1000;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    bubbles.forEach(bubble => {
+      if (bubble.state === 'gone') {
+        if (now >= bubble.back) place(bubble, motion);
+        return;
+      }
+      const grow = motion ? easeOutBack(clamp((now - bubble.born) / 700)) : (now >= bubble.born ? 1 : 0);
+      if (bubble.state === 'float') {
+        if (motion && now >= bubble.born) bubble.y -= bubble.speed * dt;
+        if (bubble.y < -bubble.size * 1.2) { place(bubble, true); return; }
+        bubble.wobble *= Math.pow(.02, dt);
+        const x = xOf(bubble, time);
+        const dimTarget = behindCopy(x, bubble.y, bubble.size) ? .28 : 1;
+        bubble.dim += (dimTarget - bubble.dim) * (1 - Math.pow(.004, dt));
+        const alpha = lerp(.55, 1, bubble.depth) * bubble.dim;
+        const size = bubble.size * grow * (1 + bubble.wobble * .06 * Math.sin(time * 22));
+        drawSprite(shell, x, bubble.y, size, alpha);
+        drawSprite(cores[bubble.tint], x, bubble.y, size, alpha);
+        return;
+      }
+      // Popping: the shell swells and thins into a ring, the core shrinks away into its droplets.
+      const t = clamp((now - bubble.at) / (motion ? 420 : 220));
+      const alpha = lerp(.55, 1, bubble.depth) * bubble.dim;
+      if (motion) {
+        drawSprite(cores[bubble.tint], bubble.px, bubble.y, bubble.size * (1 - easeOutCubic(clamp(t / .35))), alpha);
+        ctx.globalAlpha = alpha * (1 - t) * .9;
+        ctx.lineWidth = Math.max(.5, bubble.size * .08 * (1 - t));
+        ctx.strokeStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(bubble.px, bubble.y, bubble.size * .86 * (1 + easeOutCubic(t) * .55), 0, Math.PI * 2); ctx.stroke();
+      } else {
+        drawSprite(shell, bubble.px, bubble.y, bubble.size, alpha * (1 - t));
+        drawSprite(cores[bubble.tint], bubble.px, bubble.y, bubble.size, alpha * (1 - t));
+      }
+      if (t >= 1) { bubble.state = 'gone'; bubble.back = now + (motion ? 900 + random() * 2600 : 2500); }
+    });
+    for (let i = sparks.length - 1; i >= 0; i -= 1) {
+      const spark = sparks[i];
+      const t = (now - spark.at) / spark.life;
+      if (t >= 1) { sparks.splice(i, 1); continue; }
+      const k = easeOutCubic(t);
+      ctx.globalAlpha = 1 - t;
+      ctx.fillStyle = spark.color;
+      ctx.beginPath();
+      ctx.arc(spark.x + spark.vx * spark.reach * k, spark.y + spark.vy * spark.reach * k + t * t * 10, Math.max(.4, spark.r * (1 - t * .7)), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  };
+  const start = () => { if (running) return; running = true; last = performance.now(); requestAnimationFrame(tick); };
+  const stop = () => { running = false; };
+  resize();
+  new ResizeObserver(() => resize()).observe(hero);
+  document.fonts?.ready.then(measureQuiet);
+  let visible = false;
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible && !document.hidden) start(); else stop();
+  }).observe(hero);
+  document.addEventListener('visibilitychange', () => { if (visible && !document.hidden) start(); else stop(); });
 }
 
 /* ------------------------------------------------------------------ story scene (captions, stages, HUD) */
@@ -534,32 +750,12 @@ async function initHero() {
     { group: side, x: 1.35, y: -.25, z: -.9, scale: .68, rz: .36, ry: .9, delay: .22 },
   ];
 
-  // Spore bubbles, the pack's motif: glossy spheres in the pack colours, strung round the vials.
-  const bubbleColors = [PALETTE.sky, PALETTE.teal, PALETTE.mint, PALETTE.ice, 0x9fd4f1, 0x7fd3bd, 0xf49ac1];
-  const bubbleCount = lowEnd ? 22 : 34;
-  const bubbles = new THREE.InstancedMesh(
-    new THREE.SphereGeometry(1, lowEnd ? 20 : 32, lowEnd ? 14 : 24),
-    glossy(THREE, { roughness: .25, clearcoat: 1, clearcoatRoughness: .08, transparent: true, opacity: .9 }),
-    bubbleCount,
-  );
-  const random = rand(7);
-  const bubbleData = [];
-  const color = new THREE.Color();
-  for (let i = 0; i < bubbleCount; i += 1) {
-    const angle = (i / bubbleCount) * Math.PI * 2;
-    const radius = 2.05 + random() * 1.05;
-    bubbleData.push({
-      x: Math.cos(angle) * radius * 1.15, y: 1.25 + Math.sin(angle * 2) * .55 + (random() - .5) * 1.6,
-      z: Math.sin(angle) * radius * .6 - (heroVisual.dataset.carton && Math.abs(Math.cos(angle) * radius * 1.15) < 2.6 ? 2.2 : .4), size: .05 + Math.pow(random(), 2.2) * .2, phase: random() * 6.28, delay: .2 + random() * .5,
-    });
-    bubbles.setColorAt(i, color.setHex(bubbleColors[i % bubbleColors.length]));
-  }
-  stage.add(bubbles);
 
   const fit = (width, height) => {
-    // Frame the vials' middle; narrow screens pull back a little so the side vials stay in view.
+    // Frame the vials' middle; narrow screens pull back a little so the side vials stay in view, and phones
+    // (a short, wide stage under the title) come in closer so the pack is not lost in the margins.
     const narrow = width / height < .95;
-    camera.position.set(0, 1.55, narrow ? 13.4 : 11.6);
+    camera.position.set(0, 1.55, narrow ? 13.4 : width < 600 ? 9.6 : 11.6);
     camera.lookAt(0, 1.2, 0);
   };
   keepSized(renderer, camera, heroCanvas, fit);
@@ -575,7 +771,6 @@ async function initHero() {
     document.documentElement.addEventListener('mouseleave', () => { lean.tx = 0; lean.ty = 0; });
   }
 
-  const dummy = new THREE.Object3D();
   const clock = new THREE.Clock();
   let startedAt = 0;
   let shown = false;
@@ -618,14 +813,6 @@ async function initHero() {
       );
       if (index === 0) group.rotation.x += lean.y * .035;
     });
-    bubbleData.forEach((bubble, i) => {
-      const local = still ? 1 : easeOutBack(clamp((intro - bubble.delay) / (1 - bubble.delay)));
-      dummy.position.set(bubble.x + Math.sin(time * .35 + bubble.phase) * .08, bubble.y + Math.sin(time * .6 + bubble.phase) * .12, bubble.z);
-      dummy.scale.setScalar(Math.max(.0001, bubble.size * local));
-      dummy.updateMatrix();
-      bubbles.setMatrixAt(i, dummy.matrix);
-    });
-    bubbles.instanceMatrix.needsUpdate = true;
     renderer.render(scene, camera);
     if (!shown) { shown = true; heroVisual.classList.add('eg-hero--live'); }
   };
@@ -854,5 +1041,6 @@ async function initStory() {
   runWhileVisible(storySection, renderer, tick);
 }
 
+initBubbles();
 if (heroCanvas) initHero().catch(() => {});
 if (storySection) whenNear(storySection, () => initStory().catch(() => storySection.classList.add('eg-nogl')));
