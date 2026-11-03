@@ -81,7 +81,12 @@ output, not the raw source folder.
   canvas pixels and adapts resolution to its frame rate in both directions. The
   small panda copies (the halo of 29, drawn in one instanced call, and the hero's
   floating tablets) use `panda-lite.glb`, simplified from `panda.glb` with
-  glTF-Transform (about 12% of the triangles, 768 px maps). All copy and facts
+  glTF-Transform (about 12% of the triangles, 768 px maps).
+  Phones (touch screens) additionally render at 1x without multisampling, and
+  the hero still life holds its pose until it is touched. Only one 3D scene
+  draws at a time: the hero stops once the story chapter covers the screen.
+  Add `?debug=1` to the page URL for a live panel with the profile, each
+  scene's frame rate, resolution, draw calls and triangles. All copy and facts
   come from that label; the page reads fully without JavaScript. The commercial
   plays in place through YouTube's privacy-enhanced player, created only after
   the visitor presses play, so `frame-src` in `vercel.json` and
