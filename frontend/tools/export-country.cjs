@@ -1,6 +1,5 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { pathToFileURL } = require('node:url');
 const root = path.resolve(__dirname, '..');
 const countries = JSON.parse(fs.readFileSync(path.join(root, 'content/countries.json')));
 
@@ -12,7 +11,7 @@ async function lockPages(target, code) {
   const pages = locked.pages.filter(page => page.startsWith(prefix)).map(page => page.slice(prefix.length));
   fs.rmSync(path.join(target, '__lock'), { recursive: true, force: true });
   if (!pages.length) return 0;
-  const { gatePage } = await import(pathToFileURL(path.join(__dirname, 'lock/lock.mjs')).href);
+  const { gatePage } = require('./lock/lock.cjs');
   const country = countries.find(item => item.code === code);
   const map = {};
   const stub = page => `<!doctype html>
