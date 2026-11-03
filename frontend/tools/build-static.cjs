@@ -240,76 +240,42 @@ function finalize(dom, country, lang, template, page, text, newsId) {
   return dom.serialize();
 }
 
-// Products marked `"review": true` are awaiting approval (legal, brand). They are built only for the
-// password-protected review site (`build({ review: true })`, see review/README.md) and left out of every
-// public build: no page, no catalogue card, no menu link, no sitemap entry.
-const reviewOutput = path.resolve(source, '../review/dist');
-function build({ review = process.argv.includes('--review'), out = review ? reviewOutput : output } = {}) {
-  // Only these fixed, verified generated directories may be cleared.
-  if (![output, reviewOutput].includes(out)) throw new Error('Unsafe output directory');
-  const publicProducts = locale => Object.fromEntries(Object.entries(locale.products || {}).filter(([, payload]) => review || !payload.product.review));
-  return buildInto(out, review, publicProducts);
+// Products marked `"locked": true` are awaiting approval (legal, product manager). Their pages are built
+// and deployed on the real site, but served only behind the password (middleware.js on Vercel, the PHP
+// gate in the stada.kz export, see tools/export-country.cjs). They stay out of catalogues, menus, home
+// previews and sitemaps and are marked noindex. Removing the flag publishes them.
+const lockedFile = path.join(source, 'content/locked.json');
+function build() {
+  return buildInto(output);
 }
 
-// The review site's start page: every product on review, by country, with a link per language.
-// Review addresses put the country first (/<country>/<language>/...), see review/middleware.js.
-function reviewIndex(items) {
-  const esc = value => String(value).replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
-  const strip = value => String(value).replace(/<[^>]*>/g, '');
-  const groups = countries.map(country => {
-    const products = [...new Set(items.filter(item => item.country.code === country.code).map(item => item.slug))];
-    const site = `<a class="site" href="/${country.code}/${country.defaultLanguage}/index.html">${esc(country.domain)} →</a>`;
-    if (!products.length) return `<section class="empty"><h2>${esc(country.domain)}</h2><p>—</p>${site}</section>`;
-    const rows = products.map(slug => {
-      const langs = items.filter(item => item.country.code === country.code && item.slug === slug);
-      return `<li><strong>${esc(strip(langs[0].name))}</strong> ${langs.map(item => `<a href="/${country.code}/${item.lang}/products/${slug}.html">${item.lang.toUpperCase()}</a>`).join(' ')}</li>`;
-    }).join('');
-    return `<section><h2>${esc(country.domain)}</h2><ul>${rows}</ul>${site}</section>`;
-  }).join('\n');
-  return `<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>STADA — на согласовании</title>
-<style>
-  *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;padding:40px 18px;font-family:"Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#141a52;background:#eef8fd}
-  main{max-width:760px;margin:0 auto}
-  header{display:flex;align-items:center;gap:18px;margin-bottom:28px}
-  header img{width:96px;height:auto}
-  h1{margin:0;font-size:24px}
-  section{margin:0 0 14px;padding:20px 22px;border-radius:20px;background:#fff;box-shadow:0 20px 40px -32px rgba(0,50,120,.5)}
-  section.empty{opacity:.55}
-  h2{margin:0 0 10px;font-size:17px}
-  ul{margin:0 0 12px;padding:0;list-style:none}
-  li{padding:8px 0;border-top:1px solid #e6ecf5}
-  li a{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:99px;background:#262c8e;color:#fff;font-size:13px;font-weight:700;text-decoration:none}
-  li a:hover{background:#e5007d}
-  .site{color:#262c8e;font-size:14px}
-  footer{margin-top:24px;font-size:13px}
-  footer a{color:#46507a}
-</style>
-</head>
-<body>
-<main>
-<header><img src="/assets/logos/stada_logo.png" alt="STADA" width="770" height="450"><h1>Материалы на согласовании</h1></header>
-${groups}
-<footer><a href="/__review/logout">Выйти</a></footer>
-</main>
-</body>
-</html>
-`;
+// The lock list is committed (content/locked.json) so the Vercel middleware can import it.
+function lockedList(entries) {
+  const pages = entries.map(({ country, lang, slug }) => `/sites/${country}/${lang}/products/${slug}.html`).sort();
+  // A product's own files (assets folder, showcase CSS/JS) are locked too, unless some country
+  // already shows that slug publicly.
+  const publicSlugs = new Set();
+  for (const country of countries) {
+    const snapshot = JSON.parse(fs.readFileSync(path.join(source, `content/countries/${country.code}.json`)));
+    for (const locale of Object.values(snapshot.locales)) {
+      for (const [slug, payload] of Object.entries(locale.products || {})) if (!payload.product.locked) publicSlugs.add(slug);
+    }
+  }
+  const slugs = [...new Set(entries.map(entry => entry.slug))].filter(slug => !publicSlugs.has(slug)).sort();
+  return { pages, slugs };
+}
+function writeLocked(entries) {
+  const content = `${JSON.stringify(lockedList(entries), null, 2)}\n`;
+  if (!fs.existsSync(lockedFile) || fs.readFileSync(lockedFile, 'utf8') !== content) write(lockedFile, content);
 }
 
-function buildInto(output, review, productsOf) {
+function buildInto(output) {
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
   for (const directory of ['assets', 'css', 'js']) fs.cpSync(path.join(source, directory), path.join(output, directory), { recursive: true });
   let pageCount = 0;
   const routes = [];
-  const onReview = [];
+  const locked = [];
   for (const country of countries) {
     const snapshot = JSON.parse(fs.readFileSync(path.join(source, `content/countries/${country.code}.json`)));
     const siteRoot = path.join(output, 'sites', country.code);
@@ -317,10 +283,11 @@ function buildInto(output, review, productsOf) {
     for (const lang of country.supportedLanguages) {
       const source_ = snapshot.locales[lang];
       if (!source_) throw new Error(`Missing content: ${country.code}/${lang}`);
-      const locale = { ...source_, products: productsOf(source_) };
+      const locale = source_;
+      const listed = Object.values(locale.products || {}).filter(payload => !payload.product.locked);
       const render = (template, page, query = '', newsId, productPayload) => {
         const basePayload = locale.pages[template] || locale.pages['products/index.html'];
-        const catalog = Object.values(locale.products || {}).map(payload => payload.product);
+        const catalog = listed.map(payload => payload.product);
         const homeProducts = catalog.filter((product, index) => catalog.findIndex(item => item.image.src === product.image.src) === index);
         const payload = { ...basePayload, country, content: { ...basePayload.content,
           text: { ...locale.text, ...basePayload.content.text },
@@ -345,9 +312,14 @@ function buildInto(output, review, productsOf) {
             section.append(links);
           }
         }
+        const isLocked = Boolean(productPayload?.product.locked);
+        if (isLocked) {
+          const robots = dom.window.document.createElement('meta'); robots.name = 'robots'; robots.content = 'noindex, nofollow';
+          dom.window.document.head.prepend(robots);
+        }
         const html = finalize(dom, country, lang, template, page, payload.content.text, newsId);
         write(path.join(siteRoot, lang, page), html);
-        if (page !== 'news-article.html' && page !== 'products/product.html') urls.push(`https://${country.domain}/${lang}/${page}`);
+        if (page !== 'news-article.html' && page !== 'products/product.html' && !isLocked) urls.push(`https://${country.domain}/${lang}/${page}`);
         if (lang === country.defaultLanguage && pageTemplates.includes(page)) write(path.join(siteRoot, page), html);
         pageCount++;
         dom.window.close();
@@ -363,7 +335,7 @@ function buildInto(output, review, productsOf) {
       for (const [slug, product] of Object.entries(locale.products || {})) {
         if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`Invalid product slug: ${slug}`);
         render(productTemplate(product.product), `products/${slug}.html`, `?slug=${slug}`, undefined, product);
-        if (product.product.review) onReview.push({ country, lang, slug, name: product.product.name || slug });
+        if (product.product.locked) locked.push({ country: country.code, lang, slug });
       }
     }
     write(path.join(siteRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `<url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`);
@@ -384,9 +356,9 @@ function buildInto(output, review, productsOf) {
     return { ...header, value: header.value.replace(' https://api.stada.kz https://stada-content-backend.onrender.com', '') };
   }) }));
   write(path.join(output, 'vercel.json'), `${JSON.stringify(deployment, null, 2)}\n`);
-  if (review) write(path.join(output, 'index.html'), reviewIndex(onReview));
+  writeLocked(locked);
   write(path.join(output, 'build-manifest.json'), `${JSON.stringify({ countries: countries.map(country => country.code), pages: pageCount }, null, 2)}\n`);
-  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites${review ? ' (review build, includes products on review)' : ''}. Output: ${path.relative(path.resolve(source, '..'), output)}`);
+  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites${locked.length ? ` (${locked.length} locked pages)` : ''}. Output: ${path.relative(path.resolve(source, '..'), output)}`);
 }
 if (require.main === module) build();
-module.exports = { build, output, reviewOutput, source, countries, renderShowcase };
+module.exports = { build, output, source, countries, renderShowcase, lockedList };
