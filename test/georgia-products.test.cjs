@@ -40,6 +40,9 @@ test('Georgia exposes the eleven supplied product variants with local images and
       assert.ok(catalog.window.document.querySelector(`[data-product-card][href="${href}"]`));
       const page = read(`sites/ge${href}`);
       const document = page.window.document;
+      assert.equal(document.querySelectorAll('.lang-toggle a').length, 2);
+      // Showcase pages (their own template) are checked in their own test below.
+      if (product.template) { page.window.close(); continue; }
       assert.equal(document.querySelector('h1').textContent, product.name);
       assert.ok(document.querySelector('[data-product-information]').textContent.length > 100);
       const formula = document.querySelector('#formula');
@@ -89,6 +92,39 @@ test('Enterogermina pages preserve the different concentrations, dosage forms an
   }
   assert.match(products['enterogermina-2-billion'].product.page.informationText, /2–3 vials daily/);
   assert.match(products['enterogermina-4-billion'].product.page.informationText, /lower-concentration product/);
+});
+
+test('the Enterogermina showcase renders every text from the product copy, with the leaflet and dosage from the instructions', () => {
+  const showcased = Object.entries(snapshot.locales.en.products).filter(([, { product }]) => product.template === 'products/enterogermina.html').map(([slug]) => slug);
+  assert.ok(showcased.includes('enterogermina-2-billion'));
+  for (const slug of showcased) {
+    for (const lang of ['ge', 'en']) {
+      const { product } = snapshot.locales[lang].products[slug];
+      assert.equal(product.template, 'products/enterogermina.html', `${lang}/${slug} uses the showcase in both languages`);
+      const page = read(`sites/ge/${lang}/products/${slug}.html`);
+      const document = page.window.document;
+      const html = document.documentElement.outerHTML;
+      assert.ok(!/data-sc(-list|-attr)?=/.test(html), `${lang}/${slug} has no unfilled showcase slots`);
+      assert.equal(document.querySelector('.eg-lockup__dose').textContent, product.showcase.hero_dose);
+      assert.ok(document.querySelector('link[href*="showcase-enterogermina.css"]'));
+      assert.ok(document.querySelector('script[type="module"][src*="/js/showcase/enterogermina.js"]'));
+      // The leaflet download is the product's own document.
+      const leaflet = document.querySelector('a[download]');
+      assert.equal(leaflet.getAttribute('href'), product.documents[0].href);
+      assert.ok(fs.existsSync(path.join(output, leaflet.getAttribute('href'))));
+      // Dosage switch numbers match the instructions summary on the same page.
+      const vials = document.querySelector('[data-vials]');
+      const { dose_adult_min: aMin, dose_adult_max: aMax, dose_child_min: cMin, dose_child_max: cMax } = product.showcase;
+      assert.deepEqual([vials.dataset.adultMin, vials.dataset.adultMax, vials.dataset.childMin, vials.dataset.childMax], [aMin, aMax, cMin, cMax]);
+      assert.ok(product.showcase.how_text.includes(`${aMin}–${aMax}`) && product.showcase.how_text.includes(`${cMin}–${cMax}`));
+      // Composition comes straight from the leaflet-based formula points.
+      product.page.formulaPoints.forEach((point, index) => assert.equal(product.showcase[`formula_${index + 1}_text`], point.text));
+      assert.equal(document.querySelectorAll('.eg-tabs [role="tab"]').length, 5);
+      assert.equal(document.querySelectorAll('.lang-toggle a').length, 2);
+      if (product.locked) assert.equal(document.querySelector('meta[name="robots"]').content, 'noindex, nofollow');
+      page.window.close();
+    }
+  }
 });
 
 test('No-Spa variants preserve strength, pack size and strength-specific adult tablet counts', () => {

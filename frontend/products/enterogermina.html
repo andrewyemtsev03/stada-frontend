@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STADA - Enterogermina</title>
+    <meta name="theme-color" content="#1d4fa0" />
+    <link rel="icon" type="image/png" href="../assets/logos/stada_logo.png" />
+    <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-enterogermina.css?v=1" />
+    <script defer src="../js/site/analytics.js?v=1"></script>
+  </head>
+  <!-- Enterogermina showcase, shared by the 2, 4 and 6 billion pages. Every word and number comes from the
+       product's `showcase` copy (content/countries/<code>.json); the template holds no product facts. -->
+  <body class="eg-page" data-product-showcase="enterogermina">
+    <nav>
+      <div class="nav-container">
+        <a href="../index.html" class="logo" aria-label="STADA logo">
+          <img src="../assets/logos/stada_logo.png" alt="STADA logo" />
+        </a>
+        <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <ul class="menu">
+          <li><a href="../about.html" data-i18n-key="nav_about"></a></li>
+          <li><a href="../news.html" data-static-i18n-key="nav_news"></a></li>
+          <li><a href="../contacts.html" data-i18n-key="nav_worldwide"></a></li>
+          <li><a href="../culture.html" data-i18n-key="nav_culture"></a></li>
+          <li><a href="../history.html" data-i18n-key="nav_history"></a></li>
+        </ul>
+        <div class="lang-toggle"></div>
+      </div>
+    </nav>
+
+    <svg class="eg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <!-- The 5 ml vial: twist-off tab, neck, body; drawn once, used for the poster, the dose counter and the timeline. -->
+        <linearGradient id="eg-vial-fill" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#e6eef7" />
+          <stop offset=".35" stop-color="#ffffff" />
+          <stop offset=".7" stop-color="#f3f7fc" />
+          <stop offset="1" stop-color="#cfdcea" />
+        </linearGradient>
+        <symbol id="eg-vial" viewBox="0 0 40 120">
+          <path d="M11 2h18a3 3 0 0 1 3 3v19a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Z" fill="url(#eg-vial-fill)" stroke="#9db4cf" stroke-width="1.2" />
+          <path d="M15 9h10M15 14h10M15 19h10" stroke="#b9cadd" stroke-width="1.4" stroke-linecap="round" />
+          <path d="M16 27h8v5h-8z" fill="#dbe6f2" stroke="#9db4cf" stroke-width="1" />
+          <path d="M16 32c0 4-11 6-11 14v62a8 8 0 0 0 8 8h14a8 8 0 0 0 8-8V46c0-8-11-10-11-14Z" fill="url(#eg-vial-fill)" stroke="#9db4cf" stroke-width="1.2" />
+          <path d="M7 62h26v46a6 6 0 0 1-6 6H13a6 6 0 0 1-6-6Z" fill="#f4f1ea" opacity=".9" />
+          <path d="M11 50v52" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".9" />
+        </symbol>
+        <!-- The antibiotic dose on the timeline: a two-tone capsule. -->
+        <symbol id="eg-capsule" viewBox="0 0 48 20">
+          <rect x="1" y="1" width="46" height="18" rx="9" fill="#ffffff" stroke="#9db4cf" stroke-width="1.2" />
+          <path d="M24 1h14a9 9 0 0 1 0 18H24Z" fill="#c6d3e2" />
+        </symbol>
+        <symbol id="eg-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></symbol>
+        <symbol id="eg-down" viewBox="0 0 16 16"><path d="M8 2v10M3.5 8 8 12.5 12.5 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+      </defs>
+    </svg>
+
+    <main class="eg" id="eg-top">
+      <!-- 00 · Hero -->
+      <section class="eg-hero" id="eg-hero" aria-labelledby="eg-title">
+        <!-- The pack's motif: a loop of spore bubbles winding behind the product. -->
+        <svg class="eg-loop" viewBox="0 0 1000 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <path class="eg-loop__line" d="M70 520C150 380 300 600 420 470S470 180 610 210 820 420 900 300 930 90 990 120" />
+          <path class="eg-loop__line eg-loop__line--2" d="M10 300C120 230 230 330 330 270S460 80 600 120 770 300 880 520" />
+          <g class="eg-loop__dots" data-loop-dots></g>
+        </svg>
+        <div class="eg-hero__inner">
+          <a class="eg-back" href="index.html" data-i18n-key="product_back"></a>
+          <div class="eg-hero__copy">
+            <h1 id="eg-title" class="eg-lockup eg-rise">
+              <span class="eg-lockup__word"><span class="eg-lockup__entero">entero</span><span class="eg-lockup__germina">germina</span><sup>®</sup></span>
+              <span class="eg-lockup__dose" data-sc="hero_dose"></span>
+            </h1>
+            <p class="eg-tagline eg-rise" data-sc="hero_tagline"></p>
+            <p class="eg-lead eg-rise" data-sc="hero_lead" data-page-description></p>
+            <div class="eg-hero__actions eg-rise">
+              <a class="eg-btn eg-btn--primary" href="#eg-dose" data-go="eg-dose"><span data-sc="hero_cta_dose"></span></a>
+              <a class="eg-btn eg-btn--ghost" href="#eg-info" data-go="eg-info"><span data-sc="hero_cta_info"></span></a>
+            </div>
+          </div>
+
+          <div class="eg-hero__visual" data-hero-visual>
+            <div class="eg-hero__halo" aria-hidden="true"></div>
+            <canvas class="eg-hero__gl" data-hero-canvas aria-hidden="true"></canvas>
+            <!-- Drawn fallback for no JavaScript, no WebGL or data-saver mode. -->
+            <div class="eg-hero__poster" aria-hidden="true">
+              <svg class="eg-hero__vial eg-hero__vial--back"><use href="#eg-vial" /></svg>
+              <svg class="eg-hero__vial"><use href="#eg-vial" /></svg>
+              <svg class="eg-hero__vial eg-hero__vial--side"><use href="#eg-vial" /></svg>
+            </div>
+          </div>
+
+          <div class="eg-hero__spec eg-rise">
+            <dl class="eg-facts">
+              <div><dt data-sc="fact_spores_value"></dt><dd data-sc="fact_spores_label"></dd></div>
+              <div><dt data-sc="fact_volume_value"></dt><dd data-sc="fact_volume_label"></dd></div>
+              <div><dt data-sc="fact_strains_value"></dt><dd data-sc="fact_strains_label"></dd></div>
+              <div><dt data-sc="fact_pack_value"></dt><dd data-sc="fact_pack_label"></dd></div>
+            </dl>
+            <p class="eg-note"><span class="eg-note__i" aria-hidden="true">i</span><span data-sc="badge_medicine"></span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01 · One scroll-driven 3D scene in three stages: the spores fill the vial, the antibiotic course and
+           the vial between doses, then shake, open and drink. -->
+      <section class="eg-scene eg-story" id="eg-story" aria-labelledby="eg-story-title" data-theme="light" data-stage="a">
+        <div class="eg-sticky">
+          <div class="eg-story__bg" aria-hidden="true"></div>
+          <h2 class="eg-sr" id="eg-story-title" data-sc="story_title"></h2>
+          <canvas class="eg-gl" data-story-canvas aria-hidden="true"></canvas>
+
+          <div class="eg-cap eg-cap--a" data-in="0" data-out=".33">
+            <div class="eg-eyebrow" data-sc="story_a_eyebrow"></div>
+            <h3><span class="eg-count" data-sc="story_a_count"></span> <span data-sc="story_a_title"></span></h3>
+            <p data-sc="story_a_text"></p>
+            <div class="eg-strains">
+              <span class="eg-strains__label" data-sc="story_a_strains_label"></span>
+              <div class="eg-chips eg-chips--strains" data-sc-list="story_a_strains"></div>
+            </div>
+          </div>
+          <div class="eg-cap eg-cap--b" data-in=".36" data-out=".64">
+            <div class="eg-eyebrow" data-sc="story_b_eyebrow"></div>
+            <h3 data-sc="story_b_title"></h3>
+            <p data-sc="story_b_text"></p>
+            <!-- A day on an antibiotic course: Enterogermina sits between two antibiotic doses. -->
+            <div class="eg-between" aria-hidden="true">
+              <span class="eg-between__dose"><svg><use href="#eg-capsule" /></svg><small data-sc="story_b_antibiotic"></small></span>
+              <i></i>
+              <span class="eg-between__dose eg-between__dose--eg"><svg><use href="#eg-vial" /></svg><small>Enterogermina</small></span>
+              <i></i>
+              <span class="eg-between__dose"><svg><use href="#eg-capsule" /></svg><small data-sc="story_b_antibiotic"></small></span>
+            </div>
+          </div>
+          <div class="eg-cap eg-cap--c" data-in=".67" data-out="1.01">
+            <div class="eg-eyebrow" data-sc="story_c_eyebrow"></div>
+            <h3 data-sc="story_c_title"></h3>
+            <ol class="eg-steps3">
+              <li><b>1</b><span data-sc="story_c_step1"></span></li>
+              <li><b>2</b><span data-sc="story_c_step2"></span></li>
+              <li><b>3</b><span data-sc="story_c_step3"></span></li>
+            </ol>
+            <div class="eg-chips eg-chips--drinks" data-sc-list="story_c_drinks"></div>
+          </div>
+
+          <div class="eg-hud">
+            <div class="eg-steps">
+              <button type="button" data-step="0"><b>01</b><span data-sc="story_step_a"></span></button>
+              <button type="button" data-step="1"><b>02</b><span data-sc="story_step_b"></span></button>
+              <button type="button" data-step="2"><b>03</b><span data-sc="story_step_c"></span></button>
+            </div>
+            <div class="eg-track" aria-hidden="true"><i></i></div>
+            <a class="eg-skip" href="#eg-dose" data-go="eg-dose"><span data-sc="story_skip"></span><svg aria-hidden="true"><use href="#eg-down" /></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · How much: adults or children and infants. -->
+      <section class="eg-dose eg-sheet" id="eg-dose" aria-labelledby="eg-dose-title" data-theme="light">
+        <div class="eg-dose__inner">
+          <div class="eg-dose__copy eg-reveal">
+            <div class="eg-eyebrow" data-sc="dose_eyebrow"></div>
+            <h2 id="eg-dose-title" data-sc="dose_title"></h2>
+            <p class="eg-dose__intro" data-sc="dose_text"></p>
+          </div>
+
+          <div class="eg-dose__panel eg-reveal" data-dose data-who="adult">
+            <div class="eg-switch" role="radiogroup" data-sc-attr="aria-label:dose_switch_label">
+              <button type="button" role="radio" aria-checked="true" data-who="adult"><span data-sc="dose_adult"></span></button>
+              <button type="button" role="radio" aria-checked="false" data-who="child" tabindex="-1"><span data-sc="dose_child"></span></button>
+              <i class="eg-switch__thumb" aria-hidden="true"></i>
+            </div>
+
+            <div class="eg-dose__day">
+              <div class="eg-dose__vials" data-vials data-sc-attr="data-adult-min:dose_adult_min;data-adult-max:dose_adult_max;data-child-min:dose_child_min;data-child-max:dose_child_max"></div>
+              <div class="eg-dose__count" aria-live="polite">
+                <b><span data-dose-min data-sc="dose_adult_min"></span>–<span data-dose-max data-sc="dose_adult_max"></span></b>
+                <span data-sc="dose_unit"></span>
+              </div>
+            </div>
+
+            <!-- One vial per dose, with the recommended gap between single-vial doses. -->
+            <div class="eg-gap">
+              <div class="eg-gap__line" aria-hidden="true">
+                <svg class="eg-gap__vial"><use href="#eg-vial" /></svg>
+                <span class="eg-gap__span"><b data-sc="dose_gap_value"></b></span>
+                <svg class="eg-gap__vial"><use href="#eg-vial" /></svg>
+              </div>
+              <p data-sc="dose_gap_text"></p>
+            </div>
+            <p class="eg-dose__doctor" data-sc="dose_doctor"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 · From the instructions: composition, use, precautions, side effects, storage, the document itself. -->
+      <section class="eg-info eg-sheet" id="eg-info" aria-labelledby="eg-info-title" data-theme="light">
+        <div class="eg-info__inner">
+          <div class="eg-info__head eg-reveal">
+            <div class="eg-eyebrow" data-sc="info_eyebrow"></div>
+            <h2 id="eg-info-title" data-sc="info_title"></h2>
+            <p data-sc="info_text"></p>
+          </div>
+
+          <ul class="eg-formula eg-reveal">
+            <li><b>01</b><h3 data-sc="formula_1_title"></h3><p data-sc="formula_1_text"></p></li>
+            <li><b>02</b><h3 data-sc="formula_2_title"></h3><p data-sc="formula_2_text"></p></li>
+            <li><b>03</b><h3 data-sc="formula_3_title"></h3><p data-sc="formula_3_text"></p></li>
+          </ul>
+
+          <div class="eg-tabs eg-reveal">
+            <div class="eg-tabs__list" role="tablist" data-sc-attr="aria-label:info_title">
+              <button type="button" role="tab" id="eg-tab-use" aria-controls="eg-panel-use" aria-selected="true"><span data-sc="tab_use"></span></button>
+              <button type="button" role="tab" id="eg-tab-how" aria-controls="eg-panel-how" aria-selected="false" tabindex="-1"><span data-sc="tab_how"></span></button>
+              <button type="button" role="tab" id="eg-tab-care" aria-controls="eg-panel-care" aria-selected="false" tabindex="-1"><span data-sc="tab_care"></span></button>
+              <button type="button" role="tab" id="eg-tab-side" aria-controls="eg-panel-side" aria-selected="false" tabindex="-1"><span data-sc="tab_side"></span></button>
+              <button type="button" role="tab" id="eg-tab-store" aria-controls="eg-panel-store" aria-selected="false" tabindex="-1"><span data-sc="tab_store"></span></button>
+            </div>
+            <div class="eg-tabs__panel" role="tabpanel" id="eg-panel-use" aria-labelledby="eg-tab-use" tabindex="0"><p data-sc="use_text"></p><p data-sc="use_text_2"></p></div>
+            <div class="eg-tabs__panel" role="tabpanel" id="eg-panel-how" aria-labelledby="eg-tab-how" tabindex="0"><p data-sc="how_text"></p><p data-sc="how_text_2"></p><p class="eg-warn" data-sc="how_oral_only"></p></div>
+            <div class="eg-tabs__panel" role="tabpanel" id="eg-panel-care" aria-labelledby="eg-tab-care" tabindex="0"><p data-sc="care_text"></p><p data-sc="care_text_2"></p></div>
+            <div class="eg-tabs__panel" role="tabpanel" id="eg-panel-side" aria-labelledby="eg-tab-side" tabindex="0"><p data-sc="side_text"></p><p data-sc="side_text_2"></p></div>
+            <div class="eg-tabs__panel" role="tabpanel" id="eg-panel-store" aria-labelledby="eg-tab-store" tabindex="0"><p data-sc="store_text"></p></div>
+          </div>
+
+          <div class="eg-leaflet eg-reveal">
+            <div>
+              <h3 data-sc="leaflet_title"></h3>
+              <p data-sc="leaflet_text"></p>
+            </div>
+            <a class="eg-btn eg-btn--primary" download data-sc-attr="href:leaflet_href"><span data-sc="leaflet_cta"></span><svg aria-hidden="true"><use href="#eg-down" /></svg></a>
+          </div>
+
+          <div class="eg-end eg-reveal">
+            <div class="eg-lockup eg-lockup--end" aria-hidden="true"><span class="eg-lockup__word"><span class="eg-lockup__entero">entero</span><span class="eg-lockup__germina">germina</span><sup>®</sup></span></div>
+            <a class="eg-btn eg-btn--ghost" href="index.html"><span data-sc="all_products"></span></a>
+          </div>
+        </div>
+        <p class="eg-disclaimer" data-sc="disclaimer"></p>
+      </section>
+    </main>
+
+    <div class="eg-rail" role="navigation" data-sc-attr="aria-label:chapters_label">
+      <a href="#eg-story" data-go="eg-story"><b>01</b><span data-sc="ch_story"></span></a>
+      <a href="#eg-dose" data-go="eg-dose"><b>02</b><span data-sc="ch_dose"></span></a>
+      <a href="#eg-info" data-go="eg-info"><b>03</b><span data-sc="ch_info"></span></a>
+    </div>
+
+    <footer class="site-footer" id="site-footer">
+  <div class="footer-container footer-modern">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo" aria-label="STADA logo">
+          <img src="../assets/logos/stada_logo.png" alt="STADA logo">
+        </a>
+        <p class="footer-eyebrow" data-static-i18n-key="site_name"></p>
+        <p class="footer-text" data-static-i18n-key="footer_brand_text"></p>
+        <div class="footer-trust" aria-label="STADA facts">
+          <span data-static-i18n-key="footer_trust_years"></span>
+          <span data-static-i18n-key="footer_trust_countries"></span>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-nav__group">
+          <h3 data-static-i18n-key="footer_company_title"></h3>
+          <a href="../about.html" data-static-i18n-key="nav_about"></a>
+          <a href="../culture.html" data-static-i18n-key="nav_culture"></a>
+          <a href="../history.html" data-static-i18n-key="nav_history"></a>
+          <a href="../contacts.html" data-static-i18n-key="nav_worldwide"></a>
+          <a href="../index.html#career" data-static-i18n-key="nav_career"></a>
+          <a href="../news.html" data-static-i18n-key="nav_news"></a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-warning">
+      <strong data-static-i18n-key="footer_warning_title"></strong>
+      <p data-static-i18n-key="footer_warning_text"></p>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> STADA. <span data-static-i18n-key="footer_rights"></span></p>
+      <div class="footer-bottom__links">
+        <a href="https://www.stada.com" target="_blank" rel="noopener">stada.com</a>
+        <a href="#" class="footer-top" data-static-i18n-key="footer_back_top" aria-label="Back to top"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <dialog class="cookie-notice" data-cookie-notice aria-labelledby="cookie-notice-title">
+    <h2 id="cookie-notice-title" data-static-i18n-key="cookie_title"></h2>
+    <p data-static-i18n-key="cookie_notice"></p>
+    <a data-cookie-link href="https://ru.aboutcookies.org/" target="_blank" rel="noopener noreferrer" data-static-i18n-key="cookie_link_label"></a>
+    <button class="cookie-notice__accept" type="button" data-cookie-notice-accept data-static-i18n-key="cookie_accept">OK</button>
+  </dialog>
+
+    <script src="../js/site/bootstrap.js?v=supplied-copy-1"></script>
+  <script src="../js/site/news-labels.js"></script>
+    <script src="../js/site/locale-state.js?v=supplied-copy-1"></script>
+    <script src="../js/site/content-api.js?v=supplied-copy-1"></script>
+    <script src="../js/site/product-text.js?v=1"></script>
+    <script src="../js/site/dynamic-product.js?v=locale-audit-1"></script>
+    <script src="../js/site/locale-controls.js?v=locale-audit-1"></script>
+    <script src="../js/site/homepage.js?v=site-consistency-1"></script>
+    <script src="../js/site/page-reveals.js?v=site-modules-1"></script>
+    <script src="../js/site/product-animations.js?v=site-modules-1"></script>
+    <script src="../js/site/shared.js?v=mobile-nav-2"></script>
+  <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
+    <script type="module" src="../js/showcase/enterogermina.js?v=1"></script>
+  </body>
+</html>
