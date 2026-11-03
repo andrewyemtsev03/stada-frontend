@@ -149,7 +149,7 @@ The lock runs on the server:
   logs everyone out), optional `LOCK_SESSION_DAYS` (default 14). Without them locked
   pages answer 503; the rest of the site is unaffected.
 - **PS.kz** (`tools/lock/gate.php`, added by `export:country`): the page's address
-  redirects to `/__lock/`, which sends the page after the password. The page itself
+  redirects to `/__lock/index.php`, which sends the page after the password. The page itself
   is stored as a PHP file that refuses to run on its own. Images and models of a
   locked product are not protected there. The password is set once on the server
   in `__lock/config.php` (never in the export, so uploads do not overwrite it):
