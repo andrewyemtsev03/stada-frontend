@@ -114,8 +114,8 @@ body.mg-page { overflow-x: visible; }
 .mg-kids span {
   display: inline-block; transition: transform .45s var(--mg-spring);
   /* A true outline drawn behind the fill (smooth on every curve), not offset copies of the letter. */
-  -webkit-text-stroke: .09em #fff; paint-order: stroke fill;
-  text-shadow: 0 12px 22px rgba(38, 44, 142, .18);
+  -webkit-text-stroke: .07em #fff; paint-order: stroke fill;
+  filter: drop-shadow(0 10px 16px rgba(38, 44, 142, .16));
 }
 .mg-kids span:nth-child(1) { color: var(--mg-k1); transform: translateY(-.03em) rotate(-5deg); }
 .mg-kids span:nth-child(2) { color: var(--mg-k2); transform: translateY(.07em) rotate(3deg); }
@@ -342,7 +342,7 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 /* Captions sit in a centred 1280 px column (not against the screen edge on wide screens), vertically centred. */
 .mg-cap {
   position: absolute; z-index: 6; left: var(--edge); top: 50%; translate: 0 -55%;
-  max-width: min(clamp(470px, 34vw, 580px), calc(100vw - 36px)); pointer-events: none; will-change: opacity, transform;
+  max-width: min(clamp(470px, 30vw, 520px), calc(100vw - 36px)); pointer-events: none; will-change: opacity, transform;
 }
 .mg-ready .mg-cap { opacity: 0; }
 .mg-cap.is-live { pointer-events: auto; }
@@ -350,14 +350,14 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
 .mg-cap--right .mg-eyebrow, .mg-cap--right .mg-chips { justify-content: flex-end; }
 .mg-cap--right p { margin-left: auto; }
 .mg-cap .mg-eyebrow { color: var(--mg-navy); }
-.mg-cap h2, .mg-cap h3 { margin: 16px 0 18px; font-size: clamp(42px, 4.6vw, 84px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--mg-ink); }
+.mg-cap h2, .mg-cap h3 { margin: 14px 0 16px; font-size: clamp(40px, 3.9vw, 70px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--mg-ink); }
 .mg-cap h2 b, .mg-cap h3 b { font-weight: 700; }
 .mg-story .mg-cap:last-of-type h3 b {
   text-decoration: underline; text-decoration-color: var(--mg-melon); text-decoration-thickness: .085em; text-underline-offset: .14em; text-decoration-skip-ink: none;
 }
-.mg-cap p { max-width: clamp(410px, 29vw, 520px); font-size: clamp(17px, 1.15vw, 21px); line-height: 1.6; color: #0d2f6c; }
-.mg-cap .mg-eyebrow { font-size: clamp(12px, .8vw, 14px); }
-.mg-cap .mg-chips span { font-size: clamp(12.5px, .85vw, 15px); padding: .65em 1.05em; }
+.mg-cap p { max-width: clamp(410px, 26vw, 470px); font-size: clamp(16.5px, 1vw, 18.5px); line-height: 1.6; color: #0d2f6c; }
+.mg-cap .mg-eyebrow { font-size: clamp(12px, .7vw, 13px); }
+.mg-cap .mg-chips span { font-size: clamp(12.5px, .75vw, 14px); padding: .65em 1.05em; }
 .mg-cap .mg-chips span { color: var(--mg-ink); background: rgba(255, 255, 255, .7); border-color: rgba(255, 255, 255, .9); }
 /* The tablet counter: counts up as the halo of thirty fills in. */
 .mg-count { display: flex; align-items: baseline; justify-content: flex-end; gap: 12px; margin-top: 10px; }
@@ -690,7 +690,7 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
 .mg-lockup--end { align-items: center; margin: 0 0 14px; }
 .mg-lockup--end .mg-lockup__magne { color: #fff; font-size: clamp(52px, 7.6vw, 124px); }
 .mg-lockup--end .mg-kids { font-size: clamp(46px, 6.4vw, 106px); margin-left: 0; }
-.mg-lockup--end .mg-kids span { -webkit-text-stroke: .12em #fff; text-shadow: 0 16px 30px rgba(0, 0, 0, .3); }
+.mg-lockup--end .mg-kids span { -webkit-text-stroke: .065em #fff; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .28)); }
 .mg-buy .mg-buy__tagline { margin-bottom: 26px; font-size: clamp(18px, 1.6vw, 24px); color: #dfe6ff; max-width: none; }
 .mg-buy .mg-disclaimer {
   position: relative; z-index: 2; margin: 0 calc(var(--mg-pad) * -1); padding: 22px var(--mg-pad);
