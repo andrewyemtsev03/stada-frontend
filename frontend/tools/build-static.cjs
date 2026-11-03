@@ -9,7 +9,7 @@ const output = path.join(source, 'dist');
 const countries = JSON.parse(fs.readFileSync(path.join(source, 'content/countries.json')));
 const languageTag = lang => ({ kz: 'kk', kg: 'ky', ge: 'ka' }[lang] || lang);
 const pageTemplates = ['index.html', 'about.html', 'culture.html', 'history.html', 'contacts.html', 'news.html', 'news-article.html', 'products/index.html'];
-const scripts = ['bootstrap', 'news-labels', 'locale-state', 'content-api', 'dynamic-product', 'locale-controls', 'homepage', 'page-reveals', 'product-animations', 'news-data', 'company-news', 'shared'];
+const scripts = ['bootstrap', 'news-labels', 'locale-state', 'content-api', 'product-text', 'dynamic-product', 'locale-controls', 'homepage', 'page-reveals', 'product-animations', 'news-data', 'company-news', 'shared'];
 const scriptSources = scripts.map(name => {
   let code = fs.readFileSync(path.join(source, `js/site/${name}.js`), 'utf8');
   if (name === 'shared') code = code.slice(0, code.indexOf("document.addEventListener('DOMContentLoaded'"));
@@ -26,6 +26,7 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
   const window = dom.window;
   window.matchMedia = () => ({ matches: true, addEventListener() {}, removeEventListener() {} });
   window.requestAnimationFrame = () => 0;
+  window.Element.prototype.getAnimations = () => [];
   window.fetch = () => { throw new Error('The static build must never fetch runtime content.'); };
   for (const script of scriptSources) vm.runInContext(script.code, dom.getInternalVMContext(), { filename: script.name });
   window.__countries = countries;
@@ -56,6 +57,46 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
   return dom;
 }
 
+// Showcase product pages are hand-designed templates whose copy comes from the
+// product payload. Inline markup is limited to a few presentational tags.
+const showcaseMarkup = /<(?!\/?(?:b|i|em|strong|br|small|sup)\s*\/?>)[^>]*>/i;
+function renderShowcase(document, { product }) {
+  const copy = product.showcase;
+  if (!copy) throw new Error(`Missing showcase copy: ${product.slug}`);
+  const text = key => {
+    const value = copy[key];
+    if (value === undefined) throw new Error(`Missing showcase text "${key}" for ${product.slug}`);
+    if (typeof value === 'string' && showcaseMarkup.test(value)) throw new Error(`Unsupported markup in "${key}" for ${product.slug}`);
+    return value;
+  };
+  document.querySelectorAll('[data-sc]').forEach(node => {
+    node.innerHTML = text(node.dataset.sc);
+    node.removeAttribute('data-sc');
+  });
+  document.querySelectorAll('[data-sc-list]').forEach(node => {
+    const items = text(node.dataset.scList);
+    if (!Array.isArray(items)) throw new Error(`Showcase list "${node.dataset.scList}" must be an array`);
+    node.replaceChildren(...items.map(item => Object.assign(document.createElement('span'), { textContent: item })));
+    node.removeAttribute('data-sc-list');
+  });
+  document.querySelectorAll('[data-sc-attr]').forEach(node => {
+    for (const pair of node.dataset.scAttr.split(';')) {
+      const [attribute, key] = pair.split(':');
+      node.setAttribute(attribute, text(key).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+    }
+    node.removeAttribute('data-sc-attr');
+  });
+  document.title = product.page?.title || `STADA - ${product.name}`;
+}
+
+function productTemplate(product) {
+  const template = product.template || 'products/product.html';
+  if (!/^products\/[a-z0-9-]+\.html$/.test(template) || template === 'products/index.html' || !fs.existsSync(path.join(source, template))) {
+    throw new Error(`Invalid product template for ${product.slug}: ${template}`);
+  }
+  return template;
+}
+
 function addContactDetails(document, lang) {
   // Use the same locally bundled module as the interactive globe; no separate copy.
   const dataCode = fs.readFileSync(path.join(source, 'js/worldwide/countries-data.js'), 'utf8').replace(/export /g, '');
@@ -71,6 +112,43 @@ function addContactDetails(document, lang) {
 
 function finalize(dom, country, lang, template, page, text, newsId) {
   const document = dom.window.document;
+  const products = dom.window.__payload.content.productCatalog || [];
+  if (products.length) {
+    if (country.code !== 'kz') document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => link.remove());
+    const label = text.nav_products;
+    const menu = document.querySelector('.menu');
+    if (menu) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '/products/index.html'; link.textContent = label;
+      item.append(link); menu.append(item);
+    }
+    const footer = document.querySelector('.footer-nav');
+    if (footer) {
+      const group = document.createElement('div'); group.className = 'footer-nav__group';
+      const heading = document.createElement('h3'); heading.textContent = text.footer_products_title;
+      group.append(heading);
+      for (const product of products) {
+        const link = document.createElement('a');
+        link.href = `/products/product.html?slug=${product.slug}`; link.textContent = product.name;
+        group.append(link);
+      }
+      footer.append(group);
+    }
+    const section = document.getElementById('products');
+    if (section) section.hidden = false;
+    const categories = new Set(products.flatMap(product => product.category.split(' ')));
+    document.querySelectorAll('[data-product-filter], [data-product-filter-select] option').forEach(control => {
+      const category = control.dataset.productFilter || control.value;
+      if (category !== 'all' && !categories.has(category)) control.remove();
+    });
+    document.querySelectorAll('.products-highlight:nth-child(2) strong, [data-backend-text-id="products_index_text_003"]').forEach(node => {
+      node.textContent = String(categories.size);
+    });
+    document.querySelectorAll('#products .products-stage img, .catalog-hero__podium').forEach(image => {
+      image.src = products[0].image.src; image.alt = products[0].name;
+    });
+  }
   document.documentElement.lang = languageTag(lang);
   document.documentElement.setAttribute('data-static-site', '');
   if (newsId) document.documentElement.dataset.staticNewsId = newsId;
@@ -140,7 +218,7 @@ function finalize(dom, country, lang, template, page, text, newsId) {
   });
   const description = document.createElement('meta');
   description.name = 'description';
-  description.content = (document.querySelector('main p:not(:empty)')?.textContent || text.about_par1 || country.siteName)
+  description.content = ((document.querySelector('[data-page-description]') || document.querySelector('main p:not(:empty)'))?.textContent || text.about_par1 || country.siteName)
     .replace(/\s+/g, ' ').trim().slice(0, 180);
   document.head.append(description);
   if (page === 'news-article.html' || page === 'products/product.html') {
@@ -162,35 +240,86 @@ function finalize(dom, country, lang, template, page, text, newsId) {
   return dom.serialize();
 }
 
+// Products marked `"locked": true` are awaiting approval (legal, product manager). Their pages are built
+// and deployed on the real site, but served only behind the password (middleware.js on Vercel, the PHP
+// gate in the stada.kz export, see tools/export-country.cjs). They stay out of catalogues, menus, home
+// previews and sitemaps and are marked noindex. Removing the flag publishes them.
+const lockedFile = path.join(source, 'content/locked.json');
 function build() {
-  // Only this fixed, verified generated directory may be cleared.
-  if (path.dirname(output) !== source || path.basename(output) !== 'dist') throw new Error('Unsafe output directory');
+  return buildInto(output);
+}
+
+// The lock list is committed (content/locked.json) so the Vercel middleware can import it.
+function lockedList(entries) {
+  const pages = entries.map(({ country, lang, slug }) => `/sites/${country}/${lang}/products/${slug}.html`).sort();
+  // A product's own files (assets folder, showcase CSS/JS) are locked too, unless some country
+  // already shows that slug publicly.
+  const publicSlugs = new Set();
+  for (const country of countries) {
+    const snapshot = JSON.parse(fs.readFileSync(path.join(source, `content/countries/${country.code}.json`)));
+    for (const locale of Object.values(snapshot.locales)) {
+      for (const [slug, payload] of Object.entries(locale.products || {})) if (!payload.product.locked) publicSlugs.add(slug);
+    }
+  }
+  const slugs = [...new Set(entries.map(entry => entry.slug))].filter(slug => !publicSlugs.has(slug)).sort();
+  return { pages, slugs };
+}
+function writeLocked(entries) {
+  const content = `${JSON.stringify(lockedList(entries), null, 2)}\n`;
+  if (!fs.existsSync(lockedFile) || fs.readFileSync(lockedFile, 'utf8') !== content) write(lockedFile, content);
+}
+
+function buildInto(output) {
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
   for (const directory of ['assets', 'css', 'js']) fs.cpSync(path.join(source, directory), path.join(output, directory), { recursive: true });
   let pageCount = 0;
   const routes = [];
+  const locked = [];
   for (const country of countries) {
     const snapshot = JSON.parse(fs.readFileSync(path.join(source, `content/countries/${country.code}.json`)));
     const siteRoot = path.join(output, 'sites', country.code);
     const urls = [];
     for (const lang of country.supportedLanguages) {
-      const locale = snapshot.locales[lang];
-      if (!locale) throw new Error(`Missing content: ${country.code}/${lang}`);
+      const source_ = snapshot.locales[lang];
+      if (!source_) throw new Error(`Missing content: ${country.code}/${lang}`);
+      const locale = source_;
+      const listed = Object.values(locale.products || {}).filter(payload => !payload.product.locked);
       const render = (template, page, query = '', newsId, productPayload) => {
         const basePayload = locale.pages[template] || locale.pages['products/index.html'];
+        const catalog = listed.map(payload => payload.product);
+        const homeProducts = catalog.filter((product, index) => catalog.findIndex(item => item.image.src === product.image.src) === index);
         const payload = { ...basePayload, country, content: { ...basePayload.content,
           text: { ...locale.text, ...basePayload.content.text },
+          ...(catalog.length ? { productCatalog: catalog, homeProducts } : {}),
         } };
         const dom = prepareRuntime(fs.readFileSync(path.join(source, template), 'utf8'), country, lang, template, payload, query);
         if (template === 'contacts.html') addContactDetails(dom.window.document, lang);
-        if (productPayload) {
+        if (productPayload && template !== 'products/product.html') {
+          renderShowcase(dom.window.document, productPayload);
+        } else if (productPayload) {
           dom.window.__product = productPayload;
           vm.runInContext('renderDynamicProductPage(window.__product)', dom.getInternalVMContext());
+          const documents = productPayload.product.documents || [];
+          if (documents.length) {
+            const section = dom.window.document.querySelector('[data-product-information]').parentElement;
+            const links = dom.window.document.createElement('div'); links.className = 'product-documents';
+            for (const file of documents) {
+              const link = dom.window.document.createElement('a');
+              link.href = file.href; link.textContent = file.label; link.setAttribute('download', '');
+              link.className = 'product-button product-button--secondary'; links.append(link);
+            }
+            section.append(links);
+          }
+        }
+        const isLocked = Boolean(productPayload?.product.locked);
+        if (isLocked) {
+          const robots = dom.window.document.createElement('meta'); robots.name = 'robots'; robots.content = 'noindex, nofollow';
+          dom.window.document.head.prepend(robots);
         }
         const html = finalize(dom, country, lang, template, page, payload.content.text, newsId);
         write(path.join(siteRoot, lang, page), html);
-        if (page !== 'news-article.html' && page !== 'products/product.html') urls.push(`https://${country.domain}/${lang}/${page}`);
+        if (page !== 'news-article.html' && page !== 'products/product.html' && !isLocked) urls.push(`https://${country.domain}/${lang}/${page}`);
         if (lang === country.defaultLanguage && pageTemplates.includes(page)) write(path.join(siteRoot, page), html);
         pageCount++;
         dom.window.close();
@@ -205,7 +334,8 @@ function build() {
       }
       for (const [slug, product] of Object.entries(locale.products || {})) {
         if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`Invalid product slug: ${slug}`);
-        render('products/product.html', `products/${slug}.html`, `?slug=${slug}`, undefined, product);
+        render(productTemplate(product.product), `products/${slug}.html`, `?slug=${slug}`, undefined, product);
+        if (product.product.locked) locked.push({ country: country.code, lang, slug });
       }
     }
     write(path.join(siteRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `<url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`);
@@ -226,8 +356,9 @@ function build() {
     return { ...header, value: header.value.replace(' https://api.stada.kz https://stada-content-backend.onrender.com', '') };
   }) }));
   write(path.join(output, 'vercel.json'), `${JSON.stringify(deployment, null, 2)}\n`);
+  writeLocked(locked);
   write(path.join(output, 'build-manifest.json'), `${JSON.stringify({ countries: countries.map(country => country.code), pages: pageCount }, null, 2)}\n`);
-  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites. Output: frontend/dist`);
+  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites${locked.length ? ` (${locked.length} locked pages)` : ''}. Output: ${path.relative(path.resolve(source, '..'), output)}`);
 }
 if (require.main === module) build();
-module.exports = { build, output, source, countries };
+module.exports = { build, output, source, countries, renderShowcase, lockedList };

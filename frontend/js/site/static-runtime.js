@@ -17,6 +17,7 @@ function initializeLocaleState() {
   STADA_DOMAIN_COUNTRY = currentCountry;
   STADA_DEFAULT_COUNTRY = currentCountry;
   exposeCurrentCountry();
+  document.dispatchEvent(new CustomEvent('stada:languagechange', { detail: { lang: currentLang, country: currentCountry } }));
 }
 
 function getCurrentBackendPagePath() {
