@@ -84,7 +84,7 @@ const storySection = $('#mg-story');
 const STAGES = [
   { id: 'a', from: 0, at: .13 },
   { id: 'b', from: .31, at: .5 },
-  { id: 'c', from: .66, at: .92 },
+  { id: 'c', from: .625, at: .92 },
 ];
 const story = storySection && {
   section: storySection,
@@ -315,7 +315,12 @@ if (dose && doseSwitch) {
     days.classList.add('is-anim');
     requestAnimationFrame(() => requestAnimationFrame(() => days.classList.remove('is-anim')));
   };
-  buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.age)));
+  // The panda wiggles "tap me" once the calculator is in view, until the visitor picks an age either way;
+  // tapping it flips between the two ages.
+  const pandaToggle = $('[data-dose-toggle]', dose);
+  const settled = () => pandaToggle?.classList.remove('is-calling');
+  pandaToggle?.addEventListener('click', () => { settled(); apply(age === 'young' ? 'older' : 'young'); });
+  buttons.forEach(button => button.addEventListener('click', () => { settled(); apply(button.dataset.age); }));
   doseSwitch.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
     event.preventDefault();
@@ -329,6 +334,7 @@ if (dose && doseSwitch) {
     shown = true;
     observer.disconnect();
     apply('young', true);
+    pandaToggle?.classList.add('is-calling');
   }, { threshold: .35 }).observe(dose);
 }
 
