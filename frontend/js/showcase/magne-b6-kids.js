@@ -65,7 +65,7 @@ const revealObserver = new IntersectionObserver(entries => {
 $$('.mg-reveal').forEach(node => revealObserver.observe(node));
 
 /* ------------------------------------------------------------------ hero */
-// The hero doesn't follow the cursor and can't be turned by dragging.
+// The hero can't be turned by dragging; on desktop the jar leans very slightly toward the mouse (see initHero).
 const heroVisual = $('[data-hero-visual]');
 
 // Loading screen: lifted once the hero scene has drawn (or fallen back to photos) and the fonts are in,
@@ -1857,8 +1857,8 @@ async function initStory() {
    further down, composed as one live 3D scene in front of the pack's petal
    flower (an SVG behind the canvas, centred where the jar is framed). Props
    stay at believable sizes next to the jar and move calmly: they settle in,
-   breathe, and stay put when the page scrolls. Nothing follows the cursor, and the jar
-   can't be turned by dragging.
+   breathe, and stay put when the page scrolls. The jar can't be turned by dragging;
+   with a mouse it leans a few degrees toward the cursor.
    Until the first frame is drawn the visual shows only the 3D loader. The
    photographs are kept for no WebGL and data-saver mode only.
    ===================================================================== */
@@ -2024,6 +2024,17 @@ async function initHero() {
   let lastKey = '';
   let shown = false;
   let heroFrames = 0;
+  // Mouse lean: a few degrees toward the cursor, mouse only (not touch, reduced motion or the lite profile).
+  const lean = { x: 0, y: 0, tx: 0, ty: 0, on: finePointer && !still };
+  if (lean.on) {
+    addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      const area = heroVisual.getBoundingClientRect();
+      lean.tx = clamp((event.clientX - (area.left + area.width / 2)) / (innerWidth / 2), -1, 1);
+      lean.ty = clamp((event.clientY - (area.top + area.height / 2)) / (innerHeight / 2), -1, 1);
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { lean.tx = 0; lean.ty = 0; });
+  }
 
   // The hero's own clock: on phones it stops while nothing is happening, so the still life simply holds its pose.
   let heroTime = 0;
@@ -2043,6 +2054,11 @@ async function initHero() {
     if (!resting) heroTime += dt;
     const time = still ? 0 : heroTime;
     heroFrames += 1;
+    if (lean.on) {
+      const ease = 1 - Math.pow(.02, dt);
+      lean.x += (lean.tx - lean.x) * ease;
+      lean.y += (lean.ty - lean.y) * ease;
+    }
     // A resize (the phone's address bar sliding away) clears the canvas, so a resting hero redraws once after it.
     const size = `${canvas.width}x${canvas.height}`;
     if (resting && shown && heroFrames > 2 && size === drawnSize) return;
@@ -2070,6 +2086,9 @@ async function initHero() {
         // Stands on the ground (no bob), so the contact shadow stays under it.
         y += lerp(-.25, 0, settle);
         scale = lerp(.92, 1, settle);
+        // About 4 degrees sideways and 2 up/down at most.
+        ry += lean.x * .07;
+        rx += lean.y * .035;
       } else if (piece.kind === 'melon') {
         x += lerp(.9, 0, k);
         // A gentle rock on its rind, the same rhythm as the panda tablet in front.
