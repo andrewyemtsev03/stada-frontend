@@ -317,9 +317,33 @@ if (dose && doseSwitch) {
   };
   // The panda wiggles "tap me" once the calculator is in view, until the visitor picks an age either way;
   // tapping it flips between the two ages.
+  // While the calculator is on screen the panda breathes; it hops "tap me" until an age is picked, and starts
+  // inviting again 7 s after the last tap. Leaving and coming back restarts it.
   const pandaToggle = $('[data-dose-toggle]', dose);
-  const settled = () => pandaToggle?.classList.remove('is-calling');
-  pandaToggle?.addEventListener('click', () => { settled(); apply(age === 'young' ? 'older' : 'young'); });
+  let inView = false;
+  let callAgain = 0;
+  const calling = on => pandaToggle?.classList.toggle('is-calling', on && inView);
+  const settled = () => {
+    calling(false);
+    clearTimeout(callAgain);
+    callAgain = setTimeout(() => calling(true), 7000);
+  };
+  if (pandaToggle) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      pandaToggle.classList.toggle('is-awake', inView);
+      calling(inView);
+      if (!inView) clearTimeout(callAgain);
+    }, { threshold: .3 }).observe(pandaToggle);
+    pandaToggle.addEventListener('click', () => {
+      settled();
+      pandaToggle.classList.remove('is-boing');
+      void pandaToggle.offsetWidth;
+      pandaToggle.classList.add('is-boing');
+      apply(age === 'young' ? 'older' : 'young');
+    });
+    pandaToggle.addEventListener('animationend', event => { if (event.animationName === 'mg-panda-boing') pandaToggle.classList.remove('is-boing'); });
+  }
   buttons.forEach(button => button.addEventListener('click', () => { settled(); apply(button.dataset.age); }));
   doseSwitch.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
@@ -334,7 +358,6 @@ if (dose && doseSwitch) {
     shown = true;
     observer.disconnect();
     apply('young', true);
-    pandaToggle?.classList.add('is-calling');
   }, { threshold: .35 }).observe(dose);
 }
 
