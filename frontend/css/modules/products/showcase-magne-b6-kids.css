@@ -676,21 +676,22 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
    05 — Where to buy & close
    ===================================================================== */
 .mg-buy {
-  padding: clamp(84px, 12vh, 140px) var(--mg-pad) 0; color: #fff;
-  background: radial-gradient(90% 80% at 80% 10%, #3a45c2 0%, var(--mg-navy) 40%, #12166a 75%, #0a0d45 100%);
+  padding: clamp(84px, 12vh, 140px) var(--mg-pad) 0; color: var(--mg-ink);
+  /* The same sky-blue ground as the story chapter. */
+  background: radial-gradient(110% 90% at 72% 44%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%);
 }
-.mg-buy__flower { position: absolute; z-index: 0; width: 120vmin; height: 120vmin; right: -30vmin; top: -20vmin; opacity: .1; animation: mg-spin 160s linear infinite; }
+.mg-buy__flower { position: absolute; z-index: 0; width: 120vmin; height: 120vmin; right: -30vmin; top: -20vmin; opacity: .35; animation: mg-spin 160s linear infinite; }
 .mg-buy__inner { position: relative; z-index: 2; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 70px); align-items: center; }
 .mg-buy__copy { position: relative; }
-.mg-buy .mg-eyebrow { color: #ff8fc2; }
-.mg-buy h2 { color: #fff; }
-.mg-buy p { max-width: 440px; font-size: 16.5px; line-height: 1.6; color: #c9d2f6; }
+.mg-buy .mg-eyebrow { color: var(--mg-navy); }
+.mg-buy h2 { color: var(--mg-ink); }
+.mg-buy p { max-width: 440px; font-size: 17px; line-height: 1.6; color: #0d2f6c; }
 .mg-partners { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .mg-partner {
   display: flex; align-items: center; gap: 16px; min-height: 84px; padding: 14px 20px 14px 14px; border-radius: 22px; text-decoration: none; color: var(--mg-ink);
-  background: #fff; box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .7); transition: transform .35s var(--mg-spring), box-shadow .35s;
+  background: #fff; box-shadow: 0 24px 50px -30px rgba(0, 50, 120, .55); transition: transform .35s var(--mg-spring), box-shadow .35s;
 }
-.mg-partner:hover { transform: translateY(-5px); box-shadow: 0 34px 60px -30px rgba(0, 0, 0, .8); }
+.mg-partner:hover { transform: translateY(-5px); box-shadow: 0 34px 60px -30px rgba(0, 50, 120, .65); }
 .mg-partner__logo { display: grid; place-items: center; width: 64px; height: 56px; flex: none; border-radius: 16px; background: #f3f6fc; }
 .mg-partner__logo img { max-width: 50px; max-height: 36px; width: auto; height: auto; object-fit: contain; }
 /* Wordmark logos show only their round icon; the name sits next to it. */
@@ -701,10 +702,10 @@ html:not(.mg-ready) .mg-tabs__panel + .mg-tabs__panel { border-top: 1px solid va
 .mg-partner:hover i { background: var(--mg-k2); color: #fff; transform: rotate(8deg); }
 .mg-buy__end { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(56px, 10vh, 100px) 0 clamp(40px, 6vh, 64px); }
 .mg-lockup--end { align-items: center; margin: 0 0 14px; }
-.mg-lockup--end .mg-lockup__magne { color: #fff; font-size: clamp(52px, 7.6vw, 124px); }
+.mg-lockup--end .mg-lockup__magne { color: var(--mg-navy); font-size: clamp(52px, 7.6vw, 124px); }
 .mg-lockup--end .mg-kids { font-size: clamp(46px, 6.4vw, 106px); margin-left: 0; }
-.mg-lockup--end .mg-kids span { -webkit-text-stroke: .065em #fff; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .28)); }
-.mg-buy .mg-buy__tagline { margin-bottom: 26px; font-size: clamp(18px, 1.6vw, 24px); color: #dfe6ff; max-width: none; }
+.mg-lockup--end .mg-kids span { -webkit-text-stroke: .065em #fff; filter: drop-shadow(0 14px 22px rgba(0, 50, 120, .25)); }
+.mg-buy .mg-buy__tagline { margin-bottom: 26px; font-size: clamp(18px, 1.6vw, 24px); color: var(--mg-ink); max-width: none; }
 .mg-buy .mg-disclaimer {
   position: relative; z-index: 2; margin: 0 calc(var(--mg-pad) * -1); padding: 22px var(--mg-pad);
   text-align: center; font-size: clamp(13px, 1.2vw, 16px); font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
