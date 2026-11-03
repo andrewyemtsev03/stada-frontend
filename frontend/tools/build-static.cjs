@@ -251,12 +251,65 @@ function build({ review = process.argv.includes('--review'), out = review ? revi
   return buildInto(out, review, publicProducts);
 }
 
+// The review site's start page: every product on review, by country, with a link per language.
+// Review addresses put the country first (/<country>/<language>/...), see review/middleware.js.
+function reviewIndex(items) {
+  const esc = value => String(value).replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+  const strip = value => String(value).replace(/<[^>]*>/g, '');
+  const groups = countries.map(country => {
+    const products = [...new Set(items.filter(item => item.country.code === country.code).map(item => item.slug))];
+    const site = `<a class="site" href="/${country.code}/${country.defaultLanguage}/index.html">${esc(country.domain)} →</a>`;
+    if (!products.length) return `<section class="empty"><h2>${esc(country.domain)}</h2><p>—</p>${site}</section>`;
+    const rows = products.map(slug => {
+      const langs = items.filter(item => item.country.code === country.code && item.slug === slug);
+      return `<li><strong>${esc(strip(langs[0].name))}</strong> ${langs.map(item => `<a href="/${country.code}/${item.lang}/products/${slug}.html">${item.lang.toUpperCase()}</a>`).join(' ')}</li>`;
+    }).join('');
+    return `<section><h2>${esc(country.domain)}</h2><ul>${rows}</ul>${site}</section>`;
+  }).join('\n');
+  return `<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>STADA — на согласовании</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;padding:40px 18px;font-family:"Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#141a52;background:#eef8fd}
+  main{max-width:760px;margin:0 auto}
+  header{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+  header img{width:96px;height:auto}
+  h1{margin:0;font-size:24px}
+  section{margin:0 0 14px;padding:20px 22px;border-radius:20px;background:#fff;box-shadow:0 20px 40px -32px rgba(0,50,120,.5)}
+  section.empty{opacity:.55}
+  h2{margin:0 0 10px;font-size:17px}
+  ul{margin:0 0 12px;padding:0;list-style:none}
+  li{padding:8px 0;border-top:1px solid #e6ecf5}
+  li a{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:99px;background:#262c8e;color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+  li a:hover{background:#e5007d}
+  .site{color:#262c8e;font-size:14px}
+  footer{margin-top:24px;font-size:13px}
+  footer a{color:#46507a}
+</style>
+</head>
+<body>
+<main>
+<header><img src="/assets/logos/stada_logo.png" alt="STADA" width="770" height="450"><h1>Материалы на согласовании</h1></header>
+${groups}
+<footer><a href="/__review/logout">Выйти</a></footer>
+</main>
+</body>
+</html>
+`;
+}
+
 function buildInto(output, review, productsOf) {
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
   for (const directory of ['assets', 'css', 'js']) fs.cpSync(path.join(source, directory), path.join(output, directory), { recursive: true });
   let pageCount = 0;
   const routes = [];
+  const onReview = [];
   for (const country of countries) {
     const snapshot = JSON.parse(fs.readFileSync(path.join(source, `content/countries/${country.code}.json`)));
     const siteRoot = path.join(output, 'sites', country.code);
@@ -310,6 +363,7 @@ function buildInto(output, review, productsOf) {
       for (const [slug, product] of Object.entries(locale.products || {})) {
         if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`Invalid product slug: ${slug}`);
         render(productTemplate(product.product), `products/${slug}.html`, `?slug=${slug}`, undefined, product);
+        if (product.product.review) onReview.push({ country, lang, slug, name: product.product.name || slug });
       }
     }
     write(path.join(siteRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `<url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`);
@@ -330,6 +384,7 @@ function buildInto(output, review, productsOf) {
     return { ...header, value: header.value.replace(' https://api.stada.kz https://stada-content-backend.onrender.com', '') };
   }) }));
   write(path.join(output, 'vercel.json'), `${JSON.stringify(deployment, null, 2)}\n`);
+  if (review) write(path.join(output, 'index.html'), reviewIndex(onReview));
   write(path.join(output, 'build-manifest.json'), `${JSON.stringify({ countries: countries.map(country => country.code), pages: pageCount }, null, 2)}\n`);
   console.log(`Built ${pageCount} complete pages across ${countries.length} country sites${review ? ' (review build, includes products on review)' : ''}. Output: ${path.relative(path.resolve(source, '..'), output)}`);
 }

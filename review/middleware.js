@@ -6,6 +6,12 @@
 // repository); a correct entry sets an HttpOnly, Secure, signed cookie (HMAC-SHA-256 with
 // REVIEW_SECRET) that expires after REVIEW_SESSION_DAYS (default 14).
 //
+// It also routes between the seven country sites. Review addresses carry the country first:
+//   /<country>/<language>/...   e.g. /ge/ge/products/<slug>.html, /uz/ru/products/<slug>.html
+//   /<country>/                 that country's home page
+// Visiting one remembers the country in a cookie, so the site's own links (which have no country,
+// e.g. /ru/about.html or /products/...) stay on that country's site. `/` lists everything on review.
+//
 // This file belongs to the review project only (root directory `review/`); the public sites do not
 // run it.
 
@@ -16,6 +22,43 @@ const LOGIN = '/__review/login';
 const LOGOUT = '/__review/logout';
 // Served without a session so the password page can show the logo.
 const PUBLIC = new Set(['/assets/logos/stada_logo.png', '/favicon.ico']);
+
+// Country sites in the build (`frontend/content/countries.json`; a test keeps this in sync).
+export const COUNTRIES = {
+  kz: { languages: ['ru', 'kz'], home: 'ru' },
+  kg: { languages: ['ru', 'kg'], home: 'ru' },
+  ge: { languages: ['ge', 'en'], home: 'ge' },
+  az: { languages: ['az', 'ru'], home: 'az' },
+  am: { languages: ['hy', 'ru'], home: 'hy' },
+  md: { languages: ['ro', 'ru'], home: 'ro' },
+  uz: { languages: ['ru', 'uz'], home: 'ru' },
+};
+const COUNTRY_COOKIE = 'stada_review_country';
+const ROOT_PAGES = new Set(['index.html', 'about.html', 'culture.html', 'history.html', 'contacts.html', 'news.html', 'news-article.html', 'sitemap.xml']);
+
+// Where a request lives in the build, or null to serve the path as it is (assets, css, js, `/`).
+export function routeFor(pathname, rememberedCountry) {
+  const parts = pathname.split('/').filter(Boolean);
+  const [first, second] = parts;
+  const remembered = COUNTRIES[rememberedCountry] ? rememberedCountry : 'kz';
+  // /<country>/ or /<country>: that country's home page (unless it is a language of the site being
+  // browsed, e.g. /kz/ on the Kazakhstan site, which is the Kazakh home page).
+  if (parts.length === 1 && COUNTRIES[first] && !COUNTRIES[remembered].languages.includes(first)) {
+    return { country: first, path: `/sites/${first}/index.html` };
+  }
+  // /<country>/<language>/...: a site's own links never put a language right after a language.
+  if (COUNTRIES[first] && COUNTRIES[first].languages.includes(second) && parts.length >= 2) {
+    const rest = parts.slice(2).join('/') || 'index.html';
+    return { country: first, path: `/sites/${first}/${second}/${rest}` };
+  }
+  // Links inside a site, without the country: use the remembered one.
+  const country = remembered;
+  const site = COUNTRIES[country];
+  if (site.languages.includes(first)) return { path: `/sites/${country}/${parts.length > 1 ? parts.join('/') : `${first}/index.html`}` };
+  if (parts.length === 1 && ROOT_PAGES.has(first)) return { path: `/sites/${country}/${first}` };
+  if (first === 'products' && parts.length >= 2) return { path: `/sites/${country}/${site.home}/${parts.join('/')}` };
+  return null;
+}
 
 const encoder = new TextEncoder();
 const hex = buffer => [...new Uint8Array(buffer)].map(byte => byte.toString(16).padStart(2, '0')).join('');
@@ -35,10 +78,10 @@ const same = (a, b) => {
 // Continue to the site (what @vercel/functions' next() returns).
 const pass = () => new Response(null, { headers: { 'x-middleware-next': '1' } });
 
-const readCookie = request => {
+const readCookie = (request, name = COOKIE) => {
   const header = request.headers.get('cookie') || '';
-  const match = header.split(/;\s*/).find(part => part.startsWith(`${COOKIE}=`));
-  return match ? decodeURIComponent(match.slice(COOKIE.length + 1)) : '';
+  const match = header.split(/;\s*/).find(part => part.startsWith(`${name}=`));
+  return match ? decodeURIComponent(match.slice(name.length + 1)) : '';
 };
 
 async function validSession(token, secret) {
@@ -134,6 +177,11 @@ export default async function middleware(request) {
   }
 
   if (PUBLIC.has(url.pathname)) return pass();
-  if (await validSession(readCookie(request), secret)) return pass();
-  return gatePage(url.pathname + url.search);
+  if (!(await validSession(readCookie(request), secret))) return gatePage(url.pathname + url.search);
+
+  const route = routeFor(url.pathname, readCookie(request, COUNTRY_COOKIE));
+  if (!route) return pass();
+  const headers = new Headers({ 'x-middleware-rewrite': new URL(route.path + url.search, url).toString() });
+  if (route.country) headers.set('set-cookie', `${COUNTRY_COOKIE}=${route.country}; Path=/; Max-Age=86400; HttpOnly; Secure; SameSite=Lax`);
+  return new Response(null, { headers });
 }

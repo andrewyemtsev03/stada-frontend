@@ -41,12 +41,53 @@ test('the review site gate refuses everything without a valid session', async ()
     const cookie = ok.headers.get('set-cookie').split(';')[0];
     assert.match(ok.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
     const through = await middleware(new Request('https://review.example/ru/products/magne-b6-kids.html', { headers: { cookie } }));
-    assert.equal(through.headers.get('x-middleware-next'), '1');
+    assert.equal(new URL(through.headers.get('x-middleware-rewrite')).pathname, '/sites/kz/ru/products/magne-b6-kids.html');
+    const asset = await middleware(new Request('https://review.example/css/style.css', { headers: { cookie } }));
+    assert.equal(asset.headers.get('x-middleware-next'), '1');
+    const ge = await middleware(new Request('https://review.example/ge/en/about.html?x=1', { headers: { cookie } }));
+    assert.equal(new URL(ge.headers.get('x-middleware-rewrite')).pathname + new URL(ge.headers.get('x-middleware-rewrite')).search, '/sites/ge/en/about.html?x=1');
+    assert.match(ge.headers.get('set-cookie'), /^stada_review_country=ge; .*HttpOnly; Secure/);
     delete process.env.REVIEW_SECRET;
     assert.equal((await middleware(new Request('https://review.example/', { headers: { cookie } }))).status, 503, 'fails closed when unconfigured');
   } finally {
     delete process.env.REVIEW_PASSWORD; delete process.env.REVIEW_SECRET;
   }
+});
+
+test('the review site picks the country from the address and keeps it for the site\'s own links', async () => {
+  const { routeFor, COUNTRIES } = await import(path.join(__dirname, '../review/middleware.js'));
+  const listed = require('../frontend/content/countries.json');
+  const list = Array.isArray(listed) ? listed : listed.countries;
+  assert.deepEqual(Object.keys(COUNTRIES).sort(), list.map(country => country.code).sort(), 'middleware knows every country');
+  for (const country of list) {
+    assert.deepEqual(COUNTRIES[country.code], { languages: country.supportedLanguages, home: country.defaultLanguage }, country.code);
+  }
+  const to = (pathname, remembered) => routeFor(pathname, remembered)?.path ?? null;
+  assert.equal(to('/'), null, 'start page');
+  assert.equal(to('/css/style.css', 'ge'), null);
+  assert.equal(to('/uz/'), '/sites/uz/index.html');
+  assert.equal(routeFor('/uz/').country, 'uz');
+  assert.equal(to('/uz/ru/products/x.html'), '/sites/uz/ru/products/x.html');
+  assert.equal(to('/kz/kz/products/x.html'), '/sites/kz/kz/products/x.html');
+  assert.equal(to('/ge/ge/'), '/sites/ge/ge/index.html');
+  // The site's own links carry no country.
+  assert.equal(to('/ru/about.html'), '/sites/kz/ru/about.html', 'Kazakhstan by default');
+  assert.equal(to('/ru/about.html', 'uz'), '/sites/uz/ru/about.html');
+  assert.equal(to('/en/news.html', 'ge'), '/sites/ge/en/news.html');
+  assert.equal(to('/kz/about.html', 'kz'), '/sites/kz/kz/about.html', 'Kazakh, not the country');
+  assert.equal(to('/kz/', 'kz'), '/sites/kz/kz/index.html');
+  assert.equal(to('/kz/', 'ge'), '/sites/kz/index.html');
+  assert.equal(to('/about.html', 'am'), '/sites/am/about.html');
+  assert.equal(to('/products/x.html', 'md'), '/sites/md/ro/products/x.html');
+  assert.equal(to('/ru/about.html', 'nope'), '/sites/kz/ru/about.html');
+});
+
+test('the review start page lists each product on review per country and language', () => {
+  const index = new JSDOM(fs.readFileSync(path.join(output, 'index.html'), 'utf8')).window.document;
+  const links = [...index.querySelectorAll('li a')].map(link => link.getAttribute('href'));
+  assert.deepEqual(links, [`/kz/ru/products/${slug}.html`, `/kz/kz/products/${slug}.html`]);
+  assert.ok(index.querySelector('a[href="/ge/ge/index.html"]'));
+  assert.ok(!fs.existsSync(path.join(publicOutput, 'index.html')) || !fs.readFileSync(path.join(publicOutput, 'index.html'), 'utf8').includes('на согласовании'));
 });
 
 test('Kazakhstan catalogs link Магне B6 Кидс to its showcase page in Russian and Kazakh', () => {
