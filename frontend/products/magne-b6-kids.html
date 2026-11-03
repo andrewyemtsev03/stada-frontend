@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
-    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=8" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-magne-b6-kids.css?v=9" />
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <body class="mg-page" data-product-showcase="magne-b6-kids">
@@ -225,10 +225,11 @@
             </div>
 
             <div class="mg-dose__perday">
-              <div class="mg-dose__pandas" aria-hidden="true">
+              <!-- The panda is a shortcut for the age switch: it wiggles "tap me" until the visitor picks an age. -->
+              <button type="button" class="mg-dose__pandas" data-dose-toggle data-sc-attr="aria-label:dose_panda_label">
                 <img src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" />
                 <img src="../assets/kazakhstan-products/magne-b6-kids/panda-tablet.webp" alt="" />
-              </div>
+              </button>
               <div class="mg-dose__count" aria-live="polite">
                 <b data-dose-perday>1</b>
                 <span class="mg-when-young" data-sc="dose_unit_young"></span>
@@ -488,6 +489,6 @@
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
   <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
-    <script type="module" src="../js/showcase/magne-b6-kids.js?v=8"></script>
+    <script type="module" src="../js/showcase/magne-b6-kids.js?v=9"></script>
   </body>
 </html>
