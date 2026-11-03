@@ -104,72 +104,52 @@ html[lang="ka"] .eg-eyebrow { letter-spacing: .04em; text-transform: none; font-
 }
 
 /* =====================================================================
-   00 — Hero
+   00 — Hero: the name, the vial, the dose, with the pack's spore bubbles rising behind
    ===================================================================== */
-/* One message, one action: the name and strength, a line on what it is, two ways in, the medicine note.
-   The facts strip and the indication left the hero (both are in the chapters below); the background is
-   the pack's spore bubbles rising on a clear sky, and they pop when touched. */
 .eg-hero {
-  --hero-h: max(600px, calc(100svh - var(--nav-h)));
+  --hero-h: max(620px, calc(100svh - var(--nav-h)));
   position: relative; isolation: isolate; overflow: hidden; min-height: var(--hero-h);
+  display: grid; place-items: center;
   background:
-    radial-gradient(42% 60% at 74% 50%, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, 0) 72%),
-    linear-gradient(172deg, #f6fbff 0%, #e4f3fc 46%, #c6e7f8 100%);
+    radial-gradient(40% 46% at 50% 58%, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(170deg, #eaf6fd 0%, #cfe9f8 48%, #a9d8f3 100%);
 }
 .eg-bubbles { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.eg-hero__solo {
+  position: relative; z-index: 2;
+  display: grid; justify-items: center; align-content: center; gap: clamp(6px, 1.4vh, 16px);
+  width: 100%; min-height: var(--hero-h); padding: clamp(28px, 5vh, 56px) var(--eg-pad) clamp(56px, 9vh, 96px);
+}
+.eg-type { margin: 0; line-height: 1; }
+.eg-type .eg-lockup__word { position: relative; font-size: clamp(38px, 8.4vw, 148px); white-space: nowrap; }
+.eg-ready .eg-ch { opacity: 0; }
+.eg-ch.is-on { opacity: 1; }
+.eg-type__caret {
+  display: inline-block; width: .07em; height: .82em; margin: .08em 0 0 .04em; border-radius: 2px;
+  background: var(--eg-pink); animation: eg-caret .9s steps(1) infinite;
+}
+.eg-type__caret.is-done { animation: eg-caret-out .5s ease forwards; }
+.eg-ready .eg-type__mark { opacity: 0; transition: opacity .5s ease; }
+.eg-ready .eg-hero.is-typed .eg-type__mark { opacity: 1; }
+html:not(.eg-ready) .eg-type__caret { display: none; }
+@keyframes eg-caret { 50% { opacity: 0; } }
+@keyframes eg-caret-out { to { opacity: 0; width: 0; margin-left: 0; } }
 
-.eg-hero__inner {
-  position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; min-height: var(--hero-h);
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto minmax(0, 1fr);
-  column-gap: clamp(24px, 4vw, 72px); padding: clamp(14px, 2.4vh, 28px) var(--eg-pad) clamp(64px, 10vh, 104px);
-}
-.eg-back {
-  grid-column: 1; grid-row: 1; justify-self: start; position: relative; z-index: 3;
-  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; margin-left: -12px; padding: 0 16px 0 12px; border-radius: 99px;
-  font-size: 13.5px; font-weight: 600; color: var(--eg-text); text-decoration: none; transition: color .2s, background-color .2s;
-}
-.eg-back::before { content: "←"; transition: transform .25s var(--eg-ease); }
-.eg-back:hover { color: var(--eg-blue); background: rgba(255, 255, 255, .72); }
-.eg-back:hover::before { transform: translateX(-3px); }
-.eg-hero__copy { grid-column: 1; grid-row: 2; align-self: center; position: relative; z-index: 2; max-width: 560px; padding: 20px 0; }
-.eg-hero .eg-lockup { gap: 18px; margin-bottom: clamp(22px, 3.2vh, 30px); }
-.eg-hero .eg-lockup__word { font-size: clamp(54px, 6.6vw, 112px); }
-.eg-tagline { max-width: 28ch; font-size: clamp(20px, 1.75vw, 28px); font-weight: 500; line-height: 1.3; letter-spacing: -.015em; color: var(--eg-ink); text-wrap: balance; }
-.eg-tagline i { color: var(--eg-blue); }
-.eg-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(28px, 4.2vh, 40px); }
-.eg-hero__actions .eg-btn--primary svg { transition: transform .25s var(--eg-ease); }
-.eg-hero__actions .eg-btn--primary:hover svg { transform: translateY(2px); }
-.eg-note { display: flex; align-items: center; gap: 9px; margin-top: 22px !important; font-size: 13px; font-weight: 600; line-height: 1.35; color: var(--eg-text); }
-.eg-note__i { display: grid; place-items: center; width: 18px; height: 18px; flex: none; border-radius: 50%; background: var(--eg-blue); color: #fff; font: 700 11px/1 Georgia, serif; }
-
-.eg-hero__visual { grid-column: 2; grid-row: 1 / -1; position: relative; z-index: 1; align-self: stretch; min-height: 480px; }
-.eg-hero__halo {
-  position: absolute; left: 50%; top: 52%; width: min(86%, 680px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .45) 55%, rgba(255, 255, 255, 0) 100%);
-}
-
-/* Down to the story: a quiet round button, centred at the foot of the hero. */
-.eg-cue {
-  position: absolute; z-index: 3; left: 50%; bottom: clamp(14px, 2.6vh, 28px); translate: -50% 0;
-  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
-  color: var(--eg-blue); background: rgba(255, 255, 255, .7); box-shadow: inset 0 0 0 1.5px rgba(29, 79, 160, .16);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background-color .25s ease, box-shadow .25s ease;
-}
-.eg-cue svg { width: 16px; height: 16px; animation: eg-nudge 2.4s var(--eg-ease) infinite; }
-.eg-cue:hover { background: #fff; box-shadow: inset 0 0 0 1.5px rgba(29, 79, 160, .4); }
-.eg-cue:focus-visible { outline: 3px solid var(--eg-pink); outline-offset: 3px; }
-@keyframes eg-nudge { 0%, 100% { transform: none; } 50% { transform: translateY(4px); } }
-.eg-hero__gl {
-  position: absolute; z-index: 1; left: -18%; top: -6%; width: 136%; height: 112%;
-  display: block; pointer-events: none; opacity: 0; transition: opacity .8s ease;
-}
+.eg-hero__visual { position: relative; width: min(100%, 560px); height: clamp(300px, 48vh, 520px); }
+.eg-hero__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; opacity: 0; transition: opacity .6s ease; }
 .eg-hero--live .eg-hero__gl { opacity: 1; }
-.eg-hero__poster { position: absolute; inset: 0; z-index: 1; transition: opacity .6s ease; }
-.eg-hero--live .eg-hero__poster { opacity: 0; }
-.eg-hero__vial { position: absolute; left: 50%; top: 50%; width: auto; height: 62%; aspect-ratio: 40 / 120; translate: -50% -50%; rotate: 8deg; filter: drop-shadow(0 30px 30px rgba(13, 58, 133, .25)); }
-.eg-hero__vial--back { height: 48%; translate: -128% -58%; rotate: -12deg; opacity: .9; }
-.eg-hero__vial--side { height: 44%; translate: 40% -36%; rotate: 18deg; opacity: .85; }
-.eg-hero--live .eg-hero__vial { display: none; }
+.eg-hero__poster { position: absolute; inset: 0; display: grid; place-items: center; transition: opacity .6s ease; }
+.eg-hero__vial { height: 86%; width: auto; aspect-ratio: 40 / 120; filter: drop-shadow(0 30px 30px rgba(13, 58, 133, .22)); }
+.eg-ready .eg-hero__poster { opacity: 0; }
+.eg-ready .eg-hero.is-typed .eg-hero__visual:not(.eg-hero--live) .eg-hero__poster { opacity: 1; }
+.eg-hero--live .eg-hero__poster { display: none; }
+
+.eg-hero__amount {
+  font-size: clamp(30px, 3.6vw, 60px); font-weight: 700; line-height: 1; letter-spacing: -.03em; color: var(--eg-blue);
+  font-variant-numeric: tabular-nums;
+}
+.eg-ready .eg-hero__amount { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--eg-ease), transform .8s var(--eg-ease); }
+.eg-ready .eg-hero.is-typed .eg-hero__amount { opacity: 1; transform: none; }
 
 /* =====================================================================
    01 — Story: one sticky 3D scene in three stages
@@ -384,7 +364,6 @@ html:not(.eg-ready) .eg-gl, html:not(.eg-ready) .eg-hud { display: none; }
 .eg-nogl .eg-gl { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .eg-cue svg { animation: none; }
   .eg-ready .eg-rise { animation: none; }
 }
 
@@ -395,20 +374,8 @@ html:not(.eg-ready) .eg-gl, html:not(.eg-ready) .eg-hud { display: none; }
   .eg-formula { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
-  .eg-hero { min-height: 0; }
-  /* Phone: name, line, product, then both buttons, all inside the first screen. */
-  .eg-hero__inner { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding: 10px var(--eg-pad) 40px; }
-  .eg-hero__copy { display: contents; }
-  .eg-back { order: 1; align-self: flex-start; margin-bottom: 8px; }
-  .eg-hero .eg-lockup { order: 2; gap: 12px; margin-bottom: 14px; }
-  .eg-hero .eg-lockup__word { font-size: clamp(44px, 12.6vw, 76px); }
-  .eg-tagline { order: 3; max-width: 30ch; font-size: clamp(17px, 4.6vw, 20px); }
-  .eg-hero__visual { order: 4; height: min(40vh, 380px); min-height: 260px; margin: 0 0 6px; }
-  .eg-hero__gl { left: -12%; top: -4%; width: 124%; height: 108%; }
-  .eg-hero__actions { order: 5; margin-top: 0; }
-  .eg-hero__actions .eg-btn { flex: 1 1 0; min-width: 0; padding-inline: 16px; white-space: nowrap; }
-  .eg-note { order: 6; margin-top: 16px !important; }
-  .eg-cue { display: none; }
+  .eg-hero__visual { height: clamp(280px, 46vh, 420px); }
+  .eg-type .eg-lockup__word { font-size: min(11.4vw, 72px); }
 
   .eg-story { height: 560vh; }
   .eg-story__bg, .eg-story[data-stage="b"] .eg-story__bg {

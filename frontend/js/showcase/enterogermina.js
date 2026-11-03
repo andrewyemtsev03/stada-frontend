@@ -1,6 +1,7 @@
-// Enterogermina showcase (shared by the 2, 4 and 6 billion pages): the live 3D hero (vials and carton, with the
-// pack's spore bubbles rising behind them and popping on hover), the three-stage scroll story (spores fill the
-// vial → between antibiotic doses → shake, open, drink), the dosage switch and the instructions tabs. Every word and number on the page comes from the
+// Enterogermina showcase (shared by the 2, 4 and 6 billion pages): the hero (the name types itself, the 3D vial
+// rises under it, then the dose, with the pack's spore bubbles rising behind and popping on hover), the
+// three-stage scroll story (spores fill the vial → between antibiotic doses → shake, open, drink), the dosage
+// switch and the instructions tabs. Every word and number on the page comes from the
 // product copy; this module only animates what the build rendered. Loaded only on products/enterogermina.html.
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -45,8 +46,8 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '0px 0px -12% 0px' });
 $$('.eg-reveal').forEach(node => revealObserver.observe(node));
 
-// Keep a number with its unit ("5 ml", "5 მლ") on one line in the hero's short lines.
-$$('.eg-tagline, .eg-lockup__dose').forEach(node => {
+// Keep a number with its unit ("2 billion", "2 მილიარდი") on one line in the hero.
+$$('.eg-hero__amount').forEach(node => {
   const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
   for (let text = walker.nextNode(); text; text = walker.nextNode()) text.data = text.data.replace(/(\d) (?=\S)/g, '$1 ');
 });
@@ -61,8 +62,7 @@ function initBubbles() {
   if (!canvas || !hero) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
-  const copy = $('.eg-hero__copy');
-  const backLink = $('.eg-back', hero);
+  const copy = $('.eg-hero__solo');
   const SPRITE = 192;
   const TINTS = [
     { weight: 45, stops: ['#a6f6f6', '#3ccbe9', '#178bd2'], drop: '#3ccbe9' },
@@ -164,7 +164,7 @@ function initBubbles() {
   function measureQuiet() {
     if (!copy) return;
     const h = hero.getBoundingClientRect();
-    quiet = [backLink, ...copy.children].filter(node => node && !node.hidden).map(node => {
+    quiet = [...copy.children].filter(node => !node.hidden && !node.matches('[data-hero-visual], .eg-sr')).map(node => {
       const box = node.getBoundingClientRect();
       return { left: box.left - h.left, right: box.right - h.left, top: box.top - h.top, bottom: box.bottom - h.top };
     });
@@ -283,6 +283,31 @@ function initBubbles() {
   }).observe(hero);
   document.addEventListener('visibilitychange', () => { if (visible && !document.hidden) start(); else stop(); });
 }
+
+/* ------------------------------------------------------------------ hero: the name types itself */
+// Letters appear one by one behind a caret; then the vial rises (initHero waits for `typed`), then the dose.
+const heroTitle = $('[data-type]');
+const typed = new Promise(resolve => {
+  if (!heroTitle) { resolve(); return; }
+  const letters = $$('.eg-ch', heroTitle);
+  const caret = $('.eg-type__caret', heroTitle);
+  if (reduceMotion) { letters.forEach(letter => letter.classList.add('is-on')); caret?.remove(); resolve(); return; }
+  let i = 0;
+  const next = () => {
+    if (i >= letters.length) {
+      setTimeout(() => { caret?.classList.add('is-done'); resolve(); }, 260);
+      return;
+    }
+    const letter = letters[i];
+    letter.classList.add('is-on');
+    letter.after(caret);
+    i += 1;
+    // A typist's rhythm: a beat at the seam between "entero" and "germina".
+    setTimeout(next, i === 6 ? 210 : 62 + ((i * 37) % 5) * 9);
+  };
+  setTimeout(next, 450);
+});
+typed.then(() => setTimeout(() => hero?.classList.add('is-typed'), reduceMotion ? 0 : 900));
 
 /* ------------------------------------------------------------------ story scene (captions, stages, HUD) */
 const storySection = $('#eg-story');
@@ -691,31 +716,6 @@ function rand(seed) {
   return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
 }
 
-// The printed carton: an exact box wrapped in the approved artwork (carton-*.glb, one per market's carton).
-// Its width in the scene is 3.7 units, a little under true scale next to the vials, as in a pack shot.
-function loadCarton(THREE, renderer, url) {
-  if (!url) return Promise.resolve(null);
-  return import('../vendor/three/GLTFLoader.js')
-    .then(({ GLTFLoader }) => new GLTFLoader().loadAsync(new URL(url, location.href).href))
-    .then(gltf => {
-      const box = new THREE.Box3().setFromObject(gltf.scene);
-      gltf.scene.scale.setScalar(3.7 / (box.max.x - box.min.x));
-      gltf.scene.traverse(node => {
-        if (!node.isMesh) return;
-        const map = node.material.map;
-        if (map) map.anisotropy = renderer.capabilities.getMaxAnisotropy();
-        // Printed colours as approved: lit, but kept out of the tone curve that would wash them out.
-        node.material.envMapIntensity = .55;
-        node.material.roughness = .5;
-        node.material.toneMapped = false;
-      });
-      const holder = new THREE.Group();
-      holder.add(gltf.scene);
-      return holder;
-    })
-    .catch(() => null);
-}
-
 /* ------------------------------------------------------------------ hero still life */
 const heroVisual = $('[data-hero-visual]');
 const heroCanvas = $('[data-hero-canvas]');
@@ -726,39 +726,33 @@ async function initHero() {
   const renderer = createRenderer(THREE, heroCanvas);
   if (!renderer) return;
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(28, 1, .1, 60);
+  const camera = new THREE.PerspectiveCamera(24, 1, .1, 60);
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
-
   const still = reduceMotion || renderer.userData.lite;
   const model = await loadVialModel(THREE);
-  const main = makeVial(THREE, model, { frosted: true });
-  const back = makeVial(THREE, model, { frosted: true });
-  const side = makeVial(THREE, model, { frosted: true });
-  const stage = new THREE.Group();
-  stage.add(main, back, side);
-  scene.add(stage);
-  // The carton (when the product copy names one) stands behind the vials, the way a pack shot is set.
-  const carton = await loadCarton(THREE, renderer, heroVisual.dataset.carton);
-  if (carton) stage.add(carton);
-  const vials = carton ? [
-    { group: main, x: 1.5, y: -.5, z: .8, scale: .8, rz: .08, ry: .3, delay: .18 },
-    { group: back, x: .78, y: -.38, z: .35, scale: .68, rz: -.14, ry: -.4, delay: .28 },
-    { group: side, x: 2.18, y: -.55, z: .05, scale: .58, rz: .28, ry: .9, delay: .36 },
-  ] : [
-    { group: main, x: .1, y: -.05, z: 0, scale: 1, rz: .13, ry: .35, delay: 0 },
-    { group: back, x: -1.25, y: .35, z: -1.4, scale: .78, rz: -.22, ry: -.5, delay: .12 },
-    { group: side, x: 1.35, y: -.25, z: -.9, scale: .68, rz: .36, ry: .9, delay: .22 },
-  ];
-
-
-  const fit = (width, height) => {
-    // Frame the vials' middle; narrow screens pull back a little so the side vials stay in view, and phones
-    // (a short, wide stage under the title) come in closer so the pack is not lost in the margins.
-    const narrow = width / height < .95;
-    camera.position.set(0, 1.55, narrow ? 13.4 : width < 600 ? 9.6 : 11.6);
-    camera.lookAt(0, 1.2, 0);
-  };
-  keepSized(renderer, camera, heroCanvas, fit);
+  const vial = makeVial(THREE, model, { frosted: true });
+  // Alone on a light ground the vial needs more body than the see-through look gives it.
+  const { plastic } = vial.userData.parts;
+  if (plastic.transmission) { plastic.transmission = .22; plastic.color.setHex(0xdde7f1); }
+  scene.add(vial);
+  // A soft contact shadow under the vial once it has landed.
+  const shadowCanvas = document.createElement('canvas');
+  shadowCanvas.width = shadowCanvas.height = 128;
+  const sctx = shadowCanvas.getContext('2d');
+  const gradient = sctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+  gradient.addColorStop(0, 'rgba(16, 42, 92, .42)');
+  gradient.addColorStop(1, 'rgba(16, 42, 92, 0)');
+  sctx.fillStyle = gradient;
+  sctx.fillRect(0, 0, 128, 128);
+  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(1.3, .5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(shadowCanvas), transparent: true, depthWrite: false }));
+  shadow.rotation.x = -Math.PI / 2;
+  shadow.position.y = -.02;
+  scene.add(shadow);
+  keepSized(renderer, camera, heroCanvas, () => {
+    // The vial fills about 86% of the visual's height.
+    camera.position.set(0, VIAL_HEIGHT / 2 + .25, (VIAL_HEIGHT / .86) / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))));
+    camera.lookAt(0, VIAL_HEIGHT / 2, 0);
+  });
 
   const lean = { x: 0, y: 0, tx: 0, ty: 0, on: finePointer && !still };
   if (lean.on) {
@@ -771,16 +765,17 @@ async function initHero() {
     document.documentElement.addEventListener('mouseleave', () => { lean.tx = 0; lean.ty = 0; });
   }
 
-  const clock = new THREE.Clock();
+  // The vial waits for the name to finish typing, then rises into place and turns slowly.
   let startedAt = 0;
+  typed.then(() => { startedAt = performance.now(); });
+  const clock = new THREE.Clock();
   let shown = false;
   let frames = 0;
   let lastKey = '';
   const tick = () => {
     if (storySection && storySection.getBoundingClientRect().top < innerHeight * .45) return;
     const dt = Math.min(.05, clock.getDelta());
-    if (!startedAt) startedAt = performance.now();
-    const intro = still ? 1 : clamp((performance.now() - startedAt) / 1500);
+    const intro = still ? 1 : startedAt ? clamp((performance.now() - startedAt) / 1300) : 0;
     const time = still ? 0 : clock.elapsedTime;
     frames += 1;
     if (lowEnd && intro >= 1 && frames % 2) return;
@@ -794,27 +789,14 @@ async function initHero() {
       lean.x += (lean.tx - lean.x) * ease;
       lean.y += (lean.ty - lean.y) * ease;
     }
-    if (carton) {
-      const k = still ? 1 : easeOutBack(clamp(intro / .8));
-      carton.position.set(-.05, lerp(-1.4, 1.2, k) + Math.sin(time * .5) * .035, -1.1);
-      carton.rotation.set(-.04 + lean.y * .02, .3 + Math.sin(time * .25) * .04 + lean.x * .05, .025);
-    }
-    vials.forEach((item, index) => {
-      const local = clamp((intro - item.delay) / (1 - item.delay));
-      const k = still ? 1 : easeOutBack(local);
-      const settle = still ? 1 : easeOutCubic(local);
-      const { group } = item;
-      group.position.set(item.x, item.y + lerp(-1.6, 0, k) + Math.sin(time * .9 + index * 1.7) * .06, item.z);
-      group.scale.setScalar(item.scale * lerp(.9, 1, settle));
-      group.rotation.set(
-        Math.sin(time * .5 + index) * .03,
-        item.ry + Math.sin(time * .32 + index * 2) * .18 + (index === 0 ? lean.x * .07 : 0),
-        item.rz + Math.sin(time * .6 + index) * .025,
-      );
-      if (index === 0) group.rotation.x += lean.y * .035;
-    });
+    const k = still ? 1 : easeOutBack(intro);
+    vial.position.set(0, lerp(-VIAL_HEIGHT * 1.1, 0, k) + Math.sin(time * .9) * .03, 0);
+    vial.rotation.set(lean.y * .035, -.35 + Math.sin(time * .3) * .3 + lean.x * .07, Math.sin(time * .55) * .02);
+    vial.visible = still || startedAt > 0;
+    shadow.material.opacity = clamp(k) * (1 - Math.abs(vial.position.y) * .8);
+    shadow.visible = vial.visible;
     renderer.render(scene, camera);
-    if (!shown) { shown = true; heroVisual.classList.add('eg-hero--live'); }
+    if (!shown && vial.visible) { shown = true; heroVisual.classList.add('eg-hero--live'); }
   };
   renderer.compile(scene, camera);
   runWhileVisible(hero, renderer, tick);
