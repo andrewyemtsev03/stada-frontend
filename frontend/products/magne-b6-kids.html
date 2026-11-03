@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    <!-- Password gate (client-side): hides the page until the password is entered once on this device.
+         The static host has no server-side auth, so this keeps casual visitors out; it is not real security. -->
+    <script>
+      try { if (localStorage.getItem('mg-gate') !== 'ok') document.documentElement.classList.add('mg-locked'); }
+      catch (e) { document.documentElement.classList.add('mg-locked'); }
+    </script>
+    <style>
+      .mg-gate { display: none; }
+      html.mg-locked, html.mg-locked body { overflow: hidden !important; }
+      html.mg-locked body > :not(.mg-gate) { visibility: hidden !important; }
+      html.mg-locked .mg-gate {
+        position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 18px;
+        background: radial-gradient(110% 90% at 72% 44%, #b4f0ff 0%, #5fd6fa 38%, #2fbcef 78%, #1aa7e3 100%);
+        font-family: "Noto Sans", system-ui, sans-serif; color: #141a52;
+      }
+      .mg-gate form { width: min(380px, 100%); padding: 32px 28px 28px; border-radius: 28px; background: #fff; text-align: center; box-shadow: 0 40px 80px -40px rgba(0, 50, 120, .6); }
+      .mg-gate img { width: 120px; height: auto; margin: 0 auto 18px; display: block; }
+      .mg-gate h1 { margin: 0 0 6px; font-size: 22px; font-weight: 700; }
+      .mg-gate p { margin: 0 0 20px; font-size: 14px; color: #46507a; }
+      .mg-gate input { box-sizing: border-box; width: 100%; padding: 14px 16px; border: 1.5px solid rgba(38, 44, 142, .2); border-radius: 14px; font: 16px "Noto Sans", system-ui, sans-serif; outline: none; }
+      .mg-gate input:focus { border-color: #262c8e; }
+      .mg-gate button { width: 100%; margin-top: 12px; padding: 14px; border: 0; border-radius: 99px; background: #262c8e; color: #fff; font: 700 15px "Noto Sans", system-ui, sans-serif; cursor: pointer; }
+      .mg-gate .mg-gate__error { min-height: 18px; margin: 10px 0 0; font-size: 13px; color: #e5007d; }
+      .mg-gate.is-wrong form { animation: mg-gate-shake .4s; }
+      @keyframes mg-gate-shake { 25% { transform: translateX(-8px); } 50% { transform: translateX(8px); } 75% { transform: translateX(-4px); } }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STADA - Магне B6 Кидс</title>
@@ -13,6 +39,58 @@
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <body class="mg-page" data-product-showcase="magne-b6-kids">
+    <div class="mg-gate" role="dialog" aria-modal="true" aria-labelledby="mg-gate-title">
+      <form autocomplete="off">
+        <img src="../assets/logos/stada_logo.png" alt="STADA" width="770" height="450" />
+        <h1 id="mg-gate-title">Магне B6 Кидс</h1>
+        <p>Введите пароль, чтобы открыть страницу.<br />Бетті ашу үшін құпия сөзді енгізіңіз.</p>
+        <input type="password" name="password" aria-label="Пароль / Құпия сөз" placeholder="Пароль" required />
+        <button type="submit">Открыть / Ашу</button>
+        <p class="mg-gate__error" aria-live="polite"></p>
+      </form>
+    </div>
+    <script>
+      (function () {
+        var gate = document.querySelector('.mg-gate');
+        var form = gate.querySelector('form');
+        var input = form.querySelector('input');
+        var error = form.querySelector('.mg-gate__error');
+        var HASH = '4a61eb655c9649298b2d16bd6f72214eca4faa77a21ec11f9df6a98145b47508';
+        var check = function (value) {
+          if (window.crypto && crypto.subtle && window.TextEncoder) {
+            return crypto.subtle.digest('SHA-256', new TextEncoder().encode(value)).then(function (buffer) {
+              return Array.prototype.map.call(new Uint8Array(buffer), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('') === HASH;
+            });
+          }
+          return Promise.resolve(btoa(unescape(encodeURIComponent(value))) === 'd2Vsb3Zlc3RhZGE2Nw==');
+        };
+        var locked = function () { return document.documentElement.classList.contains('mg-locked'); };
+        // The cookie notice is a modal dialog, which would make the gate unclickable: hold it back while locked.
+        var cookieHeld = false;
+        var holdCookie = function () {
+          var notice = document.querySelector('[data-cookie-notice]');
+          if (locked() && notice && notice.open) { notice.close(); cookieHeld = true; }
+        };
+        new MutationObserver(holdCookie).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['open'] });
+        if (locked()) setTimeout(function () { holdCookie(); input.focus(); }, 50);
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          check(input.value).then(function (ok) {
+            if (!ok) {
+              error.textContent = 'Неверный пароль / Құпия сөз қате';
+              gate.classList.remove('is-wrong'); void gate.offsetWidth; gate.classList.add('is-wrong');
+              input.select();
+              return;
+            }
+            try { localStorage.setItem('mg-gate', 'ok'); } catch (e) {}
+            document.documentElement.classList.remove('mg-locked');
+            var notice = document.querySelector('[data-cookie-notice]');
+            if (cookieHeld && notice && !notice.open) { try { notice.showModal(); } catch (e) { notice.show(); } }
+            window.dispatchEvent(new Event('resize'));
+          });
+        });
+      })();
+    </script>
     <!-- Loading screen: covers the page with the breathing STADA logo until the hero's 3D scene is ready.
          The showcase module lifts it (html.mg-loaded); the timer is a safety net if the module never runs. -->
     <div class="mg-splash" aria-hidden="true"><img src="../assets/logos/stada_logo.png" alt="" width="770" height="450" /></div>
