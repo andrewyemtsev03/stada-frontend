@@ -1,0 +1,10 @@
+{
+  "name": "stada-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Password-protected review site: the Kazakhstan site plus products on review (approval by legal and brand).",
+  "type": "module",
+  "scripts": {
+    "build": "cd ../frontend && npm ci && node tools/build-static.cjs --review"
+  }
+}
