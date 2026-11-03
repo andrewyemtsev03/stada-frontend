@@ -8,8 +8,27 @@ const { JSDOM } = createRequire(path.join(frontend, 'package.json'))('jsdom');
 const output = path.join(frontend, 'dist');
 const snapshot = require('../frontend/content/countries/ge.json');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
+// Georgia's products are locked until legal and brand approve them (`"locked": true` in ge.json).
+const geLocked = Object.values(snapshot.locales.ge.products).some(({ product }) => product.locked);
 
-test('Georgia exposes the eleven supplied product variants with local images and original leaflets', () => {
+test('Georgian products awaiting approval are kept out of the catalogue and behind the lock', { skip: !geLocked && 'Georgia is published' }, () => {
+  const lockList = require('../frontend/content/locked.json');
+  for (const lang of ['ge', 'en']) {
+    const products = snapshot.locales[lang].products;
+    assert.equal(Object.keys(products).length, 11);
+    const catalog = read(`sites/ge/${lang}/products/index.html`);
+    for (const slug of Object.keys(products)) {
+      assert.ok(products[slug].product.locked, `${lang}/${slug} must be locked`);
+      assert.equal(catalog.window.document.querySelector(`[data-product-card][href="/${lang}/products/${slug}.html"]`), null, `${lang}/${slug} not in catalogue`);
+      assert.ok(lockList.pages.includes(`/sites/ge/${lang}/products/${slug}.html`), `${lang}/${slug} in locked.json`);
+      assert.ok(fs.existsSync(path.join(output, `sites/ge/${lang}/products/${slug}.html`)), `${lang}/${slug} still built`);
+    }
+    assert.ok(!fs.readFileSync(path.join(output, 'sites/ge/sitemap.xml'), 'utf8').includes('/products/phosphalugel'));
+    catalog.window.close();
+  }
+});
+
+test('Georgia exposes the eleven supplied product variants with local images and original leaflets', { skip: geLocked && 'locked until approved' }, () => {
   for (const lang of ['ge', 'en']) {
     const products = snapshot.locales[lang].products;
     assert.equal(Object.keys(products).length, 11);
