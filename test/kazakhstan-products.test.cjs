@@ -5,11 +5,49 @@ const path = require('node:path');
 const { createRequire } = require('node:module');
 const frontend = path.resolve(__dirname, '../frontend');
 const { JSDOM } = createRequire(path.join(frontend, 'package.json'))('jsdom');
-const output = path.join(frontend, 'dist');
 const snapshot = require('../frontend/content/countries/kz.json');
-const { renderShowcase } = require('../frontend/tools/build-static.cjs');
+const { build, renderShowcase, reviewOutput, output: publicOutput } = require('../frontend/tools/build-static.cjs');
+// Магне B6 Кидс is on review: it is built only into the password-protected review site.
+const output = reviewOutput;
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 const slug = 'magne-b6-kids';
+const silently = run => { const log = console.log; console.log = () => {}; try { run(); } finally { console.log = log; } };
+test.before(() => silently(() => build({ review: true })));
+
+test('products on review stay out of every public build', () => {
+  assert.equal(snapshot.locales.ru.products[slug].product.review, true);
+  for (const lang of ['ru', 'kz']) {
+    assert.ok(!fs.existsSync(path.join(publicOutput, `sites/kz/${lang}/products/${slug}.html`)), `${lang}: no public page`);
+    const catalog = fs.readFileSync(path.join(publicOutput, `sites/kz/${lang}/products/index.html`), 'utf8');
+    assert.ok(!catalog.includes(slug), `${lang}: no public catalogue card`);
+    assert.ok(!fs.readFileSync(path.join(publicOutput, 'sites/kz/sitemap.xml'), 'utf8').includes(slug));
+  }
+});
+
+test('the review site gate refuses everything without a valid session', async () => {
+  const { default: middleware } = await import(path.join(__dirname, '../review/middleware.js'));
+  Object.assign(process.env, { REVIEW_PASSWORD: 'test-password', REVIEW_SECRET: 'test-secret' });
+  try {
+    const page = await middleware(new Request('https://review.example/ru/products/magne-b6-kids.html'));
+    assert.equal(page.status, 401);
+    assert.ok(!(await page.text()).includes('Магне B6 Кидс</h1>'));
+    const forged = await middleware(new Request('https://review.example/', { headers: { cookie: `stada_review=${Date.now() + 1e9}.deadbeef` } }));
+    assert.equal(forged.status, 401);
+    const login = body => middleware(new Request('https://review.example/__review/login', { method: 'POST', body: new URLSearchParams(body) }));
+    assert.equal((await login({ password: 'wrong', next: '/' })).status, 401);
+    const ok = await login({ password: 'test-password', next: '//evil.example/x' });
+    assert.equal(ok.status, 303);
+    assert.equal(ok.headers.get('location'), '/', 'no open redirect');
+    const cookie = ok.headers.get('set-cookie').split(';')[0];
+    assert.match(ok.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
+    const through = await middleware(new Request('https://review.example/ru/products/magne-b6-kids.html', { headers: { cookie } }));
+    assert.equal(through.headers.get('x-middleware-next'), '1');
+    delete process.env.REVIEW_SECRET;
+    assert.equal((await middleware(new Request('https://review.example/', { headers: { cookie } }))).status, 503, 'fails closed when unconfigured');
+  } finally {
+    delete process.env.REVIEW_PASSWORD; delete process.env.REVIEW_SECRET;
+  }
+});
 
 test('Kazakhstan catalogs link Магне B6 Кидс to its showcase page in Russian and Kazakh', () => {
   for (const lang of ['ru', 'kz']) {

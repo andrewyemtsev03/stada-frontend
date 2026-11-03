@@ -240,9 +240,18 @@ function finalize(dom, country, lang, template, page, text, newsId) {
   return dom.serialize();
 }
 
-function build() {
-  // Only this fixed, verified generated directory may be cleared.
-  if (path.dirname(output) !== source || path.basename(output) !== 'dist') throw new Error('Unsafe output directory');
+// Products marked `"review": true` are awaiting approval (legal, brand). They are built only for the
+// password-protected review site (`build({ review: true })`, see review/README.md) and left out of every
+// public build: no page, no catalogue card, no menu link, no sitemap entry.
+const reviewOutput = path.resolve(source, '../review/dist');
+function build({ review = process.argv.includes('--review'), out = review ? reviewOutput : output } = {}) {
+  // Only these fixed, verified generated directories may be cleared.
+  if (![output, reviewOutput].includes(out)) throw new Error('Unsafe output directory');
+  const publicProducts = locale => Object.fromEntries(Object.entries(locale.products || {}).filter(([, payload]) => review || !payload.product.review));
+  return buildInto(out, review, publicProducts);
+}
+
+function buildInto(output, review, productsOf) {
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
   for (const directory of ['assets', 'css', 'js']) fs.cpSync(path.join(source, directory), path.join(output, directory), { recursive: true });
@@ -253,8 +262,9 @@ function build() {
     const siteRoot = path.join(output, 'sites', country.code);
     const urls = [];
     for (const lang of country.supportedLanguages) {
-      const locale = snapshot.locales[lang];
-      if (!locale) throw new Error(`Missing content: ${country.code}/${lang}`);
+      const source_ = snapshot.locales[lang];
+      if (!source_) throw new Error(`Missing content: ${country.code}/${lang}`);
+      const locale = { ...source_, products: productsOf(source_) };
       const render = (template, page, query = '', newsId, productPayload) => {
         const basePayload = locale.pages[template] || locale.pages['products/index.html'];
         const catalog = Object.values(locale.products || {}).map(payload => payload.product);
@@ -321,7 +331,7 @@ function build() {
   }) }));
   write(path.join(output, 'vercel.json'), `${JSON.stringify(deployment, null, 2)}\n`);
   write(path.join(output, 'build-manifest.json'), `${JSON.stringify({ countries: countries.map(country => country.code), pages: pageCount }, null, 2)}\n`);
-  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites. Output: frontend/dist`);
+  console.log(`Built ${pageCount} complete pages across ${countries.length} country sites${review ? ' (review build, includes products on review)' : ''}. Output: ${path.relative(path.resolve(source, '..'), output)}`);
 }
 if (require.main === module) build();
-module.exports = { build, output, source, countries, renderShowcase };
+module.exports = { build, output, reviewOutput, source, countries, renderShowcase };
