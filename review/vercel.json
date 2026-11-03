@@ -4,18 +4,27 @@
   "installCommand": "echo 'no install needed'",
   "outputDirectory": "dist",
   "framework": null,
-  "rewrites": [
-    { "source": "/:lang(ru|kz)/:page*", "destination": "/sites/kz/:lang/:page*" },
-    { "source": "/:page(index.html|about.html|culture.html|history.html|contacts.html|news.html|news-article.html|sitemap.xml)", "destination": "/sites/kz/:page" },
-    { "source": "/products/:page*", "destination": "/sites/kz/ru/products/:page*" },
-    { "source": "/", "destination": "/sites/kz/index.html" }
-  ],
   "headers": [
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-      { "key": "Cache-Control", "value": "private, no-store" },
-      { "key": "Referrer-Policy", "value": "same-origin" },
-      { "key": "X-Content-Type-Options", "value": "nosniff" }
-    ] }
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
   ]
 }
