@@ -49,11 +49,11 @@ test('the Vercel lock guards only locked pages and their own files', async () =>
   if (isLocked) {
     for (const [host, pathname] of [['stada.kz', '/ru/products/magne-b6-kids.html'], ['stada.kz', '/products/magne-b6-kids.html'], ['www.stada.kz', '/kz/products/Magne-B6-Kids.html'],
       ['stada.uz', '/sites/kz/ru/products/magne-b6-kids.html'], ['x.vercel.app', '/sites//kz/ru/products/%6dagne-b6-kids.html'], ['stada.ge', '/assets/kazakhstan-products/magne-b6-kids/panda-lite.glb'],
-      ['stada.ge', '/css/modules/products/showcase-magne-b6-kids.css'], ['stada.ge', '/js/showcase/magne-b6-kids.js'], ['stada.kz', '/ru/products/magne-b6-kids']]) {
+      ['stada.ge', '/css/modules/products/showcase-magne-b6-kids.css'], ['stada.ge', '/js/showcase/magne-b6-kids.js'], ['stada.kz', '/ru/products/magne-b6-kids'], ['stada.ge', '/ge/products/phosphalugel.html']]) {
       assert.ok(locked(host, pathname), `${host}${pathname}`);
     }
   }
-  for (const [host, pathname] of [['stada.kz', '/ru/products/index.html'], ['stada.ge', '/ge/products/phosphalugel.html'], ['stada.uz', '/'], ['stada.kz', '/assets/logos/stada_logo.png'], ['stada.kz', '/ru/products/magne-b6-kids-forte.html']]) {
+  for (const [host, pathname] of [['stada.kz', '/ru/products/index.html'], ['stada.ge', '/ge/products/index.html'], ['stada.ge', '/ge/about.html'], ['stada.uz', '/'], ['stada.kz', '/assets/logos/stada_logo.png'], ['stada.kz', '/ru/products/magne-b6-kids-forte.html']]) {
     assert.ok(!locked(host, pathname), `${host}${pathname}`);
   }
   if (!isLocked) return;
