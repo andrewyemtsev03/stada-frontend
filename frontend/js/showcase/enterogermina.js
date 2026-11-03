@@ -338,99 +338,123 @@ function glossy(THREE, params) {
   return new THREE.MeshStandardMaterial(rest);
 }
 
-/* ---------- the 5 ml vial (stand-in until the supplied model arrives): body, neck, twist-off tab ---------- */
-// Units: the vial is 2.6 tall with its base at y = 0. `parts.tab` can be turned and lifted off.
-const VIAL_RADIUS = .34;
-// The name moulded into the plastic, as on the real vial: drawn once into a canvas used as colour and bump map.
-let embossTexture;
-function vialEmboss(THREE) {
-  if (embossTexture) return embossTexture;
-  const canvas = document.createElement('canvas');
-  canvas.width = 1024; canvas.height = 1024;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#808080';
-  ctx.fillRect(0, 0, 1024, 1024);
-  // Lathe UVs: u runs round the vial (u = .5 faces away from the seam), v runs from the base to the neck.
-  ctx.save();
-  // The outline is sampled evenly, so a canvas pixel is about as tall as it is wide on the vial.
-  ctx.translate(512, 522);
-  ctx.rotate(-Math.PI / 2);
-  ctx.font = '700 78px "Noto Sans", Arial, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#b8b8b8';
-  ctx.fillText('Enterogermina', 0, 0);
-  ctx.restore();
-  embossTexture = new THREE.CanvasTexture(canvas);
-  embossTexture.colorSpace = THREE.NoColorSpace;
-  embossTexture.anisotropy = 4;
-  return embossTexture;
-}
-// Points spaced evenly along the outline, so the lathe's v coordinate follows the height evenly.
-function resample(THREE, points, step = .06) {
-  const out = [new THREE.Vector2(...points[0])];
-  for (let i = 1; i < points.length; i += 1) {
-    const [ax, ay] = points[i - 1];
-    const [bx, by] = points[i];
-    const n = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay) / step));
-    for (let k = 1; k <= n; k += 1) out.push(new THREE.Vector2(lerp(ax, bx, k / n), lerp(ay, by, k / n)));
-  }
-  return out;
-}
-function makeVial(THREE, { transparent = false } = {}) {
-  const group = new THREE.Group();
-  const emboss = vialEmboss(THREE);
-  const plastic = glossy(THREE, {
-    color: 0xf4f7fb, roughness: .36, metalness: 0, clearcoat: .6, clearcoatRoughness: .2,
-    sheen: .5, sheenColor: new THREE.Color(0xcfe6ff), sheenRoughness: .55,
-    bumpMap: emboss, bumpScale: 2.2,
-    transparent, opacity: 1,
+/* ---------- the 5 ml vial: vial.glb (the supplied model, geometry only) ---------- */
+// The model is scaled to 2.6 tall with its base at y = 0, then split in two: the body and the flat twist-off
+// top, which breaks off just above the bulb (82% of the height) and can turn and lift away (`parts.tab`).
+// Materials, the suspension inside and the printed label are added here. vial-lite.glb (a third of the
+// triangles) is used on the light profile.
+const VIAL_HEIGHT = 2.6;
+const VIAL_SPLIT = .816;
+const VIAL_MOUTH = VIAL_HEIGHT * VIAL_SPLIT;
+let VIAL_RADIUS = .28;
+const modelUrl = name => new URL(`/assets/georgia-products/enterogermina/${name}`, location.href).href;
+let vialModelPromise;
+function loadVialModel(THREE) {
+  return vialModelPromise ||= Promise.all([
+    import('../vendor/three/GLTFLoader.js').then(({ GLTFLoader }) => new GLTFLoader().loadAsync(modelUrl(lowEnd ? 'vial-lite.glb' : 'vial.glb'))),
+    document.fonts?.load('700 120px "Noto Sans"').catch(() => {}),
+  ]).then(([gltf]) => {
+    gltf.scene.updateMatrixWorld(true);
+    let source;
+    gltf.scene.traverse(node => { if (node.isMesh && !source) source = node; });
+    const box = new THREE.Box3().setFromObject(gltf.scene);
+    const scale = VIAL_HEIGHT / (box.max.y - box.min.y);
+    VIAL_RADIUS = ((box.max.z - box.min.z) / 2) * scale;
+    // Split the triangles at the break line, in the mesh's own (possibly quantised) coordinates.
+    const geometry = source.geometry;
+    geometry.computeBoundingBox();
+    const local = geometry.boundingBox;
+    const splitY = local.min.y + (local.max.y - local.min.y) * VIAL_SPLIT;
+    const position = geometry.attributes.position;
+    const index = geometry.index ? geometry.index.array : Array.from({ length: position.count }, (_, i) => i);
+    const lower = [];
+    const upper = [];
+    for (let i = 0; i < index.length; i += 3) {
+      const a = index[i]; const b = index[i + 1]; const c = index[i + 2];
+      ((position.getY(a) + position.getY(b) + position.getY(c)) / 3 > splitY ? upper : lower).push(a, b, c);
+    }
+    const part = list => {
+      const piece = new THREE.BufferGeometry();
+      for (const [name, attribute] of Object.entries(geometry.attributes)) piece.setAttribute(name, attribute);
+      piece.setIndex(list);
+      return piece;
+    };
+    return {
+      body: part(lower), top: part(upper), node: source.matrixWorld.clone(),
+      scale, offset: new THREE.Vector3(-(box.min.x + box.max.x) / 2 * scale, -box.min.y * scale, -(box.min.z + box.max.z) / 2 * scale),
+    };
   });
+}
+
+// The label, as on the real vial: white, with the name running up it in the pack's blue.
+let labelTexture;
+function vialLabel(THREE) {
+  if (labelTexture) return labelTexture;
+  const canvas = document.createElement('canvas');
+  canvas.width = 384; canvas.height = 1024;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 384, 1024);
+  ctx.save();
+  ctx.translate(200, 512);
+  ctx.rotate(-Math.PI / 2);
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+  let size = 150;
+  ctx.font = `700 ${size}px "Noto Sans", Arial, sans-serif`;
+  size = Math.min(150, size * (860 / ctx.measureText('Enterogermina').width));
+  ctx.font = `700 ${size}px "Noto Sans", Arial, sans-serif`;
+  ctx.fillStyle = '#163f99';
+  ctx.fillText('Enterogermina', -size * .12, 0);
+  const end = ctx.measureText('Enterogermina').width / 2 - size * .12;
+  ctx.font = `600 ${size * .3}px "Noto Sans", Arial, sans-serif`;
+  ctx.fillText('®', end + size * .2, -size * .36);
+  ctx.restore();
+  labelTexture = new THREE.CanvasTexture(canvas);
+  labelTexture.colorSpace = THREE.SRGBColorSpace;
+  labelTexture.anisotropy = 8;
+  return labelTexture;
+}
+
+// `frosted`: the hero's see-through plastic (transmission where affordable); otherwise a plain material whose
+// opacity the story animates.
+function makeVial(THREE, model, { frosted = false } = {}) {
+  const group = new THREE.Group();
+  const plastic = frosted && !lowEnd
+    ? new THREE.MeshPhysicalMaterial({
+      color: 0xe6eef7, roughness: .4, metalness: 0, transmission: .62, thickness: .45, ior: 1.46,
+      attenuationColor: new THREE.Color(0xd9e9f6), attenuationDistance: 1.4, clearcoat: .45, clearcoatRoughness: .28,
+    })
+    : glossy(THREE, { color: 0xe3ecf5, roughness: .38, metalness: 0, clearcoat: .5, clearcoatRoughness: .25, transparent: !frosted, opacity: 1 });
+  const placed = (geometry, parent, lift = 0) => {
+    const holder = new THREE.Group();
+    holder.scale.setScalar(model.scale);
+    holder.position.copy(model.offset).y -= lift;
+    const mesh = new THREE.Mesh(geometry, plastic);
+    mesh.applyMatrix4(model.node);
+    holder.add(mesh);
+    parent.add(holder);
+    return mesh;
+  };
+  const body = placed(model.body, group);
+  // The twist-off top turns about the vial's axis at the break line.
+  const tab = new THREE.Group();
+  tab.position.y = VIAL_MOUTH;
+  placed(model.top, tab, VIAL_MOUTH);
   const R = VIAL_RADIUS;
-  const outline = [
-    [0, 0], [R * .66, 0], [R * .87, .025], [R * .975, .09], [R, .24], [R, 1.6], [R * .965, 1.72], [R * .8, 1.82], [R * .5, 1.9], [.135, 1.96], [.13, 2.04],
-  ];
-  const body = new THREE.Mesh(new THREE.LatheGeometry(resample(THREE, outline), lowEnd ? 40 : 64), plastic);
-  // The name faces the camera.
-  body.rotation.y = Math.PI;
-  // Two moulding seams down the sides, as on the real vial.
-  const seamMaterial = new THREE.MeshStandardMaterial({ color: 0xe3eaf3, roughness: .5 });
-  for (const side of [-1, 1]) {
-    const seam = new THREE.Mesh(new THREE.BoxGeometry(.012, 1.34, .02), seamMaterial);
-    seam.position.set(side * (R - .002), .92, 0);
-    body.add(seam);
-  }
-  // The suspension inside: milky, seen as a slightly warmer band through the plastic.
+  // The suspension inside: milky, seen through the plastic.
   const fill = new THREE.Mesh(
-    new THREE.CylinderGeometry(R - .02, R - .02, 1.3, lowEnd ? 32 : 48, 1, true),
-    new THREE.MeshStandardMaterial({ color: 0xf3efe6, roughness: .6, transparent: true, opacity: .35, depthWrite: false }),
+    new THREE.CylinderGeometry(R * .86, R * .86, 1.5, lowEnd ? 28 : 44),
+    new THREE.MeshStandardMaterial({ color: 0xf2efe7, roughness: .7, transparent: !frosted, opacity: frosted ? 1 : .35, depthWrite: frosted }),
   );
   fill.position.y = .82;
-  const neck = new THREE.Mesh(new THREE.CylinderGeometry(.11, .14, .1, 24), plastic);
-  neck.position.y = 2.08;
-
-  const tab = new THREE.Group();
-  const shape = new THREE.Shape();
-  const w = .27; const h = .46; const r = .07;
-  shape.moveTo(-w + r, 0); shape.lineTo(w - r, 0); shape.quadraticCurveTo(w, 0, w, r);
-  shape.lineTo(w, h - r); shape.quadraticCurveTo(w, h, w - r, h); shape.lineTo(-w + r, h);
-  shape.quadraticCurveTo(-w, h, -w, h - r); shape.lineTo(-w, r); shape.quadraticCurveTo(-w, 0, -w + r, 0);
-  const paddle = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: .06, bevelEnabled: true, bevelThickness: .012, bevelSize: .012, bevelSegments: 2, curveSegments: 6 }), plastic);
-  paddle.position.set(0, .06, -.03);
-  const stem = new THREE.Mesh(new THREE.CylinderGeometry(.06, .09, .08, 16), plastic);
-  stem.position.y = .03;
-  tab.add(paddle, stem);
-  // Grip ridges on both faces of the tab.
-  for (let i = 0; i < 3; i += 1) {
-    for (const face of [-1, 1]) {
-      const ridge = new THREE.Mesh(new THREE.BoxGeometry(.32, .018, .014), seamMaterial);
-      ridge.position.set(0, .22 + i * .09, face * .045);
-      tab.add(ridge);
-    }
-  }
-  tab.position.y = 2.13;
-  group.add(body, fill, neck, tab);
-  group.userData.parts = { body, tab, fill, plastic };
+  const label = new THREE.Mesh(
+    new THREE.CylinderGeometry(R * 1.012, R * 1.012, 1.18, lowEnd ? 24 : 40, 1, true, -.82, 1.64),
+    new THREE.MeshStandardMaterial({ map: vialLabel(THREE), roughness: .6, metalness: 0, envMapIntensity: .55, transparent: !frosted, opacity: 1 }),
+  );
+  label.position.y = .9;
+  group.add(fill, label, tab);
+  group.userData.parts = { body, tab, fill, label, plastic };
   return group;
 }
 
@@ -465,9 +489,10 @@ async function initHero() {
   addEnvironment(THREE, RoomEnvironment, renderer, scene);
 
   const still = reduceMotion || renderer.userData.lite;
-  const main = makeVial(THREE);
-  const back = makeVial(THREE);
-  const side = makeVial(THREE);
+  const model = await loadVialModel(THREE);
+  const main = makeVial(THREE, model, { frosted: true });
+  const back = makeVial(THREE, model, { frosted: true });
+  const side = makeVial(THREE, model, { frosted: true });
   const stage = new THREE.Group();
   stage.add(main, back, side);
   scene.add(stage);
@@ -587,8 +612,9 @@ async function initStory() {
 
   const world = new THREE.Group();
   scene.add(world);
-  const vial = makeVial(THREE, { transparent: true });
-  const { body, tab, fill, plastic } = vial.userData.parts;
+  const model = await loadVialModel(THREE);
+  const vial = makeVial(THREE, model);
+  const { tab, fill, label, plastic } = vial.userData.parts;
   world.add(vial);
 
   // A: the spores. Each has a place in the cloud and a place inside the vial.
@@ -667,6 +693,8 @@ async function initStory() {
   const clock = new THREE.Clock();
   const state = { p: story.target, enter: story.enter };
   const tip = new THREE.Vector3();
+  const POUR_X = .95 - VIAL_MOUTH * Math.sin(2.05);
+  const POUR_Y = 1.5 - VIAL_MOUTH * Math.cos(2.05);
   const direction = new THREE.Vector3();
   const UP = new THREE.Vector3(0, 1, 0);
   const capsuleAxis = new THREE.Vector3(1, 0, 0);
@@ -692,9 +720,10 @@ async function initStory() {
     const sporesOn = 1 - span(.33, .37, p);
     // The plastic is see-through while the spores pour in, then closes over them.
     const see = 1 - smooth(.27, .34, p);
-    plastic.opacity = lerp(1, .3, see);
+    plastic.opacity = lerp(.96, .28, see);
     plastic.depthWrite = see < .05;
-    fill.material.opacity = .35 * (1 - see);
+    fill.material.opacity = .55 * (1 - see);
+    label.material.opacity = lerp(1, .35, see);
     const swirl = time * .18 + p * 4;
     for (let i = 0; i < count; i += 1) {
       const [rx, ry, speed, drift] = spin[i];
@@ -711,7 +740,7 @@ async function initStory() {
       const drop = clamp((t - .62) / .38);
       const nx = to.x * .25;
       const nz = to.z * .25;
-      const ny = 2.5 + (to.y / 1.6) * .5;
+      const ny = VIAL_MOUTH + .45 + (to.y / 1.6) * .5;
       dummy.position.set(
         lerp(lerp(cx, nx, toNeck), to.x, drop),
         lerp(lerp(from.y, ny, toNeck), to.y, drop * drop),
@@ -747,14 +776,14 @@ async function initStory() {
     const pour = span(.84, .97, p);
     const glassIn = smooth(.66, .73, p);
     // Upright in A and B; in C it steps left to make room for the glass, then rises and tips over it so its
-    // mouth sits just above the middle of the glass (base -.88, 2.45 at a tilt of 2.05 rad).
+    // mouth sits just above the middle of the glass (.95, 1.5) at a tilt of 2.05 rad.
     const tilt = easeOutCubic(span(.835, .885, p));
     const baseX = lerp(0, -.75, glassIn);
     const intro = easeOutCubic(clamp(state.enter * 1.2));
-    vial.position.set(lerp(baseX, -.88, tilt), lerp(lerp(-1.2, 0, intro) + Math.sin(time * .9) * .04 * (1 - glassIn), 2.45, tilt), 0);
+    vial.position.set(lerp(baseX, POUR_X, tilt), lerp(lerp(-1.2, 0, intro) + Math.sin(time * .9) * .04 * (1 - glassIn), POUR_Y, tilt), 0);
     vial.rotation.set(0, lerp(.35 + Math.sin(time * .3) * .15 * (1 - glassIn) + p * .8, 0, tilt), -tilt * 2.05 + (still ? 0 : Math.sin(time * 38) * .16 * shake));
     tab.rotation.y = twist * Math.PI * 2.5;
-    tab.position.set(twist > .55 ? (twist - .55) * 1.4 : 0, 2.13 + Math.max(0, twist - .4) * 1.6, 0);
+    tab.position.set(twist > .55 ? (twist - .55) * 1.4 : 0, VIAL_MOUTH + Math.max(0, twist - .4) * 1.6, 0);
     tab.scale.setScalar(Math.max(.0001, 1 - span(.8, .84, p)));
     tab.visible = p < .84;
 
@@ -769,7 +798,7 @@ async function initStory() {
     // The stream runs from the vial's mouth to the liquid in the glass while it pours.
     const pouring = smooth(.885, .9, p) * (1 - smooth(.95, .975, p));
     vial.updateMatrixWorld();
-    tip.set(0, 2.06, 0).applyMatrix4(vial.matrixWorld);
+    tip.set(0, VIAL_MOUTH, 0).applyMatrix4(vial.matrixWorld);
     world.worldToLocal(tip);
     const surface = new THREE.Vector3(.95, .04 + level, 0);
     stream.visible = pouring > .02;
