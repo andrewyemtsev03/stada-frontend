@@ -6,15 +6,14 @@ const { createRequire } = require('node:module');
 const frontend = path.resolve(__dirname, '../frontend');
 const { JSDOM } = createRequire(path.join(frontend, 'package.json'))('jsdom');
 const snapshot = require('../frontend/content/countries/kz.json');
-const { build, renderShowcase, output, lockedList } = require('../frontend/tools/build-static.cjs');
+const { renderShowcase, output, lockedList } = require('../frontend/tools/build-static.cjs');
 const { exportCountry } = require('../frontend/tools/export-country.cjs');
 const { execFileSync } = require('node:child_process');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 const slug = 'magne-b6-kids';
 const isLocked = Boolean(snapshot.locales.ru.products[slug].product.locked);
-const silently = run => { const log = console.log; console.log = () => {}; try { return run(); } finally { console.log = log; } };
 const lock = async () => require('../frontend/tools/lock/lock.cjs');
-test.before(() => silently(() => build()));
+// Reads the build from `npm run build` (test files run in parallel, so none may rebuild dist).
 
 test('the lock list is committed up to date with the content', () => {
   const entries = [];
