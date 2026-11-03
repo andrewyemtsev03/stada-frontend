@@ -3577,7 +3577,8 @@
               "formula_2_title": "დამხმარე ნივთიერებები",
               "formula_2_text": "გასუფთავებული წყალი — საერთო მოცულობა 5 მლ-მდე.",
               "formula_3_title": "ფორმა და შეფუთვა",
-              "formula_3_text": "პერორალური სუსპენზია 5 მლ ფლაკონებში; კოლოფში 10 ფლაკონი. გამოყენებამდე შეანჯღრიეთ და მიიღეთ გახსნისთანავე."
+              "formula_3_text": "პერორალური სუსპენზია 5 მლ ფლაკონებში; კოლოფში 10 ფლაკონი. გამოყენებამდე შეანჯღრიეთ და მიიღეთ გახსნისთანავე.",
+              "hero_carton": "/assets/georgia-products/enterogermina/carton-kz.glb"
             }
           }
         },
@@ -7605,7 +7606,8 @@
               "formula_2_title": "Other ingredients",
               "formula_2_text": "Purified water to a total volume of 5 ml.",
               "formula_3_title": "Form and packaging",
-              "formula_3_text": "Oral suspension in 5 ml vials; 10 vials per carton. Shake before use and take immediately after opening."
+              "formula_3_text": "Oral suspension in 5 ml vials; 10 vials per carton. Shake before use and take immediately after opening.",
+              "hero_carton": "/assets/georgia-products/enterogermina/carton-kz.glb"
             }
           }
         },

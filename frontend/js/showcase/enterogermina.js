@@ -475,6 +475,31 @@ function rand(seed) {
   return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
 }
 
+// The printed carton: an exact box wrapped in the approved artwork (carton-*.glb, one per market's carton).
+// Its width in the scene is 3.7 units, a little under true scale next to the vials, as in a pack shot.
+function loadCarton(THREE, renderer, url) {
+  if (!url) return Promise.resolve(null);
+  return import('../vendor/three/GLTFLoader.js')
+    .then(({ GLTFLoader }) => new GLTFLoader().loadAsync(new URL(url, location.href).href))
+    .then(gltf => {
+      const box = new THREE.Box3().setFromObject(gltf.scene);
+      gltf.scene.scale.setScalar(3.7 / (box.max.x - box.min.x));
+      gltf.scene.traverse(node => {
+        if (!node.isMesh) return;
+        const map = node.material.map;
+        if (map) map.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        // Printed colours as approved: lit, but kept out of the tone curve that would wash them out.
+        node.material.envMapIntensity = .55;
+        node.material.roughness = .5;
+        node.material.toneMapped = false;
+      });
+      const holder = new THREE.Group();
+      holder.add(gltf.scene);
+      return holder;
+    })
+    .catch(() => null);
+}
+
 /* ------------------------------------------------------------------ hero still life */
 const heroVisual = $('[data-hero-visual]');
 const heroCanvas = $('[data-hero-canvas]');
@@ -496,7 +521,14 @@ async function initHero() {
   const stage = new THREE.Group();
   stage.add(main, back, side);
   scene.add(stage);
-  const vials = [
+  // The carton (when the product copy names one) stands behind the vials, the way a pack shot is set.
+  const carton = await loadCarton(THREE, renderer, heroVisual.dataset.carton);
+  if (carton) stage.add(carton);
+  const vials = carton ? [
+    { group: main, x: 1.5, y: -.5, z: .8, scale: .8, rz: .08, ry: .3, delay: .18 },
+    { group: back, x: .78, y: -.38, z: .35, scale: .68, rz: -.14, ry: -.4, delay: .28 },
+    { group: side, x: 2.18, y: -.55, z: .05, scale: .58, rz: .28, ry: .9, delay: .36 },
+  ] : [
     { group: main, x: .1, y: -.05, z: 0, scale: 1, rz: .13, ry: .35, delay: 0 },
     { group: back, x: -1.25, y: .35, z: -1.4, scale: .78, rz: -.22, ry: -.5, delay: .12 },
     { group: side, x: 1.35, y: -.25, z: -.9, scale: .68, rz: .36, ry: .9, delay: .22 },
@@ -518,7 +550,7 @@ async function initHero() {
     const radius = 2.05 + random() * 1.05;
     bubbleData.push({
       x: Math.cos(angle) * radius * 1.15, y: 1.25 + Math.sin(angle * 2) * .55 + (random() - .5) * 1.6,
-      z: Math.sin(angle) * radius * .6 - .4, size: .05 + Math.pow(random(), 2.2) * .2, phase: random() * 6.28, delay: .2 + random() * .5,
+      z: Math.sin(angle) * radius * .6 - (heroVisual.dataset.carton && Math.abs(Math.cos(angle) * radius * 1.15) < 2.6 ? 2.2 : .4), size: .05 + Math.pow(random(), 2.2) * .2, phase: random() * 6.28, delay: .2 + random() * .5,
     });
     bubbles.setColorAt(i, color.setHex(bubbleColors[i % bubbleColors.length]));
   }
@@ -566,6 +598,11 @@ async function initHero() {
       const ease = 1 - Math.pow(.02, dt);
       lean.x += (lean.tx - lean.x) * ease;
       lean.y += (lean.ty - lean.y) * ease;
+    }
+    if (carton) {
+      const k = still ? 1 : easeOutBack(clamp(intro / .8));
+      carton.position.set(-.05, lerp(-1.4, 1.2, k) + Math.sin(time * .5) * .035, -1.1);
+      carton.rotation.set(-.04 + lean.y * .02, .3 + Math.sin(time * .25) * .04 + lean.x * .05, .025);
     }
     vials.forEach((item, index) => {
       const local = clamp((intro - item.delay) / (1 - item.delay));
