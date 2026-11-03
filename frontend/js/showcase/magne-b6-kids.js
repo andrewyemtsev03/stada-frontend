@@ -235,7 +235,7 @@ frame();
 
 /* ------------------------------------------------------------------ chapter jumps */
 const veil = $('.mg-veil');
-const tint = { 'mg-story': '#3fcdf7', 'mg-dose': '#f3f8fe', 'mg-film': '#070a2c', 'mg-facts': '#ffffff', 'mg-buy': '#262c8e' };
+const tint = { 'mg-story': '#3fcdf7', 'mg-dose': '#f3f8fe', 'mg-film': '#070a2c', 'mg-facts': '#ffffff', 'mg-buy': '#3fcdf7' };
 let jumping = false;
 document.addEventListener('click', event => {
   const link = event.target.closest('a[data-go]');
