@@ -20,8 +20,10 @@ const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 // geometry, and idle motion at 30 fps. The choreography, models and composition are the same on every device.
 const coarsePointer = matchMedia('(pointer: coarse)').matches;
 const lowEnd = coarsePointer || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || Boolean(navigator.connection?.saveData);
+// Phones (touch screens) go one step further: 1x pixels without multisampling, and a hero that holds still until touched.
+const phone = coarsePointer;
 const QUALITY = {
-  dprCap: lowEnd ? 1.5 : 2,
+  dprCap: phone ? 1 : lowEnd ? 1.5 : 2,
   // Most pixels a full-size 3D canvas may draw; big or high-density screens render a little softer instead of slower.
   pixelBudget: lowEnd ? 1.1e6 : 3e6,
   particles: lowEnd ? .6 : 1,
@@ -399,10 +401,36 @@ function whenNear(element, callback) {
   observer.observe(element);
 }
 
+/* ?debug=1 — a small live panel: profile, frame rate and resolution of each 3D scene, draw calls and triangles. */
+const debugRenderers = [];
+if (new URLSearchParams(location.search).has('debug')) {
+  const panel = document.createElement('pre');
+  panel.style.cssText = 'position:fixed;z-index:5000;left:8px;top:8px;margin:0;padding:8px 10px;border-radius:10px;background:rgba(0,0,0,.78);color:#7CFFB2;font:600 11px/1.45 ui-monospace,Menlo,monospace;pointer-events:none;white-space:pre';
+  document.body.append(panel);
+  let last = performance.now();
+  const seen = new Map();
+  setInterval(() => {
+    const now = performance.now();
+    const seconds = (now - last) / 1000;
+    last = now;
+    const lines = [`profile ${phone ? 'phone' : lowEnd ? 'light' : 'full'} · screen dpr ${devicePixelRatio}`];
+    debugRenderers.forEach(({ name, renderer }) => {
+      const data = renderer.userData;
+      const frames = data.frames || 0;
+      const fps = Math.round((frames - (seen.get(name) || 0)) / seconds);
+      seen.set(name, frames);
+      const canvas = renderer.domElement;
+      lines.push(`${name.padEnd(5)} ${String(fps).padStart(3)} fps · ${canvas.width}x${canvas.height} @${renderer.getPixelRatio().toFixed(2)} · lvl ${data.level.toFixed(2)}${data.idle ? ' · idle' : ''}`);
+      lines.push(`      ${renderer.info.render.calls} calls · ${(renderer.info.render.triangles / 1000).toFixed(0)}k tris`);
+    });
+    panel.textContent = lines.join('\n');
+  }, 500);
+}
+
 function createRenderer(THREE, canvas) {
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: !phone, alpha: true, powerPreference: 'high-performance' });
   } catch {
     return null;
   }
@@ -414,6 +442,7 @@ function createRenderer(THREE, canvas) {
   const info = gl.getExtension('WEBGL_debug_renderer_info');
   const name = String((info && gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) || gl.getParameter(gl.RENDERER) || '');
   renderer.userData = { lite: /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name), level: 1, idle: false };
+  debugRenderers.push({ name: canvas.dataset.storyCanvas !== undefined ? 'story' : 'hero', renderer });
   renderer.setPixelRatio(pixelRatioFor(renderer, canvas.clientWidth, canvas.clientHeight));
   return renderer;
 }
@@ -619,6 +648,7 @@ function makeDrag(element, onFirst) {
    profile's own ratio). Warm-up frames (shader compiles, texture uploads) and throttled idle frames don't count. */
 function Q(renderer) {
   const data = renderer.userData;
+  data.frames = (data.frames || 0) + 1;
   const state = data.q || (data.q = { last: performance.now(), samples: [], warmup: 30 });
   const now = performance.now();
   const delta = now - state.last;
@@ -2006,8 +2036,14 @@ async function initHero() {
   let shown = false;
   let heroFrames = 0;
 
+  // The hero's own clock: on phones it stops while nothing is happening, so the still life simply holds its pose.
+  let heroTime = 0;
+  let drawnSize = '';
+  const storyTop = () => storySection?.getBoundingClientRect().top ?? Infinity;
   const tick = () => {
-    const time = still ? 0 : clock.getElapsedTime();
+    // One 3D scene at a time: once the story chapter covers most of the screen, the hero stops drawing.
+    if (storyTop() < innerHeight * .45) { renderer.userData.idle = true; return; }
+    const dt = Math.min(.05, clock.getDelta());
     if (!startedAt) startedAt = performance.now();
     const intro = still ? 1 : clamp((performance.now() - startedAt) / 1400);
     if (!drag.dragging) {
@@ -2023,9 +2059,17 @@ async function initHero() {
     }
 
     // Light profile: once it has settled and nobody is turning the jar, idle motion draws at 30 fps.
+    // Phones: no idle motion at all; the scene draws only while it intros, is turned, or settles back.
     const idle = lowEnd && !still && intro >= 1 && !drag.dragging && Math.abs(drag.velocity) < 1e-3;
+    const resting = phone && idle && Math.abs(drag.offset - Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2) < 1e-3;
     renderer.userData.idle = idle;
+    if (!resting) heroTime += dt;
+    const time = still ? 0 : heroTime;
     heroFrames += 1;
+    // A resize (the phone's address bar sliding away) clears the canvas, so a resting hero redraws once after it.
+    const size = `${canvas.width}x${canvas.height}`;
+    if (resting && shown && heroFrames > 2 && size === drawnSize) return;
+    drawnSize = size;
     if (idle && heroFrames % 2) return;
 
     if (still) {
