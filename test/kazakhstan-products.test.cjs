@@ -6,91 +6,102 @@ const { createRequire } = require('node:module');
 const frontend = path.resolve(__dirname, '../frontend');
 const { JSDOM } = createRequire(path.join(frontend, 'package.json'))('jsdom');
 const snapshot = require('../frontend/content/countries/kz.json');
-const { build, renderShowcase, reviewOutput, output: publicOutput } = require('../frontend/tools/build-static.cjs');
-// Магне B6 Кидс is on review: it is built only into the password-protected review site.
-const output = reviewOutput;
+const { build, renderShowcase, output, lockedList } = require('../frontend/tools/build-static.cjs');
+const { exportCountry } = require('../frontend/tools/export-country.cjs');
+const { execFileSync } = require('node:child_process');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 const slug = 'magne-b6-kids';
-const silently = run => { const log = console.log; console.log = () => {}; try { run(); } finally { console.log = log; } };
-test.before(() => silently(() => build({ review: true })));
+const isLocked = Boolean(snapshot.locales.ru.products[slug].product.locked);
+const silently = run => { const log = console.log; console.log = () => {}; try { return run(); } finally { console.log = log; } };
+const lock = () => import(path.join(frontend, 'tools/lock/lock.mjs'));
+test.before(() => silently(() => build()));
 
-test('products on review stay out of every public build', () => {
-  assert.equal(snapshot.locales.ru.products[slug].product.review, true);
+test('the lock list is committed up to date with the content', () => {
+  const entries = [];
+  for (const country of require('../frontend/content/countries.json')) {
+    const content = require(`../frontend/content/countries/${country.code}.json`);
+    for (const lang of country.supportedLanguages) {
+      for (const [name, payload] of Object.entries(content.locales[lang].products || {})) if (payload.product.locked) entries.push({ country: country.code, lang, slug: name });
+    }
+  }
+  const committed = JSON.parse(fs.readFileSync(path.join(frontend, 'content/locked.json'), 'utf8'));
+  assert.deepEqual(committed, lockedList(entries), 'run npm run build and commit content/locked.json');
+});
+
+test('locked products are built but kept out of catalogues, menus and sitemaps', { skip: !isLocked && 'Магне B6 Кидс is published' }, () => {
   for (const lang of ['ru', 'kz']) {
-    assert.ok(!fs.existsSync(path.join(publicOutput, `sites/kz/${lang}/products/${slug}.html`)), `${lang}: no public page`);
-    const catalog = fs.readFileSync(path.join(publicOutput, `sites/kz/${lang}/products/index.html`), 'utf8');
-    assert.ok(!catalog.includes(slug), `${lang}: no public catalogue card`);
-    assert.ok(!fs.readFileSync(path.join(publicOutput, 'sites/kz/sitemap.xml'), 'utf8').includes(slug));
+    const page = read(`sites/kz/${lang}/products/${slug}.html`);
+    assert.equal(page.window.document.querySelector('meta[name="robots"]').content, 'noindex, nofollow');
+    for (const file of [`sites/kz/${lang}/products/index.html`, `sites/kz/${lang}/index.html`, `sites/kz/${lang}/about.html`]) {
+      assert.ok(!fs.readFileSync(path.join(output, file), 'utf8').includes(`products/${slug}.html`), `${file} links to the locked page`);
+    }
   }
+  assert.ok(!fs.readFileSync(path.join(output, 'sites/kz/sitemap.xml'), 'utf8').includes(slug));
 });
 
-test('the review site gate refuses everything without a valid session', async () => {
-  const { default: middleware } = await import(path.join(__dirname, '../review/middleware.js'));
-  Object.assign(process.env, { REVIEW_PASSWORD: 'test-password', REVIEW_SECRET: 'test-secret' });
-  try {
-    const page = await middleware(new Request('https://review.example/ru/products/magne-b6-kids.html'));
-    assert.equal(page.status, 401);
-    assert.ok(!(await page.text()).includes('Магне B6 Кидс</h1>'));
-    const forged = await middleware(new Request('https://review.example/', { headers: { cookie: `stada_review=${Date.now() + 1e9}.deadbeef` } }));
-    assert.equal(forged.status, 401);
-    const login = body => middleware(new Request('https://review.example/__review/login', { method: 'POST', body: new URLSearchParams(body) }));
-    assert.equal((await login({ password: 'wrong', next: '/' })).status, 401);
-    const ok = await login({ password: 'test-password', next: '//evil.example/x' });
-    assert.equal(ok.status, 303);
-    assert.equal(ok.headers.get('location'), '/', 'no open redirect');
-    const cookie = ok.headers.get('set-cookie').split(';')[0];
-    assert.match(ok.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
-    const through = await middleware(new Request('https://review.example/ru/products/magne-b6-kids.html', { headers: { cookie } }));
-    assert.equal(new URL(through.headers.get('x-middleware-rewrite')).pathname, '/sites/kz/ru/products/magne-b6-kids.html');
-    const asset = await middleware(new Request('https://review.example/css/style.css', { headers: { cookie } }));
-    assert.equal(asset.headers.get('x-middleware-next'), '1');
-    const ge = await middleware(new Request('https://review.example/ge/en/about.html?x=1', { headers: { cookie } }));
-    assert.equal(new URL(ge.headers.get('x-middleware-rewrite')).pathname + new URL(ge.headers.get('x-middleware-rewrite')).search, '/sites/ge/en/about.html?x=1');
-    assert.match(ge.headers.get('set-cookie'), /^stada_review_country=ge; .*HttpOnly; Secure/);
-    delete process.env.REVIEW_SECRET;
-    assert.equal((await middleware(new Request('https://review.example/', { headers: { cookie } }))).status, 503, 'fails closed when unconfigured');
-  } finally {
-    delete process.env.REVIEW_PASSWORD; delete process.env.REVIEW_SECRET;
-  }
-});
-
-test('the review site picks the country from the address and keeps it for the site\'s own links', async () => {
-  const { routeFor, COUNTRIES } = await import(path.join(__dirname, '../review/middleware.js'));
-  const listed = require('../frontend/content/countries.json');
-  const list = Array.isArray(listed) ? listed : listed.countries;
-  assert.deepEqual(Object.keys(COUNTRIES).sort(), list.map(country => country.code).sort(), 'middleware knows every country');
-  for (const country of list) {
+test('the Vercel lock guards only locked pages and their own files', async () => {
+  const { default: middleware, isLocked: locked, sitePath, COUNTRIES } = await lock();
+  for (const country of require('../frontend/content/countries.json')) {
     assert.deepEqual(COUNTRIES[country.code], { languages: country.supportedLanguages, home: country.defaultLanguage }, country.code);
   }
-  const to = (pathname, remembered) => routeFor(pathname, remembered)?.path ?? null;
-  assert.equal(to('/'), null, 'start page');
-  assert.equal(to('/css/style.css', 'ge'), null);
-  assert.equal(to('/uz/'), '/sites/uz/index.html');
-  assert.equal(routeFor('/uz/').country, 'uz');
-  assert.equal(to('/uz/ru/products/x.html'), '/sites/uz/ru/products/x.html');
-  assert.equal(to('/kz/kz/products/x.html'), '/sites/kz/kz/products/x.html');
-  assert.equal(to('/ge/ge/'), '/sites/ge/ge/index.html');
-  // The site's own links carry no country.
-  assert.equal(to('/ru/about.html'), '/sites/kz/ru/about.html', 'Kazakhstan by default');
-  assert.equal(to('/ru/about.html', 'uz'), '/sites/uz/ru/about.html');
-  assert.equal(to('/en/news.html', 'ge'), '/sites/ge/en/news.html');
-  assert.equal(to('/kz/about.html', 'kz'), '/sites/kz/kz/about.html', 'Kazakh, not the country');
-  assert.equal(to('/kz/', 'kz'), '/sites/kz/kz/index.html');
-  assert.equal(to('/kz/', 'ge'), '/sites/kz/index.html');
-  assert.equal(to('/about.html', 'am'), '/sites/am/about.html');
-  assert.equal(to('/products/x.html', 'md'), '/sites/md/ro/products/x.html');
-  assert.equal(to('/ru/about.html', 'nope'), '/sites/kz/ru/about.html');
+  assert.equal(sitePath('stada.uz', '/ru/about.html'), '/sites/uz/ru/about.html');
+  assert.equal(sitePath('new.stada.ge', '/products/x.html'), '/sites/ge/ge/products/x.html');
+  assert.equal(sitePath('stada.kg', '/'), '/');
+  if (isLocked) {
+    for (const [host, pathname] of [['stada.kz', '/ru/products/magne-b6-kids.html'], ['stada.kz', '/products/magne-b6-kids.html'], ['www.stada.kz', '/kz/products/Magne-B6-Kids.html'],
+      ['stada.uz', '/sites/kz/ru/products/magne-b6-kids.html'], ['x.vercel.app', '/sites//kz/ru/products/%6dagne-b6-kids.html'], ['stada.ge', '/assets/kazakhstan-products/magne-b6-kids/panda-lite.glb'],
+      ['stada.ge', '/css/modules/products/showcase-magne-b6-kids.css'], ['stada.ge', '/js/showcase/magne-b6-kids.js'], ['stada.kz', '/ru/products/magne-b6-kids']]) {
+      assert.ok(locked(host, pathname), `${host}${pathname}`);
+    }
+  }
+  for (const [host, pathname] of [['stada.kz', '/ru/products/index.html'], ['stada.ge', '/ge/products/phosphalugel.html'], ['stada.uz', '/'], ['stada.kz', '/assets/logos/stada_logo.png'], ['stada.kz', '/ru/products/magne-b6-kids-forte.html']]) {
+    assert.ok(!locked(host, pathname), `${host}${pathname}`);
+  }
+  if (!isLocked) return;
+  const env = { ...process.env };
+  const get = (pathname, init = {}) => middleware(new Request(`https://stada.kz${pathname}`, { ...init, headers: { host: 'stada.kz', ...(init.headers || {}) } }));
+  try {
+    delete process.env.LOCK_PASSWORD; delete process.env.LOCK_SECRET;
+    assert.equal((await get('/ru/products/magne-b6-kids.html')).status, 503, 'fails closed when unconfigured');
+    assert.equal((await get('/ru/about.html')).headers.get('x-middleware-next'), '1', 'the rest of the site still works');
+    Object.assign(process.env, { LOCK_PASSWORD: 'test-password', LOCK_SECRET: 'test-secret' });
+    const page = await get('/ru/products/magne-b6-kids.html');
+    assert.equal(page.status, 401);
+    assert.ok(!(await page.text()).includes('Магне B6 Кидс</h1>'));
+    assert.equal((await get('/ru/about.html')).headers.get('x-middleware-next'), '1');
+    assert.equal((await get('/ru/products/magne-b6-kids.html', { headers: { cookie: `stada_lock=${Date.now() + 1e9}.deadbeef` } })).status, 401, 'forged cookie');
+    const login = body => get('/__lock/login', { method: 'POST', body: new URLSearchParams(body) });
+    assert.equal((await login({ password: 'wrong', next: '/' })).status, 401);
+    assert.equal((await login({ password: 'test-password', next: '//evil.example/x' })).headers.get('location'), '/', 'no open redirect');
+    const ok = await login({ password: 'test-password', next: '/ru/products/magne-b6-kids.html' });
+    assert.equal(ok.status, 303);
+    assert.equal(ok.headers.get('location'), '/ru/products/magne-b6-kids.html');
+    assert.match(ok.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
+    const through = await get('/ru/products/magne-b6-kids.html', { headers: { cookie: ok.headers.get('set-cookie').split(';')[0] } });
+    assert.equal(through.headers.get('x-middleware-next'), '1');
+    assert.equal(through.headers.get('cache-control'), 'private, no-store');
+  } finally {
+    process.env = env;
+  }
 });
 
-test('the review start page lists each product on review per country and language', () => {
-  const index = new JSDOM(fs.readFileSync(path.join(output, 'index.html'), 'utf8')).window.document;
-  const links = [...index.querySelectorAll('li a')].map(link => link.getAttribute('href'));
-  assert.deepEqual(links, [`/kz/ru/products/${slug}.html`, `/kz/kz/products/${slug}.html`]);
-  assert.ok(index.querySelector('a[href="/ge/ge/index.html"]'));
-  assert.ok(!fs.existsSync(path.join(publicOutput, 'index.html')) || !fs.readFileSync(path.join(publicOutput, 'index.html'), 'utf8').includes('на согласовании'));
+test('the stada.kz export puts locked pages behind the PHP gate', { skip: !isLocked && 'Магне B6 Кидс is published' }, async () => {
+  const { target } = await exportCountry('kz');
+  for (const lang of ['ru', 'kz']) {
+    const stub = fs.readFileSync(path.join(target, `${lang}/products/${slug}.html`), 'utf8');
+    assert.ok(!stub.includes('Магне'), `${lang}: the public file is only a redirect`);
+    assert.match(stub, new RegExp(`url=/__lock/\\?p=${lang}%2Fproducts%2F${slug}\\.html`));
+    const stored = fs.readFileSync(path.join(target, `__lock/pages/${lang}/products/${slug}.php`), 'utf8');
+    assert.ok(stored.startsWith('<?php http_response_code(404); exit; ?>\n<!DOCTYPE html>'));
+  }
+  assert.match(fs.readFileSync(path.join(target, `products/${slug}.html`), 'utf8'), /url=\/__lock\/\?p=ru%2Fproducts/);
+  assert.ok(!fs.existsSync(path.join(target, '__lock/config.php')), 'the password is never exported');
+  const gate = fs.readFileSync(path.join(target, '__lock/index.php'), 'utf8');
+  assert.ok(gate.includes(`'ru/products/${slug}.html' => 'ru/products/${slug}.php'`));
+  try { execFileSync('php', ['-l', path.join(target, '__lock/index.php')], { stdio: 'pipe' }); } catch (error) { if (error.code !== 'ENOENT') throw error; }
 });
 
-test('Kazakhstan catalogs link Магне B6 Кидс to its showcase page in Russian and Kazakh', () => {
+test('Kazakhstan catalogs link Магне B6 Кидс to its showcase page in Russian and Kazakh', { skip: isLocked && 'locked until approved' }, () => {
   for (const lang of ['ru', 'kz']) {
     const { product } = snapshot.locales[lang].products[slug];
     const href = `/${lang}/products/${slug}.html`;

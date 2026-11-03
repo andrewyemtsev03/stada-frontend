@@ -1,0 +1,39 @@
+# Builds the stada.kz package for PS.kz from main (stada.kz must be hosted in Kazakhstan, so it is not
+# deployed by Vercel). Download it from the run's "stada-kz" artifact and upload it in Plesk.
+name: stada.kz package
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npm test
+        working-directory: frontend
+      - run: npm run export:country -- kz
+        working-directory: frontend
+      - name: Name the package
+        run: echo "STAMP=$(date -u +%Y%m%d)-${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+      # GitHub downloads an artifact as one zip of these files: that zip is the upload for Plesk.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stada-kz-${{ env.STAMP }}
+          path: frontend/export/kz/
+          include-hidden-files: true
+          retention-days: 30

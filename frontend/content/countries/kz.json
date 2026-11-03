@@ -3174,7 +3174,7 @@
             "category": "kids",
             "accent": "#262c8e",
             "template": "products/magne-b6-kids.html",
-            "review": true,
+            "locked": true,
             "shortDescription": "Жевательные таблетки со вкусом арбуза для детей от 4 лет. БАД, не является лекарством.",
             "therapeuticArea": "Для детей",
             "image": {
@@ -6652,7 +6652,7 @@
             "category": "kids",
             "accent": "#262c8e",
             "template": "products/magne-b6-kids.html",
-            "review": true,
+            "locked": true,
             "shortDescription": "4 жастан асқан балаларға арналған қарбыз дәмді шайнайтын таблеткалар. ББҚ, дәрілік зат емес.",
             "therapeuticArea": "Балаларға арналған",
             "image": {
