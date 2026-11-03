@@ -33,7 +33,7 @@ if (!isset($pages[$page])) {
 $cookieName = 'stada_lock';
 $secret = (string) $config['secret'];
 $days = isset($config['session_days']) ? (int) $config['session_days'] : 14;
-$self = '/__lock/?p=' . rawurlencode($page);
+$self = '/__lock/index.php?p=' . rawurlencode($page);
 
 function lock_valid($token, $secret) {
     $parts = explode('.', (string) $token);

@@ -89,11 +89,11 @@ test('the stada.kz export puts locked pages behind the PHP gate', { skip: !isLoc
   for (const lang of ['ru', 'kz']) {
     const stub = fs.readFileSync(path.join(target, `${lang}/products/${slug}.html`), 'utf8');
     assert.ok(!stub.includes('Магне'), `${lang}: the public file is only a redirect`);
-    assert.match(stub, new RegExp(`url=/__lock/\\?p=${lang}%2Fproducts%2F${slug}\\.html`));
+    assert.match(stub, new RegExp(`url=/__lock/index\\.php\\?p=${lang}%2Fproducts%2F${slug}\\.html`));
     const stored = fs.readFileSync(path.join(target, `__lock/pages/${lang}/products/${slug}.php`), 'utf8');
     assert.ok(stored.startsWith('<?php http_response_code(404); exit; ?>\n<!DOCTYPE html>'));
   }
-  assert.match(fs.readFileSync(path.join(target, `products/${slug}.html`), 'utf8'), /url=\/__lock\/\?p=ru%2Fproducts/);
+  assert.match(fs.readFileSync(path.join(target, `products/${slug}.html`), 'utf8'), /url=\/__lock\/index\.php\?p=ru%2Fproducts/);
   assert.ok(!fs.existsSync(path.join(target, '__lock/config.php')), 'the password is never exported');
   const gate = fs.readFileSync(path.join(target, '__lock/index.php'), 'utf8');
   assert.ok(gate.includes(`'ru/products/${slug}.html' => 'ru/products/${slug}.php'`));
