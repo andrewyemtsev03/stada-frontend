@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="../assets/logos/stada_logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css?v=mobile-layout-1" />
-    <link rel="stylesheet" href="../css/modules/products/showcase-enterogermina.css?v=3" />
+    <link rel="stylesheet" href="../css/modules/products/showcase-enterogermina.css?v=4" />
     <script defer src="../js/site/analytics.js?v=1"></script>
   </head>
   <!-- Enterogermina showcase, shared by the 2, 4 and 6 billion pages. Every word and number comes from the
@@ -63,39 +63,23 @@
     </svg>
 
     <main class="eg" id="eg-top">
-      <!-- 00 · Hero -->
+      <!-- 00 · Hero: the name types itself, the vial rises under it, then the dose; the pack's spore bubbles rise
+           behind and pop when touched (drawn by the module). -->
       <section class="eg-hero" id="eg-hero" aria-labelledby="eg-title">
-        <!-- The pack's spore bubbles, rising through the hero; hovering (or tapping) one pops it. Drawn by the module. -->
         <canvas class="eg-bubbles" data-bubbles aria-hidden="true"></canvas>
-        <div class="eg-hero__inner">
-          <a class="eg-back eg-rise" href="index.html" data-i18n-key="product_back"></a>
-          <div class="eg-hero__copy">
-            <h1 id="eg-title" class="eg-lockup eg-rise" style="--d: .05s">
-              <span class="eg-lockup__word"><span class="eg-lockup__entero">entero</span><span class="eg-lockup__germina">germina</span><sup>®</sup></span>
-              <span class="eg-lockup__dose" data-sc="hero_dose"></span>
-            </h1>
-            <p class="eg-tagline eg-rise" style="--d: .13s" data-sc="hero_tagline"></p>
-            <!-- Not shown: the indication is in the instructions below; the build uses it for the meta description. -->
-            <p hidden data-sc="hero_lead" data-page-description></p>
-            <div class="eg-hero__actions eg-rise" style="--d: .21s">
-              <a class="eg-btn eg-btn--primary" href="#eg-dose" data-go="eg-dose"><span data-sc="hero_cta_dose"></span><svg aria-hidden="true"><use href="#eg-down" /></svg></a>
-              <a class="eg-btn eg-btn--ghost" href="#eg-info" data-go="eg-info"><span data-sc="hero_cta_info"></span></a>
-            </div>
-            <p class="eg-note eg-rise" style="--d: .29s"><span class="eg-note__i" aria-hidden="true">i</span><span data-sc="badge_medicine"></span></p>
-          </div>
-
-          <div class="eg-hero__visual" data-hero-visual data-sc-attr="data-carton:hero_carton">
-            <div class="eg-hero__halo" aria-hidden="true"></div>
+        <div class="eg-hero__solo">
+          <h1 id="eg-title" class="eg-type">
+            <span class="eg-lockup__word" data-type aria-hidden="true"><span class="eg-lockup__entero"><span class="eg-ch" style="--i:0">e</span><span class="eg-ch" style="--i:1">n</span><span class="eg-ch" style="--i:2">t</span><span class="eg-ch" style="--i:3">e</span><span class="eg-ch" style="--i:4">r</span><span class="eg-ch" style="--i:5">o</span></span><span class="eg-lockup__germina"><span class="eg-ch" style="--i:6">g</span><span class="eg-ch" style="--i:7">e</span><span class="eg-ch" style="--i:8">r</span><span class="eg-ch" style="--i:9">m</span><span class="eg-ch" style="--i:10">i</span><span class="eg-ch" style="--i:11">n</span><span class="eg-ch" style="--i:12">a</span></span><span class="eg-type__caret"></span><sup class="eg-type__mark">®</sup></span>
+            <span class="eg-sr">Enterogermina <span data-sc="fact_spores_value"></span></span>
+          </h1>
+          <div class="eg-hero__visual" data-hero-visual>
             <canvas class="eg-hero__gl" data-hero-canvas aria-hidden="true"></canvas>
             <!-- Drawn fallback for no JavaScript, no WebGL or data-saver mode. -->
-            <div class="eg-hero__poster" aria-hidden="true">
-              <svg class="eg-hero__vial eg-hero__vial--back"><use href="#eg-vial" /></svg>
-              <svg class="eg-hero__vial"><use href="#eg-vial" /></svg>
-              <svg class="eg-hero__vial eg-hero__vial--side"><use href="#eg-vial" /></svg>
-            </div>
+            <div class="eg-hero__poster" aria-hidden="true"><svg class="eg-hero__vial"><use href="#eg-vial" /></svg></div>
           </div>
+          <p class="eg-hero__amount" aria-hidden="true" data-sc="fact_spores_value"></p>
+          <p class="eg-sr" data-sc="hero_lead" data-page-description></p>
         </div>
-        <a class="eg-cue" href="#eg-story" data-go="eg-story" data-sc-attr="aria-label:ch_story"><svg aria-hidden="true"><use href="#eg-down" /></svg></a>
       </section>
 
       <!-- 01 · One scroll-driven 3D scene in three stages: the spores fill the vial, the antibiotic course and
@@ -301,6 +285,6 @@
     <script src="../js/site/product-animations.js?v=site-modules-1"></script>
     <script src="../js/site/shared.js?v=mobile-nav-2"></script>
   <script src="../js/site/cookie-notice.js?v=analytics-1"></script>
-    <script type="module" src="../js/showcase/enterogermina.js?v=4"></script>
+    <script type="module" src="../js/showcase/enterogermina.js?v=5"></script>
   </body>
 </html>

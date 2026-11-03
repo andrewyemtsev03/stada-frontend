@@ -105,7 +105,9 @@ test('the Enterogermina showcase renders every text from the product copy, with 
       const document = page.window.document;
       const html = document.documentElement.outerHTML;
       assert.ok(!/data-sc(-list|-attr)?=/.test(html), `${lang}/${slug} has no unfilled showcase slots`);
-      assert.equal(document.querySelector('.eg-lockup__dose').textContent, product.showcase.hero_dose);
+      // The hero is the typed name, the vial and the amount only.
+      assert.equal(document.querySelector('.eg-hero__amount').textContent, product.showcase.fact_spores_value);
+      assert.equal(document.querySelectorAll('#eg-hero a, #eg-hero button, #eg-hero dl').length, 0);
       assert.ok(document.querySelector('link[href*="showcase-enterogermina.css"]'));
       assert.ok(document.querySelector('script[type="module"][src*="/js/showcase/enterogermina.js"]'));
       // The leaflet download is the product's own document.
