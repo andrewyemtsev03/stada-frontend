@@ -468,26 +468,39 @@ html:not(.mg-ready) .mg-hero__gl, .mg-hero--nogl .mg-hero__gl { display: none; }
   position: relative; display: flex; width: 132px; height: 92px; flex: none; padding: 0; border: 0; border-radius: 24px;
   background: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
-.mg-dose__pandas:hover img:nth-child(1) { scale: 1.06; }
-.mg-dose__pandas:active img { scale: .94; }
-/* "Hey, tap me": a hop and a giggle every few seconds, with a soft pink ping under the panda. */
+.mg-dose__pandas img { transform-origin: 50% 100%; }
+/* A soft contact shadow under the panda that shrinks while it is in the air. */
 .mg-dose__pandas::before {
-  content: ""; position: absolute; left: 22px; bottom: -4px; width: 64px; height: 18px; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(229, 0, 125, .35), rgba(229, 0, 125, 0)); opacity: 0; pointer-events: none;
+  content: ""; position: absolute; left: 30px; bottom: -6px; width: 58px; height: 12px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(160, 40, 90, .28), rgba(160, 40, 90, 0)); pointer-events: none;
 }
-.mg-dose__pandas.is-calling img:nth-child(1) { animation: mg-hey 2.8s var(--mg-ease) 1s infinite; }
-.mg-dose__pandas.is-calling::before { animation: mg-ping 2.8s ease-out 1s infinite; }
-@keyframes mg-hey {
-  0%, 46%, 100% { translate: 0 0; rotate: 0deg; }
-  8% { translate: 0 -14px; rotate: -10deg; }
-  16% { translate: 0 0; rotate: 8deg; }
-  22% { translate: 0 -6px; rotate: -6deg; }
-  28% { translate: 0 0; rotate: 5deg; }
-  34% { rotate: -3deg; }
-  40% { rotate: 2deg; }
+/* Awake (in view): slow jelly breathing. Calling (until tapped, and again a few seconds after): every 3.4 s a
+   squash, a stretchy hop with a little spin, a squishy landing and a giggle. Tapped: one quick boing. */
+.mg-dose__pandas.is-awake img { animation: mg-panda-breathe 2.6s ease-in-out infinite; }
+.mg-dose__pandas.is-awake img:nth-child(2) { animation-delay: -1.3s; }
+.mg-dose__pandas.is-calling img:nth-child(1) { animation: mg-panda-hey 3.4s linear infinite; }
+.mg-dose__pandas.is-calling img:nth-child(2) { animation: mg-panda-hey 3.4s linear .18s infinite; }
+.mg-dose__pandas.is-calling::before { animation: mg-panda-shadow 3.4s linear infinite; }
+.mg-dose__pandas.is-boing img { animation: mg-panda-boing .55s var(--mg-spring); }
+.mg-dose__pandas:hover img { filter: drop-shadow(0 14px 16px rgba(160, 40, 90, .32)) brightness(1.04); }
+@keyframes mg-panda-breathe { 0%, 100% { scale: 1 1; } 50% { scale: .985 1.035; } }
+@keyframes mg-panda-hey {
+  0%, 52%, 100% { translate: 0 0; rotate: 0deg; scale: 1 1; animation-timing-function: ease-in-out; }
+  6% { translate: 0 0; scale: 1.12 .86; animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
+  15% { translate: 0 -20px; rotate: -8deg; scale: .92 1.1; animation-timing-function: ease-out; }
+  21% { translate: 0 -24px; rotate: 6deg; scale: 1 1; animation-timing-function: ease-in; }
+  28% { translate: 0 0; rotate: 0deg; scale: 1.14 .84; animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
+  33% { translate: 0 -5px; scale: .96 1.05; }
+  37% { translate: 0 0; rotate: -5deg; scale: 1.03 .98; }
+  42% { rotate: 4deg; scale: 1 1; }
+  47% { rotate: -2deg; }
 }
-@keyframes mg-ping { 0%, 4% { opacity: 0; scale: .6; } 12% { opacity: 1; scale: 1; } 40%, 100% { opacity: 0; scale: 1.6; } }
-.mg-dose__pandas img { position: absolute; bottom: 0; height: 88px; width: auto; filter: drop-shadow(0 12px 14px rgba(160, 40, 90, .25)); transition: scale .25s var(--mg-spring), transform .6s var(--mg-spring), opacity .4s; }
+@keyframes mg-panda-shadow {
+  0%, 6%, 28%, 52%, 100% { scale: 1; opacity: 1; }
+  15%, 21% { scale: .55; opacity: .45; }
+}
+@keyframes mg-panda-boing { 0% { scale: 1 1; } 25% { scale: 1.16 .82; } 55% { scale: .9 1.12; } 80% { scale: 1.04 .97; } 100% { scale: 1 1; } }
+.mg-dose__pandas img { position: absolute; bottom: 0; height: 88px; width: auto; filter: drop-shadow(0 12px 14px rgba(160, 40, 90, .25)); transition: filter .25s ease, transform .6s var(--mg-spring), opacity .4s; }
 .mg-dose__pandas img:nth-child(1) { left: 26px; transform: rotate(-6deg); }
 .mg-dose__pandas img:nth-child(2) { left: 64px; transform: rotate(12deg) scale(.2) translateY(30px); opacity: 0; }
 .mg-dose__panel[data-age="older"] .mg-dose__pandas img:nth-child(1) { transform: translateX(-20px) rotate(-10deg); }
