@@ -143,7 +143,7 @@ Remove the flag after approval and release again to publish it.
 
 The lock runs on the server:
 
-- **Vercel** (`middleware.js`, logic in `tools/lock/lock.mjs`): guards locked pages
+- **Vercel** (`middleware.js`, logic in `tools/lock/lock.cjs`): guards locked pages
   and, unless the slug is public elsewhere, the product's own assets, CSS and JS.
   Project environment variables: `LOCK_PASSWORD`, `LOCK_SECRET` (random; changing it
   logs everyone out), optional `LOCK_SESSION_DAYS` (default 14). Without them locked

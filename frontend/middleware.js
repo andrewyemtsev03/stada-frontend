@@ -15,4 +15,8 @@
 
 export const config = { matcher: '/:path*' };
 
-export { default } from './tools/lock/lock.mjs';
+import lock from './tools/lock/lock.cjs';
+
+export default function middleware(request) {
+  return lock.middleware(request);
+}

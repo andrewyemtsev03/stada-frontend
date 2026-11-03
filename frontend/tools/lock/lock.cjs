@@ -1,6 +1,7 @@
 // Shared by middleware.js (Vercel) and tools/export-country.cjs (the PHP gate's page). See middleware.js.
+// CommonJS, because Vercel loads middleware.js as CommonJS in this package.
 
-import locked from '../../content/locked.json' with { type: 'json' };
+const locked = require('../../content/locked.json');
 
 const COOKIE = 'stada_lock';
 const LOGIN = '/__lock/login';
@@ -16,13 +17,12 @@ const COUNTRIES = {
   md: { languages: ['ro', 'ru'], home: 'ro' },
   uz: { languages: ['ru', 'uz'], home: 'ru' },
 };
-export { COUNTRIES };
 
 const lockedPages = new Set(locked.pages.map(page => page.replace(/\.html$/, '')));
 const lockedSlugs = locked.slugs.map(slug => new RegExp(`(^|[/_.-])${slug.replace(/[-]/g, '\\-')}([/_.]|$)`));
 
 // The file a request is served from, following the host rewrites in vercel.json.
-export function sitePath(host, pathname) {
+function sitePath(host, pathname) {
   let path;
   try { path = decodeURIComponent(pathname); } catch { return pathname; }
   path = path.replace(/\/{2,}/g, '/').toLowerCase();
@@ -38,7 +38,7 @@ export function sitePath(host, pathname) {
   return path;
 }
 
-export function isLocked(host, pathname) {
+function isLocked(host, pathname) {
   const path = sitePath(host, pathname);
   if (lockedPages.has(path.replace(/\.html$/, '').replace(/\/$/, ''))) return true;
   return lockedSlugs.some(pattern => pattern.test(path));
@@ -79,7 +79,7 @@ const safeTarget = value => (typeof value === 'string' && value.startsWith('/') 
 
 const escape = value => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 
-export function gatePage(target, wrong = false, action = LOGIN) {
+function gatePage(target, wrong = false, action = LOGIN) {
   return `<!doctype html>
 <html lang="ru">
 <head>
@@ -124,7 +124,7 @@ const gate = (target, wrong) => new Response(gatePage(target, wrong), {
   headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' },
 });
 
-export default async function middleware(request) {
+async function middleware(request) {
   const url = new URL(request.url);
   const host = request.headers.get('host') || url.host;
   const password = process.env.LOCK_PASSWORD;
@@ -166,3 +166,5 @@ export default async function middleware(request) {
   // Unlocked for this visitor: never cache the locked page in shared caches.
   return new Response(null, { headers: { 'x-middleware-next': '1', 'cache-control': 'private, no-store' } });
 }
+
+module.exports = { middleware, isLocked, sitePath, gatePage, COUNTRIES };

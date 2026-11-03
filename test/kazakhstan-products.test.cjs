@@ -13,7 +13,7 @@ const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'))
 const slug = 'magne-b6-kids';
 const isLocked = Boolean(snapshot.locales.ru.products[slug].product.locked);
 const silently = run => { const log = console.log; console.log = () => {}; try { return run(); } finally { console.log = log; } };
-const lock = () => import(path.join(frontend, 'tools/lock/lock.mjs'));
+const lock = async () => require('../frontend/tools/lock/lock.cjs');
 test.before(() => silently(() => build()));
 
 test('the lock list is committed up to date with the content', () => {
@@ -40,7 +40,7 @@ test('locked products are built but kept out of catalogues, menus and sitemaps',
 });
 
 test('the Vercel lock guards only locked pages and their own files', async () => {
-  const { default: middleware, isLocked: locked, sitePath, COUNTRIES } = await lock();
+  const { middleware, isLocked: locked, sitePath, COUNTRIES } = await lock();
   for (const country of require('../frontend/content/countries.json')) {
     assert.deepEqual(COUNTRIES[country.code], { languages: country.supportedLanguages, home: country.defaultLanguage }, country.code);
   }
