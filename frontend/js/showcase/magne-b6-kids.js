@@ -20,7 +20,7 @@ const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 // geometry, and idle motion at 30 fps. The choreography, models and composition are the same on every device.
 const coarsePointer = matchMedia('(pointer: coarse)').matches;
 const lowEnd = coarsePointer || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || Boolean(navigator.connection?.saveData);
-// Phones (touch screens) go one step further: 1x pixels without multisampling, and a hero that holds still until touched.
+// Phones (touch screens) go one step further: 1x pixels without multisampling, and a hero that holds still once it has settled.
 const phone = coarsePointer;
 const QUALITY = {
   dprCap: phone ? 1 : lowEnd ? 1.5 : 2,
@@ -65,7 +65,7 @@ const revealObserver = new IntersectionObserver(entries => {
 $$('.mg-reveal').forEach(node => revealObserver.observe(node));
 
 /* ------------------------------------------------------------------ hero */
-// The hero doesn't follow the cursor; the jar turns only when it is grabbed (see initHero).
+// The hero can't be turned by dragging; on desktop the jar leans very slightly toward the mouse (see initHero).
 const heroVisual = $('[data-hero-visual]');
 
 // Loading screen: lifted once the hero scene has drawn (or fallen back to photos) and the fonts are in,
@@ -649,28 +649,6 @@ function buildJar(THREE, gltf) {
   cap.position.y = capBase;
   jar.add(cap);
   return { jar, body, cap, capBase };
-}
-
-function makeDrag(element, onFirst) {
-  const state = { offset: 0, velocity: 0, dragging: false, lastX: 0, releasedAt: 0, touched: false };
-  element.addEventListener('pointerdown', event => {
-    state.dragging = true;
-    state.lastX = event.clientX;
-    state.velocity = 0;
-    element.setPointerCapture(event.pointerId);
-    if (!state.touched) { state.touched = true; onFirst?.(); }
-  });
-  element.addEventListener('pointermove', event => {
-    if (!state.dragging) return;
-    const dx = event.clientX - state.lastX;
-    state.lastX = event.clientX;
-    state.offset += dx * .009;
-    state.velocity = dx * .009;
-  });
-  const release = () => { state.dragging = false; state.releasedAt = performance.now(); };
-  element.addEventListener('pointerup', release);
-  element.addEventListener('pointercancel', release);
-  return state;
 }
 
 /* Adaptive resolution: slow frames lower the pixel level step by step, quick frames win it back (never above the
@@ -1356,7 +1334,7 @@ async function initStory() {
   const vectors = { dir: new THREE.Vector3(), side: new THREE.Vector3(), up: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
   const random = seeded(7);
 
-  // world: slides sideways so the composition sits opposite the caption; spin: turned by dragging.
+  // world: slides sideways so the composition sits opposite the caption; spin: holds the scene's objects (not draggable).
   const world = new THREE.Group();
   const spin = new THREE.Group();
   world.add(spin);
@@ -1512,10 +1490,9 @@ async function initStory() {
   const flash = $('.mg-flash', section);
   const counter = $('[data-count]', section);
   const counterBox = counter?.parentElement;
-  const hint = $('.mg-drag', section);
   let shownCount = -1;
 
-  const drag = makeDrag(canvas, () => hint?.classList.add('is-hidden'));
+  // The objects can't be turned by dragging; a tap on the tablet only makes it wobble.
   let pressX = 0;
   let pressY = 0;
   canvas.addEventListener('pointerdown', event => { pressX = event.clientX; pressY = event.clientY; });
@@ -1560,17 +1537,6 @@ async function initStory() {
     state.enter += (story.enter - state.enter) * (still ? 1 : .09);
     const p = state.p;
 
-    // Grab to turn; after letting go it keeps turning a little, then settles back to the front.
-    if (!drag.dragging) {
-      drag.offset += drag.velocity;
-      drag.velocity *= .93;
-      if (Math.abs(drag.velocity) < 1e-4) drag.velocity = 0;
-      if (performance.now() - drag.releasedAt > 1400) {
-        const front = Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2;
-        drag.offset += (front - drag.offset) * (still ? 1 : .05);
-        if (Math.abs(front - drag.offset) < 1e-4) drag.offset = front;
-      }
-    }
     // Jelly: a spring pushed by scroll speed and by taps on the tablet.
     const speed = dt > 0 ? (p - state.last) / dt : 0;
     state.last = p;
@@ -1578,14 +1544,14 @@ async function initStory() {
     state.jellyV += ((push - state.jelly) * 90 - state.jellyV * 8) * dt;
     state.jelly += state.jellyV * dt;
     if (still) { state.jelly = 0; state.jellyV = 0; }
-    // Light profile: while nothing is scrolling or being dragged, idle motion draws every other frame (30 fps).
-    const idle = lowEnd && !still && Math.abs(story.target - state.p) < 4e-4 && !drag.dragging && Math.abs(drag.velocity) < 1e-3 && Math.abs(state.jellyV) < .05;
+    // Light profile: while nothing is scrolling, idle motion draws every other frame (30 fps).
+    const idle = lowEnd && !still && Math.abs(story.target - state.p) < 4e-4 && Math.abs(state.jellyV) < .05;
     renderer.userData.idle = idle;
     frameCount += 1;
     if (idle && frameCount % 2) return;
 
     if (lite) {
-      const key = `${p.toFixed(4)}|${state.enter.toFixed(3)}|${drag.offset.toFixed(4)}|${canvas.width}x${canvas.height}`;
+      const key = `${p.toFixed(4)}|${state.enter.toFixed(3)}|${canvas.width}x${canvas.height}`;
       if (key === lastKey && !firstFrame) return;
       lastKey = key;
     }
@@ -1593,7 +1559,6 @@ async function initStory() {
     const sideTarget = p < .262 ? 1 : p < .628 ? -1 : 1;
     state.side += (sideTarget - state.side) * (still ? 1 : .055);
     world.position.x = state.side * shift;
-    spin.rotation.y = drag.offset;
 
     /* ---- A: atom + molecule, then the merge ---- */
     const merge = span(T.merge, p);
@@ -1892,8 +1857,8 @@ async function initStory() {
    further down, composed as one live 3D scene in front of the pack's petal
    flower (an SVG behind the canvas, centred where the jar is framed). Props
    stay at believable sizes next to the jar and move calmly: they settle in,
-   breathe, and stay put when the page scrolls. Nothing follows the cursor; the jar
-   turns when it is grabbed and settles back to its front afterwards.
+   breathe, and stay put when the page scrolls. The jar can't be turned by dragging;
+   with a mouse it leans a few degrees toward the cursor.
    Until the first frame is drawn the visual shows only the 3D loader. The
    photographs are kept for no WebGL and data-saver mode only.
    ===================================================================== */
@@ -2055,15 +2020,21 @@ async function initHero() {
   const lite = renderer.userData.lite;
   const still = reduceMotion || lite;
   const clock = new THREE.Clock();
-  // Grab and turn the jar; it keeps spinning a little after release, then settles back to its front.
-  const hint = $('.mg-hero__drag', heroVisual);
-  const drag = makeDrag(heroVisual, () => hint?.classList.add('is-hidden'));
-  heroVisual.addEventListener('pointerdown', () => heroVisual.classList.add('is-grabbing'));
-  ['pointerup', 'pointercancel'].forEach(type => heroVisual.addEventListener(type, () => heroVisual.classList.remove('is-grabbing')));
   let startedAt = 0;
   let lastKey = '';
   let shown = false;
   let heroFrames = 0;
+  // Mouse lean: a few degrees toward the cursor, mouse only (not touch, reduced motion or the lite profile).
+  const lean = { x: 0, y: 0, tx: 0, ty: 0, on: finePointer && !still };
+  if (lean.on) {
+    addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      const area = heroVisual.getBoundingClientRect();
+      lean.tx = clamp((event.clientX - (area.left + area.width / 2)) / (innerWidth / 2), -1, 1);
+      lean.ty = clamp((event.clientY - (area.top + area.height / 2)) / (innerHeight / 2), -1, 1);
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { lean.tx = 0; lean.ty = 0; });
+  }
 
   // The hero's own clock: on phones it stops while nothing is happening, so the still life simply holds its pose.
   let heroTime = 0;
@@ -2075,26 +2046,19 @@ async function initHero() {
     const dt = Math.min(.05, clock.getDelta());
     if (!startedAt) startedAt = performance.now();
     const intro = still ? 1 : clamp((performance.now() - startedAt) / 1400);
-    if (!drag.dragging) {
-      drag.offset += drag.velocity;
-      drag.velocity *= .93;
-      if (Math.abs(drag.velocity) < 1e-4) drag.velocity = 0;
-      if (performance.now() - drag.releasedAt > 1400) {
-        // Back to the nearest front view, without unwinding the turns it was given.
-        const front = Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2;
-        drag.offset += (front - drag.offset) * (still ? 1 : .05);
-        if (Math.abs(front - drag.offset) < 1e-4) drag.offset = front;
-      }
-    }
-
-    // Light profile: once it has settled and nobody is turning the jar, idle motion draws at 30 fps.
-    // Phones: no idle motion at all; the scene draws only while it intros, is turned, or settles back.
-    const idle = lowEnd && !still && intro >= 1 && !drag.dragging && Math.abs(drag.velocity) < 1e-3;
-    const resting = phone && idle && Math.abs(drag.offset - Math.round(drag.offset / (Math.PI * 2)) * Math.PI * 2) < 1e-3;
+    // Light profile: once the intro has settled, idle motion draws at 30 fps.
+    // Phones: no idle motion at all; the scene draws only while it intros.
+    const idle = lowEnd && !still && intro >= 1;
+    const resting = phone && idle;
     renderer.userData.idle = idle;
     if (!resting) heroTime += dt;
     const time = still ? 0 : heroTime;
     heroFrames += 1;
+    if (lean.on) {
+      const ease = 1 - Math.pow(.02, dt);
+      lean.x += (lean.tx - lean.x) * ease;
+      lean.y += (lean.ty - lean.y) * ease;
+    }
     // A resize (the phone's address bar sliding away) clears the canvas, so a resting hero redraws once after it.
     const size = `${canvas.width}x${canvas.height}`;
     if (resting && shown && heroFrames > 2 && size === drawnSize) return;
@@ -2102,7 +2066,7 @@ async function initHero() {
     if (idle && heroFrames % 2) return;
 
     if (still) {
-      const key = `${drag.offset.toFixed(4)}|${drag.dragging}|${canvas.width}x${canvas.height}`;
+      const key = `${canvas.width}x${canvas.height}`;
       if (key === lastKey && shown) return;
       lastKey = key;
     }
@@ -2122,7 +2086,9 @@ async function initHero() {
         // Stands on the ground (no bob), so the contact shadow stays under it.
         y += lerp(-.25, 0, settle);
         scale = lerp(.92, 1, settle);
-        ry += drag.offset;
+        // About 4 degrees sideways and 2 up/down at most.
+        ry += lean.x * .07;
+        rx += lean.y * .035;
       } else if (piece.kind === 'melon') {
         x += lerp(.9, 0, k);
         // A gentle rock on its rind, the same rhythm as the panda tablet in front.
