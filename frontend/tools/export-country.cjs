@@ -16,9 +16,9 @@ async function lockPages(target, code) {
   const map = {};
   const stub = page => `<!doctype html>
 <html><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
-<meta http-equiv="refresh" content="0;url=/__lock/?p=${encodeURIComponent(page)}">
+<meta http-equiv="refresh" content="0;url=/__lock/index.php?p=${encodeURIComponent(page)}">
 <title>STADA</title></head>
-<body><a href="/__lock/?p=${encodeURIComponent(page)}">STADA</a></body></html>
+<body><a href="/__lock/index.php?p=${encodeURIComponent(page)}">STADA</a></body></html>
 `;
   for (const page of pages) {
     if (!/^[a-z]{2}\/products\/[a-z0-9-]+\.html$/.test(page)) throw new Error(`Unexpected locked page: ${page}`);
