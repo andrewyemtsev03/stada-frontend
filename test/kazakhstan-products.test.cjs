@@ -176,3 +176,52 @@ test('3D assets ship with the site and showcase copy rejects unexpected markup',
   renderShowcase(ok.window.document, { product: { slug, name: 'X', showcase: { title: 'A<br><b>B</b>' } } });
   assert.equal(ok.window.document.querySelector('h2').innerHTML, 'A<br><b>B</b>');
 });
+
+// Низорал® шампунь лекарственный 2 % (generic product page, facts from the approved KZ carton 9389280).
+const nizoral = 'nizoral-shampoo';
+const nizoralLocked = Boolean(snapshot.locales.ru.products[nizoral].product.locked);
+
+test('Низорал has the same content keys in Russian and Kazakh', () => {
+  const keys = value => value && typeof value === 'object' && !Array.isArray(value)
+    ? Object.entries(value).flatMap(([key, item]) => [key, ...keys(item).map(child => `${key}.${child}`)]) : [];
+  const ru = snapshot.locales.ru.products[nizoral].product;
+  const kz = snapshot.locales.kz.products[nizoral].product;
+  assert.deepEqual(keys(kz).sort(), keys(ru).sort());
+  for (const product of [ru, kz]) assert.ok(fs.existsSync(path.join(frontend, product.image.src)), product.image.src);
+});
+
+test('Низорал pages show the label facts in both languages', () => {
+  for (const [lang, facts] of [
+    ['ru', ['Низорал® шампунь лекарственный 2 %', 'Кетоконазол 20 мг', 'один раз в день в течение 1–3 дней', 'два раза в неделю в течение 2–4 недель', 'не выше 25 °C', 'Только для наружного применения']],
+    ['kz', ['Низорал® 2 % дәрілік сусабын', 'кетоконазол, 20 мг', 'күніне бір рет 1–3 күн ішінде', '2–4 апта бойы аптасына екі рет', '25 °С-ден аспайтын', 'Тек сыртқа қолдануға арналған']],
+  ]) {
+    const page = read(`sites/kz/${lang}/products/${nizoral}.html`);
+    const document = page.window.document;
+    assert.equal(document.querySelector('[data-product-title]').textContent, facts[0]);
+    const text = document.body.textContent.replace(/\s+/g, ' ');
+    for (const fact of facts.slice(1)) assert.ok(text.toLowerCase().includes(fact.toLowerCase()), `${lang}: ${fact}`);
+    assert.match(document.querySelector('[data-product-image]').getAttribute('src'), new RegExp(`/assets/kazakhstan-products/${nizoral}/packshot-${lang}\\.webp$`));
+    page.window.close();
+  }
+});
+
+test('locked Низорал stays out of catalogues and sitemaps, and its files are guarded', { skip: !nizoralLocked && 'Низорал is published' }, async () => {
+  for (const lang of ['ru', 'kz']) {
+    assert.equal(read(`sites/kz/${lang}/products/${nizoral}.html`).window.document.querySelector('meta[name="robots"]').content, 'noindex, nofollow');
+    for (const file of [`sites/kz/${lang}/products/index.html`, `sites/kz/${lang}/index.html`]) {
+      assert.ok(!fs.readFileSync(path.join(output, file), 'utf8').includes(nizoral), `${file} links to the locked page`);
+    }
+  }
+  assert.ok(!fs.readFileSync(path.join(output, 'sites/kz/sitemap.xml'), 'utf8').includes(nizoral));
+  const { isLocked: locked } = await lock();
+  for (const pathname of [`/ru/products/${nizoral}.html`, `/kz/products/${nizoral}.html`, `/assets/kazakhstan-products/${nizoral}/packshot-ru.webp`]) {
+    assert.ok(locked('stada.kz', pathname), pathname);
+  }
+});
+
+test('published Низорал is listed in both Kazakhstan catalogues', { skip: nizoralLocked && 'locked until approved' }, () => {
+  for (const lang of ['ru', 'kz']) {
+    assert.ok(fs.readFileSync(path.join(output, `sites/kz/${lang}/products/index.html`), 'utf8').includes(`products/${nizoral}.html`), lang);
+  }
+  assert.ok(fs.readFileSync(path.join(output, 'sites/kz/sitemap.xml'), 'utf8').includes(nizoral));
+});
