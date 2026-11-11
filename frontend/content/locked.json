@@ -23,7 +23,9 @@
     "/sites/ge/ge/products/no-spa-forte-80mg-24.html",
     "/sites/ge/ge/products/phosphalugel.html",
     "/sites/kz/kz/products/magne-b6-kids.html",
-    "/sites/kz/ru/products/magne-b6-kids.html"
+    "/sites/kz/kz/products/nizoral-shampoo.html",
+    "/sites/kz/ru/products/magne-b6-kids.html",
+    "/sites/kz/ru/products/nizoral-shampoo.html"
   ],
   "slugs": [
     "enterogermina-2-billion",
@@ -34,6 +36,7 @@
     "guttalax-15ml",
     "guttalax-30ml",
     "magne-b6-kids",
+    "nizoral-shampoo",
     "no-spa-40mg-100",
     "no-spa-40mg-24",
     "no-spa-forte-80mg-24",
