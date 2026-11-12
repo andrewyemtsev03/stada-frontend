@@ -9,14 +9,17 @@ const output = path.join(frontend, 'dist');
 const snapshot = require('../frontend/content/countries/ge.json');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 // Georgia's products are locked until legal and brand approve them (`"locked": true` in ge.json).
-const geLocked = Object.values(snapshot.locales.ge.products).some(({ product }) => product.locked);
+// Магне B6 Кидс (shared showcase with Kazakhstan) is checked in its own test below.
+const SHARED = ['magne-b6-kids'];
+const own = lang => Object.fromEntries(Object.entries(snapshot.locales[lang].products).filter(([slug]) => !SHARED.includes(slug)));
+const geLocked = Object.values(own('ge')).some(({ product }) => product.locked);
 // The catalogue page can be locked on its own (`"locked": true` on pages["products/index.html"]).
 const catalogLocked = ['ge', 'en'].some(lang => snapshot.locales[lang].pages['products/index.html'].locked);
 
 test('Georgian products awaiting approval are kept out of the catalogue and behind the lock', { skip: !geLocked && 'Georgia is published' }, () => {
   const lockList = require('../frontend/content/locked.json');
   for (const lang of ['ge', 'en']) {
-    const products = snapshot.locales[lang].products;
+    const products = own(lang);
     assert.equal(Object.keys(products).length, 11);
     const catalog = read(`sites/ge/${lang}/products/index.html`);
     for (const slug of Object.keys(products)) {
@@ -32,7 +35,7 @@ test('Georgian products awaiting approval are kept out of the catalogue and behi
 
 test('Georgia exposes the eleven supplied product variants with local images and original leaflets', { skip: geLocked && 'locked until approved' }, () => {
   for (const lang of ['ge', 'en']) {
-    const products = snapshot.locales[lang].products;
+    const products = own(lang);
     assert.equal(Object.keys(products).length, 11);
     const catalog = read(`sites/ge/${lang}/products/index.html`);
     assert.equal(catalog.window.document.querySelectorAll('[data-product-card]').length, 11);
@@ -186,4 +189,36 @@ test('countries without products keep their catalogs hidden', () => {
     assert.equal(page.window.document.querySelector('.menu a[href*="/products/"]'), null);
     page.window.close();
   }
+});
+
+test('Магне B6 Кидс for Georgia: the Kazakh showcase in Georgian and English, behind the lock', () => {
+  const lockList = require('../frontend/content/locked.json');
+  const kz = require('../frontend/content/countries/kz.json');
+  const keys = Object.keys(kz.locales.ru.products['magne-b6-kids'].product.showcase).sort();
+  for (const [lang, name, letters] of [['ge', 'მაგნე B6 ქიდს', 'ქიდს'], ['en', 'Magne B6 Kids', 'Kids']]) {
+    const { product } = snapshot.locales[lang].products['magne-b6-kids'];
+    assert.deepEqual(Object.keys(product.showcase).sort(), keys, `${lang} has every showcase text`);
+    const html = fs.readFileSync(path.join(output, `sites/ge/${lang}/products/magne-b6-kids.html`), 'utf8');
+    const { document } = new JSDOM(html).window;
+    if (product.locked) {
+      assert.ok(lockList.pages.includes(`/sites/ge/${lang}/products/magne-b6-kids.html`));
+      assert.equal(document.querySelector('meta[name="robots"]').content, 'noindex, nofollow');
+    }
+    assert.ok(!/data-sc(-list|-attr|-country|-hide-empty)?=/.test(html), `${lang}: no unfilled showcase slots`);
+    assert.ok(!/[А-Яа-яЁё]/.test(document.querySelector('main').textContent), `${lang}: no Russian or Kazakh text left on the page`);
+    assert.equal(document.querySelector('.mg-hero .mg-kids').textContent, letters);
+    assert.equal(document.querySelectorAll('.mg-hero .mg-kids span').length, 4);
+    assert.equal(document.querySelector('.mg-bar__name b').textContent, name);
+    assert.equal(document.querySelector('.mg-partners'), null, `${lang}: no Kazakh pharmacy links`);
+    const main = document.querySelector('main').innerHTML;
+    assert.ok(!main.includes('kaspi.kz') && !main.includes('STADA Kazakhstan') && !main.includes('.kz/'), `${lang}: nothing Kazakh-specific in the page content`);
+    assert.equal(document.querySelectorAll('.mg-passport dl > div').length, 2, `${lang}: only status and manufacturer in the passport`);
+    assert.equal(document.querySelectorAll('.lang-toggle a').length, 2);
+    assert.ok(document.querySelector('script[src*="/js/showcase/magne-b6-kids.js"]'));
+  }
+  // Kazakhstan keeps its pharmacies, passport and Cyrillic lockup.
+  const kzPage = new JSDOM(fs.readFileSync(path.join(output, 'sites/kz/ru/products/magne-b6-kids.html'), 'utf8')).window.document;
+  assert.equal(kzPage.querySelectorAll('.mg-partner').length, 4);
+  assert.equal(kzPage.querySelectorAll('.mg-passport dl > div').length, 4);
+  assert.equal(kzPage.querySelector('.mg-hero .mg-kids').textContent, 'Кидс');
 });

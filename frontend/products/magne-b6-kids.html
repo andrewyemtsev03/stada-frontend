@@ -110,8 +110,8 @@
           <a class="mg-back" href="index.html" data-i18n-key="product_back"></a>
           <div class="mg-hero__copy">
             <h1 id="mg-title" class="mg-lockup mg-rise">
-              <span class="mg-lockup__magne">Магне B<span class="mg-six">6</span></span>
-              <span class="mg-kids"><span>К</span><span>и</span><span>д</span><span>с</span></span>
+              <span class="mg-lockup__magne"><span data-sc="brand_magne"></span> B<span class="mg-six">6</span></span>
+              <span class="mg-kids" data-sc-list="brand_kids_letters"></span>
             </h1>
             <p class="mg-tagline mg-rise" data-sc="hero_tagline"></p>
             <p class="mg-lead mg-rise" data-sc="hero_lead" data-page-description></p>
@@ -246,7 +246,7 @@
               <figure class="mg-ring mg-ring--b6" data-ring data-young="0.6" data-older="1.2" data-young-pct="50" data-older-pct="100" data-decimals="1">
                 <div class="mg-ring__dial">
                   <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="mg-ring__bg" cx="60" cy="60" r="52" /><circle class="mg-ring__fg" cx="60" cy="60" r="52" /></svg>
-                  <div class="mg-ring__value"><b data-ring-value>0,6</b><small data-sc="unit_mg"></small></div>
+                  <div class="mg-ring__value"><b data-ring-value data-sc="ring_b6_value"></b><small data-sc="unit_mg"></small></div>
                 </div>
                 <figcaption><strong data-sc="dose_b6"></strong><span><em data-ring-pct>50%</em>*</span></figcaption>
               </figure>
@@ -377,8 +377,8 @@
               <dl class="mg-dl mg-dl--compact">
                 <div><dt data-sc="passport_status_label"></dt><dd data-sc="passport_status"></dd></div>
                 <div><dt data-sc="passport_maker_label"></dt><dd data-sc="passport_maker"></dd></div>
-                <div><dt data-sc="passport_claims_label"></dt><dd data-sc="passport_claims"></dd></div>
-                <div><dt data-sc="passport_reg_label"></dt><dd data-sc="passport_reg"></dd></div>
+                <div data-sc-hide-empty><dt data-sc="passport_claims_label"></dt><dd data-sc="passport_claims"></dd></div>
+                <div data-sc-hide-empty><dt data-sc="passport_reg_label"></dt><dd data-sc="passport_reg"></dd></div>
               </dl>
             </aside>
           </div>
@@ -394,7 +394,7 @@
             <h2 id="mg-buy-title" data-sc="buy_title"></h2>
             <p data-sc="buy_text"></p>
           </div>
-          <div class="mg-partners mg-reveal">
+          <div class="mg-partners mg-reveal" data-sc-country="kz">
             <a class="mg-partner" href="https://kaspi.kz/shop/p/magne-v6-kids-tabletki-30-sht-148580984/" target="_blank" rel="noopener noreferrer"><span class="mg-partner__logo"><img src="../assets/logos/logo_kaspi.png" alt="" loading="lazy" /></span><span class="mg-partner__name">Kaspi.kz</span><i aria-hidden="true"></i></a>
             <a class="mg-partner" href="https://biosfera.kz/ru/product/693107c2749f6adf08d4e000" target="_blank" rel="noopener noreferrer"><span class="mg-partner__logo"><img src="../assets/logos/logo_biosfera.png" alt="" loading="lazy" /></span><span class="mg-partner__name">Биосфера</span><i aria-hidden="true"></i></a>
             <a class="mg-partner" href="https://europharma.kz/magne-v6-kids-no30-tabl-zhevat" target="_blank" rel="noopener noreferrer"><span class="mg-partner__logo"><img src="../assets/logos/logo_europharma.png" alt="" loading="lazy" /></span><span class="mg-partner__name">Europharma</span><i aria-hidden="true"></i></a>
@@ -402,8 +402,8 @@
           </div>
           <div class="mg-buy__end mg-reveal">
             <div class="mg-lockup mg-lockup--end" aria-hidden="true">
-              <span class="mg-lockup__magne">Магне B<span class="mg-six">6</span></span>
-              <span class="mg-kids"><span>К</span><span>и</span><span>д</span><span>с</span></span>
+              <span class="mg-lockup__magne"><span data-sc="brand_magne"></span> B<span class="mg-six">6</span></span>
+              <span class="mg-kids" data-sc-list="brand_kids_letters"></span>
             </div>
             <p class="mg-buy__tagline" data-sc="hero_tagline"></p>
             <a class="mg-btn mg-btn--light" href="index.html"><span data-sc="buy_all_products"></span></a>
@@ -423,7 +423,7 @@
 
     <div class="mg-bar" data-buy-bar>
       <img class="mg-bar__jar" src="../assets/kazakhstan-products/magne-b6-kids/packshot.webp" alt="" width="803" height="1051" loading="lazy" />
-      <div class="mg-bar__name"><b>Магне B6 Кидс</b><span><span data-sc="fact_age_value"></span> · <span data-sc="fact_count_value"></span> <span data-sc="fact_count_label"></span></span></div>
+      <div class="mg-bar__name"><b data-sc="brand_name"></b><span><span data-sc="fact_age_value"></span> · <span data-sc="fact_count_value"></span> <span data-sc="fact_count_label"></span></span></div>
       <a class="mg-btn mg-btn--primary mg-btn--sm" href="#mg-buy" data-go="mg-buy"><span data-sc="ch_buy"></span></a>
     </div>
     <div class="mg-veil" aria-hidden="true"></div>

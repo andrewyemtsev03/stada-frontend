@@ -60,8 +60,14 @@ function prepareRuntime(html, country, lang, template, payload, query = '') {
 // Showcase product pages are hand-designed templates whose copy comes from the
 // product payload. Inline markup is limited to a few presentational tags.
 const showcaseMarkup = /<(?!\/?(?:b|i|em|strong|br|small|sup)\s*\/?>)[^>]*>/i;
-function renderShowcase(document, { product }) {
+// `country` (a country code) drops blocks marked data-sc-country for other countries, e.g. the
+// Kazakh pharmacy links; rows marked data-sc-hide-empty disappear when their copy is "".
+function renderShowcase(document, { product }, country) {
   const copy = product.showcase;
+  if (country) document.querySelectorAll('[data-sc-country]').forEach(node => {
+    if (!node.dataset.scCountry.split(' ').includes(country)) node.remove();
+    else node.removeAttribute('data-sc-country');
+  });
   if (!copy) throw new Error(`Missing showcase copy: ${product.slug}`);
   const text = key => {
     const value = copy[key];
@@ -85,6 +91,10 @@ function renderShowcase(document, { product }) {
       node.setAttribute(attribute, text(key).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
     }
     node.removeAttribute('data-sc-attr');
+  });
+  document.querySelectorAll('[data-sc-hide-empty]').forEach(node => {
+    if (!(node.querySelector('dd') || node).textContent.trim()) node.remove();
+    else node.removeAttribute('data-sc-hide-empty');
   });
   document.title = product.page?.title || `STADA - ${product.name}`;
 }
@@ -311,7 +321,7 @@ function buildInto(output) {
         const dom = prepareRuntime(fs.readFileSync(path.join(source, template), 'utf8'), country, lang, template, payload, query);
         if (template === 'contacts.html') addContactDetails(dom.window.document, lang);
         if (productPayload && template !== 'products/product.html') {
-          renderShowcase(dom.window.document, productPayload);
+          renderShowcase(dom.window.document, productPayload, country.code);
         } else if (productPayload) {
           dom.window.__product = productPayload;
           vm.runInContext('renderDynamicProductPage(window.__product)', dom.getInternalVMContext());
