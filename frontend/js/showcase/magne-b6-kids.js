@@ -277,7 +277,9 @@ if (dose && doseSwitch) {
     cell.style.transitionDelay = `${i * 18}ms`;
     days.append(cell);
   }
-  const format = (value, decimals) => value.toFixed(decimals).replace('.', ',');
+  // Decimal comma, except on English pages (0.6 mg).
+  const point = /^en\b/i.test(document.documentElement.lang) ? '.' : ',';
+  const format = (value, decimals) => value.toFixed(decimals).replace('.', point);
   const animateNumber = (node, from, to, decimals, suffix = '') => {
     if (reduceMotion) { node.textContent = format(to, decimals) + suffix; return; }
     const start = performance.now();
