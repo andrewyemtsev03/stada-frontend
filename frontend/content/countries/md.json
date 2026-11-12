@@ -2122,7 +2122,7 @@
               "products_browse_catalog": "Răsfoiți catalogul",
               "products_catalog_label": "Catalog STADA",
               "products_category_cardio": "Cardio",
-              "products_category_cold": "Frig și respirație",
+              "products_category_cold": "Răceală și respirație",
               "products_category_digestive": "Sănătatea digestivă",
               "products_category_respiratory": "Respirator",
               "products_metric_areas": "zone terapeutice",
@@ -3171,7 +3171,160 @@
           }
         }
       },
-      "products": {},
+      "products": {
+        "snup-45": {
+          "product": {
+            "id": "snup-45",
+            "slug": "snup-45",
+            "name": "Snup 45 mcg/doză",
+            "shortDescription": "Xilometazolină, spray nazal, soluție. Conține apă de mare. Pentru copii cu vârsta între 2 și 6 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#0057a8",
+            "image": {
+              "src": "/assets/moldova-products/snup-45.png",
+              "alt": "Snup 45 mcg/doză"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/snup-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Snup 45 mcg/doză",
+              "kicker": "Răceală și respirație",
+              "lead": "Xilometazolină, spray nazal, soluție. Conține apă de mare. Pentru copii cu vârsta între 2 și 6 ani.",
+              "badges": [
+                "Spray nazal",
+                "15 ml",
+                "De la 2 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nSnup 45 mcg/doză spray nazal, soluție\n\n## Pentru ce se utilizează\n\nSnup ajută la o respirație mai ușoară și eliberează rapid nasul înfundat, micșorând secreția și edemul din cavitatea nazală. Conform prospectului, se utilizează pentru micșorarea secreției și a edemului cavității nazale în răceală și rinită (inclusiv alergică), pentru îmbunătățirea drenajului în inflamația sinusurilor și ca tratament adjuvant în otitele medii, precum și pentru a facilita procedurile de diagnostic în pasajele nazale.\n\n## Cum se utilizează\n\nCopii cu vârsta între 2 și 6 ani: câte 1 puf în fiecare nară (la necesitate se poate repeta), de până la 3 ori pe zi. Adulți și copii cu vârsta peste 6 ani: câte 2 pufuri în fiecare nară (la necesitate se poate repeta), de până la 3 ori pe zi.\n\nMedicamentul nu trebuie folosit mai mult de 3 ori pe zi, iar durata tratamentului nu trebuie să depășească 7 zile, dacă medicul nu a recomandat altceva. Înainte de utilizare curățați pasajele nazale. Înainte de prima utilizare apăsați de mai multe ori pompa, până când se formează un nor uniform. Țineți flaconul în sus; nu pulverizați pe orizontală sau în jos. Fiecare flacon este destinat unei singure persoane.\n\n## Contraindicații și precauții\n\nSnup 45 mcg/doză nu se utilizează la copii cu vârsta până la 2 ani. Nu utilizați în caz de alergie la xilometazolină sau la oricare dintre celelalte componente, în rinita sicca (mucoasă nazală uscată, fără secreții), după o intervenție chirurgicală cerebrală recentă în care au fost atinse membranele creierului, în hipertensiune arterială, tahicardie, ateroscleroză sau glaucom. Medicamentul nu se utilizează în timpul sarcinii; în timpul alăptării se folosește numai după consultarea medicului.\n\n## Când să vă adresați medicului\n\nÎnainte de a utiliza Snup la copii consultați medicul; durata tratamentului la copii se discută obligatoriu cu medicul. Adresați-vă medicului sau farmacistului înainte de utilizare dacă aveți boli cardiovasculare grave, tensiune arterială crescută, feocromocitom, diabet zaharat, hipertiroidie, prostată mărită sau sensibilitate mărită la medicamentele care cresc tensiunea arterială, precum și dacă utilizați inhibitori ai monoaminooxidazei, antidepresive tri- sau tetraciclice ori alte medicamente care cresc tensiunea arterială. Adresați-vă medicului dacă nu vă simțiți mai bine, dacă simptomele se înrăutățesc sau apar simptome noi.\n\n## Reacții adverse posibile\n\nFrecvente: senzație de arsură și uscăciune a mucoasei nazale, strănut. Mai puțin frecvente: congestie reactivă cu rinită indusă medicamentos, sângerări nazale, reacții de hipersensibilitate (edem angioneurotic, erupții cutanate, prurit). Rare: palpitații, tahicardie, hipertensiune. Foarte rare: dureri de cap, tulburări ale ritmului cardiac, agitație, insomnie, oboseală, somnolență, convulsii și halucinații (în special la copii). La utilizarea prelungită există riscul scăderii eficacității medicamentului și al atrofiei mucoasei nazale. Citiți prospectul pentru informații complete.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C. A se utiliza în decurs de 12 luni de la prima deschidere a flaconului. Nu utilizați după data de expirare înscrisă pe cutie. Nu lăsați medicamentul la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în mai 2022). Descărcați și citiți documentul original pentru toate detaliile privind dozele, contraindicațiile, interacțiunile și reacțiile adverse. Se eliberează fără prescripție medicală. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre ingrediente și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/snup-45.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanța activă",
+                  "text": "1 doză de spray nazal conține clorhidrat de xilometazolină 45 mcg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Apă de mare, dihidrogenofosfat de potasiu, apă pentru injecții."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Soluție transparentă, incoloră. Flacon de polietilenă cu sistem de pulverizare, 15 ml soluție (150 de doze)."
+                }
+              ]
+            }
+          }
+        },
+        "urinal-akut": {
+          "product": {
+            "id": "urinal-akut",
+            "slug": "urinal-akut",
+            "name": "Urinal Akut",
+            "shortDescription": "Supliment alimentar cu extract concentrat din fruct de merișor, extract de Solidago virgaurea (splinuță) și vitamina D. 1 tabletă pe zi.",
+            "category": "urology",
+            "therapeuticArea": "Urologie",
+            "accent": "#d71920",
+            "image": {
+              "src": "/assets/moldova-products/urinal-akut.png",
+              "alt": "Urinal Akut"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Urinal Akut",
+              "kicker": "Urologie",
+              "lead": "Supliment alimentar cu extract concentrat din fruct de merișor, extract de Solidago virgaurea (splinuță) și vitamina D. 1 tabletă pe zi.",
+              "badges": [
+                "Supliment alimentar",
+                "10 tablete",
+                "1 tabletă pe zi"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nUrinal Akut — supliment alimentar\n\n## Ce este\n\nUrinal Akut conține trei componente active: Exocyan — extract concentrat din fruct de merișor (Vaccinium macrocarpon, cunoscut și ca afin american), extract de Solidago virgaurea (splinuță) și vitamina D. O tabletă pe zi asigură un conținut ridicat de proantocianidine (PAC) — minimum 36 mg.\n\n## Mod de administrare\n\nCa supliment alimentar: 1 tabletă pe zi, luată cu o cantitate suficientă de lichid. Ambalajul conține 10 tablete, pentru 10 zile.\n\n## Componentele\n\nFructele de merișor sunt o sursă bogată de bioflavonoide, compuși fenolici și alte substanțe naturale. Pentru Urinal Akut se utilizează soiuri de merișor cultivate în America de Nord, selecționate pentru concentrația ridicată de PAC. Solidago virgaurea (splinuța) provine din Europa. Vitamina D susține funcționarea normală a sistemului imunitar, contribuie la absorbția și utilizarea normală a calciului și a fosforului și sprijină funcționarea normală a mușchilor.\n\n## Sarcină și alăptare\n\nConform materialului informativ al produsului, Urinal Akut poate fi administrat în timpul sarcinii și alăptării, însă este recomandat să consultați medicul înainte de administrare.\n\n## Informații importante\n\nUrinal Akut nu este un înlocuitor al tratamentului cu antibiotice. În infecțiile acute tratate cu antibiotice, Urinal Akut poate fi folosit în paralel cu acestea. În infecțiile urinare acute persistente, asociate cu febră înaltă, este necesară consultarea medicului curant.\n\n## Statut\n\nSupliment alimentar. Nu este medicament.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii din materialul informativ al produsului.",
+              "formulaImage": "/assets/moldova-products/urinal-akut.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Extract de merișor",
+                  "text": "Exocyan — extract concentrat din fruct de merișor (Vaccinium macrocarpon). O tabletă asigură minimum 36 mg de proantocianidine (PAC)."
+                },
+                {
+                  "value": "02",
+                  "title": "Alte componente active",
+                  "text": "Extract de Solidago virgaurea (splinuță) și vitamina D."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Tablete. 10 tablete în ambalaj: 10 zile, 1 tabletă pe zi."
+                }
+              ]
+            }
+          }
+        },
+        "urinal-sirop": {
+          "product": {
+            "id": "urinal-sirop",
+            "slug": "urinal-sirop",
+            "name": "Urinal Sirop",
+            "shortDescription": "Supliment alimentar: sirop cu concentrat uscat din suc de merișor canadian. Poate fi administrat copiilor de peste 1 an.",
+            "category": "urology",
+            "therapeuticArea": "Urologie",
+            "accent": "#d71920",
+            "image": {
+              "src": "/assets/moldova-products/urinal-sirop.png",
+              "alt": "Urinal Sirop"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Urinal Sirop",
+              "kicker": "Urologie",
+              "lead": "Supliment alimentar: sirop cu concentrat uscat din suc de merișor canadian. Poate fi administrat copiilor de peste 1 an.",
+              "badges": [
+                "Supliment alimentar",
+                "Sirop, 150 ml",
+                "De la 1 an"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nUrinal Sirop — supliment alimentar\n\n## Ce este\n\nUrinal Sirop este o altă formă a produsului Urinal. Conține Vaccinium macrocarpon — concentrat uscat din suc de merișor canadian, cu o cantitate ridicată de compuși fenolici, bioflavonoide și alte substanțe naturale. Merișorul canadian are proprietăți antioxidante. Cantitatea de extract aferentă porției zilnice maxime (15 ml) corespunde unei cantități minime de 15 mg PAC (proantocianidine).\n\n## Mod de administrare\n\nCopii cu vârsta între 1 și 3 ani: 5 ml pe zi. Copii cu vârsta între 3 și 12 ani: 10 ml pe zi. Copii de peste 12 ani și adulți: 15 ml pe zi.\n\n## Pentru cine\n\nSirop care poate fi administrat copiilor de peste 1 an, precum și adulților.\n\n## Informații importante\n\nUrinal Sirop nu este un înlocuitor al tratamentului cu antibiotice, dar poate fi folosit în paralel cu acestea. În infecțiile urinare acute persistente, asociate cu febră înaltă, este necesară consultarea medicului curant, dacă simptomatologia nu se remite în maximum 48 de ore.\n\n## Statut\n\nSupliment alimentar. Nu este medicament.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii din materialul informativ al produsului.",
+              "formulaImage": "/assets/moldova-products/urinal-sirop.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Ingredient activ",
+                  "text": "Vaccinium macrocarpon — concentrat uscat din suc de merișor canadian."
+                },
+                {
+                  "value": "02",
+                  "title": "Proantocianidine",
+                  "text": "Porția zilnică maximă (15 ml) corespunde unei cantități minime de 15 mg PAC."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Sirop. Flacon de 150 ml."
+                }
+              ]
+            }
+          }
+        }
+      },
       "text": {
         "skip_to_content": "Sari la conținutul principal",
         "about_heading": "Despre STADA",
@@ -6515,7 +6668,160 @@
           }
         }
       },
-      "products": {},
+      "products": {
+        "snup-45": {
+          "product": {
+            "id": "snup-45",
+            "slug": "snup-45",
+            "name": "Снуп 45 мкг/доза",
+            "shortDescription": "Ксилометазолин, спрей назальный, раствор. Содержит морскую воду. Для детей от 2 до 6 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#0057a8",
+            "image": {
+              "src": "/assets/moldova-products/snup-45.png",
+              "alt": "Снуп 45 мкг/доза"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/snup-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Снуп 45 мкг/доза",
+              "kicker": "Простуда и дыхание",
+              "lead": "Ксилометазолин, спрей назальный, раствор. Содержит морскую воду. Для детей от 2 до 6 лет.",
+              "badges": [
+                "Спрей назальный",
+                "15 мл",
+                "С 2 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nСнуп 45 мкг/доза, спрей назальный, раствор\n\n## Для чего применяется\n\nСнуп облегчает дыхание и быстро освобождает заложенный нос, уменьшая количество выделений и отёк в полости носа. Согласно инструкции, применяется для уменьшения выделений и отёка полости носа при простуде и рините (в том числе аллергическом), для улучшения дренажа при воспалении околоносовых пазух и как вспомогательное средство при среднем отите, а также для облегчения диагностических процедур в носовых ходах.\n\n## Как применять\n\nДети от 2 до 6 лет: по 1 впрыскиванию в каждый носовой ход (при необходимости можно повторить), до 3 раз в день. Взрослые и дети старше 6 лет: по 2 впрыскивания в каждый носовой ход (при необходимости можно повторить), до 3 раз в день.\n\nПрепарат не следует применять чаще 3 раз в день, а продолжительность лечения не должна превышать 7 дней, если врач не рекомендовал иное. Перед применением очистите носовые ходы. Перед первым применением несколько раз нажмите на насос, пока не образуется равномерное облако. Держите флакон вертикально; не распыляйте горизонтально или вниз. Каждый флакон предназначен для одного человека.\n\n## Противопоказания и меры предосторожности\n\nСнуп 45 мкг/доза не применяется у детей до 2 лет. Не применяйте при аллергии на ксилометазолин или любой другой компонент, при сухом рините (сухая слизистая носа без выделений), после недавней операции на головном мозге с затрагиванием мозговых оболочек, при артериальной гипертензии, тахикардии, атеросклерозе или глаукоме. Препарат не применяется во время беременности; в период грудного вскармливания — только после консультации с врачом.\n\n## Когда обратиться к врачу\n\nПеред применением препарата у детей проконсультируйтесь с врачом; продолжительность лечения у детей обязательно обсуждается с врачом. Обратитесь к врачу или фармацевту перед применением, если у вас тяжёлые сердечно-сосудистые заболевания, повышенное артериальное давление, феохромоцитома, сахарный диабет, гипертиреоз, увеличение предстательной железы или повышенная чувствительность к препаратам, повышающим артериальное давление, а также если вы принимаете ингибиторы моноаминоксидазы, три- или тетрациклические антидепрессанты либо другие препараты, повышающие артериальное давление. Обратитесь к врачу, если вам не становится лучше, симптомы усиливаются или появляются новые.\n\n## Возможные побочные реакции\n\nЧастые: ощущение жжения и сухости слизистой носа, чихание. Нечастые: реактивная заложенность с медикаментозным ринитом, носовые кровотечения, реакции гиперчувствительности (ангионевротический отёк, кожная сыпь, зуд). Редкие: сердцебиение, тахикардия, гипертензия. Очень редкие: головная боль, нарушения сердечного ритма, возбуждение, бессонница, усталость, сонливость, судороги и галлюцинации (особенно у детей). При длительном применении есть риск снижения эффективности препарата и атрофии слизистой носа. Полная информация приведена в инструкции.\n\n## Хранение\n\nХранить при температуре ниже 25 °C. Использовать в течение 12 месяцев после первого вскрытия флакона. Не применять после истечения срока годности, указанного на упаковке. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в мае 2022 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все сведения о дозах, противопоказаниях, взаимодействиях и побочных реакциях. Отпускается без рецепта. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о составе и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/snup-45.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующее вещество",
+                  "text": "1 доза спрея назального содержит 45 мкг ксилометазолина гидрохлорида."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Морская вода, калия дигидрофосфат, вода для инъекций."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Прозрачный бесцветный раствор. Полиэтиленовый флакон с распылителем, 15 мл раствора (150 доз)."
+                }
+              ]
+            }
+          }
+        },
+        "urinal-akut": {
+          "product": {
+            "id": "urinal-akut",
+            "slug": "urinal-akut",
+            "name": "Уринал Акут",
+            "shortDescription": "Пищевая добавка с концентрированным экстрактом плодов клюквы, экстрактом золотарника (Solidago virgaurea) и витамином D. 1 таблетка в день.",
+            "category": "urology",
+            "therapeuticArea": "Урология",
+            "accent": "#d71920",
+            "image": {
+              "src": "/assets/moldova-products/urinal-akut.png",
+              "alt": "Уринал Акут"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Уринал Акут",
+              "kicker": "Урология",
+              "lead": "Пищевая добавка с концентрированным экстрактом плодов клюквы, экстрактом золотарника (Solidago virgaurea) и витамином D. 1 таблетка в день.",
+              "badges": [
+                "Пищевая добавка",
+                "10 таблеток",
+                "1 таблетка в день"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nУринал Акут — пищевая добавка\n\n## Что это\n\nУринал Акут содержит три активных компонента: Exocyan — концентрированный экстракт плодов клюквы крупноплодной (Vaccinium macrocarpon), экстракт золотарника обыкновенного (Solidago virgaurea) и витамин D. Одна таблетка в день обеспечивает высокое содержание проантоцианидинов (ПАЦ) — не менее 36 мг.\n\n## Способ применения\n\nВ качестве пищевой добавки: 1 таблетка в день, запивая достаточным количеством жидкости. В упаковке 10 таблеток — на 10 дней.\n\n## Компоненты\n\nПлоды клюквы — богатый источник биофлавоноидов, фенольных соединений и других природных веществ. Для Уринал Акут используются сорта клюквы, выращенные в Северной Америке и отобранные по высокому содержанию ПАЦ. Золотарник обыкновенный (Solidago virgaurea) происходит из Европы. Витамин D поддерживает нормальную работу иммунной системы, способствует нормальному усвоению и использованию кальция и фосфора и поддерживает нормальную работу мышц.\n\n## Беременность и грудное вскармливание\n\nСогласно информационному материалу продукта, Уринал Акут можно принимать во время беременности и грудного вскармливания, однако перед приёмом рекомендуется проконсультироваться с врачом.\n\n## Важная информация\n\nУринал Акут не заменяет лечение антибиотиками. При острых инфекциях, которые лечат антибиотиками, Уринал Акут можно принимать одновременно с ними. При стойких острых инфекциях мочевыводящих путей, сопровождающихся высокой температурой, необходима консультация лечащего врача.\n\n## Статус\n\nПищевая добавка. Не является лекарством.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения из информационного материала продукта.",
+              "formulaImage": "/assets/moldova-products/urinal-akut.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Экстракт клюквы",
+                  "text": "Exocyan — концентрированный экстракт плодов клюквы крупноплодной (Vaccinium macrocarpon). Одна таблетка обеспечивает не менее 36 мг проантоцианидинов (ПАЦ)."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие активные компоненты",
+                  "text": "Экстракт золотарника обыкновенного (Solidago virgaurea) и витамин D."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Таблетки. 10 таблеток в упаковке: 10 дней, 1 таблетка в день."
+                }
+              ]
+            }
+          }
+        },
+        "urinal-sirop": {
+          "product": {
+            "id": "urinal-sirop",
+            "slug": "urinal-sirop",
+            "name": "Уринал сироп",
+            "shortDescription": "Пищевая добавка: сироп с сухим концентратом сока клюквы крупноплодной. Можно давать детям старше 1 года.",
+            "category": "urology",
+            "therapeuticArea": "Урология",
+            "accent": "#d71920",
+            "image": {
+              "src": "/assets/moldova-products/urinal-sirop.png",
+              "alt": "Уринал сироп"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Уринал сироп",
+              "kicker": "Урология",
+              "lead": "Пищевая добавка: сироп с сухим концентратом сока клюквы крупноплодной. Можно давать детям старше 1 года.",
+              "badges": [
+                "Пищевая добавка",
+                "Сироп, 150 мл",
+                "С 1 года"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nУринал сироп — пищевая добавка\n\n## Что это\n\nУринал сироп — ещё одна форма продукта Уринал. Содержит Vaccinium macrocarpon — сухой концентрат сока клюквы крупноплодной с высоким содержанием фенольных соединений, биофлавоноидов и других природных веществ. Клюква крупноплодная обладает антиоксидантными свойствами. Количество экстракта в максимальной суточной порции (15 мл) соответствует не менее чем 15 мг ПАЦ (проантоцианидинов).\n\n## Способ применения\n\nДети от 1 года до 3 лет: 5 мл в день. Дети от 3 до 12 лет: 10 мл в день. Дети старше 12 лет и взрослые: 15 мл в день.\n\n## Для кого\n\nСироп, который можно давать детям старше 1 года, а также взрослым.\n\n## Важная информация\n\nУринал сироп не заменяет лечение антибиотиками, но может применяться одновременно с ними. При стойких острых инфекциях мочевыводящих путей, сопровождающихся высокой температурой, необходима консультация лечащего врача, если симптомы не проходят в течение 48 часов.\n\n## Статус\n\nПищевая добавка. Не является лекарством.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения из информационного материала продукта.",
+              "formulaImage": "/assets/moldova-products/urinal-sirop.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Активный ингредиент",
+                  "text": "Vaccinium macrocarpon — сухой концентрат сока клюквы крупноплодной."
+                },
+                {
+                  "value": "02",
+                  "title": "Проантоцианидины",
+                  "text": "Максимальная суточная порция (15 мл) соответствует не менее чем 15 мг ПАЦ."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Сироп. Флакон 150 мл."
+                }
+              ]
+            }
+          }
+        }
+      },
       "text": {
         "skip_to_content": "Перейти к основному содержанию",
         "cookie_title": "Cookies",

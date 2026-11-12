@@ -182,8 +182,8 @@ test('No-Spa variants preserve strength, pack size and strength-specific adult t
 });
 
 test('countries without products keep their catalogs hidden', () => {
-  // Georgia and Kazakhstan publish product catalogs; every other country stays empty.
-  for (const country of require('../frontend/content/countries.json').filter(item => !['ge', 'kz'].includes(item.code))) {
+  // Georgia, Kazakhstan and Moldova have products; every other country stays empty.
+  for (const country of require('../frontend/content/countries.json').filter(item => !['ge', 'kz', 'md'].includes(item.code))) {
     const page = read(`sites/${country.code}/${country.defaultLanguage}/index.html`);
     assert.equal(page.window.document.querySelector('#products').hidden, true);
     assert.equal(page.window.document.querySelector('.menu a[href*="/products/"]'), null);
