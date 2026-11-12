@@ -10,6 +10,8 @@ const snapshot = require('../frontend/content/countries/ge.json');
 const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'));
 // Georgia's products are locked until legal and brand approve them (`"locked": true` in ge.json).
 const geLocked = Object.values(snapshot.locales.ge.products).some(({ product }) => product.locked);
+// The catalogue page can be locked on its own (`"locked": true` on pages["products/index.html"]).
+const catalogLocked = ['ge', 'en'].some(lang => snapshot.locales[lang].pages['products/index.html'].locked);
 
 test('Georgian products awaiting approval are kept out of the catalogue and behind the lock', { skip: !geLocked && 'Georgia is published' }, () => {
   const lockList = require('../frontend/content/locked.json');
@@ -65,9 +67,42 @@ test('Georgia exposes the eleven supplied product variants with local images and
     const previews = [...home.window.document.querySelectorAll('[data-home-products-grid] a')];
     assert.equal(previews.length, 4);
     assert.ok(previews.some(link => link.getAttribute('href').endsWith('/phosphalugel.html')));
-    assert.ok(home.window.document.querySelector(`.menu a[href="/${lang}/products/index.html"]`));
+    if (!catalogLocked) assert.ok(home.window.document.querySelector(`.menu a[href="/${lang}/products/index.html"]`));
     home.window.close(); catalog.window.close();
   }
+});
+
+test('a locked Georgian catalogue is behind the password while the products stay public', { skip: !catalogLocked && 'the catalogue is published' }, async () => {
+  const lockList = require('../frontend/content/locked.json');
+  const { isLocked } = require('../frontend/tools/lock/lock.cjs');
+  for (const lang of ['ge', 'en']) {
+    assert.ok(snapshot.locales[lang].pages['products/index.html'].locked, `${lang} catalogue locked in both languages`);
+    assert.ok(lockList.pages.includes(`/sites/ge/${lang}/products/index.html`), `${lang} catalogue in locked.json`);
+    const catalog = read(`sites/ge/${lang}/products/index.html`);
+    assert.equal(catalog.window.document.querySelector('meta[name="robots"]').content, 'noindex, nofollow');
+    catalog.window.close();
+    for (const pathname of [`/${lang}/products`, `/${lang}/products/`, `/${lang}/products/index.html`, `/${lang}/products/index`]) {
+      for (const host of ['stada.ge', 'www.stada.ge', 'new.stada.ge']) assert.ok(isLocked(host, pathname), `${host}${pathname}`);
+    }
+    // Public pages do not send visitors to the password page.
+    for (const file of ['index.html', 'about.html', 'products/essentiale-forte.html', 'products/enterogermina-2-billion.html']) {
+      const page = read(`sites/ge/${lang}/${file}`);
+      assert.equal(page.window.document.querySelector('a[href*="products/index"]'), null, `${lang}/${file} links to the locked catalogue`);
+      page.window.close();
+    }
+    const product = read(`sites/ge/${lang}/products/essentiale-forte.html`);
+    assert.ok(product.window.document.querySelector(`a[href="/${lang}/index.html#products"]`), 'back link goes to the home page products');
+    product.window.close();
+    for (const slug of Object.keys(snapshot.locales[lang].products)) {
+      if (snapshot.locales[lang].products[slug].product.locked) continue;
+      assert.ok(!isLocked('stada.ge', `/${lang}/products/${slug}.html`), `${lang}/${slug} is public`);
+    }
+  }
+  for (const pathname of ['/products', '/products/', '/products/index.html', '/sites/ge/products/index.html']) assert.ok(isLocked('stada.ge', pathname), pathname);
+  assert.ok(!isLocked('stada.kz', '/ru/products/index.html'), 'other countries keep their catalogue');
+  const sitemap = fs.readFileSync(path.join(output, 'sites/ge/sitemap.xml'), 'utf8');
+  assert.ok(!sitemap.includes('/products/index.html'));
+  assert.ok(sitemap.includes('/ge/products/phosphalugel.html'));
 });
 
 test('Enterogermina pages preserve the different concentrations, dosage forms and adult-only powder', () => {

@@ -141,6 +141,12 @@ release as usual. While locked:
 
 Remove the flag after approval and release again to publish it.
 
+The catalogue page can be locked on its own: put `"locked": true` on
+`pages["products/index.html"]` in every language (Georgia has this now). The
+products stay public (home page, footer, their own pages); the catalogue is behind
+the password, `noindex`, out of the sitemap and the menu, and public pages link to
+the home page's products section instead.
+
 The lock runs on the server:
 
 - **Vercel** (`middleware.js`, logic in `tools/lock/lock.cjs`): guards locked pages
