@@ -97,6 +97,10 @@ output, not the raw source folder.
   strip along the bottom of the hero. The packshot and flat images stay in the
   markup as the first paint and the no-WebGL fallback, and devices asking to
   save data keep them.
+- Moldova includes Snup 45 mcg/doză (nasal spray), Urinal Akut and Urinal Sirop
+  (food supplements) in Romanian and Russian, on the generic product page. Packshots
+  and the Snup patient leaflet live in `assets/moldova-products/`; the Urinal print
+  proofs are not published.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API
