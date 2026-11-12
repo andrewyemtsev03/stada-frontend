@@ -110,14 +110,15 @@ function addContactDetails(document, lang) {
   `, context);
 }
 
-function finalize(dom, country, lang, template, page, text, newsId) {
+function finalize(dom, country, lang, template, page, text, newsId, catalogLocked = false) {
   const document = dom.window.document;
   const products = dom.window.__payload.content.productCatalog || [];
   if (products.length) {
     if (country.code !== 'kz') document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => link.remove());
     const label = text.nav_products;
     const menu = document.querySelector('.menu');
-    if (menu) {
+    // A locked catalogue gets no menu item: visitors would only meet the password page.
+    if (menu && !catalogLocked) {
       const item = document.createElement('li');
       const link = document.createElement('a');
       link.href = '/products/index.html'; link.textContent = label;
@@ -176,6 +177,14 @@ function finalize(dom, country, lang, template, page, text, newsId) {
       element.setAttribute(attribute, `/${lang}/${target}${resolved.search}${resolved.hash}`);
     } else element.setAttribute(attribute, `${resolved.pathname}${resolved.search}${resolved.hash}`);
   });
+  // While the catalogue is locked, public pages do not link to it: the home page drops its catalogue
+  // buttons, other pages ("back to all products") point to the home page's products section instead.
+  if (catalogLocked && page !== 'products/index.html') {
+    document.querySelectorAll(`a[href^="/${lang}/products/index.html"]`).forEach(link => {
+      if (template === 'index.html') link.remove();
+      else link.setAttribute('href', `/${lang}/index.html#products`);
+    });
+  }
   document.querySelectorAll('script[src*="product-live-editor"]').forEach(script => script.remove());
   // Public pages do not contain a live editing client; edits require a new build.
   const shared = document.querySelector('script[src*="/site/shared.js"]');
@@ -244,6 +253,9 @@ function finalize(dom, country, lang, template, page, text, newsId) {
 // and deployed on the real site, but served only behind the password (middleware.js on Vercel, the PHP
 // gate in the stada.kz export, see tools/export-country.cjs). They stay out of catalogues, menus, home
 // previews and sitemaps and are marked noindex. Removing the flag publishes them.
+// The catalogue itself can be locked the same way with `"locked": true` on the language's
+// pages["products/index.html"]: the products stay public (home page, footer, their own pages), but the
+// catalogue page is behind the password, noindex, out of the sitemap and the menu.
 const lockedFile = path.join(source, 'content/locked.json');
 function build() {
   return buildInto(output);
@@ -251,7 +263,9 @@ function build() {
 
 // The lock list is committed (content/locked.json) so the Vercel middleware can import it.
 function lockedList(entries) {
-  const pages = entries.map(({ country, lang, slug }) => `/sites/${country}/${lang}/products/${slug}.html`).sort();
+  const pages = entries.map(({ country, lang, slug, page }) => (page
+    ? `/sites/${country}/${page}`
+    : `/sites/${country}/${lang}/products/${slug}.html`)).sort();
   // A product's own files (assets folder, showcase CSS/JS) are locked too, unless some country
   // already shows that slug publicly.
   const publicSlugs = new Set();
@@ -261,7 +275,7 @@ function lockedList(entries) {
       for (const [slug, payload] of Object.entries(locale.products || {})) if (!payload.product.locked) publicSlugs.add(slug);
     }
   }
-  const slugs = [...new Set(entries.map(entry => entry.slug))].filter(slug => !publicSlugs.has(slug)).sort();
+  const slugs = [...new Set(entries.filter(entry => entry.slug).map(entry => entry.slug))].filter(slug => !publicSlugs.has(slug)).sort();
   return { pages, slugs };
 }
 function writeLocked(entries) {
@@ -285,6 +299,7 @@ function buildInto(output) {
       if (!source_) throw new Error(`Missing content: ${country.code}/${lang}`);
       const locale = source_;
       const listed = Object.values(locale.products || {}).filter(payload => !payload.product.locked);
+      const catalogLocked = Boolean(locale.pages['products/index.html']?.locked);
       const render = (template, page, query = '', newsId, productPayload) => {
         const basePayload = locale.pages[template] || locale.pages['products/index.html'];
         const catalog = listed.map(payload => payload.product);
@@ -312,15 +327,19 @@ function buildInto(output) {
             section.append(links);
           }
         }
-        const isLocked = Boolean(productPayload?.product.locked);
+        const isLocked = Boolean(productPayload?.product.locked) || (catalogLocked && page === 'products/index.html');
         if (isLocked) {
           const robots = dom.window.document.createElement('meta'); robots.name = 'robots'; robots.content = 'noindex, nofollow';
           dom.window.document.head.prepend(robots);
         }
-        const html = finalize(dom, country, lang, template, page, payload.content.text, newsId);
+        const html = finalize(dom, country, lang, template, page, payload.content.text, newsId, catalogLocked);
         write(path.join(siteRoot, lang, page), html);
         if (page !== 'news-article.html' && page !== 'products/product.html' && !isLocked) urls.push(`https://${country.domain}/${lang}/${page}`);
         if (lang === country.defaultLanguage && pageTemplates.includes(page)) write(path.join(siteRoot, page), html);
+        if (catalogLocked && page === 'products/index.html') {
+          locked.push({ country: country.code, lang, page: `${lang}/${page}` });
+          if (lang === country.defaultLanguage) locked.push({ country: country.code, lang, page });
+        }
         pageCount++;
         dom.window.close();
       };

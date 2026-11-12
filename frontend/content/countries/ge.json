@@ -2109,6 +2109,7 @@
           }
         },
         "products/index.html": {
+          "locked": true,
           "language": "ge",
           "page": {
             "path": "products/index.html"
@@ -3164,7 +3165,6 @@
         "essentiale-forte": {
           "product": {
             "id": "essentiale-forte",
-            "locked": true,
             "slug": "essentiale-forte",
             "name": "ესენციალე ფორტე 300 მგ",
             "shortDescription": "სოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.",
@@ -3218,7 +3218,6 @@
         "essentiale-max": {
           "product": {
             "id": "essentiale-max",
-            "locked": true,
             "slug": "essentiale-max",
             "name": "ესენციალე მაქსი 600 მგ",
             "shortDescription": "სოიოს მარცვლების ფოსფოლიპიდები.",
@@ -3272,7 +3271,6 @@
         "guttalax-15ml": {
           "product": {
             "id": "guttalax-15ml",
-            "locked": true,
             "slug": "guttalax-15ml",
             "name": "გუტალაქსი 15 მლ",
             "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
@@ -3326,7 +3324,6 @@
         "guttalax-30ml": {
           "product": {
             "id": "guttalax-30ml",
-            "locked": true,
             "slug": "guttalax-30ml",
             "name": "გუტალაქსი 30 მლ",
             "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
@@ -3380,7 +3377,6 @@
         "phosphalugel": {
           "product": {
             "id": "phosphalugel",
-            "locked": true,
             "slug": "phosphalugel",
             "name": "ფოსფალუგელი",
             "shortDescription": "ალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.",
@@ -3434,7 +3430,6 @@
         "enterogermina-2-billion": {
           "product": {
             "id": "enterogermina-2-billion",
-            "locked": true,
             "template": "products/enterogermina.html",
             "slug": "enterogermina-2-billion",
             "name": "ენტეროჯერმინა 2 მილიარდი",
@@ -3572,7 +3567,6 @@
         "enterogermina-4-billion": {
           "product": {
             "id": "enterogermina-4-billion",
-            "locked": true,
             "slug": "enterogermina-4-billion",
             "name": "ენტეროჯერმინა ფორტე 4 მილიარდი",
             "shortDescription": "Bacillus clausii-ის სპორები. პერორალური სუსპენზია; 4 მილიარდი / 5 მლ.",
@@ -3626,7 +3620,6 @@
         "enterogermina-6-billion": {
           "product": {
             "id": "enterogermina-6-billion",
-            "locked": true,
             "slug": "enterogermina-6-billion",
             "name": "ენტეროჯერმინა 6 მილიარდი",
             "shortDescription": "Bacillus clausii-ის სპორები. პერორალური ფხვნილი — მხოლოდ ზრდასრულებისთვის; 6 მილიარდი / 2 გ.",
@@ -3680,7 +3673,6 @@
         "no-spa-40mg-24": {
           "product": {
             "id": "no-spa-40mg-24",
-            "locked": true,
             "slug": "no-spa-40mg-24",
             "name": "ნო-შპა 40 მგ — 24 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -3734,7 +3726,6 @@
         "no-spa-40mg-100": {
           "product": {
             "id": "no-spa-40mg-100",
-            "locked": true,
             "slug": "no-spa-40mg-100",
             "name": "ნო-შპა 40 მგ — 100 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -3788,7 +3779,6 @@
         "no-spa-forte-80mg-24": {
           "product": {
             "id": "no-spa-forte-80mg-24",
-            "locked": true,
             "slug": "no-spa-forte-80mg-24",
             "name": "ნო-შპა ფორტე 80 მგ — 24 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 80 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -6126,6 +6116,7 @@
           }
         },
         "products/index.html": {
+          "locked": true,
           "language": "en",
           "page": {
             "path": "products/index.html"
@@ -7180,7 +7171,6 @@
         "essentiale-forte": {
           "product": {
             "id": "essentiale-forte",
-            "locked": true,
             "slug": "essentiale-forte",
             "name": "Essentiale Forte 300 mg",
             "shortDescription": "Essential phospholipids derived from soya beans.",
@@ -7234,7 +7224,6 @@
         "essentiale-max": {
           "product": {
             "id": "essentiale-max",
-            "locked": true,
             "slug": "essentiale-max",
             "name": "Essentiale Max 600 mg",
             "shortDescription": "Phospholipids from soya beans.",
@@ -7288,7 +7277,6 @@
         "guttalax-15ml": {
           "product": {
             "id": "guttalax-15ml",
-            "locked": true,
             "slug": "guttalax-15ml",
             "name": "Guttalax 15 ml",
             "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
@@ -7342,7 +7330,6 @@
         "guttalax-30ml": {
           "product": {
             "id": "guttalax-30ml",
-            "locked": true,
             "slug": "guttalax-30ml",
             "name": "Guttalax 30 ml",
             "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
@@ -7396,7 +7383,6 @@
         "phosphalugel": {
           "product": {
             "id": "phosphalugel",
-            "locked": true,
             "slug": "phosphalugel",
             "name": "Phosphalugel",
             "shortDescription": "Aluminium phosphate. Oral suspension in sachets.",
@@ -7450,7 +7436,6 @@
         "enterogermina-2-billion": {
           "product": {
             "id": "enterogermina-2-billion",
-            "locked": true,
             "template": "products/enterogermina.html",
             "slug": "enterogermina-2-billion",
             "name": "Enterogermina 2 billion",
@@ -7588,7 +7573,6 @@
         "enterogermina-4-billion": {
           "product": {
             "id": "enterogermina-4-billion",
-            "locked": true,
             "slug": "enterogermina-4-billion",
             "name": "Enterogermina Forte 4 billion",
             "shortDescription": "Bacillus clausii spores. Oral suspension; 4 billion / 5 ml.",
@@ -7642,7 +7626,6 @@
         "enterogermina-6-billion": {
           "product": {
             "id": "enterogermina-6-billion",
-            "locked": true,
             "slug": "enterogermina-6-billion",
             "name": "Enterogermina 6 billion",
             "shortDescription": "Bacillus clausii spores. Oral powder — adults only; 6 billion / 2 g.",
@@ -7696,7 +7679,6 @@
         "no-spa-40mg-24": {
           "product": {
             "id": "no-spa-40mg-24",
-            "locked": true,
             "slug": "no-spa-40mg-24",
             "name": "No-Spa 40 mg — 24 tablets",
             "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
@@ -7750,7 +7732,6 @@
         "no-spa-40mg-100": {
           "product": {
             "id": "no-spa-40mg-100",
-            "locked": true,
             "slug": "no-spa-40mg-100",
             "name": "No-Spa 40 mg — 100 tablets",
             "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
@@ -7804,7 +7785,6 @@
         "no-spa-forte-80mg-24": {
           "product": {
             "id": "no-spa-forte-80mg-24",
-            "locked": true,
             "slug": "no-spa-forte-80mg-24",
             "name": "No-Spa Forte 80 mg — 24 tablets",
             "shortDescription": "Drotaverine hydrochloride 80 mg. Oral antispasmodic tablets.",

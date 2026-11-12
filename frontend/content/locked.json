@@ -1,42 +1,12 @@
 {
   "pages": [
-    "/sites/ge/en/products/enterogermina-2-billion.html",
-    "/sites/ge/en/products/enterogermina-4-billion.html",
-    "/sites/ge/en/products/enterogermina-6-billion.html",
-    "/sites/ge/en/products/essentiale-forte.html",
-    "/sites/ge/en/products/essentiale-max.html",
-    "/sites/ge/en/products/guttalax-15ml.html",
-    "/sites/ge/en/products/guttalax-30ml.html",
-    "/sites/ge/en/products/no-spa-40mg-100.html",
-    "/sites/ge/en/products/no-spa-40mg-24.html",
-    "/sites/ge/en/products/no-spa-forte-80mg-24.html",
-    "/sites/ge/en/products/phosphalugel.html",
-    "/sites/ge/ge/products/enterogermina-2-billion.html",
-    "/sites/ge/ge/products/enterogermina-4-billion.html",
-    "/sites/ge/ge/products/enterogermina-6-billion.html",
-    "/sites/ge/ge/products/essentiale-forte.html",
-    "/sites/ge/ge/products/essentiale-max.html",
-    "/sites/ge/ge/products/guttalax-15ml.html",
-    "/sites/ge/ge/products/guttalax-30ml.html",
-    "/sites/ge/ge/products/no-spa-40mg-100.html",
-    "/sites/ge/ge/products/no-spa-40mg-24.html",
-    "/sites/ge/ge/products/no-spa-forte-80mg-24.html",
-    "/sites/ge/ge/products/phosphalugel.html",
+    "/sites/ge/en/products/index.html",
+    "/sites/ge/ge/products/index.html",
+    "/sites/ge/products/index.html",
     "/sites/kz/kz/products/magne-b6-kids.html",
     "/sites/kz/ru/products/magne-b6-kids.html"
   ],
   "slugs": [
-    "enterogermina-2-billion",
-    "enterogermina-4-billion",
-    "enterogermina-6-billion",
-    "essentiale-forte",
-    "essentiale-max",
-    "guttalax-15ml",
-    "guttalax-30ml",
-    "magne-b6-kids",
-    "no-spa-40mg-100",
-    "no-spa-40mg-24",
-    "no-spa-forte-80mg-24",
-    "phosphalugel"
+    "magne-b6-kids"
   ]
 }
