@@ -2109,7 +2109,6 @@
           }
         },
         "products/index.html": {
-          "locked": true,
           "language": "ge",
           "page": {
             "path": "products/index.html"
@@ -6273,7 +6272,6 @@
           }
         },
         "products/index.html": {
-          "locked": true,
           "language": "en",
           "page": {
             "path": "products/index.html"
