@@ -518,7 +518,8 @@ function setProductCatalogChromeVisible(isVisible, payload = backendPagePayload)
   const partners = document.querySelector('.catalog-partners');
   const showPartners = isVisible && shouldShowStaticPharmacyPartners(payload);
   if (partners) partners.hidden = !showPartners;
-  setPharmacyPartnerLinksVisible(showPartners);
+  // A product page shows its own pharmacy links (dynamic-product.js); leave its buttons alone.
+  if (!document.querySelector('.product-hero-buy')) setPharmacyPartnerLinksVisible(showPartners);
 }
 
 function applyProductCatalogFilter(activeFilter = 'all') {

@@ -124,7 +124,10 @@ function finalize(dom, country, lang, template, page, text, newsId, catalogLocke
   const document = dom.window.document;
   const products = dom.window.__payload.content.productCatalog || [];
   if (products.length) {
-    if (country.code !== 'kz') document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => link.remove());
+    // Outside Kazakhstan only a product page with its own pharmacy links (page.purchaseLinks) keeps "Where to buy".
+    if (country.code !== 'kz') document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => {
+      if (template !== 'products/product.html' || link.hidden) link.remove();
+    });
     const label = text.nav_products;
     const menu = document.querySelector('.menu');
     // A locked catalogue gets no menu item: visitors would only meet the password page.

@@ -3222,6 +3222,43 @@
                   "title": "Formă și ambalaj",
                   "text": "Soluție transparentă, incoloră. Flacon de polietilenă cu sistem de pulverizare, 15 ml soluție (150 de doze)."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/snup-spray-naz-sol-0-05-15ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Snup 45 mcg/doză la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/nas_infundat/snup_18522",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Snup 45 mcg/doză la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/snup-spray-0-05-15ml/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Snup 45 mcg/doză la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/snup-spray-naz-005-15-ml",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Snup 45 mcg/doză la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/55661",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Snup 45 mcg/doză la Orient"
+                }
               ]
             }
           }
@@ -3277,6 +3314,43 @@
                   "title": "Formă și ambalaj",
                   "text": "Soluție transparentă, incoloră. Flacon de polietilenă cu sistem de pulverizare, 15 ml soluție."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/snup-spray-naz-sol-0-1-15ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Snup 90 mcg/doză la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/nas_infundat/snup_17650",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Snup 90 mcg/doză la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/snup-spray-0-1-15ml/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Snup 90 mcg/doză la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/01-15-1",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Snup 90 mcg/doză la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/54031",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Snup 90 mcg/doză la Orient"
+                }
               ]
             }
           }
@@ -3326,6 +3400,36 @@
                   "title": "Formă și ambalaj",
                   "text": "Tablete. 10 tablete în ambalaj: 10 zile, 1 tabletă pe zi."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/urinal-akut-comp",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Urinal Akut la Farmacia Familiei"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/urinal-akut-tab-n10/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Urinal Akut la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/urinal-akut-comp-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Urinal Akut la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/59860",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Urinal Akut la Orient"
+                }
               ]
             }
           }
@@ -3374,6 +3478,29 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Sirop. Flacon de 150 ml."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/urinal-sirop-150ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Urinal Sirop la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/afectiuni_renale_si_urinare/urinal_52977",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Urinal Sirop la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/urinal-sirop-150ml-n1-1an-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Urinal Sirop la Felicia"
                 }
               ]
             }
@@ -3430,6 +3557,43 @@
                   "title": "Formă și ambalaj",
                   "text": "Pulbere galben-deschis, cu miros și gust de lămâie. Cutie cu 10 plicuri a câte 5 g."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/coldrex-hotrem-pulbsusporala-lamiie-5g",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Coldrex Lemon la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/febra_si_frisoane/coldrex_hotrem_lemon_1827",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Coldrex Lemon la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/coldrex-hotrem-5g-pulb-susp-orala-lamaie-n10-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Coldrex Lemon la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/coldrex-lemon-pulbsusp-orala-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Coldrex Lemon la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/62376",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Coldrex Lemon la Orient"
+                }
               ]
             }
           }
@@ -3484,6 +3648,43 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Pulbere pentru suspensie orală. Cutii cu 5 sau 10 plicuri a câte 6,427 g."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/coldrex-maxgrip-pulbsusporala-lamiie-64g",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Coldrex MaxGrip Lemon la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/febra_si_frisoane/coldrex_maxgrip_lemon_1803",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Coldrex MaxGrip Lemon la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/coldrex-maxgrip-6-4g-pulb-sol-orala-lamaie-n10-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Coldrex MaxGrip Lemon la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/coldrex-max-grip-plic-n5-lamiie",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Coldrex MaxGrip Lemon la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/44173",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Coldrex MaxGrip Lemon la Orient"
                 }
               ]
             }
@@ -3540,6 +3741,43 @@
                   "title": "Formă și ambalaj",
                   "text": "Comprimate rotunde, biconvexe, roșii-cărămizii. Cutie cu 1 blister a câte 10 comprimate."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/omnitus-50mg-compfilmelibmodif",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Omnitus 50 mg comprimate la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_uscata/omnitus_35429",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Omnitus 50 mg comprimate la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/omnitus-50mg-comp-film-elib-modif-n10/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Omnitus 50 mg comprimate la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/omnitus-comp-film-elib-modif-50-mg-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Omnitus 50 mg comprimate la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/90197",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Omnitus 50 mg comprimate la Orient"
+                }
               ]
             }
           }
@@ -3594,6 +3832,43 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Soluție limpede, slab-gălbuie, cu gust dulce și aromă de vanilie. Flacon din sticlă întunecată cu capac securizat pentru copii și linguriță dozatoare gradată la 2,5 ml și 5 ml."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/omnitus-08mgml-sirop-200ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Omnitus sirop 0,8 mg/ml la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_uscata/omnitus_30743",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Omnitus sirop 0,8 mg/ml la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/omnitus-sirop-0-8mg-ml-200ml-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Omnitus sirop 0,8 mg/ml la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/omnitus-sirop-08-mgml-200-ml-n1",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Omnitus sirop 0,8 mg/ml la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/87261",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Omnitus sirop 0,8 mg/ml la Orient"
                 }
               ]
             }
@@ -3650,6 +3925,36 @@
                   "title": "Formă și ambalaj",
                   "text": "Lichid de culoare roșu-oranj. Cutie cu 1 flacon de polietilenă a câte 60 ml."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/nizoral-2-sampon-60ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Nizoral 20 mg/g șampon la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/antimicotice_si_antifungice/nizoral_4346",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Nizoral 20 mg/g șampon la Hippocrates"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/nizoral-sampon-2-60ml",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Nizoral 20 mg/g șampon la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/51197",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Nizoral 20 mg/g șampon la Orient"
+                }
               ]
             }
           }
@@ -3699,6 +4004,43 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Gel transparent, galben-maroniu, cu miros și gust de mușețel, miere și mentă. Tub de 20 ml."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/kamistad-baby-gel-dentar-20ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Kamistad Baby la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/anestezice/kamistad_baby_47813",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Kamistad Baby la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/kamistad-baby-gel-20ml-n1/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Kamistad Baby la Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/kamistad-baby-gel-20ml-ro",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Cumpără Kamistad Baby la Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ro/product/52501",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Cumpără Kamistad Baby la Orient"
                 }
               ]
             }
@@ -3750,6 +4092,29 @@
                   "title": "Formă și ambalaj",
                   "text": "Comprimate filmate. Cutie cu 30 de comprimate."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/sinulan-duo-forte-comp",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Sinulan Duo Forte la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_productiva/sinulan_duo_forte_53269",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Sinulan Duo Forte la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/sinulan-duo-forte-comp-film-n30/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Sinulan Duo Forte la Felicia"
+                }
               ]
             }
           }
@@ -3799,6 +4164,29 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Flacoane unidoză gata de băut. Cutie cu 14 flacoane."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/proenzi-active-collagen-11-000-sol-buv-25ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Cumpără Proenzi Active Colagen 11.000 la Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/complexe_pentru_oase_si_articulatii/proenzi_active_colagen_49678",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Cumpără Proenzi Active Colagen 11.000 la Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/proenzi-active-colagen-11-000-susp-orala-25ml-n14/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Cumpără Proenzi Active Colagen 11.000 la Felicia"
                 }
               ]
             }
@@ -7201,6 +7589,43 @@
                   "title": "Форма и упаковка",
                   "text": "Прозрачный бесцветный раствор. Полиэтиленовый флакон с распылителем, 15 мл раствора (150 доз)."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/snup-spray-naz-sol-0-05-15ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Снуп 45 мкг/доза в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/nas_infundat/snup_18522",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Снуп 45 мкг/доза в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/snup-spray-0-05-15ml/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Снуп 45 мкг/доза в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/snup-spray-naz-005-15-ml",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Снуп 45 мкг/доза в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/55661",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Снуп 45 мкг/доза в Orient"
+                }
               ]
             }
           }
@@ -7256,6 +7681,43 @@
                   "title": "Форма и упаковка",
                   "text": "Прозрачный бесцветный раствор. Полиэтиленовый флакон с распылителем, 15 мл раствора."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/snup-spray-naz-sol-0-1-15ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Снуп 90 мкг/доза в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/nas_infundat/snup_17650",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Снуп 90 мкг/доза в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/snup-spray-0-1-15ml/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Снуп 90 мкг/доза в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/01-15-1",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Снуп 90 мкг/доза в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/54031",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Снуп 90 мкг/доза в Orient"
+                }
               ]
             }
           }
@@ -7305,6 +7767,36 @@
                   "title": "Форма и упаковка",
                   "text": "Таблетки. 10 таблеток в упаковке: 10 дней, 1 таблетка в день."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/urinal-akut-comp",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Уринал Акут в Farmacia Familiei"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/urinal-akut-tab-n10/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Уринал Акут в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/urinal-akut-comp-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Уринал Акут в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/59860",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Уринал Акут в Orient"
+                }
               ]
             }
           }
@@ -7353,6 +7845,29 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Сироп. Флакон 150 мл."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/urinal-sirop-150ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Уринал сироп в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/afectiuni_renale_si_urinare/urinal_52977",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Уринал сироп в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/urinal-sirop-150ml-n1-1an-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Уринал сироп в Felicia"
                 }
               ]
             }
@@ -7409,6 +7924,43 @@
                   "title": "Форма и упаковка",
                   "text": "Светло-жёлтый порошок с запахом и вкусом лимона. Коробка с 10 пакетиками по 5 г."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/coldrex-hotrem-pulbsusporala-lamiie-5g",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Колдрекс Лемон в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/febra_si_frisoane/coldrex_hotrem_lemon_1827",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Колдрекс Лемон в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/coldrex-hotrem-5g-pulb-susp-orala-lamaie-n10-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Колдрекс Лемон в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/coldrex-lemon-pulbsusp-orala-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Колдрекс Лемон в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/62376",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Колдрекс Лемон в Orient"
+                }
               ]
             }
           }
@@ -7463,6 +8015,43 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Порошок для приготовления суспензии. Коробки с 5 или 10 пакетиками по 6,427 г."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/coldrex-maxgrip-pulbsusporala-lamiie-64g",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Колдрекс МаксГрипп Лемон в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/febra_si_frisoane/coldrex_maxgrip_lemon_1803",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Колдрекс МаксГрипп Лемон в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/coldrex-maxgrip-6-4g-pulb-sol-orala-lamaie-n10-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Колдрекс МаксГрипп Лемон в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/coldrex-max-grip-plic-n5-lamiie",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Колдрекс МаксГрипп Лемон в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/44173",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Колдрекс МаксГрипп Лемон в Orient"
                 }
               ]
             }
@@ -7519,6 +8108,43 @@
                   "title": "Форма и упаковка",
                   "text": "Круглые двояковыпуклые таблетки кирпично-красного цвета. Коробка с 1 блистером по 10 таблеток."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/omnitus-50mg-compfilmelibmodif",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Омнитус 50 мг таблетки в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_uscata/omnitus_35429",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Омнитус 50 мг таблетки в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/omnitus-50mg-comp-film-elib-modif-n10/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Омнитус 50 мг таблетки в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/omnitus-comp-film-elib-modif-50-mg-n10",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Омнитус 50 мг таблетки в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/90197",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Омнитус 50 мг таблетки в Orient"
+                }
               ]
             }
           }
@@ -7573,6 +8199,43 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Прозрачный слегка желтоватый раствор со сладким вкусом и ароматом ванили. Флакон из тёмного стекла с защитной от детей крышкой и дозировочной ложкой с делениями 2,5 мл и 5 мл."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/omnitus-08mgml-sirop-200ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Омнитус сироп 0,8 мг/мл в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_uscata/omnitus_30743",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Омнитус сироп 0,8 мг/мл в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/omnitus-sirop-0-8mg-ml-200ml-/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Омнитус сироп 0,8 мг/мл в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/omnitus-sirop-08-mgml-200-ml-n1",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Омнитус сироп 0,8 мг/мл в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/87261",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Омнитус сироп 0,8 мг/мл в Orient"
                 }
               ]
             }
@@ -7629,6 +8292,36 @@
                   "title": "Форма и упаковка",
                   "text": "Жидкость красно-оранжевого цвета. Коробка с 1 полиэтиленовым флаконом по 60 мл."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/nizoral-2-sampon-60ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Низорал 20 мг/г шампунь в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/antimicotice_si_antifungice/nizoral_4346",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Низорал 20 мг/г шампунь в Hippocrates"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/nizoral-sampon-2-60ml",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Низорал 20 мг/г шампунь в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/51197",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Низорал 20 мг/г шампунь в Orient"
+                }
               ]
             }
           }
@@ -7678,6 +8371,43 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Прозрачный жёлто-коричневый гель с запахом и вкусом ромашки, мёда и мяты. Туба 20 мл."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/kamistad-baby-gel-dentar-20ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Камистад Бэби в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/anestezice/kamistad_baby_47813",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Камистад Бэби в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/kamistad-baby-gel-20ml-n1/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Камистад Бэби в Felicia"
+                },
+                {
+                  "label": "Farmacie.md",
+                  "url": "https://farmacie.md/ro/product/kamistad-baby-gel-20ml-ro",
+                  "logoSrc": "/assets/logos/logo_farmacie_md.png",
+                  "logoAlt": "Farmacie.md",
+                  "ariaLabel": "Купить Камистад Бэби в Farmacie.md"
+                },
+                {
+                  "label": "Orient",
+                  "url": "https://orient.md/ru/product/52501",
+                  "logoSrc": "/assets/logos/logo_orient.png",
+                  "logoAlt": "Orient",
+                  "ariaLabel": "Купить Камистад Бэби в Orient"
                 }
               ]
             }
@@ -7729,6 +8459,29 @@
                   "title": "Форма и упаковка",
                   "text": "Таблетки, покрытые оболочкой. Коробка с 30 таблетками."
                 }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/sinulan-duo-forte-comp",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Синулан Дуо Форте в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/tuse_productiva/sinulan_duo_forte_53269",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Синулан Дуо Форте в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/sinulan-duo-forte-comp-film-n30/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Синулан Дуо Форте в Felicia"
+                }
               ]
             }
           }
@@ -7778,6 +8531,29 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Флаконы-монодозы, готовые к употреблению. Коробка с 14 флаконами."
+                }
+              ],
+              "purchaseLinks": [
+                {
+                  "label": "Farmacia Familiei",
+                  "url": "https://ff.md/products/proenzi-active-collagen-11-000-sol-buv-25ml",
+                  "logoSrc": "/assets/logos/logo_farmacia_familiei.svg",
+                  "logoAlt": "Farmacia Familiei",
+                  "ariaLabel": "Купить Проэнзи Актив Коллаген 11.000 в Farmacia Familiei"
+                },
+                {
+                  "label": "Hippocrates",
+                  "url": "https://hippocrates.md/ro/catalog/complexe_pentru_oase_si_articulatii/proenzi_active_colagen_49678",
+                  "logoSrc": "/assets/logos/logo_hippocrates.png",
+                  "logoAlt": "Hippocrates",
+                  "ariaLabel": "Купить Проэнзи Актив Коллаген 11.000 в Hippocrates"
+                },
+                {
+                  "label": "Felicia",
+                  "url": "https://felicia.md/product/proenzi-active-colagen-11-000-susp-orala-25ml-n14/",
+                  "logoSrc": "/assets/logos/logo_felicia.svg",
+                  "logoAlt": "Felicia",
+                  "ariaLabel": "Купить Проэнзи Актив Коллаген 11.000 в Felicia"
                 }
               ]
             }
