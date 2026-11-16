@@ -8,7 +8,9 @@ const countries = JSON.parse(fs.readFileSync(path.join(root, 'content/countries.
 async function lockPages(target, code) {
   const locked = JSON.parse(fs.readFileSync(path.join(root, 'content/locked.json')));
   const prefix = `/sites/${code}/`;
-  const pages = locked.pages.filter(page => page.startsWith(prefix)).map(page => page.slice(prefix.length));
+  // The copy without a language (products/index.html) is covered by the default language's redirect below.
+  const pages = locked.pages.filter(page => page.startsWith(prefix)).map(page => page.slice(prefix.length))
+    .filter(page => /^[a-z]{2}\//.test(page));
   fs.rmSync(path.join(target, '__lock'), { recursive: true, force: true });
   if (!pages.length) return 0;
   const { gatePage } = require('./lock/lock.cjs');

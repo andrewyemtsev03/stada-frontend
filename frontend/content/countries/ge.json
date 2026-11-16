@@ -2109,6 +2109,7 @@
           }
         },
         "products/index.html": {
+          "locked": true,
           "language": "ge",
           "page": {
             "path": "products/index.html"
@@ -3164,7 +3165,6 @@
         "essentiale-forte": {
           "product": {
             "id": "essentiale-forte",
-            "locked": true,
             "slug": "essentiale-forte",
             "name": "ესენციალე ფორტე 300 მგ",
             "shortDescription": "სოიოს მარცვლებიდან მიღებული ესენციალური ფოსფოლიპიდები.",
@@ -3218,7 +3218,6 @@
         "essentiale-max": {
           "product": {
             "id": "essentiale-max",
-            "locked": true,
             "slug": "essentiale-max",
             "name": "ესენციალე მაქსი 600 მგ",
             "shortDescription": "სოიოს მარცვლების ფოსფოლიპიდები.",
@@ -3272,7 +3271,6 @@
         "guttalax-15ml": {
           "product": {
             "id": "guttalax-15ml",
-            "locked": true,
             "slug": "guttalax-15ml",
             "name": "გუტალაქსი 15 მლ",
             "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
@@ -3326,7 +3324,6 @@
         "guttalax-30ml": {
           "product": {
             "id": "guttalax-30ml",
-            "locked": true,
             "slug": "guttalax-30ml",
             "name": "გუტალაქსი 30 მლ",
             "shortDescription": "ნატრიუმის პიკოსულფატი, პერორალურად მისაღები წვეთები 7.5 მგ/მლ.",
@@ -3380,7 +3377,6 @@
         "phosphalugel": {
           "product": {
             "id": "phosphalugel",
-            "locked": true,
             "slug": "phosphalugel",
             "name": "ფოსფალუგელი",
             "shortDescription": "ალუმინის ფოსფატი. პერორალური სუსპენზია პაკეტში.",
@@ -3434,7 +3430,7 @@
         "enterogermina-2-billion": {
           "product": {
             "id": "enterogermina-2-billion",
-            "locked": true,
+            "template": "products/enterogermina.html",
             "slug": "enterogermina-2-billion",
             "name": "ენტეროჯერმინა 2 მილიარდი",
             "shortDescription": "Bacillus clausii-ის სპორები. პერორალური სუსპენზია; 2 მილიარდი / 5 მლ.",
@@ -3482,13 +3478,95 @@
                 }
               ],
               "informationText": "# პროდუქტის შესახებ\n\nენტეროჯერმინა 2 მილიარდი\n\n## გამოყენების ჩვენება\n\nმოწოდებული ინსტრუქციის მიხედვით გამოიყენება ნაწლავური დისბაქტერიოზისა და შემდგომი ენდოგენური ავიტამინოზის მკურნალობისა და პროფილაქტიკისთვის, ასევე ანტიბიოტიკებით ან ქიმიოთერაპიული საშუალებებით მკურნალობის დროს შეცვლილი ნაწლავის მიკრობული ფლორის აღსადგენად. 2 მილიარდის ინსტრუქციაში ასევე აღწერილია ჩვილებსა და მცირე ასაკის ბავშვებში ინტოქსიკაციასთან, დისბაქტერიოზთან ან ავიტამინოზთან დაკავშირებული კუჭ-ნაწლავის მწვავე და ქრონიკული აშლილობები.\n\n## მიღების წესი\n\nთუ ექიმმა სხვაგვარად არ დანიშნა: მოზრდილები — 2–3 ფლაკონი დღეში; ბავშვები და ჩვილები — 1–2 ფლაკონი დღეში. ინსტრუქციაში ერთჯერად, ერთფლაკონიან დოზებს შორის რეკომენდებულია 3–4 საათი.\n\nგამოყენებამდე ფლაკონი შეანჯღრიეთ. შიგთავსი მიიღება განზავების გარეშე ან წყალში ან სხვა სითხეში, მაგალითად რძეში, ჩაიში ან ფორთოხლის წვენში განზავებით. მიიღეთ გახსნისთანავე; გახსნილი ფლაკონი არ შეინახოთ. მხოლოდ პერორალურად მისაღებად: არ გაიკეთოთ ინექცია და არ მიიღოთ სხვა გზით.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენოთ მოქმედი ნივთიერების ან სხვა ინგრედიენტის მიმართ ალერგიის შემთხვევაში. მოწოდებული ინსტრუქციის მიხედვით გამოყენებისგან თავი უნდა შეიკავონ დასუსტებული იმუნიტეტის მქონე, მძიმე დაავადების გამო ჰოსპიტალიზებულმა პაციენტებმა და დღენაკლულმა ახალშობილებმა, რადგან ამ ჯგუფებში აღწერილია ბაქტერიემია, სეპტიცემია ან სეფსისი.\n\n## როდის მივმართოთ ექიმს\n\nანტიბიოტიკოთერაპიის დროს მიიღეთ ანტიბიოტიკის ორ თანმიმდევრულ დოზას შორის. ხილვადი ნაწილაკები შეიძლება იყოს სპორების აგრეგატები; გამოყენებამდე შეანჯღრიეთ. ორსულობისა და ძუძუთი კვების შესახებ მონაცემები შეზღუდულია: გამოიყენეთ მხოლოდ დედისა და ბავშვისთვის მოსალოდნელი სარგებლისა და რისკის სამედიცინო შეფასების შემდეგ.\n\n## შესაძლო გვერდითი მოვლენები\n\nუცნობი სიხშირის რეაქციებია გამონაყარი, ჭინჭრის ციება და ანგიონევროზული შეშუპება. დასუსტებული იმუნიტეტის მქონე ან მძიმე დაავადების გამო ჰოსპიტალიზებულ პაციენტებში აღწერილია ბაქტერიემია, სეპტიცემია ან სეფსისი. არასწორმა გზით მიღებამ შეიძლება გამოიწვიოს მძიმე ალერგიული რეაქცია, მათ შორის ანაფილაქსიური შოკი. საეჭვო გვერდითი მოვლენების შესახებ აცნობეთ ექიმს ან ფარმაცევტს.\n\n## შენახვა\n\nშეინახეთ არაუმეტეს 30°C ტემპერატურაზე. დაბინძურების თავიდან ასაცილებლად მიიღეთ ფლაკონის გახსნისთანავე. ინსტრუქციაში მითითებული ვარგისობის ვადაა 2 წელი; დაიცავით შეფუთვაზე მითითებული ვადა. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
+            },
+            "showcase": {
+              "hero_lead": "გამოიყენება ნაწლავური დისბაქტერიოზის მკურნალობისა და პროფილაქტიკისთვის, ასევე ანტიბიოტიკებით ან ქიმიოთერაპიული საშუალებებით მკურნალობის დროს შეცვლილი ნაწლავის მიკრობული ფლორის აღსადგენად.",
+              "fact_spores_value": "2 მილიარდი",
+              "story_title": "ენტეროჯერმინა ეტაპობრივად",
+              "story_a_eyebrow": "ფლაკონის შიგნით",
+              "story_a_count": "2 მილიარდი",
+              "story_a_title": "სპორა ყოველ ფლაკონში",
+              "story_a_text": "ერთი 5 მლ ფლაკონი შეიცავს <i>Bacillus clausii</i>-ის 2 მილიარდ ანტიბიოტიკ-პოლირეზისტენტულ სპორს გასუფთავებულ წყალში.",
+              "story_a_strains_label": "ოთხი შტამი",
+              "story_a_strains": [
+                "SIN",
+                "O/C",
+                "T",
+                "N/R"
+              ],
+              "story_b_eyebrow": "ანტიბიოტიკებთან ერთად",
+              "story_b_title": "ანტიბიოტიკ-რეზისტენტული სპორები",
+              "story_b_text": "გამოიყენება ანტიბიოტიკებით მკურნალობის დროს შეცვლილი ნაწლავის მიკრობული ფლორის აღსადგენად. ანტიბიოტიკოთერაპიის დროს მიიღეთ ანტიბიოტიკის ორ თანმიმდევრულ დოზას შორის.",
+              "story_b_antibiotic": "ანტიბიოტიკი",
+              "story_c_eyebrow": "მიღების წესი",
+              "story_c_title": "შეანჯღრიეთ, გახსენით, დალიეთ",
+              "story_c_step1": "გამოყენებამდე შეანჯღრიეთ ფლაკონი.",
+              "story_c_step2": "გახსენით და მიიღეთ გახსნისთანავე.",
+              "story_c_step3": "დალიეთ განზავების გარეშე ან წყალში ან სხვა სითხეში განზავებით.",
+              "story_c_drinks": [
+                "წყალი",
+                "რძე",
+                "ჩაი",
+                "ფორთოხლის წვენი"
+              ],
+              "story_step_a": "სპორები",
+              "story_step_b": "ანტიბიოტიკები",
+              "story_step_c": "მიღება",
+              "story_skip": "გამოტოვება",
+              "dose_eyebrow": "დოზირება",
+              "dose_title": "რამდენი ფლაკონი დღეში",
+              "dose_text": "დოზა დამოკიდებულია ასაკზე. ერთი ფლაკონი — ერთი დოზა.",
+              "dose_switch_label": "ვისთვის",
+              "dose_adult": "მოზრდილები",
+              "dose_child": "ბავშვები და ჩვილები",
+              "dose_adult_min": "2",
+              "dose_adult_max": "3",
+              "dose_child_min": "1",
+              "dose_child_max": "2",
+              "dose_unit": "ფლაკონი დღეში",
+              "dose_gap_value": "3–4 სთ",
+              "dose_gap_text": "რეკომენდებული ინტერვალი ერთჯერად, ერთფლაკონიან დოზებს შორის.",
+              "dose_doctor": "თუ ექიმმა სხვაგვარად არ დანიშნა. ანტიბიოტიკოთერაპიის დროს მიიღეთ ანტიბიოტიკის დოზებს შორის.",
+              "info_eyebrow": "ინსტრუქცია",
+              "info_title": "პრეპარატის შესახებ",
+              "info_text": "მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. გამოყენებამდე წაიკითხეთ სრული დოკუმენტი.",
+              "tab_use": "ჩვენება",
+              "tab_how": "მიღების წესი",
+              "tab_care": "სიფრთხილე",
+              "tab_side": "გვერდითი მოვლენები",
+              "tab_store": "შენახვა",
+              "use_text": "მოწოდებული ინსტრუქციის მიხედვით გამოიყენება ნაწლავური დისბაქტერიოზისა და შემდგომი ენდოგენური ავიტამინოზის მკურნალობისა და პროფილაქტიკისთვის, ასევე ანტიბიოტიკებით ან ქიმიოთერაპიული საშუალებებით მკურნალობის დროს შეცვლილი ნაწლავის მიკრობული ფლორის აღსადგენად.",
+              "use_text_2": "2 მილიარდის ინსტრუქციაში ასევე აღწერილია ჩვილებსა და მცირე ასაკის ბავშვებში ინტოქსიკაციასთან, დისბაქტერიოზთან ან ავიტამინოზთან დაკავშირებული კუჭ-ნაწლავის მწვავე და ქრონიკული აშლილობები.",
+              "how_text": "თუ ექიმმა სხვაგვარად არ დანიშნა: მოზრდილები — 2–3 ფლაკონი დღეში; ბავშვები და ჩვილები — 1–2 ფლაკონი დღეში. ინსტრუქციაში ერთჯერად, ერთფლაკონიან დოზებს შორის რეკომენდებულია 3–4 საათი.",
+              "how_text_2": "გამოყენებამდე ფლაკონი შეანჯღრიეთ. შიგთავსი მიიღება განზავების გარეშე ან წყალში ან სხვა სითხეში, მაგალითად რძეში, ჩაიში ან ფორთოხლის წვენში განზავებით.",
+              "how_oral_only": "მხოლოდ პერორალურად მისაღებად: არ გაიკეთოთ ინექცია და არ მიიღოთ სხვა გზით. მიიღეთ გახსნისთანავე; გახსნილი ფლაკონი არ შეინახოთ.",
+              "care_text": "არ გამოიყენოთ მოქმედი ნივთიერების ან სხვა ინგრედიენტის მიმართ ალერგიის შემთხვევაში. მოწოდებული ინსტრუქციის მიხედვით გამოყენებისგან თავი უნდა შეიკავონ დასუსტებული იმუნიტეტის მქონე, მძიმე დაავადების გამო ჰოსპიტალიზებულმა პაციენტებმა და დღენაკლულმა ახალშობილებმა, რადგან ამ ჯგუფებში აღწერილია ბაქტერიემია, სეპტიცემია ან სეფსისი.",
+              "care_text_2": "ანტიბიოტიკოთერაპიის დროს მიიღეთ ანტიბიოტიკის ორ თანმიმდევრულ დოზას შორის. ხილვადი ნაწილაკები შეიძლება იყოს სპორების აგრეგატები; გამოყენებამდე შეანჯღრიეთ. ორსულობისა და ძუძუთი კვების შესახებ მონაცემები შეზღუდულია: გამოიყენეთ მხოლოდ დედისა და ბავშვისთვის მოსალოდნელი სარგებლისა და რისკის სამედიცინო შეფასების შემდეგ.",
+              "side_text": "უცნობი სიხშირის რეაქციებია გამონაყარი, ჭინჭრის ციება და ანგიონევროზული შეშუპება. დასუსტებული იმუნიტეტის მქონე ან მძიმე დაავადების გამო ჰოსპიტალიზებულ პაციენტებში აღწერილია ბაქტერიემია, სეპტიცემია ან სეფსისი.",
+              "side_text_2": "არასწორმა გზით მიღებამ შეიძლება გამოიწვიოს მძიმე ალერგიული რეაქცია, მათ შორის ანაფილაქსიური შოკი. საეჭვო გვერდითი მოვლენების შესახებ აცნობეთ ექიმს ან ფარმაცევტს.",
+              "store_text": "შეინახეთ არაუმეტეს 30°C ტემპერატურაზე. დაბინძურების თავიდან ასაცილებლად მიიღეთ ფლაკონის გახსნისთანავე. ინსტრუქციაში მითითებული ვარგისობის ვადაა 2 წელი; დაიცავით შეფუთვაზე მითითებული ვადა. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას.",
+              "leaflet_title": "სრული ინსტრუქცია",
+              "leaflet_text": "ქართული ინსტრუქციის სრული ტექსტი: დოზირება, უკუჩვენებები, ურთიერთქმედებები და გვერდითი მოვლენები.",
+              "leaflet_href": "/assets/georgia-products/enterogermina-2-billion-instructions-ge.docx",
+              "leaflet_cta": "ინსტრუქციის ჩამოტვირთვა (DOCX)",
+              "all_products": "ყველა პროდუქტი",
+              "disclaimer": "ენტეროჯერმინა სამკურნალო საშუალებაა. გამოყენებამდე წაიკითხეთ ინსტრუქცია. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს.",
+              "chapters_label": "გვერდის თავები",
+              "ch_story": "სპორები",
+              "ch_dose": "დოზირება",
+              "ch_info": "ინსტრუქცია",
+              "formula_1_title": "აქტიური ნივთიერება",
+              "formula_1_text": "ერთი 5 მლ ფლაკონი შეიცავს Bacillus clausii-ის 2 მილიარდ ანტიბიოტიკ-პოლირეზისტენტულ სპორს (შტამები SIN, O/C, T, N/R).",
+              "formula_2_title": "დამხმარე ნივთიერებები",
+              "formula_2_text": "გასუფთავებული წყალი — საერთო მოცულობა 5 მლ-მდე.",
+              "formula_3_title": "ფორმა და შეფუთვა",
+              "formula_3_text": "პერორალური სუსპენზია 5 მლ ფლაკონებში; კოლოფში 10 ფლაკონი. გამოყენებამდე შეანჯღრიეთ და მიიღეთ გახსნისთანავე."
             }
           }
         },
         "enterogermina-4-billion": {
           "product": {
             "id": "enterogermina-4-billion",
-            "locked": true,
             "slug": "enterogermina-4-billion",
             "name": "ენტეროჯერმინა ფორტე 4 მილიარდი",
             "shortDescription": "Bacillus clausii-ის სპორები. პერორალური სუსპენზია; 4 მილიარდი / 5 მლ.",
@@ -3542,7 +3620,6 @@
         "enterogermina-6-billion": {
           "product": {
             "id": "enterogermina-6-billion",
-            "locked": true,
             "slug": "enterogermina-6-billion",
             "name": "ენტეროჯერმინა 6 მილიარდი",
             "shortDescription": "Bacillus clausii-ის სპორები. პერორალური ფხვნილი — მხოლოდ ზრდასრულებისთვის; 6 მილიარდი / 2 გ.",
@@ -3596,7 +3673,6 @@
         "no-spa-40mg-24": {
           "product": {
             "id": "no-spa-40mg-24",
-            "locked": true,
             "slug": "no-spa-40mg-24",
             "name": "ნო-შპა 40 მგ — 24 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -3650,7 +3726,6 @@
         "no-spa-40mg-100": {
           "product": {
             "id": "no-spa-40mg-100",
-            "locked": true,
             "slug": "no-spa-40mg-100",
             "name": "ნო-შპა 40 მგ — 100 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 40 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -3704,7 +3779,6 @@
         "no-spa-forte-80mg-24": {
           "product": {
             "id": "no-spa-forte-80mg-24",
-            "locked": true,
             "slug": "no-spa-forte-80mg-24",
             "name": "ნო-შპა ფორტე 80 მგ — 24 ტაბლეტი",
             "shortDescription": "დროტავერინის ჰიდროქლორიდი 80 მგ. პერორალური სპაზმოლიზური ტაბლეტები.",
@@ -3752,6 +3826,163 @@
                 }
               ],
               "informationText": "# პროდუქტის შესახებ\n\nნო-შპა ფორტე 80 მგ — 24 ტაბლეტი\n\n## გამოყენების ჩვენება\n\nდროტავერინი სპაზმოლიზური საშუალებაა, რომელიც ადუნებს გლუვ მუსკულატურას. მოწოდებულ ინსტრუქციაში აღწერილია გამოყენება ნაღვლისა და საშარდე გზების დაავადებებთან დაკავშირებული გლუვი მუსკულატურის სპაზმის, კუჭ-ნაწლავის სპაზმის, ტენზიური ტიპის თავის ტკივილისა და მტკივნეული მენსტრუაციის დროს. კონკრეტული მდგომარეობების ჩამონათვალი იხილეთ ორიგინალ დოკუმენტში.\n\n## მიღების წესი\n\nმიიღება პერორალურად. მოწოდებულ ინსტრუქციაში მოზრდილებისთვის მითითებულია დღეში 120–240 მგ, 2–3 მიღებაზე განაწილებით. 80 მგ სიძლიერისთვის ეს შეესაბამება სულ 1½–3 ტაბლეტს დღეში; მოზრდილის ერთჯერადი დოზაა 40–80 მგ (½–1 ტაბლეტი). დაიცავით ინსტრუქცია ან ექიმის რეკომენდაცია.\n\nფორტეს ინსტრუქციაში აუცილებლობის შემთხვევაში აღწერილია გამოყენება 12 წელზე უფროსი ასაკის ბავშვებში; შესაბამისი დოზა უნდა განსაზღვროს ექიმმა.\n\n## უკუჩვენებები და სიფრთხილის ზომები\n\nარ გამოიყენოთ დროტავერინის ან სხვა ინგრედიენტის მიმართ ალერგიის, ღვიძლის, თირკმლის ან გულის მძიმე უკმარისობის დროს. დაბალი არტერიული წნევის შემთხვევაში საჭიროა სიფრთხილე. შეიცავს ლაქტოზას: ინსტრუქციის მიხედვით არ გამოიყენება ლაქტაზის დეფიციტის, გალაქტოზემიის ან გლუკოზა/გალაქტოზის შეწოვის დარღვევის დროს. ბავშვებში დროტავერინის გამოყენების კლინიკური კვლევები არ ჩატარებულა; ბავშვებში გამოიყენეთ მხოლოდ სამედიცინო მითითებით.\n\n## ურთიერთქმედებები და სხვა მითითებები\n\nდროტავერინმა შეიძლება შეამციროს ლევოდოპას ანტიპარკინსონული ეფექტი და გააძლიეროს ტრემორი ან რიგიდობა; ერთად მიღებამდე მიმართეთ ექიმს. ორსულობის დროს საჭიროა სიფრთხილე; ძუძუთი კვების პერიოდში მიღება არასაკმარისი კლინიკური მონაცემების გამო რეკომენდებული არ არის. თავბრუსხვევისას თავი შეიკავეთ ტრანსპორტისა და საშიში მექანიზმების მართვისგან. დოზის გადაჭარბებამ შეიძლება გამოიწვიოს გულის რიტმისა და გამტარობის მძიმე დარღვევები, გულის გაჩერების ჩათვლით; დოზის გადაჭარბებისას დაუყოვნებლივ მიიღეთ სამედიცინო დახმარება.\n\n## შესაძლო გვერდითი მოვლენები\n\nინსტრუქციაში აღწერილი იშვიათი რეაქციებია გულისრევა, შეკრულობა, თავის ტკივილი, თავბრუსხვევა, უძილობა, გახშირებული გულისცემა, არტერიული წნევის დაქვეითება და ალერგიული რეაქციები — ანგიონევროზული შეშუპება, ჭინჭრის ციება, გამონაყარი ან ქავილი. გვერდითი მოვლენების, მათ შორის ინსტრუქციაში ჩამოუთვლელი რეაქციების, შემთხვევაში შეწყვიტეთ მიღება და მიმართეთ ექიმს.\n\n## შენახვა\n\nშეინახეთ არაუმეტეს 25°C ტემპერატურაზე, სინათლისგან დაცულ და ბავშვებისთვის მიუწვდომელ ადგილას. მოწოდებული ინსტრუქციის მიხედვით ვარგისობის ვადაა 3 წელი. არ გამოიყენოთ შეფუთვაზე მითითებული ვადის გასვლის შემდეგ.\n\n## სრული ინსტრუქცია\n\nგვერდზე მოცემულია მოწოდებული ქართული ინსტრუქციის მოკლე მიმოხილვა. დოზირების, უკუჩვენებების, ურთიერთქმედებებისა და გვერდითი მოვლენების სრული ინფორმაციისთვის ჩამოტვირთეთ და წაიკითხეთ ორიგინალი დოკუმენტი. შეკითხვის შემთხვევაში მიმართეთ ექიმს ან ფარმაცევტს."
+            }
+          }
+        },
+        "magne-b6-kids": {
+          "product": {
+            "id": "magne-b6-kids",
+            "slug": "magne-b6-kids",
+            "name": "მაგნე B6 ქიდს",
+            "category": "kids",
+            "accent": "#262c8e",
+            "template": "products/magne-b6-kids.html",
+            "locked": true,
+            "shortDescription": "საზამთროს გემოს საღეჭი ტაბლეტები 4 წლიდან ბავშვებისთვის. საკვები დანამატი, არ არის სამკურნალო საშუალება.",
+            "therapeuticArea": "ბავშვებისთვის",
+            "image": {
+              "src": "/assets/kazakhstan-products/magne-b6-kids/packshot.webp",
+              "alt": "მაგნე B6 ქიდს, 30 საღეჭი ტაბლეტი"
+            },
+            "page": {
+              "title": "მაგნე B6 ქიდს — საღეჭი ტაბლეტები ბავშვებისთვის | STADA Georgia"
+            },
+            "showcase": {
+              "hero_tagline": "მშვიდი ბავშვობისთვის, დაღლილობის გარეშე",
+              "hero_lead": "პანდის ფორმის, საზამთროს გემოს საღეჭი ტაბლეტები 4 წლიდან ბავშვებისთვის — ვიტამინ B6-ის დამატებითი წყარო და მაგნიუმის წყარო.",
+              "hero_cta_buy": "სად შევიძინოთ",
+              "hero_cta_dose": "როგორ მივიღოთ",
+              "hero_jar_alt": "მაგნე B6 ქიდსის ქილა, 30 საღეჭი ტაბლეტი",
+              "fact_mg_value": "70 მგ",
+              "fact_mg_label": "მაგნიუმი 1 ტაბლეტში",
+              "fact_b6_value": "0,6 მგ",
+              "fact_b6_label": "ვიტამინი B6 1 ტაბლეტში",
+              "fact_age_value": "4+",
+              "fact_age_label": "4 წლიდან ბავშვებისთვის",
+              "fact_count_value": "30",
+              "fact_count_label": "საღეჭი ტაბლეტი",
+              "badge_supplement": "საკვები დანამატი. არ არის სამკურნალო საშუალება",
+              "ch_story": "ფორმულა",
+              "ch_dose": "მიღება",
+              "ch_film": "ვიდეო",
+              "ch_facts": "შემადგენლობა",
+              "ch_buy": "სად შევიძინოთ",
+              "chapters_label": "გვერდის განყოფილებები",
+              "story_a_word": "mg + b6",
+              "story_b_word": "პანდა",
+              "story_c_word": "საზამთრო",
+              "story_loading": "3D იტვირთება…",
+              "story_step_a": "მაგნიუმი + B6",
+              "story_step_b": "საღეჭი ფორმა",
+              "story_step_c": "საზამთროს გემო",
+              "story_a_eyebrow": "01 — ფორმულა",
+              "story_a_title": "მაგნიუმი<br><b>+ ვიტამინი B6</b>",
+              "story_a_text": "საკვები დანამატი — ვიტამინ B6-ის დამატებითი წყარო და მაგნიუმის წყარო.",
+              "story_a_chips": [
+                "მაგნიუმის ციტრატი",
+                "პირიდოქსინის ჰიდროქლორიდი"
+              ],
+              "story_b_eyebrow": "პანდა-ტაბლეტი",
+              "story_b_title": "საღეჭი<br><b>ფორმა</b>",
+              "story_b_text": "პანდის ფორმის საღეჭი ტაბლეტი, მასით 1700 მგ.",
+              "story_c_eyebrow": "ბუნებრივი არომატიზატორი",
+              "story_c_title": "საზამთროს<br><b>გემოთი</b>",
+              "story_c_text": "საზამთროს ბუნებრივი არომატიზატორი. ხელოვნური დამატკბობლებისა და საღებავების გარეშე.",
+              "story_c_chips": [
+                "გლუტენის გარეშე",
+                "ლაქტოზის გარეშე"
+              ],
+              "story_skip": "გამოტოვება",
+              "story_tablet_alt": "მაგნე B6 ქიდსის პანდის ფორმის საღეჭი ტაბლეტი",
+              "dose_eyebrow": "02 — მიღება",
+              "dose_title": "რამდენი სჭირდება<br><b>თქვენს ბავშვს?</b>",
+              "dose_text": "აირჩიეთ ასაკი და ნახეთ დღიური ულუფა შეფუთვაზე მითითებული რეკომენდაციის მიხედვით.",
+              "dose_switch_label": "ბავშვის ასაკი",
+              "dose_panda_label": "ასაკის შეცვლა: 4–10 წელი ან 10 წელზე მეტი",
+              "dose_age_young": "4–10 წელი",
+              "dose_age_older": "10 წელზე მეტი",
+              "dose_course": "მიღების ხანგრძლივობა — 30 დღე. საჭიროების შემთხვევაში მიღება შეიძლება გამეორდეს.",
+              "dose_limit": "არ გადააჭარბოთ რეკომენდებულ დღიურ დოზას.",
+              "dose_doctor": "გამოყენებამდე რეკომენდებულია ექიმთან კონსულტაცია.",
+              "dose_unit_young": "საღეჭი ტაბლეტი დღეში",
+              "dose_unit_older": "საღეჭი ტაბლეტი დღეში",
+              "unit_mg": "მგ",
+              "dose_magnesium": "მაგნიუმი",
+              "dose_b6": "ვიტამინი B6",
+              "dose_pct_note": "* % დღიური მოხმარების რეკომენდებული დონიდან",
+              "dose_jar_lasts": "ერთი ქილა საკმარისია",
+              "dose_days_young": "30 დღისთვის",
+              "dose_days_older": "15 დღისთვის",
+              "dose_course_needs": "30-დღიან კურსს სჭირდება",
+              "dose_jars_young": "1 ქილა",
+              "dose_jars_older": "2 ქილა",
+              "dose_footnote": "* MR 2.3.1.0253-21 „რუსეთის ფედერაციის მოსახლეობის სხვადასხვა ჯგუფისთვის ენერგიისა და საკვები ნივთიერებების ფიზიოლოგიური მოთხოვნილების ნორმები“.",
+              "film_eyebrow": "03 — ვიდეო",
+              "film_title": "პანდა<br><b>კადრში</b>",
+              "film_text": "მაგნე B6 ქიდსის სარეკლამო რგოლი — უყურეთ აქვე.",
+              "film_tag": "მაგნე B6 ქიდს",
+              "film_play": "ვიდეოს ნახვა",
+              "film_cta": "ვიდეოს ნახვა YouTube-ზე",
+              "film_alt": "კადრი მაგნე B6 ქიდსის სარეკლამო რგოლიდან: პანდა და საზამთროს ნაჭრები",
+              "facts_eyebrow": "04 — შემადგენლობა",
+              "facts_title": "ყველაფერი,<br><b>რაც შიგნითაა</b>",
+              "facts_title_plain": "შემადგენლობა და მახასიათებლები",
+              "facts_text": "ინფორმაცია პროდუქტის შეფუთვიდან: აქტიური ნივთიერებები, სრული შემადგენლობა, კვებითი ღირებულება და შენახვის პირობები.",
+              "free_gluten": "გლუტენის გარეშე",
+              "free_lactose": "ლაქტოზის გარეშე",
+              "free_artificial": "ხელოვნური დამატკბობლებისა და საღებავების გარეშე",
+              "tab_active": "აქტიური ნივთიერებები",
+              "tab_ingredients": "შემადგენლობა",
+              "tab_nutrition": "კვებითი ღირებულება",
+              "tab_storage": "ფორმა და შენახვა",
+              "table_substance": "ნივთიერება",
+              "table_one": "1 ტაბლეტი",
+              "table_two": "2 ტაბლეტი",
+              "table_mg_one": "70 მგ",
+              "table_mg_two": "140 მგ",
+              "table_b6_one": "0,6 მგ",
+              "table_b6_two": "1,2 მგ",
+              "ingredients_text": "ჭარხლის შაქარი (მალტოდექსტრინები და ინვერტული შაქრის სიროფი), მაგნიუმის ციტრატი, მცენარეული ზეთი (ქოქოსის), გლუკოზის სიროფი, სახამებლის ოქტენილსუქცინატი (E 1450), შეცხობის საწინააღმდეგო საშუალება: ცხიმოვანი მჟავების მაგნიუმის მარილები, მჟავიანობის რეგულატორი: ლიმონმჟავა (E 330), საზამთროს ბუნებრივი არომატიზატორი, საღებავი MF Bright RED P-WS, ანთოციანები და პირიდოქსინის ჰიდროქლორიდი (ვიტამინი B6).",
+              "nutri_protein": "ცილები",
+              "nutri_protein_value": "0,8 გ",
+              "nutri_fat": "ცხიმები",
+              "nutri_fat_value": "5,3 გ",
+              "nutri_carbs": "ნახშირწყლები",
+              "nutri_carbs_value": "33,8 გ",
+              "nutri_energy": "ენერგეტიკული ღირებულება",
+              "nutri_energy_value": "779,16 კჯ / 186,1 კკალ",
+              "nutri_note": "კვლევის შედეგები 100 გ პროდუქტზე.",
+              "storage_form_label": "გამოშვების ფორმა",
+              "storage_form": "საღეჭი ტაბლეტები, მასით 1700 მგ. 30 ტაბლეტი ფლაკონში. წმინდა წონა — 46 გ.",
+              "storage_conditions_label": "შენახვის პირობები",
+              "storage_conditions": "შეინახეთ მჭიდროდ დახურულ კონტეინერში, მშრალ, ბნელ და გრილ ადგილას. შეინახეთ ბავშვებისთვის მიუწვდომელ ადგილას.",
+              "storage_shelf_label": "ვარგისობის ვადა",
+              "storage_shelf": "2 წელი",
+              "storage_contra_label": "უკუჩვენებები",
+              "storage_contra": "კომპონენტების მიმართ ინდივიდუალური აუტანლობა, 4 წლამდე ასაკი.",
+              "passport_title": "პროდუქტის პასპორტი",
+              "passport_status_label": "სტატუსი",
+              "passport_status": "საკვები დანამატი. არ არის სამკურნალო საშუალება.",
+              "passport_maker_label": "მწარმოებელი",
+              "passport_maker": "BIOFARMA S.r.l., Via Castelliere 2, 33036 Mereto di Tomba (UD), იტალია",
+              "passport_claims_label": "მომხმარებელთა პრეტენზიები",
+              "passport_claims": "",
+              "passport_reg_label": "რეგისტრაცია",
+              "passport_reg": "",
+              "buy_eyebrow": "05 — სად შევიძინოთ",
+              "buy_title": "იკითხეთ<br><b>აფთიაქებში</b>",
+              "buy_text": "STADA-ს პროდუქტები ხელმისაწვდომია აფთიაქებში.",
+              "buy_all_products": "STADA-ს ყველა პროდუქტი",
+              "disclaimer": "საკვები დანამატი. არ არის სამკურნალო საშუალება. გამოყენებამდე რეკომენდებულია ექიმთან კონსულტაცია.",
+              "brand_magne": "მაგნე",
+              "brand_kids_letters": [
+                "ქ",
+                "ი",
+                "დ",
+                "ს"
+              ],
+              "brand_name": "მაგნე B6 ქიდს",
+              "ring_b6_value": "0,6"
             }
           }
         }
@@ -6042,6 +6273,7 @@
           }
         },
         "products/index.html": {
+          "locked": true,
           "language": "en",
           "page": {
             "path": "products/index.html"
@@ -7096,7 +7328,6 @@
         "essentiale-forte": {
           "product": {
             "id": "essentiale-forte",
-            "locked": true,
             "slug": "essentiale-forte",
             "name": "Essentiale Forte 300 mg",
             "shortDescription": "Essential phospholipids derived from soya beans.",
@@ -7150,7 +7381,6 @@
         "essentiale-max": {
           "product": {
             "id": "essentiale-max",
-            "locked": true,
             "slug": "essentiale-max",
             "name": "Essentiale Max 600 mg",
             "shortDescription": "Phospholipids from soya beans.",
@@ -7204,7 +7434,6 @@
         "guttalax-15ml": {
           "product": {
             "id": "guttalax-15ml",
-            "locked": true,
             "slug": "guttalax-15ml",
             "name": "Guttalax 15 ml",
             "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
@@ -7258,7 +7487,6 @@
         "guttalax-30ml": {
           "product": {
             "id": "guttalax-30ml",
-            "locked": true,
             "slug": "guttalax-30ml",
             "name": "Guttalax 30 ml",
             "shortDescription": "Sodium picosulfate, oral drops 7.5 mg/ml.",
@@ -7312,7 +7540,6 @@
         "phosphalugel": {
           "product": {
             "id": "phosphalugel",
-            "locked": true,
             "slug": "phosphalugel",
             "name": "Phosphalugel",
             "shortDescription": "Aluminium phosphate. Oral suspension in sachets.",
@@ -7366,7 +7593,7 @@
         "enterogermina-2-billion": {
           "product": {
             "id": "enterogermina-2-billion",
-            "locked": true,
+            "template": "products/enterogermina.html",
             "slug": "enterogermina-2-billion",
             "name": "Enterogermina 2 billion",
             "shortDescription": "Bacillus clausii spores. Oral suspension; 2 billion / 5 ml.",
@@ -7414,13 +7641,95 @@
                 }
               ],
               "informationText": "# About the product\n\nEnterogermina 2 billion\n\n## What it is used for\n\nThe supplied instructions describe treatment and prevention of intestinal dysbiosis and associated endogenous vitamin deficiency, and restoration of intestinal microbial flora altered during antibiotic or chemotherapy treatment. The 2 billion instructions also describe acute and chronic gastrointestinal disorders in infants and young children associated with intoxication, dysbiosis or vitamin deficiency.\n\n## How to take it\n\nUnless the doctor prescribes otherwise, adults: 2–3 vials daily; children and infants: 1–2 vials daily. The supplied instructions recommend 3–4 hours between single-vial doses.\n\nShake the vial before use. Take the contents directly or dilute in water or another liquid, such as milk, tea or orange juice. Use immediately after opening; do not store an opened vial. For oral use only: do not inject or administer by any other route.\n\n## Contraindications and precautions\n\nDo not use if allergic to the active substance or another ingredient. The supplied instructions advise avoiding use in patients with weakened immunity, patients hospitalised with serious illness and premature newborns because bloodstream infection, septicaemia or sepsis has been reported in these groups.\n\n## When to seek advice\n\nDuring antibiotic treatment, take Enterogermina between consecutive antibiotic doses. Visible particles may be aggregates of spores; shake the vial before use. Pregnancy and breastfeeding data are limited: use only after medical assessment of the potential benefit and risk to the mother and baby.\n\n## Possible side effects\n\nReported reactions of unknown frequency include rash, hives and angioedema. Bloodstream infection, septicaemia or sepsis has been reported in patients with weakened immunity or hospitalised with serious illness. Incorrect administration can cause severe allergic reactions, including anaphylactic shock. Report suspected side effects to a doctor or pharmacist.\n\n## Storage\n\nStore at no more than 30°C. Use immediately after opening to avoid contamination. The supplied instructions give a shelf life of 2 years; follow the printed expiry date. Keep out of the reach of children.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
+            },
+            "showcase": {
+              "hero_lead": "Used to treat and prevent intestinal dysbiosis and to restore the intestinal microbial flora altered during treatment with antibiotics or chemotherapy.",
+              "fact_spores_value": "2 billion",
+              "story_title": "Enterogermina, step by step",
+              "story_a_eyebrow": "Inside the vial",
+              "story_a_count": "2 billion",
+              "story_a_title": "spores in every vial",
+              "story_a_text": "Each 5 ml vial contains 2 billion antibiotic-resistant <i>Bacillus clausii</i> spores in purified water.",
+              "story_a_strains_label": "Four strains",
+              "story_a_strains": [
+                "SIN",
+                "O/C",
+                "T",
+                "N/R"
+              ],
+              "story_b_eyebrow": "With antibiotics",
+              "story_b_title": "Antibiotic-resistant spores",
+              "story_b_text": "Used to restore the intestinal microbial flora altered during antibiotic treatment. During an antibiotic course, take it between two consecutive antibiotic doses.",
+              "story_b_antibiotic": "Antibiotic",
+              "story_c_eyebrow": "How to take it",
+              "story_c_title": "Shake, open, drink",
+              "story_c_step1": "Shake the vial before use.",
+              "story_c_step2": "Open it and take it straight away.",
+              "story_c_step3": "Drink it as it is, or diluted in water or another drink.",
+              "story_c_drinks": [
+                "Water",
+                "Milk",
+                "Tea",
+                "Orange juice"
+              ],
+              "story_step_a": "Spores",
+              "story_step_b": "Antibiotics",
+              "story_step_c": "How to take",
+              "story_skip": "Skip",
+              "dose_eyebrow": "Dosage",
+              "dose_title": "How many vials a day",
+              "dose_text": "The dose depends on age. One vial is one dose.",
+              "dose_switch_label": "Who is it for",
+              "dose_adult": "Adults",
+              "dose_child": "Children and infants",
+              "dose_adult_min": "2",
+              "dose_adult_max": "3",
+              "dose_child_min": "1",
+              "dose_child_max": "2",
+              "dose_unit": "vials a day",
+              "dose_gap_value": "3–4 h",
+              "dose_gap_text": "Recommended interval between single-vial doses.",
+              "dose_doctor": "Unless your doctor prescribes otherwise. During antibiotic treatment, take it between antibiotic doses.",
+              "info_eyebrow": "Instructions",
+              "info_title": "About the medicine",
+              "info_text": "A summary of the Georgian instructions for use. Read the full document before use.",
+              "tab_use": "Use",
+              "tab_how": "How to take",
+              "tab_care": "Precautions",
+              "tab_side": "Side effects",
+              "tab_store": "Storage",
+              "use_text": "The instructions describe treatment and prevention of intestinal dysbiosis and associated endogenous vitamin deficiency, and restoration of intestinal microbial flora altered during antibiotic or chemotherapy treatment.",
+              "use_text_2": "The 2 billion instructions also describe acute and chronic gastrointestinal disorders in infants and young children associated with intoxication, dysbiosis or vitamin deficiency.",
+              "how_text": "Unless the doctor prescribes otherwise, adults: 2–3 vials daily; children and infants: 1–2 vials daily. The instructions recommend 3–4 hours between single-vial doses.",
+              "how_text_2": "Shake the vial before use. Take the contents directly or dilute in water or another liquid, such as milk, tea or orange juice.",
+              "how_oral_only": "For oral use only: do not inject or administer by any other route. Use immediately after opening; do not store an opened vial.",
+              "care_text": "Do not use if allergic to the active substance or another ingredient. The instructions advise avoiding use in patients with weakened immunity, patients hospitalised with serious illness and premature newborns, because bloodstream infection, septicaemia or sepsis has been reported in these groups.",
+              "care_text_2": "During antibiotic treatment, take Enterogermina between consecutive antibiotic doses. Visible particles may be aggregates of spores; shake the vial before use. Pregnancy and breastfeeding data are limited: use only after medical assessment of the potential benefit and risk to the mother and baby.",
+              "side_text": "Reported reactions of unknown frequency include rash, hives and angioedema. Bloodstream infection, septicaemia or sepsis has been reported in patients with weakened immunity or hospitalised with serious illness.",
+              "side_text_2": "Incorrect administration can cause severe allergic reactions, including anaphylactic shock. Report suspected side effects to a doctor or pharmacist.",
+              "store_text": "Store at no more than 30°C. Use immediately after opening to avoid contamination. The instructions give a shelf life of 2 years; follow the printed expiry date. Keep out of the reach of children.",
+              "leaflet_title": "Full instructions",
+              "leaflet_text": "The complete Georgian instructions: dosage, contraindications, interactions and side effects.",
+              "leaflet_href": "/assets/georgia-products/enterogermina-2-billion-instructions-ge.docx",
+              "leaflet_cta": "Download instructions (DOCX, Georgian)",
+              "all_products": "All products",
+              "disclaimer": "Enterogermina is a medicine. Read the instructions before use. If you have questions, ask your doctor or pharmacist.",
+              "chapters_label": "Page chapters",
+              "ch_story": "Spores",
+              "ch_dose": "Dosage",
+              "ch_info": "Instructions",
+              "formula_1_title": "Active ingredient",
+              "formula_1_text": "Each 5 ml vial contains 2 billion antibiotic-resistant Bacillus clausii spores (strains SIN, O/C, T, N/R).",
+              "formula_2_title": "Other ingredients",
+              "formula_2_text": "Purified water to a total volume of 5 ml.",
+              "formula_3_title": "Form and packaging",
+              "formula_3_text": "Oral suspension in 5 ml vials; 10 vials per carton. Shake before use and take immediately after opening."
             }
           }
         },
         "enterogermina-4-billion": {
           "product": {
             "id": "enterogermina-4-billion",
-            "locked": true,
             "slug": "enterogermina-4-billion",
             "name": "Enterogermina Forte 4 billion",
             "shortDescription": "Bacillus clausii spores. Oral suspension; 4 billion / 5 ml.",
@@ -7474,7 +7783,6 @@
         "enterogermina-6-billion": {
           "product": {
             "id": "enterogermina-6-billion",
-            "locked": true,
             "slug": "enterogermina-6-billion",
             "name": "Enterogermina 6 billion",
             "shortDescription": "Bacillus clausii spores. Oral powder — adults only; 6 billion / 2 g.",
@@ -7528,7 +7836,6 @@
         "no-spa-40mg-24": {
           "product": {
             "id": "no-spa-40mg-24",
-            "locked": true,
             "slug": "no-spa-40mg-24",
             "name": "No-Spa 40 mg — 24 tablets",
             "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
@@ -7582,7 +7889,6 @@
         "no-spa-40mg-100": {
           "product": {
             "id": "no-spa-40mg-100",
-            "locked": true,
             "slug": "no-spa-40mg-100",
             "name": "No-Spa 40 mg — 100 tablets",
             "shortDescription": "Drotaverine hydrochloride 40 mg. Oral antispasmodic tablets.",
@@ -7636,7 +7942,6 @@
         "no-spa-forte-80mg-24": {
           "product": {
             "id": "no-spa-forte-80mg-24",
-            "locked": true,
             "slug": "no-spa-forte-80mg-24",
             "name": "No-Spa Forte 80 mg — 24 tablets",
             "shortDescription": "Drotaverine hydrochloride 80 mg. Oral antispasmodic tablets.",
@@ -7684,6 +7989,163 @@
                 }
               ],
               "informationText": "# About the product\n\nNo-Spa Forte 80 mg — 24 tablets\n\n## What it is used for\n\nDrotaverine is an antispasmodic that relaxes smooth muscle. The supplied instructions describe use for smooth-muscle spasms associated with biliary tract and urinary tract disorders, gastrointestinal spasms, tension-type headache and painful menstruation. Read the original document for the specific conditions listed.\n\n## How to take it\n\nFor oral use. The supplied instructions specify an adult daily dose of 120–240 mg, divided into 2–3 doses. For this 80 mg strength, that equals 1½–3 tablets in total per day; the adult single dose is 40–80 mg (½–1 tablet). Follow the instructions or your doctor’s recommendation.\n\nThe Forte instructions describe use in children over 12 years when necessary; a doctor should determine the appropriate dose.\n\n## Contraindications and precautions\n\nDo not use if allergic to drotaverine or another ingredient, or if you have severe liver, kidney or heart failure. Use cautiously with low blood pressure. Contains lactose: the instructions exclude use in patients with lactase deficiency, galactosaemia or impaired glucose/galactose absorption. Clinical studies of drotaverine use in children have not been conducted; use in children must follow medical advice.\n\n## Interactions and other advice\n\nDrotaverine may reduce the antiparkinsonian effect of levodopa and increase tremor or rigidity; consult a doctor before combining them. Use in pregnancy requires caution, and use while breastfeeding is not recommended because clinical data are insufficient. Avoid driving or operating dangerous machinery if you become dizzy. Overdose can cause serious disturbances of heart rhythm and conduction, including cardiac arrest; seek urgent medical attention after an overdose.\n\n## Possible side effects\n\nRare reactions listed in the instructions include nausea, constipation, headache, dizziness, insomnia, palpitations, low blood pressure and allergic reactions such as angioedema, hives, rash or itching. Stop taking the medicine and consult a doctor if side effects occur, including effects not listed in the instructions.\n\n## Storage\n\nStore at no more than 25°C, protected from light and out of the reach of children. The supplied instructions give a shelf life of 3 years. Do not use after the expiry date on the packaging.\n\n## Full instructions\n\nThis page summarises the supplied Georgian instructions. Download and read the complete original document for all dosage details, contraindications, interactions and side effects. If unsure, ask your doctor or pharmacist."
+            }
+          }
+        },
+        "magne-b6-kids": {
+          "product": {
+            "id": "magne-b6-kids",
+            "slug": "magne-b6-kids",
+            "name": "Magne B6 Kids",
+            "category": "kids",
+            "accent": "#262c8e",
+            "template": "products/magne-b6-kids.html",
+            "locked": true,
+            "shortDescription": "Watermelon-flavoured chewable tablets for children from 4 years. Food supplement, not a medicine.",
+            "therapeuticArea": "For children",
+            "image": {
+              "src": "/assets/kazakhstan-products/magne-b6-kids/packshot.webp",
+              "alt": "Magne B6 Kids, 30 chewable tablets"
+            },
+            "page": {
+              "title": "Magne B6 Kids — chewable tablets for children | STADA Georgia"
+            },
+            "showcase": {
+              "hero_tagline": "For a calm childhood free from tiredness",
+              "hero_lead": "Panda-shaped, watermelon-flavoured chewable tablets for children from 4 years: an additional source of vitamin B6 and a source of magnesium.",
+              "hero_cta_buy": "Where to buy",
+              "hero_cta_dose": "How to take",
+              "hero_jar_alt": "Magne B6 Kids jar, 30 chewable tablets",
+              "fact_mg_value": "70 mg",
+              "fact_mg_label": "magnesium per tablet",
+              "fact_b6_value": "0.6 mg",
+              "fact_b6_label": "vitamin B6 per tablet",
+              "fact_age_value": "4+",
+              "fact_age_label": "for children from 4 years",
+              "fact_count_value": "30",
+              "fact_count_label": "chewable tablets",
+              "badge_supplement": "Food supplement. Not a medicine",
+              "ch_story": "Formula",
+              "ch_dose": "Dosage",
+              "ch_film": "Video",
+              "ch_facts": "Composition",
+              "ch_buy": "Where to buy",
+              "chapters_label": "Page sections",
+              "story_a_word": "mg + b6",
+              "story_b_word": "panda",
+              "story_c_word": "watermelon",
+              "story_loading": "Loading 3D…",
+              "story_step_a": "Magnesium + B6",
+              "story_step_b": "Chewable form",
+              "story_step_c": "Watermelon flavour",
+              "story_a_eyebrow": "01 — Formula",
+              "story_a_title": "Magnesium<br><b>+ vitamin B6</b>",
+              "story_a_text": "A food supplement: an additional source of vitamin B6 and a source of magnesium.",
+              "story_a_chips": [
+                "Magnesium citrate",
+                "Pyridoxine hydrochloride"
+              ],
+              "story_b_eyebrow": "Panda tablet",
+              "story_b_title": "Chewable<br><b>form</b>",
+              "story_b_text": "A panda-shaped chewable tablet weighing 1700 mg.",
+              "story_c_eyebrow": "Natural flavouring",
+              "story_c_title": "Watermelon<br><b>flavour</b>",
+              "story_c_text": "Natural watermelon flavouring. No artificial sweeteners or colourings.",
+              "story_c_chips": [
+                "Gluten-free",
+                "Lactose-free"
+              ],
+              "story_skip": "Skip",
+              "story_tablet_alt": "Panda-shaped Magne B6 Kids chewable tablet",
+              "dose_eyebrow": "02 — Dosage",
+              "dose_title": "How much does<br><b>your child need?</b>",
+              "dose_text": "Choose an age to see the daily portion recommended on the pack.",
+              "dose_switch_label": "Child's age",
+              "dose_panda_label": "Change age: 4–10 years or over 10 years",
+              "dose_age_young": "4–10 years",
+              "dose_age_older": "Over 10 years",
+              "dose_course": "Take for 30 days. The course can be repeated if needed.",
+              "dose_limit": "Do not exceed the recommended daily dose.",
+              "dose_doctor": "Consulting a doctor before use is recommended.",
+              "dose_unit_young": "chewable tablet a day",
+              "dose_unit_older": "chewable tablets a day",
+              "unit_mg": "mg",
+              "dose_magnesium": "Magnesium",
+              "dose_b6": "Vitamin B6",
+              "dose_pct_note": "* % of the recommended daily intake",
+              "dose_jar_lasts": "One jar lasts",
+              "dose_days_young": "30 days",
+              "dose_days_older": "15 days",
+              "dose_course_needs": "A 30-day course needs",
+              "dose_jars_young": "1 jar",
+              "dose_jars_older": "2 jars",
+              "dose_footnote": "* MR 2.3.1.0253-21 “Norms of physiological requirements for energy and nutrients for various population groups of the Russian Federation”.",
+              "film_eyebrow": "03 — Video",
+              "film_title": "The panda<br><b>on screen</b>",
+              "film_text": "Watch the Magne B6 Kids commercial right here.",
+              "film_tag": "Magne B6 Kids",
+              "film_play": "Watch the video",
+              "film_cta": "Watch the video on YouTube",
+              "film_alt": "Still from the Magne B6 Kids commercial: a panda and watermelon slices",
+              "facts_eyebrow": "04 — Composition",
+              "facts_title": "Everything<br><b>inside</b>",
+              "facts_title_plain": "Composition and characteristics",
+              "facts_text": "Information from the product pack: active substances, full composition, nutritional value and storage conditions.",
+              "free_gluten": "Gluten-free",
+              "free_lactose": "Lactose-free",
+              "free_artificial": "No artificial sweeteners or colourings",
+              "tab_active": "Active substances",
+              "tab_ingredients": "Ingredients",
+              "tab_nutrition": "Nutritional value",
+              "tab_storage": "Form and storage",
+              "table_substance": "Substance",
+              "table_one": "1 tablet",
+              "table_two": "2 tablets",
+              "table_mg_one": "70 mg",
+              "table_mg_two": "140 mg",
+              "table_b6_one": "0.6 mg",
+              "table_b6_two": "1.2 mg",
+              "ingredients_text": "Beet sugar (maltodextrins and invert sugar syrup), magnesium citrate, vegetable oil (coconut), glucose syrup, starch octenyl succinate (E 1450), anti-caking agent: magnesium salts of fatty acids, acidity regulator: citric acid (E 330), natural watermelon flavouring, colouring MF Bright RED P-WS, anthocyanins and pyridoxine hydrochloride (vitamin B6).",
+              "nutri_protein": "Protein",
+              "nutri_protein_value": "0.8 g",
+              "nutri_fat": "Fat",
+              "nutri_fat_value": "5.3 g",
+              "nutri_carbs": "Carbohydrates",
+              "nutri_carbs_value": "33.8 g",
+              "nutri_energy": "Energy value",
+              "nutri_energy_value": "779.16 kJ / 186.1 kcal",
+              "nutri_note": "Test results per 100 g of product.",
+              "storage_form_label": "Form",
+              "storage_form": "Chewable tablets weighing 1700 mg. 30 tablets per bottle. Net weight: 46 g.",
+              "storage_conditions_label": "Storage",
+              "storage_conditions": "Keep the container tightly closed in a dry, dark and cool place. Keep out of the reach of children.",
+              "storage_shelf_label": "Shelf life",
+              "storage_shelf": "2 years",
+              "storage_contra_label": "Contraindications",
+              "storage_contra": "Individual intolerance to any of the ingredients; children under 4 years.",
+              "passport_title": "Product passport",
+              "passport_status_label": "Status",
+              "passport_status": "Food supplement. Not a medicine.",
+              "passport_maker_label": "Manufacturer",
+              "passport_maker": "BIOFARMA S.r.l., Via Castelliere 2, 33036 Mereto di Tomba (UD), Italy",
+              "passport_claims_label": "Consumer claims",
+              "passport_claims": "",
+              "passport_reg_label": "Registration",
+              "passport_reg": "",
+              "buy_eyebrow": "05 — Where to buy",
+              "buy_title": "Ask at<br><b>pharmacies</b>",
+              "buy_text": "STADA products are available in pharmacies.",
+              "buy_all_products": "All STADA products",
+              "disclaimer": "Food supplement. Not a medicine. Consulting a doctor before use is recommended.",
+              "brand_magne": "Magne",
+              "brand_kids_letters": [
+                "K",
+                "i",
+                "d",
+                "s"
+              ],
+              "brand_name": "Magne B6 Kids",
+              "ring_b6_value": "0.6"
             }
           }
         }

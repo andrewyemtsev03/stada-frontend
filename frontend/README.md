@@ -97,6 +97,10 @@ output, not the raw source folder.
   strip along the bottom of the hero. The packshot and flat images stay in the
   markup as the first paint and the no-WebGL fallback, and devices asking to
   save data keep them.
+- Moldova includes Snup 45 mcg/doză (nasal spray), Urinal Akut and Urinal Sirop
+  (food supplements) in Romanian and Russian, on the generic product page. Packshots
+  and the Snup patient leaflet live in `assets/moldova-products/`; the Urinal print
+  proofs are not published.
 
 `npm run content:import -- --api <public-api-url>` is an optional migration tool,
 not part of a build. It overwrites the country content files with public API
@@ -140,6 +144,12 @@ release as usual. While locked:
 - it is not in catalogues, menus, home previews or sitemaps, and is `noindex`.
 
 Remove the flag after approval and release again to publish it.
+
+The catalogue page can be locked on its own: put `"locked": true` on
+`pages["products/index.html"]` in every language (Georgia has this now). The
+products stay public (home page, footer, their own pages); the catalogue is behind
+the password, `noindex`, out of the sitemap and the menu, and public pages link to
+the home page's products section instead.
 
 The lock runs on the server:
 

@@ -18,7 +18,9 @@ const COUNTRIES = {
   uz: { languages: ['ru', 'uz'], home: 'ru' },
 };
 
-const lockedPages = new Set(locked.pages.map(page => page.replace(/\.html$/, '')));
+// /x/products/index.html, /x/products/index, /x/products/ and /x/products are one page.
+const pageKey = path => path.replace(/\.html$/, '').replace(/\/$/, '').replace(/\/index$/, '');
+const lockedPages = new Set(locked.pages.map(pageKey));
 const lockedSlugs = locked.slugs.map(slug => new RegExp(`(^|[/_.-])${slug.replace(/[-]/g, '\\-')}([/_.]|$)`));
 
 // The file a request is served from, following the host rewrites in vercel.json.
@@ -40,7 +42,7 @@ function sitePath(host, pathname) {
 
 function isLocked(host, pathname) {
   const path = sitePath(host, pathname);
-  if (lockedPages.has(path.replace(/\.html$/, '').replace(/\/$/, ''))) return true;
+  if (lockedPages.has(pageKey(path))) return true;
   return lockedSlugs.some(pattern => pattern.test(path));
 }
 
