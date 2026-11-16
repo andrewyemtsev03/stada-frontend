@@ -3226,6 +3226,61 @@
             }
           }
         },
+        "snup-90": {
+          "product": {
+            "id": "snup-90",
+            "slug": "snup-90",
+            "name": "Snup 90 mcg/doză",
+            "shortDescription": "Xilometazolină, spray nazal, soluție. Conține apă de mare. Pentru adulți și copii cu vârsta peste 6 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#0057a8",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/snup-90.png",
+              "alt": "Snup 90 mcg/doză"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/snup-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Snup 90 mcg/doză",
+              "kicker": "Răceală și respirație",
+              "lead": "Xilometazolină, spray nazal, soluție. Conține apă de mare. Pentru adulți și copii cu vârsta peste 6 ani.",
+              "badges": [
+                "Spray nazal",
+                "15 ml",
+                "De la 6 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nSnup 90 mcg/doză spray nazal, soluție\n\n## Pentru ce se utilizează\n\nSnup ajută la o respirație mai ușoară și eliberează rapid nasul înfundat, micșorând secreția și edemul din cavitatea nazală. Conform prospectului, se utilizează pentru micșorarea secreției și a edemului cavității nazale în răceală și rinită (inclusiv alergică), pentru îmbunătățirea drenajului în inflamația sinusurilor și ca tratament adjuvant în otitele medii, precum și pentru a facilita procedurile de diagnostic în pasajele nazale.\n\n## Cum se utilizează\n\nAdulți și copii cu vârsta peste 6 ani: câte 1 puf în fiecare nară (la necesitate se poate repeta), de până la 3 ori pe zi.\n\nMedicamentul nu trebuie folosit mai mult de 3 ori pe zi, iar durata tratamentului nu trebuie să depășească 7 zile, dacă medicul nu a recomandat altceva. Înainte de utilizare curățați pasajele nazale. Înainte de prima utilizare apăsați de mai multe ori pompa, până când se formează un nor uniform. Țineți flaconul în sus; nu pulverizați pe orizontală sau în jos. Fiecare flacon este destinat unei singure persoane.\n\n## Contraindicații și precauții\n\nSnup 90 mcg/doză nu se utilizează la copii cu vârsta până la 6 ani. Nu utilizați în caz de alergie la xilometazolină sau la oricare dintre celelalte componente, în rinita sicca (mucoasă nazală uscată, fără secreții), după o intervenție chirurgicală cerebrală recentă în care au fost atinse membranele creierului, în hipertensiune arterială, tahicardie, ateroscleroză sau glaucom. Medicamentul nu se utilizează în timpul sarcinii; în timpul alăptării se folosește numai după consultarea medicului.\n\n## Când să vă adresați medicului\n\nÎnainte de a utiliza Snup la copii consultați medicul; durata tratamentului la copii se discută obligatoriu cu medicul. Adresați-vă medicului sau farmacistului înainte de utilizare dacă aveți boli cardiovasculare grave, tensiune arterială crescută, feocromocitom, diabet zaharat, hipertiroidie, prostată mărită sau sensibilitate mărită la medicamentele care cresc tensiunea arterială, precum și dacă utilizați inhibitori ai monoaminooxidazei, antidepresive tri- sau tetraciclice ori alte medicamente care cresc tensiunea arterială. Adresați-vă medicului dacă nu vă simțiți mai bine, dacă simptomele se înrăutățesc sau apar simptome noi.\n\n## Reacții adverse posibile\n\nFrecvente: senzație de arsură și uscăciune a mucoasei nazale, strănut. Mai puțin frecvente: congestie reactivă cu rinită indusă medicamentos, sângerări nazale, reacții de hipersensibilitate (edem angioneurotic, erupții cutanate, prurit). Rare: palpitații, tahicardie, hipertensiune. Foarte rare: dureri de cap, tulburări ale ritmului cardiac, agitație, insomnie, oboseală, somnolență, convulsii și halucinații (în special la copii). La utilizarea prelungită există riscul scăderii eficacității medicamentului și al atrofiei mucoasei nazale. Citiți prospectul pentru informații complete.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C. A se utiliza în decurs de 12 luni de la prima deschidere a flaconului. Nu utilizați după data de expirare înscrisă pe cutie. Nu lăsați medicamentul la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în mai 2022), comun pentru Snup 45 mcg/doză și Snup 90 mcg/doză. Descărcați și citiți documentul original pentru toate detaliile privind dozele, contraindicațiile, interacțiunile și reacțiile adverse. Se eliberează fără prescripție medicală. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre ingrediente și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/snup-90.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanța activă",
+                  "text": "1 doză de spray nazal conține clorhidrat de xilometazolină 90 mcg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Apă de mare, dihidrogenofosfat de potasiu, apă pentru injecții."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Soluție transparentă, incoloră. Flacon de polietilenă cu sistem de pulverizare, 15 ml soluție."
+                }
+              ]
+            }
+          }
+        },
         "urinal-akut": {
           "product": {
             "id": "urinal-akut",
@@ -3319,6 +3374,431 @@
                   "value": "03",
                   "title": "Formă și ambalaj",
                   "text": "Sirop. Flacon de 150 ml."
+                }
+              ]
+            }
+          }
+        },
+        "coldrex-lemon": {
+          "product": {
+            "id": "coldrex-lemon",
+            "slug": "coldrex-lemon",
+            "name": "Coldrex Lemon",
+            "shortDescription": "Paracetamol, clorhidrat de fenilefrină și vitamina C. Pulbere pentru suspensie orală, cu gust de lămâie, pentru ameliorarea simptomelor de răceală și gripă. De la 12 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#1b4f9c",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/coldrex-lemon.png",
+              "alt": "Coldrex Lemon"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/coldrex-lemon-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Coldrex Lemon",
+              "kicker": "Răceală și respirație",
+              "lead": "Paracetamol, clorhidrat de fenilefrină și vitamina C. Pulbere pentru suspensie orală, cu gust de lămâie, pentru ameliorarea simptomelor de răceală și gripă. De la 12 ani.",
+              "badges": [
+                "Pulbere pentru suspensie orală",
+                "10 plicuri",
+                "De la 12 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nColdrex Lemon, pulbere pentru suspensie orală (paracetamol / acid ascorbic / clorhidrat de fenilefrină)\n\n## Pentru ce se utilizează\n\nColdrex Lemon este un medicament împotriva răcelii și gripei, cu trei substanțe active: paracetamolul ameliorează durerea și reduce febra; clorhidratul de fenilefrină este un decongestionant care desfundă nasul și sinusurile și ajută la o respirație mai ușoară; vitamina C (acidul ascorbic) ajută la înlocuirea pierderilor de vitamina C în primele stadii de răceală și gripă. Se utilizează pentru ameliorarea simptomatică, pe termen scurt, a gripei, stărilor febrile, frisoanelor și răcelilor comune, inclusiv a durerii de cap, durerilor în gât, disconfortului și durerilor, congestiei nazale și sinuzitei.\n\n## Cum se utilizează\n\nAdulți (inclusiv vârstnici) și copii cu vârsta de 12 ani și peste: câte un plic la fiecare 4–6 ore, la nevoie. Nu luați mai mult de 5 plicuri în 24 de ore; intervalul minim între administrări este de 4 ore. Goliți conținutul unui plic într-o cană, adăugați apă fierbinte și amestecați bine; adăugați apă rece dacă este necesar. Luați cea mai mică doză eficientă. Fără recomandarea medicului, medicamentul nu se utilizează mai mult de 7 zile. Nu se administrează copiilor sub 12 ani, decât la recomandarea medicului.\n\n## Contraindicații\n\nNu luați Coldrex Lemon dacă sunteți alergic la oricare dintre componente, dacă aveți tensiune arterială mare, hipertiroidism, boli ale inimii, diabet zaharat, feocromocitom sau glaucom cu unghi închis, dacă luați inhibitori de monoaminoxidază (sau i-ați luat în ultimele 2 săptămâni), beta-blocante, antidepresive triciclice sau alte decongestionante, ori dacă luați alte medicamente care conțin paracetamol.\n\n## Atenționări\n\nMedicamentul conține paracetamol: o cantitate prea mare de paracetamol poate afecta grav ficatul. Nu depășiți doza recomandată. Cereți sfatul medicului înainte de utilizare dacă aveți boli de ficat sau de rinichi, consumați regulat alcool, aveți greutate sub cea normală, probleme ale prostatei, afecțiuni ale vaselor de sânge, sunteți însărcinată sau alăptați. Dacă simptomele persistă mai mult de 3 zile sau se înrăutățesc, adresați-vă medicului. În caz de supradozaj solicitați imediat ajutor medical, chiar dacă vă simțiți bine. Un plic conține 2,9 g zahăr — de avut în vedere la pacienții cu diabet zaharat. Produsul poate provoca amețeală; nu conduceți vehicule dacă sunteți afectat.\n\n## Reacții adverse posibile\n\nRare: erupții pe piele și alte alergii, creșterea tensiunii la nivelul ochilor, dificultăți de urinare, palpitații. Foarte rare: scăderea numărului de trombocite, reacții alergice severe, bronhospasm, afecțiuni ale ficatului. Cu frecvență necunoscută: creșterea tensiunii arteriale, dureri de cap, amețeală, insomnie, nervozitate, vărsături, diaree. Încetați administrarea și consultați medicul dacă apar iritații ale pielii, tulburări de vedere, sângerări neobișnuite, dificultăți la urinare sau bătăi rapide ale inimii.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C, în ambalajul original. A nu se lăsa la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în octombrie 2025). Descărcați și citiți documentul original pentru toate detaliile. Se eliberează fără prescripție medicală. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre substanțele active și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/coldrex-lemon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanțele active",
+                  "text": "Un plic conține paracetamol 750 mg, clorhidrat de fenilefrină 10 mg și acid ascorbic (vitamina C) 60 mg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Etilceluloză, acid citric anhidru, zaharină sodică, citrat de sodiu, zahăr, arome de lămâie, galben de chinolină (E104)."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Pulbere galben-deschis, cu miros și gust de lămâie. Cutie cu 10 plicuri a câte 5 g."
+                }
+              ]
+            }
+          }
+        },
+        "coldrex-maxgrip-lemon": {
+          "product": {
+            "id": "coldrex-maxgrip-lemon",
+            "slug": "coldrex-maxgrip-lemon",
+            "name": "Coldrex MaxGrip Lemon",
+            "shortDescription": "Paracetamol, clorhidrat de fenilefrină și vitamina C. Pulbere pentru suspensie orală, cu gust de lămâie, pentru ameliorarea simptomelor de răceală și gripă. De la 12 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#d71920",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
+              "alt": "Coldrex MaxGrip Lemon"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/coldrex-maxgrip-lemon-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Coldrex MaxGrip Lemon",
+              "kicker": "Răceală și respirație",
+              "lead": "Paracetamol, clorhidrat de fenilefrină și vitamina C. Pulbere pentru suspensie orală, cu gust de lămâie, pentru ameliorarea simptomelor de răceală și gripă. De la 12 ani.",
+              "badges": [
+                "Pulbere pentru suspensie orală",
+                "10 plicuri",
+                "De la 12 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nColdrex MaxGrip Lemon, pulbere pentru suspensie orală (paracetamol / acid ascorbic / clorhidrat de fenilefrină)\n\n## Pentru ce se utilizează\n\nColdrex MaxGrip Lemon este un medicament împotriva răcelii și gripei, cu trei substanțe active: paracetamolul ameliorează durerea și reduce febra; clorhidratul de fenilefrină este un decongestionant care desfundă nasul și sinusurile și ajută la o respirație mai ușoară; vitamina C (acidul ascorbic) ajută la înlocuirea pierderilor de vitamina C în primele stadii de răceală și gripă. Se utilizează pentru ameliorarea simptomatică, pe termen scurt, a gripei, stărilor febrile, frisoanelor și răcelilor comune, inclusiv a durerii de cap, durerilor în gât, disconfortului și durerilor, congestiei nazale și sinuzitei.\n\n## Cum se utilizează\n\nAdulți (inclusiv vârstnici) și copii cu vârsta de 12 ani și peste: câte un plic la fiecare 4–6 ore, la nevoie. Nu luați mai mult de 4 plicuri în 24 de ore; intervalul minim între administrări este de 4 ore. Goliți conținutul unui plic într-o cană, adăugați apă fierbinte și amestecați bine; adăugați apă rece dacă este necesar. Puteți adăuga apă sau miere, după preferință. Luați cea mai mică doză eficientă. Fără recomandarea medicului, medicamentul nu se utilizează mai mult de 7 zile. Nu se administrează copiilor sub 12 ani, decât la recomandarea medicului.\n\n## Contraindicații\n\nNu luați Coldrex MaxGrip Lemon dacă sunteți alergic la oricare dintre componente, dacă aveți tensiune arterială mare, hipertiroidism, boli ale inimii, diabet zaharat, feocromocitom sau glaucom cu unghi închis, dacă luați inhibitori de monoaminoxidază (sau i-ați luat în ultimele 2 săptămâni), beta-blocante, antidepresive triciclice sau alte decongestionante, ori dacă luați alte medicamente care conțin paracetamol.\n\n## Atenționări\n\nMedicamentul conține paracetamol: o cantitate prea mare de paracetamol poate afecta grav ficatul. Nu depășiți doza recomandată. Cereți sfatul medicului înainte de utilizare dacă aveți boli de ficat sau de rinichi, consumați regulat alcool, aveți greutate sub cea normală, probleme ale prostatei, afecțiuni ale vaselor de sânge, sunteți însărcinată sau alăptați. Dacă simptomele persistă mai mult de 3 zile sau se înrăutățesc, adresați-vă medicului. În caz de supradozaj solicitați imediat ajutor medical, chiar dacă vă simțiți bine. Un plic conține 3,7 g zahăr — de avut în vedere la pacienții cu diabet zaharat. Produsul poate provoca amețeală; nu conduceți vehicule dacă sunteți afectat.\n\n## Reacții adverse posibile\n\nRare: erupții pe piele și alte alergii, creșterea tensiunii la nivelul ochilor, dificultăți de urinare, palpitații. Foarte rare: scăderea numărului de trombocite, reacții alergice severe, bronhospasm, afecțiuni ale ficatului. Cu frecvență necunoscută: creșterea tensiunii arteriale, dureri de cap, amețeală, insomnie, nervozitate, vărsături, diaree. Încetați administrarea și consultați medicul dacă apar iritații ale pielii, tulburări de vedere, sângerări neobișnuite, dificultăți la urinare sau bătăi rapide ale inimii.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C, în ambalajul original. A nu se lăsa la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în octombrie 2025). Descărcați și citiți documentul original pentru toate detaliile. Se eliberează fără prescripție medicală. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre substanțele active și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanțele active",
+                  "text": "Un plic conține paracetamol 1000 mg, clorhidrat de fenilefrină 10 mg și acid ascorbic (vitamina C) 40 mg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Zahăr, acid citric anhidru, citrat de sodiu, amidon de porumb, aromă de lămâie, ciclamat de sodiu, zaharină sodică, dioxid de siliciu coloidal anhidru, curcumină (E100)."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Pulbere pentru suspensie orală. Cutii cu 5 sau 10 plicuri a câte 6,427 g."
+                }
+              ]
+            }
+          }
+        },
+        "omnitus-50": {
+          "product": {
+            "id": "omnitus-50",
+            "slug": "omnitus-50",
+            "name": "Omnitus 50 mg comprimate",
+            "shortDescription": "Butamirat, comprimate cu eliberare modificată, împotriva tusei uscate iritante. Pentru adulți și copii cu vârsta peste 12 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#e8731a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/omnitus-50.png",
+              "alt": "Omnitus 50 mg comprimate"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/omnitus-50-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Omnitus 50 mg comprimate",
+              "kicker": "Răceală și respirație",
+              "lead": "Butamirat, comprimate cu eliberare modificată, împotriva tusei uscate iritante. Pentru adulți și copii cu vârsta peste 12 ani.",
+              "badges": [
+                "Comprimate cu eliberare modificată",
+                "10 comprimate",
+                "De la 12 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nOmnitus 50 mg comprimate cu eliberare modificată (butamirat)\n\n## Pentru ce se utilizează\n\nOmnitus preîntâmpină și calmează tusea uscată iritantă. Datorită efectului bronhodilatator (dilată bronhiile), favorizează îmbunătățirea respirației. Se utilizează pentru tratamentul simptomatic al acceselor de tuse uscată (neproductivă) de diversă etiologie.\n\n## Cum se utilizează\n\nComprimatele se înghit întregi, fără a fi sfărâmate sau mestecate. Adulți: câte 1 comprimat la fiecare 8–12 ore. Copii cu vârsta peste 12 ani: 1–2 comprimate pe zi. Durata maximă a tratamentului este de 7 zile; dacă simptomele se agravează sau tusea persistă mai mult de 7 zile, adresați-vă medicului. Alimentele nu influențează acțiunea medicamentului.\n\n## Contraindicații\n\nNu luați Omnitus dacă sunteți alergic la butamirat citrat sau la oricare dintre celelalte componente, dacă aveți tuse productivă (cu expectorații), în primul trimestru de sarcină sau dacă aveți insuficiență respiratorie severă. Nu se recomandă la copii cu vârsta sub 12 ani.\n\n## Atenționări\n\nNu se recomandă în tusea cu expectorat vâscos, deoarece inhibarea reflexului de tuse poate duce la stagnarea mucusului în căile respiratorii. Nu asociați Omnitus cu medicamente care dizolvă mucusul și ușurează expectorarea (mucolitice și expectorante). Evitați alcoolul în timpul tratamentului. În trimestrele II și III de sarcină se administrează cu precauție, numai după evaluarea medicului; nu se recomandă în timpul alăptării. Omnitus poate provoca amețeală și somnolență, care pot afecta capacitatea de a conduce vehicule. Filmul comprimatului conține coloranți azoici (E124, E110, E122, E151), care pot provoca reacții alergice, iar nucleul conține lactoză.\n\n## Reacții adverse posibile\n\nMai puțin frecvente: amețeli, somnolență, greață, diaree. Rare: erupții cutanate, urticarie.\n\n## Păstrare\n\nA se păstra la loc uscat, ferit de lumină, la temperaturi sub 25 °C. A nu se lăsa la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în noiembrie 2022). Descărcați și citiți documentul original pentru toate detaliile. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre substanța activă și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/omnitus-50.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanța activă",
+                  "text": "Un comprimat cu eliberare modificată conține butamirat citrat 50 mg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Nucleu: lactoză monohidrat, hipromeloză, stearat de magneziu, talc, dioxid de siliciu coloidal anhidru, povidonă. Film: hipromeloză, talc, etilceluloză, macrogol 6000, dioxid de titan (E171) și coloranți (E110, E122, E151, E124)."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Comprimate rotunde, biconvexe, roșii-cărămizii. Cutie cu 1 blister a câte 10 comprimate."
+                }
+              ]
+            }
+          }
+        },
+        "omnitus-sirop": {
+          "product": {
+            "id": "omnitus-sirop",
+            "slug": "omnitus-sirop",
+            "name": "Omnitus sirop 0,8 mg/ml",
+            "shortDescription": "Butamirat, sirop cu aromă de vanilie împotriva tusei uscate. Pentru adulți și copii cu vârsta peste 3 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#e8731a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/omnitus-sirop.png",
+              "alt": "Omnitus sirop 0,8 mg/ml"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/omnitus-sirop-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Omnitus sirop 0,8 mg/ml",
+              "kicker": "Răceală și respirație",
+              "lead": "Butamirat, sirop cu aromă de vanilie împotriva tusei uscate. Pentru adulți și copii cu vârsta peste 3 ani.",
+              "badges": [
+                "Sirop",
+                "200 ml",
+                "De la 3 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nOmnitus sirop 0,8 mg/ml (butamirat)\n\n## Pentru ce se utilizează\n\nOmnitus conține ca substanță activă citrat de butamirat, din grupul medicamentelor antitusive. Se utilizează pentru tratamentul simptomatic al atacurilor de tuse uscată (neproductivă) de diversă etiologie.\n\n## Cum se utilizează\n\nSiropul se administrează oral, cu lingurița dozatoare de 5 ml din ambalaj. Copii cu vârsta 3–6 ani: câte 2 lingurițe (10 ml) de 3 ori pe zi. Copii cu vârsta 6–12 ani și adolescenți peste 12 ani: câte 3–4 lingurițe (15–20 ml) de 3 ori pe zi. Adulți: câte 6 lingurițe (30 ml) de 3 ori pe zi; la vârstnici nu este necesară ajustarea dozei. Durata maximă a tratamentului este de 7 zile; dacă simptomele se agravează sau tusea persistă mai mult de 7 zile, adresați-vă medicului.\n\n## Contraindicații și atenționări\n\nNu luați Omnitus dacă sunteți alergic la butamirat citrat sau la oricare dintre celelalte componente. Nu se recomandă la copii cu vârsta sub 3 ani și nici dacă aveți probleme grave cu rinichii. Este contraindicat în primul trimestru de sarcină; în trimestrele II și III se administrează cu precauție, numai după evaluarea medicului, iar în timpul alăptării nu se recomandă. Evitați alcoolul în timpul tratamentului. Omnitus poate provoca somnolență, care poate afecta capacitatea de a conduce vehicule. Siropul conține sorbitol (E420): dacă aveți intoleranță la unele glucide, întrebați medicul înainte de utilizare. Dacă după 7 zile starea nu se îmbunătățește, adresați-vă urgent medicului.\n\n## Reacții adverse posibile\n\nMai puțin frecvente: greață, diaree. Rare: amețeli, somnolență, erupții pe piele.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C, în ambalajul original, pentru a fi protejat de lumină. A nu se lăsa la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (aprobat în noiembrie 2021). Descărcați și citiți documentul original pentru toate detaliile. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre substanța activă și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/omnitus-sirop.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanța activă",
+                  "text": "5 ml de sirop conțin butamirat citrat 4 mg (0,8 mg/ml)."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Sorbitol lichid necristalizabil, glicerol, zaharină sodică, acid benzoic, vanilină, ulei eteric de anason, etanol (96%), hidroxid de sodiu, apă purificată."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Soluție limpede, slab-gălbuie, cu gust dulce și aromă de vanilie. Flacon din sticlă întunecată cu capac securizat pentru copii și linguriță dozatoare gradată la 2,5 ml și 5 ml."
+                }
+              ]
+            }
+          }
+        },
+        "nizoral-sampon": {
+          "product": {
+            "id": "nizoral-sampon",
+            "slug": "nizoral-sampon",
+            "name": "Nizoral 20 mg/g șampon",
+            "shortDescription": "Ketoconazol, șampon antifungic împotriva mătreții, dermatitei seboreice și pitiriazisului versicolor. Pentru adulți și copii cu vârsta peste 12 ani.",
+            "category": "dermatology",
+            "therapeuticArea": "Dermatologie",
+            "accent": "#c99700",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/nizoral-sampon.png",
+              "alt": "Nizoral 20 mg/g șampon"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/nizoral-prospect-ro.pdf",
+                "label": "Prospect: informații pentru pacient (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Nizoral 20 mg/g șampon",
+              "kicker": "Dermatologie",
+              "lead": "Ketoconazol, șampon antifungic împotriva mătreții, dermatitei seboreice și pitiriazisului versicolor. Pentru adulți și copii cu vârsta peste 12 ani.",
+              "badges": [
+                "Șampon",
+                "60 ml",
+                "De la 12 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nNizoral 20 mg/g șampon (ketoconazol)\n\n## Pentru ce se utilizează\n\nSubstanța activă, ketoconazolul, este un agent antifungic care acționează împotriva ciupercii Malassezia, prezentă în cantități mari pe pielea persoanelor cu mătreață și dermatită seboreică. Șamponul reduce rapid descuamarea și mâncărimea care însoțesc de obicei dermatita seboreică, mătreața și pitiriazisul versicolor. Se utilizează pentru tratamentul și prevenirea infecțiilor cu Malassezia spp. (Pityrosporum spp.), precum dermatita seboreică și mătreața, și pentru tratamentul pitiriazisului versicolor localizat.\n\n## Cum se utilizează\n\nNumai pentru uz extern, pe piele; nu se înghite. Adulți și copii cu vârsta peste 12 ani: aplicați șamponul pe zonele afectate ale scalpului sau ale pielii, lăsați să acționeze 3–5 minute, apoi clătiți cu apă.\n\nTratament: pitiriazis versicolor — o dată pe zi, timp de 1–3 zile; dermatită seboreică și mătreață — de 2 ori pe săptămână, timp de 2–4 săptămâni. Prevenire: dermatită seboreică și mătreață — o dată pe săptămână sau o dată la 2 săptămâni.\n\n## Contraindicații și atenționări\n\nNu utilizați Nizoral dacă sunteți alergic la ketoconazol sau la oricare dintre celelalte componente. Evitați contactul cu ochii; dacă șamponul ajunge în ochi, clătiți imediat cu apă. Dacă ați folosit timp îndelungat corticosteroizi pe piele (de exemplu betametazonă sau hidrocortizon), nu îi opriți brusc: reduceți treptat frecvența utilizării lor în 2–3 săptămâni. În sarcină și alăptare se utilizează numai dacă beneficiul pentru mamă depășește riscul potențial, după consultarea medicului. Siguranța la copii sub 12 ani nu a fost stabilită. Dacă după 5 sau 14 zile (în funcție de afecțiune) nu vă simțiți mai bine, adresați-vă medicului.\n\n## Reacții adverse posibile\n\nÎntrerupeți utilizarea și adresați-vă imediat medicului în caz de umflare a feței, buzelor, limbii sau gâtului, iritație sau înroșire puternică, mâncărime ori alte semne de alergie, descuamare sau pustule pe piele. Mai puțin frecvente: foliculită, lăcrimare excesivă, căderea părului sau modificări ale texturii părului, piele uscată, erupții, senzație de arsură. Rare: tulburări ale gustului, iritație oculară, acnee, descuamarea pielii. Cu frecvență necunoscută: urticarie, modificarea culorii părului.\n\n## Păstrare\n\nA se păstra la temperaturi sub 25 °C. A nu se lăsa la vederea și îndemâna copiilor.\n\n## Prospectul complet\n\nAceastă pagină rezumă prospectul furnizat (revizuit în mai 2024). Descărcați și citiți documentul original pentru toate detaliile. Dacă aveți întrebări, adresați-vă medicului sau farmacistului.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii despre substanța activă și ambalaj din prospectul furnizat.",
+              "formulaImage": "/assets/moldova-products/nizoral-sampon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Substanța activă",
+                  "text": "1 g de șampon conține ketoconazol 20 mg."
+                },
+                {
+                  "value": "02",
+                  "title": "Celelalte componente",
+                  "text": "Lauril sulfat de sodiu, lauril sulfosuccinat disodic, dietanolamida acizilor grași din ulei de cocos, hidrolizat de colagen, dioleat de macrogol metildextroză, clorură de sodiu, acid clorhidric, imiduree, aromă, hidroxid de sodiu, colorant Roșu Allura AC (E129), apă purificată."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Lichid de culoare roșu-oranj. Cutie cu 1 flacon de polietilenă a câte 60 ml."
+                }
+              ]
+            }
+          }
+        },
+        "kamistad-baby": {
+          "product": {
+            "id": "kamistad-baby",
+            "slug": "kamistad-baby",
+            "name": "Kamistad Baby",
+            "shortDescription": "Gel pentru igiena orală la erupția dentară la copii, cu extract de mușețel, polidocanol și acid hialuronic. Fără zahăr, alcool, coloranți și lidocaină.",
+            "category": "kids",
+            "therapeuticArea": "Pentru copii",
+            "accent": "#d4145a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/kamistad-baby.png",
+              "alt": "Kamistad Baby"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Kamistad Baby",
+              "kicker": "Pentru copii",
+              "lead": "Gel pentru igiena orală la erupția dentară la copii, cu extract de mușețel, polidocanol și acid hialuronic. Fără zahăr, alcool, coloranți și lidocaină.",
+              "badges": [
+                "Gel pentru gingii",
+                "20 ml",
+                "Fără lidocaină"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nKamistad Baby — gel pentru igiena orală, pentru erupția dentară la copii\n\n## Când apar primii dințișori\n\nGingiile inflamate și mâncărimile pot fi supărătoare pentru bebeluș și pot duce la neliniște, plâns, somn afectat și apetit scăzut. Kamistad Baby este recomandat la primele semne de erupție dentară. Datorită compoziției sale complexe, gelul răcorește și calmează mucoasele iritate și îngrijește gingiile sensibile. Produsul nu conține zahăr, alcool, coloranți și lidocaină.\n\n## Componentele\n\nExtractul din flori de mușețel are proprietăți calmante, favorizează vindecarea mucoasei bucale iritate, îngrijește gingiile sensibile și ajută la ameliorarea inflamației. Laureth-9 (polidocanol) are un efect răcoritor și calmant. Hialuronatul de sodiu (acidul hialuronic) are un efect hidratant. Aromele de miere și răcoritoare conferă gelului un gust plăcut.\n\n## Mod de utilizare\n\nStoarceți o cantitate mică de gel pe mâinile curate sau pe un bețișor de bumbac și întindeți-l pe suprafața gingiei, masând ușor. Aplicați de 2–3 ori pe zi, de preferință după mese și înainte de culcare.\n\n## Măsuri de precauție\n\nUtilizați numai în scopul descris. A nu se utiliza în caz de hipersensibilitate sau alergie la oricare dintre ingrediente. A nu se înghiți. A nu se lăsa la îndemâna copiilor.\n\n## Păstrare\n\nÎntr-un loc ferit de lumina directă a soarelui, la temperaturi între 5 °C și 25 °C. Termen de valabilitate: 30 de luni. Produs în Germania.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii din eticheta produsului.",
+              "formulaImage": "/assets/moldova-products/kamistad-baby.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Ingrediente active",
+                  "text": "Extract de flori de mușețel, laureth-9 (polidocanol), hialuronat de sodiu (acid hialuronic)."
+                },
+                {
+                  "value": "02",
+                  "title": "Ingrediente",
+                  "text": "Apă, propilenglicol, extract de flori de mușețel, hidrolizat de amidon hidrogenat, glicerină, trometamină, carbomer, laureth-9, hialuronat de sodiu, aromă de miere, acesulfam de potasiu, aromă răcoritoare, EDTA disodic."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Gel transparent, galben-maroniu, cu miros și gust de mușețel, miere și mentă. Tub de 20 ml."
+                }
+              ]
+            }
+          }
+        },
+        "sinulan-duo-forte": {
+          "product": {
+            "id": "sinulan-duo-forte",
+            "slug": "sinulan-duo-forte",
+            "name": "Sinulan Duo Forte",
+            "shortDescription": "Supliment alimentar cu extracte din plante pentru căile respiratorii superioare și inferioare și pentru sistemul imunitar. Pentru adulți și copii de la 6 ani.",
+            "category": "cold",
+            "therapeuticArea": "Răceală și respirație",
+            "accent": "#2e8b3e",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/sinulan-duo-forte.png",
+              "alt": "Sinulan Duo Forte"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Sinulan Duo Forte",
+              "kicker": "Răceală și respirație",
+              "lead": "Supliment alimentar cu extracte din plante pentru căile respiratorii superioare și inferioare și pentru sistemul imunitar. Pentru adulți și copii de la 6 ani.",
+              "badges": [
+                "Supliment alimentar",
+                "30 comprimate filmate",
+                "De la 6 ani"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nSinulan Duo Forte — supliment alimentar, îngrijirea tractului respirator\n\n## Ce este\n\nSinulan Duo Forte este un supliment alimentar cu o compoziție de extracte din plante care acționează în două direcții: susține funcționarea căilor respiratorii superioare (nas, sinusuri) și inferioare (bronhii), precum și a sistemului imunitar. Extractele de flori de soc, verbină și flori de lumânărică susțin funcția fiziologică a căilor respiratorii superioare și inferioare și a sistemului imunitar. Extractele de flori de lumânărică și de verbină ajută la calmarea gâtului, laringelui și corzilor vocale. Extractele de verbină și flori de soc au efect antioxidant.\n\n## Pentru cine\n\nProdusul este potrivit pentru adulți și copii cu vârsta de la 6 ani. Nu este potrivit pentru copiii sub 6 ani, pentru femeile însărcinate și pentru cele care alăptează.\n\n## Mod de administrare\n\n1–2 comprimate pe zi, cu lichid, de preferință în timpul mesei.\n\n## Atenționări\n\nNu depășiți doza zilnică recomandată. Suplimentele alimentare nu trebuie utilizate ca înlocuitor al unei alimentații variate. A nu se lăsa la îndemâna copiilor.\n\n## Păstrare\n\nÎntr-un loc uscat și întunecat, la temperaturi sub 25 °C.\n\n## Producător\n\nWalmark, a.s., Republica Cehă (grupul STADA).",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii din textul de pe ambalajul produsului.",
+              "formulaImage": "/assets/moldova-products/sinulan-duo-forte.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Extracte din plante",
+                  "text": "Condurul-doamnei (Tropaeolum majus), rădăcină de hrean (Armoracia rusticana), flori de soc (Sambucus nigra), verbină (Verbena officinalis), rădăcină de ghințură galbenă (Gentiana lutea), flori de lumânărică (Verbascum thapsus)."
+                },
+                {
+                  "value": "02",
+                  "title": "Doza zilnică (2 comprimate)",
+                  "text": "Condurul-doamnei 342,8 mg, hrean 96,0 mg, câte 50,0 mg extract de flori de soc, verbină, ghințură galbenă și flori de lumânărică."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Comprimate filmate. Cutie cu 30 de comprimate."
+                }
+              ]
+            }
+          }
+        },
+        "proenzi-active-colagen": {
+          "product": {
+            "id": "proenzi-active-colagen",
+            "slug": "proenzi-active-colagen",
+            "name": "Proenzi Active Colagen 11.000",
+            "shortDescription": "Supliment alimentar cu îndulcitori: două tipuri de colagen în doză mare, cu vitamine și minerale. Flacoane unidoză, gata de băut.",
+            "category": "joints",
+            "therapeuticArea": "Sănătatea articulațiilor",
+            "accent": "#4b2d83",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/proenzi-active-colagen.png",
+              "alt": "Proenzi Active Colagen 11.000"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Proenzi Active Colagen 11.000",
+              "kicker": "Sănătatea articulațiilor",
+              "lead": "Supliment alimentar cu îndulcitori: două tipuri de colagen în doză mare, cu vitamine și minerale. Flacoane unidoză, gata de băut.",
+              "badges": [
+                "Supliment alimentar",
+                "14 flacoane unidoză",
+                "1 flacon pe zi"
+              ],
+              "metrics": [],
+              "informationText": "# Despre produs\n\nProenzi Active Colagen 11.000 — supliment alimentar cu îndulcitori, flacoane unidoză gata de băut\n\n## Ce este\n\nProenzi Active Colagen 11.000 este o combinație a două tipuri de colagen în doză mare, plus vitamine și minerale. Colagenul este cea mai întâlnită proteină structurală și principala componentă a țesuturilor conjunctive — cartilaje, oase, tendoane, ligamente — și este important și pentru piele și păr. Odată cu înaintarea în vârstă, cantitatea de colagen produsă de organism începe să scadă, iar suplimentarea prin alimentație poate fi de ajutor.\n\n## De ce colagen hidrolizat și colagen nativ de tip II\n\nColagenul hidrolizat este divizat în părți mai mici, peptide, care pot fi absorbite mai ușor și folosite de organism. Formula este îmbogățită cu colagen nativ nedenaturat de tip II (UC-II), principalul tip de colagen din cartilaj, obținut printr-o procedură care ajută la menținerea structurii sale biologice active.\n\n## Vitamine și minerale\n\nVitamina C contribuie la formarea colagenului, pentru funcționarea normală a ligamentelor și a sistemului osos. Manganul contribuie la formarea normală a țesuturilor conjunctive. Vitamina D contribuie la menținerea sănătății oaselor și a funcției normale a mușchilor. Vitaminele C și B6 contribuie la reducerea oboselii și extenuării. Seleniul contribuie la menținerea sănătății părului și a unghiilor; împreună cu manganul și vitamina C, contribuie la protejarea celulelor împotriva stresului oxidativ.\n\n## Pentru cine\n\nPentru persoanele active de toate vârstele, pentru cei care doresc să-și susțină sistemul musculo-scheletic sau să-și ajute articulațiile și mușchii să se refacă după efort fizic intens, precum și pentru cei care vor să-și mențină aspectul pielii, părului și unghiilor.\n\n## Mod de administrare\n\nAdulți: 1 flacon unidoză pe zi, înainte sau după activitatea fizică.",
+              "formulaLabel": "Compoziție",
+              "formulaHeading": "Compoziție și prezentare",
+              "formulaIntro": "Detalii din materialul informativ al produsului.",
+              "formulaImage": "/assets/moldova-products/proenzi-active-colagen.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Colagen",
+                  "text": "Combinație de colagen hidrolizat (peptide de colagen) și colagen nativ nedenaturat de tip II (UC-II)."
+                },
+                {
+                  "value": "02",
+                  "title": "Vitamine și minerale",
+                  "text": "Vitamina C, vitamina D, vitamina B6, mangan și seleniu."
+                },
+                {
+                  "value": "03",
+                  "title": "Formă și ambalaj",
+                  "text": "Flacoane unidoză gata de băut. Cutie cu 14 flacoane."
                 }
               ]
             }
@@ -3524,7 +4004,9 @@
         "about_leader_ospanov_name": "Armen Akobyan",
         "about_leader_ospanov_role": "Șeful subclusterei GAM (Georgia, Armenia, Moldova)",
         "supplied_contacts_heading": "CONTACTE.",
-        "supplied_contacts_text": "R.Moldova , Chisinau, S. Lazo str.38\nTel+373 22 90 30 44"
+        "supplied_contacts_text": "R.Moldova , Chisinau, S. Lazo str.38\nTel+373 22 90 30 44",
+        "products_category_dermatology": "Dermatologie",
+        "products_category_joints": "Sănătatea articulațiilor"
       }
     },
     "ru": {
@@ -6723,6 +7205,61 @@
             }
           }
         },
+        "snup-90": {
+          "product": {
+            "id": "snup-90",
+            "slug": "snup-90",
+            "name": "Снуп 90 мкг/доза",
+            "shortDescription": "Ксилометазолин, спрей назальный, раствор. Содержит морскую воду. Для взрослых и детей старше 6 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#0057a8",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/snup-90.png",
+              "alt": "Снуп 90 мкг/доза"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/snup-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Снуп 90 мкг/доза",
+              "kicker": "Простуда и дыхание",
+              "lead": "Ксилометазолин, спрей назальный, раствор. Содержит морскую воду. Для взрослых и детей старше 6 лет.",
+              "badges": [
+                "Спрей назальный",
+                "15 мл",
+                "С 6 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nСнуп 90 мкг/доза, спрей назальный, раствор\n\n## Для чего применяется\n\nСнуп облегчает дыхание и быстро освобождает заложенный нос, уменьшая количество выделений и отёк в полости носа. Согласно инструкции, применяется для уменьшения выделений и отёка полости носа при простуде и рините (в том числе аллергическом), для улучшения дренажа при воспалении околоносовых пазух и как вспомогательное средство при среднем отите, а также для облегчения диагностических процедур в носовых ходах.\n\n## Как применять\n\nВзрослые и дети старше 6 лет: по 1 впрыскиванию в каждый носовой ход (при необходимости можно повторить), до 3 раз в день.\n\nПрепарат не следует применять чаще 3 раз в день, а продолжительность лечения не должна превышать 7 дней, если врач не рекомендовал иное. Перед применением очистите носовые ходы. Перед первым применением несколько раз нажмите на насос, пока не образуется равномерное облако. Держите флакон вертикально; не распыляйте горизонтально или вниз. Каждый флакон предназначен для одного человека.\n\n## Противопоказания и меры предосторожности\n\nСнуп 90 мкг/доза не применяется у детей до 6 лет. Не применяйте при аллергии на ксилометазолин или любой другой компонент, при сухом рините (сухая слизистая носа без выделений), после недавней операции на головном мозге с затрагиванием мозговых оболочек, при артериальной гипертензии, тахикардии, атеросклерозе или глаукоме. Препарат не применяется во время беременности; в период грудного вскармливания — только после консультации с врачом.\n\n## Когда обратиться к врачу\n\nПеред применением препарата у детей проконсультируйтесь с врачом; продолжительность лечения у детей обязательно обсуждается с врачом. Обратитесь к врачу или фармацевту перед применением, если у вас тяжёлые сердечно-сосудистые заболевания, повышенное артериальное давление, феохромоцитома, сахарный диабет, гипертиреоз, увеличение предстательной железы или повышенная чувствительность к препаратам, повышающим артериальное давление, а также если вы принимаете ингибиторы моноаминоксидазы, три- или тетрациклические антидепрессанты либо другие препараты, повышающие артериальное давление. Обратитесь к врачу, если вам не становится лучше, симптомы усиливаются или появляются новые.\n\n## Возможные побочные реакции\n\nЧастые: ощущение жжения и сухости слизистой носа, чихание. Нечастые: реактивная заложенность с медикаментозным ринитом, носовые кровотечения, реакции гиперчувствительности (ангионевротический отёк, кожная сыпь, зуд). Редкие: сердцебиение, тахикардия, гипертензия. Очень редкие: головная боль, нарушения сердечного ритма, возбуждение, бессонница, усталость, сонливость, судороги и галлюцинации (особенно у детей). При длительном применении есть риск снижения эффективности препарата и атрофии слизистой носа. Полная информация приведена в инструкции.\n\n## Хранение\n\nХранить при температуре ниже 25 °C. Использовать в течение 12 месяцев после первого вскрытия флакона. Не применять после истечения срока годности, указанного на упаковке. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в мае 2022 года; на румынском языке), общая для Снуп 45 мкг/доза и Снуп 90 мкг/доза. Скачайте и прочитайте оригинальный документ, чтобы узнать все сведения о дозах, противопоказаниях, взаимодействиях и побочных реакциях. Отпускается без рецепта. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о составе и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/snup-90.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующее вещество",
+                  "text": "1 доза спрея назального содержит 90 мкг ксилометазолина гидрохлорида."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Морская вода, калия дигидрофосфат, вода для инъекций."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Прозрачный бесцветный раствор. Полиэтиленовый флакон с распылителем, 15 мл раствора."
+                }
+              ]
+            }
+          }
+        },
         "urinal-akut": {
           "product": {
             "id": "urinal-akut",
@@ -6816,6 +7353,431 @@
                   "value": "03",
                   "title": "Форма и упаковка",
                   "text": "Сироп. Флакон 150 мл."
+                }
+              ]
+            }
+          }
+        },
+        "coldrex-lemon": {
+          "product": {
+            "id": "coldrex-lemon",
+            "slug": "coldrex-lemon",
+            "name": "Колдрекс Лемон",
+            "shortDescription": "Парацетамол, фенилэфрина гидрохлорид и витамин C. Порошок для приготовления суспензии для приёма внутрь со вкусом лимона, для облегчения симптомов простуды и гриппа. С 12 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#1b4f9c",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/coldrex-lemon.png",
+              "alt": "Колдрекс Лемон"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/coldrex-lemon-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Колдрекс Лемон",
+              "kicker": "Простуда и дыхание",
+              "lead": "Парацетамол, фенилэфрина гидрохлорид и витамин C. Порошок для приготовления суспензии для приёма внутрь со вкусом лимона, для облегчения симптомов простуды и гриппа. С 12 лет.",
+              "badges": [
+                "Порошок для суспензии",
+                "10 пакетиков",
+                "С 12 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nКолдрекс Лемон, порошок для приготовления суспензии для приёма внутрь (парацетамол / аскорбиновая кислота / фенилэфрина гидрохлорид)\n\n## Для чего применяется\n\nКолдрекс Лемон — препарат против простуды и гриппа с тремя действующими веществами: парацетамол облегчает боль и снижает температуру; фенилэфрина гидрохлорид — противоотёчное средство, которое освобождает нос и пазухи и облегчает дыхание; витамин C (аскорбиновая кислота) помогает восполнить потери витамина C на ранних стадиях простуды и гриппа. Применяется для кратковременного симптоматического облегчения гриппа, лихорадочных состояний, озноба и простуды, в том числе головной боли, боли в горле, дискомфорта и болей, заложенности носа и синусита.\n\n## Как применять\n\nВзрослые (включая пожилых) и дети от 12 лет: по одному пакетику каждые 4–6 часов по необходимости. Не принимайте более 5 пакетиков за 24 часа; минимальный интервал между приёмами — 4 часа. Высыпьте содержимое пакетика в чашку, залейте горячей водой и хорошо перемешайте; при необходимости добавьте холодной воды. Принимайте наименьшую эффективную дозу. Без рекомендации врача препарат не применяют дольше 7 дней. Детям до 12 лет — только по рекомендации врача.\n\n## Противопоказания\n\nНе принимайте Колдрекс Лемон при аллергии на любой из компонентов, при повышенном артериальном давлении, гипертиреозе, заболеваниях сердца, сахарном диабете, феохромоцитоме или закрытоугольной глаукоме, если вы принимаете ингибиторы моноаминоксидазы (или принимали их в последние 2 недели), бета-блокаторы, трициклические антидепрессанты или другие противоотёчные средства, а также другие препараты, содержащие парацетамол.\n\n## Предупреждения\n\nПрепарат содержит парацетамол: слишком большое количество парацетамола может серьёзно повредить печень. Не превышайте рекомендуемую дозу. Посоветуйтесь с врачом перед применением, если у вас заболевания печени или почек, вы регулярно употребляете алкоголь, у вас пониженная масса тела, проблемы с предстательной железой, заболевания сосудов, а также при беременности и кормлении грудью. Если симптомы сохраняются дольше 3 дней или усиливаются, обратитесь к врачу. При передозировке немедленно обратитесь за медицинской помощью, даже если чувствуете себя хорошо. Один пакетик содержит 2,9 г сахара — это следует учитывать пациентам с сахарным диабетом. Препарат может вызывать головокружение; в этом случае не управляйте транспортом.\n\n## Возможные побочные реакции\n\nРедкие: кожная сыпь и другие аллергические реакции, повышение внутриглазного давления, затруднённое мочеиспускание, сердцебиение. Очень редкие: снижение числа тромбоцитов, тяжёлые аллергические реакции, бронхоспазм, нарушения функции печени. Частота неизвестна: повышение артериального давления, головная боль, головокружение, бессонница, нервозность, рвота, диарея. Прекратите приём и обратитесь к врачу при раздражении кожи, нарушении зрения, необычных кровотечениях, затруднённом мочеиспускании или учащённом сердцебиении.\n\n## Хранение\n\nХранить при температуре ниже 25 °C, в оригинальной упаковке. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в октябре 2025 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все подробности. Отпускается без рецепта. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о действующих веществах и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/coldrex-lemon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующие вещества",
+                  "text": "Один пакетик содержит парацетамол 750 мг, фенилэфрина гидрохлорид 10 мг и аскорбиновую кислоту (витамин C) 60 мг."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Этилцеллюлоза, лимонная кислота безводная, сахарин натрия, цитрат натрия, сахар, лимонные ароматизаторы, хинолиновый жёлтый (E104)."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Светло-жёлтый порошок с запахом и вкусом лимона. Коробка с 10 пакетиками по 5 г."
+                }
+              ]
+            }
+          }
+        },
+        "coldrex-maxgrip-lemon": {
+          "product": {
+            "id": "coldrex-maxgrip-lemon",
+            "slug": "coldrex-maxgrip-lemon",
+            "name": "Колдрекс МаксГрипп Лемон",
+            "shortDescription": "Парацетамол, фенилэфрина гидрохлорид и витамин C. Порошок для приготовления суспензии для приёма внутрь со вкусом лимона, для облегчения симптомов простуды и гриппа. С 12 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#d71920",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
+              "alt": "Колдрекс МаксГрипп Лемон"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/coldrex-maxgrip-lemon-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Колдрекс МаксГрипп Лемон",
+              "kicker": "Простуда и дыхание",
+              "lead": "Парацетамол, фенилэфрина гидрохлорид и витамин C. Порошок для приготовления суспензии для приёма внутрь со вкусом лимона, для облегчения симптомов простуды и гриппа. С 12 лет.",
+              "badges": [
+                "Порошок для суспензии",
+                "10 пакетиков",
+                "С 12 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nКолдрекс МаксГрипп Лемон, порошок для приготовления суспензии для приёма внутрь (парацетамол / аскорбиновая кислота / фенилэфрина гидрохлорид)\n\n## Для чего применяется\n\nКолдрекс МаксГрипп Лемон — препарат против простуды и гриппа с тремя действующими веществами: парацетамол облегчает боль и снижает температуру; фенилэфрина гидрохлорид — противоотёчное средство, которое освобождает нос и пазухи и облегчает дыхание; витамин C (аскорбиновая кислота) помогает восполнить потери витамина C на ранних стадиях простуды и гриппа. Применяется для кратковременного симптоматического облегчения гриппа, лихорадочных состояний, озноба и простуды, в том числе головной боли, боли в горле, дискомфорта и болей, заложенности носа и синусита.\n\n## Как применять\n\nВзрослые (включая пожилых) и дети от 12 лет: по одному пакетику каждые 4–6 часов по необходимости. Не принимайте более 4 пакетиков за 24 часа; минимальный интервал между приёмами — 4 часа. Высыпьте содержимое пакетика в чашку, залейте горячей водой и хорошо перемешайте; при необходимости добавьте холодной воды. По желанию можно добавить воду или мёд. Принимайте наименьшую эффективную дозу. Без рекомендации врача препарат не применяют дольше 7 дней. Детям до 12 лет — только по рекомендации врача.\n\n## Противопоказания\n\nНе принимайте Колдрекс МаксГрипп Лемон при аллергии на любой из компонентов, при повышенном артериальном давлении, гипертиреозе, заболеваниях сердца, сахарном диабете, феохромоцитоме или закрытоугольной глаукоме, если вы принимаете ингибиторы моноаминоксидазы (или принимали их в последние 2 недели), бета-блокаторы, трициклические антидепрессанты или другие противоотёчные средства, а также другие препараты, содержащие парацетамол.\n\n## Предупреждения\n\nПрепарат содержит парацетамол: слишком большое количество парацетамола может серьёзно повредить печень. Не превышайте рекомендуемую дозу. Посоветуйтесь с врачом перед применением, если у вас заболевания печени или почек, вы регулярно употребляете алкоголь, у вас пониженная масса тела, проблемы с предстательной железой, заболевания сосудов, а также при беременности и кормлении грудью. Если симптомы сохраняются дольше 3 дней или усиливаются, обратитесь к врачу. При передозировке немедленно обратитесь за медицинской помощью, даже если чувствуете себя хорошо. Один пакетик содержит 3,7 г сахара — это следует учитывать пациентам с сахарным диабетом. Препарат может вызывать головокружение; в этом случае не управляйте транспортом.\n\n## Возможные побочные реакции\n\nРедкие: кожная сыпь и другие аллергические реакции, повышение внутриглазного давления, затруднённое мочеиспускание, сердцебиение. Очень редкие: снижение числа тромбоцитов, тяжёлые аллергические реакции, бронхоспазм, нарушения функции печени. Частота неизвестна: повышение артериального давления, головная боль, головокружение, бессонница, нервозность, рвота, диарея. Прекратите приём и обратитесь к врачу при раздражении кожи, нарушении зрения, необычных кровотечениях, затруднённом мочеиспускании или учащённом сердцебиении.\n\n## Хранение\n\nХранить при температуре ниже 25 °C, в оригинальной упаковке. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в октябре 2025 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все подробности. Отпускается без рецепта. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о действующих веществах и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующие вещества",
+                  "text": "Один пакетик содержит парацетамол 1000 мг, фенилэфрина гидрохлорид 10 мг и аскорбиновую кислоту (витамин C) 40 мг."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Сахар, лимонная кислота безводная, цитрат натрия, кукурузный крахмал, лимонный ароматизатор, цикламат натрия, сахарин натрия, кремния диоксид коллоидный безводный, куркумин (E100)."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Порошок для приготовления суспензии. Коробки с 5 или 10 пакетиками по 6,427 г."
+                }
+              ]
+            }
+          }
+        },
+        "omnitus-50": {
+          "product": {
+            "id": "omnitus-50",
+            "slug": "omnitus-50",
+            "name": "Омнитус 50 мг таблетки",
+            "shortDescription": "Бутамират, таблетки с модифицированным высвобождением, против сухого раздражающего кашля. Для взрослых и детей старше 12 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#e8731a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/omnitus-50.png",
+              "alt": "Омнитус 50 мг таблетки"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/omnitus-50-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Омнитус 50 мг таблетки",
+              "kicker": "Простуда и дыхание",
+              "lead": "Бутамират, таблетки с модифицированным высвобождением, против сухого раздражающего кашля. Для взрослых и детей старше 12 лет.",
+              "badges": [
+                "Таблетки с модифицированным высвобождением",
+                "10 таблеток",
+                "С 12 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nОмнитус 50 мг, таблетки с модифицированным высвобождением (бутамират)\n\n## Для чего применяется\n\nОмнитус предупреждает и успокаивает сухой раздражающий кашель. Благодаря бронхорасширяющему действию способствует облегчению дыхания. Применяется для симптоматического лечения приступов сухого (непродуктивного) кашля различного происхождения.\n\n## Как применять\n\nТаблетки проглатывают целиком, не разламывая и не разжёвывая. Взрослые: по 1 таблетке каждые 8–12 часов. Дети старше 12 лет: 1–2 таблетки в день. Максимальная продолжительность лечения — 7 дней; если симптомы усиливаются или кашель сохраняется дольше 7 дней, обратитесь к врачу. Приём пищи не влияет на действие препарата.\n\n## Противопоказания\n\nНе принимайте Омнитус при аллергии на бутамирата цитрат или любой другой компонент, при продуктивном кашле (с мокротой), в первом триместре беременности и при тяжёлой дыхательной недостаточности. Не рекомендуется детям младше 12 лет.\n\n## Предупреждения\n\nНе рекомендуется при кашле с вязкой мокротой, так как подавление кашлевого рефлекса может привести к застою слизи в дыхательных путях. Не сочетайте Омнитус с препаратами, разжижающими мокроту и облегчающими её отхождение (муколитиками и отхаркивающими средствами). Избегайте алкоголя во время лечения. Во II и III триместрах беременности применяют с осторожностью и только после оценки врача; в период грудного вскармливания не рекомендуется. Омнитус может вызывать головокружение и сонливость, что может влиять на способность управлять транспортом. Оболочка таблетки содержит азокрасители (E124, E110, E122, E151), которые могут вызывать аллергические реакции, а ядро — лактозу.\n\n## Возможные побочные реакции\n\nНечастые: головокружение, сонливость, тошнота, диарея. Редкие: кожная сыпь, крапивница.\n\n## Хранение\n\nХранить в сухом, защищённом от света месте при температуре ниже 25 °C. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в ноябре 2022 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все подробности. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о действующем веществе и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/omnitus-50.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующее вещество",
+                  "text": "Одна таблетка с модифицированным высвобождением содержит 50 мг бутамирата цитрата."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Ядро: лактозы моногидрат, гипромеллоза, магния стеарат, тальк, кремния диоксид коллоидный безводный, повидон. Оболочка: гипромеллоза, тальк, этилцеллюлоза, макрогол 6000, титана диоксид (E171) и красители (E110, E122, E151, E124)."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Круглые двояковыпуклые таблетки кирпично-красного цвета. Коробка с 1 блистером по 10 таблеток."
+                }
+              ]
+            }
+          }
+        },
+        "omnitus-sirop": {
+          "product": {
+            "id": "omnitus-sirop",
+            "slug": "omnitus-sirop",
+            "name": "Омнитус сироп 0,8 мг/мл",
+            "shortDescription": "Бутамират, сироп со вкусом ванили против сухого кашля. Для взрослых и детей старше 3 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#e8731a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/omnitus-sirop.png",
+              "alt": "Омнитус сироп 0,8 мг/мл"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/omnitus-sirop-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Омнитус сироп 0,8 мг/мл",
+              "kicker": "Простуда и дыхание",
+              "lead": "Бутамират, сироп со вкусом ванили против сухого кашля. Для взрослых и детей старше 3 лет.",
+              "badges": [
+                "Сироп",
+                "200 мл",
+                "С 3 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nОмнитус сироп 0,8 мг/мл (бутамират)\n\n## Для чего применяется\n\nДействующее вещество Омнитуса — бутамирата цитрат, препарат из группы противокашлевых средств. Применяется для симптоматического лечения приступов сухого (непродуктивного) кашля различного происхождения.\n\n## Как применять\n\nСироп принимают внутрь с помощью дозировочной ложки на 5 мл из упаковки. Дети 3–6 лет: по 2 ложки (10 мл) 3 раза в день. Дети 6–12 лет и подростки старше 12 лет: по 3–4 ложки (15–20 мл) 3 раза в день. Взрослые: по 6 ложек (30 мл) 3 раза в день; пожилым коррекция дозы не требуется. Максимальная продолжительность лечения — 7 дней; если симптомы усиливаются или кашель сохраняется дольше 7 дней, обратитесь к врачу.\n\n## Противопоказания и предупреждения\n\nНе принимайте Омнитус при аллергии на бутамирата цитрат или любой другой компонент. Не рекомендуется детям младше 3 лет и при тяжёлых заболеваниях почек. Противопоказан в первом триместре беременности; во II и III триместрах применяют с осторожностью и только после оценки врача, в период грудного вскармливания не рекомендуется. Избегайте алкоголя во время лечения. Омнитус может вызывать сонливость, что может влиять на способность управлять транспортом. Сироп содержит сорбитол (E420): при непереносимости некоторых сахаров посоветуйтесь с врачом перед применением. Если через 7 дней состояние не улучшается, срочно обратитесь к врачу.\n\n## Возможные побочные реакции\n\nНечастые: тошнота, диарея. Редкие: головокружение, сонливость, кожная сыпь.\n\n## Хранение\n\nХранить при температуре ниже 25 °C, в оригинальной упаковке для защиты от света. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (утверждена в ноябре 2021 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все подробности. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о действующем веществе и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/omnitus-sirop.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующее вещество",
+                  "text": "5 мл сиропа содержат 4 мг бутамирата цитрата (0,8 мг/мл)."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Сорбитол жидкий некристаллизующийся, глицерол, сахарин натрия, бензойная кислота, ванилин, анисовое эфирное масло, этанол (96%), натрия гидроксид, вода очищенная."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Прозрачный слегка желтоватый раствор со сладким вкусом и ароматом ванили. Флакон из тёмного стекла с защитной от детей крышкой и дозировочной ложкой с делениями 2,5 мл и 5 мл."
+                }
+              ]
+            }
+          }
+        },
+        "nizoral-sampon": {
+          "product": {
+            "id": "nizoral-sampon",
+            "slug": "nizoral-sampon",
+            "name": "Низорал 20 мг/г шампунь",
+            "shortDescription": "Кетоконазол, противогрибковый шампунь против перхоти, себорейного дерматита и отрубевидного лишая. Для взрослых и детей старше 12 лет.",
+            "category": "dermatology",
+            "therapeuticArea": "Дерматология",
+            "accent": "#c99700",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/nizoral-sampon.png",
+              "alt": "Низорал 20 мг/г шампунь"
+            },
+            "documents": [
+              {
+                "href": "/assets/moldova-products/nizoral-prospect-ro.pdf",
+                "label": "Инструкция для пациента — на румынском языке (PDF)"
+              }
+            ],
+            "page": {
+              "title": "STADA Moldova — Низорал 20 мг/г шампунь",
+              "kicker": "Дерматология",
+              "lead": "Кетоконазол, противогрибковый шампунь против перхоти, себорейного дерматита и отрубевидного лишая. Для взрослых и детей старше 12 лет.",
+              "badges": [
+                "Шампунь",
+                "60 мл",
+                "С 12 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nНизорал 20 мг/г, шампунь (кетоконазол)\n\n## Для чего применяется\n\nДействующее вещество — кетоконазол, противогрибковое средство, активное против грибка Malassezia, который в большом количестве присутствует на коже людей с перхотью и себорейным дерматитом. Шампунь быстро уменьшает шелушение и зуд, которые обычно сопровождают себорейный дерматит, перхоть и отрубевидный лишай. Применяется для лечения и профилактики инфекций, вызванных Malassezia spp. (Pityrosporum spp.), таких как себорейный дерматит и перхоть, а также для лечения локализованного отрубевидного лишая.\n\n## Как применять\n\nТолько для наружного применения на коже; не глотать. Взрослые и дети старше 12 лет: нанесите шампунь на поражённые участки кожи головы или тела, оставьте на 3–5 минут, затем смойте водой.\n\nЛечение: отрубевидный лишай — 1 раз в день в течение 1–3 дней; себорейный дерматит и перхоть — 2 раза в неделю в течение 2–4 недель. Профилактика: себорейный дерматит и перхоть — 1 раз в неделю или 1 раз в 2 недели.\n\n## Противопоказания и предупреждения\n\nНе применяйте Низорал при аллергии на кетоконазол или любой другой компонент. Избегайте попадания в глаза; при попадании сразу промойте их водой. Если вы долго применяли кортикостероиды на коже (например, бетаметазон или гидрокортизон), не прекращайте их резко: постепенно сокращайте частоту применения в течение 2–3 недель. При беременности и кормлении грудью применяют, только если польза для матери превышает возможный риск, после консультации с врачом. Безопасность у детей до 12 лет не установлена. Если через 5 или 14 дней (в зависимости от заболевания) улучшения нет, обратитесь к врачу.\n\n## Возможные побочные реакции\n\nПрекратите применение и немедленно обратитесь к врачу при отёке лица, губ, языка или горла, сильном раздражении или покраснении, зуде или других признаках аллергии, шелушении или гнойничках на коже. Нечастые: фолликулит, повышенное слезотечение, выпадение волос или изменение их структуры, сухость кожи, сыпь, чувство жжения. Редкие: нарушение вкуса, раздражение глаз, акне, шелушение кожи. Частота неизвестна: крапивница, изменение цвета волос.\n\n## Хранение\n\nХранить при температуре ниже 25 °C. Хранить в недоступном для детей месте.\n\n## Полная инструкция\n\nНа этой странице кратко изложена предоставленная инструкция (пересмотрена в мае 2024 года; на румынском языке). Скачайте и прочитайте оригинальный документ, чтобы узнать все подробности. Если у вас есть вопросы, обратитесь к врачу или фармацевту.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения о действующем веществе и упаковке из предоставленной инструкции.",
+              "formulaImage": "/assets/moldova-products/nizoral-sampon.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Действующее вещество",
+                  "text": "1 г шампуня содержит 20 мг кетоконазола."
+                },
+                {
+                  "value": "02",
+                  "title": "Другие компоненты",
+                  "text": "Натрия лаурилсульфат, динатрия лаурилсульфосукцинат, диэтаноламид жирных кислот кокосового масла, гидролизат коллагена, макрогола метилдекстрозы диолеат, натрия хлорид, хлористоводородная кислота, имидомочевина, отдушка, натрия гидроксид, краситель очаровательный красный AC (E129), вода очищенная."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Жидкость красно-оранжевого цвета. Коробка с 1 полиэтиленовым флаконом по 60 мл."
+                }
+              ]
+            }
+          }
+        },
+        "kamistad-baby": {
+          "product": {
+            "id": "kamistad-baby",
+            "slug": "kamistad-baby",
+            "name": "Камистад Бэби",
+            "shortDescription": "Гель для ухода за полостью рта при прорезывании зубов у детей, с экстрактом ромашки, полидоканолом и гиалуроновой кислотой. Без сахара, спирта, красителей и лидокаина.",
+            "category": "kids",
+            "therapeuticArea": "Для детей",
+            "accent": "#d4145a",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/kamistad-baby.png",
+              "alt": "Камистад Бэби"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Камистад Бэби",
+              "kicker": "Для детей",
+              "lead": "Гель для ухода за полостью рта при прорезывании зубов у детей, с экстрактом ромашки, полидоканолом и гиалуроновой кислотой. Без сахара, спирта, красителей и лидокаина.",
+              "badges": [
+                "Гель для дёсен",
+                "20 мл",
+                "Без лидокаина"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nКамистад Бэби — гель для ухода за полостью рта при прорезывании зубов у детей\n\n## Когда появляются первые зубки\n\nВоспалённые дёсны и зуд могут беспокоить малыша и приводить к беспокойству, плачу, нарушению сна и снижению аппетита. Камистад Бэби рекомендуется при первых признаках прорезывания зубов. Благодаря комплексному составу гель охлаждает и успокаивает раздражённую слизистую и ухаживает за чувствительными дёснами. Продукт не содержит сахара, спирта, красителей и лидокаина.\n\n## Компоненты\n\nЭкстракт цветков ромашки оказывает успокаивающее действие, способствует заживлению раздражённой слизистой полости рта, ухаживает за чувствительными дёснами и помогает уменьшить воспаление. Лаурет-9 (полидоканол) обладает охлаждающим и успокаивающим действием. Натрия гиалуронат (гиалуроновая кислота) оказывает увлажняющее действие. Ароматизаторы мёда и охлаждающий придают гелю приятный вкус.\n\n## Способ применения\n\nВыдавите небольшое количество геля на чистые руки или ватную палочку и нанесите на поверхность десны, слегка массируя. Применяйте 2–3 раза в день, предпочтительно после еды и перед сном.\n\n## Меры предосторожности\n\nПрименять только по назначению. Не применять при повышенной чувствительности или аллергии на любой из ингредиентов. Не глотать. Хранить в недоступном для детей месте.\n\n## Хранение\n\nВ защищённом от прямых солнечных лучей месте при температуре от 5 °C до 25 °C. Срок годности: 30 месяцев. Произведено в Германии.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения с этикетки продукта.",
+              "formulaImage": "/assets/moldova-products/kamistad-baby.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Активные компоненты",
+                  "text": "Экстракт цветков ромашки, лаурет-9 (полидоканол), натрия гиалуронат (гиалуроновая кислота)."
+                },
+                {
+                  "value": "02",
+                  "title": "Состав",
+                  "text": "Вода, пропиленгликоль, экстракт цветков ромашки, гидролизат гидрогенизированного крахмала, глицерин, трометамин, карбомер, лаурет-9, натрия гиалуронат, ароматизатор мёда, ацесульфам калия, охлаждающий ароматизатор, динатрия ЭДТА."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Прозрачный жёлто-коричневый гель с запахом и вкусом ромашки, мёда и мяты. Туба 20 мл."
+                }
+              ]
+            }
+          }
+        },
+        "sinulan-duo-forte": {
+          "product": {
+            "id": "sinulan-duo-forte",
+            "slug": "sinulan-duo-forte",
+            "name": "Синулан Дуо Форте",
+            "shortDescription": "Пищевая добавка с растительными экстрактами для верхних и нижних дыхательных путей и иммунной системы. Для взрослых и детей с 6 лет.",
+            "category": "cold",
+            "therapeuticArea": "Простуда и дыхание",
+            "accent": "#2e8b3e",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/sinulan-duo-forte.png",
+              "alt": "Синулан Дуо Форте"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Синулан Дуо Форте",
+              "kicker": "Простуда и дыхание",
+              "lead": "Пищевая добавка с растительными экстрактами для верхних и нижних дыхательных путей и иммунной системы. Для взрослых и детей с 6 лет.",
+              "badges": [
+                "Пищевая добавка",
+                "30 таблеток, покрытых оболочкой",
+                "С 6 лет"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nСинулан Дуо Форте — пищевая добавка для ухода за дыхательными путями\n\n## Что это\n\nСинулан Дуо Форте — пищевая добавка с комбинацией растительных экстрактов, которые действуют в двух направлениях: поддерживают работу верхних (нос, пазухи) и нижних (бронхи) дыхательных путей, а также иммунной системы. Экстракты цветков бузины, травы вербены и цветков коровяка поддерживают физиологическую функцию верхних и нижних дыхательных путей и иммунной системы. Экстракты цветков коровяка и травы вербены помогают успокоить горло, гортань и голосовые связки. Экстракты вербены и цветков бузины обладают антиоксидантным действием.\n\n## Для кого\n\nПродукт подходит взрослым и детям с 6 лет. Не подходит детям младше 6 лет, беременным и кормящим женщинам.\n\n## Способ применения\n\n1–2 таблетки в день, запивая жидкостью, лучше во время еды.\n\n## Предупреждения\n\nНе превышайте рекомендуемую суточную дозу. Пищевые добавки не заменяют разнообразное питание. Хранить в недоступном для детей месте.\n\n## Хранение\n\nВ сухом тёмном месте при температуре ниже 25 °C.\n\n## Производитель\n\nWalmark, a.s., Чехия (группа STADA).",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения из текста на упаковке продукта.",
+              "formulaImage": "/assets/moldova-products/sinulan-duo-forte.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Растительные экстракты",
+                  "text": "Настурция большая (Tropaeolum majus), корень хрена (Armoracia rusticana), цветки бузины (Sambucus nigra), трава вербены (Verbena officinalis), корень горечавки жёлтой (Gentiana lutea), цветки коровяка (Verbascum thapsus)."
+                },
+                {
+                  "value": "02",
+                  "title": "Суточная доза (2 таблетки)",
+                  "text": "Настурция 342,8 мг, хрен 96,0 мг, по 50,0 мг экстрактов цветков бузины, вербены, горечавки жёлтой и цветков коровяка."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Таблетки, покрытые оболочкой. Коробка с 30 таблетками."
+                }
+              ]
+            }
+          }
+        },
+        "proenzi-active-colagen": {
+          "product": {
+            "id": "proenzi-active-colagen",
+            "slug": "proenzi-active-colagen",
+            "name": "Проэнзи Актив Коллаген 11.000",
+            "shortDescription": "Пищевая добавка с подсластителями: два вида коллагена в высокой дозе с витаминами и минералами. Флаконы-монодозы, готовые к употреблению.",
+            "category": "joints",
+            "therapeuticArea": "Здоровье суставов",
+            "accent": "#4b2d83",
+            "locked": true,
+            "image": {
+              "src": "/assets/moldova-products/proenzi-active-colagen.png",
+              "alt": "Проэнзи Актив Коллаген 11.000"
+            },
+            "documents": [],
+            "page": {
+              "title": "STADA Moldova — Проэнзи Актив Коллаген 11.000",
+              "kicker": "Здоровье суставов",
+              "lead": "Пищевая добавка с подсластителями: два вида коллагена в высокой дозе с витаминами и минералами. Флаконы-монодозы, готовые к употреблению.",
+              "badges": [
+                "Пищевая добавка",
+                "14 флаконов-монодоз",
+                "1 флакон в день"
+              ],
+              "metrics": [],
+              "informationText": "# О продукте\n\nПроэнзи Актив Коллаген 11.000 — пищевая добавка с подсластителями, флаконы-монодозы, готовые к употреблению\n\n## Что это\n\nПроэнзи Актив Коллаген 11.000 — сочетание двух видов коллагена в высокой дозе с витаминами и минералами. Коллаген — самый распространённый структурный белок и основной компонент соединительных тканей: хрящей, костей, сухожилий, связок; он важен также для кожи и волос. С возрастом количество коллагена, которое вырабатывает организм, начинает снижаться, и его поступление с питанием может помочь.\n\n## Почему гидролизованный и нативный коллаген II типа\n\nГидролизованный коллаген расщеплён на более мелкие части — пептиды, которые легче усваиваются и используются организмом. Формула обогащена нативным неденатурированным коллагеном II типа (UC-II) — основным видом коллагена в хряще, полученным способом, который помогает сохранить его активную биологическую структуру.\n\n## Витамины и минералы\n\nВитамин C способствует образованию коллагена для нормальной работы связок и костной системы. Марганец способствует нормальному формированию соединительных тканей. Витамин D помогает поддерживать здоровье костей и нормальную работу мышц. Витамины C и B6 способствуют уменьшению усталости и утомления. Селен помогает поддерживать здоровье волос и ногтей; вместе с марганцем и витамином C способствует защите клеток от окислительного стресса.\n\n## Для кого\n\nДля активных людей любого возраста, для тех, кто хочет поддержать опорно-двигательный аппарат или помочь суставам и мышцам восстановиться после интенсивной физической нагрузки, а также для тех, кто хочет сохранить хороший вид кожи, волос и ногтей.\n\n## Способ применения\n\nВзрослые: 1 флакон-монодоза в день, до или после физической активности.",
+              "formulaLabel": "Состав",
+              "formulaHeading": "Состав и форма выпуска",
+              "formulaIntro": "Сведения из информационного материала о продукте.",
+              "formulaImage": "/assets/moldova-products/proenzi-active-colagen.png",
+              "formulaPoints": [
+                {
+                  "value": "01",
+                  "title": "Коллаген",
+                  "text": "Сочетание гидролизованного коллагена (пептидов коллагена) и нативного неденатурированного коллагена II типа (UC-II)."
+                },
+                {
+                  "value": "02",
+                  "title": "Витамины и минералы",
+                  "text": "Витамин C, витамин D, витамин B6, марганец и селен."
+                },
+                {
+                  "value": "03",
+                  "title": "Форма и упаковка",
+                  "text": "Флаконы-монодозы, готовые к употреблению. Коробка с 14 флаконами."
                 }
               ]
             }
@@ -7023,7 +7985,9 @@
         "supplied_history_date_11": "2022",
         "supplied_history_text_11": "STADA продолжает укреплять бизнес по направлению Specialty. Компания представила первый глобальный отчет об устойчивом развитии и вошла в число 10% наиболее устойчивых фармацевтических компаний.",
         "supplied_history_heading": "ИСТОРИЯ:",
-        "about_leader_ospanov_role": "Глава кластера ГАМ (Грузия, Армения, Молдова)"
+        "about_leader_ospanov_role": "Глава кластера ГАМ (Грузия, Армения, Молдова)",
+        "products_category_dermatology": "Дерматология",
+        "products_category_joints": "Здоровье суставов"
       }
     }
   }
