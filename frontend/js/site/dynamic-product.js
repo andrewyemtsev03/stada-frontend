@@ -759,7 +759,8 @@ function renderDynamicProductPage(payload) {
   if (buySection) {
     buySection.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
     buySection.classList.remove('is-expanding');
-    buySection.hidden = true;
+    // "Where to buy" is open from the start whenever the product has pharmacy links.
+    buySection.hidden = !hasPurchaseLinks;
   }
   setPharmacyPartnerLinksVisible(hasPurchaseLinks);
   document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => {
@@ -781,6 +782,7 @@ function renderDynamicProductPage(payload) {
   replaceChildrenFromList('[data-product-formula-points]', formulaPoints, createDynamicFormulaPoint, { hideEmpty: true });
   replaceChildrenFromList('[data-product-usage-items]', usageItems, createDynamicUsageItem, { hideEmpty: true });
   replaceChildrenFromList('[data-product-partners]', purchaseLinks, createDynamicPartnerCard, { hideEmpty: true });
+  if (buySection && hasPurchaseLinks) buySection.querySelectorAll('.vitrum-animate').forEach(item => item.classList.add('is-visible'));
   applyLegacyProductLayout(blueprint);
   updateProductSectionVisibility(page);
 
@@ -869,14 +871,3 @@ async function updateBackendDrivenPage(lang) {
   });
 }
 
-// Pre-rendered pages keep the partner cards in the HTML but not the button's onclick
-// (set while rendering), so open "Where to buy" from a delegated listener as well.
-document.addEventListener?.('click', event => {
-  const trigger = event.target.closest?.('a[href="#pharmacy-partners"]');
-  if (!trigger || event.defaultPrevented) return;
-  const section = document.querySelector('.product-hero-buy#pharmacy-partners');
-  if (!section || !section.querySelector('.partner-card')) return;
-  event.preventDefault();
-  revealPharmacyPartners(section);
-  document.querySelectorAll('a[href="#pharmacy-partners"]').forEach(link => link.setAttribute('aria-expanded', 'true'));
-});
