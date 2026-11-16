@@ -3272,7 +3272,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#0057a8",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/snup-90.png",
               "alt": "Snup 90 mcg/doză"
@@ -3515,7 +3514,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#1b4f9c",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/coldrex-lemon.png",
               "alt": "Coldrex Lemon"
@@ -3607,7 +3605,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#d71920",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
               "alt": "Coldrex MaxGrip Lemon"
@@ -3699,7 +3696,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#e8731a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/omnitus-50.png",
               "alt": "Omnitus 50 mg comprimate"
@@ -3791,7 +3787,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#e8731a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/omnitus-sirop.png",
               "alt": "Omnitus sirop 0,8 mg/ml"
@@ -3883,7 +3878,6 @@
             "category": "dermatology",
             "therapeuticArea": "Dermatologie",
             "accent": "#c99700",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/nizoral-sampon.png",
               "alt": "Nizoral 20 mg/g șampon"
@@ -3968,7 +3962,6 @@
             "category": "kids",
             "therapeuticArea": "Pentru copii",
             "accent": "#d4145a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/kamistad-baby.png",
               "alt": "Kamistad Baby"
@@ -4055,7 +4048,6 @@
             "category": "cold",
             "therapeuticArea": "Răceală și respirație",
             "accent": "#2e8b3e",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/sinulan-duo-forte.png",
               "alt": "Sinulan Duo Forte"
@@ -4128,7 +4120,6 @@
             "category": "joints",
             "therapeuticArea": "Sănătatea articulațiilor",
             "accent": "#4b2d83",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/proenzi-active-colagen.png",
               "alt": "Proenzi Active Colagen 11.000"
@@ -7639,7 +7630,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#0057a8",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/snup-90.png",
               "alt": "Снуп 90 мкг/доза"
@@ -7882,7 +7872,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#1b4f9c",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/coldrex-lemon.png",
               "alt": "Колдрекс Лемон"
@@ -7974,7 +7963,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#d71920",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/coldrex-maxgrip-lemon.png",
               "alt": "Колдрекс МаксГрипп Лемон"
@@ -8066,7 +8054,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#e8731a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/omnitus-50.png",
               "alt": "Омнитус 50 мг таблетки"
@@ -8158,7 +8145,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#e8731a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/omnitus-sirop.png",
               "alt": "Омнитус сироп 0,8 мг/мл"
@@ -8250,7 +8236,6 @@
             "category": "dermatology",
             "therapeuticArea": "Дерматология",
             "accent": "#c99700",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/nizoral-sampon.png",
               "alt": "Низорал 20 мг/г шампунь"
@@ -8335,7 +8320,6 @@
             "category": "kids",
             "therapeuticArea": "Для детей",
             "accent": "#d4145a",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/kamistad-baby.png",
               "alt": "Камистад Бэби"
@@ -8422,7 +8406,6 @@
             "category": "cold",
             "therapeuticArea": "Простуда и дыхание",
             "accent": "#2e8b3e",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/sinulan-duo-forte.png",
               "alt": "Синулан Дуо Форте"
@@ -8495,7 +8478,6 @@
             "category": "joints",
             "therapeuticArea": "Здоровье суставов",
             "accent": "#4b2d83",
-            "locked": true,
             "image": {
               "src": "/assets/moldova-products/proenzi-active-colagen.png",
               "alt": "Проэнзи Актив Коллаген 11.000"

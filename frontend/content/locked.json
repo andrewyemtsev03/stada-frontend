@@ -6,36 +6,9 @@
     "/sites/ge/ge/products/magne-b6-kids.html",
     "/sites/ge/products/index.html",
     "/sites/kz/kz/products/magne-b6-kids.html",
-    "/sites/kz/ru/products/magne-b6-kids.html",
-    "/sites/md/ro/products/coldrex-lemon.html",
-    "/sites/md/ro/products/coldrex-maxgrip-lemon.html",
-    "/sites/md/ro/products/kamistad-baby.html",
-    "/sites/md/ro/products/nizoral-sampon.html",
-    "/sites/md/ro/products/omnitus-50.html",
-    "/sites/md/ro/products/omnitus-sirop.html",
-    "/sites/md/ro/products/proenzi-active-colagen.html",
-    "/sites/md/ro/products/sinulan-duo-forte.html",
-    "/sites/md/ro/products/snup-90.html",
-    "/sites/md/ru/products/coldrex-lemon.html",
-    "/sites/md/ru/products/coldrex-maxgrip-lemon.html",
-    "/sites/md/ru/products/kamistad-baby.html",
-    "/sites/md/ru/products/nizoral-sampon.html",
-    "/sites/md/ru/products/omnitus-50.html",
-    "/sites/md/ru/products/omnitus-sirop.html",
-    "/sites/md/ru/products/proenzi-active-colagen.html",
-    "/sites/md/ru/products/sinulan-duo-forte.html",
-    "/sites/md/ru/products/snup-90.html"
+    "/sites/kz/ru/products/magne-b6-kids.html"
   ],
   "slugs": [
-    "coldrex-lemon",
-    "coldrex-maxgrip-lemon",
-    "kamistad-baby",
-    "magne-b6-kids",
-    "nizoral-sampon",
-    "omnitus-50",
-    "omnitus-sirop",
-    "proenzi-active-colagen",
-    "sinulan-duo-forte",
-    "snup-90"
+    "magne-b6-kids"
   ]
 }
