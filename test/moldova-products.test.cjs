@@ -79,3 +79,25 @@ test('Moldova has the other nine spreadsheet products, locked for approval, in R
     }
   }
 });
+
+test('every Moldovan product page has "Where to buy" with its pharmacy links', () => {
+  for (const lang of ['ro', 'ru']) {
+    for (const [slug, { product }] of Object.entries(snapshot.locales[lang].products)) {
+      const links = product.page.purchaseLinks || [];
+      assert.ok(links.length >= 3, `${slug} has pharmacy links`);
+      const document = read(`sites/md/${lang}/products/${slug}.html`).window.document;
+      const button = document.querySelector('.product-hero-actions a[href="#pharmacy-partners"]');
+      assert.ok(button && !button.hidden, `${lang}/${slug}: Where to buy button`);
+      const cards = document.querySelectorAll('[data-product-partners] .partner-card');
+      assert.equal(cards.length, links.length);
+      for (const [index, card] of [...cards].entries()) {
+        assert.equal(card.getAttribute('href'), links[index].url);
+        assert.equal(card.getAttribute('target'), '_blank');
+        assert.ok(fs.existsSync(path.join(output, links[index].logoSrc)), links[index].logoSrc);
+      }
+    }
+  }
+  // Other non-Kazakh product pages without links still have no button.
+  const ge = new JSDOM(fs.readFileSync(path.join(output, 'sites/ge/en/products/essentiale-forte.html'), 'utf8')).window.document;
+  assert.equal(ge.querySelector('a[href="#pharmacy-partners"]'), null);
+});
