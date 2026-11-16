@@ -65,14 +65,15 @@ test('Moldova: every product is public, indexed and in the sitemap, with leaflet
   }
 });
 
-test('every Moldovan product page has "Where to buy" with its pharmacy links', () => {
+test('every Moldovan product page shows "Where to buy" open, with its pharmacy links', () => {
   for (const lang of ['ro', 'ru']) {
     for (const [slug, { product }] of Object.entries(snapshot.locales[lang].products)) {
       const links = product.page.purchaseLinks || [];
       assert.ok(links.length >= 3, `${slug} has pharmacy links`);
       const document = read(`sites/md/${lang}/products/${slug}.html`).window.document;
-      const button = document.querySelector('.product-hero-actions a[href="#pharmacy-partners"]');
-      assert.ok(button && !button.hidden, `${lang}/${slug}: Where to buy button`);
+      assert.equal(document.querySelector('.product-hero-actions'), null, `${lang}/${slug}: no hero buttons`);
+      const section = document.querySelector('.product-hero-buy#pharmacy-partners');
+      assert.ok(section && !section.hidden, `${lang}/${slug}: Where to buy is open`);
       const cards = document.querySelectorAll('[data-product-partners] .partner-card');
       assert.equal(cards.length, links.length);
       for (const [index, card] of [...cards].entries()) {
