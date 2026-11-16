@@ -142,7 +142,9 @@ function finalize(dom, country, lang, template, page, text, newsId, catalogLocke
       const group = document.createElement('div'); group.className = 'footer-nav__group';
       const heading = document.createElement('h3'); heading.textContent = text.footer_products_title;
       group.append(heading);
-      for (const product of products) {
+      // As many product links as the Company column has (the full list is in the catalogue).
+      const limit = footer.querySelector('.footer-nav__group')?.querySelectorAll('a').length || 6;
+      for (const product of products.slice(0, limit)) {
         const link = document.createElement('a');
         link.href = `/products/product.html?slug=${product.slug}`; link.textContent = product.name;
         group.append(link);

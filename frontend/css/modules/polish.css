@@ -524,8 +524,15 @@ nav :where(a, button):focus-visible,
   display: none;
 }
 
+/* Company and Products side by side; one column on phones. */
 .site-footer .footer-nav {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 560px) {
+  .site-footer .footer-nav {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .culture-values .culture-values-grid {
