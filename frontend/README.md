@@ -56,6 +56,9 @@ output, not the raw source folder.
   and unchanged Georgian leaflets live in `assets/georgia-products/`; both
   languages link to the original Georgian instructions. The packaging approval
   PDF and multi-side reference photo are not published as patient leaflets.
+- Armenia includes Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russian
+  on the generic product page, with copy supplied by STADA Armenia. Packshots and the
+  Russian patient leaflets (PDF) live in `assets/armenia-products/`.
 - Kazakhstan includes Магне B6 Кидс in Russian and Kazakh. Its page is a
   presentation-style showcase rather than the generic product layout: a product
   payload may name its own `template` under `products/`, and the build fills that
