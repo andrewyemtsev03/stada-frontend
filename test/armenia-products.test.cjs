@@ -12,7 +12,7 @@ const read = file => new JSDOM(fs.readFileSync(path.join(output, file), 'utf8'))
 
 const slugs = ['coldrex-maxgrip', 'coldrex-hotrem-lemon'];
 
-test('Armenia has Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russian, locked for approval', () => {
+test('Armenia has Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russian, public and indexed', () => {
   const lockList = require('../frontend/content/locked.json');
   const sitemap = fs.readFileSync(path.join(output, 'sites/am/sitemap.xml'), 'utf8');
   for (const lang of ['hy', 'ru']) {
@@ -20,13 +20,13 @@ test('Armenia has Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russi
     assert.deepEqual(Object.keys(products), slugs);
     for (const [slug, { product }] of Object.entries(products)) {
       const href = `/${lang}/products/${slug}.html`;
-      assert.equal(product.locked, true, `${lang}/${slug} awaits approval`);
+      assert.ok(!product.locked, `${lang}/${slug} is published`);
       assert.equal(product.template, undefined, `${slug} uses the generic page`);
-      assert.ok(lockList.pages.includes(`/sites/am${href}`), `${lang}/${slug} in locked.json`);
-      assert.ok(!sitemap.includes(href), `${lang}/${slug} not in the sitemap`);
+      assert.ok(!lockList.pages.includes(`/sites/am${href}`), `${lang}/${slug} not in locked.json`);
+      assert.ok(sitemap.includes(href), `${lang}/${slug} in the sitemap`);
       const document = read(`sites/am${href}`).window.document;
       assert.equal(document.querySelector('h1').textContent, product.name);
-      assert.equal(document.querySelector('meta[name="robots"]').getAttribute('content').includes('noindex'), true);
+      assert.equal(document.querySelector('meta[name="robots"]'), null, `${lang}/${slug} is indexable`);
       assert.equal(document.querySelector('[data-product-image]').getAttribute('src'), product.image.src);
       assert.ok(fs.existsSync(path.join(output, product.image.src)));
       assert.equal(document.querySelector('#formula').querySelectorAll('.formula-point').length, 3);
@@ -34,9 +34,13 @@ test('Armenia has Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russi
       for (const file of product.documents) assert.ok(fs.existsSync(path.join(output, file.href)), file.href);
       if (lang === 'hy') assert.ok(!/[А-Яа-яЁё]/.test(document.querySelector('main [data-product-information]').textContent), `${slug}: no Russian in the Armenian text`);
     }
+    const catalog = read(`sites/am/${lang}/products/index.html`).window.document;
+    assert.equal(catalog.querySelectorAll('[data-product-card]').length, 2);
+    for (const slug of slugs) assert.ok(catalog.querySelector(`[data-product-card][href="/${lang}/products/${slug}.html"]`), `${lang}/${slug} in the catalogue`);
+    const home = read(`sites/am/${lang}/index.html`).window.document;
+    assert.equal(home.querySelector('#products').hidden, false);
+    assert.ok(home.querySelector(`.menu a[href="/${lang}/products/index.html"]`), 'Products is in the menu');
   }
-  // Moldova's public Coldrex MaxGrip Lemon is not caught by the Armenian lock.
-  assert.ok(!lockList.slugs.includes('coldrex-maxgrip-lemon'));
 });
 
 test('Coldrex doses and ages follow the supplied Armenian copy', () => {
