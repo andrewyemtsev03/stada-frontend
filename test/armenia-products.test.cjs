@@ -35,7 +35,7 @@ test('Armenia has Coldrex MaxGrip and Coldrex Hotrem Lemon in Armenian and Russi
       if (lang === 'hy') assert.ok(!/[А-Яа-яЁё]/.test(document.querySelector('main [data-product-information]').textContent), `${slug}: no Russian in the Armenian text`);
     }
     const catalog = read(`sites/am/${lang}/products/index.html`).window.document;
-    assert.equal(catalog.querySelectorAll('[data-product-card]').length, 2);
+    assert.equal(catalog.querySelectorAll('[data-product-card]').length, 4);
     for (const slug of slugs) assert.ok(catalog.querySelector(`[data-product-card][href="/${lang}/products/${slug}.html"]`), `${lang}/${slug} in the catalogue`);
     const home = read(`sites/am/${lang}/index.html`).window.document;
     assert.equal(home.querySelector('#products').hidden, false);
@@ -53,29 +53,28 @@ test('Coldrex doses and ages follow the supplied Armenian copy', () => {
   }
 });
 
-test('Snup 45 and Snup 90 for Armenia (hy and ru) are behind the lock with the supplied SmPC', () => {
+test('Snup 45 and Snup 90 for Armenia (hy and ru) are public, with the supplied SmPC', () => {
   const lockList = require('../frontend/content/locked.json');
   const sitemap = fs.readFileSync(path.join(output, 'sites/am/sitemap.xml'), 'utf8');
   for (const lang of ['hy', 'ru']) {
     const catalog = read(`sites/am/${lang}/products/index.html`).window.document;
+    assert.equal(catalog.querySelectorAll('[data-product-card]').length, 4);
     for (const [slug, dose, age] of [['snup-45', '45', '2'], ['snup-90', '90', '6']]) {
       const { product } = snapshot.locales[lang].products[slug];
       const href = `/${lang}/products/${slug}.html`;
-      assert.equal(product.locked, true, `${lang}/${slug} awaits approval`);
-      assert.ok(lockList.pages.includes(`/sites/am${href}`), `${lang}/${slug} in locked.json`);
-      assert.ok(!sitemap.includes(href), `${lang}/${slug} not in the sitemap`);
-      assert.equal(catalog.querySelector(`[data-product-card][href="${href}"]`), null, `${lang}/${slug} not in the catalogue`);
+      assert.ok(!product.locked, `${lang}/${slug} is published`);
+      assert.ok(!lockList.pages.includes(`/sites/am${href}`), `${lang}/${slug} not in locked.json`);
+      assert.ok(sitemap.includes(href), `${lang}/${slug} in the sitemap`);
+      assert.ok(catalog.querySelector(`[data-product-card][href="${href}"]`), `${lang}/${slug} in the catalogue`);
       assert.ok(product.name.includes(dose));
       assert.ok(product.page.informationText.includes(age));
       assert.equal(product.image.src, `/assets/armenia-products/${slug}.png`);
       assert.deepEqual(product.documents.map(file => file.href), ['/assets/armenia-products/snup-smpc-ru.pdf']);
       const document = read(`sites/am${href}`).window.document;
       assert.equal(document.querySelector('h1').textContent, product.name);
-      assert.ok(document.querySelector('meta[name="robots"]').getAttribute('content').includes('noindex'));
+      assert.equal(document.querySelector('meta[name="robots"]'), null, `${lang}/${slug} is indexable`);
       assert.ok(fs.existsSync(path.join(output, product.image.src)));
       assert.ok(fs.existsSync(path.join(output, product.documents[0].href)));
     }
   }
-  // Moldova's public Snup pages share the slugs; their files must stay public.
-  assert.ok(!lockList.slugs.includes('snup-45') && !lockList.slugs.includes('snup-90'));
 });
